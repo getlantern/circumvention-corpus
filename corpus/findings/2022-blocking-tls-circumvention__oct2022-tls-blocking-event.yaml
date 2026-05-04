@@ -1,0 +1,22 @@
+paper: 2022-blocking-tls-circumvention
+kind: deployment
+summary: |
+  Starting October 3, 2022, more than 100 users reported simultaneous blocking of
+  TLS-based circumvention servers running Trojan, Xray, V2Ray TLS+WebSocket, VLESS,
+  and gRPC. Blocking was port-specific initially (mainly port 443, but also non-443
+  ports), then escalated to full IP blocking when users switched ports. Domain names
+  were not added to DNS or SNI blocklists. naiveproxy was notably not affected.
+  The blocking was dynamic in at least some cases (browsers could still reach the
+  port, but circumvention tools could not), strongly indicating protocol-level
+  identification rather than blind port blocking.
+techniques: [fully-encrypted-detect, dpi, tls-fingerprint, port-blocking]
+defenses: [trojan, vmess, vless]
+censors: [cn]
+defense_implications:
+  - "TLS ClientHello fingerprinting (via uTLS mimicry of a real browser) is a
+    necessary but not sufficient defense; naiveproxy's resistance suggests that
+    perfect browser-stack mimicry provides material protection."
+  - "Port rotation alone is insufficient; the GFW escalates to IP-level blocking
+    when circumvention tools move to alternate ports after initial port block."
+section: "full post"
+extracted_by: claude-sonnet-4-6

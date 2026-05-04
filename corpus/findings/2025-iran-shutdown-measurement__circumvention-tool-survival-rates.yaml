@@ -1,0 +1,31 @@
+paper: 2025-iran-shutdown-measurement
+kind: evaluation
+summary: |
+  During the June 2025 Iran shutdown, circumvention tool performance diverged
+  sharply by transport design. Psiphon's multi-protocol architecture sustained
+  1.5 million concurrent users—roughly one-third of its normal Iranian base.
+  Lantern's "proxyless" protocol (domain-fronting via CDN, ~40% of Lantern's
+  Iranian traffic) showed moderate success. Tor usage collapsed during the
+  blackout but bridge connections surged and rebounded quickly after lifting.
+  BeePass (serving 500k+ daily users at shutdown onset) used live A/B testing
+  of port/obfuscation-prefix combinations to probe the censors' blocking
+  parameters in real time. The Ceno Browser's P2P network grew from 600 active
+  peers on June 13 to ~8,000 by July 11, indicating that decentralized fallback
+  paths stayed up even during peak blocking.
+techniques: [dpi, throttling]
+censors: [ir]
+defenses: [domain-fronting, pluggable-transport, tor, bridges, obfs4]
+defense_implications:
+  - "Single-protocol tools hit a cliff during shutdown; tools should maintain
+    at least three independent transport fallbacks with automatic in-session
+    switching."
+  - "Live parameter scanning (BeePass approach: enumerate port × prefix
+    combinations) is an effective way to find surviving configurations without
+    requiring out-of-band coordination with users."
+  - "P2P/decentralized fallback (Ceno model) is uniquely resilient to
+    centralized blocking because there is no fixed server IP or port to target."
+section: "§Tool Performance"
+sources:
+  - "Miaan Group / ASL19 / IODA, 'Iran's Stealth Blackout', Oct 2025:
+    https://filter.watch/english/2025/10/02/irans-stealth-blackout-a-multi-stakeholder-analysis-of-the-june-2025-internet-shutdown/"
+extracted_by: claude-sonnet-4-6

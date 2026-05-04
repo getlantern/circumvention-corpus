@@ -1,0 +1,20 @@
+paper: 2017-frolov-water-pluggable
+kind: defense
+summary: |
+  WATER (WebAssembly Transport Executables at Runtime) defines a pluggable-transport
+  architecture in which the transport logic is compiled to a WASM module that is
+  loaded and executed at runtime by a thin Go host process. This separates the
+  stable host ABI (dial, accept, read, write) from the rapidly-evolving transport
+  logic, allowing new or updated transports to be delivered as small WASM binaries
+  without recompiling or redeploying the host application.
+techniques: [dpi, fully-encrypted-detect, traffic-shape]
+defenses: [water-wasm, pluggable-transport, protocol-versioning]
+censors: [generic, cn, ir, ru]
+defense_implications:
+  - "Ship transport logic as a WASM module so that a censor-adapted update can be
+    pushed to deployed clients without an app-store release cycle."
+  - "Design the host-side ABI narrowly (net.Conn semantics) so that any transport
+    fitting the interface can be swapped in without code changes to the integrating
+    application."
+section: "§2–3"
+extracted_by: claude-sonnet-4-6

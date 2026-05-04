@@ -1,0 +1,17 @@
+paper: 2020-alice-shadowsocks-detection
+kind: detection
+summary: |
+  The GFW's active probers originate from thousands of distinct IP addresses, but
+  a network-level side-channel (shared IP ID counter sequences) reveals they are
+  controlled by a small number of centralized structures. Probe delay from legitimate
+  connection to first active probe can be as short as 0.28 seconds, ruling out any
+  reactive defense that relies on out-of-band blocking before probes arrive.
+techniques: [active-probing]
+censors: [cn]
+defense_implications:
+  - "Do not rely on IP allowlisting or rate-limiting to deflect probes; the prober
+    pool is large (thousands of IPs) and probes arrive within sub-second latency."
+  - "Server-side probe handling must be synchronous with connection acceptance, not
+    an asynchronous background process."
+section: "§3.3, §3.5"
+extracted_by: claude-sonnet-4-6

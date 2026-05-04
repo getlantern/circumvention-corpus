@@ -1,0 +1,28 @@
+paper: 2025-wu-regional-censorship
+kind: defense
+summary: |
+  The Henan Firewall is stateless in two exploitable ways: (1) it requires the
+  TCP header to be exactly 20 bytes—enabling any TCP option (e.g., TCP
+  Timestamps, which Windows disables by default) to bypass it entirely; (2) it
+  does not perform TCP reassembly, so splitting a TLS ClientHello across two
+  TCP segments such that the SNI extension straddles the boundary bypasses the
+  censor. Both bypasses require only client-side changes and have already been
+  implemented in Xray, GoodbyeDPI, and Shadowrocket. TLS record fragmentation
+  (splitting the ClientHello across multiple TLS records within one TCP segment)
+  also defeats both the Henan Firewall and the GFW, since neither performs
+  TLS reassembly.
+techniques: [sni-blocking, dpi, middlebox-interference]
+censors: [cn]
+defenses: [format-transform, pluggable-transport, protocol-versioning]
+defense_implications:
+  - "Enabling any TCP option (e.g. TCP Timestamps) is a near-zero-cost
+    client-side bypass for the Henan Firewall; consider enabling by default
+    on Windows clients in CN."
+  - "TLS ClientHello fragmentation into multiple TLS records defeats both the
+    Henan Firewall and the GFW (confirmed Apr 2024); add this to uTLS defaults
+    for CN."
+  - "TCP segmentation of the ClientHello (SNI split across TCP segments) is
+    sufficient for Henan but may not defeat the GFW; pair with TLS
+    fragmentation for full coverage."
+section: "§4.3 / §6"
+extracted_by: claude-sonnet-4-6

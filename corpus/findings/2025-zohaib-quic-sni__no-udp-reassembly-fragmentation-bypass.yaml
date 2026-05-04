@@ -1,0 +1,31 @@
+paper: 2025-zohaib-quic-sni
+kind: defense
+summary: |
+  The GFW's QUIC censor does not reassemble QUIC client Initial packets that
+  are split across multiple UDP datagrams, nor does it reassemble QUIC CRYPTO
+  frames split within a single datagram. Three practical bypasses follow: (1)
+  send any UDP datagram with a random payload before the QUIC Initial—the GFW
+  uses 60-second UDP flow state and won't inspect a mid-flow packet; (2)
+  fragment the TLS ClientHello SNI across multiple QUIC CRYPTO frames; (3)
+  use an unknown QUIC version number in the first packet (Version Negotiation
+  bypass, payload undecryptable). Chrome independently exploits (2) through its
+  Chaos Protection feature (since 2021) and post-quantum Kyber key-agreement
+  (since v124, Sep 2024), whose larger key sizes force fragmentation across
+  UDP datagrams. As of January 2025, the GFW also does not block ECH-containing
+  QUIC payloads unless the outer (cleartext) SNI is on the blocklist.
+techniques: [http3-quic-block, dpi]
+censors: [cn]
+defenses: [randomization, ech-esni, protocol-versioning, format-transform]
+defense_implications:
+  - "Precede every QUIC Initial with a random UDP datagram on the same 4-tuple;
+    real QUIC servers silently ignore it, the GFW exempts the flow — zero
+    server-side changes required."
+  - "Fragment the QUIC ClientHello SNI across two QUIC CRYPTO frames in the
+    Initial packet; all major QUIC libraries support this via custom frame
+    construction."
+  - "Deploy ECH on QUIC endpoints: as of Jan 2025 the GFW does not block ECH
+    payloads, and the outer SNI can be a non-blocked cover domain."
+  - "Send a Version Negotiation probe first (unknown version byte) to render
+    the first-packet payload undecryptable to the GFW."
+section: "§3.2 / §7"
+extracted_by: claude-sonnet-4-6

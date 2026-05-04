@@ -1,0 +1,18 @@
+paper: 2015-ensafi-active-probing
+kind: detection
+summary: |
+  GFW probes originate from a dedicated /16 subnet of Chinese IP addresses
+  distinct from ordinary client traffic, and a single suspicious connection
+  can trigger dozens of independent probe connections from different source
+  IPs within the same subnet. Blocking this probe-source range does not
+  prevent blocking — the GFW blocks at a separate decision point — but it
+  does make probe traffic distinguishable from legitimate users.
+techniques: [active-probing]
+censors: [cn]
+defense_implications:
+  - "IP-allowlisting probe sources only tells you a probe happened; it does
+    not prevent the block. Use it for detection/measurement, not protection."
+  - "Server-side logic that detects multiple rapid probe-like connections from
+    a known ASN can serve as an early-warning signal."
+section: "§4.2"
+extracted_by: claude-sonnet-4-6

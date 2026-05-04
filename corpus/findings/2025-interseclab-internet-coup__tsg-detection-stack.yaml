@@ -1,0 +1,25 @@
+paper: 2025-interseclab-internet-coup
+kind: detection
+summary: |
+  InterSecLab's 76-page analysis of the Geedge/MESA leak (based on nine months of
+  indexing and translating >100,000 documents) characterizes the Tiangou Secure
+  Gateway (TSG) product line as a commercially deployable detection stack that
+  combines deep packet inspection, real-time mobile subscriber monitoring, active
+  probing, ML-based traffic classifiers, and granular per-region rule sets. TSG is
+  not a research prototype — leaked documentation includes deployment timelines and
+  client government interactions for Kazakhstan, Ethiopia, Pakistan, Myanmar, and one
+  unnamed country, with censorship rules explicitly tailored to each region.
+techniques: [dpi, active-probing, ml-classifier, sni-blocking, ip-blocking, traffic-shape, fully-encrypted-detect]
+censors: [cn, mm, pk, kz]
+defense_implications:
+  - "TSG's ML classifier is the hardest component to defeat with static mimicry —
+    assume it is trained on real circumvention tool traffic from deployed environments
+    and updates over time."
+  - "Mobile subscriber monitoring in TSG means IMSI/MSISDN-linked blocking is a
+    capability in TSG-equipped states; protocol diversity alone does not help users
+    whose identifiers are known to the censor."
+  - "Active-probing in TSG means proxy servers in TSG-equipped states must implement
+    probe-deflection (e.g. Shadowsocks's replay filter + consistent server behavior
+    on unexpected connections) from day one."
+section: "§3–§5 (InterSecLab report)"
+extracted_by: claude-sonnet-4-6

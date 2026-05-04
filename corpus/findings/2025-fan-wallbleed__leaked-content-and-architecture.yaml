@@ -1,0 +1,23 @@
+paper: 2025-fan-wallbleed
+kind: detection
+summary: |
+  Analysis of 5.1 billion Wallbleed responses revealed that the leaked memory
+  contains fragments of live network traffic processed by the injection device:
+  IP/TCP/UDP/HTTP headers and payloads (including plaintext traffic not related to
+  DNS), x86_64 Linux stack frames with ASLR-consistent pointer patterns, and what
+  appear to be glibc stack canaries. The 166 million UPnP/SSDP snippets in leaked
+  memory suggest the GFW device shares a memory pool with traffic from private
+  RFC 1918 addresses, hinting at internal management-plane traffic co-located with
+  the censorship infrastructure. A side channel — the fixed cyclic ordering of false
+  IP addresses across injection processes — distinguishes individual GFW injector
+  processes from each other.
+techniques: [dns-poisoning, dpi]
+censors: [cn]
+defense_implications:
+  - "GFW DNS injectors process both IPv4 and IPv6 traffic in the same address space;
+    IPv6-only transports do not escape the DNS injection subsystem."
+  - "The side channel (fixed IP rotation order per process) enables external measurement
+    of injector fleet size and load balancing — useful for longitudinal censorship
+    monitoring even after Wallbleed itself is patched."
+section: "§4–§5"
+extracted_by: claude-sonnet-4-6

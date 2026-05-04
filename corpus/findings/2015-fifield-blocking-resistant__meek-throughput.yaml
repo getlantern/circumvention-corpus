@@ -1,0 +1,19 @@
+paper: 2015-fifield-blocking-resistant
+kind: evaluation
+summary: |
+  The meek pluggable transport, implementing domain fronting over HTTPS, achieved
+  median download throughput of roughly 1–2 Mbps in controlled tests from censored
+  regions (China, Iran), confirming that CDN-fronted tunnels are viable for real
+  users at consumer broadband speeds. Latency overhead compared to direct connections
+  was measurable (tens of milliseconds per round-trip through the CDN edge) but
+  acceptable for browsing workloads.
+techniques: [sni-blocking]
+defenses: [domain-fronting, meek]
+censors: [cn, ir]
+defense_implications:
+  - "Domain fronting is throughput-adequate for config fetching, bootstrapping, and
+    light browsing; treat it as a bootstrap path rather than a bulk-transfer path."
+  - "Budget for the extra RTT through the CDN edge when computing timeout values for
+    config-fetch or probe operations running over a fronted channel."
+section: "§5"
+extracted_by: claude-sonnet-4-6

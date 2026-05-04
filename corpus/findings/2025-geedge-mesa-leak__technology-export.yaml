@@ -1,0 +1,21 @@
+paper: 2025-geedge-mesa-leak
+kind: deployment
+summary: |
+  Internal Geedge documents confirm active contracts to deploy GFW-derived censorship
+  and surveillance infrastructure in Myanmar, Pakistan, Ethiopia, Kazakhstan, and at
+  least one additional unidentified country under the Belt and Road framework, in
+  addition to domestic deployments in Xinjiang, Jiangsu, and Fujian. The exported
+  product (the Tiangou Secure Gateway / TSG line) is not a stripped-down export
+  variant — leaked TSG documentation shows DPI, active-probing, ML classifiers, and
+  granular per-region traffic control rules that mirror the domestic GFW capability set.
+techniques: [dpi, active-probing, ml-classifier, sni-blocking, dns-poisoning, fully-encrypted-detect, traffic-shape]
+censors: [cn, mm, pk, kz, et]
+defense_implications:
+  - "When designing for Iran, Russia, or other censors without confirmed Geedge
+    deployments, still assume TSG-grade capability is commercially available to them —
+    the product is actively marketed and sold internationally."
+  - "Per-region rule customization in TSG means blocklists and detection thresholds
+    differ by deployment; do not assume a technique blocked in CN is automatically
+    blocked in a Belt-and-Road customer state, or vice versa."
+section: "§5, §6"
+extracted_by: claude-sonnet-4-6

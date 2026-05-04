@@ -1,0 +1,21 @@
+paper: 2015-frolov-the-use-of-tls
+kind: detection
+summary: |
+  Frolov and Wustrow show that every major TLS-based circumvention tool
+  (Tor Browser, Lantern, OpenVPN, Psiphon, etc.) produces a TLS ClientHello
+  fingerprint that is statistically distinguishable from real Chrome or Firefox:
+  differences include cipher-suite ordering, extension set, extension ordering,
+  ALPN values, and curve preferences. A passive observer with a classifier over
+  ClientHello fields can identify the tool with high precision without decrypting
+  any traffic.
+techniques: [tls-fingerprint, dpi, ml-classifier]
+defenses: [mimicry, meek, obfs4, shadowsocks, tunneling]
+censors: [cn, ir, ru]
+defense_implications:
+  - "Any TLS-based transport must use uTLS (or an equivalent TLS mimicry library)
+    to copy a real browser's ClientHello byte-for-byte, including extension ordering
+    and GREASE values."
+  - "Test your ClientHello against a fingerprinting service (e.g., tlsfingerprint.io,
+    tls.peet.ws) before shipping; small Go/OpenSSL divergences are detectable."
+section: "§3–4"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,23 @@
+paper: 2025-wu-regional-censorship
+kind: detection
+summary: |
+  The Henan Firewall only inspects traffic leaving Henan Province toward the
+  rest of the world—it does not inspect domestic intra-China traffic nor
+  inbound traffic entering the province. This contrasts with the GFW, which
+  operates bidirectionally at China's national border. Measurement across seven
+  CN cities (Beijing, Shanghai, Chongqing, Guangzhou, Nanjing, Chengdu,
+  Zhengzhou) found no evidence of comparable provincial firewalls in the other
+  six locations, making Henan the only documented province with an autonomous
+  censorship layer as of March 2025. The Henan Firewall also uses the same
+  blocklist for both HTTP Host-based and TLS SNI-based censorship, whereas the
+  GFW maintains separate domain lists per protocol.
+techniques: [sni-blocking, dpi]
+censors: [cn]
+defense_implications:
+  - "External vantage-point measurements (probing CN from outside) cannot
+    detect province-outbound-only censorship; requires a server inside the
+    province and a destination outside it."
+  - "Unified HTTP/TLS blocklist means a domain blocked via SNI probe will also
+    be blocked via HTTP Host; tools cannot rely on HTTP-fallback as a bypass."
+section: "§3 / §4.2 / §5.1"
+extracted_by: claude-sonnet-4-6

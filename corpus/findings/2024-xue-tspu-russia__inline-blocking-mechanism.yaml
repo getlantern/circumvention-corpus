@@ -1,0 +1,22 @@
+paper: 2024-xue-tspu-russia
+kind: detection
+summary: |
+  TSPU devices perform in-line packet manipulation — they can inject RST packets,
+  drop traffic, and throttle connections — rather than routing traffic to an
+  out-of-band sniffer that votes to block. The inline placement means TSPU can
+  act on the first-packet payload and impose latency on all matching flows, not
+  only on those selected by sampling. Blocking decisions are therefore applied
+  with high recall at the ISP edge, and circumvention tools that rely on short
+  observation windows (e.g. only obfuscating the first N bytes) are vulnerable
+  to continued inline inspection of subsequent traffic.
+techniques: [dpi, rst-injection, throttling, sni-blocking]
+censors: [ru]
+defense_implications:
+  - "Assume the entire connection is inspected, not just the TLS ClientHello —
+    TSPU's inline position means it can reassemble and re-examine all payloads."
+  - "RST injection at the ISP edge means TCP-level retransmit loops are a real
+    failure mode; use UDP-based or retry-over-new-connection transports."
+  - "Throttling (not just blocking) is a TSPU capability — implement a fallback
+    that detects sustained low throughput and switches protocol, not only full block."
+section: "§3–§4"
+extracted_by: claude-sonnet-4-6

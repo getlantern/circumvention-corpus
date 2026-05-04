@@ -1,10 +1,13 @@
 package main
 
 import (
+	"os"
 	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
+
+	"gopkg.in/yaml.v3"
 )
 
 // TestCorpusIntegrity validates that every paper YAML has a well-formed
@@ -92,6 +95,95 @@ func TestCorpusIntegrity(t *testing.T) {
 				t.Errorf("id should follow YYYY-author-slug convention")
 			}
 		})
+	}
+}
+
+// TestFindingsIntegrity validates each YAML in corpus/findings/ parses
+// cleanly, references a known paper, and only uses taxonomy IDs that
+// exist. Findings are extracted-claim records; broken references make
+// them silently invisible to future tooling, so we catch them in CI.
+func TestFindingsIntegrity(t *testing.T) {
+	root, err := filepath.Abs("../..")
+	if err != nil {
+		t.Fatal(err)
+	}
+	s, err := loadStore(root, false)
+	if err != nil {
+		t.Fatalf("loadStore: %v", err)
+	}
+
+	censorIDs := taxonomyIDs(t, s, "censors")
+	techniqueIDs := taxonomyIDs(t, s, "techniques")
+	defenseIDs := taxonomyIDs(t, s, "defenses")
+	validKinds := []string{"detection", "defense", "evaluation", "deployment", "policy"}
+
+	findingsDir := filepath.Join(root, "corpus", "findings")
+	entries, err := os.ReadDir(findingsDir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			t.Skip("no findings directory yet")
+		}
+		t.Fatal(err)
+	}
+
+	type finding struct {
+		Paper                string   `yaml:"paper"`
+		Kind                 string   `yaml:"kind"`
+		Summary              string   `yaml:"summary"`
+		Techniques           []string `yaml:"techniques"`
+		Defenses             []string `yaml:"defenses"`
+		Censors              []string `yaml:"censors"`
+		DefenseImplications  []string `yaml:"defense_implications"`
+	}
+
+	count := 0
+	for _, e := range entries {
+		if e.IsDir() || !strings.HasSuffix(e.Name(), ".yaml") {
+			continue
+		}
+		count++
+		path := filepath.Join(findingsDir, e.Name())
+		t.Run(e.Name(), func(t *testing.T) {
+			raw, err := os.ReadFile(path)
+			if err != nil {
+				t.Fatalf("read: %v", err)
+			}
+			var f finding
+			if err := yaml.Unmarshal(raw, &f); err != nil {
+				t.Fatalf("parse: %v", err)
+			}
+			if f.Paper == "" {
+				t.Errorf("missing paper id")
+			} else if _, ok := s.byID[f.Paper]; !ok {
+				t.Errorf("references unknown paper id %q", f.Paper)
+			}
+			if f.Kind == "" {
+				t.Errorf("missing kind")
+			} else if !slices.Contains(validKinds, f.Kind) {
+				t.Errorf("invalid kind %q (expected one of %v)", f.Kind, validKinds)
+			}
+			if strings.TrimSpace(f.Summary) == "" {
+				t.Errorf("missing summary")
+			}
+			for _, c := range f.Censors {
+				if !slices.Contains(censorIDs, c) {
+					t.Errorf("unknown censor id %q", c)
+				}
+			}
+			for _, x := range f.Techniques {
+				if !slices.Contains(techniqueIDs, x) {
+					t.Errorf("unknown technique id %q", x)
+				}
+			}
+			for _, d := range f.Defenses {
+				if !slices.Contains(defenseIDs, d) {
+					t.Errorf("unknown defense id %q", d)
+				}
+			}
+		})
+	}
+	if count == 0 {
+		t.Skip("no finding YAMLs found")
 	}
 }
 

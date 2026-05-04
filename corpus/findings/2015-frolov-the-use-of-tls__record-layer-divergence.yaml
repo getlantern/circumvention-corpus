@@ -1,0 +1,21 @@
+paper: 2015-frolov-the-use-of-tls
+kind: detection
+summary: |
+  Beyond the ClientHello, circumvention tools diverge from real browsers in
+  TLS record-layer behavior: Go's crypto/tls splits the first application-data
+  write differently than NSS or BoringSSL, and Go does not send a TLS
+  ChangeCipherSpec in the same byte sequence as Chrome. These post-handshake
+  divergences are detectable even when the ClientHello has been patched with uTLS,
+  requiring record-layer mimicry in addition to hello-field mimicry for full
+  fingerprint resistance.
+techniques: [tls-fingerprint, dpi, traffic-shape]
+defenses: [mimicry]
+censors: [cn, ir, ru]
+defense_implications:
+  - "TLS mimicry must cover the full connection lifecycle (record fragmentation,
+    ChangeCipherSpec framing), not just the ClientHello."
+  - "When building new transports, prefer a C/Rust TLS stack that matches browser
+    record-layer behavior, or apply uTLS in conjunction with application-data
+    record-size matching."
+section: "§4.3"
+extracted_by: claude-sonnet-4-6

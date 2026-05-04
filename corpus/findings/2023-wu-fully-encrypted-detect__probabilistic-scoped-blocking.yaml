@@ -1,0 +1,25 @@
+paper: 2023-wu-fully-encrypted-detect
+kind: detection
+summary: |
+  The GFW applies the fully-encrypted detector probabilistically and only to a
+  targeted subset of IP address space. Each qualifying connection is blocked with
+  probability p = 26.3% (geometric distribution fit over 109,489 affected IPs in
+  a 10% IPv4 scan); residual censorship then blocks the same 3-tuple (client IP,
+  server IP, server port) for 180 seconds after a first block. The detector only
+  monitors ~26% of connections and targets specific IP ranges of popular data centers
+  (VPS providers such as Alibaba US, Constant, DigitalOcean, Linode); large CDNs
+  (Akamai, Cloudflare) and most residential/enterprise IPs are unaffected. 98% of
+  scanned IPs were unaffected. Simulated on live university traffic, the rules would
+  block ~0.6% of normal connections as collateral damage.
+techniques: [fully-encrypted-detect, random-payload-detect]
+censors: [cn]
+defense_implications:
+  - "Hosting circumvention servers on Cloudflare or Akamai IP space (domain-fronting)
+    effectively evades the fully-encrypted detector, which does not target CDN ASNs."
+  - "A single blocked connection does not confirm the detector; retries within 180s
+    from the same 3-tuple will be blocked by residual censorship regardless of
+    payload; use fresh source ports or IPs between retry attempts."
+  - "Residential or enterprise VPS exit nodes that are not in the targeted AS list
+    are currently unmonitored; this can be exploited for lower-profile proxy hosting."
+section: "§6, §6.3"
+extracted_by: claude-sonnet-4-6

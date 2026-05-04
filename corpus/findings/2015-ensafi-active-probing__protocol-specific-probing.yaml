@@ -1,0 +1,20 @@
+paper: 2015-ensafi-active-probing
+kind: detection
+summary: |
+  The GFW sends protocol-specific probe payloads tailored to each circumvention
+  tool: Tor bridges receive a TLS ClientHello mimicking Tor's own; obfs2/obfs3
+  servers receive random-looking payloads; Shadowsocks servers receive random
+  bytes. A server that responds differently to these crafted probes versus
+  innocent traffic (e.g., by sending a valid protocol handshake in response to
+  a probe) reveals itself and is subsequently blocked.
+techniques: [active-probing, dpi]
+defenses: [obfs4, shadowsocks, tor, bridges]
+censors: [cn]
+defense_implications:
+  - "A circumvention server must be indistinguishable from a benign service
+    under any active probe, not just under passive traffic inspection."
+  - "The only robust defense is to make the server behave like a legitimate
+    TLS/HTTPS server (or stay silent) when receiving a probe payload it cannot
+    authenticate — this is the core design requirement behind Reflex / reverse-TLS."
+section: "§5"
+extracted_by: claude-sonnet-4-6

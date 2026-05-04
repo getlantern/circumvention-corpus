@@ -1,0 +1,23 @@
+paper: 2020-alice-shadowsocks-detection
+kind: detection
+summary: |
+  Once passive analysis flags a connection, the GFW sends seven distinct active probe
+  types in staged sequence: five replay-based (R1–R5, where R1 is an identical replay
+  and R2–R5 alter specific byte offsets to attack stream vs. AEAD cipher variants)
+  and two non-replay random-length probes (NR1, NR2). The system operates in stages:
+  R3/R4/R5 probes are withheld until the server responds to R1/R2, meaning a server
+  with replay protection (like Shadowsocks-libev ≥ v3.3.1) never receives stage-2
+  probes, while one without (original OutlineVPN) escalates to full probing.
+techniques: [active-probing, dpi]
+defenses: [shadowsocks]
+censors: [cn]
+defense_implications:
+  - "Implement server-side replay protection (timestamp window + HMAC check) to halt
+    the GFW's probing pipeline at stage 1; a server that never responds to R1/R2
+    will not receive the more sophisticated R3–R5 confirmation probes."
+  - "Ensure Shadowsocks AEAD cipher is used; stream ciphers are distinguishable by
+    IV length and yield a different replay signature that stage-1 probes target."
+  - "Design proxy servers to be indistinguishable from non-responding TCP hosts when
+    receiving probe traffic (close silently, or return plausible TLS-like data)."
+section: "§3.2, §4.2, §5.3"
+extracted_by: claude-sonnet-4-6

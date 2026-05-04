@@ -1,0 +1,21 @@
+paper: 2020-anonymous-triplet-censors
+kind: detection
+summary: |
+  The GFW's DNS injection infrastructure comprises three distinct packet injectors,
+  fingerprinted by combinations of IP-DF bit, IP-TTL behavior, DNS-AA flag, and
+  DNS-TTL: Injector 1 (IP DF=0, incrementing IP TTL, DNS AA=1, DNS TTL=60) filters
+  88 domains including most Google properties; Injector 2 (IP DF=1, randomized IP
+  TTL, DNS AA=0) handles ~24,729 domains; Injector 3 (IP DF=0, IP ID=0, fixed IP
+  TTL, DNS AA=0) covers ~22,948 domains as a subset of Injector 2's domains.
+  Over a 9-month study (Sept 2019–May 2020) sending 2.8 billion queries, 119.6
+  million forged responses were observed.
+techniques: [dns-poisoning, packet-injection]
+censors: [cn]
+defense_implications:
+  - "DNS-based bootstrap channels must assume injection for far more domains than
+    obvious blocklists; any query routed through Chinese network paths is subject
+    to injection from at least one of the three injectors."
+  - "Use DNSSEC or DoH with certificate pinning to validate DNS responses; injected
+    packets have identifiable IP-level fingerprints but are otherwise protocol-valid."
+section: "§4.1, Table 3"
+extracted_by: claude-sonnet-4-6

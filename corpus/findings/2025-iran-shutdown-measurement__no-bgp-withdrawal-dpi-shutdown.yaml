@@ -1,0 +1,33 @@
+paper: 2025-iran-shutdown-measurement
+kind: detection
+summary: |
+  The June 2025 Iran shutdown—carried out during the Iran-Israel war beginning
+  ~June 19—did not use BGP route withdrawals as in 2019. Instead, authorities
+  applied service-level restrictions at the national border: DNS poisoning of
+  foreign destinations, protocol whitelisting permitting only pre-approved
+  domestic services, and DPI to block circumvention-tool traffic. Iran's
+  international traffic fell roughly 90% while the country's BGP routes
+  remained advertised, making the shutdown invisible to BGP-based monitoring
+  systems. OONI measurement volume, which totalled 121,333 in June 2025,
+  collapsed to under 200 submissions on June 19-20.
+techniques: [dpi, dns-poisoning, port-blocking, ip-blocking]
+censors: [ir]
+defense_implications:
+  - "BGP-based shutdown monitors (IODA, RIPE RIS) will miss service-level
+    shutdowns; always correlate with OONI probe volume and CDN egress metrics."
+  - "Protocol whitelisting means any circumvention traffic pattern that doesn't
+    match a domestic-service fingerprint will be blocked; mimicry of domestic
+    services or fully encrypted transports with no recognizable handshake are
+    the effective design targets."
+  - "Multi-protocol tools (e.g. Psiphon, Lantern) that can pivot between
+    transports should pre-position multiple fallback strategies before a
+    shutdown begins, not just react after it starts."
+section: "Executive Summary / §2"
+sources:
+  - "Miaan Group / ASL19 / IODA, 'Iran's Stealth Blackout', Oct 2025:
+    https://filter.watch/english/2025/10/02/irans-stealth-blackout-a-multi-stakeholder-analysis-of-the-june-2025-internet-shutdown/"
+  - "Liu et al., 'Characterizing Iran's Phased National Internet Shutdown in
+    2025', WWW 2026: https://dl.acm.org/doi/abs/10.1145/3774904.3792699"
+  - "OONI Explorer finding #273244099200:
+    https://explorer.ooni.org/findings/273244099200"
+extracted_by: claude-sonnet-4-6

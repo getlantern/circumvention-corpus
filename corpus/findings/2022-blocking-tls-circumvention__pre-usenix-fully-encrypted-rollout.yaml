@@ -1,0 +1,20 @@
+paper: 2022-blocking-tls-circumvention
+kind: deployment
+summary: |
+  The October 2022 blocking wave is the confirmed operational deployment of the
+  fully-encrypted-traffic detector later formalized in Wu et al. (USENIX Security
+  2023). The detector was therefore in live production from at least late 2022,
+  more than a year before the academic paper describing it was published. This
+  event establishes that the GFW's passive fully-encrypted classifier operates at
+  scale in adversarial real-world conditions, not just in controlled experiments.
+techniques: [fully-encrypted-detect, random-payload-detect]
+defenses: [trojan, vmess, vless, shadowsocks]
+censors: [cn]
+defense_implications:
+  - "The 2023 USENIX detector model should be treated as production reality, not
+    a research artifact — any protocol whose first-packet popcount falls in
+    [3.4, 4.6] bits/byte risks live blocking in CN without active probing."
+  - "Assume no grace period between researcher disclosure and GFW deployment;
+    design circumvention protocols to be detector-resistant from launch."
+section: "full post"
+extracted_by: claude-sonnet-4-6

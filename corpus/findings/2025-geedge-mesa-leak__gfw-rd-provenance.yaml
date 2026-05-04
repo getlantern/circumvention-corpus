@@ -1,0 +1,22 @@
+paper: 2025-geedge-mesa-leak
+kind: deployment
+summary: |
+  The September 2025 leak of ~600 GB from Geedge Networks and the MESA Lab (Institute
+  of Information Engineering, Chinese Academy of Sciences) is the largest known
+  document disclosure from the GFW vendor ecosystem. It establishes a direct lineage:
+  MESA Lab (founded 2012 by Fang Binxing's team, annual contracted revenue >35M RMB
+  by 2016) spun out Geedge Networks in 2018, with MESA alumni filling key engineering
+  roles (e.g. Zheng Chao as CTO). The leak includes ~64 GB of MESA git repositories,
+  ~35 GB of MESA internal documents, ~15 GB of Geedge internal documents, and a ~3 GB
+  Jira export — providing direct access to source code, work logs, and internal
+  communications behind GFW R&D.
+techniques: [dpi, active-probing, ml-classifier, sni-blocking, fully-encrypted-detect]
+censors: [cn]
+defense_implications:
+  - "Source code in the MESA git repos (mesalab_git.tar.zst, 64 GB) is the highest-value
+    input for reverse-engineering GFW detection logic; prioritize analysis of that archive
+    over documents when building threat models."
+  - "MESA's SAPP platform began large-scale engineering deployment in 2014; production
+    DPI has over a decade of iteration — assume classifiers are mature, not naive."
+section: "§4"
+extracted_by: claude-sonnet-4-6

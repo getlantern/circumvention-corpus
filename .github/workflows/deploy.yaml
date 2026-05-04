@@ -1,0 +1,40 @@
+name: deploy
+
+# Auto-deploys the static site to Cloudflare Pages on every push to main.
+#
+# This workflow uses no event payload inputs in any run: step (no
+# github.event.*, no github.head_ref). Secrets flow only through the
+# `with:` block of the published cloudflare/wrangler-action, never
+# interpolated into shell commands.
+#
+# Required GitHub repository secrets:
+#   - CLOUDFLARE_API_TOKEN  — scoped to "Account.Cloudflare Pages: Edit"
+#                             on account 1c693b3f1031ed33f68653b1e67dfbef
+#   - CLOUDFLARE_ACCOUNT_ID — 1c693b3f1031ed33f68653b1e67dfbef
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+      - name: build site
+        run: go run ./cmd/corpus-site/ --corpus . --out dist
+      - name: deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name circumvention-corpus --branch main

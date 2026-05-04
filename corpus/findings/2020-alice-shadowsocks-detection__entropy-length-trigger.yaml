@@ -1,0 +1,20 @@
+paper: 2020-alice-shadowsocks-detection
+kind: detection
+summary: |
+  The GFW's passive classifier uses two features of the first data packet to flag
+  probable Shadowsocks traffic: (1) high Shannon entropy (per-byte entropy > ~7 bits
+  strongly correlates with replay probability, which is nearly 4x higher at entropy
+  7.2 than at 3.0) and (2) packet length in the range 160–700 bytes with specific
+  remainders mod 16. A single data packet after the TCP handshake is sufficient to
+  trigger the downstream active-probing pipeline.
+techniques: [dpi, random-payload-detect, traffic-shape]
+defenses: [shadowsocks]
+censors: [cn]
+defense_implications:
+  - "Pad or shape first-packet lengths to avoid the high-entropy 160–700 byte range,
+    or ensure length remainders mod 16 do not fall into GFW replay-triggering buckets."
+  - "Consider that any fully-random first packet of plausible proxy length will
+    trigger active probing within seconds; server-side probe-deflection is required,
+    not just traffic shaping."
+section: "§4.2"
+extracted_by: claude-sonnet-4-6

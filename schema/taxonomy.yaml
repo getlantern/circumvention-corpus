@@ -80,6 +80,12 @@ censors:
   in:
     name: "India"
     synonyms: ["IN"]
+  et:
+    name: "Ethiopia"
+    synonyms: ["ET"]
+    notes: |
+      Identified as a Geedge / TSG export customer in the 2025 Geedge/MESA
+      leak. Belt-and-Road framework deployment.
   generic:
     name: "Generic / not censor-specific"
     notes: "Use for technique papers that don't evaluate against a specific censor."

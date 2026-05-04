@@ -1,0 +1,22 @@
+paper: 2015-fifield-blocking-resistant
+kind: defense
+summary: |
+  Domain fronting exploits the fact that major CDN providers (Google, Amazon
+  CloudFront, Akamai, Microsoft Azure) terminate TLS at the edge before
+  inspecting the Host header, so the SNI visible to a censor names a permitted
+  CDN domain (e.g., www.google.com) while the inner HTTP Host header routes
+  the request to a blocked destination. Blocking the fronted service requires
+  blocking the entire CDN, creating collateral damage that most censors are
+  unwilling to accept for major providers.
+techniques: [sni-blocking, dpi]
+defenses: [domain-fronting, meek, tunneling]
+censors: [cn, ir, ru, generic]
+defense_implications:
+  - "Route bootstrap/config traffic over a CDN provider whose total blocking
+    would impose unacceptable collateral damage on the censor (Google, Amazon,
+    Akamai are the canonical examples)."
+  - "Monitor CDN provider policies — the same collateral-damage argument is
+    a business relationship, not a technical guarantee; Google and Amazon have
+    both retroactively closed domain-fronting usage."
+section: "§2"
+extracted_by: claude-sonnet-4-6

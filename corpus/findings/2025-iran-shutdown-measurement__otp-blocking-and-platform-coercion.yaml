@@ -1,0 +1,24 @@
+paper: 2025-iran-shutdown-measurement
+kind: policy
+summary: |
+  During the June 2025 shutdown, Iranian authorities blocked international
+  One-Time Password (OTP) SMS delivery, preventing new sign-ins to foreign
+  secure-messaging platforms and VPN services. This forced users toward
+  government-approved domestic platforms that lack security and privacy
+  protections. The blockade of OTPs effectively weaponized account-recovery
+  flows as a secondary shutdown layer, disproportionately affecting users who
+  needed to activate new circumvention tools during the crisis.
+techniques: [port-blocking, dpi, keyword-filtering]
+censors: [ir]
+defense_implications:
+  - "Circumvention tools that require an OTP or email-based account setup will
+    be unusable at the moment users need them most; design for pre-registration
+    or credential-free activation (e.g. share-codes, invite tokens) that works
+    without SMS reachability."
+  - "Tools should detect OTP/account-setup failure and present offline-capable
+    fallback instructions during a detected shutdown event."
+section: "§Human Rights Implications"
+sources:
+  - "Miaan Group / ASL19 / IODA, 'Iran's Stealth Blackout', Oct 2025:
+    https://filter.watch/english/2025/10/02/irans-stealth-blackout-a-multi-stakeholder-analysis-of-the-june-2025-internet-shutdown/"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,27 @@
+paper: 2025-zohaib-quic-sni
+kind: detection
+summary: |
+  Since April 7, 2024, the GFW decrypts every QUIC client Initial packet at
+  China's national border and blocks connections whose TLS ClientHello SNI
+  matches a QUIC-specific blocklist. Blocking takes the form of dropping all
+  subsequent UDP packets sharing the same (src-IP, dst-IP, dst-port) 3-tuple
+  for 180 seconds—with no RST injection. The GFW applies a source-port
+  heuristic: packets with src-port ≤ dst-port are not inspected, capturing
+  >92% of real QUIC client Initials while processing only ~30% of all UDP
+  traffic. The QUIC blocklist contains 58,207 unique FQDNs (Tranco, Oct 2024–
+  Jan 2025), approximately 60% of the DNS blocklist in size; 33% of blocked
+  FQDNs do not actually support QUIC, suggesting the list was derived from an
+  existing domain-name blocklist rather than live QUIC service discovery.
+techniques: [http3-quic-block, dpi, sni-blocking]
+censors: [cn]
+defense_implications:
+  - "Set circumvention proxy listening ports higher than typical client
+    ephemeral ranges (>60999) so that src-port > dst-port is never satisfied,
+    permanently exempting connections from QUIC inspection."
+  - "Alternatively, use iptables PREROUTING to NAT a high port (e.g. 65535)
+    to the real listening port (e.g. 443): zero server-code changes, full
+    bypass."
+  - "QUIC-based tools must not assume the same domains are blocked across all
+    GFW mechanisms; the QUIC blocklist is distinct from TLS/HTTP/DNS lists."
+section: "§3 / §3.1 / §3.3 / §4"
+extracted_by: claude-sonnet-4-6

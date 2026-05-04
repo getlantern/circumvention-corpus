@@ -1,0 +1,19 @@
+paper: 2015-frolov-the-use-of-tls
+kind: defense
+summary: |
+  The paper introduces the uTLS library, which allows a Go TLS client to
+  impersonate a specific browser's TLS fingerprint by replaying a recorded
+  ClientHello template (including exact cipher suites, extensions, and GREASE
+  bytes) rather than constructing one from Go's crypto/tls. Using a Chrome 70
+  uTLS template reduces fingerprint-distinctiveness to near zero against a
+  passive classifier trained on real Chrome traffic.
+techniques: [tls-fingerprint]
+defenses: [mimicry, pluggable-transport]
+censors: [cn, ir, ru]
+defense_implications:
+  - "Import uTLS (github.com/refraction-networking/utls) and set a Chrome/Firefox
+    spec for every TLS dial your circumvention tool makes."
+  - "Update the uTLS fingerprint template when browser versions change; a 'Chrome 70'
+    template is anomalous once Chrome 70 has <1% real-world share."
+section: "§5"
+extracted_by: claude-sonnet-4-6

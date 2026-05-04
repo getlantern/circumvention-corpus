@@ -1,0 +1,26 @@
+paper: 2023-wu-fully-encrypted-detect
+kind: detection
+summary: |
+  The GFW's fully-encrypted detector (deployed Nov 2021) operates by exempting
+  likely-benign traffic and blocking the rest. Five inferred exemption rules applied
+  to the first TCP payload (pkt): Ex1 — popcount(pkt)/len(pkt) ≤ 3.4 or ≥ 4.6
+  (bits/byte); Ex2 — first 6+ bytes are printable ASCII [0x20–0x7e]; Ex3 — more
+  than 50% of bytes are printable ASCII; Ex4 — more than 20 contiguous printable
+  ASCII bytes; Ex5 — first bytes match TLS or HTTP fingerprint. Traffic failing all
+  five exemptions is blocked. Experiments confirmed all rules still held as of
+  February 2023.
+techniques: [fully-encrypted-detect, dpi, random-payload-detect]
+defenses: [shadowsocks, vmess, vless, obfs4]
+censors: [cn]
+defense_implications:
+  - "Prepend 6+ printable ASCII bytes to the first packet (or spoof a TLS/HTTP
+    header prefix) to trigger Ex2 or Ex5 and bypass the detector; this was adopted
+    by Shadowsocks-rust, V2Ray, Outline, and others starting January 2022."
+  - "Alternatively, bias the ciphertext popcount outside [3.4, 4.6] bits/byte (Ex1)
+    by appending padding bits and shuffling; implemented in Shadowsocks-rust as the
+    'shadow-tls' padding scheme from October 2022."
+  - "Any 'looks like nothing' protocol must account for all five exemption rules;
+    Ex3 and Ex4 catch payloads that start with a non-printable header but have
+    many printable bytes elsewhere in the first packet."
+section: "§4, Algorithm 1"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,28 @@
+paper: 2025-zohaib-quic-sni
+kind: detection
+summary: |
+  The computational cost of decrypting QUIC Initial packets limits the GFW's
+  throughput: blocking effectiveness drops measurably as cross-border QUIC
+  traffic increases and exhibits a diurnal pattern, falling during China's
+  peak traffic hours. In a controlled experiment, sending QUIC Initial packets
+  at 100–1500 kpps (TTL-limited so they reach the GFW but not end-hosts)
+  caused GFW censorship effectiveness to decrease monotonically with sending
+  rate, while equal-rate random-payload UDP traffic produced no such
+  degradation—confirming the bottleneck is QUIC decryption, not raw bandwidth.
+  A related availability attack using IP-spoofed QUIC Initials from one
+  machine can cause the GFW to drop all UDP traffic between arbitrary Chinese
+  hosts and any foreign endpoint for the 180-second residual window.
+techniques: [http3-quic-block, dpi]
+censors: [cn]
+defense_implications:
+  - "QUIC-based circumvention tools benefit from high-traffic periods (Chinese
+    peak hours) as natural cover; schedule high-value sessions accordingly or
+    implement client-side adaptive retry during peak windows."
+  - "The 180-second residual blocking window and decryption bottleneck mean
+    that a modest decoy-traffic injection ahead of a real connection may
+    statistically bypass the censor without requiring protocol changes."
+  - "Monitor GFW QUIC blocking rates as a signal; persistent <100% blocking
+    rates indicate the censor is CPU-bound and more aggressive fragmentation
+    or volume may further degrade it."
+section: "§3.4 / §5"
+extracted_by: claude-sonnet-4-6

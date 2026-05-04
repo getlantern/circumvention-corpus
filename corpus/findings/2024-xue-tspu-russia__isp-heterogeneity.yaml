@@ -1,0 +1,21 @@
+paper: 2024-xue-tspu-russia
+kind: deployment
+summary: |
+  Russia's TSPU ("Средства противодействия угрозам") system is deployed inline at
+  individual ISP edges rather than at centralized internet exchange points, producing
+  substantial per-ISP heterogeneity: some providers apply layer-7 SNI/Host filtering
+  while others rely primarily on IP-prefix blocklists, and QUIC/HTTP3 is blocked at
+  several major providers. Rollout timing and enforcement depth vary measurably
+  across autonomous systems, meaning a single "Russia passes/fails" test fixture
+  systematically underestimates blocking coverage.
+techniques: [sni-blocking, dpi, http3-quic-block, ip-blocking]
+censors: [ru]
+defense_implications:
+  - "Segment Russia measurements and bandit dimensions by ASN, not by country —
+    a circumvention technique that survives Rostelecom may fail at MTS or Beeline."
+  - "Protocols relying on QUIC for obfuscation (e.g. Hysteria2) must account for
+    QUIC being blocked outright at a meaningful fraction of Russian ISPs."
+  - "SNI-based blocking means ECH/ESNI and domain-fronting remain the primary
+    defenses for TLS-based transports; IP-prefix approaches alone are insufficient."
+section: "§4–§5"
+extracted_by: claude-sonnet-4-6

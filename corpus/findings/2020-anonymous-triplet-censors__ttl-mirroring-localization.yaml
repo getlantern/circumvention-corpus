@@ -1,0 +1,20 @@
+paper: 2020-anonymous-triplet-censors
+kind: detection
+summary: |
+  Injector 3 mirrors the probe packet's IP TTL in its injected reply rather than
+  using a fixed TTL. This defeats TTL-limited localization probes: the injected
+  reply only reaches the prober when the probe's initial TTL equals 2n−1 (where n
+  is the hop distance to the injector); at lower TTLs the mirrored TTL is too small
+  for the reply to return. All three injectors appear co-located (inter-probe delays
+  within 0.2 ms of each other), confirmed from 7 vantage points across 5 continents,
+  and the behavior is consistent across 62% of all 36K tested Chinese IP prefixes.
+techniques: [dns-poisoning, packet-injection]
+censors: [cn]
+defense_implications:
+  - "TTL-limited traceroute-style probing to localize GFW DNS injectors is unreliable
+    when Injector 3 is present; treat any TTL probe result as a lower bound, not an
+    exact hop count."
+  - "Tools that rely on TTL-expiry to distinguish injected from legitimate DNS
+    responses will produce false negatives against Injector 3."
+section: "§4.3"
+extracted_by: claude-sonnet-4-6

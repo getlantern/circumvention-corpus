@@ -1,0 +1,23 @@
+paper: 2025-interseclab-internet-coup
+kind: policy
+summary: |
+  InterSecLab frames the Geedge/TSG export program as the commoditization of national
+  firewall capability: rather than each censor state independently developing detection
+  infrastructure, they contract Geedge for a turnkey system incorporating the cumulative
+  R&D of MESA Lab (>10 years, National Science and Technology Progress Award winners).
+  This structural shift means the marginal cost for an autocratic government to acquire
+  GFW-grade censorship is now a procurement decision, not a multi-year engineering
+  program. The report identifies that Geedge's relationship with the MESA Lab gives
+  customer states indirect access to ongoing academic R&D improvements, not just a
+  static product.
+techniques: [dpi, active-probing, ml-classifier]
+censors: [cn, mm, pk, kz, generic]
+defense_implications:
+  - "Threat-model any state with Belt-and-Road digital infrastructure ties as a
+    potential TSG customer — even without public evidence of deployment, the barrier
+    to acquisition is now low."
+  - "Circumvention tools should treat MESA's published academic papers on traffic
+    classification as direct signal about what TSG classifiers implement; academic
+    and commercial capability are directly coupled in this ecosystem."
+section: "§2, §6–§7 (InterSecLab report)"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2017-frolov-water-pluggable
+kind: deployment
+summary: |
+  Because WATER uses a sing-box-compatible interface, a single WASM transport
+  module written once is immediately usable by any application that embeds the
+  WATER host runtime — including lantern-box (Lantern's proxy SDK), any other
+  sing-box-derived client (33k+ GitHub stars as of 2024), and standalone WATER
+  host binaries. This gives each new transport a substantially larger deployment
+  surface than a single-app pluggable transport achieves.
+techniques: []
+defenses: [water-wasm, pluggable-transport]
+censors: [generic]
+defense_implications:
+  - "Invest in the WATER module ABI: a transport built correctly for WATER reaches
+    every sing-box ecosystem app simultaneously, multiplying the effective deployment
+    without per-app integration work."
+  - "Treat the WATER module as the canonical distributable artifact; the lantern-box
+    SDK is one host, not the only one."
+section: "§4"
+extracted_by: claude-sonnet-4-6

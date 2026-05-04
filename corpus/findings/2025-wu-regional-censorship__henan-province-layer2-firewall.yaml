@@ -1,0 +1,25 @@
+paper: 2025-wu-regional-censorship
+kind: detection
+summary: |
+  Since August 2023, Henan Province has operated its own TLS SNI-based and
+  HTTP Host-based censorship middleboxes that inspect and block traffic
+  exiting the province—a second filtering layer on top of the national GFW.
+  The Henan Firewall is fingerprinted by a unique TCP RST+ACK injection
+  carrying a fixed 10-byte payload (0x01 02 03 04 05 06 07 08 09 00), IP ID
+  0x0001, and an observed TTL of 58. Unlike the GFW, it injects resets only
+  toward the client, performs no residual censorship, and requires no TCP
+  handshake to trigger. Longitudinal testing (Nov 2023–Mar 2025, Tranco top
+  1M daily + 227M CZDS domains weekly) found the Henan Firewall blocked a
+  cumulative 4.2 million domains—more than five times the GFW's cumulative
+  blocklist—and at peak blocked ten times more domains than the GFW.
+techniques: [sni-blocking, dpi, packet-injection]
+censors: [cn]
+defense_implications:
+  - "Measurements that aggregate all CN traffic hide province-level variation;
+    instrument per-AS or per-province breakdowns to detect regional firewalls."
+  - "The unique RST payload (0x01–0x09 0x00) lets clients detect and drop
+    only Henan injections via iptables without touching legitimate server RSTs."
+  - "Circumvention tools serving CN users should test against province-internal
+    vantage points, not just from outside the country."
+section: "§4.4 / §5"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+paper: 2015-ensafi-active-probing
+kind: detection
+summary: |
+  The GFW's active-probing system launches probes at suspected circumvention
+  servers within seconds (typically under 3 minutes) of observing a suspicious
+  connection, making reactive defenses (e.g., delaying or rate-limiting probe
+  responses) insufficient on their own to avoid detection and blocking.
+techniques: [active-probing, dpi]
+censors: [cn]
+defense_implications:
+  - "Assume that any connection your server accepts may trigger a probe within
+    seconds; design server-side logic to handle probe connections before they
+    cause a block."
+  - "Reactive delay is not enough — the probe arrives fast enough that the
+    target IP is blocked before most operators notice."
+section: "§4"
+extracted_by: claude-sonnet-4-6
