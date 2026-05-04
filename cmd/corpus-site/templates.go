@@ -75,87 +75,162 @@ const layoutTmpl = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>{{.Title}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header>
-  <a class="brand" href="/"><span class="mono">circumvention-corpus</span></a>
-  <nav>
-    <a href="/papers/">papers</a>
-    <a href="/censors/">censors</a>
-    <a href="/techniques/">techniques</a>
-    <a href="/defenses/">defenses</a>
-    <a href="/taxonomy/">taxonomy</a>
-    <a href="/use/">use</a>
-    <a href="/contribute/">contribute</a>
-    <a href="https://github.com/getlantern/circumvention-corpus" rel="external">github</a>
-  </nav>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark">▤</span>
+      <span class="brand-name">circumvention-corpus</span>
+    </a>
+    <nav>
+      <a href="/papers/">papers</a>
+      <a href="/censors/">censors</a>
+      <a href="/techniques/">techniques</a>
+      <a href="/defenses/">defenses</a>
+      <a href="/taxonomy/">taxonomy</a>
+      <a href="/use/">use</a>
+      <a href="/contribute/">contribute</a>
+      <a class="external" href="https://github.com/getlantern/circumvention-corpus" rel="external">github →</a>
+    </nav>
+  </div>
 </header>
-<main>{{block "main" .}}{{end}}</main>
-<footer>
-  <p>An LLM-callable, open-schema index of censorship-circumvention research. Maintained by the Lantern team and the broader circumvention community.</p>
-  <p class="muted">Schema, taxonomy, and metadata: CC0 / public domain. Paper PDFs are not redistributed; each entry links to its canonical source.</p>
+<main class="wrap">{{block "main" .}}{{end}}</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-title">circumvention-corpus</div>
+        <p>A controlled-vocabulary, LLM-callable index of censorship-circumvention research.</p>
+      </div>
+      <div>
+        <div class="foot-title">Browse</div>
+        <ul>
+          <li><a href="/papers/">All papers</a></li>
+          <li><a href="/censors/">By censor</a></li>
+          <li><a href="/techniques/">By technique</a></li>
+          <li><a href="/defenses/">By defense</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-title">Use</div>
+        <ul>
+          <li><a href="/use/">MCP server install</a></li>
+          <li><a href="/contribute/">Contribute a paper</a></li>
+          <li><a href="/taxonomy/">Taxonomy reference</a></li>
+          <li><a href="https://github.com/getlantern/circumvention-corpus" rel="external">Source on GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-title">Companion projects</div>
+        <ul>
+          <li><a href="https://github.com/net4people/bbs" rel="external">net4people/bbs</a> — forum</li>
+          <li><a href="https://gfw.report" rel="external">gfw.report</a> — original research</li>
+          <li><a href="https://censorbib.nymity.ch/" rel="external">CensorBib</a> — bibliography</li>
+          <li><a href="https://ooni.org" rel="external">OONI</a> — measurement</li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">Schema, taxonomy, and metadata: CC0 / public domain. Paper PDFs are not redistributed; each entry links to its canonical source. Maintained by the <a href="https://lantern.io" rel="external">Lantern</a> team and the broader circumvention community.</p>
+  </div>
 </footer>
 </body>
 </html>`
 
 const indexBody = `
 <section class="hero">
-  <h1 class="mono">circumvention-corpus</h1>
-  <p>A controlled-vocabulary, LLM-callable index of censorship-circumvention research. Each entry tags one paper against a shared taxonomy of censors, detection techniques, and defenses; an MCP server exposes the corpus to AI assistants.</p>
-  <p>Complements <a href="https://github.com/net4people/bbs">net4people/bbs</a> (forum), <a href="https://gfw.report">gfw.report</a> (original research), <a href="https://censorbib.nymity.ch/">CensorBib</a> (bibliography), and <a href="https://ooni.org">OONI</a> (measurement) by adding the structured-metadata layer the others don't have.</p>
-  <p><a href="/use/"><strong>How to use this →</strong></a> &nbsp; <a href="/contribute/">contribute →</a></p>
-  <p class="counts">
-    <a href="/papers/"><strong>{{.Counts.papers}}</strong> papers</a> ·
-    <a href="/censors/"><strong>{{.Counts.censors}}</strong> censors</a> ·
-    <a href="/techniques/"><strong>{{.Counts.techniques}}</strong> techniques</a> ·
-    <a href="/defenses/"><strong>{{.Counts.defenses}}</strong> defenses</a>
-  </p>
+  <p class="eyebrow">CIRCUMVENTION RESEARCH · STRUCTURED · LLM-CALLABLE</p>
+  <h1 class="display">The field's literature, <em>indexed</em>.</h1>
+  <p class="lede">A controlled-vocabulary corpus of censorship-circumvention research. Each paper is tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes it to any AI assistant.</p>
+  <div class="cta">
+    <a class="btn primary" href="/use/">Install the MCP server →</a>
+    <a class="btn ghost" href="/papers/">Browse {{.Counts.papers}} papers</a>
+  </div>
+  <dl class="counts-grid">
+    <div><dt>papers</dt><dd>{{.Counts.papers}}</dd></div>
+    <div><dt>censors</dt><dd>{{.Counts.censors}}</dd></div>
+    <div><dt>techniques</dt><dd>{{.Counts.techniques}}</dd></div>
+    <div><dt>defenses</dt><dd>{{.Counts.defenses}}</dd></div>
+  </dl>
 </section>
 
-<section>
-  <h2>Core papers</h2>
-  <p class="muted">Hand-selected as load-bearing for protocol designers; team consensus.</p>
-  <ul class="papers">
+<section class="why">
+  <p class="section-mark">§ I — WHY THIS EXISTS</p>
+  <div class="two-col">
+    <div>
+      <h2 class="display-sm">A layer the field doesn't have yet.</h2>
+      <p>The censorship-circumvention community has wonderful resources: <a href="https://github.com/net4people/bbs" rel="external">net4people/bbs</a> for discussion, <a href="https://gfw.report" rel="external">gfw.report</a> for original research, <a href="https://censorbib.nymity.ch/" rel="external">CensorBib</a> as a maintained bibliography, <a href="https://ooni.org" rel="external">OONI</a> for measurement.</p>
+      <p>None of them are LLM-callable. None of them have a consistent structured-metadata schema. None of them let an AI assistant compose a corpus query with operational data in the same conversation.</p>
+      <p>This corpus adds that one missing layer.</p>
+    </div>
+    <div class="aside">
+      <p class="aside-label">The thing that compounds</p>
+      <p>The schema and the controlled vocabulary outlive whatever model you read it through. Frontier models change every six months. The taxonomy of censors / techniques / defenses doesn't.</p>
+    </div>
+  </div>
+</section>
+
+<section class="core">
+  <p class="section-mark">§ II — CORE PAPERS</p>
+  <h2 class="display-sm">Hand-selected as load-bearing.</h2>
+  <p class="muted">If a Lantern protocol designer hadn't read these, the team would expect them to be slowed down. Team consensus marks them as <code>core: true</code>; everyone using the corpus sees them surfaced first.</p>
+  <ul class="paper-cards">
     {{range .Core}}
-    <li>
-      <a href="/papers/{{.ID}}/"><strong>{{.Title}}</strong></a>
-      <span class="meta">{{firstAuthor .Authors}} · {{.Venue}} · {{yearString .Year}}</span>
+    <li class="paper-card">
+      <a href="/papers/{{.ID}}/" class="card-link">
+        <div class="card-id mono">{{.ID}}</div>
+        <h3>{{.Title}}</h3>
+        <div class="card-meta">{{firstAuthor .Authors}} · <em>{{.Venue}}</em> · {{yearString .Year}}</div>
+        <div class="card-tags">{{range .Censors}}<span class="tag censor">{{.}}</span>{{end}}{{range .Techniques}}<span class="tag technique">{{.}}</span>{{end}}</div>
+      </a>
     </li>
     {{end}}
   </ul>
 </section>
 
-<section>
-  <h2>Recent additions</h2>
-  <ul class="papers">
+<section class="recent">
+  <p class="section-mark">§ III — RECENT ADDITIONS</p>
+  <ul class="paper-list">
     {{range .Recent}}
     <li>
-      <a href="/papers/{{.ID}}/"><strong>{{.Title}}</strong></a>
-      <span class="meta">{{firstAuthor .Authors}} · {{.Venue}} · {{yearString .Year}}</span>
+      <a href="/papers/{{.ID}}/">
+        <span class="row-id mono">{{.ID}}</span>
+        <span class="row-title">{{.Title}}</span>
+        <span class="row-meta">{{.Venue}} · {{yearString .Year}}</span>
+      </a>
     </li>
     {{end}}
   </ul>
+</section>
+
+<section class="cta-bottom">
+  <h2 class="display-sm">Plug it into your assistant.</h2>
+  <p class="lede">One install. Your AI gains <code>search_papers</code>, <code>get_paper</code>, <code>list_taxonomy</code>, and <code>find_related</code> over the corpus.</p>
+  <a class="btn primary" href="/use/">How to install →</a>
 </section>
 `
 
 const papersIndexBody = `
-<h1>All papers</h1>
-<p class="muted">{{len .Papers}} entries, sorted by year (newest first).</p>
-<ul class="papers full">
+<p class="eyebrow">{{len .Papers}} ENTRIES · NEWEST FIRST</p>
+<h1 class="display-sm">All papers</h1>
+<ul class="paper-cards">
   {{range .Papers}}
-  <li>
-    <a href="/papers/{{.ID}}/"><strong>{{.Title}}</strong></a>
-    <div class="meta">
-      <span>{{join ", " .Authors}}</span>
-      <span>·</span>
-      <span>{{.Venue}}</span>
-      <span>·</span>
-      <span>{{yearString .Year}}</span>
-      {{if .Core}}<span class="badge core">core</span>{{end}}
-    </div>
-    {{if .Censors}}<div class="tags">{{range .Censors}}<a class="tag censor" href="/censors/{{.}}/">{{.}}</a>{{end}}</div>{{end}}
+  <li class="paper-card">
+    <a href="/papers/{{.ID}}/" class="card-link">
+      <div class="card-id mono">{{.ID}}{{if .Core}} · core{{end}}</div>
+      <h3>{{.Title}}</h3>
+      <div class="card-meta">{{firstAuthor .Authors}} · <em>{{.Venue}}</em> · {{yearString .Year}}</div>
+      <div class="card-tags">
+        {{range .Censors}}<span class="tag censor">{{.}}</span>{{end}}
+        {{range .Techniques}}<span class="tag technique">{{.}}</span>{{end}}
+      </div>
+    </a>
   </li>
   {{end}}
 </ul>
@@ -164,13 +239,13 @@ const papersIndexBody = `
 const paperBody = `
 {{with .Paper}}
 <article class="paper">
-  <h1>{{.Title}}</h1>
+  <p class="paper-id mono">{{.ID}}</p>
+  <h1>{{.Title}}{{if .Core}}<span class="badge core">core</span>{{end}}</h1>
   <p class="byline">
     {{join ", " .Authors}}{{if .Venue}} · <em>{{.Venue}}</em>{{end}}{{if .Year}} · {{.Year}}{{end}}
-    {{if .Core}}<span class="badge core">core</span>{{end}}
   </p>
 
-  {{if .URL}}<p><a href="{{.URL}}" rel="external">canonical link →</a>{{if .DOI}} · doi: <code>{{.DOI}}</code>{{end}}{{if .ArxivID}} · arxiv: <code>{{.ArxivID}}</code>{{end}}</p>{{end}}
+  {{if .URL}}<p class="paper-links"><a href="{{.URL}}" rel="external">canonical link →</a>{{if .DOI}} · doi: <code>{{.DOI}}</code>{{end}}{{if .ArxivID}} · arxiv: <code>{{.ArxivID}}</code>{{end}}</p>{{end}}
 
   {{if .Abstract}}
   <h2>Abstract</h2>
@@ -184,33 +259,40 @@ const paperBody = `
 
   <h2>Tags</h2>
   <dl class="tags-dl">
-    <dt>Censors</dt><dd>{{range .Censors}}<a class="tag censor" href="/censors/{{.}}/">{{.}}</a>{{end}}</dd>
-    <dt>Detection techniques</dt><dd>{{range .Techniques}}<a class="tag technique" href="/techniques/{{.}}/">{{.}}</a>{{end}}</dd>
-    {{if .DefensesDiscussed}}<dt>Defenses discussed</dt><dd>{{range .DefensesDiscussed}}<a class="tag defense" href="/defenses/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
-    {{if .DefensesEvaluatedAgainst}}<dt>Defenses evaluated against</dt><dd>{{range .DefensesEvaluatedAgainst}}<a class="tag defense" href="/defenses/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
-    {{if .EvaluationMethods}}<dt>Evaluation methods</dt><dd>{{range .EvaluationMethods}}<span class="tag">{{.}}</span>{{end}}</dd>{{end}}
+    <dt>censors</dt><dd>{{range .Censors}}<a class="tag censor" href="/censors/{{.}}/">{{.}}</a>{{end}}</dd>
+    <dt>techniques</dt><dd>{{range .Techniques}}<a class="tag technique" href="/techniques/{{.}}/">{{.}}</a>{{end}}</dd>
+    {{if .DefensesDiscussed}}<dt>defenses</dt><dd>{{range .DefensesDiscussed}}<a class="tag defense" href="/defenses/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
+    {{if .DefensesEvaluatedAgainst}}<dt>evaluated</dt><dd>{{range .DefensesEvaluatedAgainst}}<a class="tag defense" href="/defenses/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
+    {{if .EvaluationMethods}}<dt>method</dt><dd>{{range .EvaluationMethods}}<span class="tag">{{.}}</span>{{end}}</dd>{{end}}
   </dl>
 </article>
 {{end}}
 
 {{if .References}}
-<section>
-  <h2>References (in this corpus)</h2>
-  <ul class="papers">
-    {{range .References}}<li><a href="/papers/{{.ID}}/">{{.Title}}</a></li>{{end}}
+<section class="related-section">
+  <p class="section-mark">REFERENCES IN THIS CORPUS</p>
+  <ul class="paper-list">
+    {{range .References}}
+    <li><a href="/papers/{{.ID}}/">
+      <span class="row-id mono">{{.ID}}</span>
+      <span class="row-title">{{.Title}}</span>
+      <span class="row-meta">{{.Venue}} · {{yearString .Year}}</span>
+    </a></li>
+    {{end}}
   </ul>
 </section>
 {{end}}
 
 {{if .Related}}
-<section>
-  <h2>Related papers</h2>
-  <ul class="papers">
+<section class="related-section">
+  <p class="section-mark">RELATED PAPERS</p>
+  <ul class="paper-list">
     {{range .Related}}
-    <li>
-      <a href="/papers/{{.ID}}/"><strong>{{.Title}}</strong></a>
-      <span class="meta">{{firstAuthor .Authors}} · {{.Venue}} · {{yearString .Year}}</span>
-    </li>
+    <li><a href="/papers/{{.ID}}/">
+      <span class="row-id mono">{{.ID}}</span>
+      <span class="row-title">{{.Title}}</span>
+      <span class="row-meta">{{.Venue}} · {{yearString .Year}}</span>
+    </a></li>
     {{end}}
   </ul>
 </section>
@@ -218,24 +300,27 @@ const paperBody = `
 `
 
 const tagBody = `
-<h1><span class="mono">{{.TagID}}</span> · {{.Entry.Name}}</h1>
-{{if .Entry.Notes}}<p class="muted">{{.Entry.Notes}}</p>{{end}}
-{{if .Entry.Synonyms}}<p class="muted">Synonyms: {{join ", " .Entry.Synonyms}}</p>{{end}}
+<p class="eyebrow">{{upper .Category}}</p>
+<h1 class="display-sm"><span class="mono tag-name">{{.TagID}}</span> &nbsp; {{.Entry.Name}}</h1>
+{{if .Entry.Notes}}<p class="lede">{{.Entry.Notes}}</p>{{end}}
+{{if .Entry.Synonyms}}<p class="muted"><strong>Synonyms:</strong> {{join ", " .Entry.Synonyms}}</p>{{end}}
 
-<h2>{{len .Papers}} paper{{if ne (len .Papers) 1}}s{{end}}</h2>
-<ul class="papers">
+<p class="section-mark">{{len .Papers}} PAPER{{if ne (len .Papers) 1}}S{{end}}</p>
+<ul class="paper-list">
   {{range .Papers}}
-  <li>
-    <a href="/papers/{{.ID}}/"><strong>{{.Title}}</strong></a>
-    <span class="meta">{{firstAuthor .Authors}} · {{.Venue}} · {{yearString .Year}}</span>
-  </li>
+  <li><a href="/papers/{{.ID}}/">
+    <span class="row-id mono">{{.ID}}</span>
+    <span class="row-title">{{.Title}}</span>
+    <span class="row-meta">{{.Venue}} · {{yearString .Year}}</span>
+  </a></li>
   {{end}}
 </ul>
 `
 
 const tagIndexBody = `
-<h1>{{.Category}}</h1>
-<p class="muted">Sorted by paper count.</p>
+<p class="eyebrow">CONTROLLED VOCABULARY · {{upper .Category}}</p>
+<h1 class="display-sm">By {{.Category}}</h1>
+<p class="lede muted">Sorted by paper count.</p>
 <ul class="tag-index">
   {{range .Rows}}
   <li>
@@ -400,94 +485,246 @@ const contributeBody = `
 `
 
 const styleCSS = `
+/* circumvention-corpus — visual design.
+ *
+ * Palette: warm cream paper / deep ink. Single accent (deep teal) so
+ * the colour story doesn't fight the typography. Category-coded tag
+ * chips for censor / technique / defense — desaturated, never garish.
+ *
+ * Typography: Fraunces (a serif with optical sizing) for display +
+ * paper titles, Inter for UI / nav / body, JetBrains Mono for IDs and
+ * controlled-vocabulary chips. Loaded from Google Fonts.
+ *
+ * The aesthetic is "field manual" — academic but contemporary. Light
+ * default because researchers read on bright screens and we're
+ * cosplaying paper.
+ */
+
 :root {
-  --bg: #fafaf7;
-  --fg: #1a1a1a;
-  --muted: #666;
-  --accent: #b14d29;
-  --rule: #e3e3dc;
-  --code-bg: #efeee9;
-  --tag-bg: #ece9df;
+  --paper:   #f5f1e8;  /* page background */
+  --paper-2: #ece6d6;  /* card / hover surface */
+  --ink:     #1a1916;  /* primary text */
+  --ink-2:   #57544c;  /* secondary text */
+  --ink-3:   #8a8678;  /* tertiary / mute */
+  --rule:    #d9d2bf;  /* hairline */
+  --rule-2:  #c5bda5;  /* heavier rule */
+  --accent:  #1f6f7a;  /* deep teal */
+  --accent-2:#0e4a52;  /* hover */
+  --gold:    #b08a3a;  /* sparingly: section marks */
+  --censor:  #b04331;  /* desaturated red — "things censors do" */
+  --tech:    #8a6a1f;  /* ochre — "detection mechanics" */
+  --defense: #2f6a4b;  /* moss green — "what we do back" */
+  --code-bg: #ebe5d3;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161614;
-    --fg: #e9e7e0;
-    --muted: #999;
-    --accent: #e6814b;
-    --rule: #2a2926;
-    --code-bg: #25241f;
-    --tag-bg: #2a2925;
+    --paper:   #15140f;
+    --paper-2: #1f1d17;
+    --ink:     #ece6d2;
+    --ink-2:   #b6b09c;
+    --ink-3:   #807a6a;
+    --rule:    #2e2b22;
+    --rule-2:  #423d30;
+    --accent:  #5fb4bf;
+    --accent-2:#86d0db;
+    --gold:    #d4ad60;
+    --censor:  #e07060;
+    --tech:    #d6a85a;
+    --defense: #6abf95;
+    --code-bg: #211e16;
   }
 }
+
 * { box-sizing: border-box; }
-html { font-size: 16px; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   font-size: 1rem;
-  line-height: 1.55;
-  background: var(--bg);
-  color: var(--fg);
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--rule);
-  max-width: 70rem;
-  margin: 0 auto;
+.mono, code, pre, .row-id, .card-id, .tag {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
-.brand { font-weight: 600; text-decoration: none; color: var(--fg); }
-nav { display: flex; gap: 1rem; flex-wrap: wrap; }
-nav a { text-decoration: none; color: var(--fg); border-bottom: 1px solid transparent; padding-bottom: 1px; }
-nav a:hover { border-bottom-color: var(--accent); }
-main {
-  max-width: 70rem;
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+.display, .display-sm, h1, h2, h3 {
+  font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+  font-feature-settings: "ss01", "ss02";
+  letter-spacing: -0.015em;
+  line-height: 1.1;
 }
-footer {
-  max-width: 70rem;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--muted);
-  font-size: 0.9rem;
+.display { font-size: clamp(2.4rem, 5.5vw, 4.4rem); font-weight: 500; margin: 0; }
+.display em { font-style: italic; color: var(--accent); font-feature-settings: "ss01"; }
+.display-sm { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 500; margin: 0 0 0.6rem; }
+h1 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 500; margin: 0 0 0.5rem; }
+h2 { font-size: 1.4rem; font-weight: 500; margin: 2.5rem 0 0.5rem; }
+h3 { font-size: 1.15rem; font-weight: 500; margin: 0 0 0.3rem; }
+
+a { color: var(--accent); text-decoration: none; transition: color 0.15s; }
+a:hover { color: var(--accent-2); text-decoration: underline; }
+em { font-style: italic; }
+.muted { color: var(--ink-3); }
+.lede { font-size: 1.15rem; line-height: 1.55; color: var(--ink-2); margin: 0.75rem 0; max-width: 42rem; }
+
+code {
+  background: var(--code-bg);
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
 }
-h1 { font-size: 1.75rem; margin: 0 0 0.5rem; }
-h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.25rem; }
-.muted { color: var(--muted); }
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-code { background: var(--code-bg); padding: 0 0.25rem; border-radius: 3px; font-size: 0.9em; }
-pre { background: var(--code-bg); padding: 1rem; border-radius: 5px; overflow-x: auto; }
+pre {
+  background: var(--code-bg);
+  padding: 1rem 1.25rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
 pre code { background: none; padding: 0; }
-.hero { margin-bottom: 2rem; }
-.counts { font-size: 1.05rem; }
-.papers { list-style: none; padding: 0; }
-.papers li { margin-bottom: 0.75rem; }
-.papers .meta { display: block; color: var(--muted); font-size: 0.9rem; }
-.papers.full li { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule); }
-.papers.full li:last-child { border-bottom: none; }
-.byline { color: var(--muted); }
-.abstract { white-space: pre-wrap; }
-.notes { white-space: pre-wrap; padding: 1rem; background: var(--code-bg); border-left: 3px solid var(--accent); border-radius: 3px; }
-.tags-dl dt { font-weight: 600; margin-top: 0.5rem; color: var(--muted); font-size: 0.9rem; }
-.tags-dl dd { margin: 0 0 0.25rem; padding: 0; }
-.tag { display: inline-block; padding: 1px 0.5rem; margin: 0.15rem 0.25rem 0.15rem 0; background: var(--tag-bg); border-radius: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; text-decoration: none; color: var(--fg); }
-.tag:hover { background: var(--accent); color: white; }
-.tag.censor { border-left: 3px solid #c4452f; }
-.tag.technique { border-left: 3px solid #8b6914; }
-.tag.defense { border-left: 3px solid #2c6e49; }
-.tags { margin-top: 0.25rem; }
-.badge { display: inline-block; font-size: 0.75rem; padding: 0 0.4rem; border-radius: 3px; background: var(--accent); color: white; vertical-align: middle; margin-left: 0.4rem; }
-.tag-index { list-style: none; padding: 0; display: grid; grid-template-columns: max-content 1fr max-content; row-gap: 0.4rem; column-gap: 1rem; }
+
+.wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+main.wrap { padding: 2.5rem 1.5rem 5rem; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); background-color: color-mix(in oklab, var(--paper) 92%, transparent); }
+.site-header .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; }
+.brand { display: inline-flex; align-items: center; gap: 0.55rem; font-weight: 600; color: var(--ink); }
+.brand:hover { color: var(--ink); text-decoration: none; }
+.brand-mark { font-size: 1.3rem; color: var(--accent); }
+.brand-name { font-family: "JetBrains Mono", monospace; font-size: 0.95rem; }
+nav { display: flex; gap: 0.25rem 1.4rem; flex-wrap: wrap; align-items: center; }
+nav a { color: var(--ink); font-size: 0.9rem; padding: 0.35rem 0; position: relative; }
+nav a:hover { color: var(--accent); text-decoration: none; }
+nav a:hover::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--accent); }
+nav a.external { color: var(--ink-2); }
+
+/* Hero */
+.hero { padding: 3.5rem 0 2.5rem; max-width: 50rem; }
+.eyebrow { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; color: var(--gold); margin: 0 0 1rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.1rem; border-radius: 4px; font-size: 0.95rem; font-weight: 500; transition: all 0.15s; }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.primary:hover { background: var(--accent); color: var(--paper); text-decoration: none; }
+.btn.ghost { border: 1px solid var(--rule-2); color: var(--ink); background: transparent; }
+.btn.ghost:hover { border-color: var(--ink); color: var(--ink); text-decoration: none; }
+
+.counts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 3rem 0 0; padding: 1.5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.counts-grid div { display: flex; flex-direction: column; gap: 0.2rem; }
+.counts-grid dt { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 0; }
+.counts-grid dd { font-family: "Fraunces", serif; font-size: 2rem; font-weight: 500; margin: 0; color: var(--ink); }
+
+/* Section marks */
+.section-mark { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; color: var(--gold); margin: 4rem 0 1rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+
+/* Two-column "why" section */
+.two-col { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 60rem) { .two-col { grid-template-columns: 2fr 1fr; gap: 3rem; } }
+.aside { padding: 1.5rem; background: var(--paper-2); border-left: 3px solid var(--gold); border-radius: 0 4px 4px 0; }
+.aside-label { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; margin: 0 0 0.6rem; }
+.aside p:last-child { margin-bottom: 0; }
+
+/* Paper cards */
+.paper-cards { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); gap: 1rem; }
+.paper-card { background: var(--paper-2); border-radius: 5px; border: 1px solid var(--rule); transition: all 0.15s; overflow: hidden; }
+.paper-card:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+.card-link { display: block; padding: 1rem 1.1rem; color: var(--ink); }
+.card-link:hover { text-decoration: none; color: var(--ink); }
+.card-id { font-size: 0.7rem; color: var(--ink-3); margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+.paper-card h3 { font-family: "Fraunces", serif; font-size: 1.05rem; font-weight: 500; margin: 0 0 0.4rem; color: var(--ink); line-height: 1.25; }
+.card-meta { font-size: 0.85rem; color: var(--ink-2); margin-bottom: 0.6rem; }
+.card-meta em { color: var(--ink-2); }
+.card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+/* Paper list (compact rows) */
+.paper-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.paper-list li { border-bottom: 1px solid var(--rule); }
+.paper-list li:first-child { border-top: 1px solid var(--rule); }
+.paper-list li a { display: grid; grid-template-columns: minmax(15rem, 18rem) 1fr auto; gap: 1.5rem; padding: 1rem 0.5rem; color: var(--ink); align-items: baseline; transition: background 0.15s; }
+.paper-list li a:hover { background: var(--paper-2); text-decoration: none; }
+.row-id { font-size: 0.78rem; color: var(--ink-3); }
+.row-title { font-family: "Fraunces", serif; font-size: 1.05rem; line-height: 1.3; color: var(--ink); }
+.row-meta { font-size: 0.85rem; color: var(--ink-2); white-space: nowrap; }
+@media (max-width: 50rem) {
+  .paper-list li a { grid-template-columns: 1fr; gap: 0.25rem; }
+  .row-meta { white-space: normal; }
+}
+
+/* Bottom CTA */
+.cta-bottom { text-align: center; padding: 4rem 0 2rem; margin-top: 4rem; border-top: 1px solid var(--rule); }
+.cta-bottom .lede { margin: 0.75rem auto 1.75rem; }
+
+/* Tag chips — controlled vocabulary, the visual heart of the site */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  margin: 0.15rem 0.2rem 0.15rem 0;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-size: 0.78rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.12s;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.tag:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); text-decoration: none; }
+.tag.censor    { border-left: 3px solid var(--censor); padding-left: 0.45rem; }
+.tag.technique { border-left: 3px solid var(--tech); padding-left: 0.45rem; }
+.tag.defense   { border-left: 3px solid var(--defense); padding-left: 0.45rem; }
+
+/* Paper detail page */
+article.paper { max-width: 48rem; margin: 0 auto; }
+article.paper .paper-id { font-size: 0.78rem; color: var(--ink-3); margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+article.paper h1 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 500; margin: 0 0 0.5rem; }
+article.paper .paper-links { font-size: 0.92rem; color: var(--ink-2); margin: 0 0 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+.related-section { max-width: 48rem; margin: 3rem auto 0; }
+.tag-name { color: var(--accent); font-size: 0.85em; }
+.byline { font-size: 1rem; color: var(--ink-2); margin: 0 0 1.5rem; }
+.byline em { font-style: italic; }
+.badge { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.5rem; border-radius: 3px; background: var(--gold); color: var(--paper); vertical-align: middle; margin-left: 0.5rem; }
+.badge.core { background: var(--accent); color: var(--paper); }
+.abstract, .notes { white-space: pre-wrap; }
+.notes { padding: 1.25rem 1.4rem; background: var(--paper-2); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; }
+.tags-dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.5rem; margin: 1rem 0; }
+.tags-dl dt { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-3); padding-top: 0.3rem; }
+.tags-dl dd { margin: 0; padding: 0; }
+
+/* Tag index page */
+.tag-index { list-style: none; padding: 0; display: grid; grid-template-columns: max-content max-content 1fr max-content; gap: 0.5rem 1.5rem; }
 .tag-index li { display: contents; }
-.tax dt { font-weight: 600; margin-top: 0.75rem; }
-.tax dd { margin: 0 0 0.25rem; color: var(--muted); }
+.tag-index li > a { font-family: "JetBrains Mono", monospace; font-size: 0.9rem; }
+.tag-index li > span:nth-child(2) { color: var(--ink); }
+.tag-index li > span.muted { color: var(--ink-3); font-size: 0.85rem; }
+
+/* Taxonomy page */
+.tax { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.5rem; margin: 1rem 0; }
+.tax dt { font-family: "JetBrains Mono", monospace; font-size: 0.85rem; padding-top: 0.2rem; }
+.tax dd { margin: 0; padding: 0 0 0.4rem; color: var(--ink-2); font-size: 0.95rem; }
+.tax dd .muted { display: block; font-size: 0.82rem; margin-top: 0.15rem; }
+@media (max-width: 50rem) {
+  .tax, .tags-dl, .tag-index { grid-template-columns: 1fr; gap: 0.2rem; }
+  .tax dt, .tags-dl dt { padding-top: 0.5rem; }
+}
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--rule); margin-top: 4rem; padding: 3rem 0 2rem; background: var(--paper-2); color: var(--ink-2); font-size: 0.9rem; }
+.foot-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; }
+@media (max-width: 50rem) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+.foot-title { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.5rem; }
+.foot-grid ul { list-style: none; padding: 0; margin: 0; }
+.foot-grid li { margin-bottom: 0.3rem; }
+.foot-grid a { color: var(--ink-2); }
+.foot-grid a:hover { color: var(--accent); }
+.legal { padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: 0.82rem; max-width: 60rem; }
+.legal a { color: var(--ink-2); }
+
+/* Use page sections */
+dl.tax dt code { font-family: inherit; background: none; }
 `
