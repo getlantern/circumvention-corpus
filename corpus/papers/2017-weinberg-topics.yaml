@@ -1,0 +1,21 @@
+id: 2017-weinberg-topics
+title: 'Topics of Controversy: An Empirical Analysis of Web Censorship Lists'
+authors:
+  - Zachary Weinberg
+  - Mahmood Sharif
+  - Janos Szurdi
+  - Nicolas Christin
+venue: Privacy Enhancing Technologies
+year: 2017
+url: https://petsymposium.org/2017/papers/issue1/paper06-2017-1-source.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Weinberg2017a

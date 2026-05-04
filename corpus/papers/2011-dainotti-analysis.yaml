@@ -1,0 +1,24 @@
+id: 2011-dainotti-analysis
+title: Analysis of Country-wide Internet Outages Caused by Censorship
+authors:
+  - Alberto Dainotti
+  - Claudio Squarcella
+  - Emile Aben
+  - Kimberly C. Claffy
+  - Marco Chiesa
+  - Michele Russo
+  - Antonio Pescapè
+venue: Internet Measurement Conference
+year: 2011
+url: https://conferences.sigcomm.org/imc/2011/docs/p1.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Dainotti2011a

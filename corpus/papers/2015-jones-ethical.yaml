@@ -1,0 +1,22 @@
+id: 2015-jones-ethical
+title: Ethical Concerns for Censorship Measurement
+authors:
+  - Ben Jones
+  - Roya Ensafi
+  - Nick Feamster
+  - Vern Paxson
+  - Nick Weaver
+venue: Ethics in Networked Systems Research
+year: 2015
+url: https://www.icir.org/vern/papers/censorship-meas.nsethics15.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Jones2015a

@@ -81,6 +81,7 @@ const layoutTmpl = `<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<script src="/search.js" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -89,6 +90,11 @@ const layoutTmpl = `<!doctype html>
       <span class="brand-mark">▤</span>
       <span class="brand-name">circumvention-corpus</span>
     </a>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search papers… (e.g. active probing, GFW, Iran 2025)" autocomplete="off" spellcheck="false">
+      <kbd class="search-kbd">/</kbd>
+      <div id="search-results" hidden></div>
+    </div>
     <nav>
       <a href="/papers/">papers</a>
       <a href="/censors/">censors</a>
@@ -484,6 +490,221 @@ const contributeBody = `
 <p>An LLM (Claude/GPT/etc.) can propose findings if you feed it a paper; commit them only after a human review.</p>
 `
 
+// searchJS is the in-browser search client. Loaded on every page via
+// /search.js. Fetches /search-index.json once on first focus, then
+// runs in-memory keyword + tag matching. Vanilla JS, no framework, no
+// build step. All result-row content is built via DOM APIs (no
+// innerHTML on dynamic data) so XSS-via-paper-title isn't reachable.
+//
+// Ranking is deliberately simple: for each query token, score each
+// paper by where the token appears (title 5x, authors 3x, tags 3x,
+// notes 2x, abstract 1x). Title-prefix matches get an additional boost.
+const searchJS = `(() => {
+  const input = document.getElementById('search');
+  const results = document.getElementById('search-results');
+  if (!input || !results) return;
+
+  let index = null;
+  let loading = null;
+  let activeIdx = -1;
+
+  async function load() {
+    if (index) return index;
+    if (loading) return loading;
+    loading = fetch('/search-index.json').then(r => r.json()).then(d => {
+      index = d;
+      return index;
+    }).catch(() => { index = []; return index; });
+    return loading;
+  }
+
+  function tokenize(s) {
+    return (s || '').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  }
+
+  function score(paper, qTokens) {
+    let total = 0;
+    const title = (paper.title || '').toLowerCase();
+    const authors = (paper.authors || []).join(' ').toLowerCase();
+    const tags = [...(paper.censors||[]), ...(paper.techniques||[]), ...(paper.defenses||[])].join(' ').toLowerCase();
+    const notes = (paper.notes || '').toLowerCase();
+    const abstract = (paper.abstract || '').toLowerCase();
+    const id = (paper.id || '').toLowerCase();
+    for (const t of qTokens) {
+      if (!t) continue;
+      let s = 0;
+      if (title.includes(t)) s += 5;
+      if (title.startsWith(t) || title.includes(' ' + t)) s += 3;
+      if (authors.includes(t)) s += 3;
+      if (tags.includes(t)) s += 3;
+      if (id.includes(t)) s += 2;
+      if (notes.includes(t)) s += 2;
+      if (abstract.includes(t)) s += 1;
+      if (s === 0) return 0;
+      total += s;
+    }
+    if (paper.core) total += 1;
+    return total;
+  }
+
+  // appendHighlighted writes 'text' into 'parent' as text nodes,
+  // wrapping any case-insensitive occurrence of one of qTokens in a
+  // <mark> element. Uses matchAll() iteration so all dynamic strings
+  // go through createTextNode — there's no path for HTML injection
+  // even from a maliciously-titled paper.
+  function appendHighlighted(parent, text, qTokens) {
+    if (!text) return;
+    const meaningful = qTokens.filter(t => t && t.length >= 2);
+    if (meaningful.length === 0) {
+      parent.appendChild(document.createTextNode(text));
+      return;
+    }
+    const escaped = meaningful.map(t => t.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')).join('|');
+    const re = new RegExp('(' + escaped + ')', 'ig');
+    let last = 0;
+    for (const m of text.matchAll(re)) {
+      if (m.index > last) parent.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const mark = document.createElement('mark');
+      mark.textContent = m[0];
+      parent.appendChild(mark);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) parent.appendChild(document.createTextNode(text.slice(last)));
+  }
+
+  function clearChildren(el) {
+    while (el.firstChild) el.removeChild(el.firstChild);
+  }
+
+  function tagSpan(text, kind) {
+    const s = document.createElement('span');
+    s.className = 'tag ' + kind;
+    s.textContent = text;
+    return s;
+  }
+
+  function buildRow(paper, qTokens) {
+    const a = document.createElement('a');
+    a.href = '/papers/' + encodeURIComponent(paper.id) + '/';
+    const title = document.createElement('span');
+    title.className = 'r-title';
+    appendHighlighted(title, paper.title || '', qTokens);
+    a.appendChild(title);
+    const meta = document.createElement('span');
+    meta.className = 'r-meta';
+    const venue = paper.venue || '';
+    const year = paper.year ? ' · ' + paper.year : '';
+    meta.textContent = venue + year;
+    a.appendChild(meta);
+    const id = document.createElement('span');
+    id.className = 'r-id';
+    id.textContent = paper.id;
+    a.appendChild(id);
+    if ((paper.censors && paper.censors.length) || (paper.techniques && paper.techniques.length)) {
+      const tags = document.createElement('span');
+      tags.className = 'r-tags';
+      for (const t of (paper.censors || [])) tags.appendChild(tagSpan(t, 'censor'));
+      for (const t of (paper.techniques || [])) tags.appendChild(tagSpan(t, 'technique'));
+      a.appendChild(tags);
+    }
+    return a;
+  }
+
+  function render(matches, qTokens, query) {
+    clearChildren(results);
+    if (!query) { results.hidden = true; activeIdx = -1; return; }
+    if (matches.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'empty';
+      empty.appendChild(document.createTextNode('No matches for '));
+      const em = document.createElement('em');
+      em.textContent = query;
+      empty.appendChild(em);
+      empty.appendChild(document.createTextNode('.'));
+      results.appendChild(empty);
+      results.hidden = false;
+      activeIdx = -1;
+      return;
+    }
+    const summary = document.createElement('div');
+    summary.className = 'summary';
+    summary.textContent = matches.length + ' match' + (matches.length === 1 ? '' : 'es');
+    results.appendChild(summary);
+    for (const p of matches.slice(0, 30)) {
+      results.appendChild(buildRow(p, qTokens));
+    }
+    results.hidden = false;
+    activeIdx = -1;
+  }
+
+  async function update() {
+    const query = input.value.trim();
+    if (!query) { render([], [], ''); return; }
+    await load();
+    if (!index) return;
+    const qTokens = tokenize(query);
+    if (qTokens.length === 0) { render([], [], ''); return; }
+    const scored = [];
+    for (const p of index) {
+      const s = score(p, qTokens);
+      if (s > 0) scored.push({p, s});
+    }
+    scored.sort((a, b) => b.s - a.s || (b.p.year || 0) - (a.p.year || 0));
+    render(scored.map(x => x.p), qTokens, query);
+  }
+
+  let timer = null;
+  input.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(update, 80);
+  });
+  input.addEventListener('focus', load);
+
+  // "/" anywhere focuses the search, like GitHub.
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && !['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === input) {
+      input.value = '';
+      results.hidden = true;
+      input.blur();
+    }
+  });
+
+  // Arrow-key navigation through results.
+  input.addEventListener('keydown', e => {
+    const items = results.querySelectorAll('a');
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIdx = Math.min(items.length - 1, activeIdx + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIdx = Math.max(0, activeIdx - 1);
+    } else if (e.key === 'Enter') {
+      if (activeIdx >= 0) {
+        e.preventDefault();
+        items[activeIdx].click();
+      }
+    } else {
+      return;
+    }
+    items.forEach((it, i) => it.classList.toggle('active', i === activeIdx));
+    items[activeIdx].scrollIntoView({block: 'nearest'});
+  });
+
+  // Click-outside dismiss.
+  document.addEventListener('click', e => {
+    if (!input.contains(e.target) && !results.contains(e.target)) {
+      results.hidden = true;
+    }
+  });
+})();
+`
+
 const styleCSS = `
 /* circumvention-corpus — visual design.
  *
@@ -727,4 +948,56 @@ article.paper .paper-links { font-size: 0.92rem; color: var(--ink-2); margin: 0 
 
 /* Use page sections */
 dl.tax dt code { font-family: inherit; background: none; }
+
+/* Search */
+.search-wrap { position: relative; flex: 1 1 28rem; max-width: 32rem; min-width: 14rem; margin: 0 1rem; }
+#search {
+  width: 100%;
+  padding: 0.55rem 0.85rem;
+  padding-right: 2rem;
+  border: 1px solid var(--rule-2);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: border-color 0.15s;
+}
+#search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent); }
+.search-kbd {
+  position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+  font-family: "JetBrains Mono", monospace; font-size: 0.75rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--rule-2);
+  border-radius: 3px;
+  color: var(--ink-3); background: var(--paper-2);
+  pointer-events: none;
+}
+#search:focus + .search-kbd { display: none; }
+#search-results {
+  position: absolute; top: calc(100% + 0.5rem); left: 0; right: 0;
+  background: var(--paper); border: 1px solid var(--rule-2); border-radius: 5px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  max-height: 70vh; overflow-y: auto;
+  z-index: 20;
+}
+#search-results .empty { padding: 1rem 1.1rem; color: var(--ink-3); font-size: 0.92rem; }
+#search-results .summary { padding: 0.5rem 1.1rem; color: var(--ink-3); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; border-bottom: 1px solid var(--rule); font-family: "JetBrains Mono", monospace; }
+#search-results a {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 0.4rem 1rem; padding: 0.65rem 1.1rem;
+  color: var(--ink); border-bottom: 1px solid var(--rule);
+}
+#search-results a:last-child { border-bottom: none; }
+#search-results a:hover, #search-results a.active { background: var(--paper-2); text-decoration: none; }
+#search-results .r-title { font-family: "Fraunces", serif; font-size: 1rem; font-weight: 500; line-height: 1.25; }
+#search-results .r-meta { font-size: 0.8rem; color: var(--ink-3); white-space: nowrap; }
+#search-results .r-id { grid-column: 1 / 3; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--ink-3); }
+#search-results .r-tags { grid-column: 1 / 3; display: flex; gap: 0.3rem; flex-wrap: wrap; }
+#search-results .r-tags .tag { font-size: 0.7rem; padding: 0 0.4rem; }
+#search-results mark { background: color-mix(in oklab, var(--gold) 30%, transparent); color: var(--ink); padding: 0; border-radius: 2px; }
+@media (max-width: 60rem) {
+  .site-header .wrap { flex-direction: column; align-items: stretch; }
+  .search-wrap { margin: 0; max-width: none; }
+}
 `

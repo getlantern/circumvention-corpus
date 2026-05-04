@@ -1,0 +1,21 @@
+id: 2024-vines-communication
+title: 'Communication Breakdown: Modularizing Application Tunneling for Signaling Around Censorship'
+authors:
+  - Paul Vines
+  - Samuel McKay
+  - Jesse Jenter
+  - Suresh Krishnaswamy
+venue: Privacy Enhancing Technologies
+year: 2024
+url: https://petsymposium.org/popets/2024/popets-2024-0027.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Vines2024c

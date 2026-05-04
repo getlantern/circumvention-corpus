@@ -1,0 +1,20 @@
+id: 2013-wachs-feasibility
+title: On the Feasibility of a Censorship Resistant Decentralized Name System
+authors:
+  - Matthias Wachs
+  - Martin Schanzenbach
+  - Christian Grothoff
+venue: Foundations \& Practice of Security
+year: 2013
+url: https://grothoff.org/christian/fps2013wachs.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wachs2013a

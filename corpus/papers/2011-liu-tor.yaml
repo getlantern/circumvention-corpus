@@ -1,0 +1,21 @@
+id: 2011-liu-tor
+title: Tor Instead of IP
+authors:
+  - Vincent Liu
+  - Seungyeop Han
+  - Arvind Krishnamurthy
+  - Thomas Anderson
+venue: Hot Topics in Networks
+year: 2011
+url: https://conferences.sigcomm.org/hotnets/2011/papers/hotnetsX-final131.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Liu2011a

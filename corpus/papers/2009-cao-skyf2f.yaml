@@ -1,0 +1,21 @@
+id: 2009-cao-skyf2f
+title: 'SkyF2F: Censorship Resistant via Skype Overlay Network'
+authors:
+  - Shoufeng Cao
+  - Longtao He
+  - Zhongxian Li
+  - Yixian Yang
+venue: International Conference on Information Engineering
+year: 2009
+url: https://censorbib.nymity.ch/pdf/Cao2009a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Cao2009a

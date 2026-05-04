@@ -1,0 +1,22 @@
+id: 2020-raman-investigating
+title: Investigating Large Scale HTTPS Interception in Kazakhstan
+authors:
+  - Ram Sundara Raman
+  - Leonid Evdokimov
+  - Eric Wustrow
+  - J. Alex Halderman
+  - Roya Ensafi
+venue: Internet Measurement Conference
+year: 2020
+url: https://dl.acm.org/doi/pdf/10.1145/3419394.3423665
+censors:
+  - kz
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Raman2020b

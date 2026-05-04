@@ -1,0 +1,18 @@
+id: 2016-al-saqaf-internet
+title: 'Internet Censorship Circumvention Tools: Escaping the Control of the Syrian Regime'
+authors:
+  - Walid Al-Saqaf
+venue: Media and Communication
+year: 2016
+url: http://www.cogitatiopress.com/ojs/index.php/mediaandcommunication/article/download/357/357
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Al-Saqaf2016a

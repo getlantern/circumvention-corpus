@@ -1,0 +1,22 @@
+id: 2015-tanash-known
+title: 'Known Unknowns: An Analysis of Twitter Censorship in Turkey'
+authors:
+  - Rima S. Tanash
+  - Zhouhan Chen
+  - Tanmay Thakur
+  - Dan S. Wallach
+  - Devika Subramanian
+venue: Workshop on Privacy in the Electronic Society
+year: 2015
+url: https://censorbib.nymity.ch/pdf/Tanash2015a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Tanash2015a

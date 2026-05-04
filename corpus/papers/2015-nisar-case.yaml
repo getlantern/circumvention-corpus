@@ -1,0 +1,21 @@
+id: 2015-nisar-case
+title: A Case for Marrying Censorship Measurements with Circumvention
+authors:
+  - Aqib Nisar
+  - Aqsa Kashaf
+  - Zartash Afzal Uzmi
+  - Ihsan Ayyub Qazi
+venue: Hot Topics in Networks
+year: 2015
+url: https://conferences.sigcomm.org/hotnets/2015/papers/nisar.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nisar2015a

@@ -1,0 +1,18 @@
+id: 2014-anonymous-towards
+title: Towards a Comprehensive Picture of the Great Firewall's DNS Censorship
+authors:
+  - Anonymous
+venue: Free and Open Communications on the Internet
+year: 2014
+url: https://www.usenix.org/system/files/conference/foci14/foci14-anonymous.pdf
+censors:
+  - cn
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Anonymous2014a

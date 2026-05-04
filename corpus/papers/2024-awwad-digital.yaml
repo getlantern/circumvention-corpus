@@ -1,0 +1,19 @@
+id: 2024-awwad-digital
+title: Digital Repression in Palestine
+authors:
+  - Ghadeer Awwad
+  - Kentaro Toyama
+venue: CHI
+year: 2024
+url: https://dl.acm.org/doi/pdf/10.1145/3613904.3642422
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Awwad2024a

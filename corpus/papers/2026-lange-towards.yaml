@@ -1,0 +1,20 @@
+id: 2026-lange-towards
+title: Towards Automated DNS Censorship Circumvention
+authors:
+  - Felix Lange
+  - Niklas Niere
+  - Juraj Somorovsky
+venue: Free and Open Communications on the Internet
+year: 2026
+url: https://www.petsymposium.org/foci/2026/foci-2026-0001.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lange2026a

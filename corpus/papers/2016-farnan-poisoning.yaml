@@ -1,0 +1,20 @@
+id: 2016-farnan-poisoning
+title: Poisoning the Well -- Exploring the Great Firewall's Poisoned DNS Responses
+authors:
+  - Oliver Farnan
+  - Alexander Darer
+  - Joss Wright
+venue: Workshop on Privacy in the Electronic Society
+year: 2016
+url: https://dl.acm.org/authorize?N25517
+censors:
+  - cn
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Farnan2016a

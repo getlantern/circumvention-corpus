@@ -1,0 +1,20 @@
+id: 2016-akbar-dns-sly
+title: 'DNS-sly: Avoiding Censorship through Network Complexity'
+authors:
+  - Qurat-Ul-Ann Danyal Akbar
+  - Marcel Flores
+  - Aleksandar Kuzmanovic
+venue: Free and Open Communications on the Internet
+year: 2016
+url: https://www.usenix.org/system/files/conference/foci16/foci16-paper-akbar.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Akbar2016a

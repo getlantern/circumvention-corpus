@@ -1,0 +1,21 @@
+id: 2020-nasr-massbrowser
+title: 'MassBrowser: Unblocking the Censored Web for the Masses, by the Masses'
+authors:
+  - Milad Nasr
+  - Hadi Zolfaghari
+  - Amir Houmansadr
+  - Amirhossein Ghafari
+venue: Network and Distributed System Security
+year: 2020
+url: https://www.ndss-symposium.org/wp-content/uploads/2020/02/24340.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nasr2020a

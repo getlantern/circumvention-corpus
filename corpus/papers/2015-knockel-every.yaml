@@ -1,0 +1,22 @@
+id: 2015-knockel-every
+title: 'Every Rose Has Its Thorn: Censorship and Surveillance on Social Video Platforms in China'
+authors:
+  - Jeffrey Knockel
+  - Masashi Crete-Nishihata
+  - Jason Q. Ng
+  - Adam Senft
+  - Jedidiah R. Crandall
+venue: Free and Open Communications on the Internet
+year: 2015
+url: https://www.usenix.org/system/files/conference/foci15/foci15-paper-knockel.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Knockel2015a

@@ -1,0 +1,19 @@
+id: 2021-knockel-measuring
+title: Measuring QQMail's Automated Email Censorship in China
+authors:
+  - Jeffrey Knockel
+  - Lotus Ruan
+venue: Free and Open Communications on the Internet
+year: 2021
+url: https://doi.org/10.1145/3473604.3474560
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Knockel2021a

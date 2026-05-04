@@ -1,0 +1,20 @@
+id: 2024-ruo-lost
+title: 'Lost in Translation: Characterizing Automated Censorship in Online Translation Services'
+authors:
+  - Samuel Ruo
+  - Jeffrey Knockel
+  - Zoë Reichert
+venue: Free and Open Communications on the Internet
+year: 2024
+url: https://www.petsymposium.org/foci/2024/foci-2024-0018.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ruo2024a

@@ -1,0 +1,24 @@
+id: 2015-aceto-monitoring
+title: Monitoring Internet Censorship with UBICA
+authors:
+  - Giuseppe Aceto
+  - Alessio Botta
+  - Antonio Pescapè
+  - Nick Feamster
+  - M. Faheem Awan
+  - Tahir Ahmad
+  - Saad Qaisar
+venue: Traffic Monitoring and Analysis
+year: 2015
+url: http://wpage.unina.it/giuseppe.aceto/pub/aceto2015monitoring_TMA.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Aceto2015a

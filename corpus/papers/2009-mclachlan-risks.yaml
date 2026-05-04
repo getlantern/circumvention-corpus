@@ -1,0 +1,19 @@
+id: 2009-mclachlan-risks
+title: 'On the risks of serving whenever you surf: Vulnerabilities in Tor''s blocking resistance design'
+authors:
+  - Jon McLachlan
+  - Nicholas Hopper
+venue: Workshop on Privacy in the Electronic Society
+year: 2009
+url: https://www-users.cs.umn.edu/~hopper/surf_and_serve.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:McLachlan2009a

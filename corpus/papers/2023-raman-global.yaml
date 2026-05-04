@@ -1,0 +1,26 @@
+id: 2023-raman-global
+title: Global, Passive Detection of Connection Tampering
+authors:
+  - Ram Sundara Raman
+  - Louis-Henri Merino
+  - Kevin Bock
+  - Marwan Fayed
+  - Dave Levin
+  - Nick Sullivan
+  - Luke Valenta
+venue: SIGCOMM
+year: 2023
+url: https://www.cs.umd.edu/~dml/papers/tampering_sigcomm23.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - amp-cache
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Raman2023b

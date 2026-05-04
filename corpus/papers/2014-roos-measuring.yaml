@@ -1,0 +1,21 @@
+id: 2014-roos-measuring
+title: 'Measuring Freenet in the Wild: Censorship-resilience under Observation'
+authors:
+  - Stefanie Roos
+  - Benjamin Schiller
+  - Stefan Hacker
+  - Thorsten Strufe
+venue: Privacy Enhancing Technologies Symposium
+year: 2014
+url: https://petsymposium.org/2014/papers/paper_71.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Roos2014a

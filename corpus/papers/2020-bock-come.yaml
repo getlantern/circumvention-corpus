@@ -1,0 +1,24 @@
+id: 2020-bock-come
+title: 'Come as You Are: Helping Unmodified Clients Bypass Censorship with Server-side Evasion'
+authors:
+  - Kevin Bock
+  - George Hughey
+  - Louis-Henri Merino
+  - Tania Arya
+  - Daniel Liscinsky
+  - Regina Pogosian
+  - Dave Levin
+venue: SIGCOMM
+year: 2020
+url: https://geneva.cs.umd.edu/papers/come-as-you-are.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bock2020b

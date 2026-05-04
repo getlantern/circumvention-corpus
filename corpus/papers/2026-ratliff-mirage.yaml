@@ -1,0 +1,23 @@
+id: 2026-ratliff-mirage
+title: 'Mirage: Private, Mobility-based Routing for Censorship Evasion'
+authors:
+  - Zachary Ratliff
+  - Ruoxing (David) Yang
+  - Avery Bai
+  - Harel Berger
+  - Micah Sherr
+  - James Mickens
+venue: Network and Distributed System Security
+year: 2026
+url: https://www.ndss-symposium.org/wp-content/uploads/2026-s237-paper.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ratliff2026a

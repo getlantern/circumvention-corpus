@@ -1,0 +1,18 @@
+id: 2021-wei-domain
+title: 'Domain Shadowing: Leveraging Content Delivery Networks for Robust Blocking-Resistant Communications'
+authors:
+  - Mingkui Wei
+venue: USENIX Security Symposium
+year: 2021
+url: https://www.usenix.org/system/files/sec21-wei.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wei2021a

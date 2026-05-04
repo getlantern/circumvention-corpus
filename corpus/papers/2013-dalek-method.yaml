@@ -1,0 +1,24 @@
+id: 2013-dalek-method
+title: A Method for Identifying and Confirming the Use of URL Filtering Products for Censorship
+authors:
+  - Jakub Dalek
+  - Bennett Haselton
+  - Helmi Noman
+  - Adam Senft
+  - Masashi Crete-Nishihata
+  - Phillipa Gill
+  - Ronald J. Deibert
+venue: Internet Measurement Conference
+year: 2013
+url: https://conferences.sigcomm.org/imc/2013/papers/imc112s-dalekA.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Dalek2013a

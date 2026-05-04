@@ -1,0 +1,19 @@
+id: 2001-stubblefield-dagster
+title: 'Dagster: Censorship-Resistant Publishing Without Replication'
+authors:
+  - Adam Stubblefield
+  - Dan S. Wallach
+venue: Rice University
+year: 2001
+url: https://www.cs.rice.edu/~dwallach/pub/dagster-tr.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Stubblefield2001a

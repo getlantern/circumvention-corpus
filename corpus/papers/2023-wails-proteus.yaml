@@ -1,0 +1,21 @@
+id: 2023-wails-proteus
+title: 'Proteus: Programmable Protocols for Censorship Circumvention'
+authors:
+  - Ryan Wails
+  - Rob Jansen
+  - Aaron Johnson
+  - Micah Sherr
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0013.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wails2023a

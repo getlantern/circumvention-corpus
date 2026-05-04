@@ -1,0 +1,26 @@
+id: 2020-ramesh-decentralized
+title: 'Decentralized Control: A Case Study of Russia'
+authors:
+  - Reethika Ramesh
+  - Ram Sundara Raman
+  - Matthew Bernhard
+  - Victor Ongkowijaya
+  - Leonid Evdokimov
+  - Anne Edmundson
+  - Steven Sprecher
+  - Muhammad Ikram
+  - Roya Ensafi
+venue: Network and Distributed System Security
+year: 2020
+url: https://www.ndss-symposium.org/wp-content/uploads/2020/02/23098.pdf
+censors:
+  - ru
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ramesh2020a

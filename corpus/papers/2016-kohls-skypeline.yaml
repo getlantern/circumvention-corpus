@@ -1,0 +1,21 @@
+id: 2016-kohls-skypeline
+title: 'SkypeLine: Robust Hidden Data Transmission for VoIP'
+authors:
+  - Katharina Kohls
+  - Thorsten Holz
+  - Dorothea Kolossa
+  - Christina Pöpper
+venue: ASIA Computer and Communications Security
+year: 2016
+url: https://poepper.net/papers/SkypeLine-AsiaCCS16.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Kohls2016a

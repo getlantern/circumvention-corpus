@@ -1,0 +1,21 @@
+id: 2017-morshed-when
+title: When the Internet Goes Down in Bangladesh
+authors:
+  - Mehrab Bin Morshed
+  - Michaelanne Dye
+  - Syed Ishtiaque Ahmed
+  - Neha Kumar
+venue: Computer-Supported Cooperative Work and Social Computing
+year: 2017
+url: https://nehakumardotorg.files.wordpress.com/2014/03/p1591-bin-morshed.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Morshed2017a

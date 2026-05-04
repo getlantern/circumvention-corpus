@@ -1,0 +1,19 @@
+id: 2011-shklovski-online
+title: Online Contribution Practices in Countries that Engage in Internet Blocking and Censorship
+authors:
+  - Irina Shklovski
+  - Nalini P. Kotamraju
+venue: CHI
+year: 2011
+url: https://censorbib.nymity.ch/pdf/Shklovski2011a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Shklovski2011a

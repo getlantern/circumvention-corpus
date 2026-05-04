@@ -1,0 +1,22 @@
+id: 2013-zhu-velocity
+title: 'The Velocity of Censorship: High-Fidelity Detection of Microblog Post Deletions'
+authors:
+  - Tao Zhu
+  - David Phipps
+  - Adam Pridgen
+  - Jedidiah R. Crandall
+  - Dan S. Wallach
+venue: USENIX Security Symposium
+year: 2013
+url: https://www.cs.unm.edu/~crandall/usenix13.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Zhu2013a

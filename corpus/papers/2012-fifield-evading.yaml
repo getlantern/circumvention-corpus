@@ -1,0 +1,24 @@
+id: 2012-fifield-evading
+title: Evading Censorship with Browser-Based Proxies
+authors:
+  - David Fifield
+  - Nate Hardison
+  - Jonathan Ellithorpe
+  - Emily Stark
+  - Roger Dingledine
+  - Phil Porras
+  - Dan Boneh
+venue: Privacy Enhancing Technologies Symposium
+year: 2012
+url: https://crypto.stanford.edu/flashproxy/flashproxy.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Fifield2012a

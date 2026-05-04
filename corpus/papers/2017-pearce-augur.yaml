@@ -1,0 +1,22 @@
+id: 2017-pearce-augur
+title: 'Augur: Internet-Wide Detection of Connectivity Disruptions'
+authors:
+  - Paul Pearce
+  - Roya Ensafi
+  - Frank Li
+  - Nick Feamster
+  - Vern Paxson
+venue: Symposium on Security \& Privacy
+year: 2017
+url: https://www.ieee-security.org/TC/SP2017/papers/586.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Pearce2017a

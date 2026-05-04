@@ -1,0 +1,21 @@
+id: 2019-ververis-shedding
+title: Shedding Light on Mobile App Store Censorship
+authors:
+  - Vasilis Ververis
+  - Marios Isaakidis
+  - Valentin Weber
+  - Benjamin Fabian
+venue: User Modeling, Adaptation and Personalization
+year: 2019
+url: https://github.com/hack66/appavail/blob/master/AppStoreCensorship.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ververis2019a

@@ -1,0 +1,21 @@
+id: 2021-elmenhorst-web
+title: Web censorship measurements of HTTP/3 over QUIC
+authors:
+  - Kathrin Elmenhorst
+  - Bertram Schütz
+  - Nils Aschenbruck
+  - Simone Basso
+venue: Internet Measurement Conference
+year: 2021
+url: https://dl.acm.org/doi/pdf/10.1145/3487552.3487836
+censors:
+  - generic
+techniques:
+  - http3-quic-block
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Elmenhorst2021a

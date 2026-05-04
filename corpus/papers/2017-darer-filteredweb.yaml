@@ -1,0 +1,20 @@
+id: 2017-darer-filteredweb
+title: 'FilteredWeb: A Framework for the Automated Search-Based Discovery of Blocked URLs'
+authors:
+  - Alexander Darer
+  - Oliver Farnan
+  - Joss Wright
+venue: Network Traffic Measurement and Analysis
+year: 2017
+url: https://tma.ifip.org/wordpress/wp-content/uploads/2017/06/tma2017_paper32.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Darer2017a

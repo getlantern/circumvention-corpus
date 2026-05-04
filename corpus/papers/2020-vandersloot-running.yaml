@@ -1,0 +1,28 @@
+id: 2020-vandersloot-running
+title: Running Refraction Networking for Real
+authors:
+  - Benjamin VanderSloot
+  - Sergey Frolov
+  - Jack Wampler
+  - Sze Chuen Tan
+  - Irv Simpson
+  - Michalis Kallitsis
+  - J. Alex Halderman
+  - Nikita Borisov
+  - Eric Wustrow
+venue: Privacy Enhancing Technologies
+year: 2020
+url: https://petsymposium.org/2020/files/papers/issue4/popets-2020-0073.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:VanderSloot2020a

@@ -1,0 +1,18 @@
+id: 1998-ptacek-insertion
+title: 'Insertion, Evasion, and Denial of Service: Eluding Network Intrusion Detection'
+authors:
+  - Thomas H. Ptacek
+  - Timothy N. Newsham
+year: 1998
+url: https://www.icir.org/vern/Ptacek-Newsham-Evasion-98.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ptacek1998a

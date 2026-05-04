@@ -1,0 +1,19 @@
+id: 2015-holowczak-cachebrowser
+title: 'CacheBrowser: Bypassing Chinese Censorship without Proxies Using Cached Content'
+authors:
+  - John Holowczak
+  - Amir Houmansadr
+venue: Computer and Communications Security
+year: 2015
+url: https://people.cs.umass.edu/~amir/papers/CacheBrowser.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Holowczak2015a

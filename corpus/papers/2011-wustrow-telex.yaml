@@ -1,0 +1,21 @@
+id: 2011-wustrow-telex
+title: 'Telex: Anticensorship in the Network Infrastructure'
+authors:
+  - Eric Wustrow
+  - Scott Wolchok
+  - Ian Goldberg
+  - J. Alex Halderman
+venue: USENIX Security Symposium
+year: 2011
+url: https://www.usenix.org/event/sec11/tech/full_papers/Wustrow.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wustrow2011a

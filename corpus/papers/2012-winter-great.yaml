@@ -1,0 +1,19 @@
+id: 2012-winter-great
+title: How the Great Firewall of China is Blocking Tor
+authors:
+  - Philipp Winter
+  - Stefan Lindskog
+venue: Free and Open Communications on the Internet
+year: 2012
+url: https://www.usenix.org/system/files/conference/foci12/foci12-final2.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Winter2012a

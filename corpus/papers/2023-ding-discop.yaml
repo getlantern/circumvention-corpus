@@ -1,0 +1,23 @@
+id: 2023-ding-discop
+title: 'Discop: Provably secure steganography in practice based on ``distribution copies'''''
+authors:
+  - Jinyang Ding
+  - Kejiang Chen
+  - Yaofei Wang
+  - Na Zhao
+  - Weiming Zhang
+  - Nenghai Yu
+venue: Symposium on Security \& Privacy
+year: 2023
+url: https://dingjinyang.github.io/uploads/Discop_sp23_paper.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ding2023a

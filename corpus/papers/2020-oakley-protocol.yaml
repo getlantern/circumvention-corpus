@@ -1,0 +1,22 @@
+id: 2020-oakley-protocol
+title: 'Protocol Proxy: An FTE-based covert channel'
+authors:
+  - Jonathan Oakley
+  - Lu Yu
+  - Xingsi Zhong
+  - Ganesh Kumar Venayagamoorthy
+  - Richard Brooks
+venue: Computers \& Security
+year: 2020
+url: https://censorbib.nymity.ch/pdf/Oakley2020a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Oakley2020a

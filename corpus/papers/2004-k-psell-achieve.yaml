@@ -1,0 +1,19 @@
+id: 2004-k-psell-achieve
+title: How to Achieve Blocking Resistance for Existing Systems Enabling Anonymous Web Surfing
+authors:
+  - Stefan Köpsell
+  - Ulf Hillig
+venue: Workshop on Privacy in the Electronic Society
+year: 2004
+url: https://censorbib.nymity.ch/pdf/Koepsell2004a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Koepsell2004a

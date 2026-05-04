@@ -1,0 +1,18 @@
+id: 2025-vines-extended
+title: 'Extended Abstract: Nobody’s Fault but Mine: Using Unauthenticated Unidirectional Pushes for Client Update'
+authors:
+  - Paul Vines
+venue: Free and Open Communications on the Internet
+year: 2025
+url: https://petsymposium.org/foci/2025/foci-2025-0012.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Vines2025a

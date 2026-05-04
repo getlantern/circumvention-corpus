@@ -1,0 +1,20 @@
+id: 2021-sharma-camoufler
+title: 'Camoufler: Accessing The Censored Web By Utilizing Instant Messaging Channels'
+authors:
+  - Piyush Kumar Sharma
+  - Devashish Gosain
+  - Sambuddho Chakravarty
+venue: Asia CCS
+year: 2021
+url: https://censorbib.nymity.ch/pdf/Sharma2021a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Sharma2021a

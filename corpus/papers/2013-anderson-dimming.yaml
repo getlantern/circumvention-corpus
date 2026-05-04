@@ -1,0 +1,20 @@
+id: 2013-anderson-dimming
+title: 'Dimming the Internet: Detecting Throttling as a Mechanism of Censorship in Iran'
+authors:
+  - Collin Anderson
+venue: University of Pennsylvania
+year: 2013
+url: https://arxiv.org/pdf/1306.4361v1.pdf
+censors:
+  - ir
+techniques:
+  - esni-eh-blocking
+defenses_discussed:
+  - ech-esni
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Anderson2013a

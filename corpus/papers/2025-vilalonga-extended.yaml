@@ -1,0 +1,22 @@
+id: 2025-vilalonga-extended
+title: 'Extended Abstract: Using TURN Servers for Censorship Evasion'
+authors:
+  - Afonso Vilalonga
+  - Kevin Gallagher
+  - Osman Yaǧan
+  - João S. Resende
+  - Henrique Domingos
+venue: Free and Open Communications on the Internet
+year: 2025
+url: https://www.petsymposium.org/foci/2025/foci-2025-0003.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Vilalonga2025a

@@ -1,0 +1,21 @@
+id: 2024-hanlon-detecting
+title: Detecting VPN Traffic through Encapsulated TCP Behavior
+authors:
+  - Michelina Hanlon
+  - Gerry Wan
+  - Anna Ascheman
+  - Zakir Durumeric
+venue: Free and Open Communications on the Internet
+year: 2024
+url: https://www.petsymposium.org/foci/2024/foci-2024-0016.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hanlon2024a

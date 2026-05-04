@@ -1,0 +1,20 @@
+id: 2006-clayton-ignoring
+title: Ignoring the Great Firewall of China
+authors:
+  - Richard Clayton
+  - Steven J. Murdoch
+  - Robert N. M. Watson
+venue: Privacy Enhancing Technologies
+year: 2006
+url: https://www.cl.cam.ac.uk/~rnc1/ignoring.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Clayton2006a

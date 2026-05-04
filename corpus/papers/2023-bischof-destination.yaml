@@ -1,0 +1,26 @@
+id: 2023-bischof-destination
+title: 'Destination Unreachable: Characterizing Internet Outages and Shutdowns'
+authors:
+  - Zachary S. Bischof
+  - Kennedy Pitcher
+  - Esteban Carisimo
+  - Amanda Meng
+  - Rafael Bezerra Nunes
+  - Ramakrishna Padmanabhan
+  - Margaret E. Roberts
+  - Alex C. Snoeren
+  - Alberto Dainotti
+venue: SIGCOMM
+year: 2023
+url: https://cseweb.ucsd.edu/~snoeren/papers/shutdown-sigcomm23.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bischof2023a

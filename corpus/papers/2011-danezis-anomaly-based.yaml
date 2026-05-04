@@ -1,0 +1,18 @@
+id: 2011-danezis-anomaly-based
+title: An anomaly-based censorship-detection system for Tor
+authors:
+  - George Danezis
+venue: The Tor Project
+year: 2011
+url: https://research.torproject.org/techreports/detector-2011-09-09.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Danezis2011a

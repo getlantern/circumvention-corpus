@@ -1,0 +1,21 @@
+id: 2022-harrity-get
+title: 'GET /out: Automated Discovery of Application-Layer Censorship Evasion Strategies'
+authors:
+  - Michael Harrity
+  - Kevin Bock
+  - Frederick Sell
+  - Dave Levin
+venue: USENIX Security Symposium
+year: 2022
+url: https://www.usenix.org/system/files/sec22-harrity.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Harrity2022a

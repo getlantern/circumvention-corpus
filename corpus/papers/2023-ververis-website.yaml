@@ -1,0 +1,21 @@
+id: 2023-ververis-website
+title: 'Website blocking in the European Union: Network interference from the perspective of Open Internet'
+authors:
+  - Vasilis Ververis
+  - Lucas Lasota
+  - Tatiana Ermakova
+  - Benjamin Fabian
+venue: Policy \& Internet
+year: 2023
+url: https://onlinelibrary.wiley.com/doi/pdf/10.1002/poi3.367
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ververis2023a

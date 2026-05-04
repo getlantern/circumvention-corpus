@@ -1,0 +1,25 @@
+id: 2018-mcdonald-403
+title: '403 Forbidden: A Global View of CDN Geoblocking'
+authors:
+  - Allison McDonald
+  - Matthew Bernhard
+  - Luke Valenta
+  - Benjamin VanderSloot
+  - Will Scott
+  - Nick Sullivan
+  - J. Alex Halderman
+  - Roya Ensafi
+venue: Internet Measurement Conference
+year: 2018
+url: https://delivery.acm.org/10.1145/3280000/3278552/p218-McDonald.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:McDonald2018a

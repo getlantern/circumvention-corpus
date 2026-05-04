@@ -1,0 +1,21 @@
+id: 2025-niere-transport
+title: 'Transport Layer Obscurity: Circumventing SNI Censorship on the TLS Layer'
+authors:
+  - Niklas Niere
+  - Felix Lange
+  - Robert Merget
+  - Juraj Somorovsky
+venue: Symposium on Security \& Privacy
+year: 2025
+url: https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/26hiUekZ19S/pdf
+censors:
+  - generic
+techniques:
+  - sni-blocking
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Niere2025a

@@ -1,0 +1,20 @@
+id: 2014-anderson-global
+title: Global Network Interference Detection over the RIPE Atlas Network
+authors:
+  - Collin Anderson
+  - Philipp Winter
+  - Roya
+venue: Free and Open Communications on the Internet
+year: 2014
+url: https://www.usenix.org/system/files/conference/foci14/foci14-anderson.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Anderson2014a

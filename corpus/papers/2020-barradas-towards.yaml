@@ -1,0 +1,21 @@
+id: 2020-barradas-towards
+title: Towards a Scalable Censorship-Resistant Overlay Network based on WebRTC Covert Channels
+authors:
+  - Diogo Barradas
+  - Nuno Santos
+venue: Distributed Infrastructure for Common Good
+year: 2020
+url: https://www.gsd.inesc-id.pt/~nsantos/papers/barradas_dicg20.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - webrtc-pluggable
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Barradas2020b

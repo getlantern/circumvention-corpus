@@ -1,0 +1,21 @@
+id: 2022-chang-covid-19
+title: COVID-19 increased censorship circumvention and access to sensitive topics in China
+authors:
+  - Keng-Chi Chang
+  - William R. Hobbs
+  - Margaret E. Roberts
+  - Zachary C. Steinert-Threlkeld
+venue: PNAS
+year: 2022
+url: https://censorbib.nymity.ch/pdf/Chang2022a.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Chang2022a

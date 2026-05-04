@@ -1,0 +1,24 @@
+id: 2022-xue-openvpn
+title: OpenVPN is Open to VPN Fingerprinting
+authors:
+  - Diwen Xue
+  - Reethika Ramesh
+  - Arham Jain
+  - Michalis Kallitsis
+  - J. Alex Halderman
+  - Jedidiah R. Crandall
+  - Roya Ensafi
+venue: USENIX Security Symposium
+year: 2022
+url: https://www.usenix.org/system/files/sec22-xue-diwen.pdf
+censors:
+  - generic
+techniques:
+  - tls-fingerprint
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Xue2022a

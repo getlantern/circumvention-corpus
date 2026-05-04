@@ -1,0 +1,22 @@
+id: 2014-luchaup-libfte
+title: 'LibFTE: A Toolkit for Constructing Practical, Format-Abiding Encryption Schemes'
+authors:
+  - Daniel Luchaup
+  - Kevin P. Dyer
+  - Somesh Jha
+  - Thomas Ristenpart
+  - Thomas Shrimpton
+venue: USENIX Security Symposium
+year: 2014
+url: https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-luchaup.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Luchaup2014a

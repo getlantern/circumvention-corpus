@@ -1,0 +1,23 @@
+id: 2018-tschantz-bestiary
+title: 'A Bestiary of Blocking: The Motivations and Modes behind Website Unavailability'
+authors:
+  - Michael Carl Tschantz
+  - Sadia Afroz
+  - Shaarif Sajid
+  - Shoaib Asif Qazi
+  - Mobin Javed
+  - Vern Paxson
+venue: Free and Open Communications on the Internet
+year: 2018
+url: https://www.usenix.org/system/files/conference/foci18/foci18-paper-tschantz.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Tschantz2018a

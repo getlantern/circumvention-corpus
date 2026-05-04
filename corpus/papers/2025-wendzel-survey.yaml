@@ -1,0 +1,23 @@
+id: 2025-wendzel-survey
+title: 'A Survey of Internet Censorship and its Measurement: Methodology, Trends, and Challenges'
+authors:
+  - Steffen Wendzel
+  - Simon Volpert
+  - Sebastian Zillien
+  - Julia Lenz
+  - Philip Rünz
+  - Luca Caviglione
+venue: Computers \& Security
+year: 2025
+url: https://www.sciencedirect.com/science/article/pii/S0167404825004213
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wendzel2025a

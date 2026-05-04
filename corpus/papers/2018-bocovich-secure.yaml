@@ -1,0 +1,21 @@
+id: 2018-bocovich-secure
+title: Secure asymmetry and deployability for decoy routing systems
+authors:
+  - Cecylia Bocovich
+  - Ian Goldberg
+venue: Privacy Enhancing Technologies
+year: 2018
+url: https://www.petsymposium.org/2018/files/papers/issue3/popets-2018-0020.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bocovich2018a

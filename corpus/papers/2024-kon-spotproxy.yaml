@@ -1,0 +1,24 @@
+id: 2024-kon-spotproxy
+title: 'SpotProxy: Rediscovering the Cloud for Censorship Circumvention'
+authors:
+  - Patrick Tser Jern Kon
+  - Sina Kamali
+  - Jinyu Pei
+  - Diogo Barradas
+  - Ang Chen
+  - Micah Sherr
+  - Moti Yung
+venue: USENIX Security Symposium
+year: 2024
+url: https://www.cs-pk.com/sec24-spotproxy-final.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Kon2024b

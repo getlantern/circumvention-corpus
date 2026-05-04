@@ -1,0 +1,23 @@
+id: 2025-niere-encrypted
+title: Encrypted Client Hello (ECH) in Censorship Circumvention
+authors:
+  - Niklas Niere
+  - Felix Lange
+  - Nico Heitmann
+  - Juraj Somorovsky
+venue: Free and Open Communications on the Internet
+year: 2025
+url: https://petsymposium.org/foci/2025/foci-2025-0016.pdf
+censors:
+  - generic
+techniques:
+  - esni-eh-blocking
+defenses_discussed:
+  - ech-esni
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Niere2025b

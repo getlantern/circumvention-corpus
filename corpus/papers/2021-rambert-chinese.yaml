@@ -1,0 +1,21 @@
+id: 2021-rambert-chinese
+title: Chinese Wall or Swiss Cheese? Keyword filtering in the Great Firewall of China
+authors:
+  - Raymond Rambert
+  - Zachary Weinberg
+  - Diogo Barradas
+  - Nicolas Christin
+venue: WWW
+year: 2021
+url: https://censorbib.nymity.ch/pdf/Rambert2021a.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Rambert2021a

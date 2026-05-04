@@ -1,0 +1,20 @@
+id: 2019-hoang-measuring
+title: Measuring I2P Censorship at a Global Scale
+authors:
+  - Nguyen Phong Hoang
+  - Sadie Doreen
+  - Michalis Polychronakis
+venue: Free and Open Communications on the Internet
+year: 2019
+url: https://www.usenix.org/system/files/foci19-paper_hoang.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hoang2019a

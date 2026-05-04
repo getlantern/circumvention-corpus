@@ -1,0 +1,18 @@
+id: 2014-morrison-toward
+title: Toward automatic censorship detection in microblogs
+authors:
+  - Donn Morrison
+venue: Data Mining in Social Networks
+year: 2014
+url: https://arxiv.org/pdf/1402.5310v2.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Morrison2014a

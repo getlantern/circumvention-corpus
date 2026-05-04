@@ -1,0 +1,25 @@
+id: 2015-levin-alibi
+title: Alibi Routing
+authors:
+  - Dave Levin
+  - Youndo Lee
+  - Luke Valenta
+  - Zhihao Li
+  - Victoria Lai
+  - Cristian Lumezanu
+  - Neil Spring
+  - Bobby Bhattacharjee
+venue: SIGCOMM
+year: 2015
+url: https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p611.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Levin2015a

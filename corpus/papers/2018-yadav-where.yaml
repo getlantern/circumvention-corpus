@@ -1,0 +1,24 @@
+id: 2018-yadav-where
+title: 'Where The Light Gets In: Analyzing Web Censorship Mechanisms in India'
+authors:
+  - Tarun Kumar Yadav
+  - Akshat Sinha
+  - Devashish Gosain
+  - Piyush Kumar Sharma
+  - Sambuddho Chakravarty
+venue: Internet Measurement Conference
+year: 2018
+url: https://delivery.acm.org/10.1145/3280000/3278555/p252-Yadav.pdf
+censors:
+  - generic
+techniques:
+  - esni-eh-blocking
+defenses_discussed:
+  - ech-esni
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Yadav2018a

@@ -1,0 +1,19 @@
+id: 2011-espinoza-automated
+title: Automated Named Entity Extraction for Tracking Censorship of Current Events
+authors:
+  - Antonio M. Espinoza
+  - Jedidiah R. Crandall
+venue: Free and Open Communications on the Internet
+year: 2011
+url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Espinoza.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Espinoza2011a

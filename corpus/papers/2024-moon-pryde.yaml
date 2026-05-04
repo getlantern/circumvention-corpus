@@ -1,0 +1,22 @@
+id: 2024-moon-pryde
+title: 'Pryde: A Modular Generalizable Workflow for Uncovering Evasion Attacks Against Stateful Firewall Deployments'
+authors:
+  - Soo-Jin Moon
+  - Milind Srivastava
+  - Yves Bieri
+  - Ruben Martins
+  - Vyas Sekar
+venue: Symposium on Security \& Privacy
+year: 2024
+url: https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/1Ub242nYFoY/pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Moon2024a

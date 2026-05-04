@@ -1,0 +1,20 @@
+id: 2009-weaver-detecting
+title: Detecting Forged TCP Reset Packets
+authors:
+  - Nicholas Weaver
+  - Robin Sommer
+  - Vern Paxson
+venue: Network and Distributed System Security
+year: 2009
+url: https://www.ndss-symposium.org/wp-content/uploads/2017/09/weav.pdf
+censors:
+  - generic
+techniques:
+  - rst-injection
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Weaver2009a

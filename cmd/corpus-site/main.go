@@ -18,6 +18,7 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"log"
@@ -200,7 +201,61 @@ func (s *site) render() error {
 	if err := s.renderUse(); err != nil {
 		return err
 	}
-	return s.renderContribute()
+	if err := s.renderContribute(); err != nil {
+		return err
+	}
+	return s.renderSearchIndex()
+}
+
+// renderSearchIndex emits a single JSON document containing the
+// searchable fields for every paper: id, title, authors, abstract,
+// notes, tags. The client-side search bar fetches it once and runs
+// in-memory filtering. At ~600KB for a few hundred papers it's well
+// inside the budget — Pagefind would gzip smaller but adds a build
+// dependency we don't need yet.
+func (s *site) renderSearchIndex() error {
+	type record struct {
+		ID         string   `json:"id"`
+		Title      string   `json:"title"`
+		Authors    []string `json:"authors,omitempty"`
+		Venue      string   `json:"venue,omitempty"`
+		Year       int      `json:"year,omitempty"`
+		Abstract   string   `json:"abstract,omitempty"`
+		Notes      string   `json:"notes,omitempty"`
+		Censors    []string `json:"censors,omitempty"`
+		Techniques []string `json:"techniques,omitempty"`
+		Defenses   []string `json:"defenses,omitempty"`
+		Core       bool     `json:"core,omitempty"`
+	}
+	out := make([]record, 0, len(s.papers))
+	for _, p := range s.papers {
+		all := append([]string{}, p.DefensesDiscussed...)
+		for _, d := range p.DefensesEvaluatedAgainst {
+			if !slices.Contains(all, d) {
+				all = append(all, d)
+			}
+		}
+		out = append(out, record{
+			ID:         p.ID,
+			Title:      p.Title,
+			Authors:    p.Authors,
+			Venue:      p.Venue,
+			Year:       p.Year,
+			Abstract:   p.Abstract,
+			Notes:      p.Notes,
+			Censors:    p.Censors,
+			Techniques: p.Techniques,
+			Defenses:   all,
+			Core:       p.Core,
+		})
+	}
+	f, err := os.Create(filepath.Join(s.out, "search-index.json"))
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	enc := json.NewEncoder(f)
+	return enc.Encode(out)
 }
 
 func (s *site) renderUse() error {
@@ -389,5 +444,8 @@ func relatedPapers(src *Paper, all []*Paper, limit int) []*Paper {
 }
 
 func (s *site) copyStatic() error {
-	return os.WriteFile(filepath.Join(s.out, "style.css"), []byte(styleCSS), 0o644)
+	if err := os.WriteFile(filepath.Join(s.out, "style.css"), []byte(styleCSS), 0o644); err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(s.out, "search.js"), []byte(searchJS), 0o644)
 }

@@ -1,0 +1,23 @@
+id: 2012-schuchard-routing
+title: Routing Around Decoys
+authors:
+  - Max Schuchard
+  - John Geddes
+  - Christopher Thompson
+  - Nicholas Hopper
+venue: Computer and Communications Security
+year: 2012
+url: https://www-users.cs.umn.edu/~hopper/decoy-ccs12.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Schuchard2012a

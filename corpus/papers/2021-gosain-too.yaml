@@ -1,0 +1,20 @@
+id: 2021-gosain-too
+title: 'Too Close for Comfort: Morasses of (Anti-) Censorship in the Era of CDNs'
+authors:
+  - Devashish Gosain
+  - Mayank Mohindra
+  - Sambuddho Chakravarty
+venue: Privacy Enhancing Technologies
+year: 2021
+url: https://petsymposium.org/2021/files/papers/issue2/popets-2021-0023.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Gosain2021a

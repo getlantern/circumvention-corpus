@@ -1,0 +1,20 @@
+id: 2018-hounsel-automatically
+title: Automatically Generating a Large, Culture-Specific Blocklist for China
+authors:
+  - Austin Hounsel
+  - Prateek Mittal
+  - Nick Feamster
+venue: Free and Open Communications on the Internet
+year: 2018
+url: https://www.usenix.org/system/files/conference/foci18/foci18-paper-hounsel.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hounsel2018a

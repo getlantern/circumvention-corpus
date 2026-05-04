@@ -1,0 +1,24 @@
+id: 2012-weinberg-stegotorus
+title: 'StegoTorus: A Camouflage Proxy for the Tor Anonymity System'
+authors:
+  - Zachary Weinberg
+  - Jeffrey Wang
+  - Vinod Yegneswaran
+  - Linda Briesemeister
+  - Steven Cheung
+  - Frank Wang
+  - Dan Boneh
+venue: Computer and Communications Security
+year: 2012
+url: https://www.frankwang.org/files/papers/ccs2012.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Weinberg2012a

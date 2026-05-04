@@ -1,0 +1,21 @@
+id: 2017-deng-random
+title: The Random Forest based Detection of Shadowsock's Traffic
+authors:
+  - Ziye Deng
+  - Zihan Liu
+  - Zhouguo Chen
+  - Yubin Guo
+venue: Intelligent Human-Machine Systems and Cybernetics
+year: 2017
+url: https://censorbib.nymity.ch/pdf/Deng2017a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Deng2017a

@@ -1,0 +1,19 @@
+id: 2024-sakamoto-bleeding
+title: 'Bleeding Wall: A Hematologic Examination on the Great Firewall'
+authors:
+  - Sakamoto
+  - Elson Wedwards
+venue: Free and Open Communications on the Internet
+year: 2024
+url: https://www.petsymposium.org/foci/2024/foci-2024-0002.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Sakamoto2024a

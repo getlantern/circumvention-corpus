@@ -1,0 +1,18 @@
+id: 2012-wright-regional
+title: Regional Variation in Chinese Internet Filtering
+authors:
+  - Joss Wright
+venue: University of Oxford
+year: 2012
+url: https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2265775_code1448244.pdf?abstractid=2265775&mirid=3
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wright2012a

@@ -1,0 +1,19 @@
+id: 2011-bonneau-scrambling
+title: Scrambling for lightweight censorship resistance
+authors:
+  - Joseph Bonneau
+  - Rubin Xu
+venue: Security Protocols
+year: 2011
+url: http://www.jbonneau.com/doc/BX11-SPW-scrambling_censorship.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bonneau2011a

@@ -1,0 +1,21 @@
+id: 2016-bocovich-slitheen
+title: 'Slitheen: Perfectly Imitated Decoy Routing through Traffic Replacement'
+authors:
+  - Cecylia Bocovich
+  - Ian Goldberg
+venue: Computer and Communications Security
+year: 2016
+url: https://www.cypherpunks.ca/~iang/pubs/slitheen-ccs16.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bocovich2016a

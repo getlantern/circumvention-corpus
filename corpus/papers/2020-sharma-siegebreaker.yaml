@@ -1,0 +1,27 @@
+id: 2020-sharma-siegebreaker
+title: 'SiegeBreaker: An SDN Based Practical Decoy Routing System'
+authors:
+  - Piyush Kumar Sharma
+  - Devashish Gosain
+  - Himanshu Sagar
+  - Chaitanya Kumar
+  - Aneesh Dogra
+  - Vinayak Naik
+  - H. B. Acharya
+  - Sambuddho Chakravarty
+venue: Privacy Enhancing Technologies
+year: 2020
+url: https://petsymposium.org/2020/files/papers/issue3/popets-2020-0051.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Sharma2020a

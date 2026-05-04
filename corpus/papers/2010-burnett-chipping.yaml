@@ -1,0 +1,20 @@
+id: 2010-burnett-chipping
+title: Chipping Away at Censorship Firewalls with User-Generated Content
+authors:
+  - Sam Burnett
+  - Nick Feamster
+  - Santosh Vempala
+venue: USENIX Security Symposium
+year: 2010
+url: https://www.usenix.org/event/sec10/tech/full_papers/Burnett.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Burnett2010a

@@ -1,0 +1,19 @@
+id: 2023-xue-use
+title: The Use of Push Notification in Censorship Circumvention
+authors:
+  - Diwen Xue
+  - Roya Ensafi
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0009.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Xue2023a

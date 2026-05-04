@@ -1,0 +1,20 @@
+id: 2020-govil-mimiq
+title: 'MIMIQ: Masking IPs with Migration in QUIC'
+authors:
+  - Yashodhar Govil
+  - Liang Wang
+  - Jennifer Rexford
+venue: Free and Open Communications on the Internet
+year: 2020
+url: https://www.usenix.org/system/files/foci20-paper-govil.pdf
+censors:
+  - generic
+techniques:
+  - http3-quic-block
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Govil2020a

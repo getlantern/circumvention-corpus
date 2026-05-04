@@ -1,0 +1,19 @@
+id: 2015-jones-can
+title: Can Censorship Measurements Be Safe(r)?
+authors:
+  - Ben Jones
+  - Nick Feamster
+venue: Hot Topics in Networks
+year: 2015
+url: https://conferences.sigcomm.org/hotnets/2015/papers/jones.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Jones2015b

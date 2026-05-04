@@ -1,0 +1,21 @@
+id: 2013-benson-gaining
+title: Gaining Insight into AS-level Outages through Analysis of Internet Background Radiation
+authors:
+  - Karyn Benson
+  - Alberto Dainotti
+  - KC Claffy
+  - Emile Aben
+venue: Traffic Monitoring and Analysis
+year: 2013
+url: https://cseweb.ucsd.edu/~kbenson/papers/tma13.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Benson2013a

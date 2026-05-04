@@ -1,0 +1,19 @@
+id: 2023-fenske-security
+title: Security Notions for Fully Encrypted Protocols
+authors:
+  - Ellis Fenske
+  - Aaron Johnson
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0004.pdf
+censors:
+  - generic
+techniques:
+  - fully-encrypted-detect
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Fenske2023a

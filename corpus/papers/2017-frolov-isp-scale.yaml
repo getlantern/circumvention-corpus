@@ -1,0 +1,30 @@
+id: 2017-frolov-isp-scale
+title: An ISP-Scale Deployment of TapDance
+authors:
+  - Sergey Frolov
+  - Fred Douglas
+  - Will Scott
+  - Allison McDonald
+  - Benjamin VanderSloot
+  - Rod Hynes
+  - Adam Kruger
+  - Michalis Kallitsis
+  - David G. Robinson
+  - Steve Schultze
+  - Nikita Borisov
+  - J. Alex Halderman
+  - Eric Wustrow
+venue: Free and Open Communications on the Internet
+year: 2017
+url: https://www.usenix.org/system/files/conference/foci17/foci17-paper-frolov_0.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Frolov2017a

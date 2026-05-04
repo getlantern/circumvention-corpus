@@ -1,0 +1,18 @@
+id: 2020-fifield-turbo
+title: Turbo Tunnel, a good way to design censorship circumvention protocols
+authors:
+  - David Fifield
+venue: Free and Open Communications on the Internet
+year: 2020
+url: https://www.usenix.org/system/files/foci20-paper-fifield.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Fifield2020a

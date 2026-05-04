@@ -1,0 +1,20 @@
+id: 2018-ng-detecting
+title: 'Detecting Censorable Content on Sina Weibo: A Pilot Study'
+authors:
+  - Kei Yin Ng
+  - Anna Feldman
+  - Chris Leberknight
+venue: Hellenic Conference on Artificial Intelligence
+year: 2018
+url: https://censorbib.nymity.ch/pdf/Ng2018a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ng2018a

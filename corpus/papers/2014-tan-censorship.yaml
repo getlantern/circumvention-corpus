@@ -1,0 +1,19 @@
+id: 2014-tan-censorship
+title: Censorship Resistance as a Side-Effect
+authors:
+  - Henry Tan
+  - Micah Sherr
+venue: Security Protocols
+year: 2014
+url: https://censorbib.nymity.ch/pdf/Tan2014a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Tan2014a

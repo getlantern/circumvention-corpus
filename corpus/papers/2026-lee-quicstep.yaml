@@ -1,0 +1,24 @@
+id: 2026-lee-quicstep
+title: 'QUICstep: Evaluating connection migration based QUIC censorship circumvention'
+authors:
+  - Seungju Lee
+  - Mona Wang
+  - Watson Jia
+  - Qiang Wu
+  - Henry Birge-Lee
+  - Liang Wang
+  - Prateek Mittal
+venue: Privacy Enhancing Technologies
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0014.pdf
+censors:
+  - generic
+techniques:
+  - http3-quic-block
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lee2026a

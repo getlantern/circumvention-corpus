@@ -1,0 +1,19 @@
+id: 2023-master-worldwide
+title: A Worldwide View of Nation-state Internet Censorship
+authors:
+  - Alexander Master
+  - Christina Garman
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0008.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Master2023a

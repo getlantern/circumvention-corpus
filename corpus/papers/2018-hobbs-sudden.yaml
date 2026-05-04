@@ -1,0 +1,19 @@
+id: 2018-hobbs-sudden
+title: How Sudden Censorship Can Increase Access to Information
+authors:
+  - William R. Hobbs
+  - Margaret E. Roberts
+venue: American Political Science Review
+year: 2018
+url: https://www.margaretroberts.net/wp-content/uploads/2016/08/selfiecensorship.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hobbs2018a

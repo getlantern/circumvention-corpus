@@ -1,0 +1,21 @@
+id: 2023-nourin-detecting
+title: Detecting Network Interference Without Endpoint Participation
+authors:
+  - Sadia Nourin
+  - Kevin Bock
+  - Nguyen Phong Hoang
+  - Dave Levin
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0010.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nourin2023b

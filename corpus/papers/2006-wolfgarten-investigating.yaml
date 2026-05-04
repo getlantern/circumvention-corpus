@@ -1,0 +1,18 @@
+id: 2006-wolfgarten-investigating
+title: Investigating large-scale Internet content filtering
+authors:
+  - Sebastian Wolfgarten
+venue: Dublin City University
+year: 2006
+url: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.133.5778&rep=rep1&type=pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wolfgarten2006a

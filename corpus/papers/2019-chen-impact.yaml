@@ -1,0 +1,19 @@
+id: 2019-chen-impact
+title: 'The Impact of Media Censorship: 1984 or Brave New World?'
+authors:
+  - Yuyu Chen
+  - David Y. Yang
+venue: American Economic Review
+year: 2019
+url: https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20171765
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Chen2019a

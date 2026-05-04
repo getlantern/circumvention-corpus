@@ -1,0 +1,24 @@
+id: 2020-zhu-characterizing
+title: Characterizing Transnational Internet Performance and the Great Bottleneck of China
+authors:
+  - Pengxiong Zhu
+  - Keyu Man
+  - Zhongjie Wang
+  - Zhiyun Qian
+  - Roya Ensafi
+  - J. Alex Halderman
+  - Haixin Duan
+venue: Measurement and Analysis of Computing Systems
+year: 2020
+url: https://dl.acm.org/doi/pdf/10.1145/3379479
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Zhu2020a

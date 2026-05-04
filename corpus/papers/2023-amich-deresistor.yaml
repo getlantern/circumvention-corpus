@@ -1,0 +1,21 @@
+id: 2023-amich-deresistor
+title: 'DeResistor: Toward Detection-Resistant Probing for Evasion of Internet Censorship'
+authors:
+  - Abderrahmen Amich
+  - Birhanu Eshete
+  - Vinod Yegneswaran
+  - Nguyen Phong Hoang
+venue: USENIX Security Symposium
+year: 2023
+url: https://www.usenix.org/system/files/usenixsecurity23-amich.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Amich2023a

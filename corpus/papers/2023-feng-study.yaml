@@ -1,0 +1,21 @@
+id: 2023-feng-study
+title: A Study of China's Censorship and Its Evasion Through the Lens of Online Gaming
+authors:
+  - Yuzhou Feng
+  - Ruyu Zhai
+  - Radu Sion
+  - Bogdan Carbunar
+venue: USENIX Security Symposium
+year: 2023
+url: https://www.usenix.org/system/files/usenixsecurity23-feng.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Feng2023a

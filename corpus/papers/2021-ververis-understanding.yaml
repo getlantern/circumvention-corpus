@@ -1,0 +1,23 @@
+id: 2021-ververis-understanding
+title: 'Understanding Internet Censorship in Europe: The Case of Spain'
+authors:
+  - Vasilis Ververis
+  - Tatiana Ermakova
+  - Marios Isaakidis
+  - Simone Basso
+  - Benjamin Fabian
+  - Stefania Milan
+venue: Web Science Conference
+year: 2021
+url: https://dl.acm.org/doi/pdf/10.1145/3447535.3462638
+censors:
+  - generic
+techniques:
+  - rst-injection
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ververis2021a

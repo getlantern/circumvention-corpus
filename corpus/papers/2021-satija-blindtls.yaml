@@ -1,0 +1,19 @@
+id: 2021-satija-blindtls
+title: 'BlindTLS: Circumventing TLS-Based HTTPS Censorship'
+authors:
+  - Sambhav Satija
+  - Rahul Chatterjee
+venue: Free and Open Communications on the Internet
+year: 2021
+url: https://doi.org/10.1145/3473604.3474564
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Satija2021a

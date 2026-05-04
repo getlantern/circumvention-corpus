@@ -1,0 +1,22 @@
+id: 2017-wang-your
+title: 'Your State is Not Mine: A Closer Look at Evading Stateful Internet Censorship'
+authors:
+  - Zhongjie Wang
+  - Yue Cao
+  - Zhiyun Qian
+  - Chengyu Song
+  - Srikanth V. Krishnamurthy
+venue: Internet Measurement Conference
+year: 2017
+url: https://www.cs.ucr.edu/~krish/imc17.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2017a

@@ -1,0 +1,20 @@
+id: 2017-barradas-deltashaper
+title: 'DeltaShaper: Enabling Unobservable Censorship-resistant TCP Tunneling over Videoconferencing Streams'
+authors:
+  - Diogo Barradas
+  - Nuno Santos
+  - Luís Rodrigues
+venue: Privacy Enhancing Technologies
+year: 2017
+url: https://petsymposium.org/2017/papers/issue4/paper15-2017-4-source.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Barradas2017a

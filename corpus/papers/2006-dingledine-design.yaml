@@ -1,0 +1,19 @@
+id: 2006-dingledine-design
+title: Design of a blocking-resistant anonymity system
+authors:
+  - Roger Dingledine
+  - Nick Mathewson
+venue: The Tor Project
+year: 2006
+url: https://svn.torproject.org/svn/projects/design-paper/blocking.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Dingledine2006a

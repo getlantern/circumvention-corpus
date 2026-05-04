@@ -1,0 +1,21 @@
+id: 2013-houmansadr-i
+title: 'I want my voice to be heard: IP over Voice-over-IP for unobservable censorship circumvention'
+authors:
+  - Amir Houmansadr
+  - Thomas Riedl
+  - Nikita Borisov
+  - Andrew Singer
+venue: Network and Distributed System Security
+year: 2013
+url: https://people.cs.umass.edu/~amir/papers/FreeWave.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Houmansadr2013a

@@ -1,0 +1,22 @@
+id: 2016-elahi-framework
+title: A Framework for the Game-theoretic Analysis of Censorship Resistance
+authors:
+  - Tariq Elahi
+  - John A. Doucette
+  - Hadi Hosseini
+  - Steven J. Murdoch
+  - Ian Goldberg
+venue: Privacy Enhancing Technologies
+year: 2016
+url: https://discovery.ucl.ac.uk/id/eprint/1503846/1/popets2016gametheoretic.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Elahi2016a

@@ -1,0 +1,22 @@
+id: 2012-sparks-collateral
+title: The Collateral Damage of Internet Censorship by DNS Injection
+authors:
+  - Sparks
+  - Neo
+  - Tank
+  - Smith
+  - Dozer
+venue: SIGCOMM Computer Communication Review
+year: 2012
+url: https://conferences.sigcomm.org/sigcomm/2012/paper/ccr-paper266.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Sparks2012a

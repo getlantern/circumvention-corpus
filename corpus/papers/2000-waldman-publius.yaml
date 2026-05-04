@@ -1,0 +1,22 @@
+id: 2000-waldman-publius
+title: 'Publius: A robust, tamper-evident, censorship-resistant web publishing system'
+authors:
+  - Marc Waldman
+  - Aviel D. Rubin
+  - Lorrie Faith Cranor
+venue: USENIX Security Symposium
+year: 2000
+url: https://www.usenix.org/legacy/events/sec2000/waldman/waldman.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - amp-cache
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Waldman2000a

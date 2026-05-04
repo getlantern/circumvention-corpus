@@ -1,0 +1,21 @@
+id: 2021-lorimer-oustralopithecus
+title: 'OUStralopithecus: Overt User Simulation for Censorship Circumvention'
+authors:
+  - Anna Harbluk Lorimer
+  - Lindsey Tulloch
+  - Cecylia Bocovich
+  - Ian Goldberg
+venue: Workshop on Privacy in the Electronic Society
+year: 2021
+url: https://cypherpunks.ca/~iang/pubs/oustral-wpes21.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lorimer2021a

@@ -1,0 +1,21 @@
+id: 2025-midtlien-fingerprint-resistant
+title: Fingerprint-resistant DTLS for usage in Snowflake
+authors:
+  - Theodor Signebøen Midtlien
+  - David Palma
+venue: Free and Open Communications on the Internet
+year: 2025
+url: https://petsymposium.org/foci/2025/foci-2025-0006.pdf
+censors:
+  - generic
+techniques:
+  - tls-fingerprint
+defenses_discussed:
+  - webrtc-pluggable
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Midtlien2025a

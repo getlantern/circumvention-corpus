@@ -1,0 +1,25 @@
+id: 2012-duan-hold-on
+title: 'Hold-On: Protecting Against On-Path DNS Poisoning'
+authors:
+  - Haixin Duan
+  - Nicholas Weaver
+  - Zongxu Zhao
+  - Meng Hu
+  - Jinjin Liang
+  - Jian Jiang
+  - Kang Li
+  - Vern Paxson
+venue: Securing and Trusting Internet Names
+year: 2012
+url: https://www.icir.org/vern/papers/hold-on.satin12.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Duan2012a

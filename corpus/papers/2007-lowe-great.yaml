@@ -1,0 +1,20 @@
+id: 2007-lowe-great
+title: The Great DNS Wall of China
+authors:
+  - Graham Lowe
+  - Patrick Winters
+  - Michael L. Marcus
+venue: New York University
+year: 2007
+url: https://censorbib.nymity.ch/pdf/Lowe2007a.pdf
+censors:
+  - cn
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lowe2007a

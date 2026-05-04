@@ -1,0 +1,20 @@
+id: 2020-minaei-moneymorph
+title: 'MoneyMorph: Censorship Resistant Rendezvous using Permissionless Cryptocurrencies'
+authors:
+  - Mohsen Minaei
+  - Pedro Moreno-Sanchez
+  - Aniket Kate
+venue: Privacy Enhancing Technologies
+year: 2020
+url: https://petsymposium.org/2020/files/papers/issue3/popets-2020-0058.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Minaei2020a

@@ -1,0 +1,20 @@
+id: 2014-wachs-censorship-resistant
+title: A Censorship-Resistant, Privacy-Enhancing and Fully Decentralized Name System
+authors:
+  - Matthias Wachs
+  - Martin Schanzenbach
+  - Christian Grothoff
+venue: Cryptology and Network Security
+year: 2014
+url: https://schanzen.eu/pubs/gns2014wachs.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wachs2014a

@@ -1,0 +1,21 @@
+id: 2011-houmansadr-cirripede
+title: 'Cirripede: Circumvention Infrastructure using Router Redirection with Plausible Deniability'
+authors:
+  - Amir Houmansadr
+  - Giang T. K. Nguyen
+  - Matthew Caesar
+  - Nikita Borisov
+venue: Computer and Communications Security
+year: 2011
+url: https://people.cs.umass.edu/~amir/papers/CCS11-Cirripede.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Houmansadr2011a

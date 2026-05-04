@@ -1,0 +1,20 @@
+id: 2017-gebhart-internet
+title: 'Internet Censorship in Thailand: User Practices and Potential Threats'
+authors:
+  - Genevieve Gebhart
+  - Anonymous Author
+  - Tadayoshi Kohno
+venue: European Symposium on Security \& Privacy
+year: 2017
+url: https://homes.cs.washington.edu/~yoshi/papers/GebhartEtAl-IEEEEuroSP.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Gebhart2017a

@@ -1,0 +1,21 @@
+id: 2026-lipphardt-dual
+title: 'Dual Standards: Examining Content Moderation Disparities Between API and WebUI Interfaces in Large Language Models'
+authors:
+  - Friedemann Lipphardt
+  - Moonis Ali
+  - Anja Feldmann
+  - Devashish Gosain
+venue: Free and Open Communications on the Internet
+year: 2026
+url: https://www.petsymposium.org/foci/2026/foci-2026-0004.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lipphardt2026a

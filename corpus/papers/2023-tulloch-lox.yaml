@@ -1,0 +1,19 @@
+id: 2023-tulloch-lox
+title: 'Lox: Protecting the Social Graph in Bridge Distribution'
+authors:
+  - Lindsey Tulloch
+  - Ian Goldberg
+venue: Privacy Enhancing Technologies
+year: 2023
+url: https://petsymposium.org/popets/2023/popets-2023-0029.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Tulloch2023a

@@ -1,0 +1,20 @@
+id: 2014-brubaker-cloudtransport
+title: 'CloudTransport: Using Cloud Storage for Censorship-Resistant Networking'
+authors:
+  - Chad Brubaker
+  - Amir Houmansadr
+  - Vitaly Shmatikov
+venue: Privacy Enhancing Technologies Symposium
+year: 2014
+url: https://petsymposium.org/2014/papers/paper_68.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Brubaker2014a

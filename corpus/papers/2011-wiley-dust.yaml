@@ -1,0 +1,18 @@
+id: 2011-wiley-dust
+title: 'Dust: A Blocking-Resistant Internet Transport Protocol'
+authors:
+  - Brandon Wiley
+venue: University of Texas at Austin
+year: 2011
+url: https://censorbib.nymity.ch/pdf/Wiley2011a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wiley2011a

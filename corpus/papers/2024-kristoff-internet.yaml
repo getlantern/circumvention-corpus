@@ -1,0 +1,23 @@
+id: 2024-kristoff-internet
+title: 'Internet Sanctions on Russian Media: Actions and Effects'
+authors:
+  - John Kristoff
+  - Moritz Müller
+  - Arturo Filastò
+  - Max Resing
+  - Chris Kanich
+  - Niels ten Oever
+venue: Free and Open Communications on the Internet
+year: 2024
+url: https://www.petsymposium.org/foci/2024/foci-2024-0001.pdf
+censors:
+  - ru
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Kristoff2024a

@@ -1,0 +1,22 @@
+id: 2023-wang-chasing
+title: 'Chasing Shadows: A security analysis of the ShadowTLS proxy'
+authors:
+  - Gaukas Wang
+  - Anonymous
+  - Jackson Sippe
+  - Hai Chi
+  - Eric Wustrow
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0002.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2023a

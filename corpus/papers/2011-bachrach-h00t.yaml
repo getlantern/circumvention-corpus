@@ -1,0 +1,21 @@
+id: 2011-bachrach-h00t
+title: '\#h00t: Censorship Resistant Microblogging'
+authors:
+  - Dustin Bachrach
+  - Christopher Nunu
+  - Dan S. Wallach
+  - Matthew Wright
+venue: Rice University and University of Texas at Arlington
+year: 2011
+url: https://arxiv.org/pdf/1109.6874v1.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bachrach2011a

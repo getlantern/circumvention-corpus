@@ -1,0 +1,24 @@
+id: 2025-nourin-nobody
+title: Is Nobody There? Good! Globally Measuring Connection Tampering without Responsive Endhosts
+authors:
+  - Sadia Nourin
+  - Erik Rye
+  - Kevin Bock
+  - Nguyen Phong Hoang
+  - Dave Levin
+venue: Symposium on Security \& Privacy
+year: 2025
+url: https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/26hiUgw654A/pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - amp-cache
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nourin2025a

@@ -1,0 +1,20 @@
+id: 2011-xu-internet
+title: 'Internet Censorship in China: Where Does the Filtering Occur?'
+authors:
+  - Xueyang Xu
+  - Z. Morley Mao
+  - J. Alex Halderman
+venue: Passive and Active Measurement Conference
+year: 2011
+url: https://web.eecs.umich.edu/~zmao/Papers/china-censorship-pam11.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Xu2011a

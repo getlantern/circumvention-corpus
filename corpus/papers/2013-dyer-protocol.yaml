@@ -1,0 +1,21 @@
+id: 2013-dyer-protocol
+title: Protocol Misidentification Made Easy with Format-Transforming Encryption
+authors:
+  - Kevin P. Dyer
+  - Scott E. Coull
+  - Thomas Ristenpart
+  - Thomas Shrimpton
+venue: Computer and Communications Security
+year: 2013
+url: https://eprint.iacr.org/2012/494.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Dyer2013a

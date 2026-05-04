@@ -1,0 +1,20 @@
+id: 2015-hiruncharoenvate-algorithmically
+title: Algorithmically Bypassing Censorship on Sina Weibo with Nondeterministic Homophone Substitutions
+authors:
+  - Chaya Hiruncharoenvate
+  - Zhiyuan Lin
+  - Eric Gilbert
+venue: International Conference on Web and Social Media
+year: 2015
+url: https://censorbib.nymity.ch/pdf/Hiruncharoenvate2015a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hiruncharoenvate2015a

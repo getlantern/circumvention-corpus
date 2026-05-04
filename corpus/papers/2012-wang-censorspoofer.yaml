@@ -1,0 +1,22 @@
+id: 2012-wang-censorspoofer
+title: 'CensorSpoofer: Asymmetric Communication using IP Spoofing for Censorship-Resistant Web Browsing'
+authors:
+  - Qiyan Wang
+  - Xun Gong
+  - Giang T. K. Nguyen
+  - Amir Houmansadr
+  - Nikita Borisov
+venue: Computer and Communications Security
+year: 2012
+url: https://censorbib.nymity.ch/pdf/Wang2012a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2012a

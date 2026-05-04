@@ -1,0 +1,19 @@
+id: 2013-das-self-censorship
+title: Self-Censorship on Facebook
+authors:
+  - Sauvik Das
+  - Adam Kramer
+venue: Conference on Weblogs and Social Media
+year: 2013
+url: https://www.aaai.org/ocs/index.php/ICWSM/ICWSM13/paper/viewFile/6093/6350
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Das2013a

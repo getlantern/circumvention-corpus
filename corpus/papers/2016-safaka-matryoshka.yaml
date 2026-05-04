@@ -1,0 +1,20 @@
+id: 2016-safaka-matryoshka
+title: 'Matryoshka: Hiding Secret Communication in Plain Sight'
+authors:
+  - Iris Safaka
+  - Christina Fragouli
+  - Katerina Argyraki
+venue: Free and Open Communications on the Internet
+year: 2016
+url: https://www.usenix.org/system/files/conference/foci16/foci16-paper-safaka-revised.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Safaka2016a

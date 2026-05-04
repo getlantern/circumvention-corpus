@@ -1,0 +1,22 @@
+id: 2018-vandersloot-quack
+title: 'Quack: Scalable Remote Measurement of Application-Layer Censorship'
+authors:
+  - Benjamin VanderSloot
+  - Allison McDonald
+  - Will Scott
+  - J. Alex Halderman
+  - Roya Ensafi
+venue: USENIX Security Symposium
+year: 2018
+url: https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-vandersloot.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:VanderSloot2018a

@@ -1,0 +1,21 @@
+id: 2025-xue-discriminative
+title: The Discriminative Power of Cross-layer RTTs in Fingerprinting Proxy Traffic
+authors:
+  - Diwen Xue
+  - Robert Stanley
+  - Piyush Kumar
+  - Roya Ensafi
+venue: Network and Distributed System Security
+year: 2025
+url: https://www.ndss-symposium.org/wp-content/uploads/2025-966-paper.pdf
+censors:
+  - generic
+techniques:
+  - tls-fingerprint
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Xue2025a

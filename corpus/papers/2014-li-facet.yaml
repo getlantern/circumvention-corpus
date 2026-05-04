@@ -1,0 +1,20 @@
+id: 2014-li-facet
+title: 'Facet: Streaming over Videoconferencing for Censorship Circumvention'
+authors:
+  - Shuai Li
+  - Mike Schliep
+  - Nick Hopper
+venue: Workshop on Privacy in the Electronic Society
+year: 2014
+url: https://www-users.cs.umn.edu/~hopper/facet-wpes14.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Li2014a

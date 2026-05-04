@@ -1,0 +1,25 @@
+id: 2012-aase-whiskey
+title: 'Whiskey, Weed, and Wukan on the World Wide Web: On Measuring Censors'' Resources and Motivations'
+authors:
+  - Nicholas Aase
+  - Jedidiah R. Crandall
+  - Álvaro Díaz
+  - Jeffrey Knockel
+  - Jorge Ocaña Molinero
+  - Jared Saia
+  - Dan Wallach
+  - Tao Zhu
+venue: Free and Open Communications on the Internet
+year: 2012
+url: https://www.usenix.org/system/files/conference/foci12/foci12-final17.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Aase2012a

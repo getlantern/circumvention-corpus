@@ -1,0 +1,21 @@
+id: 2021-kaptchuk-meteor
+title: 'Meteor: Cryptographically Secure Steganography for Realistic Distributions'
+authors:
+  - Gabriel Kaptchuk
+  - Tushar M. Jois
+  - Matthew Green
+  - Aviel D. Rubin
+venue: Computer and Communications Security
+year: 2021
+url: https://www.cs.umd.edu/~kaptchuk/publications/ccs21_meteor.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Kaptchuk2021a

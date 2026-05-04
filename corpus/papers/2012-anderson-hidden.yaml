@@ -1,0 +1,17 @@
+id: 2012-anderson-hidden
+title: 'The Hidden Internet of Iran: Private Address Allocations on a National Network'
+authors:
+  - Collin Anderson
+year: 2012
+url: https://arxiv.org/pdf/1209.6398v1.pdf
+censors:
+  - ir
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Anderson2012a

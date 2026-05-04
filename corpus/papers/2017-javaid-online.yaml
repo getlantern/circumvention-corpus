@@ -1,0 +1,21 @@
+id: 2017-javaid-online
+title: Online Advertising under Internet Censorship
+authors:
+  - Hira Javaid
+  - Hafiz Kamran Khalil
+  - Zartash Afzal Uzmi
+  - Ihsan Ayyub Qazi
+venue: Hot Topics in Networks
+year: 2017
+url: https://conferences.sigcomm.org/hotnets/2017/papers/hotnets17-final110.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Javaid2017a

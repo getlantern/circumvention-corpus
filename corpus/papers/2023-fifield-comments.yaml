@@ -1,0 +1,17 @@
+id: 2023-fifield-comments
+title: Comments on certain past cryptographic flaws affecting fully encrypted censorship circumvention protocols
+authors:
+  - David Fifield
+year: 2023
+url: https://eprint.iacr.org/2023/1362.pdf
+censors:
+  - generic
+techniques:
+  - fully-encrypted-detect
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Fifield2023b

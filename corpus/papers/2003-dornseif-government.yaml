@@ -1,0 +1,18 @@
+id: 2003-dornseif-government
+title: Government mandated blocking of foreign Web content
+authors:
+  - Maximillian Dornseif
+venue: DFN-Arbeitstagung über Kommunikationsnetze
+year: 2003
+url: https://censorbib.nymity.ch/pdf/Dornseif2003a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Dornseif2003a

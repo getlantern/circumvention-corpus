@@ -1,0 +1,23 @@
+id: 2019-chai-importance
+title: On the Importance of Encrypted-SNI (ESNI) to Censorship Circumvention
+authors:
+  - Zimo Chai
+  - Amirhossein Ghafari
+  - Amir Houmansadr
+venue: Free and Open Communications on the Internet
+year: 2019
+url: https://www.usenix.org/system/files/foci19-paper_chai_update.pdf
+censors:
+  - generic
+techniques:
+  - sni-blocking
+  - esni-eh-blocking
+defenses_discussed:
+  - ech-esni
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Chai2019a

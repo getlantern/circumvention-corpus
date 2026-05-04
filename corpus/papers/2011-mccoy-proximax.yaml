@@ -1,0 +1,20 @@
+id: 2011-mccoy-proximax
+title: 'Proximax: A Measurement Based System for Proxies Dissemination'
+authors:
+  - Damon McCoy
+  - Jose Andre Morales
+  - Kirill Levchenko
+venue: Financial Cryptography and Data Security
+year: 2011
+url: https://cseweb.ucsd.edu/~klevchen/mml-fc11.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:McCoy2011a

@@ -1,0 +1,22 @@
+id: 2024-pu-exploring
+title: Exploring Amazon Simple Queue Service (SQS) for Censorship Circumvention
+authors:
+  - Michael Pu
+  - Andrew Wang
+  - Anthony Chang
+  - Kieran Quan
+  - Yi Wei Zhou
+venue: Free and Open Communications on the Internet
+year: 2024
+url: https://www.petsymposium.org/foci/2024/foci-2024-0009.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Pu2024a

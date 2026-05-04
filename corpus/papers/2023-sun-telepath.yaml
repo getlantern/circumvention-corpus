@@ -1,0 +1,19 @@
+id: 2023-sun-telepath
+title: 'TELEPATH: A Minecraft-based Covert Communication System'
+authors:
+  - Zhen Sun
+  - Vitaly Shmatikov
+venue: Symposium on Security \& Privacy
+year: 2023
+url: https://doi.ieeecomputersociety.org/10.1109/SP46215.2023.00183
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Sun2023a

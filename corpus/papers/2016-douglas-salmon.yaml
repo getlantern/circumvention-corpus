@@ -1,0 +1,21 @@
+id: 2016-douglas-salmon
+title: 'Salmon: Robust Proxy Distribution for Censorship Circumvention'
+authors:
+  - Frederick Douglas
+  - Rorshach
+  - Weiyang Pan
+  - Matthew Caesar
+venue: Privacy Enhancing Technologies
+year: 2016
+url: https://censorbib.nymity.ch/pdf/Douglas2016a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Douglas2016a

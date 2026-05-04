@@ -1,0 +1,21 @@
+id: 2025-wails-censorship
+title: Censorship Evasion with Unidentified Protocol Generation
+authors:
+  - Ryan Wails
+  - Rob Jansen
+  - Aaron Johnson
+  - Micah Sherr
+venue: USENIX Security Symposium
+year: 2025
+url: https://www.usenix.org/system/files/usenixsecurity25-wails.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wails2025a

@@ -1,0 +1,18 @@
+id: 2002-serjantov-anonymizing
+title: Anonymizing Censorship Resistant Systems
+authors:
+  - Andrei Serjantov
+venue: International Workshop on Peer-To-Peer Systems
+year: 2002
+url: https://censorbib.nymity.ch/pdf/Serjantov2002a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Serjantov2002a

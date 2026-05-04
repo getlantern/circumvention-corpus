@@ -1,0 +1,22 @@
+id: 2020-bock-detecting
+title: 'Detecting and Evading Censorship-in-Depth: A Case Study of Iran''s Protocol Filter'
+authors:
+  - Kevin Bock
+  - Yair Fax
+  - Kyle Reese
+  - Jasraj Singh
+  - Dave Levin
+venue: Free and Open Communications on the Internet
+year: 2020
+url: https://www.usenix.org/system/files/foci20-paper-bock.pdf
+censors:
+  - ir
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bock2020a

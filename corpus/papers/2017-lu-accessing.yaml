@@ -1,0 +1,24 @@
+id: 2017-lu-accessing
+title: 'Accessing Google Scholar under Extreme Internet Censorship: A Legal Avenue'
+authors:
+  - Zhen Lu
+  - Zhenhua Li
+  - Jian Yang
+  - Tianyin Xu
+  - Ennan Zhai
+  - Yao Liu
+  - Christo Wilson
+venue: Middleware
+year: 2017
+url: https://censorbib.nymity.ch/pdf/Lu2017a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lu2017a

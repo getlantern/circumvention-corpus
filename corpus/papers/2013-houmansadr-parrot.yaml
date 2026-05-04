@@ -1,0 +1,20 @@
+id: 2013-houmansadr-parrot
+title: 'The Parrot is Dead: Observing Unobservable Network Communications'
+authors:
+  - Amir Houmansadr
+  - Chad Brubaker
+  - Vitaly Shmatikov
+venue: Symposium on Security \& Privacy
+year: 2013
+url: https://people.cs.umass.edu/~amir/papers/parrot.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Houmansadr2013b

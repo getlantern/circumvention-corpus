@@ -1,0 +1,21 @@
+id: 2013-zhou-sweet
+title: 'SWEET: Serving the Web by Exploiting Email Tunnels'
+authors:
+  - Wenxuan Zhou
+  - Amir Houmansadr
+  - Matthew Caesar
+  - Nikita Borisov
+venue: Hot Topics in Privacy Enhancing Technologies
+year: 2013
+url: https://petsymposium.org/2013/papers/zhou-censorship.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Zhou2013a

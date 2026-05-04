@@ -1,0 +1,22 @@
+id: 2007-crandall-conceptdoppler
+title: 'ConceptDoppler: A Weather Tracker for Internet Censorship'
+authors:
+  - Jedidiah R. Crandall
+  - Daniel Zinn
+  - Michael Byrd
+  - Earl Barr
+  - Rich East
+venue: Computer and Communications Security
+year: 2007
+url: http://www.csd.uoc.gr/~hy558/papers/conceptdoppler.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Crandall2007a

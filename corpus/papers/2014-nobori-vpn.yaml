@@ -1,0 +1,19 @@
+id: 2014-nobori-vpn
+title: 'VPN Gate: A Volunteer-Organized Public VPN Relay System with Blocking Resistance for Bypassing Government Censorship Firewalls'
+authors:
+  - Daiyuu Nobori
+  - Yasushi Shinjo
+venue: Networked Systems Design and Implementation
+year: 2014
+url: https://www.usenix.org/system/files/conference/nsdi14/nsdi14-paper-nobori.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nobori2014a

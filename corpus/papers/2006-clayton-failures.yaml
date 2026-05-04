@@ -1,0 +1,18 @@
+id: 2006-clayton-failures
+title: Failures in a Hybrid Content Blocking System
+authors:
+  - Richard Clayton
+venue: Privacy Enhancing Technologies
+year: 2006
+url: https://www.cl.cam.ac.uk/~rnc1/cleanfeed.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Clayton2006b

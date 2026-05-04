@@ -1,0 +1,19 @@
+id: 2015-aceto-internet
+title: 'Internet Censorship detection: A survey'
+authors:
+  - Giuseppe Aceto
+  - Antonio Pescapè
+venue: Computer Networks
+year: 2015
+url: https://censorbib.nymity.ch/pdf/Aceto2015b.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Aceto2015b

@@ -1,0 +1,22 @@
+id: 2024-xue-bridging
+title: 'Bridging Barriers: A Survey of Challenges and Priorities in the Censorship Circumvention Landscape'
+authors:
+  - Diwen Xue
+  - Anna Ablove
+  - Reethika Ramesh
+  - Grace Kwak Danciu
+  - Roya Ensafi
+venue: USENIX Security Symposium
+year: 2024
+url: https://www.usenix.org/system/files/usenixsecurity24-xue-bridging.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Xue2024b

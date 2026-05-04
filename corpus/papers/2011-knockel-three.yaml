@@ -1,0 +1,20 @@
+id: 2011-knockel-three
+title: 'Three Researchers, Five Conjectures: An Empirical Analysis of TOM-Skype Censorship and Surveillance'
+authors:
+  - Jeffrey Knockel
+  - Jedidiah R. Crandall
+  - Jared Saia
+venue: Free and Open Communications on the Internet
+year: 2011
+url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Knockel.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Knockel2011a

@@ -1,0 +1,23 @@
+id: 2024-kujath-analyzing
+title: Analyzing Prominent Mobile Apps in Latin America
+authors:
+  - Beau Kujath
+  - Jeffrey Knockel
+  - Paul Aguilar
+  - Diego Morabito
+  - Masashi Crete-Nishihata
+  - Jedidiah R. Crandall
+venue: Free and Open Communications on the Internet
+year: 2024
+url: https://www.petsymposium.org/foci/2024/foci-2024-0017.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Kujath2024a

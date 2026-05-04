@@ -1,0 +1,22 @@
+id: 2003-feamster-thwarting
+title: Thwarting Web Censorship with Untrusted Messenger Discovery
+authors:
+  - Nick Feamster
+  - Magdalena Balazinska
+  - Winston Wang
+  - Hari Balakrishnan
+  - David Karger
+venue: Privacy Enhancing Technologies
+year: 2003
+url: http://nms.csail.mit.edu/papers/disc-pet2003.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Feamster2003a

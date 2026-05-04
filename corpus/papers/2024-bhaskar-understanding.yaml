@@ -1,0 +1,19 @@
+id: 2024-bhaskar-understanding
+title: Understanding Routing-Induced Censorship Changes Globally
+authors:
+  - Abhishek Bhaskar
+  - Paul Pearce
+venue: Computer and Communications Security
+year: 2024
+url: https://dl.acm.org/doi/epdf/10.1145/3658644.3670336
+censors:
+  - generic
+techniques:
+  - rst-injection
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bhaskar2024a

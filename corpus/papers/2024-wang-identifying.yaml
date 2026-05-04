@@ -1,0 +1,23 @@
+id: 2024-wang-identifying
+title: Identifying VPN Servers through Graph-Represented Behaviors
+authors:
+  - Chenxu Wang
+  - Jiangyi Yin
+  - Zhao Li
+  - Hongbo Xu
+  - Zhongyi Zhang
+  - Qingyun Liu
+venue: The International World Wide Web Conference
+year: 2024
+url: https://dl.acm.org/doi/pdf/10.1145/3589334.3645552
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2024a

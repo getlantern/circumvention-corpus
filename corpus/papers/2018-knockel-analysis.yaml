@@ -1,0 +1,22 @@
+id: 2018-knockel-analysis
+title: An analysis of automatic image filtering on WeChat Moments
+authors:
+  - Jeffrey Knockel
+  - Lotus Ruan
+  - Masashi Crete-Nishihata
+venue: Free and Open Communications on the Internet
+year: 2018
+url: https://www.usenix.org/system/files/conference/foci18/foci18-paper-knockel.pdf
+censors:
+  - generic
+techniques:
+  - esni-eh-blocking
+defenses_discussed:
+  - ech-esni
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Knockel2018a

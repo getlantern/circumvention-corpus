@@ -1,0 +1,20 @@
+id: 2026-almutairi-server
+title: Server, Client, or Relay? Dual-Role Detection of Circumvention Relays
+authors:
+  - Sultan Almutairi
+  - Khaled Harfoush
+  - Yannis Viniotis
+venue: Free and Open Communications on the Internet
+year: 2026
+url: https://www.petsymposium.org/foci/2026/foci-2026-0008.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Almutairi2026a

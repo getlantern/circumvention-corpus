@@ -1,0 +1,22 @@
+id: 2015-ververis-understanding
+title: 'Understanding Internet Censorship Policy: The Case of Greece'
+authors:
+  - Vasilis Ververis
+  - George Kargiotakis
+  - Arturo Filastò
+  - Benjamin Fabian
+  - Afentoulis Alexandros
+venue: Free and Open Communications on the Internet
+year: 2015
+url: https://www.usenix.org/system/files/conference/foci15/foci15-paper-ververis-updated-2.pdf
+censors:
+  - generic
+techniques:
+  - rst-injection
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ververis2015a

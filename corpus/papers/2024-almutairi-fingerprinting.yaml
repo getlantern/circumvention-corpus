@@ -1,0 +1,20 @@
+id: 2024-almutairi-fingerprinting
+title: 'Fingerprinting VPNs with Custom Router Firmware: A New Censorship Threat Model'
+authors:
+  - Sultan Almutairi
+  - Yogev Neumann
+  - Khaled Harfoush
+venue: Consumer Communications \& Networking Conference
+year: 2024
+url: https://censorbib.nymity.ch/pdf/Almutairi2024a.pdf
+censors:
+  - generic
+techniques:
+  - tls-fingerprint
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Almutairi2024a

@@ -1,0 +1,19 @@
+id: 2001-waldman-tangler
+title: 'Tangler: A Censorship-Resistant Publishing System Based On Document Entanglements'
+authors:
+  - Marc Waldman
+  - David Mazières
+venue: Computer and Communications Security
+year: 2001
+url: https://www.cs.nyu.edu/~waldman/tangler.ps
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Waldman2001a

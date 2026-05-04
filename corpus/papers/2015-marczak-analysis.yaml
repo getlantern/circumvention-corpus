@@ -1,0 +1,27 @@
+id: 2015-marczak-analysis
+title: An Analysis of China's ``Great Cannon''
+authors:
+  - Bill Marczak
+  - Nicholas Weaver
+  - Jakub Dalek
+  - Roya Ensafi
+  - David Fifield
+  - Sarah McKune
+  - Arn Rey
+  - John Scott-Railton
+  - Ron Deibert
+  - Vern Paxson
+venue: Free and Open Communications on the Internet
+year: 2015
+url: https://www.usenix.org/system/files/conference/foci15/foci15-paper-marczak.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Marczak2015a

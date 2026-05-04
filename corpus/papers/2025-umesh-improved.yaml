@@ -1,0 +1,21 @@
+id: 2025-umesh-improved
+title: An Improved BGP Internet Graph for Optimizing Refraction Proxy Placement
+authors:
+  - Harshith Umesh
+  - Alden W. Jackson
+venue: Free and Open Communications on the Internet
+year: 2025
+url: https://petsymposium.org/foci/2025/foci-2025-0014.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Umesh2025a

@@ -1,0 +1,26 @@
+id: 2021-hoang-great
+title: How Great is the Great Firewall? Measuring China's DNS Censorship
+authors:
+  - Nguyen Phong Hoang
+  - Arian Akhavan Niaki
+  - Jakub Dalek
+  - Jeffrey Knockel
+  - Pellaeon Lin
+  - Bill Marczak
+  - Masashi Crete-Nishihata
+  - Phillipa Gill
+  - Michalis Polychronakis
+venue: USENIX Security Symposium
+year: 2021
+url: https://www.usenix.org/system/files/sec21-hoang.pdf
+censors:
+  - cn
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hoang2021a

@@ -1,0 +1,20 @@
+id: 2008-sovran-pass
+title: 'Pass it on: Social Networks Stymie Censors'
+authors:
+  - Yair Sovran
+  - Alana Libonati
+  - Jinyang Li
+venue: International Workshop on Peer-to-Peer Systems
+year: 2008
+url: https://www.cs.toronto.edu/iptps2008/final/73.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Sovran2008a

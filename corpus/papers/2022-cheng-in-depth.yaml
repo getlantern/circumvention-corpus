@@ -1,0 +1,23 @@
+id: 2022-cheng-in-depth
+title: In-Depth Evaluation of the Impact of National-Level DNS Filtering on DNS Resolvers over Space and Time
+authors:
+  - Yanan Cheng
+  - Yali Liu
+  - Chao Li
+  - Zhaoxin Zhang
+  - Ning Li
+  - Yuejin Du
+venue: Electronics
+year: 2022
+url: https://www.mdpi.com/2079-9292/11/8/1276/pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Cheng2022a

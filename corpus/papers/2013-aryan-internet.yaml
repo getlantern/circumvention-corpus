@@ -1,0 +1,20 @@
+id: 2013-aryan-internet
+title: 'Internet Censorship in Iran: A First Look'
+authors:
+  - Simurgh Aryan
+  - Homa Aryan
+  - J. Alex Halderman
+venue: Free and Open Communications on the Internet
+year: 2013
+url: https://censorbib.nymity.ch/pdf/Aryan2013a.pdf
+censors:
+  - ir
+techniques:
+  - rst-injection
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Aryan2013a

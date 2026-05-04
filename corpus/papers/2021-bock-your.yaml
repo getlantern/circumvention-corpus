@@ -1,0 +1,21 @@
+id: 2021-bock-your
+title: 'Your Censor is My Censor: Weaponizing Censorship Infrastructure for Availability Attacks'
+authors:
+  - Kevin Bock
+  - Pranav Bharadwaj
+  - Jasraj Singh
+  - Dave Levin
+venue: Workshop on Offensive Technologies
+year: 2021
+url: https://www.cs.umd.edu/~dml/papers/weaponizing_woot21.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bock2021a

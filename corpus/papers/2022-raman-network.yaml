@@ -1,0 +1,22 @@
+id: 2022-raman-network
+title: Network Measurement Methods for Locating and Examining Censorship Devices
+authors:
+  - Ram Sundara Raman
+  - Mona Wang
+  - Jakub Dalek
+  - Jonathan Mayer
+  - Roya Ensafi
+venue: Emerging Networking Experiments and Technologies
+year: 2022
+url: https://dl.acm.org/doi/pdf/10.1145/3555050.3569133
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Raman2022a

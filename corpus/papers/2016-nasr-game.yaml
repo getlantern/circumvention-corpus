@@ -1,0 +1,21 @@
+id: 2016-nasr-game
+title: 'Game of Decoys: Optimal Decoy Routing Through Game Theory'
+authors:
+  - Milad Nasr
+  - Amir Houmansadr
+venue: Computer and Communications Security
+year: 2016
+url: https://people.cs.umass.edu/~amir/papers/GameOfDecoys.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nasr2016a

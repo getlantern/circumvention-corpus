@@ -1,0 +1,22 @@
+id: 2024-tang-automatic
+title: Automatic Generation of Web Censorship Probe Lists
+authors:
+  - Jenny Tang
+  - Léo Alvarez
+  - Arjun Brar
+  - Nguyen Phong Hoang
+  - Nicolas Christin
+venue: Privacy Enhancing Technologies
+year: 2024
+url: https://petsymposium.org/popets/2024/popets-2024-0106.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Tang2024a

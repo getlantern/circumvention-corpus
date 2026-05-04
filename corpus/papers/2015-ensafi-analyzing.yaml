@@ -1,0 +1,21 @@
+id: 2015-ensafi-analyzing
+title: Analyzing the Great Firewall of China Over Space and Time
+authors:
+  - Roya Ensafi
+  - Philipp Winter
+  - Abdullah Mueen
+  - Jedidiah R. Crandall
+venue: Privacy Enhancing Technologies
+year: 2015
+url: https://censorbib.nymity.ch/pdf/Ensafi2015a.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ensafi2015a

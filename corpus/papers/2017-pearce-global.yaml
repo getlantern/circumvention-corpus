@@ -1,0 +1,24 @@
+id: 2017-pearce-global
+title: Global Measurement of DNS Manipulation
+authors:
+  - Paul Pearce
+  - Ben Jones
+  - Frank Li
+  - Roya Ensafi
+  - Nick Feamster
+  - Nick Weaver
+  - Vern Paxson
+venue: USENIX Security Symposium
+year: 2017
+url: https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-pearce.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Pearce2017b

@@ -1,0 +1,24 @@
+id: 2014-jones-facade
+title: 'Facade: High-Throughput, Deniable Censorship Circumvention Using Web Search'
+authors:
+  - Ben Jones
+  - Sam Burnett
+  - Nick Feamster
+  - Sean Donovan
+  - Sarthak Grover
+  - Sathya Gunasekaran
+  - Karim Habak
+venue: Free and Open Communications on the Internet
+year: 2014
+url: https://www.usenix.org/system/files/conference/foci14/foci14_jones-8-8-14.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Jones2014a

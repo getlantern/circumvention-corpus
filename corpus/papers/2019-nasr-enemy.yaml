@@ -1,0 +1,21 @@
+id: 2019-nasr-enemy
+title: 'Enemy At the Gateways: Censorship-Resilient Proxy Distribution Using Game Theory'
+authors:
+  - Milad Nasr
+  - Sadegh Farhang
+  - Amir Houmansadr
+  - Jens Grossklags
+venue: Network and Distributed System Security
+year: 2019
+url: https://people.cs.umass.edu/~amir/papers/TorGame.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nasr2019a

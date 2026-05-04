@@ -1,0 +1,20 @@
+id: 2001-handley-network
+title: 'Network Intrusion Detection: Evasion, Traffic Normalization, and End-to-End Protocol Semantics'
+authors:
+  - Mark Handley
+  - Vern Paxson
+  - Christian Kreibich
+venue: USENIX Security Symposium
+year: 2001
+url: https://www.usenix.org/legacy/events/sec01/full_papers/handley/handley.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Handley2001a

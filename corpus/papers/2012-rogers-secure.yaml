@@ -1,0 +1,19 @@
+id: 2012-rogers-secure
+title: Secure Communication over Diverse Transports
+authors:
+  - Michael Rogers
+  - Eleanor Saitta
+venue: Workshop on Privacy in the Electronic Society
+year: 2012
+url: https://censorbib.nymity.ch/pdf/Rogers2012a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Rogers2012a

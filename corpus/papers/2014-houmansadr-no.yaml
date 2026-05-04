@@ -1,0 +1,22 @@
+id: 2014-houmansadr-no
+title: 'No Direction Home: The True Cost of Routing Around Decoys'
+authors:
+  - Amir Houmansadr
+  - Edmund L. Wong
+  - Vitaly Shmatikov
+venue: Network and Distributed System Security
+year: 2014
+url: https://dedis.cs.yale.edu/dissent/papers/nodirection.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Houmansadr2014a

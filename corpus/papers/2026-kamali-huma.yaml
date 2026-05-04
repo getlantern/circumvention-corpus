@@ -1,0 +1,19 @@
+id: 2026-kamali-huma
+title: 'Huma: Censorship Circumvention via Web Protocol Tunneling with Deferred Traffic Replacement'
+authors:
+  - Sina Kamali
+  - Diogo Barradas
+venue: Network and Distributed System Security
+year: 2026
+url: https://www.ndss-symposium.org/wp-content/uploads/2026-f328-paper.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Kamali2026a

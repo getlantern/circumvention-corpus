@@ -1,0 +1,18 @@
+id: 2011-seltzer-infrastructures
+title: Infrastructures of Censorship and Lessons from Copyright Resistance
+authors:
+  - Wendy Seltzer
+venue: Free and Open Communications on the Internet
+year: 2011
+url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Seltzer.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Seltzer2011a

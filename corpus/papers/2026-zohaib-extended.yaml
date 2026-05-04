@@ -1,0 +1,21 @@
+id: 2026-zohaib-extended
+title: 'Extended Abstract: CensorAlert -- Leveraging LLM Agents for Automated Censorship Report Aggregation and Analysis'
+authors:
+  - Ali Zohaib
+  - Jade Sheffey
+  - Mingshi Wu
+  - Amir Houmansadr
+venue: Free and Open Communications on the Internet
+year: 2026
+url: https://www.petsymposium.org/foci/2026/foci-2026-0002.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Zohaib2026a

@@ -1,0 +1,25 @@
+id: 2020-wang-symtcp
+title: 'SymTCP: Eluding Stateful Deep Packet Inspection with Automated Discrepancy Discovery'
+authors:
+  - Zhongjie Wang
+  - Shitong Zhu
+  - Yue Cao
+  - Zhiyun Qian
+  - Chengyu Song
+  - Srikanth V. Krishnamurthy
+  - Kevin S. Chan
+  - Tracy D. Braun
+venue: Network and Distributed System Security
+year: 2020
+url: https://www.ndss-symposium.org/wp-content/uploads/2020/02/24083.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2020a

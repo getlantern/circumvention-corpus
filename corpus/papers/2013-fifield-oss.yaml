@@ -1,0 +1,20 @@
+id: 2013-fifield-oss
+title: 'OSS: Using Online Scanning Services for Censorship Circumvention'
+authors:
+  - David Fifield
+  - Gabi Nakibly
+  - Dan Boneh
+venue: Privacy Enhancing Technologies Symposium
+year: 2013
+url: https://www.freehaven.net/anonbib/papers/pets2013/paper_29.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Fifield2013a

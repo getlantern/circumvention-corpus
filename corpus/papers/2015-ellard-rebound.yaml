@@ -1,0 +1,26 @@
+id: 2015-ellard-rebound
+title: 'Rebound: Decoy Routing on Asymmetric Routes Via Error Messages'
+authors:
+  - Daniel Ellard
+  - Alden Jackson
+  - Christine Jones
+  - Victoria Ursula Manfredi
+  - Timothy Strayer
+  - Bishal Thapa
+  - Megan Van Welie
+venue: Local Computer Networks
+year: 2015
+url: https://www.victoriamanfredi.com/publications/lcn15.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ellard2015a

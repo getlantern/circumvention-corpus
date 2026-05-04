@@ -1,0 +1,22 @@
+id: 2002-feamster-infranet
+title: 'Infranet: Circumventing Web Censorship and Surveillance'
+authors:
+  - Nick Feamster
+  - Magdalena Balazinska
+  - Greg Harfst
+  - Hari Balakrishnan
+  - David Karger
+venue: USENIX Security Symposium
+year: 2002
+url: http://wind.lcs.mit.edu/papers/usenixsec2002.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Feamster2002a

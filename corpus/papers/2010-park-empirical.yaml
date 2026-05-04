@@ -1,0 +1,19 @@
+id: 2010-park-empirical
+title: 'Empirical Study of a National-Scale Distributed Intrusion Detection System: Backbone-Level Filtering of HTML Responses in China'
+authors:
+  - Jong Chun Park
+  - Jedidiah R. Crandall
+venue: Distributed Computing Systems
+year: 2010
+url: https://www.cs.unm.edu/~crandall/icdcs2010.pdf
+censors:
+  - cn
+techniques:
+  - ml-classifier
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Park2010a

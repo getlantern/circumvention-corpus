@@ -1,0 +1,18 @@
+id: 2010-pfitzmann-terminology
+title: 'A terminology for talking about privacy by data minimization: Anonymity, Unlinkability, Undetectability, Unobservability, Pseudonymity, and Identity Management'
+authors:
+  - Andreas Pfitzmann
+  - Marit Hansen
+year: 2010
+url: https://dud.inf.tu-dresden.de/literatur/Anon_Terminology_v0.34.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Pfitzmann2010a

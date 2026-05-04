@@ -1,0 +1,22 @@
+id: 2017-gosain-mending
+title: 'Mending Wall: On the Implementation of Censorship in India'
+authors:
+  - Devashish Gosain
+  - Anshika Agarwal
+  - Sahil Shekhawat
+  - H. B. Acharya
+  - Sambuddho Chakravarty
+venue: SecureComm
+year: 2017
+url: https://censorbib.nymity.ch/pdf/Gosain2017a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Gosain2017a

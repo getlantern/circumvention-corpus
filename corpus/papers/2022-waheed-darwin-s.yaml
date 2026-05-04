@@ -1,0 +1,21 @@
+id: 2022-waheed-darwin-s
+title: 'Darwin''s Theory of Censorship: Analysing the Evolution of Censored Topics with Dynamic Topic Models'
+authors:
+  - Asim Waheed
+  - Sara Qunaibi
+  - Diogo Barradas
+  - Zachary Weinberg
+venue: Workshop on Privacy in the Electronic Society
+year: 2022
+url: https://research.owlfolio.org/pubs/2022-darwin-censorship.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Waheed2022a

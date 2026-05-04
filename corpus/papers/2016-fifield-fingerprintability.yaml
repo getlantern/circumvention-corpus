@@ -1,0 +1,21 @@
+id: 2016-fifield-fingerprintability
+title: Fingerprintability of WebRTC
+authors:
+  - David Fifield
+  - Mia Gil Epner
+venue: University of California, Berkeley
+year: 2016
+url: https://arxiv.org/pdf/1605.08805.pdf
+censors:
+  - generic
+techniques:
+  - tls-fingerprint
+defenses_discussed:
+  - webrtc-pluggable
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Fifield2016b

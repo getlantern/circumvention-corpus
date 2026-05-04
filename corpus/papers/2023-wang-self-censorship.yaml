@@ -1,0 +1,19 @@
+id: 2023-wang-self-censorship
+title: 'Self-Censorship Under Law: A Case Study of the Hong Kong National Security Law'
+authors:
+  - Mona Wang
+  - Jonathan Mayer
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0007.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2023b

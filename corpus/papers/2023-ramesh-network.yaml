@@ -1,0 +1,27 @@
+id: 2023-ramesh-network
+title: 'Network Responses to Russia''s Invasion of Ukraine in 2022: A Cautionary Tale for Internet Freedom'
+authors:
+  - Reethika Ramesh
+  - Ram Sundara Raman
+  - Apurva Virkud
+  - Alexandra Dirksen
+  - Armin Huremagic
+  - David Fifield
+  - Dirk Rodenburg
+  - Rod Hynes
+  - Doug Madory
+  - Roya Ensafi
+venue: USENIX Security Symposium
+year: 2023
+url: https://censoredplanet.org/assets/russia-ukraine-invasion.pdf
+censors:
+  - ru
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Ramesh2023a

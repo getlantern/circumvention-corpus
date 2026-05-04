@@ -1,0 +1,21 @@
+id: 2013-wang-rbridge
+title: 'rBridge: User Reputation based Tor Bridge Distribution with Privacy Preservation'
+authors:
+  - Qiyan Wang
+  - Zi Lin
+  - Nikita Borisov
+  - Nicholas J. Hopper
+venue: Network and Distributed System Security
+year: 2013
+url: https://www-users.cs.umn.edu/~hopper/rbridge_ndss13.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Wang2013a

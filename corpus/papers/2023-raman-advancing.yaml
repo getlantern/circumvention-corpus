@@ -1,0 +1,22 @@
+id: 2023-raman-advancing
+title: Advancing the Art of Censorship Data Analysis
+authors:
+  - Ram Sundara Raman
+  - Apurva Virkud
+  - Sarah Laplante
+  - Vinicius Fortuna
+  - Roya Ensafi
+venue: Free and Open Communications on the Internet
+year: 2023
+url: https://www.petsymposium.org/foci/2023/foci-2023-0003.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Raman2023a

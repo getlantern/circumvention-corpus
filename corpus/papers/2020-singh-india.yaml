@@ -1,0 +1,20 @@
+id: 2020-singh-india
+title: How India Censors the Web
+authors:
+  - Kushagra Singh
+  - Gurshabad Grover
+  - Varun Bansal
+venue: Web Science
+year: 2020
+url: https://censorbib.nymity.ch/pdf/Singh2020a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Singh2020a

@@ -1,0 +1,19 @@
+id: 2016-li-mailet
+title: 'Mailet: Instant Social Networking under Censorship'
+authors:
+  - Shuai Li
+  - Nicholas Hopper
+venue: Privacy Enhancing Technologies
+year: 2016
+url: https://www-users.cse.umn.edu/~hoppernj/mailet_popets.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Li2016a

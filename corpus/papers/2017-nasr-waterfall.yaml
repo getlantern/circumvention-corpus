@@ -1,0 +1,23 @@
+id: 2017-nasr-waterfall
+title: 'The Waterfall of Liberty: Decoy Routing Circumvention that Resists Routing Attacks'
+authors:
+  - Milad Nasr
+  - Hadi Zolfaghari
+  - Amir Houmansadr
+venue: Computer and Communications Security
+year: 2017
+url: https://acmccs.github.io/papers/p2037-nasrA.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - decoy-routing
+  - water-wasm
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Nasr2017a

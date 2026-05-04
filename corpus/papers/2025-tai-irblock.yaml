@@ -1,0 +1,22 @@
+id: 2025-tai-irblock
+title: 'IRBlock: A Large-Scale Measurement Study of the Great Firewall of Iran'
+authors:
+  - Jonas Tai
+  - Karthik Nishanth Sengottuvelavan
+  - Peter Whiting
+  - Nguyen Phong Hoang
+venue: USENIX Security Symposium
+year: 2025
+url: https://www.usenix.org/system/files/usenixsecurity25-tai.pdf
+censors:
+  - cn
+  - ir
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Tai2025a

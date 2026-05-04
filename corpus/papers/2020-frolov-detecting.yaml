@@ -1,0 +1,20 @@
+id: 2020-frolov-detecting
+title: Detecting Probe-resistant Proxies
+authors:
+  - Sergey Frolov
+  - Jack Wampler
+  - Eric Wustrow
+venue: Network and Distributed System Security
+year: 2020
+url: https://www.ndss-symposium.org/wp-content/uploads/2020/02/23087.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Frolov2020a

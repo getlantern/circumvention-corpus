@@ -1,0 +1,24 @@
+id: 2017-li-lib-cdot-erate
+title: 'lib$\cdot$erate, (n): A library for exposing (traffic-classification) rules and avoiding them efficiently'
+authors:
+  - Fangfan Li
+  - Abbas Razaghpanah
+  - Arash Molavi Kakhki
+  - Arian Akhavan Niaki
+  - David Choffnes
+  - Phillipa Gill
+  - Alan Mislove
+venue: Internet Measurement Conference
+year: 2017
+url: https://people.cs.umass.edu/~phillipa/papers/imc2017_liberate_paper.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Li2017a

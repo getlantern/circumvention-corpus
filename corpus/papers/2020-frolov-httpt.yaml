@@ -1,0 +1,19 @@
+id: 2020-frolov-httpt
+title: 'HTTPT: A Probe-Resistant Proxy'
+authors:
+  - Sergey Frolov
+  - Eric Wustrow
+venue: Free and Open Communications on the Internet
+year: 2020
+url: https://www.usenix.org/system/files/foci20-paper-frolov.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Frolov2020b

@@ -1,0 +1,23 @@
+id: 2019-bock-geneva
+title: 'Geneva: Evolving Censorship Evasion Strategies'
+authors:
+  - Kevin Bock
+  - George Hughey
+  - Xiao Qiang
+  - Dave Levin
+venue: Computer and Communications Security
+year: 2019
+url: https://censorbib.nymity.ch/pdf/Bock2019a.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+defenses_discussed:
+  - geneva
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bock2019a

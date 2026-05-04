@@ -1,0 +1,21 @@
+id: 2018-hoang-empirical
+title: An Empirical Study of the I2P Anonymity Network and its Censorship Resistance
+authors:
+  - Nguyen Phong Hoang
+  - Panagiotis Kintis
+  - Manos Antonakakis
+  - Michalis Polychronakis
+venue: Internet Measurement Conference
+year: 2018
+url: https://arxiv.org/pdf/1809.09086.pdf
+censors:
+  - generic
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hoang2018a

@@ -1,0 +1,19 @@
+id: 2022-bhaskar-many
+title: 'Many Roads Lead To Rome: How Packet Headers Influence DNS Censorship Measurement'
+authors:
+  - Abhishek Bhaskar
+  - Paul Pearce
+venue: USENIX Security Symposium
+year: 2022
+url: https://www.usenix.org/system/files/sec22-bhaskar.pdf
+censors:
+  - generic
+techniques:
+  - dns-poisoning
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Bhaskar2022a

@@ -1,0 +1,24 @@
+id: 2024-hoang-gfweb
+title: 'GFWeb: Measuring the Great Firewall''s Web Censorship at Scale'
+authors:
+  - Nguyen Phong Hoang
+  - Jakub Dalek
+  - Masashi Crete-Nishihata
+  - Nicolas Christin
+  - Vinod Yegneswaran
+  - Michalis Polychronakis
+  - Nick Feamster
+venue: USENIX Security Symposium
+year: 2024
+url: https://www.usenix.org/system/files/sec24fall-prepub-310-hoang.pdf
+censors:
+  - cn
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Hoang2024a

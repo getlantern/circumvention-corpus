@@ -1,0 +1,23 @@
+id: 2025-lange-i-ra-nconsistencies
+title: 'I(ra)nconsistencies: Novel Insights into Iran''s Censorship'
+authors:
+  - Felix Lange
+  - Niklas Niere
+  - Jonathan von Niessen
+  - Dennis Suermann
+  - Nico Heitmann
+  - Juraj Somorovsky
+venue: Free and Open Communications on the Internet
+year: 2025
+url: https://www.petsymposium.org/foci/2025/foci-2025-0002.pdf
+censors:
+  - ir
+techniques:
+  - dpi
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: censorbib-import
+sources:
+  - censorbib
+  - bibtex:Lange2025a
