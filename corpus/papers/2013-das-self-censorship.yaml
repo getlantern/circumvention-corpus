@@ -9,7 +9,7 @@ url: https://www.aaai.org/ocs/index.php/ICWSM/ICWSM13/paper/viewFile/6093/6350
 censors:
   - generic
 techniques:
-  - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

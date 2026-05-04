@@ -13,6 +13,8 @@ censors:
   - in
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

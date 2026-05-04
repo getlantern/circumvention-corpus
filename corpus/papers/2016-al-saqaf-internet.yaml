@@ -6,9 +6,13 @@ venue: Media and Communication
 year: 2016
 url: http://www.cogitatiopress.com/ojs/index.php/mediaandcommunication/article/download/357/357
 censors:
-  - generic
+  - sy
 techniques:
   - dpi
+  - ip-blocking
+defenses_discussed:
+  - tor
+  - pluggable-transport
 core: false
 visibility: public
 date_added: "2026-05-04"

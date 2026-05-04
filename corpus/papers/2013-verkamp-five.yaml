@@ -9,6 +9,7 @@ url: https://censorbib.nymity.ch/pdf/Verkamp2013a.pdf
 censors:
   - generic
 techniques:
+  - keyword-filtering
   - dpi
 core: false
 visibility: public

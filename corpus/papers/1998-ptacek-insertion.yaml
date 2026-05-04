@@ -8,6 +8,9 @@ url: https://www.icir.org/vern/Ptacek-Newsham-Evasion-98.pdf
 censors: [generic]
 techniques:
   - dpi
+  - packet-injection
+  - rst-injection
+defenses_discussed: [tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

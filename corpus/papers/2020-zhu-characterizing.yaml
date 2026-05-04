@@ -15,6 +15,7 @@ censors:
   - cn
 techniques:
   - dpi
+  - throttling
 core: false
 visibility: public
 date_added: "2026-05-04"

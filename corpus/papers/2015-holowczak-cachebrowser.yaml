@@ -10,6 +10,10 @@ censors:
   - cn
 techniques:
   - dpi
+  - ip-blocking
+  - dns-poisoning
+defenses_discussed:
+  - domain-fronting
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -13,6 +13,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - ip-blocking
+  - asn-blackholing
+defenses_discussed: [tunneling, pluggable-transport]
 core: false
 visibility: public
 date_added: "2026-05-04"

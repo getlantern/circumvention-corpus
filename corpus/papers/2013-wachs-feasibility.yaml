@@ -11,6 +11,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
+defenses_discussed: [dns-tunneling, tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -11,7 +11,7 @@ venue: Research and Technologies for Society and Industry
 year: 2016
 url: http://wpage.unina.it/giuseppe.aceto/pub/aceto2016analyzing.pdf
 censors: [pk]
-techniques: [dpi]
+techniques: [dpi, ip-blocking, keyword-filtering]
 core: false
 visibility: public
 date_added: "2026-05-04"

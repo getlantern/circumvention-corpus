@@ -6,7 +6,7 @@ venue: Free and Open Communications on the Internet
 year: 2013
 url: https://censorbib.nymity.ch/pdf/Nabi2013a.pdf
 censors: [pk]
-techniques: [dpi]
+techniques: [dpi, keyword-filtering, ip-blocking, dns-poisoning]
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -10,6 +10,7 @@ url: https://www.usenix.org/system/files/conference/leet12/leet12-final13_0.pdf
 censors:
   - generic
 techniques:
+  - keyword-filtering
   - dpi
 core: false
 visibility: public

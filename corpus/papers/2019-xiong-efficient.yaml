@@ -7,9 +7,9 @@ venue: Free and Open Communications on the Internet
 year: 2019
 url: https://www.usenix.org/system/files/foci19-paper_xiong.pdf
 censors:
-  - generic
+  - cn
 techniques:
-  - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

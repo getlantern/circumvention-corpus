@@ -17,6 +17,8 @@ censors:
   - ru
 techniques:
   - dpi
+  - ip-blocking
+  - dns-poisoning
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -10,6 +10,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - rst-injection
+  - packet-injection
+  - middlebox-interference
 core: false
 visibility: public
 date_added: "2026-05-04"

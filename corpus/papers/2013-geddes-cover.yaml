@@ -11,6 +11,8 @@ censors:
   - generic
 techniques:
   - dpi
+  - flow-correlation
+defenses_discussed: [decoy-routing, tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

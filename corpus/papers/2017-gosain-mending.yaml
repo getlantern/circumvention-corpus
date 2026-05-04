@@ -10,9 +10,11 @@ venue: SecureComm
 year: 2017
 url: https://censorbib.nymity.ch/pdf/Gosain2017a.pdf
 censors:
-  - generic
+  - in
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

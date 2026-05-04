@@ -8,9 +8,12 @@ venue: Web Science
 year: 2020
 url: https://censorbib.nymity.ch/pdf/Singh2020a.pdf
 censors:
-  - generic
+  - in
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
+  - sni-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -18,6 +18,9 @@ censors:
   - cn
 techniques:
   - dpi
+  - packet-injection
+  - rst-injection
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

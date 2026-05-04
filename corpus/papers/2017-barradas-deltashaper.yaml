@@ -11,6 +11,10 @@ censors:
   - generic
 techniques:
   - dpi
+  - traffic-shape
+defenses_discussed:
+  - tunneling
+  - steganography
 core: false
 visibility: public
 date_added: "2026-05-04"

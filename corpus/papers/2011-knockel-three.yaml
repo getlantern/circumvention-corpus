@@ -8,8 +8,9 @@ venue: Free and Open Communications on the Internet
 year: 2011
 url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Knockel.pdf
 censors:
-  - generic
+  - cn
 techniques:
+  - keyword-filtering
   - dpi
 core: false
 visibility: public

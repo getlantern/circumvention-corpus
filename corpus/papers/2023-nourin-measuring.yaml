@@ -15,6 +15,10 @@ censors:
   - tm
 techniques:
   - dpi
+  - ip-blocking
+  - dns-poisoning
+  - keyword-filtering
+defenses_discussed: [geneva]
 core: false
 visibility: public
 date_added: "2026-05-04"

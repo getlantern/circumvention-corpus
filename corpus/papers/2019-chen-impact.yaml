@@ -7,9 +7,10 @@ venue: American Economic Review
 year: 2019
 url: https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.20171765
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -16,7 +16,9 @@ url: https://cseweb.ucsd.edu/~snoeren/papers/shutdown-sigcomm23.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - ip-blocking
+  - asn-blackholing
+  - bgp-hijack
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -7,7 +7,7 @@ venue: CHI
 year: 2011
 url: https://censorbib.nymity.ch/pdf/Shklovski2011a.pdf
 censors: [generic]
-techniques: [dpi]
+techniques: [dpi, ip-blocking, keyword-filtering]
 core: false
 visibility: public
 date_added: "2026-05-04"

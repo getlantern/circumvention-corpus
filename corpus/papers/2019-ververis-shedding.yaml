@@ -9,9 +9,11 @@ venue: User Modeling, Adaptation and Personalization
 year: 2019
 url: https://github.com/hack66/appavail/blob/master/AppStoreCensorship.pdf
 censors:
-  - generic
+  - cn
+  - ru
 techniques:
-  - dpi
+  - ip-blocking
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -8,9 +8,9 @@ venue: Conference on Online Social Networks
 year: 2013
 url: https://cbw.sh/static/pdf/weibo-cosn13.pdf
 censors:
-  - generic
+  - cn
 techniques:
-  - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

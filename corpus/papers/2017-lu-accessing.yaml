@@ -12,9 +12,11 @@ venue: Middleware
 year: 2017
 url: https://censorbib.nymity.ch/pdf/Lu2017a.pdf
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
+  - ip-blocking
+  - dns-poisoning
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -15,7 +15,8 @@ url: https://delivery.acm.org/10.1145/3280000/3278552/p218-McDonald.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - ip-blocking
+  - asn-blackholing
 core: false
 visibility: public
 date_added: "2026-05-04"

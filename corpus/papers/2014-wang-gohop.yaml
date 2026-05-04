@@ -11,9 +11,13 @@ venue: International Conference on Advanced Communication Technology
 year: 2014
 url: https://censorbib.nymity.ch/pdf/Wang2014a.pdf
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
+  - active-probing
+defenses_discussed:
+  - tunneling
+  - randomization
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -10,7 +10,8 @@ url: https://www.usenix.org/system/files/conference/foci18/foci18-paper-knockel.
 censors:
   - cn
 techniques:
-  - dpi
+  - keyword-filtering
+  - ml-classifier
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -11,7 +11,7 @@ url: https://research.owlfolio.org/pubs/2022-darwin-censorship.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

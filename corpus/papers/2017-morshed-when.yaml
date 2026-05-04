@@ -12,6 +12,8 @@ censors:
   - generic
 techniques:
   - dpi
+  - throttling
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

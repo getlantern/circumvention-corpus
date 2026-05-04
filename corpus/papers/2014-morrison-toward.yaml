@@ -6,9 +6,10 @@ venue: Data Mining in Social Networks
 year: 2014
 url: https://arxiv.org/pdf/1402.5310v2.pdf
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

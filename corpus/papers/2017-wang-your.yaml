@@ -13,6 +13,10 @@ censors:
   - generic
 techniques:
   - dpi
+  - rst-injection
+  - packet-injection
+defenses_discussed:
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

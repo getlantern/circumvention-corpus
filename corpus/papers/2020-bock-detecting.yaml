@@ -13,6 +13,11 @@ censors:
   - ir
 techniques:
   - dpi
+  - active-probing
+  - fully-encrypted-detect
+defenses_discussed:
+  - geneva
+  - protocol-versioning
 core: false
 visibility: public
 date_added: "2026-05-04"

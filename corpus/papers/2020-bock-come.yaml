@@ -15,6 +15,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - rst-injection
+defenses_discussed:
+  - geneva
 core: false
 visibility: public
 date_added: "2026-05-04"

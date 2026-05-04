@@ -11,6 +11,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - ip-blocking
+defenses_discussed:
+  - meta-resistance
 core: false
 visibility: public
 date_added: "2026-05-04"

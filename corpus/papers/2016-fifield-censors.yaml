@@ -10,6 +10,12 @@ censors:
   - generic
 techniques:
   - dpi
+  - active-probing
+  - ip-blocking
+defenses_discussed:
+  - tor
+  - bridges
+  - pluggable-transport
 core: false
 visibility: public
 date_added: "2026-05-04"

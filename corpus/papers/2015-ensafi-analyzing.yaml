@@ -12,6 +12,10 @@ censors:
   - cn
 techniques:
   - dpi
+  - dns-poisoning
+  - rst-injection
+  - active-probing
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

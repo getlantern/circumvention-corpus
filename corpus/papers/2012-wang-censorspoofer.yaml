@@ -13,6 +13,8 @@ censors:
   - generic
 techniques:
   - dpi
+  - ip-blocking
+defenses_discussed: [tunneling, decoy-routing]
 core: false
 visibility: public
 date_added: "2026-05-04"

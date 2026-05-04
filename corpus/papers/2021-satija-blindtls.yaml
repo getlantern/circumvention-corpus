@@ -10,6 +10,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - tls-fingerprint
+  - sni-blocking
+defenses_discussed: [tunneling, reverse-tls]
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -9,9 +9,11 @@ venue: Free and Open Communications on the Internet
 year: 2023
 url: https://www.petsymposium.org/foci/2023/foci-2023-0006.pdf
 censors:
-  - generic
+  - in
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

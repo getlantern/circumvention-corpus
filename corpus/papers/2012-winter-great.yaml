@@ -9,7 +9,10 @@ url: https://www.usenix.org/system/files/conference/foci12/foci12-final2.pdf
 censors:
   - cn
 techniques:
+  - active-probing
   - dpi
+  - ip-blocking
+defenses_discussed: [tor, bridges]
 core: false
 visibility: public
 date_added: "2026-05-04"

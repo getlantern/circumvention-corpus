@@ -11,6 +11,9 @@ censors:
   - sa
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

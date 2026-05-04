@@ -12,6 +12,8 @@ censors:
   - generic
 techniques:
   - dpi
+  - keyword-filtering
+defenses_discussed: [steganography, tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

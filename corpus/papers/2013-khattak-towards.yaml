@@ -12,6 +12,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - active-probing
+  - traffic-shape
+defenses_discussed: [tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

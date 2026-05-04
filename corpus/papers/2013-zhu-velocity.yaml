@@ -12,7 +12,7 @@ url: https://www.cs.unm.edu/~crandall/usenix13.pdf
 censors:
   - cn
 techniques:
-  - dpi
+  - keyword-filtering
 core: false
 visibility: public
 date_added: "2026-05-04"

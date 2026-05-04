@@ -14,7 +14,7 @@ venue: Free and Open Communications on the Internet
 year: 2021
 url: https://dl.acm.org/doi/pdf/10.1145/3473604.3474562
 censors: [mm]
-techniques: [dpi]
+techniques: [dpi, ip-blocking, dns-poisoning, asn-blackholing]
 core: false
 visibility: public
 date_added: "2026-05-04"

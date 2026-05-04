@@ -7,7 +7,8 @@ venue: Economics and Information Security
 year: 2004
 url: https://www.cl.cam.ac.uk/~rja14/Papers/redblue.pdf
 censors: [generic]
-techniques: [dpi]
+techniques: [dpi, ip-blocking]
+defenses_discussed: [meta-resistance]
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -10,6 +10,7 @@ censors:
   - cn
 techniques:
   - dpi
+  - active-probing
 core: false
 visibility: public
 date_added: "2026-05-04"

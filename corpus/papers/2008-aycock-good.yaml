@@ -7,7 +7,8 @@ venue: SIGCAS Computers \& Society
 year: 2008
 url: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1412007
 censors: [generic]
-techniques: [dpi]
+techniques: [dpi, ip-blocking]
+defenses_discussed: [tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

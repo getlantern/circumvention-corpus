@@ -10,6 +10,9 @@ censors:
   - generic
 techniques:
   - dpi
+  - ip-blocking
+  - dns-poisoning
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"
