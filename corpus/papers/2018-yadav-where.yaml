@@ -10,11 +10,9 @@ venue: Internet Measurement Conference
 year: 2018
 url: https://delivery.acm.org/10.1145/3280000/3278555/p252-Yadav.pdf
 censors:
-  - generic
+  - in
 techniques:
-  - esni-eh-blocking
-defenses_discussed:
-  - ech-esni
+  - dpi
 core: false
 visibility: public
 date_added: "2026-05-04"

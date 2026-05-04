@@ -5,10 +5,12 @@ authors:
 venue: The Tor Project
 year: 2011
 url: https://research.torproject.org/techreports/detector-2011-09-09.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - ml-classifier
+  - traffic-shape
+defenses_discussed:
+  - tor
 core: false
 visibility: public
 date_added: "2026-05-04"

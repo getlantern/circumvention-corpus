@@ -10,10 +10,8 @@ authors:
 venue: Computers \& Security
 year: 2025
 url: https://www.sciencedirect.com/science/article/pii/S0167404825004213
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi, dns-poisoning, ip-blocking, sni-blocking]
 core: false
 visibility: public
 date_added: "2026-05-04"

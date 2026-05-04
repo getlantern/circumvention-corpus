@@ -13,7 +13,7 @@ url: https://dl.acm.org/doi/pdf/10.1145/3589334.3645552
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

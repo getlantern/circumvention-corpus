@@ -5,10 +5,11 @@ authors:
 venue: DFN-Arbeitstagung über Kommunikationsnetze
 year: 2003
 url: https://censorbib.nymity.ch/pdf/Dornseif2003a.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+  - dns-poisoning
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

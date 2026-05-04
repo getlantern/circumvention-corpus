@@ -5,10 +5,12 @@ authors:
 venue: Free and Open Communications on the Internet
 year: 2011
 url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Kathuria.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+  - ip-blocking
+defenses_discussed:
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

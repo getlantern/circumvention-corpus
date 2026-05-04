@@ -7,10 +7,10 @@ authors:
 venue: USENIX Security Symposium
 year: 2001
 url: https://www.usenix.org/legacy/events/sec01/full_papers/handley/handley.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

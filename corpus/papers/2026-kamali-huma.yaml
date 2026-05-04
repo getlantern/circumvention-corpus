@@ -6,10 +6,9 @@ authors:
 venue: Network and Distributed System Security
 year: 2026
 url: https://www.ndss-symposium.org/wp-content/uploads/2026-f328-paper.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
+defenses_discussed: [domain-fronting, tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

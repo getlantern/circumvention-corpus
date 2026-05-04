@@ -17,7 +17,7 @@ url: https://censoredplanet.org/assets/russia-ukraine-invasion.pdf
 censors:
   - ru
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

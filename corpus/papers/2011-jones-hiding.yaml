@@ -9,7 +9,11 @@ venue: Free and Open Communications on the Internet
 year: 2011
 url: https://www.cs.princeton.edu/~mfreed/docs/cor-foci11.pdf
 censors: [generic]
-techniques: [dpi]
+techniques:
+  - dpi
+defenses_discussed:
+  - tor
+  - domain-fronting
 core: false
 visibility: public
 date_added: "2026-05-04"
@@ -17,4 +21,3 @@ added_by: censorbib-import
 sources:
     - censorbib
     - bibtex:Jones2011a
-defenses_discussed: [tor]

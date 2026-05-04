@@ -5,8 +5,7 @@ authors:
   - Timothy N. Newsham
 year: 1998
 url: https://www.icir.org/vern/Ptacek-Newsham-Evasion-98.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
 core: false

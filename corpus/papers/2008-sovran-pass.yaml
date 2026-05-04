@@ -7,10 +7,11 @@ authors:
 venue: International Workshop on Peer-to-Peer Systems
 year: 2008
 url: https://www.cs.toronto.edu/iptps2008/final/73.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -12,7 +12,7 @@ url: https://www.petsymposium.org/foci/2024/foci-2024-0005.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - tls-fingerprint
 core: false
 visibility: public
 date_added: "2026-05-04"

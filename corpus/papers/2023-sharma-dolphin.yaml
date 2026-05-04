@@ -12,7 +12,7 @@ url: https://petsymposium.org/popets/2023/popets-2023-0034.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

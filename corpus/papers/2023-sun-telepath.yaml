@@ -9,7 +9,7 @@ url: https://doi.ieeecomputersociety.org/10.1109/SP46215.2023.00183
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

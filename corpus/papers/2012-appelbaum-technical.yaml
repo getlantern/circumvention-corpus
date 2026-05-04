@@ -6,11 +6,14 @@ venue: The Tor Project
 year: 2012
 url: https://media.torproject.org/misc/2012-04-16-ultrasurf-analysis.pdf
 censors:
-  - generic
+  - cn
+  - ir
 techniques:
-  - esni-eh-blocking
+  - dpi
+  - sni-blocking
 defenses_discussed:
   - ech-esni
+  - domain-fronting
 core: false
 visibility: public
 date_added: "2026-05-04"

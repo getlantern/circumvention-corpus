@@ -7,10 +7,8 @@ authors:
 venue: International Conference on Information Hiding
 year: 2005
 url: https://censorbib.nymity.ch/pdf/Perng2005a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"

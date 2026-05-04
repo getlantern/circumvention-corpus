@@ -5,10 +5,8 @@ authors:
 venue: International Conference on Fun with Algorithms
 year: 2010
 url: https://censorbib.nymity.ch/pdf/Mahdian2010a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"

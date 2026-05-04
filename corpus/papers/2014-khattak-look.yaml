@@ -10,7 +10,7 @@ venue: Internet Measurement Conference
 year: 2014
 url: https://conferences2.sigcomm.org/imc/2014/papers/p271.pdf
 censors:
-  - generic
+  - pk
 techniques:
   - dpi
 core: false

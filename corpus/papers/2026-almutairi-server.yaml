@@ -7,10 +7,8 @@ authors:
 venue: Free and Open Communications on the Internet
 year: 2026
 url: https://www.petsymposium.org/foci/2026/foci-2026-0008.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi, traffic-shape, flow-correlation]
 core: false
 visibility: public
 date_added: "2026-05-04"

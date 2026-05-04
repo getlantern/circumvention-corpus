@@ -9,7 +9,7 @@ url: https://www.petsymposium.org/foci/2023/foci-2023-0009.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

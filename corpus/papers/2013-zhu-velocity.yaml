@@ -10,7 +10,7 @@ venue: USENIX Security Symposium
 year: 2013
 url: https://www.cs.unm.edu/~crandall/usenix13.pdf
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
 core: false

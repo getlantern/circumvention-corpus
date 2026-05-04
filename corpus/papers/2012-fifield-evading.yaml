@@ -15,6 +15,7 @@ censors:
   - generic
 techniques:
   - dpi
+defenses_discussed: [pluggable-transport, meek]
 core: false
 visibility: public
 date_added: "2026-05-04"

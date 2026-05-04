@@ -10,7 +10,7 @@ venue: INFOCOM
 year: 2012
 url: https://www.cs.uml.edu/~xinwenfu/paper/Bridge.pdf
 censors: [generic]
-techniques: [dpi]
+techniques: [dpi, active-probing]
 core: false
 visibility: public
 date_added: "2026-05-04"

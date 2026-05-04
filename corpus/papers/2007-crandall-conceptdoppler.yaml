@@ -9,10 +9,9 @@ authors:
 venue: Computer and Communications Security
 year: 2007
 url: http://www.csd.uoc.gr/~hy558/papers/conceptdoppler.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

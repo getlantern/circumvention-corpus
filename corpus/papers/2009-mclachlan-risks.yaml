@@ -6,10 +6,12 @@ authors:
 venue: Workshop on Privacy in the Electronic Society
 year: 2009
 url: https://www-users.cs.umn.edu/~hopper/surf_and_serve.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+  - active-probing
+defenses_discussed:
+  - tor
 core: false
 visibility: public
 date_added: "2026-05-04"

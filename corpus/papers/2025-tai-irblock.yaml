@@ -8,11 +8,8 @@ authors:
 venue: USENIX Security Symposium
 year: 2025
 url: https://www.usenix.org/system/files/usenixsecurity25-tai.pdf
-censors:
-  - cn
-  - ir
-techniques:
-  - dpi
+censors: [cn, ir]
+techniques: [dpi, dns-poisoning, ip-blocking, sni-blocking, port-blocking]
 core: false
 visibility: public
 date_added: "2026-05-04"

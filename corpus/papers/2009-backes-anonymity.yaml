@@ -10,10 +10,11 @@ authors:
 venue: On the Move to Meaningful Internet Systems
 year: 2009
 url: https://censorbib.nymity.ch/pdf/Backes2009a.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

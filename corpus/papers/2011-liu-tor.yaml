@@ -8,10 +8,12 @@ authors:
 venue: Hot Topics in Networks
 year: 2011
 url: https://conferences.sigcomm.org/hotnets/2011/papers/hotnetsX-final131.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+  - active-probing
+defenses_discussed:
+  - tor
 core: false
 visibility: public
 date_added: "2026-05-04"

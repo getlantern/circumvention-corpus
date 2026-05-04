@@ -7,12 +7,12 @@ authors:
 venue: USENIX Security Symposium
 year: 2000
 url: https://www.usenix.org/legacy/events/sec2000/waldman/waldman.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - ip-blocking
 defenses_discussed:
-  - amp-cache
+  - steganography
+  - decoy-routing
 core: false
 visibility: public
 date_added: "2026-05-04"

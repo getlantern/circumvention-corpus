@@ -11,7 +11,7 @@ url: https://www.petsymposium.org/foci/2024/foci-2024-0012.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - middlebox-interference
 core: false
 visibility: public
 date_added: "2026-05-04"

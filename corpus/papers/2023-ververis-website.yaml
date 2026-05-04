@@ -11,7 +11,7 @@ url: https://onlinelibrary.wiley.com/doi/pdf/10.1002/poi3.367
 censors:
   - generic
 techniques:
-  - dpi
+  - ip-blocking
 core: false
 visibility: public
 date_added: "2026-05-04"

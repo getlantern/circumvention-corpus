@@ -9,10 +9,12 @@ authors:
 venue: USENIX Security Symposium
 year: 2002
 url: http://wind.lcs.mit.edu/papers/usenixsec2002.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - dns-poisoning
+defenses_discussed:
+  - steganography
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

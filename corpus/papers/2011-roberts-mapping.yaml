@@ -8,10 +8,9 @@ authors:
 venue: Computer Communications Workshop
 year: 2011
 url: https://cyber.law.harvard.edu/netmaps/mlic_20110513.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

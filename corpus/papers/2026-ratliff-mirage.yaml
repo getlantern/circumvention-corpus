@@ -10,10 +10,9 @@ authors:
 venue: Network and Distributed System Security
 year: 2026
 url: https://www.ndss-symposium.org/wp-content/uploads/2026-s237-paper.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi, flow-correlation]
+defenses_discussed: [domain-fronting, decoy-routing]
 core: false
 visibility: public
 date_added: "2026-05-04"

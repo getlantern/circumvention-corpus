@@ -11,6 +11,8 @@ censors:
   - cn
 techniques:
   - dpi
+  - dns-poisoning
+  - rst-injection
 core: false
 visibility: public
 date_added: "2026-05-04"

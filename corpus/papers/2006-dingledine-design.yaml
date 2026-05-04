@@ -6,10 +6,13 @@ authors:
 venue: The Tor Project
 year: 2006
 url: https://svn.torproject.org/svn/projects/design-paper/blocking.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+  - active-probing
+defenses_discussed:
+  - tor
+  - bridges
 core: false
 visibility: public
 date_added: "2026-05-04"

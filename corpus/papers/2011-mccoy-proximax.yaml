@@ -7,10 +7,12 @@ authors:
 venue: Financial Cryptography and Data Security
 year: 2011
 url: https://cseweb.ucsd.edu/~klevchen/mml-fc11.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - tunneling
+  - meek
 core: false
 visibility: public
 date_added: "2026-05-04"

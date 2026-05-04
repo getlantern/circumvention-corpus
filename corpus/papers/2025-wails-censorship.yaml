@@ -8,10 +8,9 @@ authors:
 venue: USENIX Security Symposium
 year: 2025
 url: https://www.usenix.org/system/files/usenixsecurity25-wails.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi, flow-correlation]
+defenses_discussed: [marionette]
 core: false
 visibility: public
 date_added: "2026-05-04"

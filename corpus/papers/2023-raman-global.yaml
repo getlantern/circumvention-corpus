@@ -14,7 +14,7 @@ url: https://www.cs.umd.edu/~dml/papers/tampering_sigcomm23.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - packet-injection
 defenses_discussed:
   - amp-cache
 core: false

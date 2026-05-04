@@ -9,7 +9,7 @@ venue: USENIX Security Symposium
 year: 2023
 url: https://www.usenix.org/system/files/usenixsecurity23-amich.pdf
 censors: [generic]
-techniques: [dpi]
+techniques: [active-probing]
 core: false
 visibility: public
 date_added: "2026-05-04"

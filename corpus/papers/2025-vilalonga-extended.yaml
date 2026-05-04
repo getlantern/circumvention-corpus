@@ -9,10 +9,9 @@ authors:
 venue: Free and Open Communications on the Internet
 year: 2025
 url: https://www.petsymposium.org/foci/2025/foci-2025-0003.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
+defenses_discussed: [tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

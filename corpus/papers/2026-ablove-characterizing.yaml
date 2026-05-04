@@ -8,10 +8,8 @@ authors:
 venue: Network and Distributed System Security
 year: 2026
 url: https://www.ndss-symposium.org/wp-content/uploads/2026-s1761-paper.pdf
-censors:
-  - cn
-techniques:
-  - dpi
+censors: [cn]
+techniques: [dpi, ml-classifier]
 core: false
 visibility: public
 date_added: "2026-05-04"

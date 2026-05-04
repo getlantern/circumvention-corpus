@@ -68,6 +68,18 @@ censors:
       Post-2021 coup the military regime deployed Chinese GFW-derived
       surveillance via Geedge Networks under the Belt and Road framework.
       Per the 2025 Justice for Myanmar report.
+  tr:
+    name: "Turkey"
+    synonyms: ["TR"]
+  sy:
+    name: "Syria"
+    synonyms: ["SY"]
+  gr:
+    name: "Greece"
+    synonyms: ["GR"]
+  in:
+    name: "India"
+    synonyms: ["IN"]
   generic:
     name: "Generic / not censor-specific"
     notes: "Use for technique papers that don't evaluate against a specific censor."
@@ -147,6 +159,9 @@ techniques:
   middlebox-interference:
     name: "Middlebox / TCP normalization"
     notes: "Censor middleboxes mangling/normalizing TCP that interferes with circumvention."
+  keyword-filtering:
+    name: "Keyword filtering"
+    notes: "Censor blocks or modifies traffic based on appearance of specific keywords (URLs, social-media posts, search queries). Common in CN platform-side moderation."
 
 # Defenses / circumvention techniques.
 defenses:
@@ -249,6 +264,9 @@ defenses:
   format-transform:
     name: "Format-transforming encryption"
     synonyms: ["FTE"]
+  dust:
+    name: "Dust (Wiley 2011 pluggable transport)"
+    notes: "Brandon Wiley's blocking-resistant Internet transport protocol; randomized handshake predecessor to obfs / ScrambleSuit lineage."
 
 # Evaluation methods used in papers.
 evaluation_methods:

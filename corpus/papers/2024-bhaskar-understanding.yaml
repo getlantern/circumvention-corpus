@@ -9,7 +9,7 @@ url: https://dl.acm.org/doi/epdf/10.1145/3658644.3670336
 censors:
   - generic
 techniques:
-  - rst-injection
+  - bgp-hijack
 core: false
 visibility: public
 date_added: "2026-05-04"

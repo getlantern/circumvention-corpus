@@ -11,6 +11,8 @@ censors:
   - generic
 techniques:
   - dpi
+defenses_discussed:
+  - steganography
 core: false
 visibility: public
 date_added: "2026-05-04"

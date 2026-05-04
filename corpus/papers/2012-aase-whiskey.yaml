@@ -13,9 +13,11 @@ venue: Free and Open Communications on the Internet
 year: 2012
 url: https://www.usenix.org/system/files/conference/foci12/foci12-final17.pdf
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
+  - dns-poisoning
+  - rst-injection
 core: false
 visibility: public
 date_added: "2026-05-04"

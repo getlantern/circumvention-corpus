@@ -13,7 +13,7 @@ url: https://www.petsymposium.org/foci/2024/foci-2024-0017.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

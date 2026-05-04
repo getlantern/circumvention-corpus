@@ -9,10 +9,9 @@ authors:
 venue: Asia CCS
 year: 2024
 url: https://dl.acm.org/doi/pdf/10.1145/3634737.3637676
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
+defenses_discussed: [steganography]
 core: false
 visibility: public
 date_added: "2026-05-04"

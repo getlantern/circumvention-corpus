@@ -10,7 +10,7 @@ venue: Free and Open Communications on the Internet
 year: 2015
 url: https://www.usenix.org/system/files/conference/foci15/foci15-paper-ververis-updated-2.pdf
 censors:
-  - generic
+  - gr
 techniques:
   - rst-injection
 core: false

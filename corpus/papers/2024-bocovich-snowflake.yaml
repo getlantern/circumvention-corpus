@@ -12,7 +12,7 @@ url: https://www.usenix.org/system/files/sec24fall-prepub-1998-bocovich.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 defenses_discussed:
   - webrtc-pluggable
 core: false

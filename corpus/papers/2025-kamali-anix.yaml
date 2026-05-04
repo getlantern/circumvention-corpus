@@ -6,10 +6,9 @@ authors:
 venue: Symposium on Security \& Privacy
 year: 2025
 url: https://cs.uwaterloo.ca/~dbarrada/papers/kamali-sp25.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
+defenses_discussed: [tunneling]
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -6,10 +6,11 @@ authors:
 venue: Security Protocols
 year: 2011
 url: http://www.jbonneau.com/doc/BX11-SPW-scrambling_censorship.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - mimicry
 core: false
 visibility: public
 date_added: "2026-05-04"

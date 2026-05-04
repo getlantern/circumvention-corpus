@@ -10,7 +10,7 @@ venue: Workshop on Privacy in the Electronic Society
 year: 2015
 url: https://censorbib.nymity.ch/pdf/Tanash2015a.pdf
 censors:
-  - generic
+  - tr
 techniques:
   - dpi
 core: false

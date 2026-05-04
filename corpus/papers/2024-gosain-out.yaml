@@ -12,7 +12,7 @@ url: https://pam2024.cs.northwestern.edu/pdfs/paper-58.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

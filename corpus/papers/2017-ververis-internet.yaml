@@ -9,7 +9,7 @@ venue: E-Democracy
 year: 2017
 url: https://censorbib.nymity.ch/pdf/Ververis2017a.pdf
 censors: [generic]
-techniques: [ip-blocking]
+techniques: [dns-poisoning, ip-blocking]
 core: false
 visibility: public
 date_added: "2026-05-04"

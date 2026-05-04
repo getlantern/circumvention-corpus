@@ -11,6 +11,8 @@ censors:
   - cn
 techniques:
   - dpi
+  - keyword-filtering
+  - ml-classifier
 core: false
 visibility: public
 date_added: "2026-05-04"

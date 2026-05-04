@@ -9,10 +9,8 @@ authors:
 venue: Symposium on Security \& Privacy
 year: 2025
 url: https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/26hiUgw654A/pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [active-probing, dpi]
 defenses_discussed:
   - amp-cache
 core: false

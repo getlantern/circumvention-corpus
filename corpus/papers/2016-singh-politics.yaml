@@ -13,7 +13,7 @@ url: https://www.usenix.org/system/files/conference/foci16/foci16-paper-singh.pd
 censors:
   - generic
 techniques:
-  - dpi
+  - asn-blackholing
 core: false
 visibility: public
 date_added: "2026-05-04"

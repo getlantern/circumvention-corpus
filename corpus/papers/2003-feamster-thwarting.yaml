@@ -9,10 +9,12 @@ authors:
 venue: Privacy Enhancing Technologies
 year: 2003
 url: http://nms.csail.mit.edu/papers/disc-pet2003.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - steganography
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

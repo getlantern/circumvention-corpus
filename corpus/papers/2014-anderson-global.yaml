@@ -10,7 +10,7 @@ url: https://www.usenix.org/system/files/conference/foci14/foci14-anderson.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -5,10 +5,10 @@ authors:
 venue: Privacy Enhancing Technologies
 year: 2006
 url: https://www.cl.cam.ac.uk/~rnc1/cleanfeed.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - ip-blocking
+  - http3-quic-block
 core: false
 visibility: public
 date_added: "2026-05-04"

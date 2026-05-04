@@ -10,7 +10,12 @@ venue: Workshop on Privacy in the Electronic Society
 year: 2011
 url: https://www.cypherpunks.ca/~iang/pubs/bridgespa-wpes.pdf
 censors: [generic]
-techniques: [dpi]
+techniques:
+  - active-probing
+defenses_discussed:
+  - tor
+  - bridges
+  - pluggable-transport
 core: false
 visibility: public
 date_added: "2026-05-04"
@@ -18,4 +23,3 @@ added_by: censorbib-import
 sources:
     - censorbib
     - bibtex:Smits2011a
-defenses_discussed: [tor, bridges]

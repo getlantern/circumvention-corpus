@@ -6,10 +6,11 @@ authors:
 venue: Workshop on Privacy in the Electronic Society
 year: 2004
 url: https://censorbib.nymity.ch/pdf/Koepsell2004a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
+defenses_discussed:
+  - tunneling
+  - pluggable-transport
 core: false
 visibility: public
 date_added: "2026-05-04"

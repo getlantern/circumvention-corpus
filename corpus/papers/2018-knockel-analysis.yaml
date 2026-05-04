@@ -8,11 +8,9 @@ venue: Free and Open Communications on the Internet
 year: 2018
 url: https://www.usenix.org/system/files/conference/foci18/foci18-paper-knockel.pdf
 censors:
-  - generic
+  - cn
 techniques:
-  - esni-eh-blocking
-defenses_discussed:
-  - ech-esni
+  - dpi
 core: false
 visibility: public
 date_added: "2026-05-04"

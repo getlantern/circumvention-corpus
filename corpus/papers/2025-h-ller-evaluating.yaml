@@ -7,7 +7,7 @@ venue: Free and Open Communications on the Internet
 year: 2025
 url: https://petsymposium.org/foci/2025/foci-2025-0009.pdf
 censors: [generic]
-techniques: [dpi]
+techniques: [measurement-platform]
 core: false
 visibility: public
 date_added: "2026-05-04"

@@ -8,7 +8,7 @@ venue: International Conference on Web and Social Media
 year: 2015
 url: https://censorbib.nymity.ch/pdf/Hiruncharoenvate2015a.pdf
 censors:
-  - generic
+  - cn
 techniques:
   - dpi
 core: false

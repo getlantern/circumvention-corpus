@@ -5,10 +5,10 @@ authors:
 venue: Theory and Applications of Cryptology
 year: 1996
 url: https://www.cl.cam.ac.uk/~rja14/Papers/eternity.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
+defenses_discussed:
+  - steganography
 core: false
 visibility: public
 date_added: "2026-05-04"

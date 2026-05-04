@@ -8,10 +8,12 @@ authors:
 venue: Rice University and University of Texas at Arlington
 year: 2011
 url: https://arxiv.org/pdf/1109.6874v1.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - tunneling
+  - steganography
 core: false
 visibility: public
 date_added: "2026-05-04"

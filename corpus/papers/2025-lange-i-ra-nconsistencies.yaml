@@ -10,10 +10,8 @@ authors:
 venue: Free and Open Communications on the Internet
 year: 2025
 url: https://www.petsymposium.org/foci/2025/foci-2025-0002.pdf
-censors:
-  - ir
-techniques:
-  - dpi
+censors: [ir]
+techniques: [dpi, sni-blocking, dns-poisoning, ip-blocking]
 core: false
 visibility: public
 date_added: "2026-05-04"

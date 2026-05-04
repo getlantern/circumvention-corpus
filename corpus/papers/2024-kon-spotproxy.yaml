@@ -14,7 +14,7 @@ url: https://www.cs-pk.com/sec24-spotproxy-final.pdf
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

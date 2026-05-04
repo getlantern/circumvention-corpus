@@ -6,10 +6,8 @@ authors:
 venue: Economics and Information Security
 year: 2004
 url: https://www.cl.cam.ac.uk/~rja14/Papers/redblue.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"

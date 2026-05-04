@@ -15,7 +15,7 @@ url: https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/1Rj
 censors:
   - generic
 techniques:
-  - dpi
+  - traffic-shape
 core: false
 visibility: public
 date_added: "2026-05-04"

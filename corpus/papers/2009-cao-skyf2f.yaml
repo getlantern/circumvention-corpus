@@ -8,10 +8,11 @@ authors:
 venue: International Conference on Information Engineering
 year: 2009
 url: https://censorbib.nymity.ch/pdf/Cao2009a.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
+defenses_discussed:
+  - tunneling
 core: false
 visibility: public
 date_added: "2026-05-04"

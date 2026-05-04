@@ -5,10 +5,9 @@ authors:
 venue: Dublin City University
 year: 2006
 url: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.133.5778&rep=rep1&type=pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"

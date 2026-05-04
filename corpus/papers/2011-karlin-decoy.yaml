@@ -11,8 +11,7 @@ authors:
 venue: Free and Open Communications on the Internet
 year: 2011
 url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Karlin.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
   - dpi
 defenses_discussed:

@@ -6,10 +6,11 @@ authors:
 venue: Computer and Communications Security
 year: 2001
 url: https://www.cs.nyu.edu/~waldman/tangler.ps
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - ip-blocking
+defenses_discussed:
+  - decoy-routing
 core: false
 visibility: public
 date_added: "2026-05-04"

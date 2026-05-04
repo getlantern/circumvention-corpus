@@ -6,10 +6,9 @@ authors:
 venue: Free and Open Communications on the Internet
 year: 2011
 url: https://www.usenix.org/legacy/events/foci11/tech/final_files/Espinoza.pdf
-censors:
-  - generic
+censors: [generic]
 techniques:
-  - dpi
+  - measurement-platform
 core: false
 visibility: public
 date_added: "2026-05-04"
