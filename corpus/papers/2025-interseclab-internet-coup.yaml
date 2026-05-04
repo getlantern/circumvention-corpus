@@ -1,0 +1,45 @@
+id: 2025-interseclab-internet-coup
+title: "The Internet Coup"
+authors:
+  - InterSecLab
+venue: "InterSecLab (research consortium report)"
+year: 2025
+url: "https://interseclab.org/research/the-internet-coup/"
+abstract: |
+  76-page consortium report based on a nine-month indexing, translation,
+  and analysis effort over the ~600 GB Geedge/MESA leak. Documents how
+  China's domestic censorship infrastructure has been productized and
+  exported through Geedge Networks to states including Myanmar, Pakistan,
+  Ethiopia, and Kazakhstan, with technical detail on the Tiangou Secure
+  Gateway (TSG) product line and its detection capabilities.
+
+censors: [cn]
+techniques: [dpi, active-probing, ml-classifier, sni-blocking, traffic-shape, dns-poisoning, fully-encrypted-detect, ip-blocking]
+defenses_discussed: [mimicry, randomization]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources:
+  - "url:https://interseclab.org/research/the-internet-coup/"
+  - "url:https://interseclab.org/wp-content/uploads/2025/09/The-Internet-Coup_September2025.pdf"
+references:
+  - 2025-geedge-mesa-leak
+  - 2025-amnesty-pakistan-shadows
+  - 2025-jfm-silk-road-surveillance
+
+notes: |
+  Of the analyses published alongside the leak, InterSecLab's is the
+  most thorough technical read — they spent nine months on it. For
+  Lantern protocol designers, this is the highest-leverage way to
+  extract threat-model intelligence from the leak without working
+  through the raw 600 GB. Pay particular attention to TSG product
+  documentation: Geedge's productized GFW provides a clearer view
+  of what detection capabilities are commercially deployable in
+  customer states (vs. only deployed by the CN national operator).
+  When designing for IR / RU / etc., assume Geedge or a Geedge-derived
+  product is at least *available* to the censor, even where there's no
+  public deployment evidence yet.

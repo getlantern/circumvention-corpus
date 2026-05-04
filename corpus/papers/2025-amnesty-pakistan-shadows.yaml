@@ -1,0 +1,39 @@
+id: 2025-amnesty-pakistan-shadows
+title: "Shadows of Control: Censorship and mass surveillance in Pakistan"
+authors:
+  - Amnesty International
+venue: "Amnesty International (ASA 33/0206/2025)"
+year: 2025
+url: "https://www.amnesty.org/en/documents/asa33/0206/2025/en/"
+abstract: |
+  102-page Amnesty International report drawing on the Geedge/MESA leak
+  to document Pakistan's mass surveillance and censorship infrastructure
+  built with Chinese, European, Emirati, and North American technology.
+  Identifies specific detection products and deployment patterns, and
+  names the international vendor ecosystem behind the system.
+
+censors: [cn, pk]
+techniques: [dpi, sni-blocking, ip-blocking, traffic-shape, ml-classifier]
+defenses_discussed: [mimicry]
+evaluation_methods: [measurement-study]
+
+core: false
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources:
+  - "url:https://www.amnesty.org/en/documents/asa33/0206/2025/en/"
+  - "url:https://www.amnesty.org/en/wp-content/uploads/2025/09/ASA3302062025ENGLISH.pdf"
+references:
+  - 2025-geedge-mesa-leak
+
+notes: |
+  Operationally relevant for any Lantern user in Pakistan: this paper
+  is the first detailed public characterization of PK's deployed
+  detection stack. Adds "pk" to the censor taxonomy if it isn't
+  already (TODO: verify schema/taxonomy.yaml has pk; add it if not).
+  Less protocol-design-leverage than the InterSecLab report; more
+  policy/advocacy-leverage. Worth reading for the international-vendor
+  network mapping — a useful artifact when a deployment in $other_country
+  shows up and we need to guess at its detection capabilities.

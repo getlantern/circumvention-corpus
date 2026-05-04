@@ -1,0 +1,34 @@
+id: 2025-jfm-silk-road-surveillance
+title: "Silk Road of Surveillance"
+authors:
+  - Justice for Myanmar
+venue: "Justice for Myanmar (research report)"
+year: 2025
+url: "https://www.justiceformyanmar.org/stories/silk-road-of-surveillance"
+abstract: |
+  47-page report from Justice for Myanmar drawing on the Geedge/MESA
+  leak to document the export of Chinese GFW-derived surveillance
+  technology to Myanmar's military regime via the Belt and Road
+  framework. Identifies specific deployments and the corporate channels
+  through which Geedge Networks supplied the regime.
+
+censors: [cn, mm]
+techniques: [dpi, sni-blocking, ip-blocking, traffic-shape, ml-classifier]
+evaluation_methods: [measurement-study]
+
+core: false
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources:
+  - "url:https://www.justiceformyanmar.org/stories/silk-road-of-surveillance"
+references:
+  - 2025-geedge-mesa-leak
+
+notes: |
+  Adds "mm" (Myanmar) to the censor scope of the corpus. Operationally
+  most relevant for Lantern users in Myanmar; threat model converges
+  on the GFW threat model since the deployed system is GFW-derived.
+  Worth checking whether the corpus taxonomy has a Myanmar entry yet
+  (TODO: add to schema/taxonomy.yaml if not).

@@ -54,6 +54,20 @@ censors:
   sa:
     name: "Saudi Arabia"
     synonyms: ["KSA", "SA"]
+  pk:
+    name: "Pakistan"
+    synonyms: ["PK"]
+    notes: |
+      Surveillance and filtering infrastructure built with Chinese
+      vendor technology (Geedge/MESA-derived) plus European and Emirati
+      products. Per the 2025 Amnesty report.
+  mm:
+    name: "Myanmar"
+    synonyms: ["MM", "Burma"]
+    notes: |
+      Post-2021 coup the military regime deployed Chinese GFW-derived
+      surveillance via Geedge Networks under the Belt and Road framework.
+      Per the 2025 Justice for Myanmar report.
   generic:
     name: "Generic / not censor-specific"
     notes: "Use for technique papers that don't evaluate against a specific censor."

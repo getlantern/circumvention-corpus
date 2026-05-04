@@ -1,19 +1,23 @@
 id: 2025-geedge-mesa-leak
 title: "Geedge & MESA Leak: Analyzing the Great Firewall's Largest Document Leak"
 authors:
+  - Mingshi Wu
   - "GFW Report team"
 venue: "gfw.report"
 year: 2025
 url: "https://gfw.report/blog/geedge_and_mesa_leak/en/"
 abstract: |
-  Analysis of leaked internal documentation and source code from
-  Geedge Networks and the MESA lab at the Chinese Academy of Sciences,
-  revealing internals of the GFW's surveillance and detection
-  infrastructure. Largest known document leak from the GFW vendor
-  ecosystem.
+  On September 11, 2025, ~600 GB of source code, work logs, and internal
+  communications were leaked from Geedge Networks (Fang Binxing's company)
+  and the MESA Lab at the Chinese Academy of Sciences — the technical
+  R&D forces behind the GFW. The leak reveals not only China's domestic
+  censorship apparatus but the export of that technology to Myanmar,
+  Pakistan, Ethiopia, Kazakhstan, and other states under the Belt and
+  Road framework. Largest known document leak from the GFW vendor
+  ecosystem to date.
 
 censors: [cn]
-techniques: [dpi, active-probing, ml-classifier, sni-blocking, traffic-shape]
+techniques: [dpi, active-probing, ml-classifier, sni-blocking, traffic-shape, dns-poisoning, fully-encrypted-detect]
 defenses_discussed: [mimicry, randomization]
 evaluation_methods: [measurement-study]
 
@@ -22,15 +26,48 @@ visibility: public
 
 date_added: 2026-05-04
 added_by: afisk
-sources: ["url:https://gfw.report/blog/geedge_and_mesa_leak/en/"]
+sources:
+  - "url:https://gfw.report/blog/geedge_and_mesa_leak/en/"
+  - "net4people-issue:519"
+references:
+  - 2025-interseclab-internet-coup
+  - 2025-amnesty-pakistan-shadows
+  - 2025-jfm-silk-road-surveillance
 
 notes: |
   Operational-intelligence value is enormous: leaked source/docs from
   GFW vendors reveal the *intent* and *implementation* of detection
   systems, not just their externally-observable behavior. Lantern
   protocol designers should treat this as a primary threat-model input.
-  The blog-format public analysis is what we cite externally; if we
-  ever obtain the raw leak files for internal study, they belong in
-  circumvention-corpus-private with strict redistribution_terms (see
-  README visibility model). The raw material has obvious legal/ethical
-  handling concerns the team should reason about case by case.
+
+  Raw materials (~600 GB):
+    - BitTorrent: https://enlacehacktivista.org/geedge.torrent
+    - Direct HTTPS: https://files.enlacehacktivista.org/geedge/
+  Inventory (selected):
+    - mirror/repo.tar (500 GB) — RPM packaging server snapshot
+    - geedge_docs.tar.zst (15 GB) — Geedge internal documents
+    - geedge_jira.tar.zst (3 GB) — Jira ticket export
+    - mesalab_docs.tar.zst (35 GB) — MESA Lab internal documents
+    - mesalab_git.tar.zst (64 GB) — MESA Lab git repositories
+
+  Safety: GFW Report explicitly recommends analyzing only in an
+  isolated VM without internet access. Files may contain malware-
+  laden content; downloading them in an unscoped environment exposes
+  the analyst to surveillance and risk.
+
+  Curated discussion + index: https://github.com/net4people/bbs/issues/519
+
+  Lantern handling: this corpus does NOT host the raw materials and
+  does NOT operate a network-reachable MCP over them. If a team member
+  pulls them locally for analysis, they should run a personal/local
+  MCP (or just grep) inside an isolated VM. Findings extracted from
+  the raw material that inform protocol design belong in
+  circumvention-corpus-private (visibility: internal) with
+  redistribution_terms requiring re-derivation from public evidence
+  before any external citation — see the README visibility model.
+
+  Independent analyses already published (each entered separately as
+  a corpus paper): InterSecLab "The Internet Coup", Amnesty's "Shadows
+  of Control" (Pakistan), Justice for Myanmar's "Silk Road of
+  Surveillance". InterSecLab spent nine months indexing/translating
+  the corpus, so their report is the most thorough external read.
