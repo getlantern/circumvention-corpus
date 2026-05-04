@@ -197,7 +197,16 @@ func (s *site) render() error {
 	if err := s.renderTaxonomy(); err != nil {
 		return err
 	}
+	if err := s.renderUse(); err != nil {
+		return err
+	}
 	return s.renderContribute()
+}
+
+func (s *site) renderUse() error {
+	return s.writeFile("use", "use", map[string]any{
+		"Title": "Use the corpus — circumvention-corpus",
+	})
 }
 
 func (s *site) writeFile(rel string, name string, data any) error {

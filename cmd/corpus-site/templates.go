@@ -52,6 +52,7 @@ var pages = map[string]string{
 	"tag_index":    tagIndexBody,
 	"taxonomy":     taxonomyBody,
 	"contribute":   contributeBody,
+	"use":          useBody,
 }
 
 // pageTemplates is a map[pageName]*template.Template, each one a clone
@@ -86,6 +87,7 @@ const layoutTmpl = `<!doctype html>
     <a href="/techniques/">techniques</a>
     <a href="/defenses/">defenses</a>
     <a href="/taxonomy/">taxonomy</a>
+    <a href="/use/">use</a>
     <a href="/contribute/">contribute</a>
     <a href="https://github.com/getlantern/circumvention-corpus" rel="external">github</a>
   </nav>
@@ -103,6 +105,7 @@ const indexBody = `
   <h1 class="mono">circumvention-corpus</h1>
   <p>A controlled-vocabulary, LLM-callable index of censorship-circumvention research. Each entry tags one paper against a shared taxonomy of censors, detection techniques, and defenses; an MCP server exposes the corpus to AI assistants.</p>
   <p>Complements <a href="https://github.com/net4people/bbs">net4people/bbs</a> (forum), <a href="https://gfw.report">gfw.report</a> (original research), <a href="https://censorbib.nymity.ch/">CensorBib</a> (bibliography), and <a href="https://ooni.org">OONI</a> (measurement) by adding the structured-metadata layer the others don't have.</p>
+  <p><a href="/use/"><strong>How to use this →</strong></a> &nbsp; <a href="/contribute/">contribute →</a></p>
   <p class="counts">
     <a href="/papers/"><strong>{{.Counts.papers}}</strong> papers</a> ·
     <a href="/censors/"><strong>{{.Counts.censors}}</strong> censors</a> ·
@@ -274,31 +277,126 @@ const taxonomyBody = `
 </dl>
 `
 
+const useBody = `
+<h1>Use the corpus</h1>
+
+<p>The corpus is designed to be useful in several ways, sorted from
+least to most setup. Pick whichever fits your workflow.</p>
+
+<h2>1. Browse this site</h2>
+<p>The simplest mode. Every paper has a stable URL: <code>/papers/&lt;id&gt;/</code>. Tag indexes (<a href="/censors/">censors</a>, <a href="/techniques/">techniques</a>, <a href="/defenses/">defenses</a>) let you walk the field by axis. The whole site rebuilds from the YAML on every push to <code>main</code>; whatever you see here matches the source repo.</p>
+
+<h2>2. Read the YAML directly</h2>
+<p>Every paper is a small YAML file in <a href="https://github.com/getlantern/circumvention-corpus/tree/main/corpus/papers">corpus/papers/</a>. The <a href="https://github.com/getlantern/circumvention-corpus/blob/main/schema/paper.schema.json">JSON schema</a> documents every field. The <a href="/taxonomy/">taxonomy</a> documents the controlled-vocabulary IDs that tag fields use. If you're building your own tooling on top of the corpus, this is the most boring, most stable interface — clone the repo, walk the directory.</p>
+
+<pre><code>git clone https://github.com/getlantern/circumvention-corpus
+cd circumvention-corpus
+ls corpus/papers/                       # one YAML per paper
+yq '.censors' corpus/papers/2023-wu-fully-encrypted-detect.yaml
+</code></pre>
+
+<h2>3. Run the MCP server (recommended)</h2>
+<p>The most powerful mode: an LLM can query the corpus on demand and compose its results with whatever else it knows. The corpus ships its own <a href="https://github.com/getlantern/circumvention-corpus/tree/main/cmd/corpus-mcp">MCP server</a> in Go — single binary, zero non-stdlib runtime deps, reads the YAMLs at startup.</p>
+
+<h3>Install</h3>
+<pre><code>git clone https://github.com/getlantern/circumvention-corpus
+cd circumvention-corpus
+go build -o corpus-mcp ./cmd/corpus-mcp/
+
+# Optional: put it on your PATH so MCP clients can launch it by name.
+sudo mv corpus-mcp /usr/local/bin/
+</code></pre>
+
+<p>Or, if you only want to run the binary without managing a checkout:</p>
+<pre><code>go install github.com/getlantern/circumvention-corpus/cmd/corpus-mcp@latest
+</code></pre>
+
+<h3>Register with Claude Code</h3>
+<pre><code>claude mcp add -s user circumvention-corpus \
+  /usr/local/bin/corpus-mcp -- --corpus $HOME/code/circumvention-corpus
+</code></pre>
+<p>Replace the <code>--corpus</code> path with wherever you cloned the repo. Verify with <code>claude mcp list</code>; it should show <code>✓ Connected</code>.</p>
+
+<h3>Register with Claude Desktop</h3>
+<p>Edit your Claude Desktop config:</p>
+<ul>
+  <li>macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
+  <li>Windows: <code>%APPDATA%/Claude/claude_desktop_config.json</code></li>
+</ul>
+<pre><code>{
+  "mcpServers": {
+    "circumvention-corpus": {
+      "command": "/usr/local/bin/corpus-mcp",
+      "args": ["--corpus", "/Users/you/code/circumvention-corpus"]
+    }
+  }
+}
+</code></pre>
+<p>Restart Claude Desktop; the server's tools become available in your conversations.</p>
+
+<h3>Register with Cursor / VS Code Copilot / other MCP clients</h3>
+<p>Any MCP-compliant client takes a stdio-launched binary. The shape:</p>
+<pre><code>{
+  "circumvention-corpus": {
+    "command": "/usr/local/bin/corpus-mcp",
+    "args": ["--corpus", "/path/to/circumvention-corpus"]
+  }
+}
+</code></pre>
+<p>For VS Code: drop the above into <code>.vscode/mcp.json</code> under a <code>"servers"</code> key. For Cursor: add it via <em>Settings → MCP → Add new MCP server</em>.</p>
+
+<h2>What the MCP server exposes</h2>
+<p>Four tools, designed to compose:</p>
+<dl class="tax">
+  <dt><span class="mono">search_papers</span></dt>
+  <dd>Keyword + tag-filter search. Filters: <code>censors</code>, <code>techniques</code>, <code>defenses</code>, <code>year_min</code>, <code>year_max</code>, <code>venue</code>, <code>core_only</code>. Returns ranked records with abstract, tags, and team notes.</dd>
+  <dt><span class="mono">get_paper</span></dt>
+  <dd>Full record for a single paper id. Use after <code>search_papers</code> when the agent needs the full notes / references / metadata.</dd>
+  <dt><span class="mono">list_taxonomy</span></dt>
+  <dd>Returns the controlled vocabulary so the agent knows the canonical IDs to filter on. Especially useful as the first call in a session — gives the model the mental model of the field's structure.</dd>
+  <dt><span class="mono">find_related</span></dt>
+  <dd>Papers that share tags with a given paper. <code>mode</code> = <code>same_technique</code> (default), <code>same_censor</code>, or <code>same_defense</code>.</dd>
+</dl>
+
+<p>Example questions the MCP makes easy:</p>
+<ul>
+  <li><em>"Find every paper that evaluates a defense against the GFW's fully-encrypted-traffic detector."</em></li>
+  <li><em>"What did anyone publish about Iran's censorship in 2024-2025?"</em></li>
+  <li><em>"For my new protocol design: which papers should I read about active probing?"</em></li>
+  <li><em>"Show me the citation neighborhood of <code>2023-wu-fully-encrypted-detect</code>."</em></li>
+</ul>
+
+<h2>4. Public MCP HTTPS endpoint</h2>
+<p><em>Not yet live.</em> A read-only HTTPS endpoint at <code>corpus.lantern.io/mcp</code> is on the roadmap so other circumvention-tool teams can plug the corpus into their AI assistants without running anything locally. When it lands, point your MCP client at the HTTPS URL instead of a local binary.</p>
+
+<h2>5. Build something on top</h2>
+<p>The schema is CC0. The metadata is CC0. Build whatever you want with it — your own UI, a notification system that pings you when papers tagged with a specific technique appear, a sister index for a different region. The whole point of having a structured-metadata layer is that the data outlives whatever interface we put on top of it.</p>
+`
+
 const contributeBody = `
 <h1>Contribute</h1>
+
+<p>If you'd rather use the corpus than contribute to it, see <a href="/use/">use the corpus</a>.</p>
 
 <h2>Add a paper</h2>
 <ol>
   <li>Pick a stable id: <code>YYYY-firstauthor-shortslug</code> (lowercase, dashes).</li>
   <li>Create <code>corpus/papers/&lt;id&gt;.yaml</code> following <a href="https://github.com/getlantern/circumvention-corpus/blob/main/schema/paper.schema.json">the schema</a>.</li>
   <li>Tag against the controlled vocabulary in <a href="/taxonomy/">the taxonomy</a>. If a tag you need doesn't exist, add it to <code>schema/taxonomy.yaml</code> in the same PR.</li>
-  <li>Set <code>visibility</code> honestly. If unsure, default to non-public; promoting later is easy.</li>
+  <li>Set <code>visibility</code> honestly. If unsure, default to non-public; promoting later is easy, recalling a leak isn't.</li>
   <li>Write the <code>notes</code> field. The abstract is what the authors said; the notes are what your team thinks about it.</li>
   <li>Open a PR. CI runs the corpus integrity test (every tag must resolve, every reference must exist).</li>
 </ol>
 
 <h2>For private papers</h2>
-<p>Don't put them in this repo. Use the separate private repo (Lantern team: <code>circumvention-corpus-private</code>) with the same schema. The MCP server reads both data dirs locally; the public site you're reading right now serves only the public records.</p>
+<p>Don't put them in this repo. Use a separate private repo with the same schema (Lantern team: <code>circumvention-corpus-private</code>). The MCP server reads both data dirs locally; the public site you're reading right now serves only <code>visibility: public</code> records.</p>
 
-<h2>Use the MCP server</h2>
-<pre><code>git clone https://github.com/getlantern/circumvention-corpus
-cd circumvention-corpus
-go build -o corpus-mcp ./cmd/corpus-mcp/
+<h2>Add a tag to the taxonomy</h2>
+<p>Open a PR editing <a href="https://github.com/getlantern/circumvention-corpus/blob/main/schema/taxonomy.yaml"><code>schema/taxonomy.yaml</code></a>. New terms should have a definition and ideally a citation to a paper that uses the concept. Synonyms map alternate spellings to the canonical term.</p>
 
-claude mcp add -s user circumvention-corpus \
-  $(pwd)/corpus-mcp -- --corpus $(pwd)
-</code></pre>
-<p>Then ask your assistant: <em>"Find me all papers about active probing against shadowsocks-style protocols since 2020."</em></p>
+<h2>Extract findings from a paper</h2>
+<p>The <code>findings/</code> directory holds extracted claims (one- to three-sentence statements like <em>"the GFW's classifier achieves 94% precision on Snowflake DTLS handshakes"</em>) tagged against the same vocabulary as papers. This is the highest-leverage curation work — it's what makes the corpus answer questions like <em>"what did anyone find about technique X"</em> without re-reading every paper.</p>
+<p>An LLM (Claude/GPT/etc.) can propose findings if you feed it a paper; commit them only after a human review.</p>
 `
 
 const styleCSS = `
