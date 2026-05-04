@@ -1,0 +1,33 @@
+id: 2017-frolov-water-pluggable
+title: "WATER: a programmable framework for pluggable transports"
+authors:
+  - "[CU Boulder / Refraction Networking team]"
+venue: "preprint"
+year: 2024
+url: "https://github.com/refraction-networking/water"
+abstract: |
+  PLACEHOLDER seed entry for the WATER framework. Replace with the
+  canonical WATER paper / write-up when one is published. Until then,
+  this id is used by other corpus entries that reference "WATER" as
+  a defense.
+
+censors: [generic, cn, ir, ru]
+techniques: [dpi, traffic-shape, fully-encrypted-detect]
+defenses_discussed: [water-wasm, mimicry, randomization, protocol-versioning]
+defenses_evaluated_against: [water-wasm]
+evaluation_methods: [controlled-deployment]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://github.com/refraction-networking/water"]
+
+notes: |
+  PLACEHOLDER. The WATER framework is the WASM-based pluggable-transport
+  runtime that Lantern integrates into lantern-box; once Refraction
+  Networking publishes a canonical WATER paper, replace this with the
+  real entry. The defense_implications for Lantern-deployed protocols
+  (any new transport delivered as a WATER module reaches every lantern-
+  box-using tool simultaneously) belong as findings against this paper.

@@ -1,0 +1,207 @@
+# Controlled vocabularies for the circumvention research corpus.
+#
+# These vocabularies are the load-bearing schema. Models, papers, and
+# integrations all change; this taxonomy is the durable contract.
+#
+# Adding a term: open a PR. New terms should have a definition + at least
+# one cited paper that uses the concept. Synonyms map alternate spellings
+# and abbreviations to the canonical term.
+
+# Censoring entities. We use ISO-3166 alpha-2 country codes where the
+# censor is national. Sub-national or non-state actors get descriptive IDs.
+censors:
+  cn:
+    name: "China (Great Firewall)"
+    synonyms: ["GFW", "Great Firewall", "China"]
+    notes: |
+      Encompasses GFW operator infrastructure across China Telecom,
+      China Unicom, China Mobile, and the smaller carriers. Distinct
+      from corporate or campus filtering inside China.
+  ir:
+    name: "Iran"
+    synonyms: ["IR", "TCI", "MCI", "Mokhaberat"]
+    notes: |
+      Includes intermediate ISPs (TCI, MCI, Irancell, Rightel, etc.).
+      Implementation is heterogeneous across ISPs and changes during
+      events like the June 2025 nationwide shutdown.
+  ru:
+    name: "Russia (TSPU / Roskomnadzor)"
+    synonyms: ["RKN", "Roskomnadzor", "TSPU"]
+  by:
+    name: "Belarus"
+    synonyms: ["BY"]
+  cu:
+    name: "Cuba"
+    synonyms: ["CU"]
+  ve:
+    name: "Venezuela"
+    synonyms: ["VE"]
+  tm:
+    name: "Turkmenistan"
+    synonyms: ["TM"]
+  kp:
+    name: "DPRK (North Korea)"
+    synonyms: ["KP", "DPRK", "North Korea"]
+  kz:
+    name: "Kazakhstan"
+    synonyms: ["KZ"]
+  uz:
+    name: "Uzbekistan"
+    synonyms: ["UZ"]
+  ae:
+    name: "United Arab Emirates"
+    synonyms: ["UAE", "AE"]
+  sa:
+    name: "Saudi Arabia"
+    synonyms: ["KSA", "SA"]
+  generic:
+    name: "Generic / not censor-specific"
+    notes: "Use for technique papers that don't evaluate against a specific censor."
+
+# Detection / blocking techniques used by censors.
+techniques:
+  dpi:
+    name: "Deep Packet Inspection"
+    notes: "Inspecting payload bytes beyond the TCP/IP headers."
+  sni-blocking:
+    name: "SNI-based blocking"
+    synonyms: ["SNI filtering"]
+    notes: "Classifying or dropping TLS connections based on the SNI extension in ClientHello."
+  esni-eh-blocking:
+    name: "Encrypted ClientHello / ESNI blocking"
+    synonyms: ["ECH blocking", "ESNI blocking"]
+  dns-poisoning:
+    name: "DNS injection / poisoning"
+    synonyms: ["DNS injection", "DNS spoofing"]
+  rst-injection:
+    name: "TCP RST injection"
+    synonyms: ["RST injection", "connection reset"]
+  active-probing:
+    name: "Active probing"
+    notes: |
+      Censor-initiated connections to suspected proxy endpoints to
+      confirm the protocol before blocking. Hallmark of GFW since 2012;
+      now seen in IR and RU.
+  traffic-shape:
+    name: "Traffic-shape / statistical fingerprinting"
+    notes: "Classification by packet-size and inter-arrival-time distributions."
+  tls-fingerprint:
+    name: "TLS ClientHello fingerprinting"
+    notes: "JA3/JA4-style cipher-suite ordering, extensions, GREASE patterns."
+  http3-quic-block:
+    name: "QUIC / HTTP/3 blocking"
+    synonyms: ["QUIC blocking", "HTTP/3 blocking"]
+  port-blocking:
+    name: "Port-based blocking"
+  ip-blocking:
+    name: "IP-list blocking"
+    synonyms: ["IP blocking", "blocklist"]
+  asn-blackholing:
+    name: "ASN / prefix blackholing"
+  ml-classifier:
+    name: "ML / statistical classifier"
+    notes: "Supervised or unsupervised classifiers run over flow features."
+  random-payload-detect:
+    name: "Random / high-entropy payload detection"
+    notes: |
+      Censors flag flows whose first N bytes have entropy higher than
+      typical legitimate protocols. The original GFW shadowsocks
+      detection used this.
+  fully-encrypted-detect:
+    name: "Fully-encrypted protocol detection"
+    notes: |
+      Generalization of random-payload-detect: detect any protocol
+      where the entire byte stream looks uniformly random. (USENIX 2023.)
+  flow-correlation:
+    name: "Flow-correlation traffic analysis"
+    notes: "Matching flows across two observation points by timing/volume signatures."
+
+# Defenses / circumvention techniques.
+defenses:
+  mimicry:
+    name: "Protocol mimicry"
+    notes: "Make the proxy traffic look like a known-allowed protocol (HTTP, TLS, QUIC, etc.)."
+  randomization:
+    name: "Traffic randomization / shaping"
+    notes: "Hide the underlying protocol by deliberate randomization of size/timing/payload."
+  tunneling:
+    name: "Tunneling inside an allowed protocol"
+    synonyms: ["domain fronting", "tunneling"]
+  domain-fronting:
+    name: "Domain fronting"
+    notes: "Use a CDN as the apparent destination; route to actual destination via the CDN's HTTP routing."
+  reverse-tls:
+    name: "Server-initiated TLS"
+    notes: |
+      The server (rather than the client) initiates the TLS handshake,
+      defeating active-probing detectors that send a probe ClientHello
+      to suspected proxies.
+  rotating-spki:
+    name: "Rotating server SPKI / fingerprint"
+  webrtc-pluggable:
+    name: "WebRTC-based pluggable transport"
+    synonyms: ["Snowflake", "broflake", "Unbounded"]
+  decoy-routing:
+    name: "Decoy routing"
+    synonyms: ["refraction networking"]
+  dns-tunneling:
+    name: "DNS tunneling"
+    synonyms: ["DNSTT", "iodine"]
+  amp-cache:
+    name: "AMP cache proxying"
+  meek:
+    name: "Meek (HTTP-based pluggable transport)"
+  obfs4:
+    name: "obfs4 (randomized handshake)"
+  shadowsocks:
+    name: "Shadowsocks family"
+  vless:
+    name: "VLESS (V2Ray)"
+  vmess:
+    name: "VMess (V2Ray)"
+  trojan:
+    name: "Trojan (TLS-mimicking)"
+  hysteria2:
+    name: "Hysteria 2 (QUIC-based)"
+  reality:
+    name: "REALITY (TLS handshake forwarding)"
+  anytls:
+    name: "AnyTLS"
+  amnezia-wg:
+    name: "AmneziaWG (obfuscated WireGuard)"
+  geneva:
+    name: "Application-Layer Geneva"
+    notes: "Programmatic packet manipulation derived from genetic search (Geneva)."
+  water-wasm:
+    name: "WATER (WASM-based pluggable transports)"
+  protocol-versioning:
+    name: "Versioned protocol upgrade"
+    notes: "Backward-compatible protocol versioning so changes can roll out without orphaning users."
+
+# Evaluation methods used in papers.
+evaluation_methods:
+  measurement-study:
+    name: "Network measurement study"
+  simulation:
+    name: "Simulation / emulation"
+  controlled-deployment:
+    name: "Controlled production deployment"
+  formal-analysis:
+    name: "Formal / model-based analysis"
+  ml-evaluation:
+    name: "Machine-learning classifier evaluation"
+
+# Visibility levels — see README for handling rules.
+visibility_levels:
+  public:
+    name: "Public"
+    notes: "Published openly, may appear on the public MCP endpoint."
+  community:
+    name: "Community"
+    notes: "Shared in confidence among circumvention-tool developers; not for public consumption."
+  internal:
+    name: "Internal"
+    notes: "Lantern team only — partner draft, NDA'd document, leaked material, etc."
+  embargoed:
+    name: "Embargoed"
+    notes: "Will become public on a known date (requires embargo_until field)."

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://corpus.lantern.io/schema/finding.schema.json",
+  "title": "Extracted finding from a corpus paper",
+  "description": "A single load-bearing claim from a paper, extracted into structured form so the MCP can answer queries like 'what did anyone find about technique X' without re-reading every paper.",
+  "type": "object",
+  "required": ["paper", "kind", "summary"],
+  "additionalProperties": false,
+  "properties": {
+    "paper": {
+      "type": "string",
+      "description": "Paper id (matches a record in corpus/papers/)."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["detection", "defense", "evaluation", "deployment", "policy"],
+      "description": "What kind of claim this finding represents."
+    },
+    "summary": {
+      "type": "string",
+      "description": "One- to three-sentence statement of the finding. Specific, citation-grade. Numbers preserved."
+    },
+    "techniques": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Detection / blocking techniques this finding pertains to. Taxonomy IDs."
+    },
+    "defenses": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Defenses this finding pertains to. Taxonomy IDs."
+    },
+    "censors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "defense_implications": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Action-oriented bullets: what should a circumvention tool builder do in light of this finding?"
+    },
+    "section": {
+      "type": "string",
+      "description": "Section / page reference in the paper, e.g. '§4.2' or 'Table 3'."
+    },
+    "extracted_by": {
+      "type": "string",
+      "description": "Who/what extracted this finding (e.g. 'claude-opus-4-7', 'manual'). Findings extracted by an LLM should be human-validated before being merged."
+    },
+    "human_validated_by": { "type": "string" },
+    "human_validated_at": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

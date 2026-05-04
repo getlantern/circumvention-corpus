@@ -1,0 +1,21 @@
+# Local PDFs are not committed — they're a cache, not a source of truth.
+# The canonical URL lives in the YAML. Each user can populate this dir
+# locally if they want.
+corpus/pdfs/
+
+# Go build artifacts.
+/corpus-mcp
+*.test
+*.out
+
+# Editors / OS noise.
+.vscode/
+.idea/
+.DS_Store
+
+# Service-account JSONs etc., in case anyone runs the (future) crawlers
+# locally and forgets to put creds elsewhere.
+*service-account*.json
+*.key
+.env
+.env.*

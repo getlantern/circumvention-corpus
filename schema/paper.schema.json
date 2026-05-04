@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://corpus.lantern.io/schema/paper.schema.json",
+  "title": "Circumvention research paper record",
+  "description": "Schema for one paper in the circumvention research corpus. The controlled vocabularies for censors / techniques / defenses live in schema/taxonomy.yaml.",
+  "type": "object",
+  "required": ["id", "title", "year", "visibility", "censors", "techniques"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[a-z0-9-]+$",
+      "description": "Stable id, format: YYYY-firstauthor-shortslug. Used as the YAML filename and as the MCP key."
+    },
+    "title": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "venue": {
+      "type": "string",
+      "description": "Publication venue (USENIX Security, NDSS, PETS, FOCI, IMC, arXiv, etc.) or 'preprint' / 'private communication'."
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1990,
+      "maximum": 2100
+    },
+    "doi": { "type": "string" },
+    "arxiv_id": { "type": "string" },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL for the paper. For private papers, may be a local file:// or an internal URL."
+    },
+    "pdf_path": {
+      "type": "string",
+      "description": "Relative path under corpus/pdfs/ if a local copy is stored. Optional."
+    },
+    "abstract": { "type": "string" },
+
+    "censors": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Censoring entities the paper covers. Use IDs from schema/taxonomy.yaml censors."
+    },
+    "techniques": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Detection / blocking techniques the paper covers. Use IDs from taxonomy."
+    },
+    "defenses_discussed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Circumvention techniques the paper mentions or analyses. Taxonomy IDs."
+    },
+    "defenses_evaluated_against": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Subset of defenses_discussed that the paper actively *evaluates* (rather than just citing)."
+    },
+    "evaluation_methods": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+
+    "core": {
+      "type": "boolean",
+      "description": "Team-marked: should every Lantern researcher know about this paper? Used to prioritize daily reading and to weight search results."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form team notes. What made this important, what we should do about it, who should read it."
+    },
+
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "community", "internal", "embargoed"],
+      "description": "Visibility tier — see README. The public MCP endpoint serves only 'public' records."
+    },
+    "embargo_until": {
+      "type": "string",
+      "format": "date",
+      "description": "Required when visibility=embargoed. ISO date when the paper becomes public."
+    },
+    "redistribution_terms": {
+      "type": "string",
+      "description": "Free-form description of the actual constraint. E.g. 'no external citation until FOCI 2026'. The visibility enum is the source of truth for automated filtering; this field is the source of truth for humans."
+    },
+    "shared_by": { "type": "string" },
+    "shared_on": {
+      "type": "string",
+      "format": "date"
+    },
+
+    "date_added": {
+      "type": "string",
+      "format": "date"
+    },
+    "added_by": { "type": "string" },
+
+    "sources": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Where we found this paper: arxiv:NNNN.NNNNN, net4people-issue:NNN, doi:..., 'manual', 'crawler:arxiv', etc."
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Other paper IDs in this corpus that this paper cites or builds on."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "visibility": { "const": "embargoed" } } },
+      "then": { "required": ["embargo_until"] }
+    }
+  ]
+}

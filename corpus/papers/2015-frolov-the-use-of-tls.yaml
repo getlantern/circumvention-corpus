@@ -1,0 +1,31 @@
+id: 2015-frolov-the-use-of-tls
+title: "The use of TLS in censorship circumvention"
+authors:
+  - Sergey Frolov
+  - Eric Wustrow
+venue: "NDSS"
+year: 2019
+doi: "10.14722/ndss.2019.23511"
+url: "https://www.ndss-symposium.org/wp-content/uploads/2019/02/ndss2019_03B-3_Frolov_paper.pdf"
+abstract: |
+  We measure how circumvention tools use TLS, identify divergences from
+  real browser fingerprints (the "uTLS" project), and evaluate the
+  detectability of these fingerprints by a passive observer.
+
+censors: [cn, ir, ru]
+techniques: [tls-fingerprint, dpi, traffic-shape]
+defenses_discussed: [mimicry, meek, obfs4, shadowsocks, tunneling]
+evaluation_methods: [measurement-study, ml-evaluation]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["doi:10.14722/ndss.2019.23511"]
+
+notes: |
+  Origin of uTLS. Required reading for anyone touching Lantern's TLS-
+  mimicking code paths. The "you must mimic Chrome's TLS fingerprint
+  exactly" mandate that every TLS-based pluggable transport now follows
+  comes from this paper.

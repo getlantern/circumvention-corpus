@@ -1,0 +1,33 @@
+id: 2024-xue-tspu-russia
+title: "Tspu: Russia's decentralized censorship system"
+authors:
+  - Diwen Xue
+  - Roya Ensafi
+venue: "IMC"
+year: 2024
+url: "https://censoredplanet.org/tspu"
+abstract: |
+  We characterize Russia's decentralized censorship infrastructure
+  ("TSPU") deployed across major ISPs after 2021. Findings: blocking
+  is implemented inline at provider edges, with substantial heterogeneity
+  across providers; the system uses both SNI/host filtering and active
+  in-line manipulation; rollouts can be observed and timed.
+
+censors: [ru]
+techniques: [sni-blocking, dpi, http3-quic-block]
+defenses_discussed: [mimicry, tunneling, domain-fronting, vless, vmess]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://censoredplanet.org/tspu"]
+
+notes: |
+  Definitive recent characterization of Russia's TSPU. If anyone on
+  the team is reasoning about RU blocking, start here. Particularly
+  important: TSPU is heterogeneous across ISPs, so test fixtures need
+  per-ISP coverage, not a single "Russia" bucket. This shaped the
+  bandit's per-ASN dimensioning decision.

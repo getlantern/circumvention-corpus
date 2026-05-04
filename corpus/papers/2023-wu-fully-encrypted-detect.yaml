@@ -1,0 +1,43 @@
+id: 2023-wu-fully-encrypted-detect
+title: "How the Great Firewall of China detects and blocks fully encrypted traffic"
+authors:
+  - Mingshi Wu
+  - Jackson Sippe
+  - Danesh Sivakumar
+  - Jack Burg
+  - Peter Anderson
+  - Xiaokang Wang
+  - Kevin Bock
+  - Amir Houmansadr
+  - Dave Levin
+  - Eric Wustrow
+venue: "USENIX Security"
+year: 2023
+url: "https://gfw.report/publications/usenixsecurity23/en/"
+abstract: |
+  The GFW deploys a new censorship technique that passively detects—and
+  then blocks—fully encrypted traffic in real time. The detector is
+  designed to detect any "fully encrypted" protocol—one whose entire
+  byte stream looks uniformly random. Three exemption rules built into
+  the detector are responsible for the bulk of false negatives.
+
+censors: [cn]
+techniques: [fully-encrypted-detect, dpi, random-payload-detect]
+defenses_discussed: [shadowsocks, vmess, vless, mimicry, randomization]
+defenses_evaluated_against: [shadowsocks, vmess]
+evaluation_methods: [measurement-study, ml-evaluation]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/publications/usenixsecurity23/en/"]
+
+notes: |
+  Along with the 2015 active-probing paper, this is the most important
+  recent threat-model paper for our work. The "popcount in the first
+  packet" detector specifically: any new Lantern protocol that produces
+  uniformly-random first packets gets blocked in CN within seconds.
+  Reflex's threat model targets this directly. Every protocol we ship
+  needs to be designed with this detector in mind.

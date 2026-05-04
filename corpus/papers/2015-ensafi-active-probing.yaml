@@ -1,0 +1,37 @@
+id: 2015-ensafi-active-probing
+title: "Examining how the Great Firewall discovers hidden circumvention servers"
+authors:
+  - Roya Ensafi
+  - David Fifield
+  - Philipp Winter
+  - Nick Feamster
+  - Nicholas Weaver
+  - Vern Paxson
+venue: "IMC"
+year: 2015
+doi: "10.1145/2815675.2815690"
+url: "https://ensa.fi/active-probing/"
+abstract: |
+  We measure the Great Firewall of China's active-probing system. After
+  observing a connection that uses a circumvention protocol (Tor obfs2/3,
+  obfs4, Shadowsocks, etc.), the GFW initiates probe connections to the
+  destination IP+port to confirm the protocol before blocking.
+
+censors: [cn]
+techniques: [active-probing, dpi]
+defenses_discussed: [obfs4, shadowsocks, randomization, mimicry]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["doi:10.1145/2815675.2815690"]
+
+notes: |
+  THE definitive paper on GFW active probing. Anyone designing a new
+  Lantern protocol must reckon with the threat model in this paper:
+  if the protocol responds to a probe connection differently from a
+  benign service, the IP gets blocked. The reverse-TLS / Reflex line
+  of defense is a direct response to this threat.

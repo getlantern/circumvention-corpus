@@ -1,0 +1,32 @@
+id: 2025-iran-shutdown-measurement
+title: "Measuring the June 2025 Iran nationwide internet shutdown"
+authors:
+  - "[multiple, see paper]"
+venue: "preprint"
+year: 2025
+url: "https://example.invalid/placeholder"
+abstract: |
+  PLACEHOLDER seed entry. Replace with the actual canonical measurement
+  paper(s) on the June 2025 Iran shutdown once published. This entry
+  exists so the corpus has a stable id to reference Iran-specific
+  protocol findings against until the canonical write-ups land.
+
+censors: [ir]
+techniques: [dpi, port-blocking, ip-blocking, asn-blackholing, http3-quic-block]
+defenses_discussed: [vless, vmess, dns-tunneling, amp-cache, domain-fronting]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["manual"]
+
+notes: |
+  PLACEHOLDER. Promote to a real paper id once a canonical write-up of
+  the June 2025 Iran shutdown lands (likely OONI / Censored Planet /
+  Article 19 / IODA). Until then, references to "Iran June 2025" in
+  other corpus entries can resolve here. Lantern's own internal
+  observations (Linode-only port-53 UDP, etc.) belong in a private
+  companion record in circumvention-corpus-private.

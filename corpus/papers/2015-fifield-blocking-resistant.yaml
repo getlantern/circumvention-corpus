@@ -1,0 +1,38 @@
+id: 2015-fifield-blocking-resistant
+title: "Blocking-resistant communication through domain fronting"
+authors:
+  - David Fifield
+  - Chang Lan
+  - Rod Hynes
+  - Percy Wegmann
+  - Vern Paxson
+venue: "PETS"
+year: 2015
+doi: "10.1515/popets-2015-0009"
+url: "https://www.bamsoftware.com/papers/fronting/"
+abstract: |
+  We describe "domain fronting," a versatile censorship circumvention
+  technique that hides the remote endpoint of a communication. Domain
+  fronting works at the application layer, using HTTPS, to communicate
+  with a forbidden host while appearing to communicate with some other
+  host, permitted by the censor.
+
+censors: [generic, cn, ir, ru]
+techniques: [sni-blocking, dpi]
+defenses_discussed: [domain-fronting, tunneling, mimicry, meek]
+defenses_evaluated_against: [domain-fronting, meek]
+evaluation_methods: [controlled-deployment, measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["doi:10.1515/popets-2015-0009"]
+
+notes: |
+  Foundational paper for the entire domain-fronting line of work, including
+  Lantern's own getlantern/fronted package and the kindling library
+  inherits its threat model from here. Critical historical context for
+  why CDN-fronted bootstrapping is the reflexive Lantern bootstrap path.
+  Cited by everything in the domain-fronting line of research.
