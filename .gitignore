@@ -9,6 +9,9 @@ corpus/pdfs/
 *.test
 *.out
 
+# Wrangler local state.
+/.wrangler/
+
 # Editors / OS noise.
 .vscode/
 .idea/
