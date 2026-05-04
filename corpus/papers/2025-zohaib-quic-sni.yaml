@@ -1,0 +1,41 @@
+id: 2025-zohaib-quic-sni
+title: "Exposing and Circumventing SNI-based QUIC Censorship of the Great Firewall of China"
+authors:
+  - Ali Zohaib
+  - Qiang Zao
+  - Jackson Sippe
+  - Abdulrahman Alaraj
+  - Amir Houmansadr
+  - Zakir Durumeric
+  - Eric Wustrow
+venue: "USENIX Security"
+year: 2025
+url: "https://gfw.report/publications/usenixsecurity25/en/"
+abstract: |
+  We expose the GFW's mechanism for SNI-based censorship of QUIC and
+  HTTP/3 traffic. We characterize the inspection and blocking strategy,
+  identify implementation flaws that the GFW's QUIC censorship inherits,
+  and propose practical circumvention techniques exploiting those flaws.
+  Best Paper Award Honorable Mentions, USENIX Security 2025.
+
+censors: [cn]
+techniques: [http3-quic-block, sni-blocking, dpi]
+defenses_discussed: [randomization, mimicry]
+defenses_evaluated_against: [randomization, mimicry]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/publications/usenixsecurity25/en/", "github:gfw-report/usenixsecurity25-quic-sni"]
+references:
+  - 2023-wu-fully-encrypted-detect
+
+notes: |
+  Recent and load-bearing for any QUIC-based defense Lantern ships into
+  China. Documents specific implementation flaws in the GFW's QUIC
+  ClientHello inspection that translate directly into circumvention
+  hooks. If we ship Hysteria2 / a future QUIC-based outbound for CN,
+  the design has to reckon with this paper's threat model.

@@ -1,0 +1,42 @@
+id: 2025-fan-wallbleed
+title: "Wallbleed: A Memory Disclosure Vulnerability in the Great Firewall of China"
+authors:
+  - Shencha Fan
+  - Jackson Sippe
+  - Sakamoto San
+  - Jade Sheffey
+  - David Fifield
+  - Amir Houmansadr
+  - Elson Wedwards
+  - Eric Wustrow
+venue: "NDSS"
+year: 2025
+url: "https://gfw.report/publications/ndss25/en/"
+doi: "10.14722/ndss.2025.241094"
+abstract: |
+  We disclose "Wallbleed," a memory-disclosure vulnerability in the
+  Great Firewall of China that leaks fragments of GFW process memory in
+  injected DNS responses. We characterize the leak, what it reveals
+  about the GFW's operational state, and the timeline of the GFW
+  team's response after disclosure.
+
+censors: [cn]
+techniques: [dns-poisoning, dpi]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/publications/ndss25/en/", "github:gfw-report/ndss25-wallbleed"]
+references:
+  - 2020-anonymous-triplet-censors
+
+notes: |
+  Operational-intelligence gold: a real memory-disclosure bug in the GFW
+  itself, which incidentally leaked GFW internals (process memory
+  contents, addresses) to outside observers. Even after patch, the
+  forensic value persists — what was leaked tells us about how the GFW
+  is implemented. Required reading for anyone reasoning about GFW DPI
+  internals.

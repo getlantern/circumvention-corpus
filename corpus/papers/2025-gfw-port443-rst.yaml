@@ -1,0 +1,31 @@
+id: 2025-gfw-port443-rst
+title: "Analysis of the GFW's Unconditional Port 443 Block on August 20, 2025"
+authors:
+  - "GFW Report team"
+venue: "gfw.report"
+year: 2025
+url: "https://gfw.report/blog/gfw_unconditional_rst_20250820/en/"
+abstract: |
+  Analysis of an unusual GFW behavior observed on August 20, 2025: the
+  GFW unconditionally injected TCP RSTs on port 443 traffic, regardless
+  of payload, for a measurable window. Likely a misconfiguration or
+  test deployment rather than a permanent change.
+
+censors: [cn]
+techniques: [rst-injection, port-blocking, dpi]
+evaluation_methods: [measurement-study]
+
+core: false
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/blog/gfw_unconditional_rst_20250820/en/"]
+
+notes: |
+  Operational anomaly worth knowing about: when the GFW occasionally
+  exhibits unconditional behavior on a port, it tells us about
+  failure modes in their deployment process. If we see a sudden CN-
+  wide spike in tracks failing on port 443 in our bandit signals,
+  this paper is the precedent: it might be a brief misconfiguration
+  rather than a deliberate policy change.

@@ -1,0 +1,36 @@
+id: 2025-geedge-mesa-leak
+title: "Geedge & MESA Leak: Analyzing the Great Firewall's Largest Document Leak"
+authors:
+  - "GFW Report team"
+venue: "gfw.report"
+year: 2025
+url: "https://gfw.report/blog/geedge_and_mesa_leak/en/"
+abstract: |
+  Analysis of leaked internal documentation and source code from
+  Geedge Networks and the MESA lab at the Chinese Academy of Sciences,
+  revealing internals of the GFW's surveillance and detection
+  infrastructure. Largest known document leak from the GFW vendor
+  ecosystem.
+
+censors: [cn]
+techniques: [dpi, active-probing, ml-classifier, sni-blocking, traffic-shape]
+defenses_discussed: [mimicry, randomization]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/blog/geedge_and_mesa_leak/en/"]
+
+notes: |
+  Operational-intelligence value is enormous: leaked source/docs from
+  GFW vendors reveal the *intent* and *implementation* of detection
+  systems, not just their externally-observable behavior. Lantern
+  protocol designers should treat this as a primary threat-model input.
+  The blog-format public analysis is what we cite externally; if we
+  ever obtain the raw leak files for internal study, they belong in
+  circumvention-corpus-private with strict redistribution_terms (see
+  README visibility model). The raw material has obvious legal/ethical
+  handling concerns the team should reason about case by case.

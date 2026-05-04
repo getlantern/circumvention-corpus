@@ -1,0 +1,35 @@
+id: 2022-blocking-tls-circumvention
+title: "Large scale blocking of TLS-based censorship circumvention tools in China"
+authors:
+  - "GFW Report team"
+venue: "gfw.report"
+year: 2022
+url: "https://gfw.report/blog/blocking_of_tls_based_circumvention_tools/en/"
+abstract: |
+  October 2022 wave of GFW blocking targeting TLS-based circumvention
+  tools (Trojan, V2Ray TLS, naiveproxy, etc.). The blocking applies
+  passively to flows whose first packet looks fully-encrypted and
+  appears to be the operational rollout that the 2023 USENIX Security
+  paper later formalized.
+
+censors: [cn]
+techniques: [fully-encrypted-detect, dpi, random-payload-detect, traffic-shape]
+defenses_discussed: [trojan, vmess, vless, mimicry]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/blog/blocking_of_tls_based_circumvention_tools/en/"]
+references:
+  - 2023-wu-fully-encrypted-detect
+
+notes: |
+  This is the operational write-up that preceded the 2023 USENIX paper
+  formalizing the same detector. Important historical reference: the
+  detector existed in production from late 2022 and only got named /
+  formalized later. When we see "TLS-based circumvention working in CN
+  again," check the entropy/popcount profile of the first packet —
+  that's the active classifier rule the 2022 wave introduced.

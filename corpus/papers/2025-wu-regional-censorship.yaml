@@ -1,0 +1,37 @@
+id: 2025-wu-regional-censorship
+title: "A Wall Behind A Wall: Emerging Regional Censorship in China"
+authors:
+  - Mingshi Wu
+  - Ali Zohaib
+  - Zakir Durumeric
+  - Amir Houmansadr
+  - Eric Wustrow
+venue: "IEEE S&P"
+year: 2025
+url: "https://gfw.report/publications/sp25/en/"
+abstract: |
+  We characterize a previously-unknown class of GFW deployment: regional
+  censorship that operates inside China and applies different blocklists
+  to different provinces. We focus on Henan province, where additional
+  censorship is layered on top of the national GFW. The findings
+  challenge the longstanding "national GFW" mental model of CN
+  censorship and have implications for measurement methodology.
+
+censors: [cn]
+techniques: [dpi, sni-blocking, dns-poisoning]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/publications/sp25/en/", "github:gfw-report/sp25-regional"]
+
+notes: |
+  Important mental-model update: CN censorship is not monolithic. Lantern
+  measurement methodology that bins all CN traffic together loses signal;
+  the bandit's per-ASN dimensioning already partially addresses this but
+  province-level effects suggest we need finer geo dimensioning for CN
+  in particular. If we see anomalous CN bandit signals concentrated in
+  one province, this paper is the first place to look.

@@ -130,6 +130,10 @@ defenses:
   domain-fronting:
     name: "Domain fronting"
     notes: "Use a CDN as the apparent destination; route to actual destination via the CDN's HTTP routing."
+  ech-esni:
+    name: "Encrypted ClientHello / ESNI"
+    synonyms: ["ECH", "ESNI"]
+    notes: "Hide the SNI value from the censor, defeating SNI-based blocking."
   reverse-tls:
     name: "Server-initiated TLS"
     notes: |

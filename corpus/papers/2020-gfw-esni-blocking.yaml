@@ -1,0 +1,31 @@
+id: 2020-gfw-esni-blocking
+title: "Exposing and Circumventing China's Censorship of ESNI"
+authors:
+  - "GFW Report team"
+venue: "gfw.report"
+year: 2020
+url: "https://gfw.report/blog/gfw_esni_blocking/en/"
+abstract: |
+  August 2020 documentation of the GFW's blocking of TLS Encrypted SNI
+  (ESNI) traffic, with details on how the blocking is implemented and
+  proposed circumvention approaches.
+
+censors: [cn]
+techniques: [esni-eh-blocking, sni-blocking, dpi]
+defenses_discussed: [ech-esni, mimicry]
+evaluation_methods: [measurement-study]
+
+core: false
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/blog/gfw_esni_blocking/en/"]
+
+notes: |
+  Historical: the GFW began blocking ESNI in 2020, well before ECH
+  rollout in browsers. Lantern protocol designs that assume ECH gives
+  hostname privacy in CN need to start from this paper. ECH-based
+  defenses haven't been a major Lantern bet yet but anyone considering
+  it should know this is the prior art and the GFW already has
+  detector code.

@@ -1,0 +1,28 @@
+id: 2023-gfw-blocking-1111
+title: "The blocking of 1.1.1.1 in China, starting from 2023-10-01"
+authors:
+  - "GFW Report team"
+venue: "gfw.report"
+year: 2023
+url: "https://gfw.report/blog/blocking_of_1111/en/"
+abstract: |
+  Documents the GFW's blocking of Cloudflare's 1.1.1.1 DNS resolver
+  beginning October 2023, with implications for DoH/DoT-based
+  bootstrapping mechanisms that defaulted to Cloudflare.
+
+censors: [cn]
+techniques: [ip-blocking, dns-poisoning]
+defenses_discussed: [dns-tunneling]
+evaluation_methods: [measurement-study]
+
+core: false
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/blog/blocking_of_1111/en/"]
+
+notes: |
+  Practical: 1.1.1.1 has been an unreliable DoH endpoint from CN since
+  Oct 2023. Lantern's kindling library should not depend on 1.1.1.1
+  reachability for CN bootstrap. (Worth checking that we don't.)

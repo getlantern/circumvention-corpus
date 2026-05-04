@@ -1,0 +1,29 @@
+id: 2020-v2ray-weaknesses
+title: "Summary on Recently Discovered V2Ray Weaknesses"
+authors:
+  - "GFW Report team"
+venue: "gfw.report"
+year: 2020
+url: "https://gfw.report/blog/v2ray_weaknesses/en/"
+abstract: |
+  Summary of detection-relevant V2Ray weaknesses identified through
+  community research, including issues in VMess that allowed the GFW
+  to detect and active-probe V2Ray servers.
+
+censors: [cn]
+techniques: [active-probing, dpi, traffic-shape]
+defenses_discussed: [vmess, vless]
+defenses_evaluated_against: [vmess]
+evaluation_methods: [measurement-study]
+
+core: false
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/blog/v2ray_weaknesses/en/"]
+
+notes: |
+  Practical reference for what the GFW historically used to detect
+  VMess. Not the most current threat picture, but a useful archaeology
+  reference when something old reappears in the wild.

@@ -1,0 +1,42 @@
+id: 2020-alice-shadowsocks-detection
+title: "How China Detects and Blocks Shadowsocks"
+authors:
+  - "Alice (anonymous)"
+  - "Bob (anonymous)"
+  - "Carol (anonymous)"
+  - Jan Beznazwy
+  - Amir Houmansadr
+venue: "IMC"
+year: 2020
+url: "https://gfw.report/publications/imc20/en/"
+doi: "10.1145/3419394.3423644"
+abstract: |
+  We reveal how the GFW detects and blocks Shadowsocks. Detection uses
+  the length and entropy of the first data packet in each connection;
+  suspected flows then receive seven different types of active probes
+  in stages, sent to the corresponding servers, to confirm before
+  blocking. Best Paper Award Runner-up, IMC 2020.
+
+censors: [cn]
+techniques: [active-probing, dpi, random-payload-detect, traffic-shape]
+defenses_discussed: [shadowsocks, randomization, mimicry]
+defenses_evaluated_against: [shadowsocks]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/publications/imc20/en/", "github:gfw-report/imc20-shadowsocks"]
+references:
+  - 2015-ensafi-active-probing
+  - 2023-wu-fully-encrypted-detect
+
+notes: |
+  The seven-stage probe sequence in this paper IS the canonical CN
+  active-probing threat model for Shadowsocks-style protocols. Anyone
+  designing a "Shadowsocks but better" defense should be able to
+  describe how their server responds to each of the seven probe types.
+  Reflex's design (server-initiated TLS) is one answer; AnyTLS-style
+  TLS-in-TLS framing is another.

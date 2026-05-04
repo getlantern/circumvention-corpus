@@ -1,0 +1,37 @@
+id: 2020-anonymous-triplet-censors
+title: "Triplet Censors: Demystifying Great Firewall's DNS Censorship Behavior"
+authors:
+  - Anonymous
+  - Arian Akhavan Niaki
+  - Nguyen Phong Hoang
+  - Phillipa Gill
+  - Amir Houmansadr
+venue: "FOCI"
+year: 2020
+url: "https://gfw.report/publications/foci20_dns/en/"
+abstract: |
+  We analyze the GFW's DNS injection behavior over nine months using the
+  Alexa top 1M domains. Three distinct DNS injectors are fingerprinted
+  by IP-DF/IP-TTL/DNS-AA/DNS-TTL combinations; one injector echoes the
+  probe IP TTL, with implications for TTL-limited probing. We also
+  observe groups of public IPs used to filter specific sets of domains.
+
+censors: [cn]
+techniques: [dns-poisoning, dpi]
+evaluation_methods: [measurement-study]
+
+core: true
+visibility: public
+
+date_added: 2026-05-04
+added_by: afisk
+sources: ["url:https://gfw.report/publications/foci20_dns/en/", "github:gfw-report/foci20-dns"]
+
+notes: |
+  The three-injector model from this paper is foundational for any DNS-
+  based circumvention reasoning. The TTL-mirroring injector specifically
+  is a useful adversarial fingerprint: a measurement that observes it
+  is almost certainly observing the GFW. For Lantern, the takeaway is
+  that DNS-based bootstrap channels (DoH, DNSTT, kindling's DNS path)
+  must assume the GFW is forging responses for many more domains than
+  the obvious blocklists suggest.
