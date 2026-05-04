@@ -1,19 +1,17 @@
 id: 2012-filast-ooni
 title: 'OONI: Open Observatory of Network Interference'
 authors:
-  - Arturo Filastò
-  - Jacob Appelbaum
+    - Arturo Filastò
+    - Jacob Appelbaum
 venue: Free and Open Communications on the Internet
 year: 2012
 url: https://www.usenix.org/system/files/conference/foci12/foci12-final12.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [measurement-platform]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Filasto2012a
+    - censorbib
+    - bibtex:Filasto2012a

@@ -1,21 +1,20 @@
 id: 2012-moghaddam-skypemorph
 title: 'SkypeMorph: Protocol Obfuscation for Tor Bridges'
 authors:
-  - Hooman Mohajeri Moghaddam
-  - Baiyu Li
-  - Mohammad Derakhshani
-  - Ian Goldberg
+    - Hooman Mohajeri Moghaddam
+    - Baiyu Li
+    - Mohammad Derakhshani
+    - Ian Goldberg
 venue: Computer and Communications Security
 year: 2012
 url: https://www.cypherpunks.ca/~iang/pubs/skypemorph-ccs.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Moghaddam2012a
+    - censorbib
+    - bibtex:Moghaddam2012a
+defenses_discussed: [tor, bridges]

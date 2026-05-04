@@ -1,18 +1,16 @@
 id: 2021-basso-measuring
 title: 'Measuring DoT/DoH blocking using OONI Probe: a preliminary study'
 authors:
-  - Simone Basso
+    - Simone Basso
 venue: DNS Privacy Workshop
 year: 2021
 url: https://www.ndss-symposium.org/wp-content/uploads/dnspriv21-02-paper.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [measurement-platform]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Basso2021a
+    - censorbib
+    - bibtex:Basso2021a

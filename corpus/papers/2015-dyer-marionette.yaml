@@ -1,20 +1,19 @@
 id: 2015-dyer-marionette
 title: 'Marionette: A Programmable Network-Traffic Obfuscation System'
 authors:
-  - Kevin P. Dyer
-  - Scott E. Coull
-  - Thomas Shrimpton
+    - Kevin P. Dyer
+    - Scott E. Coull
+    - Thomas Shrimpton
 venue: USENIX Security Symposium
 year: 2015
 url: https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-dyer.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Dyer2015a
+    - censorbib
+    - bibtex:Dyer2015a
+defenses_discussed: [format-transform, marionette]

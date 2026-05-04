@@ -1,21 +1,20 @@
 id: 2014-connolly-trist
 title: 'TRIST: Circumventing Censorship with Transcoding-Resistant Image Steganography'
 authors:
-  - Christopher Connolly
-  - Patrick Lincoln
-  - Ian Mason
-  - Vinod Yegneswaran
+    - Christopher Connolly
+    - Patrick Lincoln
+    - Ian Mason
+    - Vinod Yegneswaran
 venue: Free and Open Communications on the Internet
 year: 2014
 url: https://www.usenix.org/system/files/conference/foci14/foci14-connolly.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Connolly2014a
+    - censorbib
+    - bibtex:Connolly2014a
+defenses_discussed: [steganography]

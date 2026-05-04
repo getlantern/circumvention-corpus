@@ -1,21 +1,19 @@
 id: 2017-ververis-internet
 title: 'Internet Censorship Capabilities in Cyprus: An Investigation of Online Gambling Blocklisting'
 authors:
-  - Vasilis Ververis
-  - Marios Isaakidis
-  - Chrystalleni Loizidou
-  - Benjamin Fabian
+    - Vasilis Ververis
+    - Marios Isaakidis
+    - Chrystalleni Loizidou
+    - Benjamin Fabian
 venue: E-Democracy
 year: 2017
 url: https://censorbib.nymity.ch/pdf/Ververis2017a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [ip-blocking]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Ververis2017a
+    - censorbib
+    - bibtex:Ververis2017a

@@ -1,22 +1,20 @@
 id: 2013-detal-revealing
 title: Revealing Middlebox Interference with Tracebox
 authors:
-  - Gregory Detal
-  - Benjamin Hesmans
-  - Olivier Bonaventure
-  - Yves Vanaubel
-  - Benoit Donnet
+    - Gregory Detal
+    - Benjamin Hesmans
+    - Olivier Bonaventure
+    - Yves Vanaubel
+    - Benoit Donnet
 venue: Internet Measurement Conference
 year: 2013
 url: https://conferences.sigcomm.org/imc/2013/papers/imc032s-detalA.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [middlebox-interference]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Detal2013a
+    - censorbib
+    - bibtex:Detal2013a

@@ -1,20 +1,19 @@
 id: 2013-ruffing-identity-based
 title: Identity-Based Steganography and Its Applications to Censorship Resistance
 authors:
-  - Tim Ruffing
-  - Jonas Schneider
-  - Aniket Kate
+    - Tim Ruffing
+    - Jonas Schneider
+    - Aniket Kate
 venue: Hot Topics in Privacy Enhancing Technologies
 year: 2013
 url: https://petsymposium.org/2013/papers/ruffing-censorship.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Ruffing2013a
+    - censorbib
+    - bibtex:Ruffing2013a
+defenses_discussed: [steganography]

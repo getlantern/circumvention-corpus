@@ -1,19 +1,17 @@
 id: 2015-burnett-encore
 title: 'Encore: Lightweight Measurement of Web Censorship with Cross-Origin Requests'
 authors:
-  - Sam Burnett
-  - Nick Feamster
+    - Sam Burnett
+    - Nick Feamster
 venue: SIGCOMM
 year: 2015
 url: https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p653.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [measurement-platform]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Burnett2015a
+    - censorbib
+    - bibtex:Burnett2015a

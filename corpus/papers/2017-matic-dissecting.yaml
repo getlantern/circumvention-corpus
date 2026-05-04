@@ -1,20 +1,19 @@
 id: 2017-matic-dissecting
 title: 'Dissecting Tor Bridges: a Security Evaluation of Their Private and Public Infrastructures'
 authors:
-  - Srdjan Matic
-  - Carmela Troncoso
-  - Juan Caballero
+    - Srdjan Matic
+    - Carmela Troncoso
+    - Juan Caballero
 venue: Network and Distributed System Security
 year: 2017
 url: https://software.imdea.org/~juanca/papers/torbridges_ndss17.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Matic2017a
+    - censorbib
+    - bibtex:Matic2017a
+defenses_discussed: [tor, bridges]

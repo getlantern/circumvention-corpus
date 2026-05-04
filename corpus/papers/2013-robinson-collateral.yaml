@@ -1,20 +1,19 @@
 id: 2013-robinson-collateral
 title: 'Collateral Freedom: A Snapshot of Chinese Internet Users Circumventing Censorship'
 authors:
-  - David Robinson
-  - Harlan Yu
-  - Anne An
+    - David Robinson
+    - Harlan Yu
+    - Anne An
 venue: OpenITP
 year: 2013
 url: https://www.upturn.org/static/files/CollateralFreedom.pdf
-censors:
-  - cn
-techniques:
-  - dpi
+censors: [cn]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Robinson2013a
+    - censorbib
+    - bibtex:Robinson2013a
+defenses_discussed: [domain-fronting]

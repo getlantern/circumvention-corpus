@@ -1,18 +1,16 @@
 id: 2013-nabi-anatomy
 title: The Anatomy of Web Censorship in Pakistan
 authors:
-  - Zubair Nabi
+    - Zubair Nabi
 venue: Free and Open Communications on the Internet
 year: 2013
 url: https://censorbib.nymity.ch/pdf/Nabi2013a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [pk]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Nabi2013a
+    - censorbib
+    - bibtex:Nabi2013a

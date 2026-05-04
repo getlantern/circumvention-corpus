@@ -1,20 +1,19 @@
 id: 2018-wright-identifying
 title: On Identifying Anomalies in Tor Usage with Applications in Detecting Internet Censorship
 authors:
-  - Joss Wright
-  - Alexander Darer
-  - Oliver Farnan
+    - Joss Wright
+    - Alexander Darer
+    - Oliver Farnan
 venue: Web Science
 year: 2018
 url: https://sci-hub.se/https://dl.acm.org/citation.cfm?id=3201093
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Wright2018a
+    - censorbib
+    - bibtex:Wright2018a
+defenses_discussed: [tor]

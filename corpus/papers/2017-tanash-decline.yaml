@@ -1,21 +1,20 @@
 id: 2017-tanash-decline
 title: The Decline of Social Media Censorship and the Rise of Self-Censorship after the 2016 Failed Turkish Coup
 authors:
-  - Rima Tanash
-  - Zhouhan Chen
-  - Dan Wallach
-  - Melissa Marschall
+    - Rima Tanash
+    - Zhouhan Chen
+    - Dan Wallach
+    - Melissa Marschall
 venue: Free and Open Communications on the Internet
 year: 2017
 url: https://www.usenix.org/system/files/conference/foci17/foci17-paper-tanash.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Tanash2017a
+    - censorbib
+    - bibtex:Tanash2017a
+defenses_discussed: [format-transform, marionette]

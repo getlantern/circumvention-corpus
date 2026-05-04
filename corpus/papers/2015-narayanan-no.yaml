@@ -1,19 +1,17 @@
 id: 2015-narayanan-no
 title: No Encore for Encore? Ethical Questions for Web-Based Censorship Measurement
 authors:
-  - Arvind Narayanan
-  - Bendert Zevenbergen
+    - Arvind Narayanan
+    - Bendert Zevenbergen
 venue: Technology Science
 year: 2015
 url: https://censorbib.nymity.ch/pdf/Narayanan2015a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [measurement-platform]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Narayanan2015a
+    - censorbib
+    - bibtex:Narayanan2015a

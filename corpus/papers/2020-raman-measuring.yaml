@@ -1,23 +1,21 @@
 id: 2020-raman-measuring
 title: Measuring the Deployment of Network Censorship Filters at Global Scale
 authors:
-  - Ram Sundara Raman
-  - Adrian Stoll
-  - Jakub Dalek
-  - Reethika Ramesh
-  - Will Scott
-  - Roya Ensafi
+    - Ram Sundara Raman
+    - Adrian Stoll
+    - Jakub Dalek
+    - Reethika Ramesh
+    - Will Scott
+    - Roya Ensafi
 venue: Network and Distributed System Security
 year: 2020
 url: https://censorbib.nymity.ch/pdf/Raman2020a.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [ip-blocking]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Raman2020a
+    - censorbib
+    - bibtex:Raman2020a

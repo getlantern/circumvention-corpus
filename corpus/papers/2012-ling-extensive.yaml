@@ -1,22 +1,21 @@
 id: 2012-ling-extensive
 title: Extensive Analysis and Large-Scale Empirical Evaluation of Tor Bridge Discovery
 authors:
-  - Zhen Ling
-  - Xinwen Fu
-  - Wei Yu
-  - Junzhou Luo
-  - Ming Yang
+    - Zhen Ling
+    - Xinwen Fu
+    - Wei Yu
+    - Junzhou Luo
+    - Ming Yang
 venue: INFOCOM
 year: 2012
 url: https://www.cs.uml.edu/~xinwenfu/paper/Bridge.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Ling2012a
+    - censorbib
+    - bibtex:Ling2012a
+defenses_discussed: [tor, bridges]

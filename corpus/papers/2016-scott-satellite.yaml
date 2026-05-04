@@ -1,21 +1,19 @@
 id: 2016-scott-satellite
 title: 'Satellite: Joint Analysis of CDNs and Network-Level Interference'
 authors:
-  - Will Scott
-  - Thomas Anderson
-  - Tadayoshi Kohno
-  - Arvind Krishnamurthy
+    - Will Scott
+    - Thomas Anderson
+    - Tadayoshi Kohno
+    - Arvind Krishnamurthy
 venue: USENIX Annual Technical Conference
 year: 2016
 url: https://www.usenix.org/system/files/conference/atc16/atc16_paper-scott.pdf
-censors:
-  - generic
-techniques:
-  - dns-poisoning
+censors: [generic]
+techniques: [dns-poisoning, measurement-platform]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Scott2016a
+    - censorbib
+    - bibtex:Scott2016a

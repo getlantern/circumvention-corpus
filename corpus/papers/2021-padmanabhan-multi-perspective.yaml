@@ -1,26 +1,24 @@
 id: 2021-padmanabhan-multi-perspective
 title: A multi-perspective view of Internet censorship in Myanmar
 authors:
-  - Ramakrishna Padmanabhan
-  - Arturo Filastò
-  - Maria Xynou
-  - Ram Sundara Raman
-  - Kennedy Middleton
-  - Mingwei Zhang
-  - Doug Madory
-  - Molly Roberts
-  - Alberto Dainotti
+    - Ramakrishna Padmanabhan
+    - Arturo Filastò
+    - Maria Xynou
+    - Ram Sundara Raman
+    - Kennedy Middleton
+    - Mingwei Zhang
+    - Doug Madory
+    - Molly Roberts
+    - Alberto Dainotti
 venue: Free and Open Communications on the Internet
 year: 2021
 url: https://dl.acm.org/doi/pdf/10.1145/3473604.3474562
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [mm]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Padmanabhan2021a
+    - censorbib
+    - bibtex:Padmanabhan2021a

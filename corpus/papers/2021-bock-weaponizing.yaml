@@ -1,25 +1,22 @@
 id: 2021-bock-weaponizing
 title: Weaponizing Middleboxes for TCP Reflected Amplification
 authors:
-  - Kevin Bock
-  - Abdulrahman Alaraj
-  - Yair Fax
-  - Kyle Hurley
-  - Eric Wustrow
-  - Dave Levin
+    - Kevin Bock
+    - Abdulrahman Alaraj
+    - Yair Fax
+    - Kyle Hurley
+    - Eric Wustrow
+    - Dave Levin
 venue: USENIX Security Symposium
 year: 2021
 url: https://www.usenix.org/system/files/sec21-bock.pdf
-censors:
-  - generic
-techniques:
-  - dpi
-defenses_discussed:
-  - amp-cache
+censors: [generic]
+techniques: [middlebox-interference]
+defenses_discussed: [amp-cache]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Bock2021b
+    - censorbib
+    - bibtex:Bock2021b

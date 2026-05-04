@@ -1,24 +1,23 @@
 id: 2017-singh-characterizing
 title: Characterizing the Nature and Dynamics of Tor Exit Blocking
 authors:
-  - Rachee Singh
-  - Rishab Nithyanand
-  - Sadia Afroz
-  - Paul Pearce
-  - Michael Carl Tschantz
-  - Phillipa Gill
-  - Vern Paxson
+    - Rachee Singh
+    - Rishab Nithyanand
+    - Sadia Afroz
+    - Paul Pearce
+    - Michael Carl Tschantz
+    - Phillipa Gill
+    - Vern Paxson
 venue: USENIX Security Symposium
 year: 2017
 url: https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-singh.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Singh2017a
+    - censorbib
+    - bibtex:Singh2017a
+defenses_discussed: [tor]

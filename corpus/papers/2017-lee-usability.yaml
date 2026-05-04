@@ -1,23 +1,22 @@
 id: 2017-lee-usability
 title: A Usability Evaluation of Tor Launcher
 authors:
-  - Linda Lee
-  - David Fifield
-  - Nathan Malkin
-  - Ganesh Iyer
-  - Serge Egelman
-  - David Wagner
+    - Linda Lee
+    - David Fifield
+    - Nathan Malkin
+    - Ganesh Iyer
+    - Serge Egelman
+    - David Wagner
 venue: Privacy Enhancing Technologies
 year: 2017
 url: https://petsymposium.org/2017/papers/issue3/paper2-2017-3-source.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Lee2017a
+    - censorbib
+    - bibtex:Lee2017a
+defenses_discussed: [tor]

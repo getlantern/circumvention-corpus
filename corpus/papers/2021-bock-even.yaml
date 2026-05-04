@@ -1,21 +1,19 @@
 id: 2021-bock-even
 title: 'Even Censors Have a Backup: Examining China''s Double HTTPS Censorship Middleboxes'
 authors:
-  - Kevin Bock
-  - Gabriel Naval
-  - Kyle Reese
-  - Dave Levin
+    - Kevin Bock
+    - Gabriel Naval
+    - Kyle Reese
+    - Dave Levin
 venue: Free and Open Communications on the Internet
 year: 2021
 url: https://doi.org/10.1145/3473604.3474559
-censors:
-  - cn
-techniques:
-  - dpi
+censors: [cn]
+techniques: [middlebox-interference]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Bock2021c
+    - censorbib
+    - bibtex:Bock2021c

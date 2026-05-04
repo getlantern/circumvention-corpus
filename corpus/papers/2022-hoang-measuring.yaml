@@ -1,20 +1,18 @@
 id: 2022-hoang-measuring
 title: Measuring the Accessibility of Domain Name Encryption and Its Impact on Internet Filtering
 authors:
-  - Nguyen Phong Hoang
-  - Michalis Polychronakis
-  - Phillipa Gill
+    - Nguyen Phong Hoang
+    - Michalis Polychronakis
+    - Phillipa Gill
 venue: Passive and Active Measurement Conference
 year: 2022
 url: https://www3.cs.stonybrook.edu/~mikepo/papers/dneye.pam22.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dns-poisoning]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Hoang2022a
+    - censorbib
+    - bibtex:Hoang2022a

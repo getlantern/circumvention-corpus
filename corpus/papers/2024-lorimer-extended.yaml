@@ -1,20 +1,19 @@
 id: 2024-lorimer-extended
 title: 'Extended Abstract: Traffic Splitting for Pluggable Transports'
 authors:
-  - Anna Harbluk Lorimer
-  - Rob Jansen
-  - Nick Feamster
+    - Anna Harbluk Lorimer
+    - Rob Jansen
+    - Nick Feamster
 venue: Free and Open Communications on the Internet
 year: 2024
 url: https://www.petsymposium.org/foci/2024/foci-2024-0004.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Lorimer2024a
+    - censorbib
+    - bibtex:Lorimer2024a
+defenses_discussed: [pluggable-transport]

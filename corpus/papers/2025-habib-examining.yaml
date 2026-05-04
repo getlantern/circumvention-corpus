@@ -1,20 +1,18 @@
 id: 2025-habib-examining
 title: Examining Leading Pakistani Mobile Apps
 authors:
-  - Sana Habib
-  - Mohammad Taha Khan
-  - Jedidiah R. Crandall
+    - Sana Habib
+    - Mohammad Taha Khan
+    - Jedidiah R. Crandall
 venue: Free and Open Communications on the Internet
 year: 2025
 url: https://www.petsymposium.org/foci/2025/foci-2025-0005.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [pk]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Habib2025a
+    - censorbib
+    - bibtex:Habib2025a

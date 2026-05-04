@@ -1,18 +1,17 @@
 id: 2019-iszaevich-distributed
 title: Distributed Detection of Tor Directory Authorities Censorship in Mexico
 authors:
-  - Gunnar Eyal Wolf Iszaevich
+    - Gunnar Eyal Wolf Iszaevich
 venue: International Conference on Networks
 year: 2019
 url: https://tics.site/proceedings/2019a/icn_2019_6_20_38010.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Iszaevich2019a
+    - censorbib
+    - bibtex:Iszaevich2019a
+defenses_discussed: [tor]

@@ -129,6 +129,24 @@ techniques:
   flow-correlation:
     name: "Flow-correlation traffic analysis"
     notes: "Matching flows across two observation points by timing/volume signatures."
+  website-fingerprint:
+    name: "Website fingerprinting"
+    notes: "Identify the destination website behind an encrypted tunnel from packet-size / timing patterns."
+  throttling:
+    name: "Throttling / bandwidth shaping"
+    notes: "Censor degrades a flow's throughput rather than blocking it outright."
+  bgp-hijack:
+    name: "BGP / route manipulation"
+    notes: "AS-level interference: prefix withdrawal, hijacking, or null-routing from the censor side."
+  measurement-platform:
+    name: "Censorship measurement platform"
+    notes: "Methodology / tooling for measuring censorship at scale (OONI, ICLab, Iris, Quack, Encore, Censored Planet, etc.)."
+  packet-injection:
+    name: "Packet injection (general)"
+    notes: "Any in-path injection beyond DNS/RST: HTTP redirects, blockpages, etc."
+  middlebox-interference:
+    name: "Middlebox / TCP normalization"
+    notes: "Censor middleboxes mangling/normalizing TCP that interferes with circumvention."
 
 # Defenses / circumvention techniques.
 defenses:
@@ -195,6 +213,42 @@ defenses:
   protocol-versioning:
     name: "Versioned protocol upgrade"
     notes: "Backward-compatible protocol versioning so changes can roll out without orphaning users."
+  steganography:
+    name: "Steganography"
+    notes: "Hide circumvention traffic inside an unrelated cover-channel (image, audio, VoIP, blockchain, etc.)."
+  pluggable-transport:
+    name: "Pluggable transport (Tor PT framework)"
+    notes: "Generic Tor Pluggable Transports framework abstraction; the bucket for transports without a more specific tag (Lyrebird, FTE, Marionette, etc.)."
+  scramblesuit:
+    name: "ScrambleSuit"
+    notes: "Polymorphic network protocol; predecessor to obfs4."
+  tor:
+    name: "Tor (onion routing)"
+    notes: "Use as a defense tag when the paper specifically evaluates Tor or its bridges, beyond using Tor as plumbing."
+  bridges:
+    name: "Bridges / private relays"
+    notes: "Unlisted relays a censored client connects to first; Tor bridges, Snowflake bridges, etc."
+  meta-resistance:
+    name: "Meta-circumvention / framework"
+    notes: "Papers about how to design circumvention systems generally — turbo-tunnel, Proteus, Marionette, programmable-protocols framings."
+  conjure:
+    name: "Conjure / refraction-extension"
+    notes: "Refraction-networking variant using unused IP space."
+  telex:
+    name: "Telex"
+    notes: "Original decoy-routing scheme; subsumed by Refraction Networking."
+  tapdance:
+    name: "TapDance"
+    notes: "Refraction-routing variant operating at the transport layer."
+  marionette:
+    name: "Marionette / format-transforming encryption"
+    notes: "Programmable protocol mimicry via formal language descriptions (FTE / Marionette family)."
+  cloak:
+    name: "Cloak"
+    notes: "Multiplexed pluggable transport that hides traffic behind a real TLS website."
+  format-transform:
+    name: "Format-transforming encryption"
+    synonyms: ["FTE"]
 
 # Evaluation methods used in papers.
 evaluation_methods:

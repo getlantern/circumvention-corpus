@@ -1,19 +1,18 @@
 id: 2023-fifield-running
 title: Running a high-performance pluggable transports Tor bridge
 authors:
-  - David Fifield
-  - Linus Nordberg
+    - David Fifield
+    - Linus Nordberg
 venue: Free and Open Communications on the Internet
 year: 2023
 url: https://www.petsymposium.org/foci/2023/foci-2023-0011.pdf
-censors:
-  - generic
-techniques:
-  - dpi
+censors: [generic]
+techniques: [dpi]
 core: false
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
-  - censorbib
-  - bibtex:Fifield2023a
+    - censorbib
+    - bibtex:Fifield2023a
+defenses_discussed: [tor, bridges, pluggable-transport]
