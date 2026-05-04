@@ -5,6 +5,7 @@ corpus/pdfs/
 
 # Go build artifacts.
 /corpus-mcp
+/dist/
 *.test
 *.out
 

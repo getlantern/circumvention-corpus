@@ -74,6 +74,21 @@ constraints are propagated: the `redistribution_terms` field is
 included in `get_paper` results so the calling agent knows what it
 can and can't do with the citation.
 
+## Browsable site
+
+A static site rendered from the same YAMLs lives at
+**[corpus.lantern.io](https://corpus.lantern.io)** (in process — see
+the Cloudflare Pages config in `.github/workflows/`). Build it locally:
+
+```bash
+make site            # renders to ./dist/
+python3 -m http.server -d dist 8080
+```
+
+The site uses `cmd/corpus-site/`, which reuses the same YAML loading
+the MCP server uses. There's no JS framework, no `node_modules`, just
+Go's `html/template`. About 0.1 seconds to render the whole corpus.
+
 ## Running the MCP server
 
 ```bash
