@@ -702,10 +702,10 @@ Output STRICT JSON. No prose, no markdown, no code fences. Schema:
   "is_relevant": boolean,
   "reason": "1 sentence",
   "censors": ["array of censor ids"],
-  "techniques": ["array of technique ids"],
+  "techniques": ["array of technique ids — REQUIRED, at least one"],
   "defenses_discussed": ["array of defense ids, optional"],
   "evaluation_methods": ["array, optional"],
-  "title": "the paper's actual title (omit unless different from input)",
+  "title": "the paper's actual title — NO venue or year suffix",
   "authors": ["author full names extracted from the body, in order"],
   "venue": "publication venue (e.g. 'USENIX Security', 'PoPETs', 'Article 19 report', 'arXiv preprint')",
   "year": integer,
@@ -713,6 +713,10 @@ Output STRICT JSON. No prose, no markdown, no code fences. Schema:
   "canonical_url": "the first non-github paper URL in the body",
   "notes": "1 sentence on Lantern relevance, or empty"
 }
+
+CRITICAL formatting rules:
+  - "title" must be ONLY the paper's actual title. Do not append "(FOCI 2026)", "(Journal of X 2026)", "(USENIX Security 2025)", or any venue/year suffix. The venue goes in its own "venue" field; the year in "year". Many net4people issue titles have these suffixes — strip them.
+  - "techniques" must contain at least one taxonomy ID for any relevant paper. If no specific detection technique fits, use the broadest applicable tag (e.g., "ip-blocking" for IP/geo-based blocking like sanctions, "measurement-platform" for measurement studies that don't study a specific technique, "keyword-filtering" for content-based blocking). Do NOT default to "dpi" unless the paper actually studies DPI.
 
 For arXiv candidates: title/authors/year/abstract are already correct in the input — you can skip those fields in your response (we keep what we have). Just give relevance + tags + notes.
 
@@ -953,16 +957,22 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 		}
 		sources = append(sources, a.c.Refs...)
 		y := paperYAML{
-			ID:                id,
-			Title:             a.c.Title,
-			Authors:           a.c.Authors,
-			Venue:             venue,
-			Year:              a.c.Year,
-			ArxivID:           a.c.ArxivID,
-			URL:               a.c.URL,
-			Abstract:          a.c.Abstract,
+			ID:      id,
+			Title:   stripVenueSuffix(a.c.Title),
+			Authors: a.c.Authors,
+			Venue:   venue,
+			Year:    a.c.Year,
+			ArxivID: a.c.ArxivID,
+			URL:     a.c.URL,
+			Abstract: a.c.Abstract,
+			// Censors defaults to ["generic"] when not specific — that's
+			// always a valid taxonomy ID. Techniques does NOT default:
+			// previously we defaulted to ["dpi"] which silently mis-tagged
+			// papers like sanctions-driven blocking as DPI work. Better to
+			// emit empty techniques and let the integrity test fail visibly
+			// in PR review, prompting the human to add the right tag.
 			Censors:           defaultIfEmpty(a.k.Censors, []string{"generic"}),
-			Techniques:        defaultIfEmpty(a.k.Techniques, []string{"dpi"}),
+			Techniques:        a.k.Techniques,
 			DefensesDiscussed: a.k.DefensesDiscussed,
 			EvaluationMethods: a.k.EvaluationMethods,
 			Core:              false,
@@ -1220,7 +1230,20 @@ func slugify(s string) string {
 	return strings.Trim(s, "-")
 }
 
+// venueSuffixRE matches "(Venue Year)" and "(Venue YYYY)" trailing
+// suffixes that the LLM tends to copy from net4people issue titles
+// (e.g., "Title here (FOCI 2026)"). Stripped before normalization
+// so dedup correctly matches the same paper across sources, AND
+// stripped from the YAML title field itself so the corpus stores
+// the actual paper title (venue lives in the venue field).
+var venueSuffixRE = regexp.MustCompile(`\s*\([^)]*\b(19|20)\d{2}\)\s*$`)
+
+func stripVenueSuffix(t string) string {
+	return strings.TrimSpace(venueSuffixRE.ReplaceAllString(t, ""))
+}
+
 func normalizeTitle(t string) string {
+	t = stripVenueSuffix(t)
 	t = strings.ToLower(t)
 	t = slugRE.ReplaceAllString(t, " ")
 	return strings.Join(strings.Fields(t), " ")

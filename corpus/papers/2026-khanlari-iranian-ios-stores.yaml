@@ -1,0 +1,41 @@
+id: 2026-khanlari-iranian-ios-stores
+title: "Taking a Bite Out of the Forbidden Fruit: Characterizing Third-Party Iranian iOS App Stores"
+authors:
+  - Amirhossein Khanlari
+  - Amir Rahmati
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2604.26343"
+url: "https://arxiv.org/abs/2604.26343v1"
+abstract: |
+  Due to U.S. sanctions and strict internet censorship, Iranian iOS
+  users are barred from accessing the Apple App Store and developer
+  services. In response, despite violating Apple's developer terms, a
+  thriving underground ecosystem of third-party iOS app stores has
+  emerged to serve Iranian users. The first comprehensive empirical
+  study of these clandestine app stores: how they operate (distribution
+  mechanisms, user authentication, evasion techniques), and what they
+  contain (>1700 iOS app packages from three major Iranian third-party
+  stores). Reveals significant Iranian-exclusive apps, widespread
+  cracked-app distribution, unauthorized monetization of paid content,
+  and embedded third-party tracking and piracy libraries. Quantifies
+  developer revenue loss from piracy and documents security and
+  privacy risks of altered binaries.
+censors: [ir]
+techniques: [ip-blocking]
+evaluation_methods: [measurement-study]
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+  - "arxiv:2604.26343"
+notes: |
+  Documents how user-driven circumvention ecosystems emerge when
+  official distribution channels are blocked by a combination of
+  sanctions (Apple's IP/geolocation policies) and censorship. Relevant
+  to Lantern thinking about platform-resilient delivery — circumvention
+  apps in IR have to be distributed somehow, and these third-party
+  stores are the dominant channel. Auto-ingested by corpus-crawl with
+  techniques tag corrected (LLM defaulted to "dpi"; the censor
+  technique here is IP/geo-based access control by Apple, not DPI).

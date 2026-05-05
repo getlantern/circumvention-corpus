@@ -1,0 +1,43 @@
+id: 2026-edorh-shieldshare
+title: "ShieldShare: Building a VPN-backed Android Hotspot for Secure Internet Sharing with Per-User Traffic Accounting"
+authors:
+  - Carlos Semeho Edorh
+  - Jialu Bi
+  - Hanchen Ye
+  - Dawood Sajjadi
+  - Maryam Tanha
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.01569"
+url: "https://arxiv.org/abs/2605.01569v1"
+abstract: |
+  Virtual Private Networks (VPNs) have become essential privacy tools
+  for mobile users, yet current implementations face significant
+  limitations in shared environments. Mainstream VPN providers impose
+  device limits, while Android's native hotspot functionality lacks
+  support for routing shared traffic through VPN connections. Existing
+  solutions either require root access or lack comprehensive monitoring
+  capabilities. This paper presents ShieldShare, a proxy-based Android
+  application that enables secure VPN-backed hotspot sharing with
+  per-user traffic accounting without requiring root access. The
+  system employs a modular architecture comprising VPN detection,
+  hotspot management, proxy-based traffic forwarding (HTTP, HTTPS,
+  SOCKS5), and traffic metering with quota management. Released as
+  open-source.
+censors: [generic]
+techniques: [ip-blocking]
+defenses_discussed: [tunneling]
+evaluation_methods: [controlled-deployment]
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+  - "arxiv:2605.01569"
+notes: |
+  Engineering contribution to VPN deployment rather than circumvention
+  protocol research — borderline corpus relevance, but the no-root
+  Android-hotspot pattern is operationally interesting for community
+  proxy deployment in censored environments. Auto-ingested by
+  corpus-crawl; tags reviewed and tightened by hand (LLM had defaulted
+  techniques to "dpi" which doesn't apply here).
