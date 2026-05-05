@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  One-shot launchd agent for `corpus-findings extract-all`. We need
+  launchd (rather than SSH-spawned nohup) because claude -p reads its
+  OAuth token from the macOS keychain, which is only unlocked in the
+  user's GUI Aqua session — SSH sessions can't open it.
+
+  Install:
+    cp deploy/io.lantern.corpus-findings-backfill.plist ~/Library/LaunchAgents/
+    launchctl unload ~/Library/LaunchAgents/io.lantern.corpus-findings-backfill.plist 2>/dev/null
+    launchctl load   ~/Library/LaunchAgents/io.lantern.corpus-findings-backfill.plist
+
+  Trigger one run:
+    launchctl start io.lantern.corpus-findings-backfill
+
+  Watch progress:
+    tail -f /tmp/corpus-findings-backfill.err.log
+
+  After completion, run scripts/findings-backfill-pr.sh to open the PR.
+  This plist has no schedule; it only runs when explicitly started.
+-->
+<dict>
+  <key>Label</key>
+  <string>io.lantern.corpus-findings-backfill</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/afisk/code/circumvention-corpus/corpus-findings</string>
+    <string>extract-all</string>
+    <string>--corpus</string>
+    <string>/Users/afisk/code/circumvention-corpus</string>
+    <string>--parallel</string>
+    <string>3</string>
+  </array>
+
+  <!-- No schedule — runs only when explicitly started via
+       launchctl start. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>HOME</key>
+    <string>/Users/afisk</string>
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/afisk/code/circumvention-corpus</string>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/corpus-findings-backfill.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/corpus-findings-backfill.err.log</string>
+</dict>
+</plist>
