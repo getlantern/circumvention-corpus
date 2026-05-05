@@ -1294,7 +1294,16 @@ body::before {
   opacity: 0.42;
 }
 
-.site-header, main.wrap, .site-footer { position: relative; z-index: 1; }
+/* z-index hierarchy:
+ *   ambient layer = 0 (back)
+ *   main.wrap, .site-footer = 1 (above ambient)
+ *   .site-header = 50 (above main, so the search dropdown — which lives
+ *                       inside .site-header and inherits its stacking
+ *                       context — paints over main rather than being
+ *                       occluded by it)
+ *   .site-header (sticky from earlier rule) keeps its sticky positioning. */
+main.wrap, .site-footer { position: relative; z-index: 1; }
+.site-header { z-index: 50; }
 
 .mono, code, pre, .row-id, .card-id, .tag, .paper-id {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
