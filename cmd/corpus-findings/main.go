@@ -564,22 +564,22 @@ func slugFromSummary(s string) string {
 	return strings.Join(keep, "-")
 }
 
-// claudeMCPArgs returns the per-invocation MCP flags for `claude -p`,
-// or an empty slice if no MCP manifest is present at the expected
-// location (deploy/corpus-bot-mcp.json under the corpus root). When
-// the manifest IS present:
-//   - --mcp-config points at it (wick + corpus-mcp servers)
-//   - --max-turns is bumped so the model can call MCP tools mid-turn
-//   - --allowed-tools enumerates which MCP tools are auto-approved
-//     so we don't need an interactive permission prompt
-//   - --permission-mode bypassPermissions tells claude -p to skip
-//     prompts on the listed tools (the harness still refuses unlisted
-//     tools)
-func claudeMCPArgs(corpusRoot string) []string {
-	manifest := filepath.Join(corpusRoot, "deploy", "corpus-bot-mcp.json")
-	if _, err := os.Stat(manifest); err != nil {
-		return []string{"--max-turns", "1"}
-	}
+// claudeMCPArgs returns per-invocation flags for `claude -p` that let
+// the LLM call MCP tools (wick_fetch, search_papers, etc.) mid-turn.
+// We do NOT pass --mcp-config — claude -p inherits the user's persisted
+// MCP servers from ~/.claude.json (registered via `claude mcp add`).
+// That works regardless of corpus root and avoids manifest-format drift.
+//
+// Required server registrations on the runtime host (the mini):
+//
+//	claude mcp add wick wick mcp                                    # stdio
+//	claude mcp add --transport http circumvention-corpus \
+//	    https://corpus.lantern.io/mcp                              # HTTP
+//
+// `claudeMCPArgs(corpusRoot)` keeps the corpusRoot parameter for symmetry
+// with the corpus-crawl version and future use; the value is currently
+// unused.
+func claudeMCPArgs(_ string) []string {
 	allowed := strings.Join([]string{
 		"mcp__wick__wick_fetch",
 		"mcp__wick__wick_search",
@@ -589,7 +589,6 @@ func claudeMCPArgs(corpusRoot string) []string {
 		"mcp__circumvention-corpus__find_related",
 	}, ",")
 	return []string{
-		"--mcp-config", manifest,
 		"--max-turns", "5",
 		"--permission-mode", "bypassPermissions",
 		"--allowed-tools", allowed,
