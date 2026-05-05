@@ -679,12 +679,16 @@ const indexBody = `
   <div class="hero-text">
     <p class="eyebrow">circumvention research · structured · LLM-callable</p>
     <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
-    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant.</p>
-    <div class="cta">
-      <a class="btn primary" href="/ask/">Ask the corpus</a>
-      <a class="btn ghost" href="/use/">Install the MCP server</a>
-    </div>
+    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant — or ask the corpus directly.</p>
   </div>
+  <form class="hero-ask" action="/ask/" method="get" autocomplete="off">
+    <label for="hero-ask-q" class="eyebrow">ASK · {{.FindingsCount}} extracted findings, cited by Claude</label>
+    <div class="hero-ask-row">
+      <input id="hero-ask-q" name="q" type="text" placeholder="e.g. What does the literature say about Iran SNI-based blocking?" maxlength="500" required>
+      <button type="submit" class="btn primary">Ask →</button>
+    </div>
+    <p class="hero-ask-help muted">Or <a href="/use/">install the MCP server</a> to query from your editor.</p>
+  </form>
   <dl class="counts-grid">
     <div><dt>papers</dt><dd>{{.Counts.papers}}</dd></div>
     <div><dt>censors</dt><dd>{{.Counts.censors}}</dd></div>
@@ -1862,6 +1866,51 @@ nav a.external { color: var(--ink-mute); }
 }
 
 .cta { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.8rem; }
+
+/* ────────────────── HERO-ASK — primary CTA on the home page ──────────────────
+ * The home page lede invites visitors to ask the corpus directly. We
+ * present a working textfield, not a "Try it" button — the field IS
+ * the offer. Submits to /ask/?q=... which auto-fires the LLM call.
+ */
+.hero-ask {
+  max-width: 44rem;
+  margin: 1.8rem 0 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.hero-ask .eyebrow { margin: 0 0 0.4rem; padding-left: 0; }
+.hero-ask .eyebrow::before { content: none; }
+.hero-ask-row {
+  display: flex; gap: 0.55rem;
+  align-items: stretch;
+}
+.hero-ask input {
+  flex: 1 1 auto; min-width: 0;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Newsreader", serif;
+  font-size: 1.02rem;
+  border-radius: 1px;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.hero-ask input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.hero-ask input::placeholder { color: var(--ink-mute); }
+.hero-ask button {
+  flex: 0 0 auto;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.96rem;
+}
+.hero-ask-help { margin: 0.3rem 0 0; font-size: 0.86rem; }
+
+@media (max-width: 35rem) {
+  .hero-ask-row { flex-direction: column; gap: 0.5rem; }
+  .hero-ask button { width: 100%; }
+}
 .btn {
   display: inline-flex; align-items: center; gap: 0.4rem;
   padding: 0.62rem 1.1rem;
