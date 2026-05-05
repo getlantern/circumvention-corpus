@@ -1,0 +1,18 @@
+paper: 2026-almutairi-server
+kind: detection
+summary: |
+  Stage 1 of the detection pipeline uses a lightweight heuristic: restrict analysis
+  to IP addresses in "VPS-dense ASNs," which censors already target for resource-intensive
+  inspection of fully-encrypted traffic. This pre-filter dramatically reduces the search
+  space before applying the more expensive dual-role behavioral analysis. The evaluation
+  was conducted without Stages 1 and 3 due to dataset limitations, meaning the reported
+  23% recall and 0.18% FPR are conservative lower bounds on the full pipeline's performance.
+techniques: [fully-encrypted-detect, dpi, ml-classifier]
+censors: [generic]
+defense_implications:
+  - "Hosting proxies in residential or non-VPS ASNs (as Snowflake/WebRTC does by using
+    volunteer peers) avoids the Stage 1 filter entirely and escapes this class of detector."
+  - "Protocol-agnostic behavioral detection requires no payload access; probe-resistant
+    and fully-encrypted transports both remain visible to this method."
+section: "§2.1, §2.2, §3.4"
+extracted_by: claude-sonnet-4-6

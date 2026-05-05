@@ -1,0 +1,24 @@
+paper: 2026-jois-assemblage
+kind: evaluation
+summary: |
+  Assemblage's diffusion-model steganography (Pulsar) encodes 300–618 bytes per
+  image vector (mean ± SD by model). Generating one local state takes ~9.5 sec on
+  an Apple M4 Pro; encoding takes ~4.4 sec; decoding takes ~4.2 sec. Sending a
+  compressed 300-word message requires only K+h = 4+2 images using the church-256
+  model, with total send time ~90 sec and receive time ~30 sec. Perceptual-hash
+  candidate detection runs in ~0.33 ms per image, making scanning all ~150 daily
+  posts on /r/AIArt take under 1 second.
+techniques: [dpi]
+defenses: [steganography]
+censors: [generic]
+defense_implications:
+  - "Steganographic covert channels based on generative models are computationally
+    feasible for desktop hardware today, but 90-second send latency for a single
+    short message is prohibitive for interactive use; pre-generating offline states
+    in the background reduces this to ~18–28 sec per message in production."
+  - "Per-image capacity of ~300–600 bytes limits bulk data transfer; systems that
+    need to smuggle connection bootstrapping credentials (~64–128 bytes) fit
+    comfortably within a single image vector, making this viable for rendezvous
+    channel bootstrapping rather than full-tunnel data transfer."
+section: "Table 2, Table 3, §4.2"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,24 @@
+paper: 2026-lee-quicstep
+kind: evaluation
+summary: |
+  QUICstep reduces proxy (handshake channel) traffic by a median of 93% across 100
+  tested domains compared to full VPN tunneling. For www.youtube.com specifically,
+  proxy traffic dropped from 3.634 MB (full VPN) to 96 KB (QUICstep), a 97.4%
+  reduction. Page load time improved by up to 84% versus full VPN. Performance
+  gain is greatest when the handshake channel is bandwidth-limited (1–5 Mbps):
+  QUICstep/VPN ratios of 0.07–0.09 at 1 Mbps, 0.34–0.46 at 5 Mbps from London
+  to nearby proxies. Psiphon's free tier (2 Mbps) and Tor (~10 Mbps median) are
+  both well within the bandwidth regime where QUICstep provides substantial gains.
+techniques: [http3-quic-block]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "Integrating QUICstep into Lantern/Psiphon-style tools would allow the expensive
+    censorship-resistant channel to carry only QUIC handshakes while bulk data
+    flows natively—directly addressing data-cap and bandwidth constraints on free tiers."
+  - "Proxy location relative to client is more important than proxy bandwidth when
+    QUICstep is used: a nearby proxy (same region as client) closely matches native
+    QUIC performance even at 5 Mbps, while a distant proxy (e.g., Seoul from London)
+    at 5 Mbps gives only a 0.59 QUICstep/VPN ratio improvement."
+section: "§4.4.3, Fig 7, Table 2"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+paper: 2025-tai-irblock
+kind: detection
+summary: |
+  The GFI operates three distinct DNS/HTTP injectors with different fake IP addresses
+  (10.10.34.34, 10.10.34.35, 10.10.34.36) and partially overlapping blocklists—mirroring
+  the GFW's triplet-censor architecture. Injector 10.10.34.35 exhibits TTL reflection
+  (injected response TTL = probe TTL − hop count), identical to the GFW. No IP
+  exclusively receives injections from 10.10.34.34 (a smaller, selective component);
+  the two primary injectors 10.10.34.35 and 10.10.34.36 handle the majority of
+  censorship. Different injectors maintain distinct domain blocklists, meaning which
+  domains a user sees as censored depends on routing through their AS.
+techniques: [dns-poisoning, packet-injection, dpi]
+censors: [ir]
+defense_implications:
+  - "The partitioned blocklist means vantage-point bias in measurements is significant;
+    tools tested from one Iranian AS may underestimate censorship scope for other ASes."
+  - "TTL reflection on injector 10.10.34.35 can be exploited for localization (probe with
+    controlled TTLs to triangulate censor hop distance); researchers must double probe TTL
+    to ensure injected response returns."
+section: "§5.4, Table 2"
+extracted_by: claude-sonnet-4-6

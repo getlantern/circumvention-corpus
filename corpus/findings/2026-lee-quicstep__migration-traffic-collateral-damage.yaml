@@ -1,0 +1,24 @@
+paper: 2026-lee-quicstep
+kind: detection
+summary: |
+  A censor attempting to block QUICstep by dropping all QUIC connections that
+  arrive without a preceding Initial/Handshake packet would cause significant
+  collateral damage. Analysis of 24-hour campus traces (3,786,050 unique QUIC
+  connections) found 29.1% (1,100,439 connections) lacked QUIC Initial or Handshake
+  packets—representing legitimate connection migration from mobile handoffs and
+  similar events. This high baseline rate means blanket "no handshake" blocking
+  would disrupt roughly 1-in-3 QUIC connections unrelated to circumvention.
+techniques: [http3-quic-block, traffic-shape]
+defenses: [tunneling, mimicry]
+censors: [cn, generic]
+defense_implications:
+  - "QUICstep migrations are indistinguishable from organic mobile QUIC migrations
+    at a per-connection level; as QUIC/HTTP3 deployment grows, censors blocking
+    migrated connections face escalating collateral damage that constrains this
+    countermeasure—design QUIC-based circumvention to blend with mobile connection
+    patterns."
+  - "Stateful traffic analysis (detecting abnormal migration frequency per client)
+    is the realistic threat; rate-limiting artificial migration events per
+    client/IP to match observed mobile baselines would reduce detectability."
+section: "§5 (Blocking all QUIC connection migrated traffic)"
+extracted_by: claude-sonnet-4-6

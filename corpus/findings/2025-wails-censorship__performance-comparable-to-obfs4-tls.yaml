@@ -1,0 +1,20 @@
+paper: 2025-wails-censorship
+kind: evaluation
+summary: |
+  In laboratory benchmarks, the best UPGen-generated protocol achieves 252 ms TTFB
+  latency (vs 212 ms Obfs4, 313 ms TLS) and 4.25 Gbit/s throughput per core (vs
+  4.65 Gbit/s Obfs4, 9.42 Gbit/s TLS). The worst-case UPGen protocol (4.5 RTT
+  handshake) reaches 677 ms TTFB but 3.70 Gbit/s throughput. In large-scale
+  distributed Tor simulations, the choice of UPGen protocol had no statistically
+  significant effect on end-to-end Tor flow performance.
+techniques: []
+defenses: [obfs4, marionette, tor]
+censors: [generic]
+defense_implications:
+  - "UPGen protocols with 1-RTT handshakes match Obfs4 latency; protocol designers
+    should prefer shorter handshake patterns when low latency is required."
+  - "Performance overhead from structured-variable protocols is acceptable for VPN and
+    Tor deployment scenarios; throughput does not become the bottleneck at typical
+    usage scales."
+section: "§5, Table 7"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+paper: 2025-lange-i-ra-nconsistencies
+kind: detection
+summary: |
+  Iran's HTTP censor exhibits several parsing inconsistencies exploitable for evasion:
+  (1) it is case-sensitive and ignores lowercase method variant "gET"; (2) it does not
+  censor the Host header for HTTP version strings "HTTP", "1.1", and "example" (suggests
+  a version regex of HTTP/.*); (3) when the Host header is absent, the path is not
+  censored for versions "HTTP" and "HTTP/1"; (4) the body is never analyzed regardless of
+  version. All HTTP and DNS censorship occurs at the same last-hop border node, suggesting
+  centralized architecture.
+techniques: [dpi, keyword-filtering, rst-injection]
+censors: [ir]
+defense_implications:
+  - "HTTP version string manipulation and case-variant method names can bypass Iran's HTTP
+    censor; automated tools like Geneva should be evaluated against these specific
+    parsing gaps."
+  - "Iran's censorship operates at border nodes (centralized), not at ISP level — a
+    single vantage point near the border exposes the full censorship surface, and a
+    single protocol change at border infrastructure can update all censorship nationally."
+section: "§3.2, Table 1"
+extracted_by: claude-sonnet-4-6

@@ -2,6 +2,9 @@
 # The canonical URL lives in the YAML. Each user can populate this dir
 # locally if they want.
 corpus/pdfs/
+# Extracted plain-text — derived from pdfs/, used by full-text findings
+# extraction. Regenerable; not committed.
+corpus/text/
 
 # Go build artifacts.
 /corpus-mcp

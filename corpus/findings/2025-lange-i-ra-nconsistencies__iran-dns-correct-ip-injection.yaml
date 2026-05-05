@@ -1,0 +1,19 @@
+paper: 2025-lange-i-ra-nconsistencies
+kind: detection
+summary: |
+  Iran's DNS censor injects a correct, static IP address for 385 domains across 10
+  groups — including 372 Google-related domains (resolving to 216.239.38.120), 2 Bing
+  domains, 2 DuckDuckGo domains, Yandex, CIA, MI5, and Mossad. This previously
+  unreported behavior likely enables surveillance (routing traffic to a controlled IP)
+  or rapid follow-on blocking (nullrouting the injected static IP is cheaper than
+  maintaining DPI rules per domain).
+techniques: [dns-poisoning, ip-blocking]
+censors: [ir]
+defense_implications:
+  - "Clients relying on unencrypted DNS in Iran must assume that even successful DNS
+    resolutions for major services may be redirected to censor-controlled IPs; DoH/DoT
+    bypass is required to obtain trustworthy answers."
+  - "Domain-fronting implementations that use Google or Cloudflare CDN IPs resolved via
+    plaintext DNS in Iran may connect to censor-controlled infrastructure instead."
+section: "§3.1, Table 6, Figure 3"
+extracted_by: claude-sonnet-4-6

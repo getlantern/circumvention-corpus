@@ -1,0 +1,24 @@
+paper: 2026-sheffey-geedge
+kind: detection
+summary: |
+  Of 6,915,266 domains extracted from the 572 GiB Geedge Networks Leak (GNL),
+  298,955 censored domains (93.7% of all GNL-censored domains) appear in neither
+  Tranco top-1M nor CitizenLab test lists. Measurements across China (Guangzhou/Nanjing),
+  Myanmar, Pakistan, and Algeria confirmed censorship via DNS injection and
+  SNI-based TLS connection termination. The GNL covers 25–62% of Tranco-censored
+  domains across countries, showing substantial but incomplete overlap. This vendor-side
+  ground truth reveals a censorship surface roughly two orders of magnitude larger
+  than curated academic test lists.
+techniques: [dpi, sni-blocking, dns-poisoning, measurement-platform]
+censors: [cn, mm, pk]
+defense_implications:
+  - "Circumvention tools that use domain-fronting or CDN-based proxies should
+    cross-reference their CDN/fronting domain lists against GNL-derived sets to
+    identify domains already flagged by commercial censorship vendors before
+    deploying them as frontends."
+  - "Censorship measurement used to validate Lantern proxy reachability should
+    supplement Tranco/CitizenLab test lists with vendor-leak-derived domain sets;
+    the 93.7% unique rate means standard measurement tools would miss most of
+    what Geedge's customers are blocking."
+section: "§4.1, Table 2"
+extracted_by: claude-sonnet-4-6

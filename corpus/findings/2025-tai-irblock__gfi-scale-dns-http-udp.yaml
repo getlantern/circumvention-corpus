@@ -1,0 +1,20 @@
+paper: 2025-tai-irblock
+kind: evaluation
+summary: |
+  Over 2.5 months (Nov 2024–Jan 15, 2025), IRBlock scanned all 11M Iranian IPv4 addresses
+  daily, finding 6.8M IPs subject to DNS poisoning and HTTP blockpage injection, and
+  5.4M IPs subject to UDP-based traffic disruption. Testing over 700M FQDNs (500M apex
+  domains) revealed 6M banned FQDNs from 3.3M censored apex domains. Of 537 active ASes
+  in Iran, 485 (90.3%) exhibited blocking for at least 25% of assigned IPs. DNS and HTTP
+  censorship overlapped at >99% of censored IPs; UDP blocking was a strict subset of
+  DNS-censored IPs, affecting ~5M addresses.
+techniques: [dns-poisoning, packet-injection, http3-quic-block]
+censors: [ir]
+defense_implications:
+  - "Iran's DNS censorship is the foundational layer: 6.8M affected IPs means nearly all
+    routable Iranian addresses see DNS injection; circumvention tools must assume cleartext
+    DNS is poisoned and bootstrap via encrypted DNS or hardcoded IPs."
+  - "UDP blocking affects 5.4M IPs (as a subset of DNS-censored IPs); QUIC-based transports
+    (including Hysteria2) face active UDP drops across most of the Iranian IP space."
+section: "§5.1, §1"
+extracted_by: claude-sonnet-4-6

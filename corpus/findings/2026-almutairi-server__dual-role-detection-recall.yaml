@@ -1,0 +1,18 @@
+paper: 2026-almutairi-server
+kind: detection
+summary: |
+  A three-stage detection pipeline exploiting the "dual-role" behavioral fingerprint
+  of single-IP circumvention relays achieved 23.2% recall (96/414 ground-truth relays)
+  with a 0.18% false-positive rate against 97,651 benign TLS servers, for an overall
+  accuracy of 99.5%. The ground-truth set covered OpenVPN, WireGuard, and SOCKS
+  relays identified in a 17 TB single-day backbone trace (WIDE Project, April 9, 2025).
+techniques: [traffic-shape, dpi, flow-correlation]
+censors: [generic]
+defense_implications:
+  - "Single-IP proxy architectures (Shadowsocks, V2Ray) expose a host-level dual-role
+    signal that link-layer obfuscation cannot hide; route relay traffic through a separate
+    egress IP to break the server-and-client pattern."
+  - "Multi-hop or split-tunnel configurations that do not forward general outbound traffic
+    evaded this detector (76.8% FN rate); consider that architecture for low-profile deployments."
+section: "§3.4, Table 1"
+extracted_by: claude-sonnet-4-6

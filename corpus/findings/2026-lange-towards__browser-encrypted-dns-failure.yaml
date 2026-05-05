@@ -1,0 +1,23 @@
+paper: 2026-lange-towards
+kind: detection
+summary: |
+  Both Firefox and Chromium leak cleartext DNS before establishing encrypted DNS
+  connections: they first send an unencrypted UDP DNS query to resolve the DoH server's
+  domain (e.g., doh.opendns.com). An in-path censor can intercept and poison this
+  initial query, making encrypted DNS in browsers completely ineffective without
+  additional circumvention of the resolver-lookup step. Additionally, Chromium always
+  includes the SNI extension in the encrypted DNS TLS handshake (e.g., "doh.opendns.com"),
+  leaking the resolver identity even after the initial lookup. No resolver requires SNI
+  to be present for certificate validation when the resolver's IP certificate is configured.
+techniques: [dns-poisoning, sni-blocking]
+defenses: [ech-esni]
+censors: [ir, cn]
+defense_implications:
+  - "Configure encrypted DNS resolvers by IP address (not domain) in circumvention tools
+    to skip the initial unencrypted bootstrap query; browsers and OSes should adopt the
+    same practice."
+  - "Browsers should offer an option to omit the SNI extension for encrypted DNS resolver
+    TLS handshakes; since all tested resolvers support IP-based certificate validation,
+    this is feasible today."
+section: "§2.4, §7, §10"
+extracted_by: claude-sonnet-4-6

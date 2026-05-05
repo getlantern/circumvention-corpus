@@ -1,0 +1,23 @@
+paper: 2026-jois-assemblage
+kind: evaluation
+summary: |
+  Lossy image compression is the primary practical barrier to deploying Assemblage
+  on major platforms. Of 8 tested platforms, WeChat and Rednote (combined 2.6 billion
+  MAU) failed because they serve only lossy-compressed downloads, destroying embedded
+  steganographic content. Platforms that preserve lossless originals (Reddit, X/Twitter,
+  DeviantArt, Discord, Imgur, Telegram) succeeded end-to-end. Discord serves ~30 KB
+  compressed thumbnails by default but provides lossless originals via its native
+  "Download" option.
+techniques: [dpi]
+defenses: [steganography]
+censors: [generic]
+defense_implications:
+  - "Any covert-channel scheme that embeds data into images must verify that the
+    target platform preserves exact pixel data; require lossless upload+download
+    paths before relying on the channel."
+  - "Platforms with the largest censored user bases (WeChat in CN, Rednote) are
+    exactly those that apply lossy compression; image steganography is currently
+    not viable as a covert channel for those platforms without a
+    modification-resistant encoding layer."
+section: "Table 1, §4.1"
+extracted_by: claude-sonnet-4-6

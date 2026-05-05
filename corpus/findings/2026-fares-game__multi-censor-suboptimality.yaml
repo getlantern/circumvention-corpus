@@ -1,0 +1,25 @@
+paper: 2026-fares-game
+kind: evaluation
+summary: |
+  Multi-censor simulations show that single-censor-optimized distribution strategies
+  perform suboptimally in realistic multi-region deployments. When two networks have
+  different censor strategies (e.g., one optimal, one zig-zag), the distributor
+  cannot detect that a proxy is blocked until all censors have blocked it; this
+  leaves clients without reachable proxies despite the proxy appearing "available"
+  from the distributor's view. The authors conclude that "single-censor evaluation
+  does not accurately predict more realistic deployment performance." A zig-zag
+  censor in one region with 0.25 weight caused 44.4% collateral damage while
+  reducing proxy lifetime to a median of 4 steps.
+techniques: [traffic-shape, flow-correlation]
+defenses: [bridges]
+censors: [generic]
+defense_implications:
+  - "Lantern serves users in many simultaneous censor jurisdictions (CN, IR, RU, PK,
+    etc.); proxy assignment must account for region-specific blocking—proxies blocked
+    in one region should be flagged per-region, not globally, to avoid withdrawing
+    working proxies from other regions."
+  - "Proxy lifetime metrics should be collected and reported per user-country, not
+    just globally; a proxy that lasts 50 steps in most regions but 4 steps in CN
+    should still be distributed to non-CN users."
+section: "§6, Table 4"
+extracted_by: claude-sonnet-4-6

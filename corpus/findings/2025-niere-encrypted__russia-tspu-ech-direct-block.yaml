@@ -1,0 +1,24 @@
+paper: 2025-niere-encrypted
+kind: detection
+summary: |
+  Russian TSPU devices directly block ECH by dropping ClientHello messages that contain
+  both an ECH extension and the outer SNI hostname "cloudflare-ech.com" — the static
+  outer SNI Cloudflare advertises in all its ECH configurations. Blocking affects both
+  TLS and QUIC. ECH connections to servers with Cloudflare ECH support but outside
+  Cloudflare's official IP ranges are NOT blocked. TCP segmentation alone or TLS record
+  fragmentation alone did NOT bypass TSPU ECH blocking, but combining both techniques
+  did circumvent it. TSPU has also added TCP reassembly capabilities that defeat
+  previously effective fragmentation-only bypasses.
+techniques: [dpi, rst-injection, middlebox-interference]
+defenses: [ech-esni]
+censors: [ru]
+defense_implications:
+  - "Cloudflare's static outer SNI (cloudflare-ech.com) makes ECH to Cloudflare trivially
+    identifiable and blockable; ECH deployments should allow flexible or rotating outer
+    SNI values to deny censors a stable fingerprint."
+  - "TCP segmentation + TLS record fragmentation in combination circumvents Russian ECH
+    blocking; either technique alone is now insufficient due to TSPU reassembly upgrades."
+  - "IP proxies located outside Russia and Cloudflare's IP ranges fully circumvent TSPU
+    ECH blocking since TSPU only blocks ECH to Cloudflare IP ranges."
+section: "§5, Figure 5"
+extracted_by: claude-sonnet-4-6

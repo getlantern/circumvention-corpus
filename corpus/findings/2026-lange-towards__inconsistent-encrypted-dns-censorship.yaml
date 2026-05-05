@@ -1,0 +1,24 @@
+paper: 2026-lange-towards
+kind: evaluation
+summary: |
+  DNS censorship of encrypted protocols is inconsistent in both China and Iran.
+  In China, Yandex resolvers are censored only when the SNI extension is present;
+  omitting SNI bypasses censorship for these resolvers. In Iran, DoH requires SNI
+  omission for Quad9, Google, Adguard, CleanBrowsing, and NextDNS resolvers, but
+  works with SNI for Yandex and Cisco resolvers. These inconsistencies suggest
+  resolvers have been accidentally missed by censors, highlighting the value of
+  automated tools that trial all resolver-mode combinations rather than hard-coding
+  a single strategy. The support evaluation found 47 resolvers supporting DoH, 16
+  supporting DoH3, and only 8 supporting DoQ out of ~65 tested.
+techniques: [dns-poisoning, sni-blocking, ip-blocking]
+defenses: [ech-esni, tunneling]
+censors: [ir, cn]
+defense_implications:
+  - "Automated circumvention tools that enumerate resolver-protocol combinations find
+    working paths that a fixed configuration would miss; the DPYProxy-DNS auto mode
+    reliably finds a working combination in under 60s in most runs."
+  - "Inconsistent censorship gaps (e.g., Yandex with no-SNI in China, Cisco+DoH with
+    SNI in Iran) are exploitable today but may be patched; tools should re-probe
+    periodically rather than caching a single configuration indefinitely."
+section: "§6.2, Table 2"
+extracted_by: claude-sonnet-4-6

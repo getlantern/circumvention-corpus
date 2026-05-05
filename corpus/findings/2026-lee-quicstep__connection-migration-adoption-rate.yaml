@@ -1,0 +1,23 @@
+paper: 2026-lee-quicstep
+kind: deployment
+summary: |
+  As of October 2024, 22% (~220K) of Tranco top-1M domains support QUIC; of those,
+  only 12.8% (~28K) are fully QUICstep-compatible (support IP-address migration).
+  However, port-migration support grew 20% in 3 months (26,234 → 31,262 domains
+  from August to late September 2024). Cloudflare hosts 74.6% of QUIC-supporting
+  domains but only 0.2% support connection migration; if Cloudflare enabled it,
+  87.2% of QUIC-supporting domains would become compatible. Among QUIC-SNI-blocked
+  domains in China (28,458 total), 2,404 (8.45%) support QUIC and 828 (34.4%) of
+  those are QUICstep-compatible today.
+techniques: [http3-quic-block]
+defenses: [tunneling]
+censors: [cn, generic]
+defense_implications:
+  - "QUICstep's practical addressable market is currently ~28K websites, growing
+    rapidly; circumvention tools that want to use QUICstep must maintain a list of
+    connection-migration-supporting endpoints and refresh it frequently."
+  - "Cloudflare's connection migration gap is a single point of leverage: a Cloudflare
+    library update would unlock circumvention for the majority of QUIC-supporting
+    sites—monitor Cloudflare quiche releases and update compatibility lists promptly."
+section: "§4.2, Table 1, Fig 3"
+extracted_by: claude-sonnet-4-6

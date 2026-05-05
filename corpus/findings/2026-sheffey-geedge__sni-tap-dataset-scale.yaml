@@ -1,0 +1,25 @@
+paper: 2026-sheffey-geedge
+kind: detection
+summary: |
+  The largest single source of censored domains in the GNL is MESA lab's SNI
+  monitoring dataset (E21-SNI-Top200w.txt) containing 57,362 censored domains,
+  and E21-SNI-Top120W-20221020.txt with 36,467 domains—totaling over 93K domains
+  from network tap data alone for a single country (E21 = Ethiopia per InterSecLab
+  attribution). A separate Xinjiang dataset (XJ-CUCC-SNI-Top200w.txt) contains
+  13,604 domains. These datasets "do not seem to come from popular domain lists,
+  and instead appear to be gathered from network taps," confirming that Geedge
+  builds censorship target lists directly from passive traffic observation.
+techniques: [dpi, sni-blocking, measurement-platform]
+censors: [cn, et]
+defense_implications:
+  - "SNI-tap-derived domain lists are not bounded by academic popularity rankings;
+    any domain accessed from within a monitored country—including obscure CDN
+    subdomains or API endpoints used by circumvention tools—can appear on these
+    lists; rotate infrastructure hostnames more frequently than the assumed
+    observation window (~quarterly at minimum)."
+  - "Domain fronting via large CDNs is partially protected by collateral damage,
+    but this GNL evidence shows Geedge is willing to track and block individual
+    CDN subdomains; verify that Lantern's current CDN frontends are not already
+    in known GNL-derived sets."
+section: "§4.2, Table 3"
+extracted_by: claude-sonnet-4-6

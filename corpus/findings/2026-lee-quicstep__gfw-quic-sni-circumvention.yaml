@@ -1,0 +1,26 @@
+paper: 2026-lee-quicstep
+kind: evaluation
+summary: |
+  QUICstep successfully circumvents the GFW's QUIC SNI censorship (active since April
+  2024) in live testing. Using an Alibaba VM in mainland China as client and an AWS
+  instance in North Virginia as server, a native QUIC client was blocked after several
+  fetches of youtube.com SNI, while QUICstep consistently succeeded across 50 consecutive
+  fetches. 7 tiktokcdn.com subdomains that were QUIC-SNI blocked were also reliably
+  accessible via QUICstep. The approach routes only QUIC long-header (handshake)
+  packets through a WireGuard tunnel; all subsequent short-header (data) packets
+  travel the native path.
+techniques: [http3-quic-block, sni-blocking, dpi]
+defenses: [tunneling, mimicry]
+censors: [cn]
+defense_implications:
+  - "For any QUIC-based proxy protocol (e.g., Hysteria 2, TUIC), routing only the
+    QUIC Initial and Handshake packets through an existing censorship-resistant
+    channel dramatically reduces bandwidth cost on that channel while maintaining
+    circumvention: median 93% load reduction versus full VPN tunneling."
+  - "The key packet-level heuristic is that QUIC long-header packets (first bit = 1)
+    carry all handshake material; iptables/nftables rules keyed on this single bit
+    are sufficient to implement QUICstep without modifying QUIC clients or servers."
+  - "Lantern's Unbounded (WebRTC/QUIC) should investigate whether QUICstep-style
+    selective tunneling can reduce load on its rendezvous/STUN infrastructure."
+section: "§4.3.2, §3.2.3"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,22 @@
+paper: 2025-wails-censorship
+kind: evaluation
+summary: |
+  State-of-the-art ML classifiers (Deep Fingerprinting, Decision Tree, Random Forest,
+  nPrintML) trained on known UPGen protocols and benign traffic always incur high
+  out-of-distribution false-positive rates when attempting to block unknown UPGen
+  protocols — in the vast majority of experiments the OOD FPR is 100%. The one
+  exception (SSH OOD, Deep Fingerprinting) achieved a UPGen TPR of only 20%. By
+  contrast, identical classifiers successfully generalize to block unknown Obfs4
+  flows with near-zero collateral damage in 3 of 4 cases.
+techniques: [dpi, ml-classifier, traffic-shape]
+defenses: [obfs4, marionette]
+censors: [generic]
+defense_implications:
+  - "Fully-encrypted protocols like Obfs4 are structurally distinguishable from benign
+    traffic; UPGen-style structured-but-variable protocols are not — prefer designs that
+    resemble real encrypted protocols over purely random streams."
+  - "A censor facing UPGen-style protocol diversity cannot train a generalizable
+    classifier without blocking enormous amounts of benign encrypted traffic, raising the
+    cost of censorship to unacceptable collateral-damage levels."
+section: "§4.3.3, Table 3, Table 4"
+extracted_by: claude-sonnet-4-6

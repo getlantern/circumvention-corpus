@@ -1,0 +1,24 @@
+paper: 2026-fares-game
+kind: evaluation
+summary: |
+  Simulations extending the ENEM19 game-theory framework show that ephemeral
+  proxy schemes (modeled on Snowflake/Lantern) effectively neutralize both the
+  "optimal" and "aggressive" censors from the original framework. In overprovisioned
+  settings (proxies arriving at 250/step vs. 200 clients/step), even the null censor
+  scenario outperforms either censor in equal-arrival settings. Over 90% of waiting
+  users receive a proxy within 1 time step. The critical variable is not censor
+  sophistication but proxy arrival rate relative to client demand—high proxy churn
+  combined with high arrival rate defeats both enumeration strategies tested.
+techniques: [dpi, traffic-shape]
+defenses: [webrtc-pluggable, bridges]
+censors: [generic]
+defense_implications:
+  - "Lantern's 'Browsers Unbounded' (ephemeral peer-proxy) design choice is
+    strategically validated: maximizing the number of available short-lived proxies
+    matters more than optimizing the distribution algorithm—invest in peer-proxy
+    recruitment and onboarding UX rather than complex trust-graph assignment logic."
+  - "Equal-arrival settings (proxies = clients) are the minimum viable condition;
+    if Unbounded proxy supply falls below user demand, even the null censor produces
+    poor client connectivity—monitor and alarm on this ratio in production."
+section: "§4, Fig 1, Fig 2, Table 1"
+extracted_by: claude-sonnet-4-6

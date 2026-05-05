@@ -1,0 +1,24 @@
+paper: 2026-jois-assemblage
+kind: deployment
+summary: |
+  Assemblage inherits the bootstrapping limitation of all generative steganographic
+  schemes: sender and receiver must share a symmetric key before communication begins.
+  Public-key steganography exists in theory but does not currently support common
+  image/text channels efficiently. The paper identifies three viable deployment
+  scenarios: (1) travelers who carry a pre-shared secret before entering a censored
+  region; (2) users in countries with episodic censorship who establish the key
+  during uncensored periods; (3) a hybrid where a one-time signaling channel
+  establishes the secret, after which Assemblage carries subsequent traffic.
+techniques: [dpi]
+defenses: [steganography]
+censors: [generic]
+defense_implications:
+  - "Generative steganography is most practical as a secondary channel—used after
+    a lightweight rendezvous channel (e.g., Psiphon bridge distribution, domain-fronted
+    invite URL) has bootstrapped the shared secret; design Lantern's invite flow
+    to also seed a shared state for an out-of-band covert channel."
+  - "Account pre-history is a non-negotiable operational requirement: accounts
+    used for Assemblage rendezvous must accumulate organic posting history first,
+    or risk standing out in communities that enforce account-age rules."
+section: "§5 (Bootstrapping)"
+extracted_by: claude-sonnet-4-6

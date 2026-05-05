@@ -1,0 +1,22 @@
+paper: 2025-niere-encrypted
+kind: detection
+summary: |
+  Chrome and Firefox send GREASE ECH extensions in every ClientHello message, meaning
+  a censor that blocks all ECH-containing ClientHellos would block all Chrome and Firefox
+  TLS traffic. Cloudflare's static outer SNI "cloudflare-ech.com" in all its ECH
+  configurations makes real ECH connections trivially distinguishable from GREASE ECH —
+  censors can block real ECH connections to Cloudflare without triggering GREASE
+  collateral damage. Cloudflare rejects ECH handshakes with omitted or invalidated outer
+  SNI values; non-Cloudflare ECH deployments accept missing and invalid outer SNIs.
+techniques: [sni-blocking, esni-eh-blocking]
+defenses: [ech-esni]
+censors: [cn, ir, ru]
+defense_implications:
+  - "Cloudflare's requirement for a static outer SNI undermines GREASE ECH's collateral-
+    damage protection; ECH providers should allow dynamic or blank outer SNI values so
+    censors cannot distinguish real ECH from GREASE ECH without blocking all TLS."
+  - "Non-Cloudflare ECH deployments that accept missing outer SNI could enable censorship-
+    resistant ECH connections; the anti-censorship community should encourage and test
+    this deployment pattern."
+section: "§2.1, §4.1, §6"
+extracted_by: claude-sonnet-4-6

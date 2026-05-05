@@ -1,0 +1,21 @@
+paper: 2026-lipphardt-dual
+kind: evaluation
+summary: |
+  An empirical study of 100 sensitive statements tested on Gemini (2.5 Flash) and
+  ChatGPT (GPT-5) found that WebUI interfaces are systematically more restrictive than
+  their API counterparts. According to GPT-4o judge: WebUI was moderated 18% of the
+  time vs. 9% (Gemini API) and 13% (ChatGPT API). DeBERTa classifier found 82% of
+  WebUI responses moderated vs. 58% of API responses. The Gemini WebUI:API ratio
+  ranged from 2.0:1 (GPT-4o) to 7.0:1 (Claude), and ChatGPT from 1.4:1 (GPT-4o) to
+  15.6:1 (Claude). Neither Google nor OpenAI discloses these interface-specific policies.
+techniques: [ml-classifier, keyword-filtering]
+censors: [generic]
+defense_implications:
+  - "Researchers studying LLM-based censorship detection or using LLMs as evaluation
+    judges must report which interface (API vs. WebUI) was used; results are not
+    interchangeable between interfaces."
+  - "Circumvention-tool developers using LLM APIs to evaluate sensitivity of content
+    should expect the API to be less filtered than the WebUI, introducing systematic
+    bias toward under-reporting of moderation."
+section: "§4.3, Table 2"
+extracted_by: claude-sonnet-4-6

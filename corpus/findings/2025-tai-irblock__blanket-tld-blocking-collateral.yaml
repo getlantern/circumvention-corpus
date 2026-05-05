@@ -1,0 +1,22 @@
+paper: 2025-tai-irblock
+kind: detection
+summary: |
+  IRBlock discovered that 1.7M of 3.3M blocked apex domains (52%) were attributed to
+  blanket suffix-level blocking rules rather than individual domain listings. Examples
+  include regex patterns targeting all Israeli domains (.il TLD), adult content (.porn),
+  and country-coded suffixes (.com.mx, .my.id). Of 87K Tranco-ranked apex domains
+  analyzed, 37% fell into adult content, with entertainment and gambling following.
+  Approximately 1.27M apex domains were jointly censored by both DNS and HTTP filters,
+  while the two filters maintained operationally independent blocklists for a significant
+  fraction of domains.
+techniques: [dns-poisoning, ip-blocking, keyword-filtering]
+censors: [ir]
+defense_implications:
+  - Suffix-level blocking of entire TLDs (e.g., all .il domains) causes large collateral
+    damage; circumvention tool infrastructure should avoid hosting at TLDs targeted by
+    blanket bans.
+  - Independent DNS and HTTP blocklists within the GFI mean bypassing DNS censorship
+    (e.g., via DoQ) is insufficient; HTTP-layer blocking must also be circumvented for
+    full access to censored content.
+section: "§5.3"
+extracted_by: claude-sonnet-4-6

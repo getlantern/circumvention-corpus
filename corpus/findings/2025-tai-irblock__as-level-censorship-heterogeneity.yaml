@@ -1,0 +1,21 @@
+paper: 2025-tai-irblock
+kind: evaluation
+summary: |
+  Censorship enforcement varies dramatically across Iranian ASes. AS58224 (TCI, 3.6M IPs)
+  blocks 89-98% of IPs across DNS injectors and 87.6% for UDP. AS197207 (MCCI, 2.3M IPs)
+  and AS44244 (IranCell, 1.3M IPs) show near-zero censorship (0.15-0.76% across injectors).
+  AS31549 (RASANA, 577k IPs) blocks 97-99% for DNS/HTTP but 64% for UDP. Some IPs—
+  including those belonging to the Iranian President's website and Ministry of Foreign
+  Affairs—are deliberately exempted from bidirectional censorship. Two exempted MFA IPs
+  (109.201.19.184 and 109.201.27.67) appear linked to APT15 (Playful Taurus) C&C infrastructure.
+techniques: [dns-poisoning, http3-quic-block, ip-blocking]
+censors: [ir]
+defense_implications:
+  - "Routing circumvention traffic through Iranian ISPs with minimal censorship deployment
+    (MCCI AS197207, IranCell AS44244) may provide significantly better user experience;
+    these carriers appear exempt from the central GFI enforcement."
+  - "Selective exemptions for government IPs suggest the GFI has an explicit allowlist
+    maintained alongside blocklists; tools that can route through allowlisted infrastructure
+    (e.g., CDNs with Iranian presence) may benefit from implicit exemption."
+section: "§5.1, §5.2, Table 1"
+extracted_by: claude-sonnet-4-6

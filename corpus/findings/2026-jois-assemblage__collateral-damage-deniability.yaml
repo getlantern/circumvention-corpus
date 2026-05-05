@@ -1,0 +1,25 @@
+paper: 2026-jois-assemblage
+kind: defense
+summary: |
+  Assemblage's anti-censorship collateral damage argument rests on the economic
+  and social value of AI-generated image communities. Blocking DeviantArt (65M MAU),
+  Reddit (1.21B MAU), X/Twitter (611M MAU), or Telegram (1B MAU) to suppress
+  steganographic circumvention would cause massive collateral damage to legitimate
+  users—and to Chinese companies' revenue in the case of platforms popular in CN.
+  The paper observes that even in authoritarian regimes, everyday users actively
+  post AI-generated content, making blanket platform blocking politically and
+  economically costly.
+techniques: [dpi]
+defenses: [steganography, tunneling]
+censors: [generic, cn]
+defense_implications:
+  - "Choosing rendezvous platforms with high economic or cultural collateral-damage
+    cost (e.g., large social platforms used commercially inside the censored country)
+    raises the censor's cost to block the covert channel, analogous to domain fronting
+    via major CDNs—this structural property should be a primary criterion when
+    selecting a covert channel platform."
+  - "AI-generated content volume is growing fast enough that individual stegotext
+    images are increasingly indistinguishable from organic posts; Lantern's future
+    rendezvous or invite channels could use this property to reduce detectability."
+section: "§3.3 (Rendezvous), §5 (Feasibility)"
+extracted_by: claude-sonnet-4-6

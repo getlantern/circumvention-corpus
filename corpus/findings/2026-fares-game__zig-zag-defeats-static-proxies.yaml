@@ -1,0 +1,26 @@
+paper: 2026-fares-game
+kind: detection
+summary: |
+  The zig-zag traffic analysis attack (confirmed supported in Geedge TSG leak)
+  rapidly enumerates all static proxy pools. With ζ_watch ∈ {4, 6} steps and a
+  best-quality classifier (ρ_TP=0.99, ρ_FP=0.001), almost total proxy enumeration
+  and user blockage occurs well before step 300. Even ζ_watch=2 leaves ~50% of
+  users blocked. Collateral damage is high across all settings when ζ_watch ≥ 4:
+  eventually ~50% of innocent servers are also blocked. However, Snowflake-style
+  ephemeral proxies resist zig-zag effectively: reachability remains above 95%
+  after 360 steps because churn prevents the censor from expanding its known proxy
+  set beyond agents' direct assignments.
+techniques: [traffic-shape, flow-correlation]
+defenses: [webrtc-pluggable, bridges]
+censors: [cn, generic]
+defense_implications:
+  - "Static server-side proxies (fixed IP, long lifetime) are critically vulnerable
+    to zig-zag once even a few censor-controlled clients connect to them; Lantern's
+    infrastructure proxies should rotate IPs or be front-ended by CDN/fronting layers
+    to break the proxy→client→new-proxy enumeration chain."
+  - "Geedge's TSG implements zig-zag natively per the leak; Lantern deployments in
+    countries using Geedge (Kazakhstan, Pakistan, Myanmar, Ethiopia) face this attack
+    today—the mitigation is ephemeral peer proxies or IP rotation, not distribution
+    algorithm tuning."
+section: "§5.1, Fig 3, Fig 4"
+extracted_by: claude-sonnet-4-6

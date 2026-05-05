@@ -1,0 +1,25 @@
+paper: 2025-niere-encrypted
+kind: detection
+summary: |
+  Neither China nor Iran directly block ECH ClientHello messages; instead both
+  effectively prevent ECH by censoring encrypted DNS resolvers. China blocks Cloudflare's
+  DoH/DoT resolver (mozilla.cloudflare-dns.com) via SNI-based blocking in TLS and QUIC,
+  causing residual censorship of up to 360 and 180 seconds respectively. Iran blocks both
+  Cloudflare and NextDNS DoH hostnames via DNS block-page injection, TLS TCP RST, and
+  HTTP block pages. Iran cannot analyze QUIC, so DoQ is uncensored and enables ECH in
+  Iran. China's NextDNS IP blackholing affected only one of two resolved IPs, leaving
+  an uncensored path.
+techniques: [dns-poisoning, sni-blocking, rst-injection, http3-quic-block]
+defenses: [ech-esni, dns-tunneling]
+censors: [cn, ir]
+defense_implications:
+  - "ECH's dependency on encrypted DNS is its primary weakness in China and Iran; any
+    circumvention strategy using ECH must first establish an uncensored path to a DoH/DoT
+    resolver — treating encrypted DNS as a prerequisite, not an assumption."
+  - "DoQ (DNS over QUIC) is currently uncensored in Iran and provides a viable path to
+    fetch ECH configurations; circumvention tools targeting Iran should prefer DoQ."
+  - "China's strategy of censoring encrypted DNS rather than ECH directly appears to be
+    an active decision (China censored earlier ESNI but has not deployed ECH-specific
+    blocking), enabling China to block ECH with lower operational complexity."
+section: "§5, Table 1, Figure 5"
+extracted_by: claude-sonnet-4-6

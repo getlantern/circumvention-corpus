@@ -1,0 +1,26 @@
+paper: 2025-midtlien-fingerprint-resistant
+kind: evaluation
+summary: |
+  In 24-hour live proxy deployments, covertDTLS mimicry had a 18.2% DTLS handshake
+  failure rate (vs 12.5% baseline, 27.0% randomization, 25.8% Chrome webextension).
+  Randomization generates ≈994 billion unique fingerprint permutations (cipher shuffling:
+  109,600; extension shuffling: 994,218,624,000), making blocklist-based fingerprinting
+  infeasible, but at the cost of higher connection failures due to cipher mismatches.
+  Mimicry of DTLS 1.2 was stable and effective; DTLS 1.3 mimicry is not yet achievable
+  with the current Pion library.
+techniques: [tls-fingerprint]
+defenses: [webrtc-pluggable, randomization, mimicry]
+censors: [generic]
+defense_implications:
+  - "Mimicry of browser DTLS 1.2 is stable and reduces fingerprintability without
+    significant connection overhead; it is the recommended approach while DTLS 1.3
+    support in Pion is pending."
+  - "Randomization provides a vast fingerprint space (≈10^12 permutations) sufficient
+    to defeat blocklisting, but cipher-suite mismatches increase failure rate to ~27%;
+    implementations should constrain randomization to cipher suites the server is known
+    to accept."
+  - "Snowflake's webextension proxy pool (≈60,000 IPs) inherently uses browser DTLS
+    stacks, providing natural fingerprint diversity; effort should focus on hardening
+    the smaller standalone/iptproxy pool (~4,500 IPs) that uses Pion."
+section: "§4.2, Table 1, §5"
+extracted_by: claude-sonnet-4-6

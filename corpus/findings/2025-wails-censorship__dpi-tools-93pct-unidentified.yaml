@@ -1,0 +1,21 @@
+paper: 2025-wails-censorship
+kind: evaluation
+summary: |
+  Three open-source DPI tools (Zeek, libprotoident, nDPI) fail to identify 93–100%
+  of UPGen flows across all tools. libprotoident misidentified 7% of UPGen flows as
+  RTMP; nDPI and Zeek produced zero false labels. On a real-world MAWI/WIDE backbone
+  capture, Zeek failed to recognize 90% of flows and nDPI failed on 67%, confirming
+  that unidentified-protocol traffic is common in the wild; allowlisting without
+  significant collateral damage (≥4%) is infeasible.
+techniques: [dpi]
+defenses: [meta-resistance]
+censors: [generic]
+defense_implications:
+  - "Real-world DPI tools already fail to identify a large fraction of benign traffic;
+    a censor that blocks all unidentified traffic would cause ≥4% collateral damage —
+    providing a natural shield for circumvention protocols designed to blend into this
+    unidentified tail."
+  - "Protocol designers should verify that their transport is unrecognized by Zeek,
+    libprotoident, and nDPI as part of their evaluation pipeline."
+section: "§4.4, Table 5, Table 6"
+extracted_by: claude-sonnet-4-6

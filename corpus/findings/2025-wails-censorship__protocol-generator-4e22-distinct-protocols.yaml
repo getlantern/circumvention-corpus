@@ -1,0 +1,21 @@
+paper: 2025-wails-censorship
+kind: defense
+summary: |
+  UPGen's generator samples 18 independent parameters to produce 4.2×10^22 distinct
+  structured encrypted protocols (entropy 38.4 bits). Each proxy is assigned a unique
+  generated protocol, so identifying one protocol exposes only a single proxy. The
+  generator was designed by studying 27 real-world encrypted protocols and sampling
+  from observed structural patterns (greeting strings, handshake patterns, field
+  orderings, key encodings).
+techniques: [dpi, ml-classifier]
+defenses: [meta-resistance, marionette]
+censors: [generic]
+defense_implications:
+  - "Deploy a per-proxy unique protocol rather than a single shared transport; a censor
+    must develop a new classifier for each proxy rather than blocking the entire network
+    with one rule."
+  - "Protocol parameters should be sampled from features observed in real-world encrypted
+    protocols so that generated protocols blend into the tail of benign encrypted traffic
+    without mimicking any single known protocol exactly."
+section: "§2.4, Table 1"
+extracted_by: claude-sonnet-4-6

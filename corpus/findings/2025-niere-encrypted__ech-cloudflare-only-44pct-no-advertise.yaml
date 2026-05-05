@@ -1,0 +1,22 @@
+paper: 2025-niere-encrypted
+kind: evaluation
+summary: |
+  Of 640,694 TLS 1.3 servers in the Tranco Top 1M (Feb 2025), 51.28% parse ECH
+  extensions but only 43% actually handshake ECH — and virtually all of those are
+  Cloudflare servers (278,040). Only 6 non-Cloudflare servers successfully handshaked
+  ECH. Cloudflare's own servers have a 44% non-advertisement rate: servers that can
+  handshake ECH but do not publish their ECH configuration in DNS, typically because
+  the operator manages their own DNS outside Cloudflare. The total number of
+  advertised ECH configurations dropped from ~180,000 in November 2024 to ~150,000
+  by April 2025.
+techniques: [sni-blocking, esni-eh-blocking]
+defenses: [ech-esni]
+censors: [generic]
+defense_implications:
+  - "ECH's real-world availability is a Cloudflare monoculture; circumvention tools
+    depending on non-Cloudflare ECH have essentially zero server support today."
+  - "The 44% Cloudflare non-advertisement gap creates fragility: even Cloudflare
+    customers who could use ECH often do not because DNS management is external;
+    circumvention reliance on ECH should account for this coverage gap."
+section: "§4.1, §4.2, Figure 3, Figure 4"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+paper: 2026-lange-towards
+kind: defense
+summary: |
+  TCP segmentation (splitting a DNS message into 20-byte TCP fragments) successfully
+  circumvented DNS censorship in China for nearly all resolvers that support TCP.
+  In Iran, TCP segmentation was only partially effective due to the censor's ability
+  to reassemble TCP fragments when system load permits—some runs succeeded completely,
+  others failed entirely across all resolvers. The "Last Response" mode (wait 3 seconds
+  for the final UDP reply) was highly effective against China's on-path GFW injector
+  for all resolvers except the fully IP-blocked Cloudflare 1.1.1.1 resolver.
+techniques: [dns-poisoning, dpi]
+defenses: [geneva, tunneling]
+censors: [cn, ir]
+defense_implications:
+  - "TCP segmentation at 20-byte chunk size reliably bypasses China's DNS DPI; inconsistent
+    behavior in Iran suggests the Iranian censor has partial TCP reassembly capacity that
+    varies under load—combine with encrypted DNS for reliability."
+  - "Cloudflare 1.1.1.1 is fully IP-blocked in China via packet dropping; circumvention
+    tools should not hard-code Cloudflare as the sole DNS resolver."
+section: "§4.1, §6.2.1, §6.2.2"
+extracted_by: claude-sonnet-4-6

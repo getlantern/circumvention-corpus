@@ -1,0 +1,26 @@
+paper: 2026-fares-game
+kind: detection
+summary: |
+  The host-profiling censor (passive traffic analysis: count connections per server,
+  block those exceeding a threshold τ within a window w) blocks essentially all
+  circumvention user traffic within 30 time steps for all classifier qualities tested
+  (ρ_TP ∈ {0.9, 0.95, 0.99}), while causing far less collateral damage than zig-zag
+  (never exceeding ~30% innocent server blocking). Snowflake resists this attack
+  well: with w=3, τ=3, over 94.48% of users receive a proxy within 2 steps even
+  with worst-classifier rules, and final unblocked server rates are 91.24–99.04%.
+  The host profiling approach is feasible for passive censors who cannot enumerate
+  the distribution channel.
+techniques: [traffic-shape, ml-classifier]
+defenses: [webrtc-pluggable, bridges]
+censors: [generic]
+defense_implications:
+  - "Static long-lived server proxies become fully blocked by passive host-profiling
+    within 30 simulation steps—this motivates Lantern's use of domain fronting and
+    CDN proxies, where the 'host' seen by the censor is the CDN rather than the
+    proxy IP, breaking the per-server connection count signal."
+  - "Profiling window w and threshold τ are the censor's tuning knobs; higher τ
+    reduces collateral damage but gives circumvention tools a window to operate;
+    Lantern should monitor connection rates per proxy IP and alert when a proxy
+    exceeds thresholds likely to trigger profiling-based blocking."
+section: "§5.2, Table 2, Table 3"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2026-lipphardt-dual
+kind: evaluation
+summary: |
+  Category-level analysis of 100 statements across 5 sensitive content categories
+  found that interface-based moderation gaps vary significantly by topic. Sexuality
+  showed the strongest WebUI/API gap (WebUI 7.0× more likely to be moderated than API
+  per GPT-4o judge for Gemini). Political ideology followed at 2.0×, then hate speech
+  at 1.0×. Miscellaneous offensive topics showed the inverse pattern (API more moderated
+  at 0.3×). Religious content showed WebUI moderation with no API moderation. The pattern
+  suggests public-facing WebUI interfaces prioritize reputational risk management for
+  high-scrutiny categories.
+techniques: [ml-classifier, keyword-filtering]
+censors: [generic]
+defense_implications:
+  - "Category-specific moderation gaps (notably sexuality and political ideology) mean
+    that information access disparities are not uniform; circumvention-tool operators
+    should test their LLM-assisted moderation systems against all sensitive categories,
+    not only the most obvious ones."
+section: "§4.5, Figure 8"
+extracted_by: claude-sonnet-4-6

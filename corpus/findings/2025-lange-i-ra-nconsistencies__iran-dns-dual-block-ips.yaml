@@ -1,0 +1,21 @@
+paper: 2025-lange-i-ra-nconsistencies
+kind: detection
+summary: |
+  Iran's DNS censor now injects two distinct block-page IPs: 10.10.34.36 (≈87% of
+  47,633 censored domains) and 10.10.34.34 (≈13%). Both originate from the same
+  network node at Iran's border. Prior research (Aryan et al. 2013) described only
+  10.10.34.34. The IP injected correlates strongly with the HTTP censorship method
+  applied: domains with 10.10.34.34 in DNS receive TCP RST via HTTP (86.8% of RST
+  cases), while domains with 10.10.34.36 in DNS receive HTTP block pages (84.6% of
+  block-page cases).
+techniques: [dns-poisoning, rst-injection, packet-injection]
+censors: [ir]
+defense_implications:
+  - "Encrypted DNS (DoH/DoT/DoQ) circumvents this DNS injection; circumvention tooling
+    deployed in Iran should use encrypted DNS by default since unencrypted DNS is
+    reliably intercepted at border nodes."
+  - "The correlation between DNS block IP and HTTP censorship method (RST vs block page)
+    can be used as a heuristic to infer full censorship behavior from a DNS probe alone,
+    enabling faster automated testing."
+section: "§3.1, Table 2"
+extracted_by: claude-sonnet-4-6

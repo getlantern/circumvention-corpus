@@ -1,0 +1,18 @@
+paper: 2026-lipphardt-dual
+kind: evaluation
+summary: |
+  API and WebUI interfaces show statistically significant response length differences
+  in opposite directions across models. Gemini API responses averaged 2,333 characters
+  vs. 1,746 for WebUI (34% longer API; t=5.028, p<0.0001, Cohen's d=0.50). ChatGPT
+  WebUI responses averaged 2,752 characters vs. 1,389 for API (98% longer WebUI;
+  t=-9.800, p<0.0001, d=-0.98). The divergent direction across models suggests
+  fundamentally different generation parameters rather than simple post-hoc filtering,
+  indicating architectural or policy-level differences at the provider level.
+techniques: [ml-classifier]
+censors: [generic]
+defense_implications:
+  - "Response length is a low-cost signal for distinguishing interface type; automated
+    systems comparing API vs. WebUI behavior can use length as a feature alongside
+    content-based moderation detection."
+section: "§4.6"
+extracted_by: claude-sonnet-4-6

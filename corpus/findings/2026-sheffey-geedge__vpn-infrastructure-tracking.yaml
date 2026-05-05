@@ -1,0 +1,23 @@
+paper: 2026-sheffey-geedge
+kind: detection
+summary: |
+  The GNL reveals that Geedge actively maintains dedicated VPN-infrastructure
+  tracking datasets. The China-specific component includes 7,016 domains in a
+  "vpn-finder-plugins" repository (mesalab_git/intelligence-learning-engine),
+  4,810 NordVPN server domains, and a Pakistan-specific file listing 68 Psiphon
+  CDN domains (geedge_docs/TSGEN/.../Psiphon-CDN_20240430.json) dated April 2024.
+  A Myanmar deployment file (M22-VPN List.html, 27 domains) further confirms
+  country-specific VPN blocklists are operationally maintained. The "Appsketch"
+  program reverse-engineers VPN apps to extract domains and IP addresses for blocking.
+techniques: [dpi, sni-blocking, ip-blocking]
+censors: [cn, pk, mm]
+defense_implications:
+  - "Psiphon CDN domains are known to Geedge as of April 2024 and likely propagated
+    to Pakistani ISPs; any Lantern deployment sharing CDN infrastructure with Psiphon
+    risks being included in this same blocklist—use distinct CDN hostnames per tool."
+  - "Geedge's Appsketch VPN-app reverse-engineering pipeline means that published
+    APKs are analyzed to extract proxy/CDN endpoints; embed infrastructure discovery
+    behind a challenge (e.g., a domain-fronted fetch requiring a valid token) rather
+    than hardcoding CDN lists in the binary."
+section: "§4.2, Table 3"
+extracted_by: claude-sonnet-4-6

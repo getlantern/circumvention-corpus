@@ -1,0 +1,21 @@
+paper: 2025-tai-irblock
+kind: detection
+summary: |
+  The GFI's HTTP and HTTPS filters are now stateful (requiring initial SYN packet with
+  matching sequence numbers) and have been activated on all TCP ports—not only standard
+  ports 80 and 443 as reported by prior studies. This is a significant departure from
+  previous work that found stateless HTTP/HTTPS blocking limited to standard ports.
+  The HTTP filter injects a 403 Forbidden blockpage (not RST packets as used by the GFW),
+  while HTTPS injects a single RST+ACK packet. The GFI also exhibits TCP non-compliance
+  (not requiring a full three-way handshake to trigger filtering), enabling outside-in
+  measurement without in-country servers.
+techniques: [dpi, rst-injection, packet-injection, middlebox-interference]
+censors: [ir]
+defense_implications:
+  - "All-port HTTP/HTTPS filtering means non-standard port obfuscation (e.g., running
+    a proxy on port 8443) provides no protection against SNI-based HTTPS blocking in Iran."
+  - "The GFI's TCP non-compliance (no full handshake required) allows outside-in
+    measurement from external vantage points; circumvention researchers can probe the
+    Iranian blocklist without in-country infrastructure."
+section: "§2.1, §3.2"
+extracted_by: claude-sonnet-4-6

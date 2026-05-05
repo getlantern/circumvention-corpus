@@ -1,0 +1,18 @@
+paper: 2026-lipphardt-dual
+kind: detection
+summary: |
+  When the researchers attempted to use Gemini 2.5 Flash as a third independent LLM judge
+  via its API for evaluating moderation decisions, Gemini automatically blocked all
+  judging attempts citing safety reasons. This occurred even though the research task
+  (judging whether a response is more or less moderated) does not itself produce harmful
+  content. The incident illustrates that LLM safety systems can over-block legitimate
+  research use cases, and that different LLM providers have different thresholds—
+  Claude Haiku 4.5 and GPT-4o completed all judging tasks without safety refusals.
+techniques: [ml-classifier, keyword-filtering]
+censors: [generic]
+defense_implications:
+  - "Researchers using LLMs as automated classifiers for sensitive content should
+    anticipate provider-specific refusals and design studies with multiple independent
+    LLM judges from different providers to avoid single-provider failure modes."
+section: "§3.3.3"
+extracted_by: claude-sonnet-4-6

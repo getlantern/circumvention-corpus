@@ -1,0 +1,17 @@
+paper: 2025-lange-i-ra-nconsistencies
+kind: detection
+summary: |
+  Iran's DNS censor temporarily null-routed all DNS requests containing the string
+  "wpad" at any position, including benign domains like wpad.net, showpad.com, and
+  meowpad.me. The overblocking was no longer reproducible at the time of publication,
+  suggesting a censor configuration error later corrected. The affected domains are
+  unrelated to proxy auto-discovery in most cases, indicating a substring-match rule
+  without context.
+techniques: [dns-poisoning]
+censors: [ir]
+defense_implications:
+  - "Iran's censor applies substring-based DNS blocking rules that can cause broad
+    collateral damage; circumvention proxy infrastructure should avoid hostnames
+    containing common filtering keywords to reduce the risk of accidental blocking."
+section: "§3.1"
+extracted_by: claude-sonnet-4-6
