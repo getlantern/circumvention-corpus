@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-vilalonga-obscura-enabling-ephemeral
+title: 'Obscura: Enabling Ephemeral Proxies for Traffic Encapsulation in WebRTC Media Streams Against Cost-Effective Censors'
+authors:
+    - Afonso Vilalonga
+    - Kevin Gallagher
+    - João S. Resende
+    - Henrique Domingos
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0030.php
+censors:
+    - generic
+techniques:
+    - traffic-shape
+defenses_discussed:
+    - webrtc-pluggable
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lanterns's WebRTC-based transport research and defenses against lightweight censorship infrastructure in cost-constrained regions.
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0030.php

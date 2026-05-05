@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-berke-unique-whose-web
+title: How Unique is Whose Web Browser? The role of demographics in browser fingerprinting among US users
+authors:
+    - Alex Berke
+    - Badih Ghazi
+    - Enrico Bacis
+    - Pritish Kamath
+    - Ravi Kumar
+    - Robin Lassonde
+    - Pasin Manurangsi
+    - Umar Syed
+venue: PoPETs 2025
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0038.php
+censors:
+    - generic
+techniques:
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Browser fingerprinting as an identification technique could be relevant to privacy-circumvention research, though this paper does not directly address censorship or circumvention contexts.
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2025/popets-2025-0038.php

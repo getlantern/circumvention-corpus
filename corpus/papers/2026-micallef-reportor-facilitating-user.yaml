@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-micallef-reportor-facilitating-user
+title: 'ReporTor: Facilitating User Reporting of Issues Encountered in Naturalistic Web Browsing via Tor Browser'
+authors:
+    - Nicholas Micallef
+    - Cameron Cartier
+    - Kevin Gallagher
+    - Lucas Zagal
+    - Sameer Patil
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0020.php
+censors:
+    - generic
+techniques:
+    - measurement-platform
+defenses_discussed:
+    - tor
+    - bridges
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to understanding user experience and real-world blocking/performance issues with Tor Browser in censored regions; informs design of circumvention tools.
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0020.php
