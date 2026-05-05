@@ -613,8 +613,18 @@ func tokenize(s string) []string {
 	var cur strings.Builder
 	flush := func() {
 		if cur.Len() > 0 {
-			out = append(out, cur.String())
+			tok := cur.String()
 			cur.Reset()
+			// Strip English stopwords + question words. Without this,
+			// natural questions like "what does the literature say about
+			// active probing" force an AND-match on "what / does / the /
+			// literature / say" — none of which appear in finding
+			// summaries — and the result set collapses to empty. Keeping
+			// content tokens only restores the intent ("active probing").
+			if stopwords[tok] {
+				return
+			}
+			out = append(out, tok)
 		}
 	}
 	for _, r := range s {
@@ -627,6 +637,42 @@ func tokenize(s string) []string {
 	}
 	flush()
 	return out
+}
+
+// stopwords are the English function-words and question-shaped words
+// we drop before AND-matching. Conservative list — only words that are
+// near-zero signal as content tokens. We keep nouns/verbs/adjectives
+// even when they're common ("paper", "research", "show") because they
+// can still be load-bearing for some queries.
+var stopwords = map[string]bool{
+	// articles, prepositions, conjunctions
+	"a": true, "an": true, "the": true, "and": true, "or": true, "but": true,
+	"of": true, "in": true, "on": true, "at": true, "to": true, "from": true,
+	"for": true, "with": true, "by": true, "as": true, "into": true, "onto": true,
+	"upon": true, "out": true, "over": true, "under": true, "than": true,
+	"so": true, "if": true, "then": true, "is": true, "are": true, "was": true,
+	"were": true, "be": true, "been": true, "being": true, "am": true,
+	"have": true, "has": true, "had": true, "having": true,
+	"do": true, "does": true, "did": true, "doing": true, "done": true,
+	// pronouns
+	"i": true, "me": true, "my": true, "we": true, "us": true, "our": true,
+	"you": true, "your": true, "he": true, "him": true, "his": true,
+	"she": true, "her": true, "they": true, "them": true, "their": true,
+	"it": true, "its": true,
+	// question / framing words that almost never appear in findings
+	"what": true, "which": true, "who": true, "whom": true, "whose": true,
+	"how": true, "when": true, "where": true, "why": true,
+	"this": true, "that": true, "these": true, "those": true,
+	"there": true, "here": true, "any": true, "some": true, "all": true,
+	"can": true, "could": true, "will": true, "would": true, "should": true,
+	"may": true, "might": true, "must": true,
+	"say": true, "says": true, "said": true, "tell": true, "tells": true, "told": true,
+	"about": true, "literature": true, "research": true, "papers": true, "paper": true,
+	"finding": true, "findings": true, "show": true, "shows": true, "showed": true,
+	"know": true, "known": true, "knows": true, "think": true,
+	"please": true, "explain": true, "describe": true, "describes": true,
+	"summarize": true, "summarise": true, "summary": true,
+	"give": true, "gives": true, "list": true, "lists": true,
 }
 
 // JSON-RPC envelope (subset of the spec we use here).

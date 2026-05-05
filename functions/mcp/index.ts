@@ -167,11 +167,39 @@ function lower(s: unknown): string {
   return typeof s === "string" ? s.toLowerCase() : "";
 }
 
+// stopwords stripped from the AND-match haystack so natural-language
+// questions ("what does the literature say about active probing")
+// don't collapse to zero matches because none of the framing words
+// appear in finding summaries.
+const STOPWORDS: ReadonlySet<string> = new Set([
+  "a", "an", "the", "and", "or", "but", "of", "in", "on", "at", "to",
+  "from", "for", "with", "by", "as", "into", "onto", "upon", "out",
+  "over", "under", "than", "so", "if", "then",
+  "is", "are", "was", "were", "be", "been", "being", "am",
+  "have", "has", "had", "having",
+  "do", "does", "did", "doing", "done",
+  "i", "me", "my", "we", "us", "our",
+  "you", "your", "he", "him", "his", "she", "her",
+  "they", "them", "their", "it", "its",
+  "what", "which", "who", "whom", "whose",
+  "how", "when", "where", "why",
+  "this", "that", "these", "those", "there", "here",
+  "any", "some", "all",
+  "can", "could", "will", "would", "should", "may", "might", "must",
+  "say", "says", "said", "tell", "tells", "told",
+  "about", "literature", "research", "papers", "paper",
+  "finding", "findings", "show", "shows", "showed",
+  "know", "known", "knows", "think",
+  "please", "explain", "describe", "describes",
+  "summarize", "summarise", "summary",
+  "give", "gives", "list", "lists",
+]);
+
 function tokenize(s: string): string[] {
   return s
     .toLowerCase()
     .split(/[^a-z0-9]+/)
-    .filter(Boolean);
+    .filter((t) => t && !STOPWORDS.has(t));
 }
 
 function textMatch(p: Paper, q: string): boolean {
