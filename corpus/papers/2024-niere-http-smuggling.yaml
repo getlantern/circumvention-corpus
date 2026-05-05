@@ -1,0 +1,53 @@
+id: 2024-niere-http-smuggling
+title: "Turning Attacks into Advantages: Evading HTTP Censorship with HTTP Request Smuggling"
+authors:
+  - Niklas Niere
+  - Sven Hebrok
+  - Juraj Somorovsky
+venue: "FOCI 2024 (Free and Open Communications on the Internet)"
+year: 2024
+url: "https://jonsnowwhite.github.io/page/files/foci_24_smuggling.pdf"
+abstract: |
+  Many countries limit residents' access to various websites. As
+  a substantial number of these websites do not support TLS
+  encryption, censorship of unencrypted HTTP requests remains
+  prevalent. The authors infer novel circumvention techniques on
+  the HTTP layer from a web-security vulnerability — HTTP request
+  smuggling (HRS) — and evaluate them on popular web servers and
+  censors in China, Russia, and Iran. They show HRS can be
+  successfully employed as a censorship-circumvention technique
+  against multiple censors and web servers, discover a
+  standard-compliant circumvention technique in Russia, unusually
+  inconsistent censorship in China, and an implementation bug in
+  Iran. The implication: censorship-circumvention techniques can
+  successfully be constructed from existing vulnerabilities.
+censors: [cn, ir, ru]
+techniques:
+  - dpi
+  - keyword-filtering
+  - http3-quic-block
+defenses_discussed:
+  - format-transform
+evaluation_methods:
+  - measurement-study
+  - controlled-deployment
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://jonsnowwhite.github.io/page/files/foci_24_smuggling.pdf"
+  - "url:https://www.jonsnowwhite.de/publications/"
+references:
+  - 2023-niere-poster
+notes: |
+  Same group, same posture: re-purpose a "vulnerability" into a
+  circumvention primitive. HTTP request smuggling — a parser-
+  divergence between front-end and back-end — turns out to be a
+  reliable evasion technique against in-line HTTP censors that
+  parse only one of the two ways. Demonstrates that censor parsers
+  are themselves attack surface, not just neutral observers.
+
+  General methodological lesson worth quoting: "censorship-
+  circumvention techniques can successfully be constructed from
+  existing vulnerabilities."

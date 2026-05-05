@@ -1,0 +1,58 @@
+id: 2026-niere-dpyproxy-dns
+title: "Towards Automated DNS Censorship Circumvention"
+authors:
+  - Niklas Niere
+  - Felix Lange
+  - Juraj Somorovsky
+venue: "FOCI 2026 (Free and Open Communications on the Internet)"
+year: 2026
+url: "https://jonsnowwhite.github.io/page/files/foci_26_dns.pdf"
+abstract: |
+  Censorship is employed by many governments and ISPs worldwide,
+  with an increasing trend in recent years. One of the most
+  censored protocols is DNS: censors target unencrypted and
+  encrypted DNS to prevent clients from resolving the domain name
+  of unwanted websites. Despite much research on DNS censorship,
+  only a few tools can circumvent it. To support users affected
+  by DNS censorship, the authors present DPYProxy-DNS, a DNS
+  resolver that automatically detects and employs a working DNS
+  censorship circumvention. They demonstrate effectiveness in
+  China and Iran. Their analyses reveal that DNS censorship in
+  Iran is ineffective against encrypted DNS; in China, two
+  consistently working circumvention techniques for unencrypted
+  DNS are TCP segmentation for DNS over TCP, and ignoring DNS
+  responses injected by the GFW.
+censors: [cn, ir]
+techniques:
+  - dns-poisoning
+  - dpi
+  - packet-injection
+defenses_discussed:
+  - dns-tunneling
+evaluation_methods:
+  - measurement-study
+  - controlled-deployment
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://jonsnowwhite.github.io/page/files/foci_26_dns.pdf"
+  - "url:https://www.jonsnowwhite.de/publications/"
+references:
+  - 2025-niere-transport
+  - 2025-niere-encrypted
+  - 2025-lange-i-ra-nconsistencies
+notes: |
+  Paderborn syssec extends the same automated-circumvention
+  posture from TLS (2025-niere-transport) to DNS — DPYProxy-DNS
+  probes for working circumvention techniques and adapts. Two
+  practical results worth surfacing: (1) Iran's DNS censorship is
+  ineffective against encrypted DNS (DoT/DoH), so encrypted-DNS
+  defaults are sufficient there; (2) in China, ignoring GFW's
+  injected DNS responses (race-the-real-server) and TCP-segmenting
+  DNS-over-TCP both consistently work.
+
+  Implications for Lantern: validates encrypted-DNS-as-default for
+  Iranian users; in China, the "ignore-injected-response" technique
+  belongs in any DNS resolver that sits in-country.

@@ -1,19 +1,39 @@
 id: 2025-niere-encrypted
-title: Encrypted Client Hello (ECH) in Censorship Circumvention
+title: "Encrypted Client Hello (ECH) in Censorship Circumvention"
 authors:
   - Niklas Niere
   - Felix Lange
   - Nico Heitmann
   - Juraj Somorovsky
-venue: Free and Open Communications on the Internet
+venue: "FOCI 2025 (Free and Open Communications on the Internet)"
 year: 2025
-url: https://petsymposium.org/foci/2025/foci-2025-0016.pdf
-censors:
-  - generic
+url: "https://petsymposium.org/foci/2025/foci-2025-0016.pdf"
+abstract: |
+  Censors have long blocked TLS traffic by inspecting the
+  unencrypted Server Name Indication (SNI) extension. By
+  encrypting the SNI, the Encrypted ClientHello (ECH) prevents
+  censors from blocking TLS traffic to specific domains. Despite
+  this promising outlook, ECH's current capability to contest
+  TLS censorship is unclear; for instance, Russia has started
+  censoring ECH connections successfully. The authors evaluate
+  servers' support for ECH and its analysis and subsequent
+  blocking by censors. They determine Cloudflare as the only
+  major provider supporting ECH, affirm previously known ECH
+  censorship in Russia, and uncover indirect censorship of ECH
+  through encrypted-DNS censorship in China and Iran. The
+  findings suggest ECH's contribution to circumvention is
+  currently limited — its dependence on encrypted DNS is
+  especially challenging.
+censors: [cn, ir, ru]
 techniques:
+  - dpi
+  - sni-blocking
   - esni-eh-blocking
+  - dns-poisoning
 defenses_discussed:
   - ech-esni
+evaluation_methods:
+  - measurement-study
 core: false
 visibility: public
 date_added: "2026-05-04"
@@ -21,3 +41,14 @@ added_by: censorbib-import
 sources:
   - censorbib
   - bibtex:Niere2025b
+references:
+  - 2025-niere-transport
+notes: |
+  Honest measurement of where ECH actually helps: Cloudflare is
+  the only major provider supporting it; Russia censors ECH
+  directly on Cloudflare ranges; China/Iran censor it indirectly
+  by attacking encrypted DNS, which ECH depends on for the
+  ECHConfig retrieval. The conclusion — "ECH alone is not enough,
+  encrypted DNS must also resist censorship" — is the load-bearing
+  citation for any Lantern design that wants to lean on ECH for
+  SNI privacy.

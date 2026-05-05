@@ -1,23 +1,52 @@
 id: 2023-niere-poster
-title: 'Poster: Circumventing the GFW with TLS Record Fragmentation'
+title: "Poster: Circumventing the GFW with TLS Record Fragmentation"
 authors:
   - Niklas Niere
   - Sven Hebrok
   - Juraj Somorovsky
   - Robert Merget
-venue: Computer and Communications Security
+venue: "ACM CCS 2023 (poster)"
 year: 2023
-url: https://nerd2.nrw/wp-content/uploads/2024/05/3576915.3624372.pdf
-censors:
-  - cn
+url: "https://nerd2.nrw/wp-content/uploads/2024/05/3576915.3624372.pdf"
+abstract: |
+  State actors censor the HTTPS protocol to block access to certain
+  websites. While many circumvention strategies act on the TCP layer,
+  little emphasis has been placed on TLS — a complex protocol and
+  integral building block of HTTPS. In contrast to the TCP layer,
+  circumvention methods on the TLS layer do not require root
+  privileges since TLS operates on the application layer. The authors
+  present TLS record fragmentation as a novel circumvention technique
+  and demonstrate that it bypasses the Great Firewall of China by
+  splitting the ClientHello across multiple TLS records that the
+  censor's single-record SNI matcher fails to reassemble.
+censors: [cn]
 techniques:
   - dpi
+  - sni-blocking
   - tls-fingerprint
-defenses_discussed: [format-transform]
-core: false
+defenses_discussed:
+  - format-transform
+core: true
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
   - censorbib
   - bibtex:Niere2023a
+  - "url:https://upb-syssec.github.io/blog/2023/record-fragmentation/"
+notes: |
+  Foundational result from the upb-syssec group at Paderborn
+  University: TLS *record-layer* fragmentation works for SNI evasion
+  even when TCP-segmentation tricks have been hardened against.
+  Operates entirely above TCP, so no kernel privileges required —
+  a userspace client can fragment ClientHello records itself.
+
+  This paper kicked off the group's TLS-as-a-circumvention-surface
+  research direction that culminated in the 2025 S&P Distinguished
+  Paper "Transport Layer Obscurity" (2025-niere-transport). Cite
+  both when discussing TLS-layer circumvention.
+
+  Implications for Lantern: TLS record fragmentation is a low-cost
+  capability to add to any TLS-using transport (REALITY, vmess,
+  domain-fronting). It hardens against the class of single-record
+  SNI matchers that DPI vendors deploy.

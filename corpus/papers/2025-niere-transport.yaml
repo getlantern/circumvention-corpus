@@ -1,21 +1,58 @@
 id: 2025-niere-transport
-title: 'Transport Layer Obscurity: Circumventing SNI Censorship on the TLS Layer'
+title: "Transport Layer Obscurity: Circumventing SNI Censorship on the TLS-Layer"
 authors:
   - Niklas Niere
   - Felix Lange
   - Robert Merget
   - Juraj Somorovsky
-venue: Symposium on Security \& Privacy
+venue: "IEEE S&P 2025 (Distinguished Paper Award)"
 year: 2025
-url: https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/26hiUekZ19S/pdf
-censors:
-  - generic
+url: "https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/26hiUekZ19S/pdf"
+abstract: |
+  HTTPS composes large parts of today's Internet traffic and has
+  long been subject to censorship in different countries. While
+  censors analyze the Transport Layer Security (TLS) protocol to
+  block encrypted HTTP traffic, censorship-circumvention efforts
+  have primarily focused on other protocols such as TCP. The
+  authors hypothesize that the TLS protocol itself offers
+  previously unseen circumvention opportunities, propose techniques
+  that act on TLS, and validate their effectiveness against TLS
+  servers and against censors in China and Iran. Across that
+  evaluation they discover 38 — partially standard-compliant —
+  distinct censorship-circumvention techniques that group into 11
+  unique categories, and provide novel insights into how China
+  censors TLS by presenting evidence of at least three distinct
+  censorship appliances.
+censors: [cn, ir]
 techniques:
+  - dpi
   - sni-blocking
-core: false
+  - tls-fingerprint
+defenses_discussed:
+  - format-transform
+  - randomization
+evaluation_methods:
+  - measurement-study
+  - controlled-deployment
+core: true
 visibility: public
 date_added: "2026-05-04"
 added_by: censorbib-import
 sources:
   - censorbib
   - bibtex:Niere2025a
+references:
+  - 2023-niere-poster
+notes: |
+  IEEE S&P 2025 Distinguished Paper. The expanded follow-up to
+  2023-niere-poster — same group at Paderborn (upb-syssec)
+  systematically enumerates 38 TLS-layer circumvention techniques
+  across 11 categories and shows that China runs at least 3 distinct
+  TLS-censorship appliances (i.e. enforcement is not a single
+  homogeneous device).
+
+  Implications for Lantern: this is the canonical reference for
+  "TLS layer is rich with circumvention surface area." Any future
+  Lantern transport that touches TLS should consider these 38
+  techniques as a menu — many are standards-compliant and cheap
+  to integrate.

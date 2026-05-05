@@ -1,0 +1,45 @@
+id: 2024-niere-tls-attacker
+title: "TLS-Attacker: A Dynamic Framework for Analyzing TLS Implementations"
+authors:
+  - Niklas Niere
+  - Sven Hebrok
+  - Robert Merget
+  - Juraj Somorovsky
+venue: "ACSAC 2024 (2nd Place Impact Award)"
+year: 2024
+url: "https://jonsnowwhite.github.io/page/files/acsac_24_attacker.pdf"
+abstract: |
+  TLS-Attacker is an open-source framework for analyzing Transport
+  Layer Security (TLS) implementations. The framework allows users
+  to specify custom protocol flows and provides modification hooks
+  to manipulate message contents. Since its initial publication in
+  2016, TLS-Attacker has been used in numerous studies at well-
+  established conferences and helped identify vulnerabilities in
+  well-known open-source TLS libraries. The paper documents the
+  framework's growth into a suite of projects — DTLS 1.3, QUIC,
+  and other dialects — and the methodologies it now supports.
+censors: [generic]
+techniques:
+  - tls-fingerprint
+defenses_discussed:
+  - format-transform
+evaluation_methods:
+  - controlled-deployment
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://jonsnowwhite.github.io/page/files/acsac_24_attacker.pdf"
+  - "url:https://github.com/tls-attacker/TLS-Attacker"
+references:
+  - 2023-niere-poster
+  - 2025-niere-transport
+notes: |
+  Tooling rather than a circumvention paper, but it's the
+  measurement infrastructure that the upb-syssec group's
+  circumvention papers are built on top of (the 38 TLS-layer
+  evasion techniques in 2025-niere-transport were discovered by
+  scripting TLS-Attacker against TLS servers and live censors).
+  Worth keeping in the corpus as the citation any future
+  TLS-circumvention research will reach for.
