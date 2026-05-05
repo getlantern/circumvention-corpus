@@ -98,7 +98,34 @@ curl https://crawl.lantern.io/healthz                      # should return "ok"
 curl -X POST \
      -H "Authorization: Bearer $TOKEN" \
      "https://crawl.lantern.io/crawl?max=3&dry_run=1"
+
+# 10. Test the /ask endpoint (powers corpus.lantern.io/ask)
+curl -X POST \
+     -H "Authorization: Bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"question":"What does the literature say about active probing?"}' \
+     https://crawl.lantern.io/ask
+# Returns { question, answer, bundle, elapsed_ms } once Claude finishes.
+# First call after a quota reset can take 30-60s; subsequent calls 5-15s.
 ```
+
+## Wiring up corpus.lantern.io/ask
+
+The web ask form lives at `corpus.lantern.io/ask/` and POSTs to
+`/api/ask` (a Cloudflare Pages Function in `functions/api/ask.ts`).
+That function holds the same Bearer token as a Pages env secret and
+forwards to `crawl.lantern.io/ask`.
+
+In the Cloudflare dashboard for the `circumvention-corpus` Pages
+project:
+
+1. Settings → Environment variables → Production → add
+   `CORPUS_CRAWL_TOKEN` = the same token you generated on the mini.
+   (Mark it as encrypted.)
+2. (optional, recommended) Workers & Pages → KV → create a namespace
+   `circumvention-corpus-ask-ratelimit`, then bind it to the Pages
+   project as `ASK_RATELIMIT`. Without this binding, the ask endpoint
+   has no rate limit; with it, each IP gets 6 requests/hour.
 
 ## Updating the bot
 

@@ -2049,11 +2049,291 @@ func serve(args []string) {
 		_ = json.NewEncoder(w).Encode(res)
 	})
 
+	mux.HandleFunc("/ask", func(w http.ResponseWriter, r *http.Request) {
+		askHandler(w, r, *authToken, *corpus)
+	})
+
 	log.Printf("corpus-crawl serve listening on %s", *listen)
 	srv := &http.Server{Addr: *listen, Handler: mux, ReadHeaderTimeout: 5 * time.Second}
 	if err := srv.ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}
+}
+
+// ────────────────── /ask — corpus query → cited LLM answer ──────────────────
+//
+// POST /ask { "question": "..." } returns the synthesize-bundle plus an LLM
+// answer that cites the bundle's findings inline. Internally:
+//   1. Fetch the structured bundle from corpus.lantern.io/mcp's synthesize
+//      tool (one HTTP round trip — reuses the deployed MCP, no algorithm
+//      duplication).
+//   2. Format an LLM-friendly text prompt over the findings.
+//   3. Shell out to `claude -p` (auth via the user's macOS keychain — same
+//      as the findings-extraction backfill). Bound CPU time at 90s.
+//   4. Return { question, answer, bundle } as JSON.
+//
+// Auth: same Bearer scheme as /crawl. Public visitors hit a
+// rate-limited Cloudflare Pages Function that holds the token and
+// proxies here, so the end-user form is anonymous.
+
+const askMCPEndpoint = "https://corpus.lantern.io/mcp"
+
+type askRequest struct {
+	Question   string   `json:"question"`
+	Censors    []string `json:"censors,omitempty"`
+	Techniques []string `json:"techniques,omitempty"`
+	Defenses   []string `json:"defenses,omitempty"`
+	Limit      int      `json:"limit,omitempty"`
+}
+
+type askResponse struct {
+	Question string          `json:"question"`
+	Answer   string          `json:"answer"`
+	Bundle   json.RawMessage `json:"bundle"`
+	Elapsed  string          `json:"elapsed_ms"`
+}
+
+func askHandler(w http.ResponseWriter, r *http.Request, authToken, corpusRoot string) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "POST required", 405)
+		return
+	}
+	if r.Header.Get("Authorization") != "Bearer "+authToken {
+		http.Error(w, "unauthorized", 401)
+		return
+	}
+	defer r.Body.Close()
+	var req askRequest
+	if err := json.NewDecoder(io.LimitReader(r.Body, 16*1024)).Decode(&req); err != nil {
+		http.Error(w, "bad json: "+err.Error(), 400)
+		return
+	}
+	q := strings.TrimSpace(req.Question)
+	if q == "" {
+		http.Error(w, "question required", 400)
+		return
+	}
+	if len(q) > 500 {
+		http.Error(w, "question too long (max 500 chars)", 400)
+		return
+	}
+	if req.Limit <= 0 {
+		req.Limit = 30
+	}
+
+	ctx, cancel := context.WithTimeout(r.Context(), 120*time.Second)
+	defer cancel()
+	start := time.Now()
+
+	bundle, err := fetchSynthesizeBundle(ctx, req)
+	if err != nil {
+		log.Printf("/ask synthesize fetch: %v", err)
+		http.Error(w, "synthesize backend unavailable: "+err.Error(), 502)
+		return
+	}
+
+	prompt, foundN := formatSynthesisPrompt(q, bundle)
+	if foundN == 0 {
+		// No findings matched — short-circuit; don't burn an LLM call.
+		w.Header().Set("Content-Type", "application/json")
+		_ = json.NewEncoder(w).Encode(askResponse{
+			Question: q,
+			Answer:   "No findings in the corpus match this question yet. Try a broader phrasing, or browse /findings/ to see what's there.",
+			Bundle:   bundle,
+			Elapsed:  time.Since(start).Round(time.Millisecond).String(),
+		})
+		return
+	}
+
+	answer, err := runClaudeAsk(ctx, corpusRoot, prompt)
+	if err != nil {
+		log.Printf("/ask claude: %v", err)
+		http.Error(w, "claude execution failed: "+err.Error(), 502)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	_ = json.NewEncoder(w).Encode(askResponse{
+		Question: q,
+		Answer:   strings.TrimSpace(answer),
+		Bundle:   bundle,
+		Elapsed:  time.Since(start).Round(time.Millisecond).String(),
+	})
+}
+
+// fetchSynthesizeBundle calls the public corpus.lantern.io/mcp endpoint
+// and returns the synthesize tool's structured result. Reusing the
+// deployed MCP means there's exactly one source of truth for the
+// retrieval algorithm.
+func fetchSynthesizeBundle(ctx context.Context, req askRequest) (json.RawMessage, error) {
+	rpcReq := map[string]any{
+		"jsonrpc": "2.0",
+		"id":      1,
+		"method":  "tools/call",
+		"params": map[string]any{
+			"name": "synthesize",
+			"arguments": map[string]any{
+				"question":   req.Question,
+				"censors":    req.Censors,
+				"techniques": req.Techniques,
+				"defenses":   req.Defenses,
+				"limit":      req.Limit,
+			},
+		},
+	}
+	body, err := json.Marshal(rpcReq)
+	if err != nil {
+		return nil, err
+	}
+	hreq, err := http.NewRequestWithContext(ctx, "POST", askMCPEndpoint, strings.NewReader(string(body)))
+	if err != nil {
+		return nil, err
+	}
+	hreq.Header.Set("Content-Type", "application/json")
+	resp, err := (&http.Client{Timeout: 30 * time.Second}).Do(hreq)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	raw, _ := io.ReadAll(io.LimitReader(resp.Body, 4*1024*1024))
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("mcp status %d: %s", resp.StatusCode, string(raw))
+	}
+	var rpc struct {
+		Result *struct {
+			Content []struct {
+				Type string `json:"type"`
+				Text string `json:"text"`
+			} `json:"content"`
+		} `json:"result"`
+		Error *struct {
+			Message string `json:"message"`
+		} `json:"error"`
+	}
+	if err := json.Unmarshal(raw, &rpc); err != nil {
+		return nil, fmt.Errorf("decode mcp envelope: %w", err)
+	}
+	if rpc.Error != nil {
+		return nil, fmt.Errorf("mcp error: %s", rpc.Error.Message)
+	}
+	if rpc.Result == nil || len(rpc.Result.Content) == 0 {
+		return nil, fmt.Errorf("mcp empty result")
+	}
+	return json.RawMessage(rpc.Result.Content[0].Text), nil
+}
+
+type bundleFinding struct {
+	ID                  string   `json:"id"`
+	Paper               string   `json:"paper"`
+	Summary             string   `json:"summary"`
+	Section             string   `json:"section"`
+	Techniques          []string `json:"techniques"`
+	Censors             []string `json:"censors"`
+	Defenses            []string `json:"defenses"`
+	DefenseImplications []string `json:"defense_implications"`
+	PaperTitle          string   `json:"paper_title"`
+	PaperAuthors        []string `json:"paper_authors"`
+	PaperYear           int      `json:"paper_year"`
+	PaperVenue          string   `json:"paper_venue"`
+	PaperURL            string   `json:"paper_url"`
+}
+
+type bundleShape struct {
+	Findings []bundleFinding `json:"findings"`
+	Counts   struct {
+		MatchedFindings int `json:"matched_findings"`
+		MatchedPapers   int `json:"matched_papers"`
+	} `json:"counts"`
+}
+
+// formatSynthesisPrompt renders the bundle as a compact text prompt
+// (much friendlier for `claude -p` than raw JSON). Returns the prompt
+// and the count of findings included.
+func formatSynthesisPrompt(question string, bundle json.RawMessage) (string, int) {
+	var b bundleShape
+	if err := json.Unmarshal(bundle, &b); err != nil {
+		return "", 0
+	}
+	var sb strings.Builder
+	sb.WriteString("You are answering a research question using extracted findings from the circumvention-corpus, a structured-metadata corpus of censorship-circumvention research.\n\n")
+	sb.WriteString("Question: ")
+	sb.WriteString(question)
+	sb.WriteString("\n\n")
+	sb.WriteString(fmt.Sprintf("%d matching findings (cite each inline as (paper_id, §section)):\n\n", b.Counts.MatchedFindings))
+	for i, f := range b.Findings {
+		fmt.Fprintf(&sb, "[%d] %s — %d", i+1, f.Paper, f.PaperYear)
+		if f.PaperVenue != "" {
+			fmt.Fprintf(&sb, " · %s", f.PaperVenue)
+		}
+		if f.Section != "" {
+			fmt.Fprintf(&sb, " · %s", f.Section)
+		}
+		sb.WriteString("\n")
+		fmt.Fprintf(&sb, "    %s\n", strings.ReplaceAll(strings.TrimSpace(f.Summary), "\n", " "))
+		if len(f.DefenseImplications) > 0 {
+			for _, di := range f.DefenseImplications {
+				fmt.Fprintf(&sb, "    → %s\n", strings.ReplaceAll(strings.TrimSpace(di), "\n", " "))
+			}
+		}
+		if len(f.Techniques) > 0 || len(f.Censors) > 0 {
+			sb.WriteString("    tags: ")
+			if len(f.Techniques) > 0 {
+				fmt.Fprintf(&sb, "techniques=%s ", strings.Join(f.Techniques, ","))
+			}
+			if len(f.Censors) > 0 {
+				fmt.Fprintf(&sb, "censors=%s", strings.Join(f.Censors, ","))
+			}
+			sb.WriteString("\n")
+		}
+		sb.WriteString("\n")
+	}
+	sb.WriteString("Produce a concise structured answer in markdown:\n")
+	sb.WriteString("**What's known** — claims supported by multiple findings.\n")
+	sb.WriteString("**What's contested or limited** — where findings diverge or come from a single paper.\n")
+	sb.WriteString("**Open questions** — gaps the matched findings don't address.\n\n")
+	sb.WriteString("Cite every claim inline as (paper_id, §section). Be specific. ")
+	sb.WriteString("If matched findings are few (< 3), say so explicitly. Do not invent citations or summarize papers not in the list above.\n")
+	return sb.String(), b.Counts.MatchedFindings
+}
+
+// runClaudeAsk shells out to `claude -p` with the prompt on stdin.
+// Reuses the same approach as the findings backfill: launchd
+// (CWD = corpusRoot) means the macOS keychain is unlocked so the
+// OAuth token resolves. Output of `claude -p` is the assistant
+// response text.
+func runClaudeAsk(ctx context.Context, corpusRoot, prompt string) (string, error) {
+	bin := locateClaude()
+	if bin == "" {
+		return "", fmt.Errorf("claude binary not found in $PATH or ~/.claude/local/")
+	}
+	cctx, cancel := context.WithTimeout(ctx, 90*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(cctx, bin, "-p", "--max-turns", "1", "--permission-mode", "bypassPermissions")
+	cmd.Dir = corpusRoot
+	cmd.Stdin = strings.NewReader(prompt)
+	var out, errBuf bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &errBuf
+	if err := cmd.Run(); err != nil {
+		return "", fmt.Errorf("%w (stderr: %s)", err, strings.TrimSpace(errBuf.String()))
+	}
+	return out.String(), nil
+}
+
+func locateClaude() string {
+	for _, p := range []string{
+		"/opt/homebrew/bin/claude",
+		"/usr/local/bin/claude",
+		os.ExpandEnv("$HOME/.claude/local/claude"),
+	} {
+		if _, err := os.Stat(p); err == nil {
+			return p
+		}
+	}
+	if path, err := exec.LookPath("claude"); err == nil {
+		return path
+	}
+	return ""
 }
 
 // ── helpers ───────────────────────────────────────────────────────

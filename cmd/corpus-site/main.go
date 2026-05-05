@@ -322,10 +322,19 @@ func (s *site) render() error {
 	if err := s.renderUse(); err != nil {
 		return err
 	}
+	if err := s.renderAsk(); err != nil {
+		return err
+	}
 	if err := s.renderContribute(); err != nil {
 		return err
 	}
 	return s.renderSearchIndex()
+}
+
+func (s *site) renderAsk() error {
+	return s.writeFile("ask", "ask", map[string]any{
+		"Title": "Ask the corpus — circumvention-corpus",
+	})
 }
 
 // renderSearchIndex emits a single JSON document containing the
