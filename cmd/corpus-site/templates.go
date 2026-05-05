@@ -593,6 +593,8 @@ const layoutTmpl = `<!doctype html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css?v={{.AssetVersion}}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v={{.AssetVersion}}">
+<link rel="apple-touch-icon" href="/favicon.svg?v={{.AssetVersion}}">
 <script src="/search.js?v={{.AssetVersion}}" defer></script>
 </head>
 <body>
@@ -1221,6 +1223,24 @@ const searchJS = `(() => {
   });
 })();
 `
+
+// faviconSVG: 4x4 grid (the censor's wall, echoing the brand mark in the
+// header) with one cell filled in rust — a single open path through. Plotter
+// pen-blue stroke on warm cream, plus rust accent. Reads at any size; the
+// filled cell is what makes it distinctive at 16×16, not just decorative.
+const faviconSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#f5f0e2"/>
+  <g fill="none" stroke="#1a3a8a" stroke-width="2" stroke-linecap="round">
+    <rect x="4" y="4" width="24" height="24"/>
+    <line x1="4" y1="11" x2="28" y2="11"/>
+    <line x1="4" y1="18" x2="28" y2="18"/>
+    <line x1="4" y1="25" x2="28" y2="25"/>
+    <line x1="11" y1="4" x2="11" y2="28"/>
+    <line x1="18" y1="4" x2="18" y2="28"/>
+    <line x1="25" y1="4" x2="25" y2="28"/>
+  </g>
+  <rect x="18" y="11" width="7" height="7" fill="#9b3a26"/>
+</svg>`
 
 const styleCSS = `
 /* circumvention-corpus — visual design.

@@ -546,5 +546,8 @@ func (s *site) copyStatic() error {
 	if err := os.WriteFile(filepath.Join(s.out, "style.css"), []byte(styleCSS), 0o644); err != nil {
 		return err
 	}
-	return os.WriteFile(filepath.Join(s.out, "search.js"), []byte(searchJS), 0o644)
+	if err := os.WriteFile(filepath.Join(s.out, "search.js"), []byte(searchJS), 0o644); err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(s.out, "favicon.svg"), []byte(faviconSVG), 0o644)
 }
