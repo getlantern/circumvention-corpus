@@ -1,0 +1,67 @@
+id: 2025-piotrowska-nym-iran-blackout
+title: "Nym Report on Iran's Recent Internet Blackouts (June 2025): What it Means for Censorship Resistance and NymVPN"
+authors:
+  - Ania M. Piotrowska
+venue: "Nym Foundation blog / operator report"
+year: 2025
+url: "https://nym.com/blog/nym-iran-report-2025"
+abstract: |
+  Operator-side report from Nym's censorship-resistance team
+  diagnosing the June 2025 Iran Internet blackouts in real time
+  (published 2025-06-30). Documents the multi-layer enforcement
+  architecture: DPI boxes at ISPs (mandated, ISP-administered),
+  DPI boxes at large ISPs centrally administered by the
+  Communications Regulatory Authority, DPI boxes at internet
+  exchange points (especially Tehran IX) that filter even
+  domestic-only transit, and DPI boxes at the few internationally
+  linked networks — almost all funneling through AS48159 (TIC).
+
+  Concrete enforcement signatures observed: IP blocking of major
+  VPS providers (Hetzner, DigitalOcean, Linode), broad SNI/DNS
+  blocking, blanket UDP-protocol blocking (WireGuard, AmneziaWG,
+  QUIC, WebRTC, OpenVPN — but NOT UDP/53 to avoid breaking
+  internal DNS), connection throttling, targeted data-center
+  outages, frequent mobile blackouts. Reports a 387% increase in
+  NymVPN demand and acknowledges that NymVPN was caught by the
+  protocol-level UDP restrictions, motivating accelerated
+  censorship-resistance roadmap work.
+censors: [ir]
+techniques:
+  - dpi
+  - sni-blocking
+  - dns-poisoning
+  - ip-blocking
+  - asn-blackholing
+  - port-blocking
+  - throttling
+defenses_discussed:
+  - amnezia-wg
+  - tor
+evaluation_methods:
+  - measurement-study
+core: false
+visibility: public
+date_added: 2026-05-05
+added_by: afisk
+sources:
+  - "url:https://nym.com/blog/nym-iran-report-2025"
+references:
+  - 2025-iran-shutdown-measurement
+  - 2025-aryapour-stealth-blackout
+  - 2025-miaan-stealth-blackout
+notes: |
+  Operator-side primary source. Distinct value from the Cui /
+  Aryapour / Miaan triple: Nym names the specific ASNs and DPI
+  topology (DPI boxes at IXPs, central administration via the
+  Communications Regulatory Authority, AS48159 TIC chokepoint),
+  identifies UDP/53 as the deliberate exception in the
+  UDP-blocking sweep, and lists the major hosting providers
+  (Hetzner / DigitalOcean / Linode) whose IP space was blocked.
+  Useful for protocol-design decisions: a Lantern-like tool
+  cannot rely on UDP transports during such a blackout; a
+  WebSocket-over-TCP-443 fallback is what kept Lantern's proxyless
+  protocol functional.
+
+  Honest about NymVPN's own failure during the event — the kind of
+  operator transparency that makes this a higher-value source than
+  a marketing post.

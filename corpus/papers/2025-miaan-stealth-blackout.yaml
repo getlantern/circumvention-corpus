@@ -1,0 +1,73 @@
+id: 2025-miaan-stealth-blackout
+title: "Iran's Stealth Blackout: A Multi-stakeholder Analysis of the June 2025 Internet Shutdown"
+authors:
+  - Miaan Group
+  - ASL19
+  - IODA
+venue: "Filterwatch / Miaan Group multi-stakeholder report"
+year: 2025
+url: "https://filter.watch/english/2025/10/02/irans-stealth-blackout-a-multi-stakeholder-analysis-of-the-june-2025-internet-shutdown/"
+abstract: |
+  Multi-stakeholder analysis of the June 2025 Iran Internet shutdown
+  carried out during the war with Israel — co-authored by Miaan
+  Group, ASL19, and IODA, with contributions from Kentik, Cloudflare,
+  OONI, Tor, Lantern, eQualitie, Psiphon, and Deutsche Welle. The
+  report frames the operation as a "stealth blackout": phased,
+  centralized, and covert, severing the Iranian population's
+  connection to the global Internet while maintaining the appearance
+  of normal connectivity for outside observers, in contrast to the
+  blunt BGP-withdrawal shutdown of 2019.
+
+  The report documents technical enforcement layers (DNS poisoning,
+  protocol whitelisting, DPI, ~90% drop in international traffic),
+  human-rights consequences (blocking of Google Maps fleeing-civilian
+  navigation, blocking of international OTPs forcing migration to
+  insecure domestic platforms), and the response of the international
+  circumvention-tool ecosystem. Per-tool data points: Psiphon
+  maintained access for 1.5M users (~1/3 normal), Lantern saw
+  moderate success with its proxyless protocol (~40% of traffic),
+  BeePass served 500k+ daily users at the start of the war, Ceno
+  Browser peer count grew from 600 (June 13) to ~8000 (July 11).
+censors: [ir]
+techniques:
+  - dpi
+  - dns-poisoning
+  - throttling
+  - ip-blocking
+  - asn-blackholing
+defenses_discussed:
+  - tor
+  - domain-fronting
+  - amp-cache
+  - vless
+  - vmess
+  - dns-tunneling
+  - meek
+evaluation_methods:
+  - measurement-study
+core: true
+visibility: public
+date_added: 2026-05-05
+added_by: afisk
+sources:
+  - "url:https://filter.watch/english/2025/10/02/irans-stealth-blackout-a-multi-stakeholder-analysis-of-the-june-2025-internet-shutdown/"
+  - "url:https://miaan.org/wp-content/uploads/2025/10/Irans-Stealth-Blackout-Report.pdf"
+  - "url:https://filter.watch/wp-content/uploads/sites/2/2026/01/Irans-Stealth-Blackout_-A-Multi-stakeholder-Analysis-of-the-June-2025-Internet-Shutdown.pdf"
+references:
+  - 2025-iran-shutdown-measurement
+  - 2025-aryapour-stealth-blackout
+  - 2025-tai-irblock
+notes: |
+  NGO/policy companion to the technical Cui et al. paper
+  (2025-iran-shutdown-measurement) and the Aryapour arXiv
+  (2025-aryapour-stealth-blackout). This report's distinct value:
+  per-tool circumvention-performance numbers (including Lantern's
+  own ~40% proxyless-protocol contribution), human-rights framing,
+  and the policy-blueprint argument that the stealth-blackout
+  model is exportable to other authoritarian states.
+
+  Implications for Lantern: the report cites Lantern's proxyless
+  protocol (Reflex / direct-server) as a load-bearing fallback
+  during peak blackout — corroborates the strategic value of
+  protocol diversity over IP/ASN diversity alone for
+  service-layer shutdowns.

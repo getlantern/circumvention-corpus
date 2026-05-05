@@ -52,7 +52,6 @@ defenses_discussed:
   - domain-fronting
 evaluation_methods:
   - measurement-study
-  - active-probing
 core: true
 visibility: public
 date_added: 2026-05-05

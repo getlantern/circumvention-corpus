@@ -1,0 +1,57 @@
+id: 2025-aryapour-stealth-blackout
+title: "Iran's Stealth Internet Blackout: A New Model of Censorship"
+authors:
+  - Arash Aryapour
+venue: "arXiv preprint (cs.NI)"
+year: 2025
+arxiv_id: "2507.14183"
+doi: "10.48550/arXiv.2507.14183"
+url: "https://arxiv.org/abs/2507.14183"
+abstract: |
+  In mid-2025 Iran experienced a novel, stealthy Internet shutdown
+  that preserved global routing presence while isolating domestic
+  users through deep packet inspection, aggressive throttling, and
+  selective protocol blocking. This paper analyzes active network
+  measurements — DNS poisoning, HTTP injection, TLS interception,
+  and protocol whitelisting — traced to a centralized border
+  gateway. The author quantifies an approximate 707% rise in VPN
+  demand and describes the multi-layered censorship infrastructure,
+  highlighting implications for circumvention and digital rights
+  monitoring.
+censors: [ir]
+techniques:
+  - dpi
+  - dns-poisoning
+  - packet-injection
+  - throttling
+  - port-blocking
+  - active-probing
+defenses_discussed:
+  - vless
+  - vmess
+  - domain-fronting
+evaluation_methods:
+  - measurement-study
+core: true
+visibility: public
+date_added: 2026-05-05
+added_by: afisk
+sources:
+  - "url:https://arxiv.org/abs/2507.14183"
+references:
+  - 2025-iran-shutdown-measurement
+notes: |
+  Independent academic measurement-study angle on the same June
+  2025 Iran shutdown documented by Cui et al. WWW '26
+  (2025-iran-shutdown-measurement). Where Cui et al. characterize
+  the shutdown via service-level port scanning, Aryapour traces
+  the measurements to a centralized border gateway and emphasizes
+  the multi-layer enforcement (DPI + DNS poisoning + HTTP injection
+  + TLS interception + protocol whitelisting). Together the two
+  papers triangulate the same event from complementary vantage
+  points; both should be cited when describing the technical
+  mechanism of Iran's "stealth blackout" model.
+
+  The 707% VPN-demand spike Aryapour reports is one of the
+  highest-quality concrete impact numbers in the corpus for the
+  June 2025 event.
