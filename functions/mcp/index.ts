@@ -54,6 +54,23 @@ interface Bundle {
 const CORPUS = corpusData as unknown as Bundle;
 const BY_ID = new Map<string, Paper>(CORPUS.papers.map((p) => [p.id, p]));
 
+// Pre-built map of paper-id → concatenated findings text. Used by the
+// search haystack so a query like "blocking iran 443" matches a paper
+// whose abstract is generic but whose extracted findings document the
+// specific event. This is what makes the 109+ findings carry their
+// own search weight rather than only being visible after get_paper.
+const FINDINGS_TEXT_BY_PAPER = new Map<string, string>();
+for (const f of CORPUS.findings) {
+  if (!f.paper) continue;
+  const text = [
+    f.summary || "",
+    (f.defense_implications || []).join(" "),
+    f.section || "",
+  ].join(" ");
+  const existing = FINDINGS_TEXT_BY_PAPER.get(f.paper) || "";
+  FINDINGS_TEXT_BY_PAPER.set(f.paper, existing + " " + text);
+}
+
 const SERVER_INFO = { name: "circumvention-corpus", version: "0.2.0" };
 const PROTOCOL_VERSION = "2024-11-05";
 
@@ -137,6 +154,7 @@ function textMatch(p: Paper, q: string): boolean {
     p.notes || "",
     p.id,
     (p.authors || []).join(" "),
+    FINDINGS_TEXT_BY_PAPER.get(p.id) || "",
   ]
     .join(" ")
     .toLowerCase();

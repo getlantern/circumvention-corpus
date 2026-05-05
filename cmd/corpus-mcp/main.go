@@ -70,6 +70,24 @@ type Paper struct {
 	AddedBy                  string   `yaml:"added_by,omitempty" json:"added_by,omitempty"`
 	Sources                  []string `yaml:"sources,omitempty" json:"sources,omitempty"`
 	References               []string `yaml:"references,omitempty" json:"references,omitempty"`
+
+	// findingsText holds the concatenated text of every extracted finding
+	// for this paper (summary + defense_implications + section). Built once
+	// at load time so search_papers can match queries against the rich
+	// findings text without re-reading the findings/ directory per query.
+	findingsText string `yaml:"-" json:"-"`
+}
+
+// finding mirrors the subset of corpus/findings/*.yaml that contributes to
+// the search haystack. Findings carry the concrete, queryable detail that
+// abstracts often gloss over (e.g. "Iran blocks 443 unconditionally on
+// 2025-10-12") — folding them into search_papers means a single query
+// surfaces papers via their findings, not just their abstracts.
+type finding struct {
+	Paper               string   `yaml:"paper"`
+	Summary             string   `yaml:"summary"`
+	DefenseImplications []string `yaml:"defense_implications"`
+	Section             string   `yaml:"section"`
 }
 
 // store holds the loaded corpus. Searches run over the in-memory slice;
@@ -115,6 +133,46 @@ func loadStore(corpusDir string, publicOnly bool) (*store, error) {
 		}
 		s.byID[p.ID] = &p
 		s.papers = append(s.papers, &p)
+	}
+
+	// Load findings and concatenate their searchable text into each paper's
+	// findingsText. A missing findings dir is fine (older corpora won't
+	// have one); broken individual files are logged but don't abort load.
+	findingsDir := filepath.Join(corpusDir, "corpus", "findings")
+	if fEntries, err := os.ReadDir(findingsDir); err == nil {
+		var b strings.Builder
+		for _, fe := range fEntries {
+			if fe.IsDir() || !strings.HasSuffix(fe.Name(), ".yaml") {
+				continue
+			}
+			fpath := filepath.Join(findingsDir, fe.Name())
+			fraw, ferr := os.ReadFile(fpath)
+			if ferr != nil {
+				log.Printf("findings: read %s: %v", fpath, ferr)
+				continue
+			}
+			var f finding
+			if ferr := yaml.Unmarshal(fraw, &f); ferr != nil {
+				log.Printf("findings: parse %s: %v", fpath, ferr)
+				continue
+			}
+			p, ok := s.byID[f.Paper]
+			if !ok {
+				continue
+			}
+			b.Reset()
+			b.WriteString(f.Summary)
+			b.WriteByte(' ')
+			for _, di := range f.DefenseImplications {
+				b.WriteString(di)
+				b.WriteByte(' ')
+			}
+			b.WriteString(f.Section)
+			if p.findingsText != "" {
+				p.findingsText += " "
+			}
+			p.findingsText += b.String()
+		}
 	}
 
 	// Load taxonomy as raw map for list_taxonomy.
@@ -193,6 +251,12 @@ func textMatch(p *Paper, q string) bool {
 		if strings.Contains(strings.ToLower(a), q) {
 			return true
 		}
+	}
+	// Findings text — concatenated per paper at store load time so
+	// queries like "iran 443 unconditional" match a paper via its
+	// extracted-finding text even when the abstract is generic.
+	if strings.Contains(strings.ToLower(p.findingsText), q) {
+		return true
 	}
 	return false
 }

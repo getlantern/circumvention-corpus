@@ -60,6 +60,20 @@ type Paper struct {
 	AddedBy                  string   `yaml:"added_by,omitempty"`
 	Sources                  []string `yaml:"sources,omitempty"`
 	References               []string `yaml:"references,omitempty"`
+
+	// findingsText holds the concatenated text of every extracted finding
+	// for this paper. Folded into the client-side search index so a query
+	// hits a paper via its findings, not just its abstract — e.g. "Iran
+	// 443 unconditional" matches a paper whose abstract is generic but
+	// whose findings document the specific event.
+	findingsText string `yaml:"-"`
+}
+
+type finding struct {
+	Paper               string   `yaml:"paper"`
+	Summary             string   `yaml:"summary"`
+	DefenseImplications []string `yaml:"defense_implications"`
+	Section             string   `yaml:"section"`
 }
 
 type taxonomyEntry struct {
@@ -84,6 +98,9 @@ func main() {
 
 	papers, err := loadPapers(*corpusDir, *publicOnly)
 	if err != nil {
+		log.Fatal(err)
+	}
+	if err := attachFindings(*corpusDir, papers); err != nil {
 		log.Fatal(err)
 	}
 	tax, err := loadTaxonomy(*corpusDir)
@@ -154,6 +171,58 @@ func loadPapers(corpusDir string, publicOnly bool) ([]*Paper, error) {
 		return out[i].ID < out[j].ID
 	})
 	return out, nil
+}
+
+// attachFindings reads corpus/findings/*.yaml and concatenates each
+// finding's searchable text (summary + defense_implications + section)
+// onto the matching paper's findingsText. A missing findings dir is
+// fine; broken files are logged and skipped.
+func attachFindings(corpusDir string, papers []*Paper) error {
+	byID := map[string]*Paper{}
+	for _, p := range papers {
+		byID[p.ID] = p
+	}
+	dir := filepath.Join(corpusDir, "corpus", "findings")
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+	var b strings.Builder
+	for _, e := range entries {
+		if e.IsDir() || !strings.HasSuffix(e.Name(), ".yaml") {
+			continue
+		}
+		raw, rerr := os.ReadFile(filepath.Join(dir, e.Name()))
+		if rerr != nil {
+			log.Printf("findings: read %s: %v", e.Name(), rerr)
+			continue
+		}
+		var f finding
+		if uerr := yaml.Unmarshal(raw, &f); uerr != nil {
+			log.Printf("findings: parse %s: %v", e.Name(), uerr)
+			continue
+		}
+		p, ok := byID[f.Paper]
+		if !ok {
+			continue
+		}
+		b.Reset()
+		b.WriteString(f.Summary)
+		b.WriteByte(' ')
+		for _, di := range f.DefenseImplications {
+			b.WriteString(di)
+			b.WriteByte(' ')
+		}
+		b.WriteString(f.Section)
+		if p.findingsText != "" {
+			p.findingsText += " "
+		}
+		p.findingsText += b.String()
+	}
+	return nil
 }
 
 func loadTaxonomy(corpusDir string) (*taxonomy, error) {
@@ -236,6 +305,7 @@ func (s *site) renderSearchIndex() error {
 		Year       int      `json:"year,omitempty"`
 		Abstract   string   `json:"abstract,omitempty"`
 		Notes      string   `json:"notes,omitempty"`
+		Findings   string   `json:"findings,omitempty"`
 		Censors    []string `json:"censors,omitempty"`
 		Techniques []string `json:"techniques,omitempty"`
 		Defenses   []string `json:"defenses,omitempty"`
@@ -257,6 +327,7 @@ func (s *site) renderSearchIndex() error {
 			Year:       p.Year,
 			Abstract:   p.Abstract,
 			Notes:      p.Notes,
+			Findings:   p.findingsText,
 			Censors:    p.Censors,
 			Techniques: p.Techniques,
 			Defenses:   all,

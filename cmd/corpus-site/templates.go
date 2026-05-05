@@ -1044,6 +1044,7 @@ const searchJS = `(() => {
     const tags = [...(paper.censors||[]), ...(paper.techniques||[]), ...(paper.defenses||[])].join(' ').toLowerCase();
     const notes = (paper.notes || '').toLowerCase();
     const abstract = (paper.abstract || '').toLowerCase();
+    const findings = (paper.findings || '').toLowerCase();
     const id = (paper.id || '').toLowerCase();
     for (const t of qTokens) {
       if (!t) continue;
@@ -1054,6 +1055,7 @@ const searchJS = `(() => {
       if (tags.includes(t)) s += 3;
       if (id.includes(t)) s += 2;
       if (notes.includes(t)) s += 2;
+      if (findings.includes(t)) s += 2;
       if (abstract.includes(t)) s += 1;
       if (s === 0) return 0;
       total += s;
