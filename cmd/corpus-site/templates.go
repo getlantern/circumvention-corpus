@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"hash/fnv"
 	"html/template"
@@ -51,6 +52,20 @@ var funcMap = template.FuncMap{
 	// very low opacity, non-interactive — to give the site the visual
 	// texture of a research notebook.
 	"protocolMotif": protocolMotif,
+	// exampleQuestionsJS marshals []string to a JSON literal safe to
+	// embed as a JS expression. html/template's JS context handles
+	// the escaping for us via template.JS — we just produce the raw
+	// JSON, which is also valid JS.
+	"exampleQuestionsJS": func(qs []string) template.JS {
+		if len(qs) == 0 {
+			return template.JS("[]")
+		}
+		b, err := json.Marshal(qs)
+		if err != nil {
+			return template.JS("[]")
+		}
+		return template.JS(b)
+	},
 }
 
 // rand32 is a tiny deterministic PRNG used by the plotter figures so
@@ -684,11 +699,47 @@ const indexBody = `
   <form class="hero-ask" action="/ask/" method="get" autocomplete="off">
     <label for="hero-ask-q" class="eyebrow">ASK · {{.FindingsCount}} extracted findings, cited by Claude</label>
     <div class="hero-ask-row">
-      <input id="hero-ask-q" name="q" type="text" placeholder="e.g. What does the literature say about Iran SNI-based blocking?" maxlength="500" required>
+      <input id="hero-ask-q" name="q" type="text" placeholder="e.g. How did Iran's June 2025 internet shutdown work?" maxlength="500" required>
       <button type="submit" class="btn primary">Ask →</button>
     </div>
     <p class="hero-ask-help muted">Or <a href="/use/">install the MCP server</a> to query from your editor.</p>
   </form>
+  <script>
+  window.__askExamples = {{exampleQuestionsJS .ExampleQuestions}};
+  (function(){
+    const form = document.querySelector('.hero-ask');
+    if (!form) return;
+    const input = form.querySelector('#hero-ask-q');
+    if (!input) return;
+    const examples = window.__askExamples || [];
+    if (examples.length < 2) return;
+    // Honor reduced-motion: don't rotate, but still show one example.
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      input.placeholder = 'e.g. ' + examples[0];
+      return;
+    }
+    // Fisher-Yates shuffle so visitors don't always see the same first one.
+    for (let i = examples.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [examples[i], examples[j]] = [examples[j], examples[i]];
+    }
+    let idx = 0;
+    let paused = false;
+    input.placeholder = 'e.g. ' + examples[0];
+    // Pause rotation while user interacts with the field.
+    input.addEventListener('focus', () => paused = true);
+    input.addEventListener('input', () => paused = true);
+    setInterval(() => {
+      if (paused || document.hidden) return;
+      idx = (idx + 1) % examples.length;
+      input.classList.add('placeholder-fading');
+      setTimeout(() => {
+        input.placeholder = 'e.g. ' + examples[idx];
+        input.classList.remove('placeholder-fading');
+      }, 280);
+    }, 4500);
+  })();
+  </script>
   <dl class="counts-grid">
     <div><dt>papers</dt><dd>{{.Counts.papers}}</dd></div>
     <div><dt>censors</dt><dd>{{.Counts.censors}}</dd></div>
@@ -1899,7 +1950,8 @@ nav a.external { color: var(--ink-mute); }
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
 }
-.hero-ask input::placeholder { color: var(--ink-mute); }
+.hero-ask input::placeholder { color: var(--ink-mute); transition: opacity 0.28s ease; opacity: 1; }
+.hero-ask input.placeholder-fading::placeholder { opacity: 0; }
 .hero-ask button {
   flex: 0 0 auto;
   padding: 0.65rem 1.4rem;

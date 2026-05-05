@@ -444,9 +444,10 @@ func (s *site) renderIndex() error {
 		recent = recent[:10]
 	}
 	return s.writeFile(".", "index", map[string]any{
-		"Title":  "circumvention-corpus",
-		"Core":   core,
-		"Recent": recent,
+		"Title":            "circumvention-corpus",
+		"Core":             core,
+		"Recent":           recent,
+		"ExampleQuestions": s.exampleQuestions(),
 		"Counts": map[string]int{
 			"papers":     len(s.papers),
 			"censors":    len(s.tax.Censors),
@@ -454,6 +455,63 @@ func (s *site) renderIndex() error {
 			"defenses":   len(s.tax.Defenses),
 		},
 	})
+}
+
+// exampleQuestions builds a list of natural-language question strings
+// grounded in real corpus content. The hero textfield rotates through
+// these as its placeholder so a first-time visitor sees concrete
+// examples of what the corpus can actually answer — rather than the
+// generic "type a question" prompt. Mix of hand-curated highlights for
+// the most-cited findings + tag-templated questions for breadth.
+func (s *site) exampleQuestions() []string {
+	// Hand-curated, sorted roughly newest-first. These name specific
+	// papers/findings already in the corpus so the answers will land.
+	curated := []string{
+		"How did Iran's June 2025 internet shutdown work?",
+		"What did the Geedge/MESA leak reveal about exported censorship?",
+		"What happened during the August 2025 GFW port-443 RST event?",
+		"How does TLS record fragmentation evade SNI censorship?",
+		"What does Wallbleed reveal about the Great Firewall?",
+		"How does the GFW's fully-encrypted-traffic detector work?",
+		"Which defenses have been evaluated against active probing?",
+		"What's known about Russia's TSPU?",
+		"How does ECH actually fare against censors today?",
+		"What did Drivel show about post-quantum traffic-shape evasion?",
+		"How does Iran's SNI blocking differ across ASes?",
+		"What's the evidence on Henan Province operating its own GFW?",
+		"How is Snowflake performing as a pluggable transport?",
+		"What did GFWeb find about bidirectional asymmetry?",
+		"How effective is domain fronting in 2025?",
+		"What's known about decoy routing and refraction networking in Iran?",
+	}
+	// Light templated additions for high-coverage tag intersections —
+	// only included when both the tag and a paper covering it exist.
+	if s.tagCoverage("censors", "cn") > 5 && s.tagCoverage("techniques", "active-probing") > 0 {
+		curated = append(curated, "What does the literature say about GFW active probing?")
+	}
+	if s.tagCoverage("defenses", "domain-fronting") > 3 {
+		curated = append(curated, "Which papers measure domain fronting deployment in the wild?")
+	}
+	return curated
+}
+
+func (s *site) tagCoverage(category, tagID string) int {
+	n := 0
+	for _, p := range s.papers {
+		var bag []string
+		switch category {
+		case "censors":
+			bag = p.Censors
+		case "techniques":
+			bag = p.Techniques
+		case "defenses":
+			bag = append(append([]string{}, p.DefensesDiscussed...), p.DefensesEvaluatedAgainst...)
+		}
+		if slices.Contains(bag, tagID) {
+			n++
+		}
+	}
+	return n
 }
 
 func (s *site) renderPapersIndex() error {
