@@ -1,0 +1,34 @@
+id: 2024-mixon-baca-snitch
+title: "Attacking Connection Tracking Frameworks as used by Virtual Private Networks"
+authors:
+  - Benjamin Mixon-Baca
+  - Jeffrey Knockel
+  - Diwen Xue
+  - Tarun Ayyagari
+  - Deepak Kapur
+  - Roya Ensafi
+  - Jedidiah R. Crandall
+venue: Proceedings on Privacy Enhancing Technologies
+year: 2024
+url: https://petsymposium.org/popets/2024/popets-2024-0070.php
+abstract: |
+  VPNs are an essential privacy-enhancing technology, particularly for
+  at-risk users like dissidents, journalists, and NGOs. While prior
+  work has examined VPN cryptography and traffic leakage, the authors
+  identify a gap in the security of lower-level primitives — specifically
+  the connection-tracking frameworks (conntrack/Netfilter and friends)
+  on which most VPN servers rely. They introduce a novel exploit
+  primitive, the "port shadow," and use it to build four attacks that
+  let an off-path attacker intercept and redirect encrypted traffic,
+  de-anonymise a VPN peer, or even portscan a peer hidden behind the
+  VPN server. They build a formal model of modern connection-tracking
+  frameworks, identify the five shared resources at the root of the
+  port shadow, and verify six process-isolation mitigations via
+  bounded model checking.
+censors: [generic]
+techniques: [middlebox-interference, packet-injection, flow-correlation]
+defenses_discussed: [tunneling]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

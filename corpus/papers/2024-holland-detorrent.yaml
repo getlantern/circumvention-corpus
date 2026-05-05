@@ -1,0 +1,30 @@
+id: 2024-holland-detorrent
+title: "DeTorrent: An Adversarial Padding-only Traffic Analysis Defense"
+authors:
+  - James K. Holland
+  - Jason Carpenter
+  - Se Eun Oh
+  - Nicholas Hopper
+venue: Proceedings on Privacy Enhancing Technologies
+year: 2024
+url: https://petsymposium.org/popets/2024/popets-2024-0007.php
+abstract: |
+  Anonymity networks like Tor remain vulnerable to traffic-analysis
+  attacks such as Website Fingerprinting (WF) and Flow Correlation (FC),
+  and recent attacks like Tik-Tok and DeepCoFFEA have made these
+  threats increasingly practical. DeTorrent uses competing neural
+  networks (an adversarial generator-and-evaluator design) to produce
+  padding-only defenses that insert dummy traffic into real flows
+  without delaying user packets. In a closed-world WF setting it
+  reduces an attacker's accuracy by 61.5% — 10.5 points better than
+  the next-best padding-only defense — and against the state-of-the-art
+  FC attacker it cuts the true-positive rate at a 1e-5 false-positive
+  rate to roughly half that of the next-best defense. The authors also
+  deploy it alongside live Tor traffic to demonstrate its practicality.
+censors: [generic]
+techniques: [website-fingerprint, flow-correlation, traffic-shape]
+defenses_discussed: [tor]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

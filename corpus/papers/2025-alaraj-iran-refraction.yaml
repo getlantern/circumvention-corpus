@@ -1,0 +1,27 @@
+id: 2025-alaraj-iran-refraction
+title: "Measuring Censorship in Iran Using Refraction-based Proxies"
+authors:
+  - Abdulrahman Alaraj
+  - Eric Wustrow
+venue: ACM ASIA Conference on Computer and Communications Security
+year: 2025
+url: https://ericw.us/trow/iran-proxy.pdf
+abstract: |
+  Refraction networking deploys circumvention proxies inside cooperating
+  ISPs that intercept TLS flows in transit, giving censored users a
+  proxy whose externally observable destination is an arbitrary
+  uncensored "decoy" host rather than a known proxy IP. The authors
+  use refraction-based proxies as a measurement vantage point inside
+  Iran to characterise the country's evolving censorship apparatus,
+  including SNI-based filtering, protocol-fingerprinting, and adaptive
+  responses to popular circumvention tools. The paper documents how
+  Iranian filtering changes over time, identifies which destinations
+  and protocols are blocked, and discusses implications for the design
+  of robust circumvention systems facing a heterogeneous censor.
+censors: [ir]
+techniques: [dpi, sni-blocking, tls-fingerprint, measurement-platform]
+defenses_discussed: [decoy-routing, conjure, tapdance]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

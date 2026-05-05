@@ -1,0 +1,28 @@
+id: 2024-durumeric-ten-years-zmap
+title: "Ten Years of ZMap"
+authors:
+  - Zakir Durumeric
+  - David Adrian
+  - Phillip Stephens
+  - Eric Wustrow
+  - J. Alex Halderman
+venue: Internet Measurement Conference
+year: 2024
+url: https://zmap.io/
+abstract: |
+  A decade after the original ZMap paper, this retrospective examines
+  how Internet-wide scanning has evolved as a research methodology and
+  what the community has learned from running ZMap-based studies at
+  scale. The authors review the technical evolution of ZMap (IPv6
+  support, scan-rate improvements, blocklist hygiene), survey the
+  research literature it has enabled, document the operational
+  practices that have emerged for ethical and reliable scanning, and
+  discuss open problems for the next decade — including measurement
+  in the IPv6 era, dealing with cloud-hosted services, and reconciling
+  scan-based observation with privacy and consent norms.
+censors: [generic]
+techniques: [measurement-platform]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

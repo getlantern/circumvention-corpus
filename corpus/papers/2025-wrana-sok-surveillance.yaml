@@ -1,0 +1,30 @@
+id: 2025-wrana-sok-surveillance
+title: "SoK: The Spectre of Surveillance and Censorship in Future Internet Architectures"
+authors:
+  - Michael Wrana
+  - Diogo Barradas
+  - N. Asokan
+venue: Proceedings on Privacy Enhancing Technologies
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0073.php
+abstract: |
+  Recent initiatives known as Future Internet Architectures (FIAs)
+  seek to redesign the Internet to improve performance, scalability,
+  and security. However, some governments perceive Internet access as
+  a threat to their political standing and engage in widespread network
+  surveillance and censorship. In this paper, the authors provide an
+  in-depth analysis of the design principles of prominent FIAs in terms
+  of their packet structure, addressing and naming schemes, and routing
+  protocols to foster discussion on how these new systems interact with
+  censorship and surveillance apparatuses. They assess the extent to
+  which existing surveillance and censorship mechanisms can successfully
+  target FIA users while discussing privacy enhancing technologies to
+  counter these mechanisms, and conclude with guidelines for future
+  research into FIA-based privacy-enhancing technologies.
+censors: [generic]
+techniques: [dpi, measurement-platform, flow-correlation]
+defenses_discussed: [meta-resistance]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

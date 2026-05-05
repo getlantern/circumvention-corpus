@@ -1,0 +1,29 @@
+id: 2023-arora-detor-onion
+title: "Provably Avoiding Geographic Regions for Tor's Onion Services"
+authors:
+  - Arushi Arora
+  - Raj Karra
+  - Dave Levin
+  - Christina Garman
+venue: Financial Cryptography and Data Security
+year: 2023
+url: https://detor.cs.umd.edu/papers/detor_os_fc23.pdf
+abstract: |
+  This paper extends DeTor — a system that uses speed-of-light timing
+  bounds to prove that a Tor circuit could not have traversed a
+  specified geographic region — to Tor's onion (hidden) services.
+  Onion services are particularly attractive targets for routing-capable
+  censors and deanonymizers, but until now there has been no way for
+  a client or service operator to verify that the rendezvous circuit
+  avoided a chosen forbidden region. The authors design provably
+  avoidant rendezvous-circuit construction, evaluate its overhead
+  against live Tor measurements, and show it is feasible for users to
+  obtain provable guarantees that their onion-service traffic stayed
+  out of named adversarial regions.
+censors: [generic]
+techniques: [traffic-shape, flow-correlation]
+defenses_discussed: [tor]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

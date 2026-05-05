@@ -1,0 +1,29 @@
+id: 2022-ramesh-vpnalyzer
+title: "VPNalyzer: Systematic Investigation of the VPN Ecosystem"
+authors:
+  - Reethika Ramesh
+  - Leonid Evdokimov
+  - Diwen Xue
+  - Roya Ensafi
+venue: Network and Distributed System Security Symposium
+year: 2022
+url: https://reethika.info/papers/ndss22-vpnalyzer.pdf
+abstract: |
+  Use of Virtual Private Networks (VPNs) has surged in recent years,
+  but the trustworthiness of VPN services and the security of their
+  implementations have not been systematically investigated at scale.
+  In this paper, the authors design and deploy VPNalyzer, a cross-platform
+  tool that combines a suite of tests covering security, leakage,
+  manipulation, and ecosystem properties of VPN services. They use it
+  to study 80 widely-used VPN services and reveal a range of issues
+  including DNS, IPv6, and traffic leaks; misconfigured server
+  infrastructure; and untrustworthy ecosystem practices. The work
+  surfaces concrete recommendations for users, providers, and
+  policymakers seeking to improve VPN trustworthiness.
+censors: [generic]
+techniques: [measurement-platform]
+defenses_discussed: [tunneling]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

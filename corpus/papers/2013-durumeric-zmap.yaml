@@ -1,0 +1,28 @@
+id: 2013-durumeric-zmap
+title: "ZMap: Fast Internet-wide Scanning and its Security Applications"
+authors:
+  - Zakir Durumeric
+  - Eric Wustrow
+  - J. Alex Halderman
+venue: USENIX Security Symposium
+year: 2013
+url: https://zmap.io/paper.pdf
+abstract: |
+  ZMap is an open-source network scanner specifically architected for
+  performing Internet-wide scans. By bypassing the OS network stack and
+  using a stateless, probe-driven design, ZMap can scan the entire
+  public IPv4 address space on a single port in under 45 minutes from
+  a commodity machine, more than 1300 times faster than nmap. The paper
+  describes the system design, validates its accuracy and coverage
+  against existing tools, and demonstrates its utility through several
+  security applications: tracking HTTPS deployment, monitoring service
+  outages following large-scale events, identifying vulnerable hosts,
+  and uncovering cryptographic key reuse at scale. ZMap underpins the
+  bulk of subsequent Internet-wide measurement work, including most of
+  the censorship-measurement platforms in this corpus.
+censors: [generic]
+techniques: [measurement-platform]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

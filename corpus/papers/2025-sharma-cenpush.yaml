@@ -1,0 +1,37 @@
+id: 2025-sharma-cenpush
+title: "CenPush: Blocking-Resistant Control Channel Using Push Notifications"
+authors:
+  - Piyush Kumar Sharma
+  - Diwen Xue
+  - Aaron Ortwein
+  - Cecylia Bocovich
+  - Harry
+  - Roya Ensafi
+venue: Proceedings on Privacy Enhancing Technologies
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0153.php
+abstract: |
+  Maintainers of circumvention tools must continuously push fresh
+  client configuration and proxy IPs to users in censored regions, but
+  existing update channels rely on clients explicitly polling
+  out-of-band endpoints — channels that are themselves easy to block.
+  CenPush flips this around by using mobile platform push-notification
+  services (already widely deployed and difficult to block without
+  large collateral damage) as a one-way control channel from tool
+  maintainer to client. The authors present a general design for
+  integrating push notifications into circumvention tools as a
+  blocking-resistant control plane, then implement and evaluate it
+  for Tor — pushing fresh bridge lines to clients without any
+  client-initiated query.
+censors: [generic]
+techniques: [ip-blocking]
+defenses_discussed: [bridges, meta-resistance, tor]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk
+notes: |
+  The push-notification control-channel design is directly relevant to
+  Lantern's bridge / outbound rotation: a similar mechanism could push
+  fresh proxy configs to clients without relying on a polled config
+  endpoint that censors can block.

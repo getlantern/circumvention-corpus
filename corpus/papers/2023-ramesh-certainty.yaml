@@ -1,0 +1,31 @@
+id: 2023-ramesh-certainty
+title: "CERTainty: Detecting DNS Manipulation at Scale using TLS Certificates"
+authors:
+  - Elisa Tsai
+  - Deepak Kumar
+  - Ram Sundara Raman
+  - Gavin Li
+  - Yael Eiger
+  - Roya Ensafi
+venue: USENIX Security Symposium
+year: 2023
+url: https://censoredplanet.org/projects/certainty
+abstract: |
+  DNS manipulation is a common censorship technique used by states
+  worldwide, but reliably distinguishing intentional manipulation from
+  benign anomalies (CDNs, geo-DNS, captive portals) at Internet scale
+  is hard. CERTainty leverages TLS certificate validation as ground
+  truth: by attempting to complete a TLS handshake with the IP returned
+  by a remote resolver and inspecting the certificate, the system can
+  decide whether the response leads to the legitimate origin or to a
+  blockpage / injected destination. The authors measure DNS manipulation
+  across thousands of resolvers in 102 countries, identify state-level
+  censorship in countries including China, Iran, and Russia, and show
+  that certificate-based ground truth substantially reduces false
+  positives compared with prior measurement systems.
+censors: [cn, ir, ru, generic]
+techniques: [dns-poisoning, measurement-platform, sni-blocking]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk

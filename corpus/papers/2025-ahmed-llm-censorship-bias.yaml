@@ -1,0 +1,29 @@
+id: 2025-ahmed-llm-censorship-bias
+title: "An Analysis of Chinese Censorship Bias in LLMs"
+authors:
+  - Mohamed Ahmed
+  - Jeffrey Knockel
+  - Rachel Greenstadt
+venue: Proceedings on Privacy Enhancing Technologies
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0122.php
+abstract: |
+  When a large language model (LLM) is trained on text shaped by state
+  censorship, those biases implicitly impact the outputs of the model.
+  The authors define this phenomenon as censorship bias: a model trained
+  on sanitized content is less likely to reflect prohibited views and
+  more likely to reflect permitted ones, particularly when interacted
+  with in a language predominantly used in a region with strong
+  censorship laws. They introduce a methodology for identifying and
+  measuring censorship bias and apply it to popular LLMs, including
+  building CensorshipDetector, a Chinese-language classifier that
+  distinguishes sanitized from non-sanitized text with 91% accuracy.
+  The evaluation finds evidence of censorship bias across all models
+  tested and discusses harms (notably the export of domestic information
+  manipulation to diaspora populations) and mitigations.
+censors: [cn]
+techniques: [keyword-filtering]
+core: false
+visibility: public
+date_added: "2026-05-04"
+added_by: afisk
