@@ -1,6 +1,8 @@
 // /api/ask — public-facing proxy that turns a free-form question into a
 // cited LLM answer over the corpus.
 //
+// (deploy-marker: bump to redeploy after adding env vars)
+//
 // Request:  POST /api/ask  { "question": "...", "censors": [], ... }
 // Response: { "question", "answer", "bundle", "elapsed_ms" }
 //
