@@ -1,0 +1,47 @@
+id: 2026-ermao-april-airport-outage
+title: "2026年四月机场断线潮详解：通报、拔线与涨价预期下，普通用户该怎么应对 / Anatomy of the April 2026 China VPN-Reseller Outage Wave"
+authors:
+  - 二毛 (ermao)
+venue: "ermao.net (Chinese-language circumvention blog)"
+year: 2026
+url: "https://www.ermao.net/blog/april-airport-outage-2026/"
+abstract: |
+  Operator-side write-up of the April 2026 wave of outages affecting
+  commercial VPN brokers in China (机场, "airports" — colloquial for
+  shared-infrastructure VPN resellers). Documents enforcement-driven
+  capacity loss observed across the ecosystem: upstream resources
+  being "reported" (通报) and "line-cut" (拔线) by authorities, with
+  Ministry of Industry and Information Technology (工业和信息化部)
+  bulletins cited as the visible enforcement mechanism. Reports
+  cascading service degradation — disconnects, latency spikes, peak-
+  hour throttling — as transit-style architectures (国内入口 + 海外转发)
+  collapse to single-entry fallbacks under upstream loss. Forecasts
+  continued capacity contraction through May 2026 with consequent
+  price increases, fewer low-cost high-quality plans, and a shift
+  toward month-by-month billing as users hedge against provider
+  collapse.
+censors: [cn]
+techniques: [ip-blocking, asn-blackholing, throttling]
+evaluation_methods: [measurement-study]
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://www.ermao.net/blog/april-airport-outage-2026/"
+notes: |
+  Operator-side primary source — distinct angle from academic
+  measurement papers (which observe censor mechanisms from the
+  client side) or NGO reports (which focus on policy and human-rights
+  framing). This perspective documents what circumvention-tool
+  *operators* see when authorities apply administrative pressure on
+  upstream infrastructure: not packet-level DPI changes, but
+  resource-availability changes that ripple through commercial
+  reseller ecosystems.
+
+  Implications for Lantern: the cn-targeted enforcement model
+  documented here is administrative + economic (拔线 + 涨价), not
+  purely technical. Resilient circumvention infrastructure for CN
+  users needs IP/ASN diversity at a scale that survives waves of
+  enforcement, not just protocol-level evasion of any single DPI
+  signature.

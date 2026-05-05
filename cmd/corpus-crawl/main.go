@@ -252,6 +252,15 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			cands = append(cands, f...)
 		}
 	}
+	if source == "ermao" || source == "all" {
+		em, err := fetchErmaoNet(ctx, since)
+		if err != nil {
+			log.Printf("fetch ermao.net: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from ermao.net", len(em))
+			cands = append(cands, em...)
+		}
+	}
 	if source == "usenix-sec" || source == "all" {
 		// USENIX Security uses a 2-digit-year URL slug. Each year has
 		// up to 2 cycles (Cycle 1, Cycle 2) plus an aggregated
@@ -283,7 +292,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	//     etc.) tangentially in unrelated work. Match on title only — a paper
 	//     whose title doesn't contain a circumvention keyword is almost
 	//     certainly not circumvention research, regardless of abstract content.
-	curatedSources := map[string]bool{"net4people": true, "gfw-report": true}
+	curatedSources := map[string]bool{"net4people": true, "gfw-report": true, "ermao": true}
 	titleOnlySources := map[string]bool{"popets": true, "foci": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
@@ -864,6 +873,169 @@ func yearOrNow(t time.Time) int {
 		return time.Now().Year()
 	}
 	return t.Year()
+}
+
+// ── ermao.net source ──────────────────────────────────────────────
+//
+// ermao.net is a Chinese-language circumvention blog with operator-
+// side commentary on enforcement events. Most posts are commercial
+// VPN-broker reviews (not corpus-relevant), but some document major
+// enforcement waves and outage cascades from a perspective the
+// academic measurement papers don't capture.
+//
+// No RSS feed; we use sitemap.xml as the discovery channel. Each
+// candidate post is pre-fetched with `wick fetch --format markdown`
+// (residential IP + JS rendering for the VuePress SPA) and the body
+// is passed to the LLM classifier. The Chinese-language relevance
+// gate works because Sonnet handles zh natively.
+//
+// We treat ermao as curated (skip keyword filter) since English
+// keywords don't match Chinese titles; the LLM does all the
+// filtering.
+
+const ermaoSitemap = "https://www.ermao.net/sitemap.xml"
+
+type sitemapURL struct {
+	Loc     string `xml:"loc"`
+	Lastmod string `xml:"lastmod"`
+}
+type sitemapURLSet struct {
+	XMLName xml.Name     `xml:"urlset"`
+	URLs    []sitemapURL `xml:"url"`
+}
+
+func fetchErmaoNet(ctx context.Context, since time.Time) ([]candidate, error) {
+	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+	defer cancel()
+	req, err := http.NewRequestWithContext(cctx, "GET", ermaoSitemap, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("User-Agent", "Mozilla/5.0 circumvention-corpus-crawl/0.1")
+	resp, err := (&http.Client{Timeout: httpTimeout}).Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
+		return nil, fmt.Errorf("ermao sitemap: status %d: %s", resp.StatusCode, string(body))
+	}
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	var set sitemapURLSet
+	if err := xml.Unmarshal(body, &set); err != nil {
+		return nil, fmt.Errorf("parse ermao sitemap: %w", err)
+	}
+
+	// Filter to post URLs that look like content (skip index/landing
+	// pages, friends/stats/airport directories, scamvpn slop, etc.)
+	// and skip anything older than `since`.
+	type kept struct{ url string; lastmod time.Time }
+	var posts []kept
+	for _, u := range set.URLs {
+		if !ermaoIsPost(u.Loc) {
+			continue
+		}
+		var lm time.Time
+		if u.Lastmod != "" {
+			if t, err := time.Parse(time.RFC3339, u.Lastmod); err == nil {
+				lm = t
+			}
+		}
+		if !lm.IsZero() && lm.Before(since) {
+			continue
+		}
+		posts = append(posts, kept{url: u.Loc, lastmod: lm})
+	}
+	// Cap so a wide --window-days doesn't trigger 100+ wick fetches.
+	const ermaoCap = 30
+	if len(posts) > ermaoCap {
+		posts = posts[:ermaoCap]
+	}
+
+	out := make([]candidate, 0, len(posts))
+	for _, p := range posts {
+		md, err := wickFetch(ctx, p.url, "markdown")
+		if err != nil {
+			log.Printf("ermao: wick fetch %s: %v (skipping)", p.url, err)
+			continue
+		}
+		title, body := ermaoTitleAndBody(string(md))
+		if title == "" {
+			title = p.url
+		}
+		out = append(out, candidate{
+			Source:   "ermao",
+			Title:    title,
+			Abstract: body,
+			URL:      p.url,
+			Venue:    "ermao.net (Chinese-language circumvention blog)",
+			Updated:  p.lastmod,
+			Year:     yearOrNow(p.lastmod),
+			Refs:     []string{"url:" + p.url},
+		})
+	}
+	return out, nil
+}
+
+func ermaoIsPost(url string) bool {
+	// Keep blog posts and articles; skip taxonomy/index pages and
+	// known low-signal categories (scamvpn = scam-VPN call-outs,
+	// airport = commercial-broker reviews, friends/stats/posts =
+	// directory pages).
+	for _, prefix := range []string{
+		"https://www.ermao.net/blog/tags",
+		"https://www.ermao.net/blog/categories",
+		"https://www.ermao.net/blog/archives",
+		"https://www.ermao.net/blog/",  // careful — this is a path-prefix, but only the root /blog/ is the index
+	} {
+		if url == strings.TrimSuffix(prefix, "/") || url == prefix+"/" {
+			return false
+		}
+	}
+	if strings.Contains(url, "/scamvpn/") || strings.Contains(url, "/airport/") ||
+		strings.Contains(url, "/friends/") || strings.Contains(url, "/stats/") ||
+		strings.Contains(url, "/posts/") || strings.HasSuffix(url, "/blog/") ||
+		strings.HasSuffix(url, "/blog/tags/") || strings.HasSuffix(url, "/blog/categories/") ||
+		strings.HasSuffix(url, "/blog/archives/") {
+		return false
+	}
+	return strings.Contains(url, "/blog/") || strings.Contains(url, "/article/") ||
+		strings.Contains(url, "/news/")
+}
+
+// ermaoTitleAndBody pulls the post title and body from wick fetch's
+// markdown output. Wick output looks like:
+//
+//	Title: <page-title>
+//	Status: 200 | Time: 252ms
+//
+//	# <heading>
+//	...body...
+//
+// We use the first H1 line as the title (cleaner than the wick
+// "Title:" header which often duplicates the site name) and return
+// the body (capped to keep prompt size bounded).
+func ermaoTitleAndBody(md string) (string, string) {
+	const bodyCap = 5000
+	lines := strings.Split(md, "\n")
+	var title, body string
+	for i, l := range lines {
+		t := strings.TrimSpace(l)
+		if title == "" && strings.HasPrefix(t, "# ") {
+			title = strings.TrimSpace(strings.TrimPrefix(t, "# "))
+			body = strings.Join(lines[i+1:], "\n")
+			break
+		}
+	}
+	body = strings.TrimSpace(body)
+	if len(body) > bodyCap {
+		body = body[:bodyCap]
+	}
+	return title, body
 }
 
 // ── PoPETs / FOCI proceedings source ──────────────────────────────
