@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-backes-anonymity
+kind: defense
+summary: The number of clouds per peer κ has no measurable effect on censorship resistance (Figure 5 curves are identical across κ = 1–4), while cloud size is the dominant driver of message overhead. This decoupling means designers can increase κ to improve anonymity without degrading censorship resistance or incurring bandwidth cost.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Treat anonymity set size and censorship-resistance path redundancy as orthogonal parameters: tune cloud count κ for anonymity and cloud size for overhead, since these do not trade off against each other.'
+    - Avoid the common assumption that anonymity and censorship resistance are inherently conflicting — in overlay-based designs with cloud-local construction they can be independently optimized.
+section: §5.4–§5.5
+extracted_by: claude-sonnet-4-6

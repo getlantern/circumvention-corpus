@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-detecting
+kind: defense
+summary: 'Endpoints that never close a connection and never respond to any probe (''infinite timeout'') represent 0.7% of the ISP Tap dataset and 42% of the ZMap active-scan dataset; this is the single most common probe-indifferent behavior in both datasets. MTProto already exploits this: its strategy of keeping failed connections open indefinitely produces the highest false-positive rate (0.56% of Tap) among all tested protocols, making it effectively uncountable at acceptable collateral-damage thresholds.'
+techniques:
+    - active-probing
+defenses:
+    - pluggable-transport
+    - obfs4
+    - shadowsocks
+censors:
+    - generic
+defense_implications:
+    - Implement an unlimited read loop (never close the connection) when a client fails authentication, matching the 0.7–42% population of non-responding Internet hosts that are too large for censors to block without extreme collateral damage.
+    - If a finite timeout is operationally required, select from the most common values observed in real traffic (10 s, 15 s, 20 s, 30 s, 60 s account for 82% of endpoints) and randomize per-server startup to avoid a unique per-implementation fingerprint.
+section: §VI, Fig. 13
+extracted_by: claude-sonnet-4-6

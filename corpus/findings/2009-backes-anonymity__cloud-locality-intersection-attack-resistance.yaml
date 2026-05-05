@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-backes-anonymity
+kind: defense
+summary: Cloud locality — building clouds from semantically close peers via short-distance links — ensures that 2-wise and 3-wise cloud intersections have median cardinality between 40 and 50 peers, and the probability that a peer participates in clouds whose pairwise intersection falls below 40 is below 10⁻⁴, rendering intersection attacks infeasible in practice.
+techniques:
+    - flow-correlation
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Construct anonymity sets from topologically local peers (shared interest or social proximity) rather than random global sampling, because local sets overlap densely and resist intersection de-anonymization.
+    - Ensure the anonymity-set construction algorithm is tunable so the designer can raise intersection cardinality at the cost of broader broadcast overhead.
+section: §5.3
+extracted_by: claude-sonnet-4-6

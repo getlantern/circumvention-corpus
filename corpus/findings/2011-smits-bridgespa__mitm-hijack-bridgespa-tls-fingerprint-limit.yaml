@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-smits-bridgespa
+kind: detection
+summary: An active man-in-the-middle adversary can hijack a live BridgeSPA TCP SYN by intercepting the ConnectionTag-bearing packet and racing to complete the bridge connection before the client's timestamp rounds to a new minute. Mitigating this requires the client to re-send the full (non-truncated) ConnectionTag after TLS is established, causing the bridge to act as a cover service (e.g., IMAP over TLS) until validated—but this mitigation is undermined by the fact that Tor bridge TLS certificates are currently distinguishable from other service certificates.
+techniques:
+    - active-probing
+    - tls-fingerprint
+defenses:
+    - bridges
+    - tor
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Bridge TLS certificates must be normalized to match real service profiles before a full TLS-mimicry defense can close the active MitM hijack window.
+    - Post-handshake secondary authentication (sending the full MAC after TLS establishment) is necessary to defeat connection-hijacking attacks on SPA-protected bridges.
+section: §6.2.2, §7.5
+extracted_by: claude-sonnet-4-6

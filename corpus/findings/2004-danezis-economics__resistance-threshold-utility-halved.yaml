@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-danezis-economics
+kind: evaluation
+summary: Under the paper's quadratic utility function and linear defense probability P(t) = t/T, a node will invest zero resources fighting censorship when the censor's imposed distribution reduces its utility by less than half (i.e., when Ui(rc,bc) ≥ Ui(ri,bi)/2). Nodes whose preferences most diverge from the censor's are the first to resist; mild censorship therefore attracts little aggregate resistance.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool deployments targeting diverse user communities will exhibit a natural coalition of high-resistance nodes (those most affected by the specific content being censored); designers should surface mechanisms that let those motivated nodes carry disproportionate relay load.
+    - Expect that gradual throttling or partial blocking strategies by censors will suppress resistance in most of the network; only escalation past the utility-halving threshold mobilizes broad defense.
+section: §6.2
+extracted_by: claude-sonnet-4-6

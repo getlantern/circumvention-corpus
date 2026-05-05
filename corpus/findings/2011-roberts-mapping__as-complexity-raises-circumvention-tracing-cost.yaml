@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-roberts-mapping
+kind: defense
+summary: Russia's high AS complexity (score 19.39, 2,346 ASes) enabled the Russian Business Network to hide malware-hosting ASes by chaining traffic through multiple intermediate legitimate-seeming ASes, making connections very difficult to trace and sever. The paper concludes that higher national AS complexity directly raises the operational cost of enumerating and cutting any given connection.
+defenses:
+    - bridges
+    - tunneling
+censors:
+    - ru
+defense_implications:
+    - In high-complexity networks, multi-hop relay architectures that route through chains of intermediate ASes gain structural camouflage from the density of legitimate traffic paths — a property to exploit when selecting relay topologies in Eastern Europe.
+    - Before deploying relay infrastructure, compute AS-level complexity for candidate jurisdictions; countries with higher complexity scores impose higher enumeration costs on censors attempting to block the relay network.
+section: §IV, §VI
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-xiong-efficient
+kind: deployment
+summary: 'Server-side keyword enumeration on Chinese platforms has become increasingly uneconomical: platforms now require non-virtual phone numbers for account registration, and test accounts are banned after sending a threshold volume of sensitive content. The paper''s 5,521-article dataset and 1,956 confirmed keyword combinations were collected via sample testing between September 2017 and October 2018, with registration costs being the primary limiting factor for research scale.'
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Measurement infrastructure for Chinese platform censorship must minimize messages-per-finding (CompAwareBinSplit achieves 35.47 average) and manage account pools carefully, since each account represents a real phone-number cost and has a finite useful lifetime.
+    - Consider pooling account acquisition and rotating test identities across research groups to amortize the cost of obtaining non-virtual phone numbers required by WeChat and similar platforms.
+section: §1, §7
+extracted_by: claude-sonnet-4-6

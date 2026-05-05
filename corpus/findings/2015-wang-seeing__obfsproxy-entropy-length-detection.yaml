@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-wang-seeing
+kind: detection
+summary: Obfsproxy3 and obfsproxy4 are reliably detected by an entropy-distribution test (KS test, block size k=8) applied to the first 2,048 bytes of the first client-to-server packet, combined with a minimum payload-length check of 149 bytes. On three university campus datasets totaling over 14 million TCP flows, the test achieves TPR=1.0 with FPR ranging from 0.24% to 0.33%. Omitting the length check raises the SSL/TLS false-positive rate to approximately 23%.
+techniques:
+    - dpi
+    - random-payload-detect
+    - traffic-shape
+defenses:
+    - obfs4
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Randomizing obfuscators that encrypt all bytes from the first packet cannot escape entropy detection; any successor must include a convincing plaintext header in the initial packet to avoid flagging.
+    - A minimum-length gate (≥149 bytes) significantly reduces SSL/TLS false positives; transports that vary first-packet length non-deterministically could raise censor collateral damage costs.
+section: §5.1, Table 5
+extracted_by: claude-sonnet-4-6

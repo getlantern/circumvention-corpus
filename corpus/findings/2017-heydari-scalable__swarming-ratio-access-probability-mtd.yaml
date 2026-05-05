@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-heydari-scalable
+kind: defense
+summary: The MI-MTD framework uses Mobile IPv6 Care-of Addresses (CoAs) rotated among randomized user groups every shuffling interval. With 1,000,000 users, 5,000 censors, and 10,000 CoAs (swarming ratio φ=0.5), per-interval access probability is 60.88%; over one minute with 10-second shuffling intervals, blocking probability drops to approximately 0.358%, meaning users retain ~99.6% chance of access.
+techniques:
+    - ip-blocking
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Server-side IP rotation with user group shuffling can reduce attacker-controlled blocking to sub-1% over practical access windows even when adversary controls ~0.5% of the user population as censors.
+    - The swarming ratio (censor count / CoA count) is the sole determinant of access probability at scale — increasing CoA count directly weakens the adversary regardless of total user population.
+section: §IV-A
+extracted_by: claude-sonnet-4-6

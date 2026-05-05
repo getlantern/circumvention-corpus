@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-schuchard-routing
+kind: detection
+summary: A warden can fingerprint the specific covert destination a Telex user is visiting by comparing observed latency distributions against a pre-built database of covert-destination latencies. With an intelligently filtered database of only 10 distributions (K-S inter-entry threshold 0.8), the AUC is 0.868, and with approximately 12 collected samples the false positive rate drops below 10%. Larger databases (size 50) degrade to AUC 0.537 due to distribution similarity, but threshold-based filtering restores substantial discriminative power.
+techniques:
+    - traffic-shape
+    - flow-correlation
+    - website-fingerprint
+defenses:
+    - decoy-routing
+    - telex
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - Covert-destination anonymity — not just usage unobservability — must be an explicit design goal; decoy routing schemes should introduce artificial latency noise sufficient to collapse inter-destination K-S discrimination, or route all covert traffic through a shared anonymizing pool before the final hop.
+    - Because only ~12 RTT samples suffice for reliable fingerprinting, even short-lived sessions are vulnerable; session-level latency shaping (not just per-packet) is required.
+section: §5.3, Figures 7, 9
+extracted_by: claude-sonnet-4-6

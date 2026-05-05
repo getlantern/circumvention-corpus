@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-detal-revealing
+kind: evaluation
+summary: Of 72 PlanetLab vantage points, 7 (~10%) automatically stripped or replaced TCP options (Multipath TCP, MD5, and Window Scale) with NOPs at the very first hop, and 2 VPs always altered TCP sequence numbers. These modifications occurred without any corresponding update to dependent fields, corrupting the TCP stream for higher-layer protocols.
+techniques:
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Do not rely on TCP options (MPTCP, Window Scale, MD5) being preserved end-to-end; ~10% of paths strip them at the access edge, making option-dependent handshake or signaling mechanisms unreliable for circumvention transports.
+    - Test for first-hop TCP option stripping before deploying transports that use non-standard TCP options as covert signaling channels.
+section: §3.1
+extracted_by: claude-sonnet-4-6

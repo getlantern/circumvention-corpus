@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-narayanan-no
+kind: policy
+summary: Encore's architecture turns ordinary web visitors into measurement vantage points, which the researchers argue prevents censors from detecting and disabling dedicated measurement probes. However, this benefit comes with the trade-off that the individuals whose browsers are co-opted face potential legal or physical risk that differs by country and by the specific censored content accessed.
+techniques:
+    - measurement-platform
+    - active-probing
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Distributing probe traffic across normal user populations makes censor-side enumeration of measurement infrastructure infeasible, a property that circumvention tool designers can exploit for decentralized bridge discovery.
+    - 'Any measurement or bridge-bootstrapping system that enlists unknowing end-users must bound per-user exposure: restrict probed targets to domains whose access is low-risk in the deployment country.'
+section: Background / Analysis
+extracted_by: claude-sonnet-4-6

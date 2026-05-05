@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-birtel-slitheen
+kind: detection
+summary: 'A censor can identify Slitheen relay connections by observing that all packets in a suspected overt flow arrive in strict order while flows from the same source naturally exhibit out-of-order delivery: the relay station''s traffic-server component reorders TCP segments to enable TLS record decryption, creating a statistically anomalous per-connection ordering pattern. The reordering buffer also increases per-packet round-trip times, providing a secondary timing signal.'
+techniques:
+    - traffic-shape
+    - middlebox-interference
+    - flow-correlation
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Decoy routing relay stations must not silently correct TCP out-of-order delivery; doing so creates a detectable per-connection ordering fingerprint. Full TCP/TLS stateful handlers that preserve natural delivery patterns are required.
+    - Any relay-side buffering that adds measurable latency relative to the un-relayed overt path should be treated as a detectable artifact and either eliminated or statistically indistinguishable from normal path variation.
+section: §4, §6
+extracted_by: claude-sonnet-4-6

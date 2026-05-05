@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-roberts-mapping
+kind: evaluation
+summary: Eastern Asia averages 4.80 points of control and a complexity score of 1.54 across 510 million IP addresses, while Eastern Europe averages 19.10 PoC and a complexity score of 11.35 across 74 million IPs — nearly twice the complexity of any other region. Russia specifically has 2,346 autonomous systems and a complexity score of 19.39, versus China's 177 ASes and score of 0.11.
+techniques:
+    - ip-blocking
+    - asn-blackholing
+censors:
+    - cn
+    - ru
+defense_implications:
+    - Relay infrastructure placed in high-complexity networks (Russia, Eastern Europe) is structurally harder for censors to enumerate because legitimate traffic paths span far more ASes; prioritize these jurisdictions for long-lived bridge deployment.
+    - Infrastructure transiting low-complexity networks (China, Eastern Asia core) should assume a short operational lifetime and prioritize rapid rotation over stability.
+section: §II, Table II, Table III
+extracted_by: claude-sonnet-4-6

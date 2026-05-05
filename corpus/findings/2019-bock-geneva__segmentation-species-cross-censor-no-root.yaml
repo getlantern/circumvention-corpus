@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-bock-geneva
+kind: defense
+summary: Geneva's Segmentation species — fragmenting HTTP requests at the TCP layer without IP fragmentation, segment overlapping, or insertion packets — achieved 94–98% success against the GFW, 100% against India's Airtel ISP, and 100% against Kazakhstan's HTTPS MITM, making it the only strategy class effective across all three tested censors. These strategies require neither raw sockets nor root privilege.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Implement TCP segmentation of HTTP/HTTPS payloads as a universal baseline evasion layer — it works across geographically and architecturally distinct censors and can be deployed from unprivileged application code.
+    - Prefer evasion strategies that avoid insertion packets (which middleboxes may drop) and raw sockets (which require root) to minimize deployment friction and maximize reliability.
+section: '§5.2 Species 3: Segmentation'
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-holowczak-cachebrowser
+kind: evaluation
+summary: CacheBrowser achieves significantly lower download latency than Tor when fetching CDN-hosted content from China, because content is retrieved directly from CDN edge servers without traversing third-party proxies. Fetching from non-default alternative CDN edge servers increases latency relative to the CDN-mapped optimum, but the overhead is not prohibitive for real-world browsing; geographically proximate alternative servers minimize the penalty.
+techniques:
+    - dns-poisoning
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Publisher-centric circumvention via CDN bypasses proxy relay overhead and outperforms Tor on latency for CDN-hosted content; tool designers should evaluate CDN-bypass as a complement or replacement for proxy transports on popular blocked sites.
+    - Tools should maintain region-annotated CDN edge-server databases and prefer geographically proximate servers, as proximity to the censored user is the dominant factor in keeping latency overhead acceptable when bypassing the CDN mapping system.
+section: §5.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-ververis-internet
+kind: evaluation
+summary: The Republic of Cyprus National Betting Authority (NBA) blocklist grew from 95 URL entries in February 2013 to 2,563 entries in April 2017 — approximately 27 times its initial size — with entries specifying full URL paths rather than just domain names, requiring DPI-capable infrastructure for correct enforcement.
+techniques:
+    - dpi
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Blocklists that specify full URL paths rather than domains require ISPs to deploy DPI; where ISPs cannot or do not deploy DPI (as in Cyprus for HTTPS), path-based blocking is not enforced — circumvention traffic served over HTTPS avoids the most granular filtering tier.
+    - Blocklist quality degrades over time (malformed entries, expired domains, duplicate entries were found); circumvention infrastructure hosted under frequently-rotated domains is more likely to evade stale blocklists.
+section: §4.1
+extracted_by: claude-sonnet-4-6

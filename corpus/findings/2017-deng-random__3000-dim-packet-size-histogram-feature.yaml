@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-deng-random
+kind: detection
+summary: The classifier uses a 3,000-dimension binary vector recording which upstream and downstream packet sizes appear across the full session, combined with aggregate biflow statistics (total packets, burst length, transmission time, incoming/outgoing fractions). This packet-size histogram is the highest-dimensionality feature in the set.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - Padding packets to a small set of fixed sizes (e.g., fixed 1460-byte MTU fills) would collapse the 3,000-dim size-histogram to near-zero entropy, defeating this feature class entirely.
+    - Shaping burst-length and inter-packet timing distributions to match benign HTTPS would neutralize the statistical biflow features used alongside the size histogram.
+section: §IV.B, Table 1
+extracted_by: claude-sonnet-4-6

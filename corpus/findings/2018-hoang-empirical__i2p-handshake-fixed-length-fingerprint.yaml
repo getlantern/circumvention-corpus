@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hoang-empirical
+kind: detection
+summary: I2P obfuscates payload content to prevent protocol identification, but flow analysis can still fingerprint I2P traffic because the first four handshake messages between I2P routers have fixed lengths of exactly 288, 304, 448, and 48 bytes. The I2P team acknowledged this and was developing an authenticated key agreement protocol to resist automated identification.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Fixed-length handshake frames are a trivially detectable fingerprint even when payloads are encrypted — pad or randomize all initial handshake message lengths before deployment in censored environments.
+    - Protocol redesigns targeting DPI evasion must cover both payload entropy and structural metadata (packet sizes, inter-arrival times, message counts); payload-only encryption leaves the handshake envelope as a reliable censor signal.
+section: §2
+extracted_by: claude-sonnet-4-6

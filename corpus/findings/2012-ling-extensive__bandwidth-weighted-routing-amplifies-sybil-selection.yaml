@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-ling-extensive
+kind: detection
+summary: 'Tor''s bandwidth-weighted path selection creates a structural amplification: 60% of middle routers selected across 430 circuits had bandwidth above 1 MB/s, yet only 10% of all Tor routers exceed 1 MB/s. This skew means that an adversary advertising a single high-bandwidth middle node achieves selection probability far exceeding its proportional count in the network, making high-bandwidth Sybil nodes highly cost-effective for bridge discovery.'
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Avoid advertising high bandwidth for bridge-supporting infrastructure; capping the advertised bandwidth of nodes in bridge circuits reduces the probability that a high-bandwidth malicious node appears in a bridge's circuit path.
+    - Consider flattening or randomizing bandwidth weighting specifically for middle-node selection in bridge-entry circuits, accepting a modest throughput penalty to reduce the disproportionate influence of high-bandwidth adversarial nodes.
+section: §V-B, Fig. 8, Fig. 9
+extracted_by: claude-sonnet-4-6

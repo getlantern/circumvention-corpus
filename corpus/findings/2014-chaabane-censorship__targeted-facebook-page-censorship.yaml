@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-chaabane-censorship
+kind: detection
+summary: 'Syrian censors used a custom Blue Coat URL-category to policy_redirect specific Facebook pages (Syrian.Revolution: 1,461 censored) while allowing 17.70M facebook.com requests overall — only 1.62M (8.4%) were censored. The URL-pattern matching was imprecise: www.facebook.com/Syrian.Revolution?ref=ts was blocked but the identical page with additional AJAX query parameters (__a=11&ajaxpipe=1) was not categorized as ''Blocked Site,'' leaving some access through.'
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - sy
+defense_implications:
+    - Adding non-semantic query parameters or URL fragments to censored pages can evade category-based filters whose pattern matching does not normalize URLs — circumvention tools can exploit such imprecision.
+    - Surgical per-page blocking is harder to detect than platform-wide blocking; monitoring tools should test specific political/activist URLs, not just platform reachability.
+section: §6, Tables 12–13
+extracted_by: claude-sonnet-4-6

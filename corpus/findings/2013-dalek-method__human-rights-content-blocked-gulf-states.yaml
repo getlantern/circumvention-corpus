@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dalek-method
+kind: policy
+summary: 'All confirmed URL filtering deployments—McAfee SmartFilter in UAE and Netsweeper in Yemen, UAE, and Qatar—block content across at minimum six of seven tested human-rights-sensitive categories: media freedom, human rights, political reform, LGBT, religious criticism, and minority groups/religions. Netsweeper in both Qatar (Ooredoo) and UAE (Du) blocks all seven categories. This content is protected under Article 19 of the Universal Declaration of Human Rights.'
+techniques:
+    - keyword-filtering
+censors:
+    - sa
+    - ae
+defense_implications:
+    - Circumvention tools deployed in Gulf states and Yemen must address URL-category-based blocking targeting political and social content, not only technical circumvention domains
+    - Measurement campaigns should test political, LGBT, and religious content categories—not just IT/proxy categories—to fully characterize a filtering deployment's scope
+section: §5, Table 4
+extracted_by: claude-sonnet-4-6

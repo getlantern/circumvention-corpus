@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-verkamp-inferring
+kind: detection
+summary: Thailand uses an out-of-band device to inject spoofed HTTP 302 redirect responses, so the destination server still receives and responds to the original request — unlike inline censors in Bangladesh and India where the request is dropped before reaching the server. Saudi Arabia similarly uses an out-of-band device to inject a spoofed HTTP 200 response containing an iframe warning page loaded from a separate IP address, allowing the warning page content to be updated without modifying the censoring module.
+techniques:
+    - packet-injection
+censors:
+    - sa
+defense_implications:
+    - For out-of-band injectors, circumvention clients can race the injected response by discarding non-authentic HTTP redirects and waiting for the real server reply — the injector cannot suppress it.
+    - 'Detect out-of-band injection via TTL inconsistency: injected packets typically carry TTL values inconsistent with the claimed source, enabling reliable discrimination from legitimate responses.'
+section: §4.2, §5
+extracted_by: claude-sonnet-4-6

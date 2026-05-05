@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-nabi-anatomy
+kind: detection
+summary: Pakistan's pre-April 2013 ISP-level censorship used DNS injection (spoofed NXDOMAIN) as the primary mechanism, affecting 60.91% of the 307 tested websites on the university network. Critically, the DNS injection extended to public resolvers including Google DNS (8.8.8.8) and Level3 (209.244.0.3), meaning switching to a well-known public resolver does not bypass the block.
+techniques:
+    - dns-poisoning
+censors:
+    - pk
+defense_implications:
+    - Do not rely on public DNS resolver substitution (8.8.8.8, etc.) as a bypass in Pakistan — the censor intercepts queries destined for those resolvers too; use DNS-over-HTTPS or DNS-over-TLS tunneled through an encrypted channel instead.
+    - Circumvention clients that resolve hostnames server-side (as in a VPN or proxy) avoid this class of blocking entirely — advertise this property to users.
+section: §4.1.1
+extracted_by: claude-sonnet-4-6

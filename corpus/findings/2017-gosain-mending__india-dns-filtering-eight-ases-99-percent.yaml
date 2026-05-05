@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-mending
+kind: evaluation
+summary: Eight Indian ASes can collectively intercept 99.14% of AS-level paths connecting all Indian ASes to DNS resolvers, including GoogleDNS and OpenDNS; 4,906 routers across these 8 ASes suffice to launch DNS injection attacks covering the entire country. The same 8 ASes also appear among the 10 key ASes identified for IP filtering.
+techniques:
+    - dns-poisoning
+censors:
+    - in
+defense_implications:
+    - Circumvention tools bootstrapping in India must not rely on standard DNS resolution — use pre-distributed IP-literal server addresses or encrypted DNS (DoH/DoT) routed through a non-Indian resolver to avoid the 8 choke-point ASes.
+    - DNS-based domain-fronting discovery or bridge distribution is particularly fragile in India; prefer out-of-band or IP-literal bootstrap mechanisms for any India-facing deployment.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-k-psell-achieve
+kind: deployment
+summary: NAT and firewalls make volunteer forwarders (JAPR) unreachable for inbound connections by default, removing the incentive for volunteers to reconfigure their systems for no personal benefit. The design response is to reverse the connection direction — JAPR initiates contact with JAPB — shifting the NAT/firewall configuration burden to the motivated blockee who gains direct benefit from solving it.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Design volunteer relay software so that outbound-only volunteers (behind NAT/firewall) can still serve blocked users by polling a rendezvous point for pending requests, eliminating the inbound-port configuration barrier to volunteer participation.
+    - Integrate a self-test mechanism that checks whether a volunteer's node is actually reachable before advertising it in the forwarder directory, preventing phantom entries that waste blocked users' connection attempts.
+section: §6.4
+extracted_by: claude-sonnet-4-6

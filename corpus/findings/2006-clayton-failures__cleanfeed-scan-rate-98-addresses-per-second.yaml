@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-failures
+kind: evaluation
+summary: Using a simple dialup connection, the CleanFeed oracle scan enumerated IP addresses at up to 98 addresses/second. At this rate, the ~8.3 million Russian IP addresses (the IWF reported 25% of known illegal sites were hosted in Russia) could be scanned in under 24 hours, and the full routable IPv4 space (32% of 2^32 addresses) in approximately 160 days. A suitable filtered dialup account was available for free, with phone costs under £15.
+techniques:
+    - ip-blocking
+    - measurement-platform
+defense_implications:
+    - IP-address-based blocklist enumeration is practical on consumer-grade connectivity; any system whose structure leaks blocklist membership should assume adversaries will enumerate the full list within days.
+    - Rate-limiting or behavioral anomaly detection on low-TTL probe traffic is a necessary (though not sufficient) mitigation — the paper notes active detection and account termination as the most practical countermeasure.
+section: §5.2
+extracted_by: claude-sonnet-4-6

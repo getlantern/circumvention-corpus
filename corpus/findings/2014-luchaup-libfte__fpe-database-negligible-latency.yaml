@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-luchaup-libfte
+kind: evaluation
+summary: In PostgreSQL benchmarks, FPE-encrypted account-balance fields (libfte P-DD scheme, regex `\-[0-9]{9}`) reduce throughput by only 0.8% for complex mixed-transaction workloads (USUUI) and only 1.1% for SELECT-only workloads, relative to conventional authenticated encryption. Per-query latency for FPE versus authenticated encryption is identical across all five tested query types.
+defenses:
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - FPE is viable for format-constrained fields in circumvention infrastructure (API responses, database records, configuration payloads) with negligible throughput cost.
+    - FPE's overhead versus AES-ECB is dominated by the underlying FFX primitive (≥10 AES calls per operation), not the ranking step; minimize cost by choosing the smallest regex that satisfies format requirements.
+section: §7.1, Tables 8–9
+extracted_by: claude-sonnet-4-6

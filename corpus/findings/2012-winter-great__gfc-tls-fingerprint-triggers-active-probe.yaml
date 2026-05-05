@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-winter-great
+kind: detection
+summary: 'The GFC identifies Tor connections via a unique TLS ClientHello cipher list sent by the Tor client. Once DPI boxes detect this fingerprint on outbound traffic, active scanning is initiated within minutes: scanners connect to the suspected bridge, attempt to build a Tor circuit, and if successful the IP:port tuple is blocked. This two-stage pipeline (fingerprint → confirm → block) allows dynamic bridge blocking without pre-enumeration.'
+techniques:
+    - tls-fingerprint
+    - active-probing
+    - dpi
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Rotate or randomize the TLS ClientHello cipher list so it is indistinguishable from a legitimate browser (e.g., match Firefox or Chrome JA3/JA4 exactly) to prevent the initial DPI trigger.
+    - 'Deploy active-probing resistance at the server: reject or timeout connections that do not supply a valid shared secret before presenting any Tor-identifiable behavior.'
+section: §2, §4.1
+extracted_by: claude-sonnet-4-6

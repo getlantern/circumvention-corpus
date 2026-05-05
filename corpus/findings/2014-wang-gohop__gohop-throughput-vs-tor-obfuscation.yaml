@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wang-gohop
+kind: evaluation
+summary: GoHop without traffic shaping achieved 76.8–78.5 Mbps (virtual NIC) on a 1 Gbps LAN; traffic shaping reduced this to 58.1 Mbps (~26% overhead from fragmentation). In a Beijing-to-Seattle real-world download test, GoHop delivered 960–999 KB/s against a 1,544 KB/s direct baseline, with the 96.7 Mbps WAN link—not GoHop—as the bottleneck. This compares to Tor's 40–300 KB/s (30–80 KB/s with obfuscation plugins such as SkypeMorph).
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - Budget ~26–30% throughput overhead for traffic shaping due to fragmentation; size server capacity accordingly rather than treating shaping as free.
+    - A personal VPN architecture (no shared relay contention) can deliver throughput orders of magnitude higher than Tor-based obfuscated transports—viable for HD video and cloud workloads where Tor is not.
+section: §V.B, Table II, Table III
+extracted_by: claude-sonnet-4-6

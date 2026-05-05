@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wang-rbridge
+kind: evaluation
+summary: In simulated event-driven (crisis) blocking where all corrupt users simultaneously block bridges on day 300, available bridges drop from ~500 to ~150 and thirsty users spike to 25%; maintaining 50 reserve bridges (~10% of deployed stock) halves the thirsty-user count, and 100 reserve bridges nearly eliminates thirstiness among users who had accumulated sufficient credits.
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Reserve ~10% of the bridge pool as never-assigned backups specifically to absorb coordinated mass-blocking events analogous to crisis-driven shutdowns; release them automatically on a spike in unavailability reports.
+    - Accept that ~10% of recently joined users will still lack bridges after a mass-blocking event because they joined too recently to accumulate replacement credits — design onboarding to front-load credit grants or provide a grace-period bridge.
+section: §4.3.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-wang-your
+kind: evaluation
+summary: 'Tested across 11 vantage points in 9 Chinese cities against 77 Alexa-ranked websites (50 trials each, April–May 2017), most prior TCB evasion strategies are largely broken: TCB creation with SYN achieves only 6.9% success (88.9% Failure 2), TCB teardown with FIN achieves only 11.1% success (87.9% Failure 2), while in-order data overlapping with TTL-based insertion still achieves 90.6% success and only 3.7% Failure 2. Without any evasion strategy the baseline success rate is 2.8%.'
+techniques:
+    - dpi
+    - rst-injection
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Prioritize in-order data overlapping (buffer-prefill) over out-of-order or TCB-creation strategies when targeting the GFW; the former degrades gracefully while the latter have near-zero efficacy against the evolved GFW.
+    - Treat TCB teardown with FIN as broken and remove it from any production circumvention tool targeting China.
+section: §3, Table 1
+extracted_by: claude-sonnet-4-6

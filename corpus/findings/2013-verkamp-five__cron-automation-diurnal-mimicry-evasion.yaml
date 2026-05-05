@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-verkamp-five
+kind: detection
+summary: In the Russia and Mexico incidents, spam tweets showed statistically significant spikes at fixed sub-hour intervals (5 and 15 minutes past the hour respectively), consistent with cron-job automation. Despite this automation, both campaigns deliberately mimicked human diurnal activity patterns — spam volume peaked at the same hours as legitimate traffic — to evade time-based anomaly detection.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - ru
+defense_implications:
+    - Sub-minute periodicity (cron-style spikes) is detectable even when diurnal patterns are spoofed — combine hourly-scale and minute-scale timing analysis to separate automated from human posting.
+    - Classifiers relying solely on time-of-day distributions will be fooled by diurnal mimicry; minute-level inter-arrival regularity must be a separate feature.
+section: §3.2, Figures 2–3
+extracted_by: claude-sonnet-4-6

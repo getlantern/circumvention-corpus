@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-lincoln-bootstrapping
+kind: evaluation
+summary: A balls-and-bins analysis shows that an adversary conducting N full rounds of a rate-limited rendezvous protocol discovers only 63% of a pool of N entry points; full coverage requires N ln N rounds (the coupon collector's bound). Concretely, with three 8-hour shifts of 100 humans performing 60-minute CAPTCHA+proof-of-work challenges, an adversary discovers ~2,400 entry points per day, exhausting a static pool of 10,000 addresses in roughly 19 days.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Static bridge pools are fundamentally exhaustible; supplement proof-of-work rate-limiting with continuous pool replenishment so the creation-to-discovery rate stays positive.
+    - Combine human-in-the-loop CAPTCHA with computational puzzles to ensure bulk automated harvesting cannot keep pace with pool rotation.
+section: §3
+extracted_by: claude-sonnet-4-6

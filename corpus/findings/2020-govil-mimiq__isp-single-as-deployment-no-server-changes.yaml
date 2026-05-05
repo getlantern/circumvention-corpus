@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-govil-mimiq
+kind: deployment
+summary: 'MIMIQ requires modifications only to a single trusted network (an ISP or enterprise AS): an address allocation server and several critical edge switches. Remote QUIC servers and the wider Internet require no changes. The authors argue ISPs have financial incentives to deploy MIMIQ as a privacy-enhancing service, and that QUIC''s rapid adoption (600K+ QUIC-enabled domains, 1.6M QUIC-capable IPs as of 2020) means server-side support is increasingly given.'
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - ISP-deployed IP-hopping infrastructure is an incrementally deployable privacy primitive that does not require end-to-end protocol changes—partner ISPs in censored regions could offer this as a service.
+    - The address allocation server is a single point of failure; plan for distributed or redundant allocation before production deployment.
+section: §5
+extracted_by: claude-sonnet-4-6

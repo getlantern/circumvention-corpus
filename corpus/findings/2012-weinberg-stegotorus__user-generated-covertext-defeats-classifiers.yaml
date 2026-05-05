@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-weinberg-stegotorus
+kind: defense
+summary: StegoTorus distributes a fixed set of packet traces and HTTP covertext databases with the software, but allows users to record their own; classifiers trained on the distributed covertext will not generalize to user-generated databases. The paper further notes that reusing a small number of traces repeatedly creates a statistical fingerprint because censors can learn conversation patterns from packet sizes and timings alone, implying that trace diversity must be maintained over time.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+    - randomization
+    - pluggable-transport
+defense_implications:
+    - Ship a minimal seed covertext database but mandate per-install or per-session covertext generation so that a censor who intercepts the software distribution cannot pre-train an effective classifier.
+    - Rotate covertext traces frequently (per-session minimum) to prevent the censor from fingerprinting users who appear to 'have the same conversation' repeatedly.
+section: §4.1.1, §5.2
+extracted_by: claude-sonnet-4-6

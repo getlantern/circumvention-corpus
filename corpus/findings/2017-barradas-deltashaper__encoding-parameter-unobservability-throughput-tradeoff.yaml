@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-barradas-deltashaper
+kind: evaluation
+summary: 'Encoding parameters must be jointly tuned to remain unobservable: only specific combinations stay below the intermediate blocking threshold ∆I. Valid configurations at 1 fps include (160x120, 4x4) and (320x240, 8x8) areas/cell sizes; increasing frame rate above 1 fps pushes EMD above ∆ for all multi-bit encodings. As bits per cell increase, video compression introduces more decoding errors — error rates become unacceptable above 6 bits/cell for the (320x240, 8x8) configuration, yielding the candidate encoding: 320x240 area, 8x8 cells, 6 bits/cell, 1 fps.'
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+defense_implications:
+    - 'Steganographic capacity in compressed video carriers is severely limited by codec optimization (macroblocks, inter-frame compression): designers should experimentally map the unobservability-throughput Pareto frontier for each target application and codec version, since analytical models are intractable.'
+    - Encoding parameters that trade throughput for error resilience (larger cells, lower bit depth, lower fps) simultaneously improve unobservability — the same knobs serve both goals, so calibration can optimize for unobservability without a separate error-correction tuning pass.
+section: §6.2, §6.3, Figures 9–12
+extracted_by: claude-sonnet-4-6

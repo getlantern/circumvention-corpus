@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-karlin-decoy
+kind: defense
+summary: Decoy routing places the circumvention service at transit routers rather than fixed-IP edge proxies, so the client addresses packets to any reachable decoy destination and the router hijacks the flow on the client's behalf. A single well-placed router may lie on paths to millions of destinations, making circumvention proxies appear ubiquitously deployed from an adversary's perspective. Blocking such a router requires disrupting ordinary traffic for large fractions of the Internet, qualitatively raising the cost of IP-address-based censorship.
+techniques:
+    - ip-blocking
+defenses:
+    - decoy-routing
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Deploy circumvention infrastructure at ISP or IXP transit points rather than endpoint servers so that no single blockable IP address maps to the proxy function.
+    - When evaluating placement, prioritize routers that cover the highest fraction of client-to-destination paths to maximize collateral disruption cost for a blocking adversary.
+section: §1.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-internet
+kind: detection
+summary: Winter and Lindskog [157] (2012) documented that the GFW used TLS SNI inspection in combination with IP/port filtering and TCP disruption to block Tor, as recorded in the survey's Table 1. This is one of the earliest published accounts of the GFW applying SNI-based blocking specifically to a circumvention protocol, demonstrating that the GFW correlated multiple detection signals rather than relying on any single technique.
+techniques:
+    - sni-blocking
+    - ip-blocking
+    - port-blocking
+    - rst-injection
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Tor-like circumvention protocols must not assume that IP/port rotation alone defeats the GFW — SNI inspection provides an independent identification signal that persists even as IP addresses rotate.
+    - Deploy bridges with valid TLS certificates covering legitimate-looking SNI values, and treat SNI hiding (ECH) as a required feature rather than an optional enhancement.
+section: Table 1
+extracted_by: claude-sonnet-4-6

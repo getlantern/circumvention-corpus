@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-detecting
+kind: evaluation
+summary: The authors' ISP Tap dataset yielded 129,000 unique response sets across 433,286 endpoints while ZMap's 1.5 million endpoints produced only 31,000 unique sets — with over 42% of ZMap endpoints behaving identically (infinite timeout, no data) due to firewall chaff. This vantage-point bias means the effective false-positive rate a censor faces when targeting ISP-observed traffic is ~28× lower than against random scans (0.02% vs 0.56% for MTProto), making ISP-scale active probing far more actionable than Internet-wide scanning alone.
+techniques:
+    - active-probing
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Proxy operators must model censor vantage points as ISP taps on observed flows, not ZMap-style random scans — distinguishing features that produce 0.56% FPR at Internet scale may produce only 0.02% FPR in the censored ISP environment where the proxy is actually deployed.
+    - Avoid clustering proxies on the same hosting provider with correlated open-port signatures; the paper identified one provider running 700 sequential identically-behaving Shadowsocks ports per IP, collapsing estimated global count from ~1 million to ~2,285 unique IPs.
+section: §III-B, §V-D, Fig. 2
+extracted_by: claude-sonnet-4-6

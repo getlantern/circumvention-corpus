@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-filast-ooni
+kind: detection
+summary: OONI observes that many interception devices deployed in the wild advertise their vendor and model information, making passive device identification feasible from probe-level observations alone. The framework is designed to locate interception devices and then apply probing techniques to fingerprint the specific vendor and product in use.
+techniques:
+    - dpi
+    - middlebox-interference
+    - packet-injection
+defense_implications:
+    - Circumvention tools can incorporate passive middlebox fingerprinting to identify which blocking vendor is present on a given path, enabling targeted protocol adaptation before a sensitive connection is attempted.
+    - Build detection tests that probe for vendor-specific response signatures (blockpage templates, RST timing patterns, header normalization) to maintain an updated taxonomy of deployed blocking infrastructure.
+section: §2 Goals
+extracted_by: claude-sonnet-4-6

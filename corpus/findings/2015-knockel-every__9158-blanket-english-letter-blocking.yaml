@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-knockel-every
+kind: detection
+summary: 9158 version 6.9, in addition to its explicit keyword filter, asterisks out all English alphabet letters in any chat message containing six or more consecutive English letters. Combined with explicit keywords for 'http', 'www', and 'com' on its filter list, this constitutes a blanket URL-suppression mechanism that also incidentally blocks arbitrary English-language communication.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Coarse character-class filters operate independently of keyword lists — a circumvention payload or rendezvous address using Base64 or hex-encoded strings may trigger blanket English-letter blocking even when no specific keyword matches.
+    - Steganographic or non-Latin encoding schemes for embedding circumvention rendezvous information (e.g., encoded in CJK characters or numeric sequences) are more robust against this category of filter than alphanumeric encodings.
+section: §4.3
+extracted_by: claude-sonnet-4-6

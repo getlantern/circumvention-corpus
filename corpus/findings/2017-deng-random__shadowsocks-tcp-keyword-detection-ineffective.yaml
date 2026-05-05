@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-deng-random
+kind: detection
+summary: Shadowsocks traffic appears as ordinary TCP with no payload keywords or obvious protocol markers because the entire payload is encrypted; firewalls cannot distinguish it from generic TLS without behavioral flow analysis. This makes signature- and keyword-based detection ineffective against it.
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - shadowsocks
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Payload encryption alone is insufficient — flow-level behavioral features remain accessible even when packet content is opaque.
+    - Designs that randomize flow-level metadata (burst patterns, packet size distributions) are necessary to defeat classifiers that operate on this residual surface.
+section: §III.A
+extracted_by: claude-sonnet-4-6

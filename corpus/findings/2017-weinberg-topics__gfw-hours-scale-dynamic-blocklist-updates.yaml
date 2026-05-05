@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-weinberg-topics
+kind: detection
+summary: China's Great Firewall adds sites to its blacklist within hours of their becoming newsworthy and drops them again just as quickly; conversely, Pakistan's pornography crackdown used a rarely-updated blocklist, causing 50% of consumption to shift to unlisted sites. An outdated probe list will therefore underestimate GFW effectiveness and overestimate effectiveness in countries with static lists.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - cn
+    - pk
+defense_implications:
+    - Circumvention tools targeting China must assume IP/domain blocklists rotate at hours-to-days timescale; hardcoded or infrequently-refreshed server lists will become stale rapidly.
+    - Infrastructure selection for circumvention proxies should factor in a censor's list-update cadence — Chinese-market proxies require faster IP rotation than those serving countries with static blocklists.
+section: §1
+extracted_by: claude-sonnet-4-6

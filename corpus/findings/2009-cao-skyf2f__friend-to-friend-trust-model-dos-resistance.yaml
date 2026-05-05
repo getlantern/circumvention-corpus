@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-cao-skyf2f
+kind: defense
+summary: SkyF2F's friend-to-friend service model, where a server publishes its appid only to trusted contacts rather than publicly, provides significant resistance to both sybil attacks (malicious censor-controlled servers) and DoS exhaustion attacks. A censor posing as a client can establish many tunnels to exhaust a public server's resources; restricting service to a trusted friend list eliminates most of this attack surface.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Trust-restricted bridge distribution (friend-to-friend or invitation-only) substantially reduces censor infiltration and DoS attack surface versus publicly advertised proxies; pair with per-client connection/bandwidth limits as a secondary defense.
+    - Identifier rotation is much cheaper in overlay networks than in IP space — designing circumvention systems around rotatable application-layer IDs rather than IP addresses dramatically lowers recovery cost after a server is burned.
+section: §V.A
+extracted_by: claude-sonnet-4-6

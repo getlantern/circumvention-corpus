@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-tanash-decline
+kind: evaluation
+summary: Comparing 5.6M pre-coup tweets (2015 Turkish general election) to 8.5M post-coup tweets (July–November 2016), the authors found 72% fewer government-censored tweets post-coup (142,492 vs. 513,719), with an estimated 43% of that decline attributable to reduced overall Twitter usage in Turkey and the remainder to user self-censorship.
+techniques:
+    - keyword-filtering
+    - throttling
+censors:
+    - tr
+defense_implications:
+    - Chilling effects can suppress circumvention demand more than technical blocking; tool adoption strategies must account for fear-driven non-use, not just access barriers.
+    - Network-throttling events create short-term circumvention spikes; design onboarding flows that retain users acquired during crises before the window closes.
+section: §4.1
+extracted_by: claude-sonnet-4-6

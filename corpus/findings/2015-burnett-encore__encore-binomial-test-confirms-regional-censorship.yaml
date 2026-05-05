@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-burnett-encore
+kind: evaluation
+summary: Applying a regional binomial hypothesis test (p=0.7, significance 0.05) to Encore measurements independently confirmed censorship of youtube.com in Pakistan, Iran, and China, and of twitter.com and facebook.com in China and Iran, validating passive cross-origin measurement against prior independent reports of filtering.
+techniques:
+    - measurement-platform
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - cn
+    - ir
+    - pk
+defense_implications:
+    - Comparing failure rates across regions simultaneously—rather than in isolation—is necessary to distinguish censor-induced blocking from global site outages; circumvention monitoring pipelines should implement per-country failure-rate comparisons as a first-pass classifier.
+    - Known-blocked high-profile domains (YouTube, Twitter, Facebook) serve as reliable ground-truth calibration targets for tuning detection thresholds before applying them to novel circumvention infrastructure endpoints.
+section: §7.2
+extracted_by: claude-sonnet-4-6

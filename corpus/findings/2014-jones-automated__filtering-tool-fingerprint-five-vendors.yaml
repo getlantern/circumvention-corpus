@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-automated
+kind: detection
+summary: Five commercial filtering products (FortiGuard, Squid, Netsweeper, Websense, WireFilter) were identified in 7 of 36 block-page clusters via copyright notices in HTML comments, HTTP header strings, or URL path patterns; the remaining 29 clusters contained no identifying markup. WireFilter was first detected in the wild in Saudi Arabia (AS 25019) in 2011, representing a newly deployed filtering product not previously observed in measurements.
+techniques:
+    - dpi
+    - measurement-platform
+censors:
+    - sa
+    - ae
+    - generic
+defense_implications:
+    - Commercial filtering products leak vendor identity through HTTP headers and HTML comments; circumvention infrastructure operators can passively scan for these signatures to map which products are deployed in target countries before designing evasion.
+    - Roughly 80% of block-page clusters had no vendor attribution, suggesting significant undocumented filtering infrastructure; circumvention tools should not assume blocking behavior matches any known vendor's documented ruleset.
+section: §5.2, Table 2
+extracted_by: claude-sonnet-4-6

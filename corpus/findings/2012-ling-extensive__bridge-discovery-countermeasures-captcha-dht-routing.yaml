@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-ling-extensive
+kind: defense
+summary: 'The paper identifies three countermeasure classes against bridge discovery: (i) CAPTCHA on email/HTTPS distribution (limited by automated solving services); (ii) uniform random middle-node selection, which defeats bandwidth-Sybil attacks but degrades Tor throughput by routing through low-bandwidth nodes; (iii) DHT-based P2P architecture where no central server holds all bridge IPs, making systematic enumeration infeasible—though DHT systems introduce Sybil and eclipse-attack vulnerabilities of their own.'
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - A DHT-based or socially distributed bridge assignment model (no single server holding all bridge IPs) eliminates the enumeration attack surface that centralized email/HTTPS servers present; designs like Snowflake's rendezvous broker partially address this by decoupling bridge identity from a single enumerable endpoint.
+    - 'Peer-to-peer bridge distribution combined with short bridge lifetimes (rotation on the order of hours to days) provides defense-in-depth: even if an adversary enumerates bridge IPs quickly, they find credentials already stale by the time blocking is deployed.'
+section: §VI
+extracted_by: claude-sonnet-4-6

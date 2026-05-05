@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-monitoring
+kind: evaluation
+summary: In South Korea, adult websites (e.g., hardsextube.com) were censored exclusively via HTTP content substitution — a JavaScript redirect to the official blockpage http://warning.or.kr — with 98% of content-size-ratio samples falling below the 0.3 detection threshold, while no DNS tampering or TCP-level blocking was observed. All other tested countries had fewer than 16% of samples below the threshold.
+techniques:
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - In environments where DNS and TCP-layer blocking are absent, enforcing HTTPS (TLS) provides complete protection against HTTP-layer content injection, since the censor's only lever is in-path HTTP substitution.
+    - The sharp bimodal distribution of content-size ratios (mode near 0 for censored country, mode near 1 for uncensored) validates content-size ratio as a high-precision classifier — circumvention clients can use it as a lightweight runtime health-check to confirm tunnel effectiveness.
+section: §3.2
+extracted_by: claude-sonnet-4-6

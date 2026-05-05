@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-bocovich-slitheen
+kind: detection
+summary: 'TapDance''s non-blocking asymmetric design leaves the overt connection open but abandoned, enabling an active censor to inject a TCP ACK carrying a stale sequence number; the overt server responds with its true TCP state, exposing the discrepancy and confirming decoy routing. The attack requires no clean-path routing capability: the injected packet is forwarded through the tainted path by the non-blocking TapDance station itself.'
+techniques:
+    - active-probing
+    - rst-injection
+defenses:
+    - tapdance
+censors:
+    - generic
+defense_implications:
+    - Any decoy routing design that abandons or severs the overt connection after hijacking it is vulnerable to TCP replay; the relay must maintain a live, active TCP session with the overt server for the entire duration of the covert session.
+    - Inline blocking of downstream data—despite its deployment cost—is a prerequisite for defending against TCP state probing attacks.
+section: §2.2, §4.3
+extracted_by: claude-sonnet-4-6

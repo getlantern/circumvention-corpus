@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-niaki-iclab
+kind: evaluation
+summary: Between January 2017 and September 2018, ICLab conducted 53,906,532 measurements of 45,565 URLs across 62 countries and 234 ASes, detecting blocking of 3,602 unique URLs in 60 countries via DNS manipulation, TCP packet injection, and block page delivery. Iran blocked 20–30% of Alexa top-500 URLs — more than any other monitored country — while Saudi Arabia consistently blocked roughly 10%. The global trend in detected censorship shows a steady decrease, which the authors attribute to rising adoption of TLS and circumvention tools.
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - rst-injection
+    - measurement-platform
+censors:
+    - ir
+    - sa
+    - tr
+    - in
+defense_implications:
+    - The global decrease in detected censorship concurrent with TLS adoption suggests protocol-layer encryption is the single highest-leverage defense; prioritize HTTPS-only endpoints and HSTS preloading for any circumvention infrastructure.
+    - Iran and Saudi Arabia exhibit the highest censorship rates across multiple content categories; proxy infrastructure serving these markets must handle DNS manipulation, packet injection, and block pages simultaneously rather than defending against a single mechanism.
+section: §V
+extracted_by: claude-sonnet-4-6

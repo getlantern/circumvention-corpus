@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-devil-s
+kind: evaluation
+summary: Customer-cone size — the AS selection metric used by prior work (Houmansadr et al. 2014) — is poorly correlated with actual path frequency (Spearman rank correlation = 0.2). 33.17% of paths to Alexa top-100 prefixes traverse 1-hop customers of the largest-cone AS (AS3356, cone size 24,553) without transiting AS3356 itself, showing that cone-based heuristics systematically misidentify which ASes actually carry traffic.
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Select candidate ASes for DR placement using empirical path-frequency data derived from real BGP RIBs (e.g., RouteViews snapshots), not proxy metrics like customer-cone size or AS degree.
+    - Validate AS selection with actual routing tables using a valley-free inference algorithm (Gao et al.) rather than graph-theoretic approximations or simulated BGP paths, which can materially misrank candidates.
+section: §6.6, Figure 10, Table 5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-pfitzmann-terminology
+kind: defense
+summary: 'Pseudonymity uses persistent identifiers other than real names, enabling accountability while providing partial unlinkability; however, use of the same pseudonym across different contexts enables linkability: the attacker can link all data related to a pseudonym. Unlinkability of two messages requires that the attacker cannot sufficiently distinguish whether they share a sender or recipient; for a scenario with n senders, this holds iff the probability of common authorship is sufficiently close to 1/n.'
+techniques:
+    - dpi
+    - flow-correlation
+defenses:
+    - pluggable-transport
+    - tor
+    - bridges
+defense_implications:
+    - Long-lived connection identifiers (session tokens, TLS fingerprints, persistent client IDs) function as pseudonyms enabling cross-session linkability — rotate identifiers per connection and avoid reuse across contexts to prevent correlation attacks.
+    - Protocol designers must ensure that any stable observable attribute (port, timing signature, payload pattern) does not function as an implicit pseudonym; if the censor can link two sessions via a shared attribute, full unlinkability is lost regardless of encryption strength.
+section: §4, §9, §11
+extracted_by: claude-sonnet-4-6

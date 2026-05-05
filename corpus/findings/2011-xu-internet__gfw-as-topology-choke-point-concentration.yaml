@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-xu-internet
+kind: evaluation
+summary: 'China''s AS-level topology is shallow and concentrated: CHINANET and CNCGROUP together account for 63.9% of 133 unique foreign peerings, 87% of internal ASes are within one hop of a border AS, and just 24 border/backbone ASes serve as effective choke points for all international traffic. The TTL of GFW RST packets is now crafted to prevent IDS localization by TTL inspection, requiring TTL-incrementing probe packets to identify filtering device positions.'
+techniques:
+    - dpi
+    - rst-injection
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - The extreme concentration of international peering in two ISPs means censors can achieve near-total international blocking with a small number of policy changes at CHINANET and CNCGROUP — circumvention infrastructure must treat AS-level diversity as a first-class design requirement, not just IP diversity.
+    - TTL-based IDS location fingerprinting is no longer viable against the GFW; circumvention measurement tooling must use TTL-incrementing ACK probes after triggering a reset, not passive TTL analysis of RST packets, to determine filtering device positions.
+section: §3.2, §3.3, §2
+extracted_by: claude-sonnet-4-6

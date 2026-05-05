@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-internet
+kind: defense
+summary: 'The paper formally defines circumvention as either preventing the trigger from being seen by the surveillance device, or countering the effects of the censoring action. This two-path decomposition — hide the trigger vs. nullify the enforcement — provides a clean design framework: a circumvention tool can succeed by making traffic unrecognizable (no trigger fires) or by routing around the blocking device (action nullified).'
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - mimicry
+    - tunneling
+    - randomization
+defense_implications:
+    - Design protocols that attack the trigger layer first (traffic looks like legitimate content so no censoring action fires) rather than relying solely on resilience to post-detection blocking actions.
+    - Test circumvention tools against both surveillance-layer detection (does the trigger fire?) and enforcement-layer response (if blocked, can the route change?), since these require distinct mitigations.
+section: §2.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-martiny-proof-of-censorship
+kind: evaluation
+summary: For 1 MB files, even at a database of only 50,000 entries, PIR responses reach 73.1 MB per retrieval, making proof-of-censorship impractical for image or video streaming content providers. By contrast, for 256-byte (Twitter-like) messages the system remains workable at 10 million files with 8.0 MB queries and 2.0 MB replies, and stays roughly constant in reply size (2.0 MB) between 500k and 10 million files.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Proof-of-censorship via single-server PIR is practically limited to short-message or metadata-heavy content (microblogging, key directories, link indices); large-media applications require hybrid approaches combining PIR for metadata with separate content-delivery accountability.
+    - 'Database partitioning into small buckets can reduce per-query PIR overhead but introduces a tradeoff: a provider can silently censor an entire bucket without proof, so bucket size should be tuned so that collateral damage is socially unacceptable.'
+section: §5, Tables 2–3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-ethical
+kind: policy
+summary: 'The legality of a measurement method within a given country does not equate to safety for implicated subjects: authoritarian regimes may assess network logs based on ulterior motives unrelated to technical specifics, or may lack sufficient technical understanding to distinguish measurement traffic from deliberate access. Subjects may additionally face privacy hazards such as being falsely implicated in accessing illegal content.'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Censorship measurement tools operating in authoritarian contexts should assume worst-case analyst competence — i.e., that censor analysts will not correctly interpret ambiguous traffic — and design accordingly, avoiding implicating specific end-user devices where possible.
+    - Risk models for measurement deployments must account for extra-legal retaliation independent of whether the measurement activity is technically lawful in the target country.
+section: §2 Measurements from Co-Opted Devices
+extracted_by: claude-sonnet-4-6

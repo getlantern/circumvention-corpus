@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-javaid-online
+kind: deployment
+summary: 'Ad server domains are structurally immune to censor blocking due to collateral-damage risk: Google DoubleClick is embedded in 1,843,854 publisher sites and PubMatic in 215,046, making IP-blocking of these domains prohibitively costly for any censor. Measurements of Alexa top-10K confirm the top 20 ad servers handle more than 75.6% of all ad requests.'
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - A small allowlist of ~20 high-concentration ad server domains (DoubleClick, PubMatic, etc.) can anchor a split-path transport design — these endpoints are reliably reachable even under censorship and can serve as uncensored direct-path anchors.
+    - Piggybacking circumvention signaling or rendezvous on ad-server traffic exploits the same structural protection; censors cannot block these endpoints without massive collateral damage to the domestic web economy.
+section: §4.2, §4.3
+extracted_by: claude-sonnet-4-6

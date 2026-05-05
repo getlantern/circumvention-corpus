@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-filast-ooni
+kind: detection
+summary: OONI's threat model assumes an adversary capable of country-wide traffic manipulation who may actively fingerprint and identify measurement probes. Prior measurement tools (e.g., ONI's rTurtle) used easily fingerprinted centralized DNS and HTTPS traffic, which the authors flag as a pattern to avoid. The authors acknowledge that anti-fingerprinting measures will likely reduce measurement accuracy — a trade-off unresolved at publication.
+techniques:
+    - active-probing
+    - dpi
+    - tls-fingerprint
+    - dns-poisoning
+defenses:
+    - tor
+defense_implications:
+    - Measurement probes must diversify their traffic patterns and avoid predictable centralized control-channel signatures that a censor can fingerprint and selectively suppress or distort.
+    - Submit probe data over Tor or equivalent anonymizing transports to prevent the censor from attributing results to identifiable probe infrastructure.
+section: §3 Threat Model; §10 Limits and future work
+extracted_by: claude-sonnet-4-6

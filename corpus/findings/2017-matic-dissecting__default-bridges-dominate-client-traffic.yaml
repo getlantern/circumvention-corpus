@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-matic-dissecting
+kind: evaluation
+summary: Default bridges — whose IP addresses are hardcoded in the Tor Browser Bundle — carry 91.4% of all bridge clients globally in April 2016, and 86.1% in Iran and 69.2% in Syria. Because these addresses are trivially obtainable from the Tor Browser Bundle configuration files, a censor can block the vast majority of bridge users in a country at any time.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - bridges
+    - tor
+censors:
+    - ir
+    - sy
+    - cn
+defense_implications:
+    - Retire or rotate default bridge IPs far more aggressively — the current model of hardcoding a static list in the browser bundle makes default bridges functionally equivalent to public relays from a censor's perspective.
+    - Invest in scalable bridge distribution (BridgeDB improvements, private channels) so that non-default bridges can absorb the client load currently concentrated on the trivially-blockable default set.
+section: §V-E, Table II
+extracted_by: claude-sonnet-4-6

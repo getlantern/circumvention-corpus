@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-elahi-framework
+kind: defense
+summary: In a single-round censorship game the only Nash equilibrium that keeps the channel open requires the circumvention traffic proportion (CTP) satisfy CTP ≤ F, where F = (βant+βbnt)/(αact+αbct+βant+βbnt). In repeated indefinite games a stable equilibrium exists at CTP = Z = (1−p)·CTPmax, where p is the per-round continuation probability, allowing a non-zero proportion of circumvention traffic to flow indefinitely without triggering shutdown.
+techniques:
+    - dpi
+    - ml-classifier
+defenses:
+    - meta-resistance
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Calibrate CRS traffic proportions using estimates of the censor's collateral-damage sensitivity (βant) relative to censorship sensitivity (αact) to stay below threshold F and avoid triggering channel shutdown.
+    - In long-running deployments set CTP = (1−p)·CTPmax rather than maximizing throughput greedily; the continuation-probability discount is the correct parameter for sustaining the equilibrium across indefinite play.
+section: §4.1–4.2
+extracted_by: claude-sonnet-4-6

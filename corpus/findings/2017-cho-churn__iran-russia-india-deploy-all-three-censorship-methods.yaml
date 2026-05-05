@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-cho-churn
+kind: detection
+summary: 'Censors in Russia, Iran, and India implement all three measured censorship techniques simultaneously: block pages, RST injection, and TTL anomalies. Iran and Cyprus censoring ASes censor content across many URL categories (including General News, Internet Services, Pornography, Gambling), while most other censoring ASes restrict only a few category types.'
+techniques:
+    - rst-injection
+    - packet-injection
+    - dpi
+censors:
+    - ru
+    - ir
+    - in
+defense_implications:
+    - Protocols deployed in Russia, Iran, and India must defeat all three detection surfaces independently — evading RST injection alone is insufficient when block-page injection and TTL-based packet forgery are also deployed.
+    - Broad category-agnostic censors like Iran and Cyprus warrant more aggressive obfuscation since they block across content types rather than targeting a narrow political URL list.
+section: §4, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-jermyn-autosonda
+kind: evaluation
+summary: 'Autosonda classified 76 commercial web filters in the NYC metropolitan area into three categories: 21 (27.63%) performed DNS blacklist filtering, 44 (57.89%) matched on the HTTP Host header of GET requests, and 11 (14.47%) performed a DNS lookup of the Host header value and blocked based on the resulting IP. Autosonda found circumvention paths for 100% of filters tested.'
+techniques:
+    - dpi
+    - dns-poisoning
+    - keyword-filtering
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - DNS-only filters can be bypassed entirely by sending HTTP GET requests directly to the destination IP address rather than relying on DNS resolution — any circumvention tool operating at the IP layer avoids this class of filter completely.
+    - Host-header filters can be defeated by placing the censored URL in a non-Host field (e.g., X-id header) while omitting or obfuscating the Host value, since 100% of tested filters failed under at least one such manipulation.
+section: §4.1 Results
+extracted_by: claude-sonnet-4-6

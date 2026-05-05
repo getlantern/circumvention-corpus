@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-tanash-decline
+kind: policy
+summary: 41% of users (139,042 of 342,650) in the post-coup dataset voluntarily removed 18% of all post-coup tweets by switching to protected mode, deleting accounts, or deleting individual tweets; the largest groups were active users who deleted some tweets (44% of affected accounts) and users who switched to protected mode (22%).
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Self-censorship at this scale represents a failure mode where circumvention tools alone cannot help—users must also believe posting is safe, not merely technically possible.
+    - Circumvention tools should surface clear threat models distinguishing platform-side censorship (takedown orders) from network-level blocking, since they require different mitigations.
+section: §4.1, Table 1
+extracted_by: claude-sonnet-4-6

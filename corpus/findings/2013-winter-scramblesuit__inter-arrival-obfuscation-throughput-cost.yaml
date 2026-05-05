@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-scramblesuit
+kind: evaluation
+summary: ScrambleSuit's prototype achieves a mean goodput of 148 KB/s (σ=61 KB/s) versus Tor's 286 KB/s (σ=227 KB/s) over a 100 Mbit/s LAN — roughly half Tor's throughput — with 45–50% total protocol overhead compared to Tor's 19.6%. Disabling inter-arrival time obfuscation raises goodput to 321 KB/s (σ=231 KB/s), demonstrating that artificial delays are the dominant cost rather than padding or cryptography.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - scramblesuit
+censors:
+    - generic
+defense_implications:
+    - 'Treat inter-arrival time shaping as a tunable knob: the throughput penalty is ~53% at full obfuscation vs. ~0% overhead without it; expose this as a configurable trade-off rather than a hard default.'
+    - Budget for roughly 2× Tor's protocol overhead when estimating bandwidth costs for a randomized pluggable transport; the 21-byte per-message header contributes only ~1.5% of this overhead.
+section: §5.2, Table 2
+extracted_by: claude-sonnet-4-6

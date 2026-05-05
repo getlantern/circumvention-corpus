@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wachs-feasibility
+kind: defense
+summary: Pseudo-TLDs (e.g., '.key' for cryptographic-identifier namespaces, '.pet' for petname systems) allow multiple censorship-resistant name systems with distinct security trade-offs to coexist transparently alongside DNS via Name Service Switch configuration, with system-specific resolution logic applied per TLD and no application reconfiguration required by users.
+techniques:
+    - dns-poisoning
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Namespace censorship-resistant resolution under a dedicated pseudo-TLD so circumvention tools can offer an alternative name layer without breaking compatibility with DNS-dependent legacy applications.
+    - Build delegation support allowing pseudo-TLD resolution to fall back to authoritative DNS nameservers for uncensored subdomains, so censorship is bypassed only at the minimum necessary layer of the hierarchy.
+section: §4.1
+extracted_by: claude-sonnet-4-6

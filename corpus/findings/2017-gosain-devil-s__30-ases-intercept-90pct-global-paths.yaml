@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-devil-s
+kind: evaluation
+summary: Only ~30 ASes intercept more than 90% of paths to popular websites globally, regardless of the target destination set (Alexa top-10 through top-200). The top 2 ASes alone (AS3356 Level-3 Communications and AS174 Cogent) intercept 45.1% of all 4,497,547 paths to Alexa top-100 sites; the full set of 30 intercepts 92.4%. This is approximately 30× fewer ASes than prior work required for a single adversary country (858 ASes for China alone).
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - DR infrastructure can be globally viable with cooperation from as few as 30 ASes — a qualitatively different negotiation problem than the hundreds previously believed necessary.
+    - When replacing ASes in censorious nations (Russia, China) with the next-best alternatives (ASes ranked 31–50 by path frequency), coverage remains above 90%, so DR placement can avoid politically hostile operators without sacrificing effectiveness.
+section: §5.1, Figure 3, Table 1
+extracted_by: claude-sonnet-4-6

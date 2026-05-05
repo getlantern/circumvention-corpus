@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-danezis-anomaly-based
+kind: defense
+summary: The detector constructs its 'typical ratio' baseline exclusively from the 50 largest jurisdictions, then discards outliers beyond four inter-quartile ranges of the median before fitting N(m,v). This ensures a jurisdiction undergoing active censorship cannot bias the global model and mask its own anomaly.
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Censorship-detection pipelines should apply IQR-based outlier removal on large-jurisdiction baselines so that a censored country cannot corrupt the reference distribution.
+    - Strictly separate the model-building population from the tested population to prevent adversarial drift of the 'normal' baseline.
+section: §4
+extracted_by: claude-sonnet-4-6

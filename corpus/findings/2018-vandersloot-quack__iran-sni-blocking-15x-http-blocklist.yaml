@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-vandersloot-quack
+kind: detection
+summary: Iran's number of blocked domains increases from 25 (HTTP keyword blocking) to 374 (TLS SNI-based blocking) — a 15× increase — with the newly blocked domains shifting composition to predominantly News, Human Rights, and Anonymization tools. This demonstrates that Iran maintains a distinct, more aggressive SNI blocklist for HTTPS traffic that is largely invisible to HTTP-only measurement.
+techniques:
+    - sni-blocking
+    - dpi
+defenses:
+    - ech-esni
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools operating over TLS must encrypt the SNI via ECH/ESNI or use domain fronting to evade Iran's SNI blocklist, which is 15× larger than its HTTP blocklist.
+    - Treat HTTP keyword filtering and TLS SNI blocking as distinct threat surfaces; a tool that evades HTTP DPI may still be blocked via SNI inspection in Iran.
+section: §6.4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-fifield-oss
+kind: evaluation
+summary: OSS operators—not the censor—are the primary abuse-detection risk for high-bandwidth use. PDFmyURL's published policy blocks clients making more than 100 requests in 2 hours that cumulatively consume more than 1000 seconds of server CPU and more than 10% of CPU resources. The authors were blocked by PDFmyURL and Twitter during high-bandwidth tests, suggesting that covert use must stay well below these thresholds.
+defenses:
+    - tunneling
+    - pluggable-transport
+defense_implications:
+    - Rate-limit individual OSS usage to stay below operator detection thresholds; spread load across multiple providers rather than hammering a single OSS.
+    - Prefer OSS for low-bandwidth rendezvous in production deployments; reserve bulk-transfer mode for situations where operator ToS risk is acceptable or a private OSS equivalent is operated.
+section: §6.2
+extracted_by: claude-sonnet-4-6

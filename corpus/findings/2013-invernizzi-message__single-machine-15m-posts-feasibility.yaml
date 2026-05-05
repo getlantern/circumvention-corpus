@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-invernizzi-message
+kind: evaluation
+summary: 'A single modern machine with a fast domestic Internet connection can process the full blog-ping stream within the 5-minute ping-server release interval: steganographic extraction takes 2m:51s, RSA decryption 2m:35s, and image fetching 4m:17s (parallelizable with extraction), completing under 5 minutes at under 90% CPU. A single machine accommodates 15–20 million posts per day; serving Iran''s entire population blogging daily would require only five machines.'
+defenses:
+    - steganography
+defense_implications:
+    - Broadcast-channel steganographic receiver infrastructure is viable on commodity hardware — operators can scale horizontally rather than relying on specialized infrastructure or high per-user cost.
+    - Parallelizing I/O-bound image fetching with CPU-bound steganographic extraction is the key throughput optimization for any broadcast-channel receiver operating at Internet scale.
+section: §5.1
+extracted_by: claude-sonnet-4-6

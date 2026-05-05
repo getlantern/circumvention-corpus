@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-burnett-encore
+kind: evaluation
+summary: 'Chrome''s non-standard behavior of firing an onload event for any HTTP 200 OK response regardless of MIME type—combined with its enforcement of X-Content-Type-Options: nosniff—allows the script tag to probe reachability of arbitrary non-image URLs, a measurement capability unavailable in other browsers that attempt to execute fetched content as JavaScript and thus pose an XSS risk.'
+techniques:
+    - measurement-platform
+defense_implications:
+    - Browser-specific event-firing quirks create meaningful measurement surface differences; probe tooling should fingerprint client browser type and select the broadest safe probe mechanism available for that engine.
+    - Any passive measurement technique relying on browser MIME-type enforcement or non-standard event behavior must be re-validated after browser engine updates, as these behaviors are implementation details rather than stable web standards.
+section: §4.3.2, Table 1
+extracted_by: claude-sonnet-4-6

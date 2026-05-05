@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-fifield-turbo
+kind: defense
+summary: Turbo Tunnel inserts an interior session/reliability protocol (KCP or QUIC) between the obfuscation layer and user streams, decoupling end-to-end session state from any single transport connection. A session survives TCP termination, proxy rotation, or unreliable carriers by retransmitting lost packets over a new connection bearing the same session identifier. The pattern was implemented in obfs4, meek, and Snowflake, with Turbo Tunnel–enabled Snowflake shipping in Tor Browser alpha releases 9.5a13 (desktop) and 10.0a1 (Android).
+defenses:
+    - meta-resistance
+    - obfs4
+    - meek
+    - webrtc-pluggable
+defense_implications:
+    - Decouple session state from individual transport connections by adding a KCP or QUIC session layer beneath user streams; connections can then be replaced transparently without application-level reconnect logic or state loss.
+    - Design session identifiers to be independent of network address, enabling client roaming across IPs and proxies without session interruption.
+section: §1–§2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-verkamp-inferring
+kind: detection
+summary: 'China''s censoring device is stateful: it inspects only the first HTTP GET request after a TCP handshake and ignores subsequent requests or those without a preceding handshake. After blocking a request, it records the (src IP, dst IP, port, protocol) tuple and denies all further communication between that machine pair for approximately 12 hours, even for traffic that would not independently trigger censorship.'
+techniques:
+    - dpi
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Rotate the client-side source address or establish a fresh transport connection immediately after any potential keyword exposure, since a single flagged request triggers a ~12-hour IP-pair blackout.
+    - Ensure circumvention payloads never appear in the first HTTP GET of a raw TCP connection — subsequent requests in the same stream are not inspected by the Chinese stateful device.
+section: §4.3
+extracted_by: claude-sonnet-4-6

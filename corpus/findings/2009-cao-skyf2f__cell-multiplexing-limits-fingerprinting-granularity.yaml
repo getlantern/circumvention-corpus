@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-cao-skyf2f
+kind: detection
+summary: Website fingerprinting attacks that match file sizes and access patterns against a database of known sites remain applicable to SkyF2F, but are limited to the granularity of 512-byte fixed-size stream cells, since streams are multiplexed within a single tunnel circuit. The authors note this is less effective than against SafeWeb, where full request/response sizes are directly observable.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Fixed-size cell multiplexing (à la Tor's 512-byte cells) partially defeats website fingerprinting by obscuring individual request/response boundaries; circumvention transports should consider cell-based framing as a low-cost fingerprinting countermeasure.
+    - Multiplexing multiple streams over one tunnel makes per-flow fingerprinting ambiguous — favor designs that aggregate multiple user sessions into shared circuits.
+section: §V.A
+extracted_by: claude-sonnet-4-6

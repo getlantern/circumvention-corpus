@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-censors
+kind: detection
+summary: China's firewall never blocked a bridge before its public Tor Browser release, despite bridges being discoverable earlier via bug-tracker tickets and source code commits. The four bridges distributed only in Orbot (not Tor Browser) remained unblocked throughout the experiment, indicating the GFW monitors end-user software releases rather than upstream repositories or alternative distribution channels.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Distributing bridges through channels the censor does not actively monitor (e.g., mobile-only apps, obscure release tracks) can extend bridge lifetime significantly.
+    - Bridges that appear in alpha or testing releases but not stable releases may warrant separate tracking, as the censor may prioritize high-traffic stable releases.
+section: §4 Results
+extracted_by: claude-sonnet-4-6

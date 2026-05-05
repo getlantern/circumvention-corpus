@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-seltzer-infrastructures
+kind: defense
+summary: When RIAA filed suit against more than 30,000 individual filesharers, users migrated toward anonymous channels, small-world networks of vetted peers, ephemeral pointers, and user-generated IP blacklists for spoofed-peer detection. The University of Washington demonstrated IP-to-person attribution is unreliable — a networked laser printer received a DMCA takedown notice.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - 'Incorporate anonymization at the identity layer, not just the transport layer: user-visible identifiers must not map to real-world identity even if the connection is observed.'
+    - Private trust-based overlays (networks of vetted peers) reduce the attack surface for infiltration and spoofed-peer injection compared to open peer lists.
+section: §1.3
+extracted_by: claude-sonnet-4-6

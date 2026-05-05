@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-knockel-analysis
+kind: detection
+summary: WeChat's visual filter compares images as a whole rather than via a sliding window. Adding 3 or more duplicate copies of a blacklisted image to its canvas caused 8/10 images to evade filtering with no evasion attributable to compression artifacts (Figure A.13), whereas blank canvas extensions evaded mostly only through compression artifacts.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Surrounding a sensitive image with copies of itself disrupts whole-image perceptual hash comparison and evades filtering even when translational invariance defeats simple blank-border padding.
+    - Canvas complexity — not just canvas size — is the evasion lever; complex pattern borders (image duplicates, noise tiles) are structurally more reliable than blank borders for any whole-image hash filter.
+section: §3.2.5
+extracted_by: claude-sonnet-4-6

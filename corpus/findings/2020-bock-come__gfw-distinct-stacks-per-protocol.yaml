@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-come
+kind: detection
+summary: 'China''s GFW uses distinct, co-located censorship boxes—each with its own independent network stack implementation and bugs—for each application-layer protocol it censors. TCP-level strategies that exploit transport-layer bugs show dramatically different success rates per protocol: Strategy 1 (Simultaneous Open + Injected RST) achieves 89% for DNS but only 14% for HTTPS; Strategy 8 (TCP Window Reduction) achieves 100% for SMTP but only 2–3% for DNS, HTTP, and HTTPS. TTL-limited probes confirm all protocol boxes are co-located at the same network hop.'
+techniques:
+    - dpi
+    - middlebox-interference
+censors:
+    - cn
+defense_implications:
+    - Test any TCP-level evasion strategy independently against each target protocol (DNS, HTTP, HTTPS, SMTP, etc.)—success for one does not imply success for another within the same country.
+    - Protocol-specific bugs in censor stacks are a viable attack surface; fingerprint each protocol's censorship box separately to identify the weakest implementation.
+section: §6, Table 2
+extracted_by: claude-sonnet-4-6

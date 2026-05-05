@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wustrow-tapdance
+kind: evaluation
+summary: 'Asymmetric IP routing is a fundamental constraint on prior E2M designs: tier-2 ISPs typically see around 25% of packets on asymmetric paths, while tier-1 ISPs can have up to 90% of packets on asymmetric flows. Because Telex requires observing both directions of a connection to derive the client-server TLS master secret, this asymmetry severely constrains where it can be deployed. TapDance resolves this by using chosen-ciphertext steganography to leak the master secret from client to station in a single upstream packet, making it functional under fully asymmetric routing.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - tapdance
+    - telex
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Any ISP-based circumvention station must assume it will see only the client-to-server direction; designs must encode all necessary keying material in the client's upstream packets rather than relying on observing server responses.
+    - Use a covert channel that operates within a single application-layer request (e.g., ciphertext steganography in an HTTP body) rather than requiring server-side packets to bootstrap the session secret.
+section: §1, §6
+extracted_by: claude-sonnet-4-6

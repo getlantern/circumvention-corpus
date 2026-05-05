@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-detecting
+kind: defense
+summary: 'Using Geneva''s genetic algorithm trained against Iran''s live protocol filter, four evasion strategies achieving 100% success were discovered in under two hours: (1) injecting a fingerprint-matching PSH/ACK with a corrupt checksum before the real data; (2) sending two FIN packets before the SYN; (3) sending nine non-data-carrying packets (any flags, any seq/ack) during the handshake to exhaust the filter''s per-flow packet limit; (4) a server-side variant that sends nine corrupted SYN+ACKs, inducing nine client RSTs before the real ACK, enabling fully unmodified clients to benefit.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+    - pluggable-transport
+censors:
+    - ir
+defense_implications:
+    - Server-side Geneva strategies (Strategy 4) require zero client modification, making them deployable as drop-in proxy patches that protect legacy circumvention tools against Iran's filter without client updates.
+    - The nine-packet flood strategy reveals that Iran's filter has a hard per-flow packet-processing cap; any transport that can inject cheap non-data ACKs or RSTs before the application handshake can exploit this limit.
+section: §5.2–§5.3
+extracted_by: claude-sonnet-4-6

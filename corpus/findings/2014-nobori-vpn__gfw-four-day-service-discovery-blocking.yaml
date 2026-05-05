@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-nobori-vpn
+kind: detection
+summary: 'The GFW authority discovered VPN Gate and deployed an automated IP-blocking tool within four days of launch: the List Server was blocked on March 11, 2013 (day 3), and automated scanning of the full server list began by March 12 (day 4). This automated tool polled and blocked all listed IP addresses several times per day.'
+techniques:
+    - active-probing
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Assume any new public relay service will be discovered and automated-blocked within days, not weeks — blocking-resistance mechanisms must be active at launch, not added reactively.
+    - The censor's primary attack surface is the server-discovery mechanism (the list endpoint), not the relays themselves; harden or decentralize relay discovery before hardening the relay protocol.
+section: §6.3
+extracted_by: claude-sonnet-4-6

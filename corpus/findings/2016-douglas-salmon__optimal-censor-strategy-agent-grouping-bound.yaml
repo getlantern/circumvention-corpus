@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-salmon
+kind: evaluation
+summary: Salmon simulations show that a censor with agents comprising 1% of 10,000 users can block at most 4A servers (one block per agent per full group) against a system with 1,000–2,000 servers; server groups with a hard cap of M=10 users that fill entirely with legitimate users before any agent joins become permanently invincible to server discovery. The censor's optimal strategy is to ensure each agent is always alone in its group at the time of joining, which requires knowing the user arrival rate — information Salmon withholds by not publishing user statistics.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - 'Fill server groups sequentially rather than distributing users evenly across all servers: groups that fill before any censor agent joins are permanently safe, so front-loading groups with legitimate users during an early-adopter phase creates a hardened core.'
+    - Do not publish aggregate user or server statistics; withholding the user arrival rate makes it significantly harder for a censor to time its agent insertion to land optimally (one per group), degrading it to a random permutation which wastes many blocking opportunities on all-agent groups.
+section: §5.1 / §5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ververis-understanding
+kind: policy
+summary: At least two ISPs (Cyta and Wind) returned fake HTTP 404 errors instead of mandated block pages for a portion of censored entries, and some ISPs served connection timeouts (port 443 blocked) with no explanation — in both cases obscuring deliberate censorship as an apparent network or server failure. Additionally, Cyta embedded Google Analytics on its block landing page to track users who attempted to access censored content.
+techniques:
+    - dpi
+    - dns-poisoning
+censors:
+    - gr
+defense_implications:
+    - Distinguishing censorship from genuine server failure requires external control-path verification (e.g., comparing responses over Tor/VPN vs. direct); circumvention tools should surface this distinction to users rather than displaying generic 'unreachable' errors.
+    - Block pages themselves can be instrumented for user surveillance; circumvention clients should warn users against loading ISP-controlled redirect destinations and should intercept/suppress third-party tracking scripts on block pages.
+section: §4.2, §5.2
+extracted_by: claude-sonnet-4-6

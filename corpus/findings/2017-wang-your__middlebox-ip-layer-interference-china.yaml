@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-wang-your
+kind: evaluation
+summary: 'Client-side middleboxes at every tested vantage point interfere with IP-layer evasion tactics: Aliyun (6/11 nodes) discards all IP fragments, while the Tianjin China Unicom node drops packets with wrong TCP checksums or no TCP flag. IP-layer discrepancies that survive routers (e.g., IP total-length > actual length) are still dropped by some middleboxes, making IP-layer manipulations unreliable across Chinese ISPs. TCP-layer manipulations are significantly more consistent across paths.'
+techniques:
+    - middlebox-interference
+    - dpi
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Avoid IP-layer insertion techniques (fragmentation, wrong IP checksum) in production — client-side middleboxes silently drop them on major Chinese cloud and residential ISPs, causing silent failures rather than graceful degradation.
+    - Use TCP-layer insertion packets (MD5 option, old timestamp, wrong ACK number) as the primary mechanism; these are passed by every observed middlebox while still being accepted and processed by the GFW.
+section: §3, Table 2
+extracted_by: claude-sonnet-4-6

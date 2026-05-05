@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-stubblefield-dagster
+kind: defense
+summary: Dagster requires both clients and servers to enforce a randomness predicate rand?(x) on every block before storage or forwarding, ensuring all server-stored data is statistically indistinguishable from uniform random noise. This provides server deniability — the operator can credibly deny knowledge of content — and also closes the attack present in Publius and Freenet where a malicious client could post plaintext, potentially exposing the operator for 'knowingly' hosting illegal content.
+techniques:
+    - random-payload-detect
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Implement a server-side statistical randomness gate on all inbound data so that the server can assert plausible deniability; never store blocks that fail the predicate regardless of client claims.
+    - Client-side randomness verification of retrieved blocks defends against a malicious server that injects non-random data to de-anonymize or fingerprint retrievers.
+section: §4.2, §5.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-gill-characterizing
+kind: detection
+summary: Yemen's national ISP (YemenNet) uses explicit blockpages for social and Internet-tools content while applying stealthy techniques — TCP RST injection and unrequited HTTP GETs — specifically for political and conflict content that is constitutionally protected. Censorship also ceases intermittently when the ISP exhausts filtering product licenses.
+techniques:
+    - rst-injection
+    - packet-injection
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Stealthy blocking indistinguishable from transient failures demands repeated probing (the paper uses ≥3 matches per URL per ISP per week) before concluding a site is blocked — single-shot measurement misses politically-targeted RST censorship.
+    - Circumvention tools that detect blocking only via explicit blockpage responses will fail to trigger for politically sensitive destinations in countries with selective transparency; transport selection logic must account for RST-signaled blocks.
+section: §4.2, Fig. 6
+extracted_by: claude-sonnet-4-6

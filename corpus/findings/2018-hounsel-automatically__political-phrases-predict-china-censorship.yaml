@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hounsel-automatically
+kind: detection
+summary: 'Culturally specific Chinese phrases are strong predictors of censorship: unigrams for controversial figures—Wang Qishan (74%), Li Hongzhi (64%), Guo Boxiong (62%), Hu Jintao (56%)—returned the highest block rates. Trigrams such as ''Beidaihe meeting'' (54%), ''CCP''s religious policy'' (42%), and ''Tiananmen Square demonstrations'' (32%) showed similar patterns, confirming King et al.''s finding that references to collective political dissent are disproportionately targeted.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention service operators should avoid any association of their public-facing content, DNS names, or TLS certificates with high-sensitivity phrase categories, as this accelerates content-based detection and probing.
+    - Blocklist maintenance pipelines can use high-block-rate Chinese phrases as iterative seeds to discover newly blocked domains before they appear on curated lists.
+section: §5.3, Tables 2–4
+extracted_by: claude-sonnet-4-6

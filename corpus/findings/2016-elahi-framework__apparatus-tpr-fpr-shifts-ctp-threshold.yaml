@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-elahi-framework
+kind: detection
+summary: 'Adding a DPI apparatus with true positive rate TPR and false positive rate FPR creates three ordered thresholds Fam ≤ Fab ≤ Fmb governing censor strategy: allow all traffic (CTP ≤ Fam), deploy the apparatus (Fam < CTP ≤ Fmb), or block all traffic (CTP > Fmb). The apparatus does not qualitatively change the Nash equilibrium structure; it only shrinks the CTP range the circumventor can sustain, with the ordering Fmb ≥ Fab ≥ Fam holding whenever TPR ≥ FPR.'
+techniques:
+    - dpi
+    - ml-classifier
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Exploiting censor FPR is the primary lever: raising collateral-damage risk (higher FPR) pushes Fam upward, widening the safe CTP operating range—technologies such as domain fronting and meek operationalize this by piggybacking on high-value CDN traffic.'
+    - Estimate both TPR and FPR of the censor's classifier to compute Fam and Fmb; operating below Fam avoids apparatus activation entirely and is preferable to merely staying below Fmb.
+section: §4.3
+extracted_by: claude-sonnet-4-6

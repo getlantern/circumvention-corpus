@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-sheffey-improving
+kind: detection
+summary: 'Prior ML classifiers achieve near-perfect detection of unmodified Meek traffic using side-channel features: Wang et al. attain a false positive rate (FPR) as low as 0.0002 with a CART decision tree, Yao et al. achieve 99.98% accuracy with a hidden Markov model, and Nasr et al. deanonymize Meek flows with FPR of 0.0005 using a neural network. The distinguishing features are TCP payload size distributions (Meek concentrates 60–70 byte payloads) and inter-arrival time distributions (higher latency).'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - meek
+censors:
+    - generic
+defense_implications:
+    - Meek's domain-fronting layer defeats DPI/SNI blocking but does not protect against statistical side-channel classifiers — any deployment of Meek must layer traffic shaping on top of domain fronting to be robust.
+    - 'Target the specific features: normalize TCP payload sizes away from the 60–70 byte concentration and reduce high-latency inter-arrival time spikes to blend with background HTTPS flows.'
+section: §1 Introduction, §3 Feature Extraction
+extracted_by: claude-sonnet-4-6

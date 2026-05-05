@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-salmon
+kind: detection
+summary: Without recommendation-tree grouping logic, a censor starting agents at trust level 6 who each recommend 1–2 additional agents (requiring 4–5 months of waiting) can cut off over 95% of users even at agent percentages in the 15–30% range, as shown in Figure 6. With recommendation-tree grouping enforced, the same attack at equivalent agent fractions produces dramatically lower service disruption because agents cluster among themselves rather than spreading across innocent user groups.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - 'Assign users in the same recommendation ancestry tree to the same server group: because friends naturally share credentials anyway, this design choice is both socially natural and security-preserving, confining infiltrated subtrees to their own server pool.'
+    - 'Treat recommendation-amplified agent growth as a first-class threat: the 4-month incubation delay before an agent can recommend is a key defense, and server IP rotation on detection of mass blocking events provides recovery when that delay is eventually overcome.'
+section: §5.3 / Figure 6
+extracted_by: claude-sonnet-4-6

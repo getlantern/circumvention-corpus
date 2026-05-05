@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-nisar-case
+kind: evaluation
+summary: 'Across two major Pakistani ISPs, blocking mechanisms varied substantially for the same URL: ISP-A applied HTTP-level blocking with redirection to a block page, while ISP-B deployed multi-stage blocking combining DNS-level resolution to localhost and independent HTTP/HTTPS request dropping. A single ISP also used different filtering techniques for different URL categories (e.g., YouTube vs. HTTPS-accessible sites).'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+    - dpi
+censors:
+    - pk
+defense_implications:
+    - Circumvention tools should probe and record the specific blocking mechanism per ISP rather than assuming a uniform national policy — a technique effective at one ISP (HTTPS bypass) may fail at another that also blocks HTTPS.
+    - 'Support multi-stage circumvention pipelines: if DNS blocking is active, resolve via an alternative DNS first; then apply the appropriate transport-level bypass for the remaining HTTP/HTTPS block.'
+section: §3.2 / Table 1
+extracted_by: claude-sonnet-4-6

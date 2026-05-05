@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-weinberg-stegotorus
+kind: detection
+summary: Tor's fixed 512-byte cells packed into TLS 1.0 records produce a characteristic TCP payload of 586 bytes (512 + 74 bytes of TLS overhead). A perimeter filter running a simple exponential moving average (τ ← ατ + (1−α)1ₗ₌₅₈₆, α=0.1, T=0.4) identifies Tor flows within a few dozen packets; this attack succeeds at backbone rates of ~540,000 packets/second on commodity hardware. Obfsproxy does not alter packet sizes or timings and therefore does not defeat this classifier.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - pluggable-transport
+    - obfs4
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Any pluggable transport must randomize per-packet payload sizes to eliminate fixed-length cell signatures; applying a stream cipher alone (à la obfsproxy) is insufficient.
+    - Transports should validate that their empirical packet-size CDF matches a realistic reference distribution (e.g., CAIDA port-80 traces) before deployment.
+section: §5.1, Figure 3
+extracted_by: claude-sonnet-4-6

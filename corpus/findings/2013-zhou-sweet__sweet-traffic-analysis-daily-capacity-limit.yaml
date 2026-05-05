@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-zhou-sweet
+kind: evaluation
+summary: 'Traffic analysis poses a concrete throughput ceiling: a conservative SWEET user can perform only 35–70 web downloads per day or 10–20 interactive web sessions while staying within the bounds of normal email volume (2012 averages: 35 sent, 75 received daily). Most websites require fewer than 3 SWEET emails in each direction, with Yahoo as an outlier due to its many hosted objects.'
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - steganography
+    - tunneling
+defense_implications:
+    - Email-based covert channels are capacity-constrained by cover-traffic norms; designers must expose or document this ceiling to users and consider rate-limiting or batching to avoid behavioral anomalies.
+    - For high-bandwidth use-cases, email tunneling is unsuitable; treat it as a high-availability fallback channel rather than a primary data path.
+section: §5.2
+extracted_by: claude-sonnet-4-6

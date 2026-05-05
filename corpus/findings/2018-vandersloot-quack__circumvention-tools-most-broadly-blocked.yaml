@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-vandersloot-quack
+kind: evaluation
+summary: 'Across all tested countries, circumvention and anonymization tools are the most consistently blocked category: www.hotspotshield.com is blocked in 5 of 13 detected censoring countries, and three Tor Project properties (bridges.torproject.org, www.torproject.org, ooni.torproject.org) each appear in the top-10 most broadly blocked domains. Collateral damage is also documented — Iran blocks psiphonhealthyliving.com as a substring match for the psiphon.ca circumvention domain.'
+techniques:
+    - dpi
+    - sni-blocking
+    - keyword-filtering
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+    - ir
+    - tr
+    - ae
+defense_implications:
+    - High-profile circumvention tool domains (Tor Project, HotSpot Shield, Psiphon) are globally blocklisted; never use product-branded domains as default bootstrap or rendezvous endpoints without additional obfuscation.
+    - Censors apply substring/keyword matching to domain names — avoid embedding circumvention product names as substrings in any domain used for infrastructure to prevent collateral blocking.
+section: §6.2, Figure 12
+extracted_by: claude-sonnet-4-6

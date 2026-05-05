@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-niaki-iclab
+kind: detection
+summary: 'ICLab''s semi-automated block page discovery — combining HTML tag-frequency vector clustering with locality-sensitive hashing (LSH) of page text — identified 48 previously unknown block page signatures from 13 countries: 15 via structural clustering across 5 countries and 33 via textual similarity clustering across 8 countries. The system seeds from 308 manually verified regular expressions and uses a URL-to-country ratio sort (largest ratio discovered: 286) to prioritize candidates for manual review, eliminating reliance on brittle hand-maintained regex lists alone.'
+techniques:
+    - measurement-platform
+    - packet-injection
+defense_implications:
+    - Censors routinely deploy block pages with minor textual variations — different legal citations, ISP names, court references — that defeat exact-match regex; circumvention clients inferring 'blocked' state should use structural similarity (tag frequencies, fuzzy text hashing) rather than string matching to avoid missing censor-served error pages.
+    - The URL-to-country ratio signal (many URLs mapping to the same response across few countries) can cheaply identify when a server IP has been redirected to a censor-controlled block page host, making it a useful lightweight probe for circumvention infrastructure.
+section: §IV-C
+extracted_by: claude-sonnet-4-6

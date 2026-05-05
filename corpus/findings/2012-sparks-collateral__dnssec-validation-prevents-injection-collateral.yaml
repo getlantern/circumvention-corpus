@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-sparks-collateral
+kind: defense
+summary: 'DNSSEC validation naturally prevents DNS injection collateral damage: both .de and .kr sign their results, allowing a validating resolver to reject the unsigned injected reply while awaiting the legitimate signed response. The paper identifies DNSSEC deployment at the TLD level as the most robust structural defense against injection-based collateral damage.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools bootstrapping via DNS should either enforce DNSSEC validation or use out-of-band pinned records, since unsigned responses from affected TLD paths cannot be trusted for resolvers in high-collateral-damage regions.
+    - Prefer domain names under DNSSEC-signed TLDs (.de, .kr, .nl, etc.) for circumvention infrastructure endpoints — this turns censor injection into a detectable failure rather than a silent redirect.
+section: §5
+extracted_by: claude-sonnet-4-6

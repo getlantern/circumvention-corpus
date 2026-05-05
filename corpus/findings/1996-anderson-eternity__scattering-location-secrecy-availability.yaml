@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1996-anderson-eternity
+kind: defense
+summary: The Eternity Service's core design stores a file on 100 servers worldwide but retains records of only 10 for auditing, destroying the remaining 90 records. Even if a user is legally compelled to disclose all 10 known server locations and those copies are seized, 90 copies survive at unknown locations and can be retrieved via anonymous broadcast once the user leaves the jurisdiction.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Distribute proxy infrastructure such that no single operator or legal compulsion can enumerate more than a small fraction of nodes — design the system so that forced disclosure of known nodes does not compromise the rest.
+    - 'Store location metadata asymmetrically: auditing relationships (the 10 known) and storage relationships (the 90 unknown) should be structurally separated so coercing one set cannot cascade to the other.'
+section: §4.3
+extracted_by: claude-sonnet-4-6

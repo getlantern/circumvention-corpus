@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-cao-skyf2f
+kind: detection
+summary: A censor hosting Skype supernodes can perform passive traffic-flow analysis on relayed streams even without breaking encryption, since supernode-relayed conversations expose traffic metadata. However, with thousands of supernodes in the Skype network, the probability that any censor-controlled supernode relays a specific SkyF2F tunnel is low, making large-scale correlation high-cost.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - When building overlays on P2P networks, prefer designs where relay selection avoids adversary-controlled nodes (e.g., restrict supernodes to trusted/verified peers) to reduce metadata leakage.
+    - Multiple relay hops within the overlay dramatically reduce supernode-correlation attack success at modest latency cost.
+section: §V.A
+extracted_by: claude-sonnet-4-6

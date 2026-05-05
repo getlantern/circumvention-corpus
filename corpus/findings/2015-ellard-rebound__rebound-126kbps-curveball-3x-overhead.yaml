@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ellard-rebound
+kind: evaluation
+summary: In an Internet measurement from a residential Verizon FiOS client 12 hops from the Rebound router (26 ms RTT), Rebound achieves 129,398 bytes/s (≈126 KB/s) for 1 MB transfers, compared to 354,676 bytes/s for Curveball and 1,174,240 bytes/s for plain HTTP — sufficient to stream 360p video but roughly 3× slower than Curveball. The unoptimised Python router implementation uses less than half a core of an Intel Xeon E5620 at 2.4 GHz at sustained full speed.
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - 'The mole-protocol''s client-paced throughput ceiling (~126 KB/s on a realistic Internet path) is a hard design constraint: latency-sensitive or bandwidth-intensive applications will need either higher chaff rates or a supplementary out-of-band channel.'
+    - Router CPU is not the bottleneck at this throughput; optimising the decoy-host request/error round-trip latency and client chaff scheduling will yield larger gains than server-side code optimisation.
+section: §VII, Table I
+extracted_by: claude-sonnet-4-6

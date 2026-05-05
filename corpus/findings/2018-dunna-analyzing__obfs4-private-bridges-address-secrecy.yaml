@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-dunna-analyzing
+kind: evaluation
+summary: obfs4 successfully established Tor circuits on the authors' own unpublished bridge relays but failed to connect to any public obfs4 bridge, consistent with the GFW having scraped and blacklisted public bridge addresses. This demonstrates that address confidentiality is a prerequisite for obfs4's effectiveness, independent of its obfuscation properties.
+techniques:
+    - dpi
+    - active-probing
+    - ip-blocking
+defenses:
+    - obfs4
+    - bridges
+    - tor
+censors:
+    - cn
+defense_implications:
+    - obfs4 deployment viability depends entirely on the secrecy of the bridge IP; bridge distribution channels (BridgeDB, email, MOAT) are the weakest link and should be treated as a first-class security component.
+    - Private bridges with obfs4 + scanner rejection provide a cost-effective alternative to meek for operators who cannot sustain CDN-fronting costs.
+section: §5.1
+extracted_by: claude-sonnet-4-6

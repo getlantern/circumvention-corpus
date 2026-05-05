@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-manfredi-multiflow
+kind: evaluation
+summary: 'MultiFlow''s stencil-coding capacity is constrained by TLS record sizes: hiding 1 byte per 16-byte block requires a 1568-byte TLS record to exfiltrate 98 bytes of key material. The paper notes that many websites'' initial GET requests produce TLS 1.3 application records under 100 bytes, meaning MultiFlow would need to span multiple records or adopt the more efficient chosen-ciphertext steganography used by TapDance. No implementation exists at time of publication; session resumption from a different source IP was verified feasible using OpenSSL 1.1.1-pre2 and Scapy.'
+techniques:
+    - traffic-shape
+defenses:
+    - decoy-routing
+defense_implications:
+    - Prefer chosen-ciphertext steganography over stencil coding for key exfiltration when the cover traffic produces small TLS records, as stencil coding may require anomalously large initial requests.
+    - Measure typical TLS record sizes for candidate decoy hosts before deploying a stencil-based exfiltration scheme to avoid creating detectable record-size outliers.
+section: §3.1, §3.4
+extracted_by: claude-sonnet-4-6

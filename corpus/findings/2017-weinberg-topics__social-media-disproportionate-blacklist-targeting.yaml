@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-weinberg-topics
+kind: detection
+summary: Topic correlation analysis across 2,904 list-topic pairs (585 significant after Bonferroni correction at α = 0.05) shows social media is disproportionately represented in country blacklists relative to the broader web; video-sharing sites are also frequently blocked, likely to suppress political organization, copyright infringement, or competition with local businesses.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Treat social media domains as high-priority, high-churn circumvention targets — expect new platforms to be blocked quickly and existing ones subjected to aggressive re-blocking after IP changes.
+    - When selecting domain-fronting CDN targets or cover domains for pluggable transports, avoid social media and video platforms that censors already monitor closely.
+section: §7.1, Table 3
+extracted_by: claude-sonnet-4-6

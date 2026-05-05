@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wiley-dust
+kind: detection
+summary: BitTorrent's Message Stream Encryption (MSE), despite omitting static strings from the handshake, can be identified with 96% accuracy using packet-size analysis and direction-of-packet-flow; MSE also uses a cleartext Diffie-Hellman key exchange, leaving an additional fingerprint surface.
+techniques:
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Randomizing packet sizes alone is insufficient — obfuscated protocols must also eliminate any cleartext key exchange bytes visible to a passive observer.
+    - Direction-of-flow and size distributions must both be randomized or normalized; addressing only one leaves the other as a viable classifier feature.
+section: §2.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-ethical
+kind: policy
+summary: 'Three approaches to gathering censorship measurements exist: deploying researchers with software (snapshot coverage, researcher safety risk), deploying software to at-risk citizens (continuous but endangers locals), and co-opting existing deployed software (continuous, widespread coverage, but raises consent issues since device owners may be unwittingly implicated). The third approach offers substantially greater measurement capabilities but introduces the most unresolved ethical risk.'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Measurement infrastructure designed to collect circumvention-relevant data should document its ethical posture explicitly — which of the three models it uses and what risk-mitigation steps it takes — to survive community and IRB scrutiny.
+    - Tools that passively co-opt third-party devices (open resolvers, CDN nodes) should embed tagging payloads or informative DNS PTR records that disclose measurement intent, reducing risk of misattribution to device owners.
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

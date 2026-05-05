@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bonneau-scrambling
+kind: defense
+summary: Applying a BEAR all-or-nothing package transform (using a zero key) to message blocks forces any censor attempting to scan content to cache all blocks from all active concurrent transfers simultaneously, since no individual block reveals any information about the original message until all blocks are received. Artificially delaying block transmission amplifies censor state requirements proportionally.
+techniques:
+    - dpi
+defenses:
+    - randomization
+    - meta-resistance
+defense_implications:
+    - Split proxy payloads into dependent chunks (e.g., via all-or-nothing transforms or erasure-coded shards) so that mid-stream interception yields zero plaintext signal to a classifier.
+    - Introduce variable inter-chunk delays to maximize the working-set size a censor must maintain per flow, trading latency for censor resource exhaustion.
+section: §3
+extracted_by: claude-sonnet-4-6

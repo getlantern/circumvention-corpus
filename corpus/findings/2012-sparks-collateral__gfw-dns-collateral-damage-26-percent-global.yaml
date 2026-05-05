@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-sparks-collateral
+kind: evaluation
+summary: Probing 43,842 open recursive resolvers across 173 countries found 26.41% (11,579) suffer some collateral damage from Chinese DNS injection, distributed across 109 countries. The top-affected regions are Iran (88.20%), Malaysia (85.34%), South Korea (79.20%), Hong Kong (74.63%), and Taiwan (66.13%).
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - DNS resolvers used by circumvention tools should be hardened against injection (DNSSEC validation, TCP-only queries, or use of resolvers with non-Chinese transit paths) — 26% of open resolvers globally are already poisoned.
+    - Circumvention infrastructure in Iran, Malaysia, and Korea faces especially high DNS collateral-damage rates and must not rely on standard recursive resolution for bootstrapping.
+section: §4.3, Table 5
+extracted_by: claude-sonnet-4-6

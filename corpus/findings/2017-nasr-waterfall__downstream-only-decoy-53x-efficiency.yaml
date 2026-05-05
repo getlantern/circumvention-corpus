@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-nasr-waterfall
+kind: defense
+summary: Through Internet-scale BGP simulation against China, downstream-only decoy routing (Waterfall) with a single decoy AS provides equivalent resistance to routing attacks as a traditional upstream decoy system (e.g., Telex) with 53 decoy ASes. This efficiency gain arises because censoring ISPs can selectively re-route upstream traffic per destination but must re-route all or none of downstream traffic through each provider AS, making downstream-only routing far more expensive to evade.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+    - telex
+censors:
+    - cn
+defense_implications:
+    - Deploy downstream-only decoy routing to reduce volunteer AS recruitment burden by 53× for equivalent routing-attack resistance — making practical deployment achievable with a single well-placed AS.
+    - Prioritize recruiting ISPs whose downstream routes cover a broad share of censored-country users rather than ASes appearing on many upstream paths.
+section: §4.1.1
+extracted_by: claude-sonnet-4-6

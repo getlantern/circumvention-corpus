@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-khattak-look
+kind: evaluation
+summary: YouTube held an average of ~97% of SOHO video bandwidth across four pre-block traces. On the block day (18 Sep 2012) this dropped to 15.8%, with DailyMotion absorbing ~82% of 'Others' traffic. Eleven months later (Aug 2013), YouTube's unencrypted video share reached 0%, with Tune.pk at 57.6% and DailyMotion at 40.9% of total video bandwidth, reflecting a durable market reallocation among video platforms.
+techniques:
+    - dns-poisoning
+    - rst-injection
+censors:
+    - pk
+defense_implications:
+    - Broad blocking of a dominant platform creates immediate, durable traffic migration to alternates — circumvention tools should pre-configure alternative endpoints so users are not stranded when a primary provider is blocked.
+    - Because demand migrates rather than disappearing, censors face ongoing pressure to expand blocklists to substitutes; protocol designs should assume censor blacklists will grow and must support rapid server rotation.
+section: §7.1, Table 8
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-fifield-evading
+kind: evaluation
+summary: Applying Little's law to measured traffic parameters (mean inter-arrival time 1/λ = 1407.6 s, mean visit duration µ = 285.8 s), 100 volunteer web pages each embedding the flash proxy badge can support approximately 203 simultaneous censored clients; capacity scales linearly, so 1,000 such pages support ~2,030 clients.
+defenses:
+    - bridges
+    - pluggable-transport
+defense_implications:
+    - Recruit high-traffic volunteer pages (lower 1/λ) rather than many low-traffic pages — capacity is directly proportional to arrival rate, so one popular page outperforms dozens of personal blogs.
+    - Each proxy instance handles up to 10 concurrent clients; maximize this multiplier in proxy software design to extract full value from each visitor without degrading per-client throughput.
+section: §4.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-knockel-measuring
+kind: evaluation
+summary: Content analysis of 7,000 randomly sampled keywords (±1.1% at 95% confidence) found Social content (gambling, illicit goods, competitor references) was the dominant theme at 51.16%, followed by Technology/URLs at 16.81%, Political content at 15.00%, People (officials, dissidents) at 6.57%, and Event-related keywords at only 4.89%. Gaming keyword lists lacked references to current events from 2016–2017 that were found actively censored on Chinese chat applications during the same period, suggesting games face lower scrutiny for real-time event censorship than communication platforms.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that surface political or dissident content in China face keyword filtering concentrated in gaming/app platforms primarily on evergreen political terms rather than dynamic news events — real-time event-based blocking is more likely to occur on communication platforms
+    - Competitor brand names and commercial keywords constitute a substantial share of filtered content, indicating platform operators exploit censorship infrastructure for competitive suppression — useful context when modeling censor motivations
+section: §5.2
+extracted_by: claude-sonnet-4-6

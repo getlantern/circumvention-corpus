@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-mahdian-fighting
+kind: defense
+summary: In invitation-based proxy networks (modeled on Psiphon's trust-tree), a single adversary can invite fake accounts as children in the trust tree, multiplying the effective adversary count k and invalidating sublogarithmic key budgets. For k=1 adversary on a trust tree of depth O(log n), an O(log n)-key algorithm exists by keeping the 'suspicious group' always rooted at a subtree boundary; for k>1 this remains an open problem.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Invitation-based bridge distribution (like Psiphon's tree model) must bound the branching factor or depth of the trust tree — a depth-O(log n) constraint is both necessary for the O(log n) key bound to hold and realistic given small-world network topology.
+    - Throttle the number of new invitations any single user can issue to limit adversary-controlled subtree size; without this constraint, one informant can cause superlinear proxy burn by spawning fake accounts.
+section: §5 Theorem 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-levin-alibi
+kind: defense
+summary: 'Alibi Routing proves packets avoided a forbidden geographic region using physical impossibility: a relay MACs forwarded packets, and the observed RTT must satisfy (1+δ)·R(s,r) < min_{f∈F}{R(s,f)+R(f,r)}, where the minimum RTT to any point in F is estimated as (3/c)·ShortestDistance(q,F) — fiber-optic links at 2/3 the speed of light. This proof requires only GPS coordinates and local RTT measurements, no BGP modifications or PKI.'
+techniques:
+    - bgp-hijack
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Proof-of-avoidance can be layered onto existing overlay systems (e.g., Tor circuit selection) to give users cryptographic evidence that circuits do not route through specific censor jurisdictions.
+    - 'The speed-of-light lower bound (3/c · distance to forbidden region) is the key invariant for relay-selection logic: any relay whose measured RTT is below this threshold is provably outside the forbidden region.'
+section: §3, §4.4.1
+extracted_by: claude-sonnet-4-6

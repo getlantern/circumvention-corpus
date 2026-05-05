@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-mclachlan-risks
+kind: defense
+summary: An 'unfair queuing' mechanism that partitions CPU time between bridge-operator circuits and bridge-client circuits using a time-allocation parameter τ=0.9 reduced the circuit-clogging AUC from 0.884 to 0.520 (median-normalized) and 0.412 (mean-normalized)—indistinguishable from random guessing—in 20 PlanetLab experiments. The mechanism eliminates latency interference between the two circuit types without requiring the bridge to ever refuse connections, but introduces up to 1−τ performance loss for client traffic.
+techniques:
+    - flow-correlation
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Implement strict CPU time-slot partitioning (not probabilistic fair queuing) between locally-originated and relayed traffic streams at bridge nodes; give operators a tunable τ parameter so they can trade client service capacity for privacy protection.
+    - Bandwidth-only isolation is insufficient because operator-bound traffic does not contend with client upload bandwidth; effective isolation must operate on cell-processing queues after decryption, with potential supplementary upstream bandwidth regulation to close remaining interference channels.
+section: §4.3
+extracted_by: claude-sonnet-4-6

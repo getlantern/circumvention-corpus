@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-king-reverse-engineering
+kind: detection
+summary: 'The Chinese censorship apparatus detects collective action potential through volume-burst monitoring: it identifies a spike in social media posts about a topic area, traces the spike to a real-world event, classifies the event as having collective action potential, and then censors all posts in that burst — regardless of individual post stance or content.'
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Burst-pattern monitoring means coordinated activity around real-world events can itself be a detection signal; tools serving activist populations should support rate-limiting or randomized posting patterns to avoid volume-burst thresholds.
+    - Because entire topic bursts are censored once a threshold is crossed, semantic keyword evasion alone is insufficient — routing through an encrypted out-of-band channel is the only reliable protection once an event is classified.
+section: Theory / Collective Action Potential Hypothesis
+extracted_by: claude-sonnet-4-6

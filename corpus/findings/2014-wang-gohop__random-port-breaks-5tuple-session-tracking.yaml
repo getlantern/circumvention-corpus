@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wang-gohop
+kind: defense
+summary: 'Spreading UDP datagrams across a randomized port range breaks traditional 5-tuple-based session tracking, randomizes per-port inter-arrival times, and reduces per-port throughput to a small fraction of the aggregate—making per-flow statistical analysis significantly harder. Critically, the number of random ports does not reduce aggregate throughput: GoHop measured 76.8 Mbps (1 port) versus 78.5 Mbps (100 ports) at the virtual NIC.'
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Use UDP multi-port randomization to break 5-tuple session reconstruction at zero throughput cost; a range of ≥1,000 ports lowers per-port throughput enough to impede per-flow classifiers.
+    - This defense collapses if the adversary aggregates all flows within a detectable port range—obfuscate the range itself or inject noise traffic outside it to prevent range fingerprinting.
+section: §III.C, §V.A, Table II
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-manfredi-multiflow
+kind: defense
+summary: 'MultiFlow''s tunnel operates as a virtual message board: the client and decoy router never exchange covert data within the same TCP connection. The decoy router uploads responses to a URI or email address specified by the client; the client downloads independently on a separate connection. This design eliminates the forged-packet and rewritten-traffic vectors that make TapDance and Rebound vulnerable to traffic analysis and decoy-host probing.'
+techniques:
+    - traffic-shape
+    - active-probing
+defenses:
+    - decoy-routing
+defense_implications:
+    - Decouple the upload and download legs of a covert channel across different connections and time windows to remove tight timing correlations that traffic-analysis attacks exploit.
+    - Prefer asynchronous message-board channels (HTTP POST to private URI, email) over synchronous injection to avoid leaving TCP state mismatches that adversaries can probe.
+section: §3.2
+extracted_by: claude-sonnet-4-6

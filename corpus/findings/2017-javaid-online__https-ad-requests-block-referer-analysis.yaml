@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-javaid-online
+kind: evaluation
+summary: 82.2% of ad requests from Alexa top-500 websites are sent over HTTPS (Table 2), encrypting the HTTP Referer field. This prevents censors from correlating a user's direct-path ad request back to a censored publisher domain in the vast majority of cases; only the remaining 17.8% of HTTP ad requests are vulnerable to Referer-based traffic analysis.
+techniques:
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - For split-path designs, configure the direct-path channel to enforce HTTPS-only connections to ad servers, eliminating the Referer leakage surface and reducing censor-observable correlation to destination IP only.
+    - The ~18% of HTTP ad requests that leak Referer can be handled via IRS (route through a relay) without affecting overall ad relevance for the HTTPS majority.
+section: §4.3, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-mccoy-proximax
+kind: defense
+summary: Channel blocking risk in Proximax is modeled as an independent Poisson process with rate λj; when a proxy is advertised on multiple channels simultaneously the risk parameters add (Λi = γ + Σλj), so each additional dissemination channel shortens expected proxy lifetime 1/Λi. The analytic result is that redundant multi-channel broadcasting is strictly suboptimal once cumulative risk exceeds the marginal usage gain.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Avoid broadcasting the same proxy address across redundant channels: additive risk means each extra channel reduces expected lifetime, so use the minimum number of channels needed to saturate proxy capacity.'
+    - Maintain separate proxy pools per trust tier so that a high-risk channel exhausting its pool does not drain infrastructure shared with lower-risk channels.
+section: §3.1
+extracted_by: claude-sonnet-4-6

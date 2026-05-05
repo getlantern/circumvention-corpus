@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-detal-revealing
+kind: evaluation
+summary: Middleboxes that randomize TCP sequence numbers do not update the sequence numbers inside TCP SACK blocks; tracebox found two PlanetLab VPs with stateful seq-number randomizers that cycled approximately every 20 seconds. When SACK blocks reference sequence numbers outside the current window, the Linux TCP stack waits for a full RTO instead of fast-retransmitting, producing up to 50% throughput degradation in controlled measurements.
+techniques:
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Implement application-layer sequence numbers or encryption-layer record ordering independent of TCP sequence integrity; do not rely on SACK for loss recovery in circumvention tunnels traversing untrusted middleboxes.
+    - Monitor for sudden throughput drops (~50%) that may indicate seq-number mangling rather than congestion; a mismatch between retransmit rate and observed packet-loss rate is a diagnostic signal.
+section: §3.3
+extracted_by: claude-sonnet-4-6

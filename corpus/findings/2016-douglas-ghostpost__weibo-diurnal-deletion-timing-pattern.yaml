@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-ghostpost
+kind: evaluation
+summary: 'Sina Weibo''s deletion workforce exhibits strong diurnal variation: posts published 3–9 AM have median lifetimes of 8–9 hours, while posts from 10 AM–midnight have median lifetimes around 2 hours. Over 90% of eventually-deleted posts are removed within 24 hours, but the nighttime slowdown creates a predictable window where post survival is 4–5× longer than daytime.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Exploit predictable diurnal troughs in censor throughput — archival and monitoring systems should prioritize sweep frequency during censor off-peak hours to capture more content before deletion.
+    - When sizing distributed monitoring infrastructure, model censor capacity as a finite-queue process with time-of-day variation rather than assuming uniform deletion latency.
+section: §4.2
+extracted_by: claude-sonnet-4-6

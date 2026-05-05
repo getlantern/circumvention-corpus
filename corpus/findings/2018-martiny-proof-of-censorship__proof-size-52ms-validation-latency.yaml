@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-martiny-proof-of-censorship
+kind: evaluation
+summary: On a quad-core Intel Core i5 (3.30 GHz) against a database of 1 million 256-byte messages, the prototype produces a 3.8 MB PIR query (28 ms client-side generation) and a 2.0 MB proof requiring 2.8 s of server-side processing; third-party proof validation takes 52 ms, and the 120-byte upload ticket validates in 381 µs. All client-side operations are fast enough for smartphone or JavaScript implementations.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - The 2.8 s server reply latency is the primary performance bottleneck; hardware accelerated modular arithmetic or lattice-optimized silicon could make this scheme practical at scale without client-side changes.
+    - The 2 MB proof size is small enough to distribute via social media or email, making the reputation-sentinel use case viable even under adversarial network conditions.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-detor
+kind: defense
+summary: Never-twice avoidance — ensuring no country appears on both the entry leg (source→entry) and exit leg (exit→destination) of a Tor circuit — succeeds for 98.6% of source-destination pairs not in the same country, using only client-side RTT measurements. This directly defeats traffic-correlation deanonymization attacks that require an adversary on both legs of the circuit simultaneously.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Never-twice is substantially more achievable than never-once (98.6% vs. ~75% for the US) because it only requires the entry-leg and exit-leg countries to differ, not that a specific forbidden region be avoided entirely.
+    - Colluding nations (e.g., Five Eyes) can be treated as a single noncontiguous 'country' in the ellipse intersection check — tool designers should expose this as a configurable alliance-avoidance policy.
+section: §4.2, §6.3.1
+extracted_by: claude-sonnet-4-6

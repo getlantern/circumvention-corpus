@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-hahn-games
+kind: defense
+summary: 'Castle structurally avoids all three covert-channel pitfalls identified by Geddes et al.: architecture mismatch is avoided by supporting both client-server and P2P modes; channel mismatch is avoided because RTS games implement application-layer reliability over UDP (matching proxied TCP requirements, unlike VoIP), blocking selective-drop denial-of-service attacks; content mismatch is avoided because legitimate RTS traffic has high natural variance driven by map, strategy, and player count.'
+techniques:
+    - traffic-shape
+    - middlebox-interference
+defenses:
+    - steganography
+    - mimicry
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'When selecting a cover protocol, require all three Geddes properties simultaneously: architectural flexibility (multi-mode), channel reliability parity with proxied traffic (so selective-drop attacks harm legitimate users equally), and high intra-protocol traffic variance that absorbs covert encoding artifacts.'
+    - Avoid cover protocols (e.g., VoIP) that are loss-tolerant—their channel semantics differ from TCP proxying, creating a detectable mismatch; loss-sensitive protocols such as RTS games provide natural channel alignment with reliable-transport circumvention proxies.
+section: §6.3
+extracted_by: claude-sonnet-4-6

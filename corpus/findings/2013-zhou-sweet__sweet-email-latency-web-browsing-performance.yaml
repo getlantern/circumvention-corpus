@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-zhou-sweet
+kind: evaluation
+summary: In a prototype using Gmail, ~90% of SWEET emails traveled from client to server in under 3 seconds; the median time-to-first-appearance (TFA) for the top-10 Alexa sites was approximately 5 seconds; most of the delay comes from email provider handling (spam checks, SMTP connection setup) rather than geographic network latency, so performance degrades little with increased client distance from the mail server.
+defenses:
+    - tunneling
+defense_implications:
+    - Email-tunneling circumvention is viable for interactive web browsing (5-second TFA median), but designers must budget for provider-introduced delay — optimizations at the network layer yield diminishing returns.
+    - Concentrate optimization effort on batching small packets into fewer emails (reducing provider overhead) rather than server-to-mail-server network path.
+section: §5.1
+extracted_by: claude-sonnet-4-6

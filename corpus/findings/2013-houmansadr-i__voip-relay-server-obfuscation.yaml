@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-i
+kind: defense
+summary: FreeWave routes client VoIP connections through oblivious intermediary nodes (e.g., Skype supernodes) rather than directly to the FreeWave server, so even if a censor discovers the server's VoIP ID or IP address it cannot block clients via IP filtering. This 'server obfuscation' is absent from SkypeMorph and StegoTorus; the authors note that Chinese censors enumerated all Tor bridges—on which SkypeMorph depends—in under a month, rendering those transports instantly blockable.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - mimicry
+    - tunneling
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Route proxy connections through a third-party relay network (VoIP overlay, CDN, or ISP infrastructure) so the server's network address is never directly contacted by censored clients, making IP-blocklist blocking ineffective even after server discovery.
+    - Decouple the publicly advertised identifier from the server's network address — designs where discovering the bridge IP is sufficient to block all clients have a single point of failure that censors have already demonstrated they can exploit at scale.
+section: §IX-A
+extracted_by: claude-sonnet-4-6

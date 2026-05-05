@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-danezis-anomaly-based
+kind: evaluation
+summary: The deployed system uses 7-day intervals and a baseline built from the 50 largest Tor jurisdictions; a jurisdiction's user-count ratio is flagged when it falls outside the 99.99th percentile of the fitted Normal distribution N(m,v), yielding an expected false-alarm rate of approximately 1 in 10,000 per jurisdiction-week.
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Calibrate censorship early-warning detectors to a 99.99th-percentile threshold to limit noise while retaining sensitivity to major blocking events.
+    - Use weekly rather than daily observation windows when per-jurisdiction usage exhibits day-of-week periodicity to avoid systematic false alarms.
+section: §5
+extracted_by: claude-sonnet-4-6

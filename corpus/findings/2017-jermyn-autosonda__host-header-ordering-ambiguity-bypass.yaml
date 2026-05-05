@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-jermyn-autosonda
+kind: detection
+summary: Of the 55 filters that inspected the HTTP Host header, 26 keyed only on the first Host header in a multi-Host request, 27 keyed only on the last, and only 2 examined both. Placing a benign Host header in the position the filter reads and the blocked URL in the other position bypassed the filter, and this divergence in behavior tracks RFC 7230's requirement to reject multi-Host requests with a 400 error — which none of the tested filters implemented.
+techniques:
+    - dpi
+    - keyword-filtering
+    - middlebox-interference
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - 'Circumvention proxies can exploit Host header ordering ambiguity: prepend a benign Host header before or after the real one, depending on whether the local filter is known to key on the first or last header, to bypass filtering without altering destination routing.'
+    - This is an active evasion surface that survives filter software updates unless the vendor specifically fixes multi-Host handling — designers should probe locally deployed filters for first-vs-last bias before selecting the evasion variant.
+section: §4.1 Mechanism
+extracted_by: claude-sonnet-4-6

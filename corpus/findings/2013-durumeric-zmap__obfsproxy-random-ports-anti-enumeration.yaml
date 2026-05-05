@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-durumeric-zmap
+kind: defense
+summary: Obfsproxy (predecessor to obfs4) listens on randomized ports as an explicit defense against discovery by comprehensive Internet-wide scanning, because an adversary must scan all 65,535 ports to locate bridges rather than a single known port — multiplying scan cost by roughly 65,000× relative to a single-port sweep.
+techniques:
+    - active-probing
+    - port-blocking
+defenses:
+    - pluggable-transport
+    - obfs4
+    - bridges
+defense_implications:
+    - Randomize bridge listening ports per deployment or per client to multiply the adversary's scan cost; combine with protocol obfuscation so that a port hit still yields no usable fingerprint.
+    - Document the port-randomization assumption explicitly in bridge deployment guides — operators who fix bridges to common ports (80, 443) negate this defense and make their nodes trivially enumerable.
+section: §4.4
+extracted_by: claude-sonnet-4-6

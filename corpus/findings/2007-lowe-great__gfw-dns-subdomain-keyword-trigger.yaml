@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-lowe-great
+kind: detection
+summary: Nonsense domains with known-censored hostnames embedded as subdomains (e.g., www.epochtimes.com.pSyfA6srAZ0qCxU63.com) triggered the same tampered responses — returning the pool of 8 bad IPs — as direct queries for the censored domain. Control-subdomain nonsense domains (e.g., www.pSyfA6srAZ0qCxU63.com) did not trigger tampering, indicating the GFW performs substring keyword matching across the full DNS query label string.
+techniques:
+    - dns-poisoning
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Any DNS query that includes a censored domain string as a label — even nested inside a larger domain — will be intercepted; DNS-based covert channels must encode or encrypt payload domain names rather than embedding them in plaintext.
+    - Censored hostnames used as identifiers in DNS-based discovery or bootstrapping protocols must be replaced with opaque tokens or hashes to avoid triggering substring-based injection.
+section: §6.2
+extracted_by: claude-sonnet-4-6

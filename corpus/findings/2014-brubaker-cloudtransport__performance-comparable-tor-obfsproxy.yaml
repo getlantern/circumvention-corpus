@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-brubaker-cloudtransport
+kind: evaluation
+summary: CloudTransport Cirriform in tunnel and proxified-Tor modes achieves performance comparable to Tor with Obfsproxy across Web browsing (Alexa Top 30 front pages), 300 KB SCP uploads, 10 MB YouTube uploads, and 5-minute 480p streaming video. Bandwidth overhead per message is 350–400 bytes for Amazon S3, with HTTPS adding an extra 2–3% overhead. Per-page browsing costs are as low as $0.00100¢ (Cumuliform on S3), with idle-polling costs of $0.185/day plus $0.34/day/connection for Cirriform on S3.
+defenses:
+    - tunneling
+    - pluggable-transport
+    - tor
+defense_implications:
+    - Cloud-storage-based transports are viable for real-world use (video streaming, file uploads, browsing) without significant performance regression relative to Tor+Obfsproxy — operational API cost rather than latency is the primary deployment constraint to budget for.
+    - Use Cumuliform-style batching when per-operation API costs dominate (nearly half the cost of Cirriform on S3), accepting higher latency as the tradeoff.
+section: §5, Table 3, Table 4
+extracted_by: claude-sonnet-4-6

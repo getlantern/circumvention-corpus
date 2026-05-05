@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-ghostpost
+kind: evaluation
+summary: Simulation on a 1,000,000-user scale-free Weibo topology shows that at 1% GhostPost user adoption the system preserves over 70% of postviews against the daytime censor (2-hour median deletion) and nearly 90% against the nighttime censor (10-hour median deletion). Even a highly aggressive censor deleting posts within 30 minutes on average cannot prevent a 1.5% GhostPost deployment from resurrecting the majority of postviews. Steep coverage gains plateau around 0.5% adoption, after which marginal returns diminish.
+techniques:
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Distributed user-as-sensor designs can achieve adequate censored-content coverage at sub-2% adoption thresholds — prioritize user acquisition up to the ~0.5% inflection point rather than optimizing the monitoring frequency.
+    - Model coverage as a race between censor throughput (queue-based) and distributed observer density — at parity, even small increases in observer count disproportionately help.
+section: §4.2, Figure 1
+extracted_by: claude-sonnet-4-6

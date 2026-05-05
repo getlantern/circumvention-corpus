@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-detal-revealing
+kind: evaluation
+summary: tracebox can estimate middlebox location with an error of ≤4 hops in 61% of cases; errors above 13 hops (the length of ~60% of paths) are each below 1% individually. Of MSS-modifying middleboxes detected, 52% were located in the network core and only 2.7% close to the source vantage point.
+techniques:
+    - measurement-platform
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - When diagnosing blocking or packet modification, use hop-level localization to distinguish access-network versus core-network middleboxes, as each requires a different circumvention strategy.
+    - Probe from geographically diverse vantage points to determine whether interference is confined to specific ISP access segments or deployed broadly in national backbone infrastructure.
+section: §3.4
+extracted_by: claude-sonnet-4-6

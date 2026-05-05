@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-gill-characterizing
+kind: detection
+summary: Iran's censorship infrastructure shifted from fully decentralized (Jaccard similarity ~0 across ISPs in 2007) to highly centralized by June 2011, when the Jaccard similarity between the national gateway AS 12880 and two other ISPs reached 0.94 and 0.95. Almost all 2011 blocking was accompanied by a blockpage containing an iframe redirecting to internal IP 10.10.34.34, providing direct evidence of a single choke-point filtering infrastructure.
+techniques:
+    - dpi
+    - packet-injection
+censors:
+    - ir
+defense_implications:
+    - In Iran's centralized architecture, a circumvention technique that bypasses the national gateway (AS 12880) generalizes across ISPs — per-ISP evasion logic is unnecessary, and testing at one major ISP is sufficient to validate reachability.
+    - The uniform internal redirect IP (10.10.34.34) and consistent blockpage iframe are detectable fingerprints; probes that check for this signature can reliably confirm whether traffic is hitting the centralized filter or has successfully bypassed it.
+section: §4.5, Table V
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-robinson-collateral
+kind: evaluation
+summary: In a survey of 1,175 Chinese circumvention users, reliability ranked as the top factor in tool selection (cited more often than speed), while privacy and trust in the developer ranked last. The overwhelming majority are versatility-first users seeking fast, reliable access to social media and search engines and are largely unconcerned about surveillance; only a small minority of journalists, dissidents, and activists are privacy-first users.
+censors:
+    - cn
+defense_implications:
+    - For the large versatility-first segment, invest in reliability and throughput over privacy features; tools that sacrifice performance for privacy will lose this majority to faster alternatives.
+    - Clearly disclose privacy limitations so high-risk users do not inadvertently rely on tools designed for the non-privacy-sensitive majority.
+section: §2 Common Problems, Figures 2.3–2.4
+extracted_by: claude-sonnet-4-6

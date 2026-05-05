@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-aryan-internet
+kind: detection
+summary: 'Iran''s HTTP censorship allows the TCP three-way handshake to complete normally before acting on the HTTP GET request: the censor responds with a ''403 Forbidden'' and simultaneously sends 5 spoofed RST packets to the destination server (3 with in-sequence numbers, 2 with seemingly random offsets). No modifications to TCP/IP or HTTP headers were observed at either endpoint, ruling out a transparent proxy and pointing to inline DPI.'
+techniques:
+    - dpi
+    - rst-injection
+    - keyword-filtering
+censors:
+    - ir
+defense_implications:
+    - Because blocking triggers on the GET request payload, not the connection setup, transports that encrypt all data before the first byte (e.g., TLS-tunneled protocols) defeat this specific mechanism — the censor has nothing to inspect.
+    - Omitting the HTTP Host header bypasses host-based filtering but causes server-side '400 Bad Request' errors; tools should instead encrypt or obfuscate the Host header rather than strip it.
+section: §4.2, Figure 3
+extracted_by: claude-sonnet-4-6

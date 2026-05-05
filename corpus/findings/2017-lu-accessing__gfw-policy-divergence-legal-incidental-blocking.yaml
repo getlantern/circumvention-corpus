@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lu-accessing
+kind: policy
+summary: 'China''s Internet censorship ecosystem is bilateral: the GFW handles technical blocking while separate government agencies (MIIT, TCA, MPS, MSS) handle non-technical regulation, and ''these two components do not operate synchronously.'' Google Scholar is considered a legal service by Chinese regulators but is incidentally blocked as collateral damage because it falls under the google.com domain, blocked since 2010.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - dpi
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Services that are legally permitted but technically blocked present a distinct threat model — operators can potentially pursue formal legalization (ICP registration) as a sustainability strategy rather than relying solely on technical evasion.
+    - Circumvention tool designers should track both GFW technical behavior and Chinese regulatory policy separately, as policy changes (e.g., VPN legalization waves) may open or close legal operating windows independently of the GFW's blocking state.
+section: §2
+extracted_by: claude-sonnet-4-6

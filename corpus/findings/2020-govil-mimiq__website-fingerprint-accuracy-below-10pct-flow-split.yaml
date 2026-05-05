@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-govil-mimiq
+kind: defense
+summary: Migrating the client IP address every 25–100 packets reduces state-of-the-art website fingerprinting attack accuracy to below 10% in the closed-world setting, outperforming advanced dedicated defenses such as HyWF multipathing. The mechanism works because most fingerprinting classifiers rely on as many packets per flow as possible, and flow splitting degrades feature quality.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - IP-level flow splitting via QUIC migration is a lightweight alternative to full traffic shaping against website fingerprinting—implement it as a configurable client strategy rather than a fixed policy.
+    - Combine flow splitting with padding/timing randomization since MIMIQ explicitly leaves packet-timing side-channels unaddressed.
+section: §5
+extracted_by: claude-sonnet-4-6

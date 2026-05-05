@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-crandall-forgive
+kind: policy
+summary: To reduce risk to human subjects in side-channel censorship measurements, researchers can substitute gateway routers near the target client in place of the client machine itself—the approach used by Censored Planet—or perform measurements across entire /24 subnets so that no individual can be incorrectly associated with the measurement traffic. For the ICMP rate-limit side channel, the 'client' can be an unresponsive IP address, measuring the gateway router rather than any end-user machine.
+techniques:
+    - measurement-platform
+defense_implications:
+    - When building measurement pipelines to evaluate circumvention tool reachability, prefer router or /24-level vantage points over individual user machines to minimize the risk of drawing censor attention to specific users.
+    - Publish an opt-out mechanism (e.g., a webpage at the measurement machine's IP) and keep packet rates at or below 5 packets per second to satisfy responsible-disclosure norms and avoid triggering IDS alerts.
+section: §3.4
+extracted_by: claude-sonnet-4-6

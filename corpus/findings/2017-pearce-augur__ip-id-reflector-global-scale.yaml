@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-augur
+kind: evaluation
+summary: Augur's Internet-wide ZMap scan found 22.7 million hosts (of 140 million reachable) using shared monotonically-increasing IP ID counters across 234 countries (median 1,667 reflectors per country); filtering to ethical infrastructure via CAIDA Ark reduced this to 53,130 reflectors in 179 countries (median 15 per country), representing 4,214 ASes.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention projects can deploy Augur-style IP ID side-channel scanning to continuously monitor the reachability of proxy and bridge IPs from ~179 countries without needing in-country vantage points or risking local users.
+    - 'The available reflector density (median 15 per country after ethical filtering) sets a practical floor: countries with very few reflectors have high measurement uncertainty and require supplementary methods such as direct probing or OONI-style volunteers.'
+section: §V-B, Table I
+extracted_by: claude-sonnet-4-6

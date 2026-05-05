@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-barradas-effective
+kind: detection
+summary: CovertCast — which scrapes web content into colored-matrix frames broadcast over YouTube live streams — is fully detected by the χ² similarity classifier with TPR=100% and FPR=2%. The KL and EMD classifiers achieve TPR>96.5%, indicating the system provides essentially no unobservability in practice.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Hard-coded data-modulation parameters (cell size, bit depth, framerate) rapidly become fingerprints as the carrier platform (e.g., YouTube) evolves; transports must make these parameters adaptive and continuously re-calibrated against current platform traffic.
+    - A 1-order-of-magnitude larger evaluation dataset than the one used in the original paper exposed CovertCast's failure — tool designers must validate against large, diverse traffic sets, not minimal lab captures.
+section: §3, Table 1
+extracted_by: claude-sonnet-4-6

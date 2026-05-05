@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-ververis-internet
+kind: detection
+summary: All five Republic of Cyprus ISPs (Callsat AS24672, Cablenet AS35432, Cyta AS6866, MTN AS15805, and Primetel) used DNS hijacking as their sole blocking mechanism, creating local zone entries that override legitimate DNS replies and redirect users to ISP-controlled block pages or error pages.
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - DNS-based blocking is ISP-specific and entirely bypassed by configuring any third-party resolver; circumvention tools should default to encrypted DNS (DoH/DoT) or embed a trusted resolver to avoid relying on the user's ISP resolver.
+    - Since block pages are served via HTTP redirect after DNS hijack, HTTPS-only services already defeat the notification mechanism; proxies should default to HTTPS to prevent blockpage injection.
+section: §6
+extracted_by: claude-sonnet-4-6

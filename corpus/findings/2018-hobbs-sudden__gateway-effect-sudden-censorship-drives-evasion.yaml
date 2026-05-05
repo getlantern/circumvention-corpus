@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hobbs-sudden
+kind: policy
+summary: 'When governments suddenly block previously uncensored, habitual-use platforms, affected users acquire VPN/proxy tools to restore access — and those tools then incidentally unlock all long-blocked content. The authors call this the ''gateway effect'': sudden censorship backfires not through political backlash but through habit-driven evasion that permanently expands information access. The effect is strongest for indispensable, hard-to-substitute services.'
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that market themselves as restoring access to a specific newly-blocked service (e.g., Instagram, WhatsApp) can exploit gateway-effect dynamics to rapidly grow their user base during censorship events.
+    - Design onboarding for apolitical, habit-driven users who acquire VPNs reactively — simple UX and low setup friction matter more than ideological framing.
+section: 'Theory: Gateway effects in information access'
+extracted_by: claude-sonnet-4-6

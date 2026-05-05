@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wustrow-tapdance
+kind: deployment
+summary: All three prior end-to-middle (E2M) schemes — Telex, Cirripede, and Decoy Routing — require an inline flow-blocking component at the participating ISP, which adds latency, introduces a single point of failure, and may violate carrier SLAs. In private discussions with ISPs, the authors found that despite willingness to assist Internet freedom technically and financially, none were willing to deploy existing E2M technologies due to these operational impacts. TapDance removes the inline blocking requirement entirely, requiring only a passive tap and packet-injection capability.
+techniques:
+    - middlebox-interference
+    - ip-blocking
+defenses:
+    - tapdance
+    - telex
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Design E2M systems around passive-tap + inject rather than inline blocking to pass ISP SLA and reliability constraints; inline components are the primary adoption blocker in real carrier conversations.
+    - Position the station as a passive observer that spoofs responses rather than a traffic forwarder, so an outage at the station does not disrupt the ISP's customer traffic.
+section: §1, §6
+extracted_by: claude-sonnet-4-6

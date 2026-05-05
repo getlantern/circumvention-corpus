@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1998-ptacek-insertion
+kind: defense
+summary: 'IP-level fragment overlap attacks operate independently of TCP: crafting overlapping IP fragments whose reassembly by the IDS yields benign content while the end-system''s reassembly yields the true payload. The paper demonstrates this is a separate attack surface from TCP-level evasion, exploitable below the transport layer before any TCP stream reconstruction begins.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Use overlapping IP fragments to split censored content at the IP layer, below TCP, where censor and endpoint resolve conflicts under different policies; this technique bypasses transport-layer analysis entirely.
+    - Fragment-based evasion can be combined with TCP-level evasion for layered obfuscation; validate that the destination host's IP reassembly behavior matches expectations with a controlled endpoint before deployment.
+section: §3
+extracted_by: claude-sonnet-4-6

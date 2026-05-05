@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-aceto-analyzing
+kind: detection
+summary: 'DNS tampering in Pakistan takes at least two distinct sub-forms: WiTribe and Nayatel redirect blocked domains to explicit block-page IPs (DNS resolution returns a routable address that serves a block page), while PTCL returns both failing IPs and explicit block pages, indicating that PTCL applies DNS tampering without user notification in some cases (NXDOMAIN-like) and with a block page in others. Qubee passes DNS entirely and applies content-level HTTP tampering at roughly 80% of measurements for blocked URLs.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - pk
+defense_implications:
+    - Clients cannot distinguish a blocked destination from a legitimate one based solely on TCP reachability (~80% open for Qubee) or DNS resolution success; content-integrity verification (e.g., comparing response size against an out-of-country reference) is required.
+    - 'Block-page IP detection should be part of the bootstrap probe: if a resolved IP serves a block page, the tool should treat the domain as censored and route it regardless of DNS success.'
+section: §V
+extracted_by: claude-sonnet-4-6

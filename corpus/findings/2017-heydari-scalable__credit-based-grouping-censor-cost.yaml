@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-heydari-scalable
+kind: defense
+summary: A credit-based accounting method dynamically assigns users to larger groups as their trust score accumulates (credit increases by G−1 per unblocked interval), requiring a user's credit to be twice the group's risk before joining. This reduces the total number of CoAs needed while making it costly for censor agents to infiltrate large groups, since they must wait through many clean intervals before the group reaches exploitable size.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Trust-scored user grouping shifts the resource balance toward defenders: the server operates fewer CoAs while the adversary must invest many clean shuffling intervals before a censor can disrupt a large access group.'
+    - When a blocked group is detected and bisected recursively down to minimum group size, the per-censor disruption cost (sum of innocent users blocked at each split level) is bounded by R(G) = Σ(G/2^i − 1), providing a quantifiable upper bound on collateral blocking.
+section: §IV-D
+extracted_by: claude-sonnet-4-6

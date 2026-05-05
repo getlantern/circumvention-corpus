@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-birtel-slitheen
+kind: evaluation
+summary: Slitheen++ achieves a median covert site loading time of 7 seconds in the naive setup, rising to 8 seconds with crawling and 13 seconds with a 1-second thinking-time (TT) delay. The Baseline-to-Covert factor ranges from 3.7–8.5 without TT and from 7.6–21.4 when crawling and 1-second TT are combined, reflecting the fundamental tradeoff between stealth overt behavior and covert throughput.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Decoy routing deployments must explicitly surface the stealth/performance tradeoff; the 1.9–2.6× slowdown from stealth overt behavior is unavoidable under current designs and will affect user retention.
+    - Predefined crawl URL lists that guarantee high covert goodput—rather than random link-following—could reduce loading-time variance without sacrificing the detectability gains from varied browsing patterns.
+section: §5 (Figure 1, Figure 2)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-lincoln-bootstrapping
+kind: detection
+summary: 'The Chinese Great Firewall was observed conducting two follow-up probes for each outbound TCP/443 connection: the first with garbage binary data (target unknown) and the second specifically performing an SSL negotiation, an SSL renegotiation, and successfully building a one-hop Tor circuit to confirm the bridge. This reactive probing renders unpublished Tor entry points discoverable even when not listed in any directory.'
+techniques:
+    - active-probing
+    - tls-fingerprint
+censors:
+    - cn
+defense_implications:
+    - Proxies must implement access-control authentication before revealing their identity — any service that completes a standard Tor (or proxy) handshake in response to an unauthenticated probe is fully exposed.
+    - Design gateways to return innocuous cover responses to connections that lack the correct credential sequence, so active probers see only a normal web server.
+section: §1
+extracted_by: claude-sonnet-4-6

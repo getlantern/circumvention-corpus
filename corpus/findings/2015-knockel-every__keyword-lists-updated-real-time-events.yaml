@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-knockel-every
+kind: detection
+summary: 'Between February and May 2015, YY High received 21 updates and 9158 Chat received 8 updates. Updates correlated directly with current events within days: Zhou Yongkang''s name was added to 9158 Chat on May 6, days after his April 3 corruption indictment; YY Normal added and then removed Chinese Christian song titles between April 23 and April 30 during a church demolition controversy. GuaGua does not download keyword updates at all.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Keyword blocklists on Chinese platforms are operationally live — they update in near-real-time during political events, so circumvention tools relying on a static snapshot of censored content will go stale within days of a major news cycle.
+    - Monitoring keyword list update frequency and content provides an early-warning signal for heightened censorship periods, which could trigger adaptive transport selection in circumvention tools.
+section: §5.3
+extracted_by: claude-sonnet-4-6

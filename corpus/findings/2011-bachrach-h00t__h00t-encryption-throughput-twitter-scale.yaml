@@ -1,0 +1,11 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bachrach-h00t
+kind: evaluation
+summary: 'On a 2011 MacBook Air (1.86 GHz Core 2 Duo), #h00t achieves 3,610 encryptions/second and 15,590 decryptions/second (Table 2). Twitter''s peak load at the time was 6,939 tweets/second, meaning full-service encryption at peak would require at most two commodity machines. The authors conclude that computational overhead is negligible and bandwidth is the binding constraint.'
+defenses:
+    - steganography
+defense_implications:
+    - Message-level symmetric encryption over a high-throughput public platform is computationally cheap; design effort should focus on key distribution UX and bandwidth budgeting, not crypto performance.
+section: §5.3, Table 2
+extracted_by: claude-sonnet-4-6

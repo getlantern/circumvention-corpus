@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-verkamp-inferring
+kind: detection
+summary: China's censoring devices send four spoofed RST packets per filtered connection with varying sequence and ACK numbers and TTL values corresponding to roughly the hop count to the Chinese border; the IP ID field increments sequentially per TTL group, strongly implying a small cluster of out-of-band machines co-located at each border router. Because the device is out-of-band, the actual server response still arrives at the client but is preempted by the injected RSTs.
+techniques:
+    - rst-injection
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Implement RST-ignoring at both client and server endpoints — the out-of-band injector cannot suppress the real server response, so discarding non-authentic RSTs recovers the original reply.
+    - Use TTL and sequential IP-ID analysis to fingerprint injected RSTs as distinct from legitimate ones, enabling selective filtering in circumvention clients.
+section: §4.2
+extracted_by: claude-sonnet-4-6

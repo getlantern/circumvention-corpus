@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-schuchard-routing
+kind: detection
+summary: 'A passive timing attack using the Kolmogorov-Smirnov test on connection latency distributions reliably distinguishes Telex users from honest hosts: K-S scores against the overt destination max out at 0.26, while scores against covert destinations (even those within 10 ms of the Telex station) range from 0.3–1.0 with a median of 0.7 for nearby servers and 1.0 for Alexa top-100 sites. The attack is effective even for clients 50–250 ms from the Telex station, with no K-S score below 0.26 observed across 40 PlanetLab hosts.'
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - decoy-routing
+    - telex
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - Decoy routing stations must add per-connection latency padding to collapse the difference between overt and covert path RTTs; without it, even a covert destination co-located with the station (≈0.5 ms away) is distinguishable.
+    - Any mid-path proxy that alters the effective RTT of the man-in-the-middle leg introduces a detectable timing signature; protocol designers must treat latency indistinguishability as a first-class security requirement.
+section: §5.1–5.2, Figures 5–8
+extracted_by: claude-sonnet-4-6

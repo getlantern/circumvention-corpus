@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-come
+kind: evaluation
+summary: All 25 applicable client-side Geneva strategies failed when mechanically translated to server-side analogs against China's GFW, even when the only structural difference was which endpoint sent the insertion packet. Experiments with the server placed inside China and client outside also failed, indicating the GFW tracks connection initiator identity and processes client versus server packets asymmetrically—meaning server-side circumvention requires a completely independent discovery approach.
+techniques:
+    - dpi
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Do not assume client-side Geneva/INTANG/liberate strategies transfer to server-side deployment; run Geneva server-side from scratch rather than porting client strategies.
+    - Any server-side circumvention tool must account for the fact that censors distinguish packet direction and may apply different logic to inbound versus outbound flows.
+section: §3
+extracted_by: claude-sonnet-4-6

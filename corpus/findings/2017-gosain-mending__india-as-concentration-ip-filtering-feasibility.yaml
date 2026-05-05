@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-mending
+kind: evaluation
+summary: Only 4 Indian ASes are needed to intercept >90% of AS-level paths from all Indian ASes to censored sites; 10 ASes cover ~95% of paths. Fewer than 5,000 edge routers spread across those ASes would suffice for nationwide IP filtering, with ~70% of those routers belonging to just two private ISPs (Bharti Airtel AS9498 and Tata Comm. AS4755).
+techniques:
+    - ip-blocking
+censors:
+    - in
+defense_implications:
+    - India's Internet is structurally ready for GFW-style centralized filtering with minimal new infrastructure; circumvention tools should treat India as a potential high-censorship environment and have protocol hardening (traffic randomization, mimicry) ready to activate rapidly.
+    - Monitor BGP announcements from AS9498 and AS4755 as early-warning signals of centralized filtering deployment — these two ASes alone control 70% of the required filtering routers.
+section: §4.1, Table 2, Table 3
+extracted_by: claude-sonnet-4-6

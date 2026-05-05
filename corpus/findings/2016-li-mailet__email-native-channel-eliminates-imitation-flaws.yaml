@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-li-mailet
+kind: defense
+summary: By transmitting application-level social media content over genuine SMTP/IMAP connections rather than imitating email protocols, Mailet achieves channel and content consistency, making it immune to the differential channel attacks — channel mismatch and content mismatch — that defeated earlier hide-within systems such as StegoTorus and Freewave.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - steganography
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Use the actual cover protocol natively (real SMTP via starttls) rather than a hand-crafted imitation; behavioral authenticity under DPI eliminates imitation-flaw detectors that exploit protocol inconsistency.
+    - Select cover channels whose loss tolerance and delay tolerance match the proxy application's traffic profile; a mismatch enables censor interference that can stall connections without outright blocking them.
+section: §6.1
+extracted_by: claude-sonnet-4-6

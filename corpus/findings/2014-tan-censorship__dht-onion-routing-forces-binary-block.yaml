@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-tan-censorship
+kind: defense
+summary: 'The paper sketches a decentralized DHT-based communication protocol where all payloads are encrypted in TLS and explicit redirection enables a form of onion routing. Because the censor cannot distinguish censored from non-censored streams, it is forced into a binary choice: block all protocol traffic (overblocking) or allow all of it.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - tor
+    - tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Structuring a protocol so that all flows are indistinguishable — not just circumvention flows — forces the censor into costly overblocking rather than surgical filtering.
+    - A DHT-backed rendezvous layer provides NAT traversal and reachability as genuine utility, giving non-circumvention users a reason to adopt the protocol and raising blocking costs.
+section: §2.2
+extracted_by: claude-sonnet-4-6

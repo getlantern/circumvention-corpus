@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-mccoy-proximax
+kind: defense
+summary: 'Proximax frames proxy distribution as a yield-maximization problem: the expected yield of a proxy is its attracted usage Ui divided by its total blocking risk Λi. A dissemination channel should only be assigned a proxy if the channel''s own yield ratio u/λ exceeds the proxy''s current yield ratio; otherwise the added risk outweighs the additional traffic and the channel must not be used at all.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Do not broadcast proxy addresses through every available channel — model each channel's risk-to-usage ratio and suppress channels whose expected yield falls below the proxy's current yield.
+    - Track per-channel blocking events and usage rates continuously; use the Poisson yield formula (Ui/Λi) to rank channels and assign new proxies only to those that improve total system yield.
+section: §3.3
+extracted_by: claude-sonnet-4-6

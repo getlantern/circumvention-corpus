@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-anderson-dimming
+kind: evaluation
+summary: Throughput variance across Iranian ISPs collapsed nearly simultaneously during suspected throttling events, consistent with a centrally-coordinated administrative order rather than independent ISP-level decisions. Former ISP staff accounts cited in the paper indicate throttling orders were delivered by phone or fax, with smaller regional providers potentially delaying compliance—implying a brief window before universal enforcement.
+techniques:
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - Iran's centralized gateway architecture (all traffic routed through TCI/ITC AS12880) means a single throttling order can affect all users simultaneously; circumvention infrastructure should not rely on a single upstream path through the Iranian international gateway.
+    - The compliance lag that smaller ISPs may exploit before throttling orders propagate suggests routing circumvention traffic through smaller regional ASNs could yield additional usable bandwidth during the initial hours of a suppression event.
+section: §5.2, Fig. 8–9
+extracted_by: claude-sonnet-4-6

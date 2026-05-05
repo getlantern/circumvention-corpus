@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-scott-satellite
+kind: detection
+summary: 'Naive interference measurement systematically misclassifies CDN geographic routing as blocking (and vice versa): when China or Russia resolves twitter.com to a non-US IP, a naive detector must decide whether that is a CDN point of presence or interference. Joint iterative analysis of DomainSimilarity and IPTrust scores is required to separate authentic CDN footprints from block-page redirections.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+    - measurement-platform
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Domain-fronting designs must account for the fact that the same CDN IP used for fronting may also appear in censor block-page clusters in other countries, causing false-positive blocking alerts — use multi-domain co-resolution clustering rather than single-IP trust checks.
+    - Circumvention infrastructure audits should run Satellite-style joint CDN/interference analysis to verify that CDN IPs being used for fronting are not already appearing in censor-country block clusters.
+section: §1, §2.4, §2.4.1
+extracted_by: claude-sonnet-4-6

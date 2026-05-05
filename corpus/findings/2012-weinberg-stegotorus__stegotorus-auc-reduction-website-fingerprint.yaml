@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-weinberg-stegotorus
+kind: evaluation
+summary: A naive-Bayes website-fingerprinting classifier achieves AUC > 0.94 against vanilla Tor for 8 of 9 Alexa top-ten sites (e.g., Wikipedia 0.9991, YouTube 0.9947). Against StegoTorus-HTTP, AUC drops to ≤ 0.75 for 7 of 9 sites (YouTube 0.4125, Facebook 0.5413, Google 0.6928), which the authors argue is too low for practical perimeter-scale deployment where near-perfect precision is required to avoid error floods.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+    - mimicry
+    - tor
+defense_implications:
+    - Protocol mimicry that distributes tunnel traffic across many short-lived cover connections with realistic size/timing distributions is sufficient to break simple per-site Gaussian classifiers, even without defeating them entirely.
+    - Target AUC < 0.6 for high-priority censored sites (social media, news) since perimeter classifiers require near-1.0 AUC to remain practical at backbone packet rates.
+section: §5.2, Table 2
+extracted_by: claude-sonnet-4-6

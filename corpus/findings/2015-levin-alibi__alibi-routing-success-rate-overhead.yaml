@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-levin-alibi
+kind: evaluation
+summary: On a 370-node PlanetLab deployment, Alibi Routing achieved near 100% success avoiding both the USA and China (Tables 1–2) with an average search cost of 1.0–1.66 nodes contacted (Table 4). In simulation over 20,000 globally distributed nodes, success rates were 93–100% at δ=0.5–1.0 with average search cost under 40 nodes (Table 3), capping TTL at 7.
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - generic
+defense_implications:
+    - A TTL cap of 7 and neighbor set size of 32 provides near-complete success with minimal overhead — safe engineering defaults for alibi-based overlay routing.
+    - Sub-2-hop average relay discovery on PlanetLab indicates alibi selection adds negligible setup latency for real-time connections.
+section: §6.3, Tables 1–4
+extracted_by: claude-sonnet-4-6

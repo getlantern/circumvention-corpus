@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-weinberg-topics
+kind: evaluation
+summary: Analysis of 758,191 URLs across 22 probe lists found near-zero URL-level Jaccard similarity between nearly all list pairs (most < 0.01), including between country blacklists; even at hostname level, blacklists share little with each other or with researcher-curated lists like ONI's 12,107-URL list, indicating that any single probe list systematically misses large portions of what is actually censored.
+techniques:
+    - measurement-platform
+    - ip-blocking
+defense_implications:
+    - When evaluating whether a circumvention tool unblocks a representative sample of censored content, combine probe lists with diverse selection criteria — single-list evaluations will systematically underestimate coverage gaps.
+    - Use topic-distribution analysis rather than URL overlap to assess probe list representativeness; lists that look different at the URL level may target the same censored topics.
+section: §3.3, Tables 1–2
+extracted_by: claude-sonnet-4-6

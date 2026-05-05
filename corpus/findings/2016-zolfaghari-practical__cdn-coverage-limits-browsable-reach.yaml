@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zolfaghari-practical
+kind: evaluation
+summary: A survey of the top 10,000 Alexa websites found that only 6% (Class 1) are fully hosted on shared CDNs with HTTPS deployments that allow removal of destination leakage — the only class browsable with plausible unobservability against a competent DPI-equipped censor — while 64% are partial-CDN sites (Class 4) whose CDN-hosted content (images, videos) can still be reached via content wrappers or dynamic mirrors at negligible operational overhead.
+techniques:
+    - dpi
+    - sni-blocking
+defenses:
+    - tunneling
+    - domain-fronting
+censors:
+    - cn
+    - ir
+defense_implications:
+    - A CDNBrowsing tool targeting high-censorship countries should prioritize partial-CDN support (content wrappers, dynamic mirrors) to reach the 64% Class 4 sites, rather than limiting scope to the 6% fully CDNBrowsable sites.
+    - The bootstrapper and CDN metadata database must be continuously maintained per-CDN, since which CDNs fall into the 'leaking HTTPS' class changes as CDN providers update their HTTPS configurations.
+section: §5.1
+extracted_by: claude-sonnet-4-6

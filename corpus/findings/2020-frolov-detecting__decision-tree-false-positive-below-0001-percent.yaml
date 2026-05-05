@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-detecting
+kind: evaluation
+summary: Manually-crafted decision trees combining probe non-response, FIN/RST close type, and connection timing achieved a false-positive rate below 0.001% for obfs4, Lampshade, Shadowsocks, and OSSH across 1.9 million endpoints; for OSSH specifically, 7 of 8 flagged Tap endpoints were confirmed genuine Psiphon proxies by developers. MTProto was the sole exception, producing 3,144 false positives (0.56% of Tap, 0.02% of ZMap) because its infinite-timeout behavior is shared by a non-negligible population of common hosts.
+techniques:
+    - active-probing
+defenses:
+    - obfs4
+    - shadowsocks
+    - pluggable-transport
+censors:
+    - generic
+    - cn
+defense_implications:
+    - Implementation-specific TCP behaviors (fixed thresholds, distinctive timeout values) are identifiable with high precision using only a handful of probes — TCP-level behavior must be audited as rigorously as payload-level behavior during protocol design.
+    - MTProto's design demonstrates that infinite-timeout plus no close threshold is currently the hardest behavior to distinguish from common Internet hosts and should be adopted as a baseline.
+section: §V-A, Table IV
+extracted_by: claude-sonnet-4-6

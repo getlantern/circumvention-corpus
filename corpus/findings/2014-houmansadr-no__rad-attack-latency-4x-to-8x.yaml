@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-houmansadr-no
+kind: evaluation
+summary: Even under the most censor-favorable (random-no-ring-1) decoy placement, launching the RAD attack increases average Internet route latency from China by over 4×; under strategic placements the average latency increase factor reaches 8×. These increases arise because RBGP is forced onto lower-capacity, less-popular transit ASes even when path hop-count is unchanged.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Decoy routing imposes measurable QoS degradation on censor-controlled networks beyond connectivity loss, raising the political cost of the RAD attack.
+    - Monitor for sudden latency spikes in censor-controlled regions as a possible indicator that a RAD-like BGP routing manipulation is underway.
+section: §VII-C, §I
+extracted_by: claude-sonnet-4-6

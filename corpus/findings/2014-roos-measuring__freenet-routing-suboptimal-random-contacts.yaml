@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-roos-measuring
+kind: evaluation
+summary: Freenet's deployed Opennet topology uses uniformly random long-range contacts rather than Kleinberg-optimal distance-proportional selection, yielding an average routing length of 37.17 hops in simulation; adopting a 1/d distance distribution (r=1) reduces this to fewer than 13 hops — a 2.9× improvement achievable via a Kademlia-style bucket system.
+techniques:
+    - measurement-platform
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Implement a Kademlia-style bucket system for neighbor selection to achieve ~1/d distance distribution, which simulation shows reduces routing hops from 37 to <13 without removing bandwidth-based degree incentives.
+    - For any P2P censorship-resistance overlay, validate that the deployed topology matches the design's distance assumptions before optimizing routing — suboptimal neighbor selection alone can cause 3× routing overhead.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-cao-skyf2f
+kind: defense
+summary: 'SkyF2F tunnels censored traffic through Skype''s encrypted overlay network, forcing the censor into an all-or-nothing dilemma: blocking SkyF2F requires blocking Skype entirely, which causes actual economic damage to businesses and users who depend on it. Because Skype users are identified by pseudonym and all messages are routed to overlay addresses rather than Internet addresses, IP-based blocking, DNS filtering, port blocking, and keyword filtering are all rendered ineffective.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - port-blocking
+    - keyword-filtering
+defenses:
+    - tunneling
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Piggybacking on a high-value commercial service (Skype, WhatsApp, etc.) raises the political and economic cost of blocking enough to deter unsophisticated censors; build circumvention as a plugin/overlay rather than standalone software.
+    - End-to-end encryption provided by the host overlay can substitute for transport-layer encryption in the circumvention layer, reducing implementation complexity.
+section: §V.A
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-anderson-dimming
+kind: evaluation
+summary: 'Using M-Lab NDT measurements from Iran, the paper identifies two extended throttling periods: November 30, 2011 – August 15, 2012 (77% decrease in median download throughput) and October 4 – November 22, 2012 (69% decrease), plus 8–9 shorter-term disruptions. Weekly variance analysis yields even steeper figures of -98% and -82% for the two major events.'
+techniques:
+    - throttling
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - Deploy latency-independent throughput monitoring (M-Lab NDT or equivalent) as a persistent canary; a sustained >50% throughput drop without a corresponding RTT increase is a signature of administrative throttling, not infrastructure failure.
+    - Design circumvention tools with adaptive bitrate and offline-first caching so multi-month throttling events (as observed Nov 2011 – Aug 2012) do not render the tool completely unusable.
+section: §5, §5.1
+extracted_by: claude-sonnet-4-6

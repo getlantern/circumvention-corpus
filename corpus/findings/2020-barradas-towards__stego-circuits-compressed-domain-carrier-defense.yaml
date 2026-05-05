@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-towards
+kind: defense
+summary: CRON's stego circuits defend against adversary-controlled WebRTC services by embedding covert data into encoded video frames at the compressed data domain using video steganography algorithms, maintaining the visual characteristics of the video feed rather than replacing it entirely. Endpoint authentication uses public-key encryption with keys exchanged out-of-band, preventing MITM key substitution through the censor-controlled signaling server.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - steganography
+    - webrtc-pluggable
+censors:
+    - cn
+    - ir
+defense_implications:
+    - 'Compressed-domain video steganography (operating on VP8/H.264 bitstream structure rather than raw pixels) is the correct insertion point for WebRTC-based covert channels: it survives re-encoding by intermediate gateways and maintains statistical fidelity to normal video traffic.'
+    - Circumvention tools using carrier protocols with adversary-accessible signaling must perform peer authentication entirely out-of-band before transmitting any covert data; this is a hard architectural requirement, not an optional hardening step.
+section: §4.2
+extracted_by: claude-sonnet-4-6

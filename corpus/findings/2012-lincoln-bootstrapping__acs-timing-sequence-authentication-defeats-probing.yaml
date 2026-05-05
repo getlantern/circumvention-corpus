@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-lincoln-bootstrapping
+kind: defense
+summary: DEFIANCE's Address-Change Signaling (ACS) requires each client to contact a sequence of IP addresses with precise timing (per-user wait and window parameters) and a one-time passphrase derived from NET provisioning. Connections arriving out of order, outside the timing window, or lacking the correct passphrase receive only innocuous content, so a censor probing a suspected address block finds only normal commodity servers.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+defense_implications:
+    - Use per-client or per-small-group ephemeral address sequences with tight timing windows as a zero-knowledge proof of possession, so probers who lack the NET cannot confirm the service exists.
+    - Assign contact addresses from large, diverse IPv4/IPv6 pools (hundreds of small blocks, 4–256 addresses each) to make exhaustive IP-list blocking economically infeasible.
+section: §4
+extracted_by: claude-sonnet-4-6

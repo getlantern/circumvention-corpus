@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-cho-churn
+kind: evaluation
+summary: 'Splitting measurement data by individual URL and time granularity (day, week, month) is necessary for SAT solvability: coarser time granularity reduces solvability because censorship policies change and noise accumulates, producing unsolvable CNFs. The authors solved 34,298 CNFs in total, each averaging 43 clauses and 17.41ms to solve using an off-the-shelf SAT solver (picosat).'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Censorship measurement systems feeding into circumvention routing decisions should segment observations by URL and short time windows (daily) rather than aggregating longitudinally, to avoid policy-change noise invalidating the censor map.
+    - The computational cost of AS-level censor localization via SAT is negligible (17ms per CNF) — this can be run continuously as a lightweight background service to maintain a fresh, per-URL censor map for bridge selection.
+section: §3.1, §4
+extracted_by: claude-sonnet-4-6

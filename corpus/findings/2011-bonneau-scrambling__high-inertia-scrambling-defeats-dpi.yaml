@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bonneau-scrambling
+kind: defense
+summary: Scrambling without secret key management can frustrate DPI-based censors if the de-scrambling function satisfies 'high-inertia' — meaning an adversary computing S⁻¹ on n inputs cannot use less than Θ(n) times the resources of a single commodity-PC user, including electricity, memory, and computation time. This forces bulk censorship to become computationally infeasible without over-censoring all scrambled content.
+techniques:
+    - dpi
+    - random-payload-detect
+defenses:
+    - randomization
+    - meta-resistance
+defense_implications:
+    - Design proxy transports where de-obfuscation cost scales linearly with traffic volume (no O(1) pattern match); avoid symmetric-key constructions where a censor can pre-compute once and apply cheaply.
+    - Prefer memory-latency-bound de-obfuscation primitives over pure compute-bound ones, since hardware acceleration of memory latency (cache misses, DRAM bandwidth) is substantially harder than GPU/ASIC acceleration of arithmetic.
+section: §1–2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-vandersloot-quack
+kind: detection
+summary: By comparing echo-server (bidirectional) versus discard-server (inbound-only) results across 11 censoring countries, Quack finds that only 4 countries (China, Egypt, Jordan, Turkey) also block inbound traffic; the remaining 7 apply DPI exclusively to outbound data. Direction-sensitive blocking is a confirmed capability of deployed middleboxes.
+techniques:
+    - dpi
+    - packet-injection
+    - rst-injection
+censors:
+    - cn
+    - ir
+    - tr
+defense_implications:
+    - Circumvention protocols that embed sensitive identifiers only in the server-to-client direction may evade unidirectional (outbound-only) censors, but must protect both directions against China, Egypt, Jordan, and Turkey.
+    - When evaluating evasion, probe both client-originated and server-originated traffic separately; passing client-side probe tests alone does not confirm immunity to bidirectional censors.
+section: §6.3
+extracted_by: claude-sonnet-4-6

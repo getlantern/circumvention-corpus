@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1996-anderson-eternity
+kind: detection
+summary: 'Traffic analysis is identified as the primary threat to location secrecy in a distributed anonymous storage system: if an adversary can correlate inter-server communications or link requests to stored file locations, it can target physical seizure. The paper proposes mix-nets (Chaum 1981) for user-facing file delivery and dining-cryptographers ring protocols for inter-server communications, supplemented by traffic padding, so that even traffic analysis yields no actionable location information.'
+techniques:
+    - flow-correlation
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - For any distributed proxy or bridge network, inter-node control-plane traffic must be anonymized separately from the data plane — metadata about which node holds what is often more sensitive than the data itself.
+    - Add cover traffic / padding on inter-server channels to defeat timing and volume correlation; the cost is bandwidth overhead but the benefit is that passive traffic analysis cannot reconstruct the network topology.
+section: §4.5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-towards
+kind: detection
+summary: When a censor controls the WebRTC signaling plane, it can mount MITM attacks against CRON's vanilla covert encoding because the encoding 'fully replaces the video payload with an apparently random covert data signal that results in a scrambled video image at the receiver's endpoint.' By replaying the captured video through a WebRTC gateway, the censor obtains direct visual evidence of payload manipulation.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - webrtc-pluggable
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Any covert channel that fully replaces cover-medium content with random bytes is trivially detectable by an adversary controlling the carrier service; designs must embed covert data in a way that preserves the perceptual and statistical properties of the original medium.
+    - Out-of-band key exchange for endpoint authentication is mandatory when the carrier signaling infrastructure may be adversary-controlled; in-band key negotiation through censor-controlled servers provides no security.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-sparks-collateral
+kind: evaluation
+summary: 'TLD-level paths are the primary collateral-damage vector: 11,573 resolvers (26.40%) suffered collateral damage via censored transit to TLD authorities, while only 1 resolver (0.002%) was affected via paths to root servers. The .de ccTLD was most affected because a large fraction of US-to-Germany transit traverses Chinese networks.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Bootstrap DNS should use TCP queries directly to well-known TLD authorities whose transit is known not to cross Chinese ASes, or use DNSSEC-validating resolvers that reject unsigned injected replies.
+    - Censorship-resistant systems must not assume root-server anycast provides protection — the critical exposure is the resolver-to-TLD path, not the resolver-to-root path.
+section: §4.3, §4.4, Table 6
+extracted_by: claude-sonnet-4-6

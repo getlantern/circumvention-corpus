@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-global
+kind: evaluation
+summary: Iris detected 41,778 manipulated DNS responses (0.31% of 13.5 million queries) across 58 countries and 1,408 domains in a two-day measurement window in January 2017. Iranian resolvers exhibited the highest median manipulation rate at 6.02% per resolver; China followed at 5.22%. Iran and China together accounted for roughly 55% of all manipulated responses despite contributing only approximately 6% of total query volume.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Circumvention tools operating in IR or CN should treat DNS resolution as unreliable for sensitive domains and use alternative name-resolution mechanisms (DoH, hardcoded IPs, or encrypted bootstrapping) by default rather than as a fallback.
+    - DNS anomaly rates of 5–6% per resolver mean passive DNS-based detection is a realistic attack surface; tools should validate any DNS-resolved proxy IP via TLS certificate or HTTPS content checks before use.
+section: §5.2, Table 6
+extracted_by: claude-sonnet-4-6

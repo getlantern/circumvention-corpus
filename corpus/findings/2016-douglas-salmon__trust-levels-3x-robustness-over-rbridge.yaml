@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-salmon
+kind: defense
+summary: Salmon's trust-level mechanism (7 discrete levels; promotion from level n to n+1 requires 2^(n+1) days; banning triggered when suspicion exceeds T=1/3) reduces the fraction of users cut off by an attacking censor by more than 3× relative to rBridge under the same agent-percentage conditions. Simulations with 10,000 users (1–10% censor agents) and 1,000–2,000 servers show that trust levels keep high-seniority innocent users isolated from newer users where agents concentrate.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Stratify proxy access by earned trust rather than uniform random assignment; exponentially longer promotion delays at higher strata force patient censors to wait months before infiltrating premium server pools.
+    - Pair suspicion scoring (inverse of innocence probability across all block events) with permanent banning at a calibrated threshold (T=1/3 for group size M=10) to limit collateral bans on innocent users while expelling confirmed agents.
+section: §5.2 / §3.6
+extracted_by: claude-sonnet-4-6

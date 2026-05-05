@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-robinson-collateral
+kind: evaluation
+summary: 'Among 1,175 Chinese circumvention users surveyed in late 2012, purpose-built anti-censorship platforms showed severe attrition: Freegate had 44.3% former users but only 15.3% current users, while GoAgent and paid VPNs (piggybacking on commercially indispensable infrastructure) were the top two most-used tools in the past month. The median respondent had used four different types of circumvention tools, indicating frequent switching driven by blocking events.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - pluggable-transport
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Purpose-built circumvention tools without commercial cover consistently lose users over time as censors block them; sustaining a user base requires either imposing an economic collateral cost on the censor or rapid continuous adaptation.
+    - Design for tool diversity and frictionless migration — the median Chinese user had already switched tools four times, so distribution, discoverability, and upgrade paths matter as much as technical evasion.
+section: §2 Tool Usage, Figure 2.1
+extracted_by: claude-sonnet-4-6

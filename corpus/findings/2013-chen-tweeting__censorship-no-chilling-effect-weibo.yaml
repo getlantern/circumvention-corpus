@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-chen-tweeting
+kind: evaluation
+summary: 'Censorship on Weibo does not produce a measurable chilling effect on discussion: Spearman''s ρ = 0.198 (p = 0.011) between the percentage of censored tweets and unique tweeters per topic, indicating that censored topics attract more unique participants. No significant negative correlation was found for any of five engagement variables (comments per tweet, comments per user, total comments, unique commentors, unique tweeters).'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Censorship does not reduce demand for circumvention tools in high-censorship topics — users actively seek workarounds, so tool adoption friction is the primary barrier, not lack of motivation.
+    - Prioritize usability and low-latency access over feature completeness; politically engaged users will use tools even under active keyword filtering if the tool is accessible.
+section: §5.2, Table 3
+extracted_by: claude-sonnet-4-6

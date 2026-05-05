@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-alharbi-opening
+kind: policy
+summary: 'Saudi Arabia''s blocking decisions closely track diplomatic ruptures: Qatari news sites were blocked in 2017 amid the Gulf crisis, Iranian news sites in 2018 following severed diplomatic relations, and Turkish outlets Anadolu and TRT Arabic in April 2020 amid Ankara–Riyadh tensions — the Turkish blocks were partly triggered by a citizen Twitter campaign calling for the block.'
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - sa
+defense_implications:
+    - Geopolitically-motivated blocks are typically domain- or URL-specific rather than protocol-level, so domain-fronting or SNI-hiding alone is likely sufficient to restore access without a full circumvention stack.
+    - Rapid event-driven block additions mean circumvention infrastructure should support fast domain list updates without requiring a client-side software update.
+section: §3.3
+extracted_by: claude-sonnet-4-6

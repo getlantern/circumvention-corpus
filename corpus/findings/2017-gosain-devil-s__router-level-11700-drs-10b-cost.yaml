@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-devil-s
+kind: evaluation
+summary: Router-level mapping of the 30 key ASes reveals that 11,709 individual routers must be replaced with Decoy Routers (non-censorious ASes only), at a hardware cost exceeding $10.3 billion USD. Individual large ASes require hundreds to over 1,600 router replacements (e.g., AS3356 needs 576, AS209 Quest Communications needs 1,662). Even targeting the weakest adversary studied, Syria (containable by 3 ASes at AS level), requires 1,117 DRs.
+defenses:
+    - decoy-routing
+    - tapdance
+    - telex
+censors:
+    - cn
+    - sy
+defense_implications:
+    - Any practical DR deployment must budget for router-level deployment costs — not just AS-operator agreements — since even a 3-AS solution for a weak adversary requires over 1,000 hardware replacements.
+    - DR architectures that minimize interception points per AS (e.g., operating only at a small set of heavy-hitter edge routers rather than all edge routers) could substantially reduce the capital cost identified here.
+section: §5.2, §6.4, Table 3–4
+extracted_by: claude-sonnet-4-6

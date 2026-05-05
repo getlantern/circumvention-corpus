@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-mahdian-fighting
+kind: evaluation
+summary: 'A simple entropy argument proves the dynamic key distribution problem requires at least Ω(k log(n/k) / log(k + log n)) keys: the algorithm must identify which k of n users are adversaries from at most ℓ log ℓ bits of feedback (ℓ round outcomes each indexing one of ℓ keys), and distinguishing among C(n,k) adversary sets requires log C(n,k) = Ω(k log(n/k)) bits.'
+defenses:
+    - meta-resistance
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - The entropy lower bound is derived from an oblivious (random) adversary, not a strategic one — meaning no adaptive distribution scheme can beat Ω(k log(n/k) / log log n) bridges even against passive informants who simply report bridges without strategic timing.
+    - 'When designing proxy pools, treat the lower bound as a minimum viable bridge inventory: below Ω(k log(n/k) / log log n) available bridges, no distribution algorithm can guarantee access, independent of implementation quality.'
+section: §4 Theorem 6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-ignoring
+kind: defense
+summary: 'GFW-injected RST packets are distinguishable from legitimate endpoint RSTs by TTL: in the authors'' 2006 experiments forged resets carried TTL=47 while genuine server packets carried TTL=39, consistent with the IDS sitting 8 hops closer to the client than the destination server. A 20-line FreeBSD kernel patch implementing TTL-divergence filtering was developed and demonstrated positive results in practice.'
+techniques:
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - TCP stacks and circumvention transports should record the baseline TTL of the first authenticated server packets and reject any incoming RST whose TTL deviates significantly from that baseline — a low-cost heuristic implementable in userspace.
+    - Forging a TTL-correct reset from the censor side requires asymmetric routing awareness the GFW does not currently possess, making this heuristic durable unless the GFW gains per-direction path knowledge.
+section: §7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-minaei-moneymorph
+kind: evaluation
+summary: 'A prototypical Python implementation of MoneyMorph completes all cryptographic operations in under 50 milliseconds on a commodity Intel Core i7 (2.2 GHz, 16 GB RAM): fresh key-pair generation takes approximately 120ms, shared key derivation approximately 41ms, and symmetric encryption/decryption under 1ms. The dominant latency in practice is blockchain confirmation time, not computation.'
+defenses:
+    - steganography
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Cryptographic overhead of blockchain-based steganographic bootstrapping is negligible; optimize deployment around confirmation-time latency by selecting cryptocurrencies with faster block intervals when bootstrapping speed is user-facing.
+    - No specialized hardware is required for the decoder (uncensored-side) service — commodity machines can serve bridge credentials to many concurrent censored users across multiple blockchains simultaneously.
+section: §6.1
+extracted_by: claude-sonnet-4-6

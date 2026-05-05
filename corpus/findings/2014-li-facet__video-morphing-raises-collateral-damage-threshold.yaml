@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-li-facet
+kind: defense
+summary: Facet's video morphing — embedding the requested video in a fraction s of H.264 macroblocks within a randomly chosen chat video — raises the censor's required false positive rate dramatically. At steganography level s=0.125, blocking 90% of Facet connections requires disrupting over 40% of genuine videoconferencing traffic; blocking 80% requires disrupting at least 20% of legitimate calls.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Embedding the covert stream in a random subset of the cover medium's native encoding blocks (H.264 macroblocks) is more robust than packet-level shaping alone, because it shifts the content statistics rather than just padding packets.
+    - Expose a tunable steganography level parameter server-side so operators can trade video quality for security margin as censor sophistication changes without client updates.
+section: §7.2, §9.3–9.4, Figure 9
+extracted_by: claude-sonnet-4-6

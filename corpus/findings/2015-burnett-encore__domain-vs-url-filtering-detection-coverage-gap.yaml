@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-burnett-encore
+kind: evaluation
+summary: Over 60% of the 178 tested target domains host images ≤1 KB (fitting in a single TCP packet), enabling domain-level filtering detection via cross-origin image embedding for more than half of domains; however, Encore can measure fewer than 10% of individual URLs when limiting iframe page loads to 100 KB, confirming that detecting per-URL filtering is an order of magnitude harder than domain-level detection.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Domain-level reachability probes are far more achievable than URL-level probes using passive browser techniques; circumvention monitoring should prioritize domain-coverage breadth over per-URL granularity.
+    - Targeting small image or stylesheet resources (≤1 KB) maximizes the fraction of sites that can be probed with negligible user bandwidth cost; favicon-sized resources are an effective minimal probe artifact.
+section: §6.1
+extracted_by: claude-sonnet-4-6

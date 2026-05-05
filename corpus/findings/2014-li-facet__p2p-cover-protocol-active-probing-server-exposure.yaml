@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-li-facet
+kind: detection
+summary: For decentralized videoconferencing systems (e.g., Skype) where peers communicate directly, publicly distributing the Facet server's conferencing ID allows a censor to pinpoint the server's IP address via active probing. Centralized systems (e.g., Google Hangout, FaceTime) hide the proxy IP behind the provider's relay server, making active probing unable to identify the Facet server.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - mimicry
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - For peer-to-peer cover protocols, server IDs/addresses must be distributed through private out-of-band channels (e.g., trusted contact lists) rather than publicly, or the server will be enumerable by probing.
+    - Prefer centralized cover protocols whose architecture inherently hides the proxy IP behind a provider server, providing architectural indirection against active probing at no additional cost.
+section: §5 (Service Discovery), §8
+extracted_by: claude-sonnet-4-6

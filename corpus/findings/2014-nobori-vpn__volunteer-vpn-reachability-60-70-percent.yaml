@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-nobori-vpn
+kind: evaluation
+summary: After deploying innocent IP mixing and collaborative spy detection, VPN Gate raised server reachability from China from a low of ~30% to 78.5% by June 19, 2013, sustaining 60–70% reachability through end of August. On August 29, 2013, VPN Gate served 9,000 daily unique IP addresses from China versus Tor's estimated 3,000.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Combine partial server-list distribution (keyspace hopping) with decoy IP injection and distributed spy detection — no single technique alone achieves acceptable reachability; all three are load-bearing.
+    - A ~40% daily IP churn rate among volunteer relays degrades censor blocking lists faster than they can be refreshed; design relay pools to maximize natural IP turnover rather than relying on fixed infrastructure.
+section: §6.2, Figure 12
+extracted_by: claude-sonnet-4-6

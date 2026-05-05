@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-anderson-hidden
+kind: evaluation
+summary: Using open HTTP proxies distributed across 27 Iranian ASNs, the study confirmed 89% (24/27) of tested networks could reach the private filtering page (10.10.34.34) and 77% (21/27) could reach Imam Reza University's private IP. Of 15 proxies on RFC1918 addresses themselves, 13 (87%) could also reach the filtering page, confirming nationwide — not localized — private-space reachability.
+techniques:
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - The near-universal reachability of the private filtering infrastructure across disparate ASNs confirms Iran's censor operates a highly available, centrally administered system — circumvention tools should not design around exploiting censor infrastructure outages as a bypass strategy.
+    - Proxy-based reachability testing from inside Iran is a viable low-cost measurement methodology for mapping national intranet coverage without requiring dedicated vantage points.
+section: §4.1
+extracted_by: claude-sonnet-4-6

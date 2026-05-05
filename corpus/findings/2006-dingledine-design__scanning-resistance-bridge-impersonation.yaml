@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-dingledine-design
+kind: defense
+summary: 'If bridges run on predictable ports and any TCP connection to a bridge port reveals it as a Tor bridge, a censor can scan the entire address space of residential ISP ranges to enumerate and block all bridges. The paper proposes ''scanning resistance'': bridges require a nonced hash of a pre-shared password before revealing Tor behavior, and respond to unauthenticated connections by impersonating an ordinary HTTPS server (e.g., default Apache page or a random legitimate website).'
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - mimicry
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Bridges must implement a challenge/response gate before any Tor-identifying behavior is exhibited — unauthenticated probes should receive a plausible cover-protocol response (e.g., a TLS server that returns HTTP 200 with benign content) to defeat large-scale active-probing enumeration.
+    - Authenticate the bridge before transmitting the shared secret to prevent a man-in-the-middle from harvesting passwords used to locate bridges.
+section: §9.3
+extracted_by: claude-sonnet-4-6

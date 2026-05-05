@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-rogers-secure
+kind: defense
+summary: BTP's wire protocol contains no handshakes, timeouts, or plaintext headers. Connections open with a pseudo-random b-byte tag that the recipient can compute in advance from its key state, making BTP frames indistinguishable from random data to a passive observer who does not know the shared secret.
+techniques:
+    - dpi
+    - traffic-shape
+    - random-payload-detect
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Remove all protocol-identifying plaintext fields—including connection preambles and magic bytes—and replace with recipient-pre-computable ciphertext tags to defeat passive DPI and entropy-based classifiers simultaneously.
+    - Optional padding built into the frame format allows traffic-morphing layers to reshape size distributions without touching the security layer.
+section: §2, §3.2
+extracted_by: claude-sonnet-4-6

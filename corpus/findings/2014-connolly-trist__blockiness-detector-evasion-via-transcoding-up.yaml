@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-connolly-trist
+kind: defense
+summary: TRIST evades the self-calibrated blockiness detector — proven effective against OutGuess — by embedding at JPEG quality 30 and then transcoding the steg image up to quality 90 before transmission. This renders the blockiness-based message length estimator unreliable across the full range of message lengths from 0 to approximately 39 KB, as shown over 20 cover images from the BOSS dataset.
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Add a transcoding-up step (e.g., re-encode to quality 90) after embedding and before transmission; this single post-processing step defeats the blockiness calibration attack without requiring changes to the embedding algorithm.
+    - Receiver must transcode back to the base quality before extraction — build this round-trip (embed at q=30 → transmit at q=90 → extract at q=30) into the protocol as a mandatory step, not an optional optimization.
+section: §7
+extracted_by: claude-sonnet-4-6

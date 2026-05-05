@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-cho-churn
+kind: evaluation
+summary: 32 of 108 identified censoring ASes leak their censorship policies to other ASes, and 18 leak to other countries. Sweden's AS1299 leaked censorship to 9 countries including the United States, Ukraine, and Singapore; China's AS4812 leaked to 5 countries. Censorship leakage occurs when a transit AS implements filtering that affects traffic for users outside the censor's jurisdiction.
+techniques:
+    - measurement-platform
+    - rst-injection
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Audit the AS-level path to any circumvention server for known transit-filtering ASes (e.g., AS1299, AS4812, AS4637) — clients neither in China nor targeting Chinese servers can still encounter GFW-style censorship when routing through Chinese transit ASes.
+    - Prefer bridge infrastructure hosted on stub ASes rather than major international transit providers to minimize exposure to inadvertent censorship leakage from unrelated jurisdictions.
+section: §3.3, §4, Table 3
+extracted_by: claude-sonnet-4-6

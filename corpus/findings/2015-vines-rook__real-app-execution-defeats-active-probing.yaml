@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-vines-rook
+kind: defense
+summary: Because Rook runs the actual game client and server rather than mimicking them, active anti-mimicry probes receive identical responses to a normal game instance. Systems based on protocol mimicry are vulnerable to probes that expose non-conforming behavior, but Rook eliminates this attack surface entirely.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Circumvention designs should run the real cover application rather than mimicking it — running the actual binary eliminates the probe-response divergence that defeats mimicry-based transports (cf. 'Parrot is Dead').
+    - For any game-based covert channel, using a real licensed server/client binary (or a protocol-complete open-source reimplementation) is a prerequisite for active-probing resistance.
+section: §4.2 Anti-Mimicry
+extracted_by: claude-sonnet-4-6

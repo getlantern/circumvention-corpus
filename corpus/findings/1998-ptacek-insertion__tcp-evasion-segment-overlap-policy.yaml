@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1998-ptacek-insertion
+kind: defense
+summary: 'An ''evasion'' attack exploits the mirror condition: the IDS drops a TCP segment that the end-system accepts, due to differences in overlap-resolution policy. The IDS reconstructs ''ATTCK'' while the end-system sees ''ATTACK''; the missing segment carries the content that would trigger the signature, leaving the censor with an incomplete—and non-matching—view of the stream.'
+techniques:
+    - dpi
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Split censored payload across overlapping TCP segments ordered so the censor's overlap-resolution policy discards the sensitive fragment while the end-system retains it.
+    - Evasion requires knowing the destination host's TCP reassembly behavior; a circumvention tool should fingerprint the target OS before selecting an overlap strategy.
+section: §4
+extracted_by: claude-sonnet-4-6

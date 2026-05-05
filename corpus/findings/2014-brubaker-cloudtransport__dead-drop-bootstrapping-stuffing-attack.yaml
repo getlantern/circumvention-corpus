@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-brubaker-cloudtransport
+kind: evaluation
+summary: 'The dead-drop bootstrapping protocol is vulnerable to censor stuffing: because bridge dead drops are publicly advertised and world-writable, censors can flood them with fake tickets containing credentials for non-existing rendezvous accounts, potentially exhausting bridge polling resources. The paper mitigates this only partially via exponential backoff on inactive accounts, and acknowledges that if the censor''s stuffing rate significantly exceeds the bridge''s check-and-discard rate the attack may hinder bootstrapping. Censors may also delete genuine tickets, though cloud providers such as Dropbox preserve all file versions for 30 days, allowing bridges to collect the first version of every file.'
+defenses:
+    - tunneling
+    - bridges
+defense_implications:
+    - Public, world-writable bootstrapping channels are a critical DoS surface — design ticket delivery with proof-of-work, per-sender rate limiting, or cryptographic write authentication to prevent resource exhaustion from censor-stuffed fake credentials.
+    - Client-initiated bootstrapping (users push encrypted tickets to bridges) reduces attack surface compared to server-advertised writable drop points, but any public write endpoint requires rate-limiting to be operationally robust.
+section: §4.2
+extracted_by: claude-sonnet-4-6

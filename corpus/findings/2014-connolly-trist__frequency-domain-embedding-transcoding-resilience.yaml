@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-connolly-trist
+kind: defense
+summary: By embedding messages in heavily quantized DCT frequency components at base JPEG quality 30, TRIST achieves near-zero bit error rates when images are transcoded to higher quality levels and back. The quantization mapping is many-to-one, so noise introduced by re-encoding tends to be stabilized on output, making the message robust against commodity transcoding proxies that re-encode images in-flight.
+techniques:
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Embed steganographic payloads at the lowest practical JPEG quality (30 or below) using heavily quantized low-frequency DCT components — this exploits quantization stabilization to survive re-encoding by censor-deployed transcoding proxies.
+    - Avoid high-frequency DCT components for embedding; they are more aggressively quantized and lose information under transcoding, whereas low-frequency coefficients are stabilized.
+section: §4–§5
+extracted_by: claude-sonnet-4-6

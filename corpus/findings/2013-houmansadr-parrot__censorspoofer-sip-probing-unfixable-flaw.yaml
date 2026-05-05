@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-parrot
+kind: detection
+summary: 'CensorSpoofer''s IP-spoofing architecture has an unfixable detection flaw: the spoofer cannot receive or respond to SIP probe messages (INVITE, invalid SIP, BYE for random call IDs) directed at the spoofed dummy host, making four SIP probing tests (Table IV) reliably distinguish CensorSpoofer from genuine Ekiga at local-censor cost. The nmap-based dummy-host selection algorithm identifies only 12.1% of 10,000 random IPs as candidate hosts; SIP probing of 10,000 random addresses found zero IETF-based VoIP clients.'
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Any design that decouples the traffic-generating endpoint from the address appearing in protocol headers (IP spoofing, asymmetric routing) makes correct active-probe response architecturally impossible and should be avoided.
+    - 'Mimicking IETF SIP specifically is counterproductive: the protocol is so rarely deployed (0 of 10,000 random IPs in experiments) that any address running it is anomalous, and proprietary VoIP (Skype, Google Voice) is detectable via its own probing surface.'
+section: §IX, Table IV
+extracted_by: claude-sonnet-4-6

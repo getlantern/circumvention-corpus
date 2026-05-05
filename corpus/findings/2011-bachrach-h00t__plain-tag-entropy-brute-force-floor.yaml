@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bachrach-h00t
+kind: defense
+summary: Against an attacker with 2^10 CPU cores running ~2^17–18 decryptions/second per core, plain tags require at least 47 bits of entropy to survive one week of brute force. A single dictionary word plus 7 decimal digits yields only 38.5 bits and can be cracked in ~20 minutes; two dictionary words plus 7 digits yields ~53.8 bits, requiring over two years. The authors note that SHA-1 was used in the prototype for performance reasons and recommend scrypt for production deployments.
+defenses:
+    - steganography
+defense_implications:
+    - Use scrypt or a comparable sequential-memory-hard KDF when deriving keys from human-memorable group passwords; this raises brute-force cost by orders of magnitude without requiring users to memorize high-entropy secrets.
+    - Enforce minimum group password policies equivalent to two dictionary words plus a digit string (~54 bits entropy); single-word passwords are catastrophically weak against 2011-era parallel hardware, let alone modern ASICs.
+section: §3.2
+extracted_by: claude-sonnet-4-6

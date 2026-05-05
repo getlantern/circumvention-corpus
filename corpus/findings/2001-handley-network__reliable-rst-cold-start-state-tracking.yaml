@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-handley-network
+kind: defense
+summary: TCP RSTs are delivered unreliably and different OS stacks apply different validity rules, so a NIDS cannot safely tear down connection state on RST alone; a 'reliable RST' scheme — sending a keep-alive ACK behind every forwarded RST and tearing down state only upon observing a confirming RST from the trusted side — resolves this without violating end-to-end semantics. The cold-start problem (state loss on restart) can be addressed statelessly by stripping payload from unknown-connection packets from untrusted hosts and probing the trusted endpoint with a keep-alive before instantiating state.
+techniques:
+    - middlebox-interference
+    - rst-injection
+defenses:
+    - meta-resistance
+defense_implications:
+    - Circumvention proxies that rely on RST-based connection teardown to evade stateful NIDS tracking are not reliable — a normalizer using the reliable-RST probe scheme maintains accurate state despite RST loss or manipulation.
+    - Circumvention protocol designers should engineer proxies for graceful cold-start (e.g., stateless session tokens or resumption tickets) so proxy restarts do not create exploitable state-tracking gaps visible to a monitoring censor.
+section: §6.1–6.2
+extracted_by: claude-sonnet-4-6

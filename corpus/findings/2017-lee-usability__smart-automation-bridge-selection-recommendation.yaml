@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lee-usability
+kind: defense
+summary: 'The authors recommend ''smart automation'' for bridge selection: the client first connects via a hard-to-censor bridge, then contacts a central Tor server over that Tor connection to identify the best available bridge for the user''s location and network conditions, then reconnects using that bridge — eliminating the manual trial-and-error that caused 79% of attempts to fail. This is contrasted with ''naive automation'' (sequential blind retry) which avoids UI friction but wastes time on non-working bridges.'
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+    - meek
+    - domain-fronting
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - 'Implement a bootstrapping path: connect via a domain-fronting or other hard-to-block transport first, then use that connection to fetch a signed, country-specific bridge recommendation list, then reconnect on the optimal transport — this eliminates user-facing bridge selection entirely.'
+    - Maintain a server-side bridge availability oracle that tracks reachability by country/ASN and serves ranked recommendations; this is the only way to achieve first-try connection success rates in heavily censored environments without exposing users to manual trial-and-error.
+section: §8
+extracted_by: claude-sonnet-4-6

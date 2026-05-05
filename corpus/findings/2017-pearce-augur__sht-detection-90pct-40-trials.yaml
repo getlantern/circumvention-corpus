@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-augur
+kind: evaluation
+summary: Using sequential hypothesis testing (SHT) with false positive and false negative rates both set to 10^-5, more than 90% of reflectors required 40 or fewer experiment trials to reach a blocking decision; over 17 days the system collected 207.6 million runs across 47 trials spanning 2,134 sites and 2,050 reflectors.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - The SHT framework's tunable α/β thresholds let circumvention infrastructure operators trade detection speed against false-positive risk — tighter thresholds need more trials but reduce spurious block reports that would trigger unnecessary IP rotation.
+    - Continuous side-channel monitoring (as Augur demonstrates at 47 trials over 17 days) can flag the onset of new blocking within hours, enabling rapid re-keying or IP rotation before user-visible impact becomes widespread.
+section: §IV-C, §V-D, Figure 4
+extracted_by: claude-sonnet-4-6

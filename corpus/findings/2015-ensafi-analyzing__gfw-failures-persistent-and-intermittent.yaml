@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ensafi-analyzing
+kind: evaluation
+summary: 'GFW failures are both persistent and intermittent: four client/server pairs showed all 22 hourly measurements over a full day returning No-packets-dropped (entirely unblocked), while many others showed only sporadic failures. Temporal analysis showed failures cluster in bursts of hours, with probability of a second failure decaying sharply beyond ~5 hours after the first.'
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients could implement opportunistic direct-connect probes alongside tunneled connections, exploiting the ~0.39% of routes that are persistently unblocked without tunneling overhead.
+    - 'Retry logic should account for burst windows: if a direct connection attempt succeeds, it is worth retrying for several hours before switching back to a bridge or proxy.'
+section: §4.1, §4.2, Figure 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-httpt
+kind: detection
+summary: The GFW was observed detecting Shadowsocks servers by sending follow-up active probes after an initial Shadowsocks-sized client message, including permuted replays of the client's message and random-data probes of various sizes up to and exceeding Shadowsocks' unique 50-byte data limit. This defeats shadowsocks-libev's replay cache because the GFW permutes the replayed bytes rather than resending them verbatim.
+techniques:
+    - active-probing
+    - random-payload-detect
+defenses:
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - Replay caches that match on exact byte sequences are insufficient; proxies must use cryptographic nonces (e.g., TLS server random) so that no two connections share the same key material, eliminating any replay surface.
+    - Protocol-specific constants (e.g., a fixed max-read size like Shadowsocks' 50-byte limit) act as fingerprints; avoid hard-coded data-limit behaviors that are unique to the proxy.
+section: §2 Background
+extracted_by: claude-sonnet-4-6

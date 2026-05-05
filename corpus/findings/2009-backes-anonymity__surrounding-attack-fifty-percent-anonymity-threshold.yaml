@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-backes-anonymity
+kind: evaluation
+summary: The surrounding attack on peer anonymity is also effective only when adversaries control at least 50% of the ~100 semantically closest peers to the target; at 25% malicious peers, at least 10 honest peers still join the target's cloud at every step of the joining algorithm, preserving k-anonymity.
+techniques:
+    - flow-correlation
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use a two-phase cloud-join probability function (low probability early steps, high probability later steps) so that even when adversaries block early join messages, honest peers join in force during the high-probability phase.
+    - Require peers to join clouds non-deterministically and without correlating join events to query events, preventing adversaries from inferring participation through timing.
+section: §5.2
+extracted_by: claude-sonnet-4-6

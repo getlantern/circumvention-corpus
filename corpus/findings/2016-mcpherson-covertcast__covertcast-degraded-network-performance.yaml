@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-mcpherson-covertcast
+kind: evaluation
+summary: Under degraded network conditions, CovertCast page load times increased by 2–3× at 800 Kbps (below YouTube's minimum 720p bitrate of 1.5 Mbps), with 20 of over 4,000 images dropped at 800 Kbps; at 10% packet loss, 35 images were missed due to YouTube temporarily accelerating video playback; at 20% packet loss, 720p video could not be loaded at all.
+techniques:
+    - throttling
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention systems that tunnel through bandwidth-intensive video streams should implement error-correcting codes or redundant encoding as a fallback for low-bandwidth or high-loss environments, accepting reduced throughput in exchange for reliability.
+    - Design content delivery to tolerate out-of-order or dropped frames using periodic resynchronization markers so that partial packet loss does not render all subsequent frames undecodable.
+section: §6.4, Fig. 6, Fig. 7
+extracted_by: claude-sonnet-4-6

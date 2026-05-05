@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-failures
+kind: defense
+summary: 'The hybrid two-stage design''s architectural vulnerability is that circumventing either stage independently defeats the system: end-users can tunnel via Tor or JAP to bypass both stages entirely, while content providers can serve different content to IWF crawlers versus real users, exploiting the fact that only 33% of IWF hotline reports were substantiated as potentially illegal. The system''s precision is entirely contingent on content-provider cooperation, which cannot be assumed.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tor
+    - tunneling
+defense_implications:
+    - Multi-stage blocking pipelines should be evaluated assuming adversaries attack the weakest link; composing two independently weak mechanisms does not produce a strong system.
+    - Circumvention proxies should actively probe their own infrastructure from client-visible vantage points to detect behavioral asymmetries that could be exploited for blocklist oracle attacks before adversaries do.
+section: §4, §6
+extracted_by: claude-sonnet-4-6

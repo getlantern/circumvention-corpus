@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-detecting
+kind: defense
+summary: The protocol filter's HTTPS fingerprint requires only that the first 5 bytes match a TLS header (type 0x16, version 0x03 0x01–0x03, correct length field); all subsequent bytes of the Client Hello are unchecked. Any TLS-based circumvention tool naturally satisfies this fingerprint and will bypass the filter by default. Furthermore, any one of the three permitted fingerprints (DNS, HTTP, HTTPS) can be used on any of the three monitored ports to whitelist an entire flow.
+techniques:
+    - dpi
+    - tls-fingerprint
+defenses:
+    - mimicry
+    - trojan
+    - shadowsocks
+censors:
+    - ir
+defense_implications:
+    - TLS-wrapped transports (Trojan, VLESS+TLS, etc.) gain Iran protocol-filter bypass for free; developers should verify that the ClientHello's first 5 bytes conform to the fingerprint without requiring a full valid TLS handshake.
+    - For non-TLS transports, prepending a 41-byte synthetic TLS header as an insertion packet before the real handshake suffices to whitelist the flow.
+section: §4.3
+extracted_by: claude-sonnet-4-6

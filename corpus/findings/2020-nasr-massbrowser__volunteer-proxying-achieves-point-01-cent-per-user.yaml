@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-nasr-massbrowser
+kind: evaluation
+summary: MassBrowser estimates operational cost at $0.0001 per active client per month at large scale; the domain-fronted Operator alone costs ~$0.001 per active client per month because signaling traffic volume is small. Domain fronting used for bulk data proxying is characterized as prohibitively expensive and not viable at scale.
+defenses:
+    - domain-fronting
+    - bridges
+defense_implications:
+    - Confine domain fronting to control/signaling traffic only; route bulk data through volunteer or client-to-client proxies to keep per-user costs below $0.001/month.
+    - Architect the operator as a low-bandwidth coordinator rather than a data-plane relay so that expensive shared-IP infrastructure carries only session metadata.
+section: §III-E, §VI-C
+extracted_by: claude-sonnet-4-6

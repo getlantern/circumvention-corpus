@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-kohls-skypeline
+kind: detection
+summary: 'The paper''s threat model explicitly assumes censors can enforce client-side VoIP software (e.g., TOM-Skype in China) giving the adversary access to the pre-encoding audio signal at both endpoints. Despite this, SkypeLine forces the censor into an all-or-nothing position: intercepting hidden data requires blocking the entire VoIP service, since no network-layer observable (packet headers, timing, encrypted payload) distinguishes steganographic from legitimate calls.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Choose cover channels the censor is economically or politically incentivized to keep available (commercial VoIP, CDN traffic, messaging platforms) — steganographic systems that force an all-or-nothing blocking choice inherit the political cost of collateral damage as a structural defense.
+    - Assume endpoint compromise is possible in high-threat deployments (China, Iran); design steganographic schemes so that even with audio access, the adversary gains nothing without the pre-shared DSSS secret — DSSS session-key isolation is the critical security primitive here.
+section: §3.1, §6.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ververis-understanding
+kind: detection
+summary: 'Vodafone Greece''s DPI system (Bluecoat WebProxy/6.0) performed exact-URL matching against the EEEP blacklist: requests to rivernilecasino.net and www.rivernilecasino.net passed through unblocked, while the exact blacklisted URL www.rivernilecasino.net/index.asp was intercepted and redirected to http://1.2.3.50/ups/no_access_gambling.htm. Subdomains of DNS-hijacked domains returned NXDOMAIN with no A record, making them silently unreachable rather than redirected.'
+techniques:
+    - dpi
+    - dns-poisoning
+censors:
+    - gr
+defense_implications:
+    - 'Exact-URL DPI creates a bypass surface: slightly modifying the URL path (query parameters, trailing slash, URL encoding) defeats blocklists that lack normalized matching — circumvention proxies can exploit this by rewriting client requests before forwarding.'
+    - HTTPS endpoints are opaque to this class of HTTP-layer DPI; prioritize TLS for any service that must survive URL-level interception.
+section: §4.2, Appendix A.1
+extracted_by: claude-sonnet-4-6

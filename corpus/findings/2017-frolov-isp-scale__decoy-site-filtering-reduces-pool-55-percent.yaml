@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-frolov-isp-scale
+kind: defense
+summary: Filtering candidate decoy sites by a minimum 15 KB TCP window eliminated 24% of the initial ~5,500 HTTPS hosts; a 30-second HTTP-timeout floor eliminated a further 11%; and AES-128-GCM cipher-suite support requirements eliminated an average of 32%—together reducing the viable decoy-site pool by approximately 55% before any live reachability tests.
+techniques:
+    - tls-fingerprint
+defenses:
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Pre-screen decoy-host lists for TCP window size (≥15 KB), HTTP keep-alive timeout (≥30 s), and required TLS cipher suites before distributing to clients; roughly half of HTTPS-serving hosts in a participating AS will fail at least one test.
+    - Refresh the decoy-host list daily and distribute only ~50% of the viable pool to clients, reserving the other half as a rotation reserve in case censors begin IP-blocking the active decoy set.
+section: §3.3, Figures 2–3
+extracted_by: claude-sonnet-4-6

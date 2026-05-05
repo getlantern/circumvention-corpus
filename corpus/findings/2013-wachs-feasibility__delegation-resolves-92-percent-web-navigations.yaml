@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wachs-feasibility
+kind: evaluation
+summary: A browser-history survey found that approximately 8% of domain name resolutions involved typing in a genuinely new domain not reachable via an existing link, meaning a SDSI/petname delegation-based name system could serve roughly 92% of real-world Web navigation without requiring any out-of-band key exchange.
+defenses:
+    - meta-resistance
+defense_implications:
+    - Delegation-based censorship-resistant name systems are viable for the vast majority of Web usage — prioritize seamless link-following over manual domain-entry UX.
+    - For the ~8% of manual-entry cases, invest in lightweight out-of-band introduction mechanisms (QR codes, registrar lookup) rather than exposing raw public keys to users.
+section: §4.5
+extracted_by: claude-sonnet-4-6

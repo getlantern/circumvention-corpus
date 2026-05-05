@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-liu-tor
+kind: defense
+summary: Routing all traffic through rendezvous mailboxes with a put/get interface prevents direct DoS against end hosts and hides service host addresses; each service deploys many mailboxes with a randomly chosen sequence per connection, so an attacker can disrupt at most a fraction of any given flow even with substantial resources.
+defenses:
+    - meta-resistance
+    - bridges
+defense_implications:
+    - Use many distributed rendezvous or introduction points per service so that blocking any single one does not take down the service—randomized sequences are key
+    - Decouple the publicly-facing address (mailbox/bridge) from the actual service host so coercion of one does not expose the other
+section: §5, §7.1
+extracted_by: claude-sonnet-4-6

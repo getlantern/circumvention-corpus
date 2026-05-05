@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-martiny-proof-of-censorship
+kind: policy
+summary: 'Proofs of censorship are transferable and persistent: even if a content provider restores a censored file, previously generated proofs remain cryptographically valid and can serve as a reputation mechanism, a trigger for smart-contract financial penalties (e.g., Ethereum bonds), or mandatory disclosures to transparency databases such as Lumen, enabling accountability for transient or temporally-selective censorship that current transparency reports cannot capture.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention infrastructure operators can embed proof-of-censorship commitments in smart contracts to create economic disincentives for takedown compliance, shifting the cost calculus for legal-coercion attacks on centralized relay or content nodes.
+    - Transparency databases should accept cryptographic proofs rather than voluntary self-reporting; designing relay or bridge infrastructure to emit signed PIR-style commitments on content serving makes coerced removals auditable by third parties.
+section: §6.2
+extracted_by: claude-sonnet-4-6

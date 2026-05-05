@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zolfaghari-practical
+kind: evaluation
+summary: CDNBrowsing of full-CDN content imposes near-zero operational cost on circumvention operators because all bandwidth is paid by the censored content publisher via their CDN contract; dynamic mirrors for partial-CDN sites impose negligible additional load compared to proxy-based systems — measured traffic relayed by CDNReaper dynamic mirrors versus the meek pluggable transport for sample sites was nearly negligible, while meek has cost Tor $26,536 total ($2,479/month at the time of measurement) despite a 1.5–3 MB/s per-user bandwidth cap and a discounted research grant rate.
+defenses:
+    - tunneling
+    - meek
+    - domain-fronting
+defense_implications:
+    - For sustainability at scale, circumvention infrastructure that shifts bandwidth costs onto content publishers (CDN-hosted targets) rather than volunteer relay operators avoids the funding bottleneck that caps proxy-based transports like meek.
+    - Operational cost savings from CDNBrowsing come with a restriction to CDN-hosted destinations; designers should evaluate whether the target censored content library is predominantly CDN-hosted before committing to a proxy-less architecture.
+section: §2.5, §5.2.2
+extracted_by: claude-sonnet-4-6

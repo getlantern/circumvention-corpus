@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-luchaup-libfte
+kind: defense
+summary: LibFTE exposes a regex-based API (Python, C++, JavaScript) that instantiates DPI-defeating FTE schemes from a regular-expression format specification alone, without expert cryptographic knowledge. The DCRS FTE scheme implemented in the library makes ciphertexts indistinguishable from real HTTP, SMTP, SMB, or other network-protocol messages under state-of-the-art DPI, and was already integrated into the Tor Browser Bundle at time of publication.
+techniques:
+    - dpi
+defenses:
+    - format-transform
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - When targeting a specific DPI signature set (e.g., Snort or Suricata rules), lift the regex directly from the monitor's ruleset to construct an FTE scheme that produces traffic the monitor classifies as the permitted protocol.
+    - Use a configuration assistant that automatically selects NFA vs. DFA ranking, cycle-walking vs. rejection-sampling, and reports expected memory and latency before deployment — the engineering cost of choosing wrong is an unusable scheme, not a recoverable error.
+section: §1, §7
+extracted_by: claude-sonnet-4-6

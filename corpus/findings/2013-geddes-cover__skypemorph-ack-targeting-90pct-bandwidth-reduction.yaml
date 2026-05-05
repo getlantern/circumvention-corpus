@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-geddes-cover
+kind: detection
+summary: By targeting SkypeMorph's deterministic ACK-flagging schedule (one ACK every ~100 ms) and capping overall packet loss at 5–20%, a censor can drop up to 47% of ACK packets, reducing SkypeMorph throughput from its normal ~200 KB/s to 5–10 KB/s (a 90–95% reduction) while VoIP call quality remains within acceptable MOS thresholds. The attack exploits the reliability mismatch between the loss-tolerant UDP cover channel and the TCP-like retransmission layer SkypeMorph builds over it.
+techniques:
+    - traffic-shape
+    - packet-injection
+defenses:
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Do not layer a loss-intolerant reliable-transport protocol over a UDP cover channel without hiding ACK timing; predictable ACK scheduling creates a targeting oracle for adversarial packet droppers.
+    - Circumvention transports that mimic VoIP must randomize or eliminate in-band ACK signals, or use loss-tolerant application-layer encodings that degrade gracefully rather than stalling.
+section: §4.3.2, Figure 4
+extracted_by: claude-sonnet-4-6

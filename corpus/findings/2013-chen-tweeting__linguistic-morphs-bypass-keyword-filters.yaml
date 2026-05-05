@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-chen-tweeting
+kind: defense
+summary: Weibo users circumvent keyword-based censorship by substituting censored terms with morphs — abbreviations, anglicizations, homophones, homographs, and neologisms. 11 of 37 trending topics in a 44-day crawl of 280K users contained morphs, and morph usage was concentrated in heavily censored topics, with up to 5 morphs per topic observed.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Build vocabulary-aware obfuscation layers that automatically substitute known censored terms with morphs; morph dictionaries should be community-sourced and updated continuously as censors expand keyword lists.
+    - Linguistic substitution provides a lightweight, zero-infrastructure circumvention layer for platform-level keyword censorship — consider integrating morph suggestion directly into input UIs.
+section: §2.3, §6.1
+extracted_by: claude-sonnet-4-6

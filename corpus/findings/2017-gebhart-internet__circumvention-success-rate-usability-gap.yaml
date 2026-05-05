@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gebhart-internet
+kind: evaluation
+summary: Of 229 Thai Internet users surveyed, 63% (n=144) had attempted to circumvent censorship, and of those, roughly 90% (n=132) reported success using VPNs (32.64%), proxies (32.64%), or Tor (23.61%). Failures were isolated to proxies (n=2), VPNs (n=2), and alternative searches (n=3), indicating that existing circumvention tools were technically adequate but that availability and comprehensibility—not raw capability—were the binding constraints on user success.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tor
+    - tunneling
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - 'Technical capability alone is insufficient: circumvention tools must invest in discoverability, onboarding, and in-language documentation to close the gap between tool availability and user success.'
+    - Women were significantly less likely to attempt circumvention (p < 0.01) and more likely to fail (p < 0.01), suggesting that UX and trust design must be explicitly gender-aware, not just technically competent.
+section: §5.2.1, Table 2
+extracted_by: claude-sonnet-4-6

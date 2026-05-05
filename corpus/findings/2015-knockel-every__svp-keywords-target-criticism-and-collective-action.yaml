@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-knockel-every
+kind: evaluation
+summary: SVP keyword lists from all four platforms explicitly target both government criticism and collective action, contradicting King et al.'s claim that criticism is tolerated while collective action is suppressed. All four platforms censor Falun Gong and current CPC leaders (including phonetic homonyms like '习尽平'); over 90% of YY's event-related keywords (2,535 total) reference the June 4 1989 Tiananmen Square Massacre, and derogatory phrases such as '共匪' (Communist gangsters) appear alongside collective action event keywords.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Probe lists for testing censorship evasion must include both political criticism terms and collective-action terms — relying on prior theoretical models that predict tolerance of one category will produce false negatives.
+    - Homonym and phonetic substitution of censored terms (e.g., '习尽平' for '习近平') are themselves already on keyword lists, meaning simple character-substitution evasion fails against keyword-based platform censorship.
+section: §5.2
+extracted_by: claude-sonnet-4-6

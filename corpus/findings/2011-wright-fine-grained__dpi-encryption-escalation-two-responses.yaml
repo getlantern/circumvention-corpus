@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wright-fine-grained
+kind: detection
+summary: 'Censors responding to encryption-based circumvention have two escalation options: block all encrypted connections outright, or identify the underlying protocol via traffic signatures that persist even inside encrypted tunnels. The paper frames these as the two dominant censor responses to DPI being defeated by encryption.'
+techniques:
+    - dpi
+    - random-payload-detect
+    - traffic-shape
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Encrypting payload alone is insufficient — transports must also eliminate detectable traffic signatures (packet sizes, timing, handshake patterns) to survive DPI escalation.
+    - 'Design for the ''block all encrypted'' fallback: transports should mimic a specific allowed protocol rather than relying on opacity alone.'
+section: §3
+extracted_by: claude-sonnet-4-6

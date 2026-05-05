@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dyer-protocol
+kind: deployment
+summary: An FTE-tunneled Tor circuit using intersection, manual, and auto HTTP formats successfully traversed the Great Firewall of China from a VPS inside China to a server in the United States on port 80. A persistent tunnel polling a censored URL every five minutes remained active for one month until VPS account termination, with no blocking observed.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - format-transform
+    - tor
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - Running FTE on port 80 with an HTTP format avoids the port-443 blacklist the GFW applied to the Tor bridge in the same experiment, suggesting that protocol-layer camouflage on a common port is more durable than bridge IP rotation alone.
+    - FTE's regex-format negotiation allows switching target protocols per TCP connection; deploying a roster of formats (HTTP, SSH, SMB) and rotating among them raises the cost of censor-side fingerprinting of the circumvention tool itself.
+section: §6
+extracted_by: claude-sonnet-4-6

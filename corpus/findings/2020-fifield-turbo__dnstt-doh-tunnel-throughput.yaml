@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-fifield-turbo
+kind: evaluation
+summary: 'The dnstt DNS-over-HTTPS tunnel, built on a KCP Turbo Tunnel session layer, achieved download speeds of 130 KB/s using Google and Cloudflare DoH resolvers and 30 KB/s using Quad9, compared to iodine''s maximum of 2 KB/s over the same operators'' UDP DNS resolvers — a 15–65× improvement. DNS-over-HTTPS hides message contents from the censor, removing the two main classical DNS tunnel detection vectors: unusual DNS message structure and plaintext tunnel domain names in queries.'
+techniques:
+    - dpi
+defenses:
+    - dns-tunneling
+    - meta-resistance
+defense_implications:
+    - DNS-over-HTTPS is a viable high-throughput circumvention carrier (≥100 KB/s) when paired with a dedicated session/reliability layer that handles DNS's lack of ordering and delivery guarantees.
+    - 'Prefer DoH over UDP DNS as the tunnel carrier: encryption removes the two detection signals (plaintext domain in query, non-standard record structure) that make classical DNS tunnels easy to fingerprint and block.'
+section: §3.4
+extracted_by: claude-sonnet-4-6

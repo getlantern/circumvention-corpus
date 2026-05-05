@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-singh-politics
+kind: detection
+summary: Iran's national policy forces all domestic ASes to route through a single national telecom AS (AS 12880), resulting in Iran connecting to only 6 international networks. By contrast, Singapore has 257 domestic ASes connected to 3,022 international ASes despite similar geographic scale.
+techniques:
+    - asn-blackholing
+censors:
+    - ir
+defense_implications:
+    - In single-transit-AS countries like Iran, every circumvention flow must traverse the national chokepoint AS; prioritize protocol obfuscation over AS-level routing diversity, as the latter is structurally unavailable.
+    - Proxy selection algorithms should treat a country's international AS count as a hard constraint — when it is ≤10, assume all traffic is inspectable at a common observation point and deploy accordingly.
+section: §1, §5
+extracted_by: claude-sonnet-4-6

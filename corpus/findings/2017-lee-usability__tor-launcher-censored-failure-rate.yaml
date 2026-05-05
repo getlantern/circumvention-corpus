@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lee-usability
+kind: evaluation
+summary: 79% of total user attempts (363 of 458) to connect to Tor in simulated censored environments failed. In the most heavily censored condition (E3, requiring a meek or custom bridge), only 50% (10/20) of participants using the original interface connected, and even with the redesigned interface only 68% (13/19) succeeded within 40 minutes.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - 'Configuration UI complexity is itself a circumvention barrier: even users motivated to connect fail at high rates, so tools must reduce or eliminate manual configuration steps to achieve meaningful censorship resistance in practice.'
+    - Treat the configuration interface as part of the threat model — a tool that 50–68% of users cannot configure under censorship effectively blocks access as surely as the censor does.
+section: §7.3, Table 2
+extracted_by: claude-sonnet-4-6

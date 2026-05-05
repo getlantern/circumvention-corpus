@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-marczak-analysis
+kind: evaluation
+summary: 'The GC acted probabilistically, responding to only approximately 1.75% of eligible requests (526 out of 30,000 from three measurement IP addresses) and completely ignoring one of four measurement source IPs. Flow-cache exhaustion tests confirmed the probabilistic decision is made per-flow at cache insertion time: once the ~16,000-entry cache was filled, injections resumed on previously-ignored source ports, ruling out connection-tuple hashing as the selection mechanism.'
+techniques:
+    - packet-injection
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Low probabilistic injection rates (~1.75%) make GC-style attacks difficult to detect from a single vantage point — circumvention clients should monitor for the GC's TTL side-channel on received packets rather than relying on injection frequency as a detection signal.
+    - Load-balanced per-source-IP flow caches mean different users behind the same NAT may experience different injection behavior; client-side anomaly detection must operate per connection, not per network.
+section: §3.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chen-impact
+kind: evaluation
+summary: 'Acquisition of politically sensitive information produced broad, durable attitude change: access-plus-encouragement moved the median student from the 47th to the 56th percentile across all measured outcome dimensions. Students became more pessimistic about Chinese economic growth (elicited incentive-compatibly), more skeptical of government performance, more likely to plan exit via foreign graduate school, and more likely to report having withdrawn stock-market investments.'
+techniques:
+    - ip-blocking
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - The value proposition of circumvention tools extends beyond accessing entertainment or social media; tools that facilitate access to credible foreign news demonstrably shift economic and political beliefs, making news-access a high-leverage target for both users and censors.
+    - Censor behavior around high-sensitivity events (Panama Papers browsing +157%, Trump-Taiwan call +180%) confirms that politically salient moments drive circumvention demand spikes—tool operators should pre-position capacity and surge infrastructure around predictable political flashpoints.
+section: §IV, §III.C (Figure 1)
+extracted_by: claude-sonnet-4-6

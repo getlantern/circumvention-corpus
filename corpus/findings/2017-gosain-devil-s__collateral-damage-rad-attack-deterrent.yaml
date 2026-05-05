@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-devil-s
+kind: defense
+summary: If China attempts the Routing-Around-Decoys (RAD) attack by blackholing paths that transit the 30 key ASes, 92.25% of all paths transiting Chinese ASes (306,874 of 332,742) originate at ASes outside China, making such filtering self-defeating through severe collateral damage to foreign transit customers. The 30 key ASes cover 98.8% of paths from Chinese ASes to globally popular destinations and at least 80% for nearly all adversary countries studied.
+techniques:
+    - asn-blackholing
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - 'Placing DRs in the Internet''s hierarchical core turns collateral damage into a strategic deterrent: a censor filtering these ASes also isolates its own foreign transit customers, creating diplomatic and economic pressure against the RAD attack.'
+    - DR placement should prioritize ASes that carry high proportions of multi-national transit — not just traffic from the target country — to maximize the collateral-damage cost of any routing-around attempt.
+section: §6.2, Figure 7, Figure 9
+extracted_by: claude-sonnet-4-6

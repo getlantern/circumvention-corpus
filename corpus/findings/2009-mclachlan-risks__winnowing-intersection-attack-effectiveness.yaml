@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-mclachlan-risks
+kind: detection
+summary: Cross-referencing the online/offline status of 87 monitored bridges against 186,935 Wikipedia users' edit sessions showed that 95.7% of users with 50 or more sessions matched zero bridges after winnowing. For users with 180 or more sessions (a surrogate for long-term pseudonymous activity), only 89 false positives remained among 2,329 users—a false positive rate of 0.000439—meaning that even if 10,000 Tor clients volunteer to bridge, on average only 4.4 bridges remain after the winnowing stage.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Long-term pseudonymous activity (daily blogging for 6 months or equivalent) while operating a bridge should be treated as a critical privacy risk and users should be warned; bridge operators must decouple their serving status from their surfing status to defeat the intersection attack.
+    - 'Implement a biased-coin serving policy: measure the fraction of time f the operator runs Tor without active connections during a ''trial period,'' then ensure Pr[serve|surf] = Pr[serve|¬surf] = f so serving status is statistically independent of surfing status.'
+section: §3.3
+extracted_by: claude-sonnet-4-6

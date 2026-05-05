@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-ignoring
+kind: evaluation
+summary: In measurements conducted over 10 days in early February 2006, the GFW scanned approximately two-thirds of packets from a 256-address block per hourly probe, with address selection following a structured (non-random) pattern consistent with simple modular assignment to a limited pool of IDS devices. After several days, the inspected fraction rose to nearly all addresses, suggesting a configuration change to expand capacity.
+techniques:
+    - dpi
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention deployments should not assume uniform inspection coverage across all source IPs — probing with sentinel payloads can identify transiently under-inspected address ranges or IDS load windows.
+    - Rapid rotation of client source addresses (e.g., via NAT pool or residential IP diversity) exploits the structural gaps in IDS capacity allocation without requiring any protocol-layer changes.
+section: §6.1
+extracted_by: claude-sonnet-4-6

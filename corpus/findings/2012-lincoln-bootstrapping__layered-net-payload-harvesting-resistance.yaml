@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-lincoln-bootstrapping
+kind: defense
+summary: NET payloads are wrapped in three nested layers — (1) steganographic encoding plus transport encryption with a factory digital signature, (2) proof-of-life (CAPTCHA), and (3) proof-of-work (computational puzzle) — so that even an adversary who harvests many payloads cannot decode them faster than gateway addresses can be rotated. The payload format is explicitly extensible to add harder challenges as adversaries improve.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - steganography
+    - meta-resistance
+defense_implications:
+    - Layer human-interactive and computational rate-limiting around bridge address distribution so bulk automated decoding is computationally infeasible, not just difficult.
+    - Embed digital signatures from a trusted factory in every payload so adversarial rendezvous servers cannot forge or replay bridge addresses.
+section: §3.3
+extracted_by: claude-sonnet-4-6

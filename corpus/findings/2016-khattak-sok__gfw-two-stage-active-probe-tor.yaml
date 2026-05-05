@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-khattak-sok
+kind: detection
+summary: 'The Great Firewall detects Tor bridges through a two-stage active-probing pipeline: GFW DPI first flags a flow as a potential Tor connection, then random Chinese IP addresses initiate Tor handshakes to the suspected bridge; if the handshake succeeds, the bridge IP:port combination is blocked.'
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - bridges
+    - scramblesuit
+censors:
+    - cn
+defense_implications:
+    - Proxy servers must not respond to any recognizable CRS handshake from unauthenticated probers — require a valid shared secret or ticket before speaking the protocol.
+    - Use obfuscating-aliveness schemes so probes from unknown IPs receive no TCP-level response, preventing the censor from confirming the server is live.
+section: §2.4.1
+extracted_by: claude-sonnet-4-6

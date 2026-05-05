@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lu-accessing
+kind: defense
+summary: 'ScholarCloud''s ''message blinding'' — a non-public byte mapping (f: [0, 2^8) → [0, 2^8)) applied between domestic and remote proxy — successfully evades GFW deep packet inspection with 0.22% average packet loss rate, statistically indistinguishable from native VPN (0.21%). The paper reports that even this simple encoding suffices because the GFW cannot classify the traffic; confidentiality of the algorithm is the operative property, not cryptographic strength. Because the operator controls both proxy endpoints, the blinding scheme can be rotated at any time without requiring client-side updates.'
+techniques:
+    - dpi
+    - fully-encrypted-detect
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Operator-controlled, updatable encoding schemes (even simple ones) that are not publicly documented provide effective GFW evasion — keeping the transformation algorithm non-public may matter as much as its complexity.
+    - Architectures where both proxy endpoints are operator-controlled enable silent transport rotation in response to GFW adaptation, a significant operational advantage over decentralized networks (Tor, Shadowsocks) that require coordinated client upgrades.
+section: §3
+extracted_by: claude-sonnet-4-6

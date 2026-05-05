@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-k-psell-achieve
+kind: evaluation
+summary: For a secure steganographic system the embedding ratio is at least 1:10, meaning 1 MB of web content requires 10 MB of transmitted cover data; for a system robust against active attacks (e.g., StirMark bilinear distortions) the ratio is probably 1:100. A censor need not break the steganographic algorithm with high accuracy — suspicion alone is sufficient, since the censor can probe suspected nodes directly by acting as a blockee.
+techniques:
+    - traffic-shape
+    - active-probing
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Steganographic transports are impractical as primary channels for interactive web access due to 10–100× bandwidth overhead; reserve steganography for bootstrapping (low-bandwidth forwarder-list distribution) rather than bulk tunnel traffic.
+    - Randomize the steganographic algorithm per session to raise censor analysis cost and increase false positives, since a fixed algorithm exposes a deterministic attack surface.
+section: §5.1
+extracted_by: claude-sonnet-4-6

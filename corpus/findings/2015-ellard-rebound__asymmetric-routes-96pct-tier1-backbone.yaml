@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ellard-rebound
+kind: evaluation
+summary: He et al. found that 65% of sampled routes between public traceroute servers have some degree of AS-level asymmetry; John et al. found that asymmetry reaches 96% on Tier-1 ISP backbone links due to hot-potato routing. These figures invalidate the symmetric-route assumption underlying Telex and Cirripede and motivate a fully asymmetric design.
+techniques:
+    - dpi
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Do not build decoy-routing or in-network proxy schemes on the assumption that both flow directions pass the same middlebox; design for one-way observation from the start.
+    - Tier-1 transit paths are especially asymmetric — place decoy routers at ISP peering points rather than backbone cores to maximise bidirectional coverage.
+section: §I
+extracted_by: claude-sonnet-4-6

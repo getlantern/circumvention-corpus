@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hobbs-sudden
+kind: evaluation
+summary: On the day Instagram was blocked, geo-located Twitter users from mainland China increased ~30% and new account creation jumped more than 600%. A full 53% of previously active Instagram users (estimated 8–16 million people) continued accessing Instagram via evasion tools after the block, compared with roughly 0.026% of all Chinese Internet users who used Twitter before the block — demonstrating the Firewall's baseline efficacy and the magnitude of the gateway-driven surge.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - A single high-profile blocking event can multiply active circumvention users by 6–7× almost overnight; capacity planning must treat censorship events as demand shocks, not gradual growth.
+    - New gateway-effect users (80% Chinese-language preference, lower international exposure) differ demographically from pre-existing VPN users — circumvention tools should support localized UI and require no prior technical knowledge.
+section: 3. Expanded Access to Blocked Websites / 1. Direct effects of the Instagram block
+extracted_by: claude-sonnet-4-6

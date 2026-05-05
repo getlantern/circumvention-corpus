@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-jermyn-autosonda
+kind: detection
+summary: Among the 44 non-DNS filters, 11 did not reassemble TCP segments and 7 did not reassemble IP fragments before inspection, meaning a censored URL split across segment or fragment boundaries evaded detection. Five filters applied fragment/segment reassembly timeouts of under 2 seconds despite maintaining HTTP request state for more than 8.5 seconds, creating a window where a deliberately fragmented flow with artificial delay avoids inspection entirely.
+techniques:
+    - dpi
+    - middlebox-interference
+    - keyword-filtering
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools operating at the TCP layer can split the censored portion of an HTTP request (e.g., the Host value) across TCP segments or IP fragments to defeat filters lacking reassembly — this is especially effective against ~25% of commercial filters that perform no reassembly at all.
+    - Injecting a brief delay (>2 s but under the HTTP session timeout) between IP fragments carrying the sensitive URL causes an additional 11% of filters to time out and clear reassembly state, allowing the fragments through unchecked.
+section: §4.1 Mechanism
+extracted_by: claude-sonnet-4-6

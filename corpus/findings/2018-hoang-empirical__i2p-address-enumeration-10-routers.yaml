@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hoang-empirical
+kind: detection
+summary: Despite I2P's decentralized design, a censor can block more than 95% of peer IP addresses known to a stable I2P client by operating only 10 routers in the network. The censor learns this by passively monitoring the distributed netDb through injected floodfill and non-floodfill nodes, exploiting the fact that I2P's peer-discovery mechanism exposes the near-complete address space to any sufficiently resourced participant.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Distributed peer directories with no access controls are fully enumerable by censor-operated nodes; shift to private/unlisted relay mechanisms (Tor bridge model) rather than relying on DHT-based decentralization as a blocking-resistance property.
+    - Any protocol whose peer-discovery grants joining nodes a near-complete IP list must assume that list is also available to a well-resourced censor — design bootstrapping so clients learn only the relays they need, not the full network.
+section: Abstract, §6
+extracted_by: claude-sonnet-4-6

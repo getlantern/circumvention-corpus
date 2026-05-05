@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-nasr-massbrowser
+kind: evaluation
+summary: The majority of censored websites are blocked in only one or two countries, with political and news content showing the strongest geographic specificity. Figure 3 shows that of domains blocked in China, Iran, and Turkey, only 29 are blocked in both China and Turkey, while 27,852 are China-only and 1,564 are Iran-only, demonstrating that cross-region client-to-client proxying is broadly applicable.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - cn
+    - ir
+    - tr
+defense_implications:
+    - 'Exploit regional blacklist divergence for client-to-client proxying: a censored user in Iran can proxy Chinese-blocked content and vice versa, scaling proxy capacity without adding non-censored volunteers.'
+    - Track per-country blacklist overlap continuously to route client proxy assignments toward regions with minimal shared blocked-domain sets.
+section: §III-C, Figure 3
+extracted_by: claude-sonnet-4-6

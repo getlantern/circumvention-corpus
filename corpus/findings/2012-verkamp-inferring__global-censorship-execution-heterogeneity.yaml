@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-verkamp-inferring
+kind: evaluation
+summary: 'Across 11 countries, censorship execution falls into at least six distinct categories: DNS redirect to localhost (Malaysia, Russia, Turkey), DNS redirect with warning page (South Korea), connection timeout with no notification (Bangladesh, India), spoofed TCP RST injection (China), spoofed HTTP 403 with warning page (Bahrain, Iran), HTTP 302 redirect (South Korea, Thailand), and spoofed HTTP 200 iframe response (Saudi Arabia). Four countries censor at DNS and eight at routers, with South Korea employing both layers simultaneously.'
+techniques:
+    - dns-poisoning
+    - rst-injection
+    - packet-injection
+    - dpi
+censors:
+    - cn
+    - ir
+    - ru
+    - sa
+    - tr
+defense_implications:
+    - Deploy country-aware circumvention logic that identifies which censorship layer is active — DNS-only bypass (alternate resolver) is sufficient only for Malaysia, Russia, and Turkey; all other studied countries require router-level or full-tunnel circumvention.
+    - Design probe-based country profiling into circumvention clients so they can automatically select the correct bypass strategy rather than applying a single universal technique.
+section: Table 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-hiruncharoenvate-algorithmically
+kind: evaluation
+summary: Homophone-transformed weibos lasted on Sina Weibo an average of 3.94 hours (σ=5.51) before removal, versus 1.3 hours (σ=1.25) for unaltered originally-censored posts — a threefold difference (W=1830, p<0.01) — while ultimate censorship rates were not significantly different between conditions.
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Deploy client-side homophone substitution before platform submission to extend the window in which a post circulates before removal, even if ultimate takedown is not avoided.
+    - Use nondeterministic selection among top-k homophones rather than a fixed mapping to prevent censors from building a static counter-blocklist.
+section: Experiment 1 / Results
+extracted_by: claude-sonnet-4-6

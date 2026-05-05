@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-duan-hold-on
+kind: defense
+summary: Without DNSSEC, Hold-On can be defeated by a sophisticated censor that crafts injected packets with TTL and timing matching the expected legitimate reply, injecting just before its predicted arrival. When combined with DNSSEC, Hold-On is robust even against this attack because the censor cannot forge a valid DNSSEC signature; injection can still cause a denial-of-service by forcing a 'Bogus' result, but Hold-On prevents that by waiting for the legitimate validating reply.
+techniques:
+    - dns-poisoning
+    - packet-injection
+defense_implications:
+    - For high-assurance DNS circumvention, deploy Hold-On only in conjunction with DNSSEC validation; TTL/RTT heuristics alone are insufficient against a capable censor that can model expected reply timing and match those parameters.
+    - When DNSSEC is unavailable and two differing replies arrive without a distinguishable legitimate winner, resolvers should return no answer rather than the potentially injected one, accepting denial-of-service as the lesser harm.
+section: §VI
+extracted_by: claude-sonnet-4-6

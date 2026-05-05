@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-danezis-economics
+kind: policy
+summary: The paper argues that censorship is an economic activity in which both censor and target incur costs, and that binary 'blocked/unblocked' models are as unrealistic as an omnipotent global adversary. Technology changes (e.g., moveable type, online publishing, trusted computing) can shift the cost parameters dramatically, making quantitative cost modeling — rather than binary vulnerability analysis — the correct framing for censorship-resistance evaluation.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Evaluate circumvention designs by their effect on the censor's marginal cost-per-user-censored rather than asking whether the protocol is 'detectable' in the abstract — the goal is to push censor costs above the point where enforcement is economically rational.
+    - Track infrastructure and legal developments (trusted computing, platform compliance mandates) as cost-parameter shifts that can invalidate previously sufficient censorship-resistance margins.
+section: §6
+extracted_by: claude-sonnet-4-6

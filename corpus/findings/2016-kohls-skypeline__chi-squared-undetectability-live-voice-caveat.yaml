@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-kohls-skypeline
+kind: defense
+summary: χ² homogeneity tests on 70 audio signal pairs show that at SNR ≥ 25 dB the probability that a statistical test distinguishes modulated from original signals falls to 77.13% (i.e., the rate of successful discrimination is below 23%). Crucially, this analysis requires access to the original unmodulated signal; for live voice transmissions no such pairing is feasible for the censor, rendering statistical detection unrealizable in practice.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Use live, unpredictable voice recordings as the carrier medium rather than pre-recorded audio — this eliminates the censor's ability to obtain an unmodulated reference sample for χ² pairing, collapsing the strongest available statistical attack.
+    - Operate at SNR ≥ 25 dB as a firm floor; the paper shows discrimination success jumps sharply below this threshold, so any throughput optimizations that push SNR below 25 dB reintroduce detectable statistical artifacts.
+section: §6.3.2, Table 6
+extracted_by: claude-sonnet-4-6

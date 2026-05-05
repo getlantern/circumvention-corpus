@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-khattak-look
+kind: evaluation
+summary: On the day of YouTube's block in Pakistan (18 Sep 2012), SOHO users' HTTP:SSL traffic ratio collapsed from ~38:1 pre-censorship to ~3.2:1, and remained at ~3.25 eleven months later (Aug 2013), indicating rapid and sustained mass adoption of SSL-based circumvention. A supplementary survey of ~700 Pakistani users confirmed 57% used SSL-based VPN software (UltraSurf, OpenVPN, Hotspot Shield) to access YouTube.
+techniques:
+    - dns-poisoning
+    - rst-injection
+defenses:
+    - tunneling
+censors:
+    - pk
+defense_implications:
+    - SSL/TLS-wrapped transports were the dominant spontaneous user response to broad category blocking — circumvention tools should offer SSL-wrapped transports by default, since users self-select for them rapidly under censorship.
+    - The SSL ratio persisted 11 months later, showing circumvention habits are sticky once formed; tools that minimize setup friction gain durable adoption advantages after censorship events.
+section: §6.1, Table 7
+extracted_by: claude-sonnet-4-6

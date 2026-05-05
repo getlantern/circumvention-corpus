@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-come
+kind: defense
+summary: TCP Window Reduction (Strategy 8)—reducing the SYN+ACK TCP window to 10 bytes and stripping wscale options, forcing the client to segment its request—achieves 100% evasion success against HTTP in India and Kazakhstan, 100% against HTTP and HTTPS in Iran, and 100% against SMTP in China, because none of these censors can reassemble TCP segments. The strategy is compatible with all 17 tested client OS versions when implemented without SYN+ACK payloads, making it the most broadly deployable server-side strategy found.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - ir
+    - kz
+defense_implications:
+    - Implement TCP window shrinking in the server's SYN+ACK as a low-cost, broadly compatible evasion layer—it requires no client changes, works across Linux/Windows/macOS/iOS/Android, and defeats segment-blind censors in at least four countries.
+    - Pair window reduction with protocol-specific strategies for China (where it only helps FTP and SMTP) rather than relying on it as a universal solution against the GFW.
+section: §5.1, §5.2, §7, Table 2
+extracted_by: claude-sonnet-4-6

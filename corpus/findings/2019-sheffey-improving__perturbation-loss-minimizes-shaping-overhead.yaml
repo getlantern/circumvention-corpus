@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-sheffey-improving
+kind: defense
+summary: Incorporating perturbation loss — the mean absolute difference between original and transformed traffic signatures — into the GAN's training objective constrains the transformer to make minimal modifications, reducing the implementation overhead a real-time traffic shaper would require. The perturbation loss is weighted at 10× relative to classification losses, enforcing sparse modifications while still fooling the discriminator.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - meek
+censors:
+    - generic
+defense_implications:
+    - When implementing GAN-guided traffic shaping, include a perturbation penalty so the learned transformation targets only the highest-signal features (e.g., the 60–70 byte payload peak, the >1000 ms IAT tail) rather than reshaping the entire flow — this minimizes bandwidth and latency overhead in production.
+    - Publish the perturbation-loss objective as a reusable loss function so other pluggable transport developers can apply the same minimal-modification discipline to their own adversarial shaping work.
+section: §4.2 Training
+extracted_by: claude-sonnet-4-6

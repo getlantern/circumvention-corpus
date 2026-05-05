@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-crandall-forgive
+kind: evaluation
+summary: The fragment cache side channel is the most widely applicable TCP/IP side channel, capable of eliciting responses even from hosts behind host firewalls because it operates at Layer 3 (IP fragments). When combined with a Layer 4 technique such as the SYN backlog scan, it can distinguish censorship implemented at Layer 3 versus Layer 4, though fragment cache implementations vary widely across OSes and devices.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Use fragment cache scans to probe whether censor middleboxes are dropping traffic at Layer 3 (IP) versus Layer 4 (TCP), informing whether a protocol should use IP fragmentation or stay within normal TCP to avoid detection.
+    - Do not assume uniform fragment reassembly behavior across censored-network endpoints; validate against multiple OS/device combinations.
+section: §3.3, Table 1
+extracted_by: claude-sonnet-4-6

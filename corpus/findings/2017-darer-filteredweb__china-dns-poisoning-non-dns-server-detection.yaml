@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-darer-filteredweb
+kind: evaluation
+summary: 'Sending DNS queries to eight non-DNS IP addresses within the Chinese IP range reliably detects GFW DNS poisoning: any response indicates the censor intercepted and replied to the query, since a legitimate non-DNS server would not respond. This external vantage-point technique discovers poisoned domains without in-country volunteers or local infrastructure.'
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool operators can externally validate whether their proxy domains are GFW-poisoned by querying non-DNS Chinese IPs — no in-country presence required for continuous monitoring.
+    - Continuous external DNS poisoning checks should be integrated into proxy infrastructure health monitoring, since poisoning can silently break connectivity before users report failures.
+section: §IV-C
+extracted_by: claude-sonnet-4-6

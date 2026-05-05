@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-vines-rook
+kind: defense
+summary: Rook achieves 34 bits/second client-to-server and 26 bits/second server-to-client within Team Fortress 2, sufficient for OTR-encrypted real-time chat. Rook use did not trigger Valve Anti-Cheat warnings and did not noticeably degrade gameplay for co-located legitimate players.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Game traffic steganography can reach chat-viable bandwidth (~30 bps) while remaining operationally invisible to both in-game anti-cheat systems and human observers — confirming the viability of the cover medium.
+    - OTR can be layered on top of a sub-100 bps covert channel; the initial key exchange adds minutes of latency but subsequent message exchange is not significantly slower than plaintext Rook.
+section: §4.1
+extracted_by: claude-sonnet-4-6

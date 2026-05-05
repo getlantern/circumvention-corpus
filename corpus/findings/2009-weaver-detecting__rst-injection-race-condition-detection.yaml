@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-weaver-detecting
+kind: detection
+summary: 'Out-of-band RST injectors fundamentally face race conditions because they cannot modify in-flight packets: a data packet may pass the injector''s observation point before the forged RST is generated, producing detectable out-of-sequence RSTs (RST_SEQ_DATA) or post-RST data packets (DATA_SEQ_RST). A passive detector exploiting these two race conditions, plus a third signature (RST_SEQ_CHANGE) from multi-packet injectors, reliably identifies injected RSTs across four network datasets totaling 30.2M TCP flows.'
+techniques:
+    - rst-injection
+    - packet-injection
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Circumvention clients receiving RST packets can test for RST_SEQ_DATA or DATA_SEQ_RST conditions to confirm a RST is injected rather than legitimate, suppressing it rather than tearing down the session.
+    - Proxy implementations should perform application-layer RST validation (sequence coherence check) rather than relying on OS TCP stacks, which accept any in-window RST regardless of injection origin.
+section: §5
+extracted_by: claude-sonnet-4-6

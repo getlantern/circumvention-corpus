@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ellard-rebound
+kind: defense
+summary: 'Because Rebound never terminates the client–decoy connection, connection-state probes (including 0trace-style TTL-expiry probes that bypass the decoy router via an alternate route) cannot reveal any discrepancy between the observed and actual state: the connection to the decoy host is always exactly in the state a censor would expect.'
+techniques:
+    - active-probing
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Decoy-routing designs that terminate and spoof the client–decoy connection must either detect and block all probe variants (TCP in-window data, ICMP Record Route, 0trace TTL probes) or adopt a Rebound-style pass-through architecture to eliminate the probe surface entirely.
+    - A censor willing to send TTL-limited clone packets via an alternate path can defeat any scheme that closes the real decoy connection — consider this in threat modelling.
+section: §VIII-A2
+extracted_by: claude-sonnet-4-6

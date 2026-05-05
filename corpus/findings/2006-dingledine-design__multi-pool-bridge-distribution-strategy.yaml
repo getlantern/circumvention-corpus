@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-dingledine-design
+kind: defense
+summary: 'The paper proposes dividing public bridge addresses into 8 pools (n=3 bits from HMAC(identity-key, authority-secret)) each assigned a distinct distribution strategy: time-windowed release, IP-subnet-partitioned assignment, time+location combined, mailing-list rotation, email/CAPTCHA delivery, and social-trust delegation. Deploying all strategies concurrently forces the attacker to allocate resources across every channel simultaneously, making all strategies more robust than any single strategy deployed alone.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Never rely on a single bridge distribution channel; build and maintain at least email, social-trust, and time-partitioned distribution paths so that blocking one channel does not expose all bridges.
+    - Use a secret-keyed hash of the bridge identity key (not the bridge operator's choice) to assign bridges to distribution pools, preventing adversaries from selectively registering bridges into a target pool.
+section: §7.4, §7.8
+extracted_by: claude-sonnet-4-6

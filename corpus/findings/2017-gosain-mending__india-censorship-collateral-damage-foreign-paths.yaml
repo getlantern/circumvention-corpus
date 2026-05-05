@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-mending
+kind: policy
+summary: If India deployed centralized filtering at its key ASes, approximately 121,931 foreign-origin paths (1.15% of all Internet paths to censored sites worldwide) that transit Indian ASes would experience collateral blocking, affecting non-Indian users in Finland, Hong Kong, Singapore, Malaysia, the US, and elsewhere who have no connection to Indian censorship law.
+techniques:
+    - ip-blocking
+    - bgp-hijack
+censors:
+    - in
+defense_implications:
+    - Circumvention deployments serving non-Indian users should audit their network paths and prefer routes that avoid the 10 key Indian transit ASes (especially AS9498, AS4755) to reduce exposure to potential Indian censorship collateral damage.
+    - Treat Indian transit ASes as a choke-point risk analogous to Chinese AS4134/AS4812 when designing globally resilient circumvention infrastructure.
+section: §4.1, §4.4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-wang-your
+kind: defense
+summary: Packets carrying an unsolicited TCP MD5 option header (RFC 2385) are silently ignored by modern Linux servers (kernel ≥ 2.6) that have not negotiated MD5 authentication, yet are accepted and processed by the GFW as normal packets that update its TCB. Crucially, none of the observed middleboxes dropped packets with MD5 options, making the MD5 header the most universally applicable insertion packet type — usable with any TCP flag (SYN, RST, or data) and immune to middlebox filtering.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Include MD5-option insertion packets as the primary or fallback insertion mechanism in any TCP-manipulation evasion tool; they are the only discovered insertion type that is both middlebox-transparent and applicable to all TCP packet types.
+    - Note that Linux kernels older than roughly 2.4.37 may not ignore MD5 options, so verify target-server OS version if possible or fall back to TTL-based insertion for servers known to run very old Linux.
+section: §5.3, Table 3
+extracted_by: claude-sonnet-4-6

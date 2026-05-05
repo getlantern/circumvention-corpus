@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wang-rbridge
+kind: evaluation
+summary: 'rBridge outperforms Proximax by at least one order of magnitude across all robustness metrics under aggressive blocking with 5% malicious users: to support 200 users for 30 days, Proximax requires at least 2400 bridges while rBridge needs only 108, and in Proximax fewer than 5% of bridges produce more than 20 user-hours versus 99% in rBridge.'
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Track reputation at the individual-user level rather than at the distribution-tree or channel level; per-user accounting lets the system punish blockers without permanently contaminating honest users sharing the same subtree.
+    - Prefer reputation-gated bridge replacement (pay credits per new bridge) over social-graph propagation schemes, which amplify insider attacks by permanently linking honest users to corrupt subtrees.
+section: §4.3.3
+extracted_by: claude-sonnet-4-6

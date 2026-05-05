@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-li-facet
+kind: evaluation
+summary: A single Facet server with 15 Mbit/s bandwidth and 4 virtual CPU cores supports up to 20 simultaneous video-streaming sessions. Server-side downstream bandwidth consumption is approximately 150 kbit/s lower than a Squid HTTP proxy for equivalent video quality (240p), because Facet fetches only the video stream without page overhead such as advertisements and images.
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Video-over-conferencing designs are viable at small scale with commodity hardware; plan for ~750 kbit/s downstream per session budget when clients enable their cameras at matching resolution.
+    - Session limits per server should be enforced to prevent DoS amplification; 20 sessions per 4-core server is a reasonable baseline for capacity planning.
+section: §9.5, Table 3, Table 4
+extracted_by: claude-sonnet-4-6

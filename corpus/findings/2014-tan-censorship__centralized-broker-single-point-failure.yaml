@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-tan-censorship
+kind: detection
+summary: 'Centralized communication architectures have a single global point of failure: governments can leverage centralization to surveil with or without operator cooperation, as demonstrated by the Snowden revelations about Skype, Facebook, and Google. A compromised broker in a centralized design enables monitoring and censorship that spans all users of the service.'
+techniques:
+    - flow-correlation
+    - dpi
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Avoid single-broker or single-CDN relay architectures for high-risk users; a compromised central relay deanonymizes all traffic routed through it.
+    - For centralized designs, implement end-to-end encryption so that broker compromise reveals only metadata (who communicates with whom) rather than content.
+section: §2.1
+extracted_by: claude-sonnet-4-6

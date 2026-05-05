@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-moghaddam-skypemorph
+kind: defense
+summary: 'SkypeMorph decouples bridge reachability from IP address: clients identify a bridge solely by its Skype ID, so a bridge can change IP address and port at any time without redistributing contact information through BridgeDB. This makes IP-list blocking of known bridges ineffective; a censor that discovers a bridge''s current IP cannot prevent the bridge from migrating to a new one while remaining reachable to existing clients.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - pluggable-transport
+defense_implications:
+    - Design bridge-distribution schemes so that client-facing identifiers are stable application-layer handles (usernames, public keys, domain names) rather than IP:port tuples, enabling bridges to rotate infrastructure without client-side reconfiguration.
+    - Pair IP-agnostic bridge identifiers with frequent IP rotation as a proactive defense against IP-based blocklists.
+section: §8 (Mobile Bridges)
+extracted_by: claude-sonnet-4-6

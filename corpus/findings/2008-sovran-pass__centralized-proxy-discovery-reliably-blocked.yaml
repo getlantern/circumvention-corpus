@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2008-sovran-pass
+kind: detection
+summary: 'Centralized proxy-discovery services are reliably disabled by censors: both Anonymizer and SafeWeb were blocked in China by targeting their central discovery sites, and Wikipedia identified and blocked all 700+ Tor anonymizing relay servers to prevent anonymous edits. Any single publicly-known host that handles proxy distribution becomes the censor''s primary and sufficient target.'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Never rely on a single centralized domain or IP for proxy/bridge distribution; any publicly-known endpoint will be blocked.
+    - Proxy address distribution must be partitioned so no single participant (including a censor posing as a user) can enumerate all proxies.
+section: §2
+extracted_by: claude-sonnet-4-6

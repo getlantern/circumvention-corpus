@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-ng-detecting
+kind: detection
+summary: A Naive Bayes classifier built on 17 LIWC-derived and keyword features achieved 79.34% accuracy (10-fold cross-validation) predicting censorship of Sina Weibo posts, with precision 0.80 and recall 0.85 for the censored class — outperforming all single-domain feature sets including the full 408-feature combination (0.69 accuracy).
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Keyword scrubbing alone is insufficient for platform-censorship evasion; the dominant signal is stylistic (informal register, mood particles), so user-guidance tools must target linguistic style, not just lexical content.
+    - Circumvention tools embedding pre-submission feedback could flag posts scoring high on LIWC informal-language and modal-particle dimensions as elevated censorship risk.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

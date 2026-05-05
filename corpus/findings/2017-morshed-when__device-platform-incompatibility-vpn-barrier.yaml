@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-morshed-when
+kind: evaluation
+summary: At least one participant was unable to use VPN during Bangladesh's ban because her Windows Phone (Lumia) did not carry VPN client apps in its app store, leaving her 'totally unable to communicate' for the ban's duration despite awareness of the workaround. Device platform and app-store access restrictions created a hard circumvention barrier independent of user intent or technical knowledge.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools distributed exclusively through major app stores fail users on minority platforms; out-of-band distribution (APK sideloading, web-based install, SMS link) is necessary to reach the full affected population during rapid-onset bans.
+    - Web-based or browser-accessible circumvention that requires no app installation removes the platform-compatibility barrier entirely — a meaningful design advantage during acute censorship events.
+section: Findings – Response to the Ban
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-i
+kind: defense
+summary: Because FreeWave is VoIP-provider-agnostic, blocking it requires censors to block all VoIP services simultaneously — a politically and economically costly action given that approximately one-third of U.S. businesses used VoIP by 2011 and penetration was forecast to reach 79% by 2013. The authors argue this collateral-damage cost makes wholesale VoIP blocking infeasible for most censors.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tunneling
+    - meta-resistance
+defense_implications:
+    - Design circumvention infrastructure to be provider-agnostic (VoIP, CDN, cloud storage) so that blocking it requires collateral damage to commercially critical services, raising the political cost of blocking above most censors' acceptable threshold.
+    - Publish only a stable, human-readable identifier (VoIP ID, domain name) while keeping the actual server network address hidden behind a relay — this breaks the link between service discovery and IP-blocklist blocking regardless of how widely the identifier is shared.
+section: §V / §II-A
+extracted_by: claude-sonnet-4-6

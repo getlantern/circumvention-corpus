@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-jones-hiding
+kind: defense
+summary: 'COR circuit construction enforces four properties to prevent single-entity de-anonymization in a limited-provider setting: (1) entry and exit ASPs must differ; (2) entry and exit CHPs must differ; (3) the same ASP''s relays must not surround another ASP''s relay without an intervening hop of a distinct ASP; and (4) at least two relays per traversed datacenter so an adversary with only perimeter visibility cannot trivially correlate ingress/egress.'
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Implement circuit-selection logic that enforces ASP and CHP diversity constraints end-to-end, not just at entry/exit; a sandwiched intermediate node from the same ASP adds zero anonymity and should be detected and rejected during path building.
+    - Route circuits through multi-homed datacenters so ingress and egress ISPs differ, forcing a perimeter adversary to monitor multiple ISP uplinks rather than a single chokepoint.
+section: §2.4
+extracted_by: claude-sonnet-4-6

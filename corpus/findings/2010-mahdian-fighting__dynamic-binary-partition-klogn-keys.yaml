@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-mahdian-fighting
+kind: defense
+summary: 'A dynamic binary-tree partitioning algorithm solves the proxy distribution problem with at most k(1 + ⌈log₂(n/k)⌉) total proxy keys: partition n users into k groups in round 1, then halve each compromised group on each compromise event. Each of k adversaries can trigger at most ⌈log₂(n/k)⌉ compromises, bounding total proxy expenditure tightly.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - 'Implement adaptive bridge re-issuance as a binary bisection: when a bridge is burned, split its user cohort and issue each half a distinct new bridge — this contains adversary leverage to logarithmic depth regardless of cohort size.'
+    - For a deployment with n=10,000 users and k=10 suspected informants, this scheme caps total proxy burn at roughly 10 × 14 = 140 bridges, making adaptive distribution operationally feasible.
+section: §4 Theorem 3
+extracted_by: claude-sonnet-4-6

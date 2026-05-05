@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-hasan-building
+kind: defense
+summary: 'Pseudonymity is insufficient for dissent networks: social-network profile information can be correlated with external data to deanonymize users, and fixed-infrastructure networks enable localization attacks even without explicit identity. The authors argue that true anonymity—or at minimum strong deniability where usage is non-incriminating and activity is difficult to trace—is required to protect participants.'
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design circumvention tools so that the act of using them is indistinguishable from legitimate activity (cover traffic, dual-use applications), not merely that user identity is pseudonymous.
+    - Avoid network architectures that produce persistent interaction records linkable to physical location; prefer decentralized topologies that make traffic analysis difficult.
+section: §5.2
+extracted_by: claude-sonnet-4-6

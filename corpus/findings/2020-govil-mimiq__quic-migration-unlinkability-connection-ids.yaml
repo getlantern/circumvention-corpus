@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-govil-mimiq
+kind: defense
+summary: MIMIQ leverages QUIC's connection migration to change a client's IP address mid-connection without disrupting ongoing transfers. QUIC's specification requires that endpoints never reuse connection IDs during migration and that migration tokens are encrypted; this makes migration events indistinguishable from a second distinct client initiating a new connection from a fresh IP address.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Build IP-hopping logic into QUIC-based circumvention transports: each migration naturally rotates the client''s visible network identity without a new handshake cost.'
+    - Ensure migration tokens are padded to be indistinguishable from application data so adversaries cannot infer migration timing from packet inspection.
+section: §3.1
+extracted_by: claude-sonnet-4-6

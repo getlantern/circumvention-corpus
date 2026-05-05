@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-duan-hold-on
+kind: detection
+summary: On-path censors commonly operate on traffic mirrors rather than inline (in-path), making their systems failure-tolerant and easier to deploy. This architectural choice means on-path injectors cannot suppress the legitimate DNS reply—both the forged and authentic replies reach the resolver—creating a detectable anomaly. The same structural weakness applies to TCP RST injection and other on-path packet injection attacks.
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Design stub resolvers or DNS forwarders to hold open their listening port after the first reply arrives and check for subsequent differing replies, which reliably signal on-path injection without requiring DNSSEC.
+    - 'Exploit the traffic-mirror deployment constraint shared by most national censors: since they cannot suppress legitimate replies, any resolver that waits for a second reply gains a reliable oracle for detecting injection.'
+section: §I, §II.A
+extracted_by: claude-sonnet-4-6

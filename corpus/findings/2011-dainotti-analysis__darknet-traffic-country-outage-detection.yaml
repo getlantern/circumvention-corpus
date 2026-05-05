@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-dainotti-analysis
+kind: evaluation
+summary: Unsolicited background radiation traffic to the UCSD network telescope—particularly Conficker worm scanning (TCP SYN, port 445, 48-byte packets)—dropped nearly simultaneously with Egyptian BGP route withdrawals on January 27, corroborating control-plane analysis with data-plane evidence. Crucially, some worm-infected hosts continued to generate outbound scanning traffic even after their prefixes were BGP-withdrawn, because packet filtering was absent; this asymmetry between inbound unreachability and outbound connectivity can distinguish pure BGP-based blocking from combined BGP-plus-filtering approaches.
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool operators should integrate passive monitoring of BGP withdrawal data and darknet traffic as an early-warning system for imminent country-wide shutdowns, enabling proactive switching to out-of-band channels before connectivity is fully severed.
+    - The outbound-only connectivity window that can exist after BGP withdrawal but before packet filtering is deployed may be exploitable for last-mile data exfiltration; circumvention designs should account for this asymmetric connectivity state.
+section: §4.3, §5.1
+extracted_by: claude-sonnet-4-6

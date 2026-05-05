@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-holowczak-cachebrowser
+kind: evaluation
+summary: Of GFW-blocked websites in the Alexa top 1000, 82% are already hosted on CDN infrastructure; for news websites specifically, the figure rises to 85%. This was measured by scraping GreatFire.org blocked-site data and verifying CDN hosting for each domain.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - CDN-bypass circumvention covers the vast majority of politically sensitive blocked content in China without requiring action from content publishers, making it a broadly applicable strategy rather than a niche one.
+    - Publishers of the remaining ~18% of non-CDN-hosted blocked sites can migrate to a shared CDN (including free tiers from CloudFlare, Incapsula, CoralCDN) to gain immediate coverage under CDN-bypass tools with no technical complexity.
+section: §5.2
+extracted_by: claude-sonnet-4-6

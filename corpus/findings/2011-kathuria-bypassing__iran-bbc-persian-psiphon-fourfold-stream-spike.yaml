@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-kathuria-bypassing
+kind: deployment
+summary: During the June 2009 blocking of BBC Persian in Iran, the BBC observed a more-than-fourfold increase in traffic to its BBC Persian TV Internet live stream, with geographic IP lookups confirming the majority of streaming originated from inside Iran. The BBC deployed Psiphon web-proxy nodes — chosen over alternatives because they required no executable installation on the user's PC and could be hosted by a trusted third party — promoted via email newsletters, Twitter, Facebook, and on-air announcements.
+techniques:
+    - ip-blocking
+defenses:
+    - pluggable-transport
+censors:
+    - ir
+defense_implications:
+    - When a primary domain is blocked, streaming URLs hosted on a CDN under non-branded domains can absorb a traffic surge (4× normal) from censored users; operators should pre-position these fallback stream endpoints before anticipated blocking events.
+    - Web-based proxy deployments (no install required) lower the adoption barrier for censored audiences; circumvention tools should offer a no-install path alongside native apps to maximize reach during sudden blocks.
+section: §3.1
+extracted_by: claude-sonnet-4-6

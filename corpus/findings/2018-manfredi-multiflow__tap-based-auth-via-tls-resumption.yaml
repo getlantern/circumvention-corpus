@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-manfredi-multiflow
+kind: defense
+summary: MultiFlow enables a tap-based decoy router to authenticate clients without inline traffic blocking by having the decoy router resume the client's TLS 1.3 session with the decoy host. The client embeds 112-byte sentinel values in the ClientRandom and key-share fields; the decoy router uses the exfiltrated 219-byte NewSessionTicket to perform the resumption. If the decoy host accepts the resumed session rather than falling back to a full handshake, the client is confirmed live.
+techniques:
+    - active-probing
+defenses:
+    - decoy-routing
+    - tapdance
+defense_implications:
+    - Implement tap-based liveness checking via session resumption rather than inline RST injection to preserve ISP deployability and eliminate connection-probing exposure.
+    - Embed authentication material in TLS fields that an on-path adversary cannot modify without breaking the protocol (ClientRandom, key-share), rather than in application-layer signals that can be stripped.
+section: §3.1
+extracted_by: claude-sonnet-4-6

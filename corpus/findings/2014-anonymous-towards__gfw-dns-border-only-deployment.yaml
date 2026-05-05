@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anonymous-towards
+kind: detection
+summary: The GFW deploys DNS injection nodes only at China's border, within 2–3 hops of international transit points, across 16 border ASes. Internal probing found only 0.04% of 42,849 domestic routing paths exhibited DNS pollution, versus ~80% of externally-facing /24 subnets.
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Route circumvention DNS traffic to avoid paths transiting Chinese border ASes — domestic Chinese ISP infrastructure is largely free of DNS injection.
+    - DNS-over-HTTPS or DNS-over-TLS tunnels to resolvers outside China bypass GFW DNS injection, since pollution occurs only at border links.
+section: §5
+extracted_by: claude-sonnet-4-6

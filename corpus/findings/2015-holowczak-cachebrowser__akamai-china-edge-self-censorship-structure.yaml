@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-holowczak-cachebrowser
+kind: detection
+summary: Akamai's China-based edge servers self-censor, returning HTTP 403 for GFW-forbidden content, while Akamai's mapping system (located outside China) returns valid edge server IPs to Chinese users even for forbidden domains, and non-Chinese Akamai edge servers serve all content freely. This partial self-censorship structure is driven by the requirement to operate CDN infrastructure inside China.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - CDN-bypass tools should prefer CDN providers with no in-country infrastructure; providers with local edge servers are compelled to self-censor, making them unreliable even when their mapping system remains unblocked.
+    - For CDN providers that partially self-censor (like Akamai in China), the out-of-country mapping system remains a valid bootstrap oracle—circumvention tools can still use it to discover non-Chinese edge servers that serve content freely.
+section: §3.2.1
+extracted_by: claude-sonnet-4-6

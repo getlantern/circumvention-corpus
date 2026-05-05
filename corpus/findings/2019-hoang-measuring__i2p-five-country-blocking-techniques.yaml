@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-hoang-measuring
+kind: evaluation
+summary: 'Over one month, 54K measurements from 1.7K ASes in 164 countries detected I2P blocking in exactly five countries: China (DNS poisoning of homepage and 3 of 10 reseed servers), Iran (TCP RST injection with HTTP 403 on mirror site), Oman and Qatar (SNI-based blocking of HTTPS homepage plus TCP injection with block-page redirect on HTTP mirror), and Kuwait (TCP injection on mirror site at AS47589 only). All other tested countries left I2P fully reachable.'
+techniques:
+    - dns-poisoning
+    - sni-blocking
+    - rst-injection
+    - packet-injection
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Deploy I2P reseed servers on dynamic or shared IPs that co-host unrelated content, raising the cost of IP-based blocking through collateral damage risk.
+    - Serve all I2P bootstrap resources over HTTPS with ESNI/ECH to eliminate both DNS and SNI as blocking channels simultaneously.
+section: §5, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anonymous-towards
+kind: evaluation
+summary: Probing ~150,000 open DNS resolvers inside China over two weeks found that more than 99.85% provided polluted answers for blocked domains. The small fraction of clean resolvers achieved this by forwarding queries to Google Public DNS or OpenDNS via uncensored tunnels, or by locally dropping responses containing known GFW 'Bad IP' addresses (174 identified IPs).
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - dns-tunneling
+censors:
+    - cn
+defense_implications:
+    - Deploying a resolver that filters responses containing known GFW Bad IPs provides lightweight censorship resistance without full tunneling.
+    - Encrypted DNS (DoH/DoT) routed to external resolvers is the most reliable defense against GFW DNS pollution, as demonstrated by clean resolvers forwarding to Google/OpenDNS.
+section: §4
+extracted_by: claude-sonnet-4-6

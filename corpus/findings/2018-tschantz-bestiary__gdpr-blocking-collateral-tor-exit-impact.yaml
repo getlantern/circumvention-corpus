@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-tschantz-bestiary
+kind: policy
+summary: Because a disproportionate number of Tor exit nodes are located in the EU, GDPR-motivated blanket blocking of EU IP ranges creates collateral access restrictions for Tor users globally. This illustrates that privacy-protective legislation and censorship-circumvention infrastructure can have directly competing effects when server-side enforcement is implemented via coarse geographic IP filtering.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Tor and other tools that concentrate exit infrastructure in high-trust jurisdictions (EU, US) should anticipate that compliance-driven server-side blocking of those regions will degrade reachability — geographic diversification of exit/bridge infrastructure is a hedge against non-censorship blocking as well as state censorship.
+    - When designing bridge or relay placement strategy, model server-side IP reputation and compliance-block coverage as constraints alongside censor presence — the optimal relay location balances both threat classes.
+section: §7
+extracted_by: claude-sonnet-4-6

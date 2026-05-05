@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-houmansadr-no
+kind: evaluation
+summary: The feasibility of the RAD attack scales sharply with the censor's network connectivity. Strategic placement of decoys in just 1% of ASes disconnects China from 18% of Internet destinations, Venezuela from 54%, and Syria from 87%. Countries with fewer controlled ASes and ring ASes have dramatically less routing flexibility and are far more vulnerable to even small decoy deployments.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - ve
+    - sy
+defense_implications:
+    - For decoy routing deployments targeting less-connected censors (Venezuela, Syria, Iran), even a small decoy network is highly effective; concentrate resources on placements covering those countries' limited alternative routes.
+    - Analyze each target censor's ring-AS count and controlled-AS count before deployment to calibrate the minimum viable decoy coverage needed to impose prohibitive costs.
+section: §I, §VII
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-vandersloot-quack
+kind: evaluation
+summary: Quack's echo-server technique achieves vantage-point coverage of 4,458 autonomous systems across 184 countries — nearly an order of magnitude more than OONI's 678 ASes in 113 countries — while processing over 500 domain-server pairs per second from a single measurement machine. The public IPv4 space contains over 50,000 active echo servers daily, with 47,276 stable over 24 hours.
+techniques:
+    - measurement-platform
+    - dpi
+defense_implications:
+    - Assume circumvention infrastructure is continuously profiled at scale across thousands of ASes, not just from in-country vantage points; partial bridge deployment provides limited coverage.
+    - Use large-scale echo-based measurement data to prioritize bridge deployment in ASes and countries with the highest verified blocking rates.
+section: §5.4, Figure 7
+extracted_by: claude-sonnet-4-6

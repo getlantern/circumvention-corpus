@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-tanash-decline
+kind: policy
+summary: Zero pro-Gülen topics appeared in the public tweet set post-coup, while 70% of unreachable (deleted/protected) Gülen-related tweets were pro-Gülen; the unreachable rate for Gülen-related tweets was twice the background rate, quantifying rapid directional self-censorship on politically targeted content within days of a government crackdown.
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Government censorship topic vocabularies can shift on a timescale of days after political events; build circumvention instrumentation capable of detecting new keyword-targeting patterns quickly.
+    - When a government targets a specific community, users self-censor proactively; tools for at-risk communities should emphasize metadata protection and account unlinkability, not just content access.
+section: §4.2–§4.3, Table 2
+extracted_by: claude-sonnet-4-6

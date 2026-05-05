@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-nasr-massbrowser
+kind: evaluation
+summary: In a traffic sample from a major non-anonymous circumvention tool (3.56 TB total, Feb 21, 2008), 48% of all proxied traffic belonged to websites that were not censored in Iran. Integrating CacheBrowsing to fetch CDN-hosted censored content directly further saves 41% of Buddy bandwidth for Alexa top-1000 websites.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - ir
+defense_implications:
+    - Route non-censored content directly rather than through proxies — nearly half of proxy capacity may be consumed by traffic that requires no circumvention at all.
+    - Integrate CDN cache-fetching (CacheBrowsing) as a first-pass filter to offload ~41% of proxy bandwidth before any proxy connection is opened.
+section: §IV-B, §V-C
+extracted_by: claude-sonnet-4-6

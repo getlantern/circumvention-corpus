@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-mcpherson-covertcast
+kind: defense
+summary: CovertCast uses the identical video codecs, streaming protocols (RTMP/HTTPS), and server endpoints as any other YouTube live stream, making it indistinguishable from regular streaming traffic to both passive protocol-analysis and active traffic-manipulation attacks. Any active attack that disrupts CovertCast connections — such as selective packet dropping — would equally disrupt all non-circumvention viewers of the same streaming service, imposing prohibitive collateral damage.
+techniques:
+    - dpi
+    - active-probing
+    - traffic-shape
+defenses:
+    - tunneling
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Achieve censor resistance by genuinely using a popular service's own infrastructure, codecs, and endpoints rather than imitating them — genuine use ensures that detection or disruption imposes identical collateral damage on the service's legitimate user base.
+    - Prefer platforms that deliver streams over HTTPS/QUIC, since encryption prevents content-level analysis and forces any classifier to rely solely on traffic metadata where genuine and circumvention streams are statistically indistinguishable.
+section: §7.4, §7.5, §7.6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-connolly-trist
+kind: detection
+summary: The paper acknowledges that modern blind steganalysis tools combining first- and second-order statistical classifiers (e.g., SVM-based universal steganalysis) are likely capable of detecting TRIST-embedded images, though this was not experimentally verified. The authors note these attacks rely on large feature vectors and are computationally more expensive than histogram or blockiness attacks, but do not claim invulnerability.
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Treat SVM-based blind steganalysis as an unresolved threat when deploying JPEG steganography at scale; future work should measure detection rates against HUGO-style SVM classifiers and incorporate adaptive embedding (e.g., STC-based distortion minimization) to reduce the statistical footprint.
+    - Consider layering TRIST with a cover-selection strategy — choosing cover images whose DCT coefficient distributions are already close to post-steg distributions — to reduce detectability by second-order classifiers.
+section: §7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-crandall-forgive
+kind: evaluation
+summary: Over more than 10 years of ONI client-side measurements conducted in 77 countries—of which 42 were found to implement some form of filtering—no participating user was ever arrested, apprehended, pressured, or intimidated by authorities. However, HTTP GET requests to sensitive URLs are made without obfuscation or anonymization, and in countries with restrictive legal frameworks this activity could be viewed as subversive by authorities sensitive to exposure of censorship infrastructure.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Censorship measurement clients distributed to users in high-risk countries should tunnel probe traffic through the circumvention tool itself to prevent the user's ISP from observing direct requests to blocked URLs.
+    - 'Treat measurement consent as contextually variable: use country-level risk scores (Freedom House, Economist Democracy Index, travel advisories) to gate which users are invited to run active probing.'
+section: §2.1, §2.2
+extracted_by: claude-sonnet-4-6

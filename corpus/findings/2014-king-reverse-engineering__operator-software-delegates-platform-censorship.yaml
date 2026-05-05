@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-king-reverse-engineering
+kind: deployment
+summary: By operating their own Chinese social media site using commercially available software, documentation, and vendor support, the authors confirmed that censorship enforcement is delegated to platform operators via configurable off-the-shelf software. By default the software shipped with no automated review or blocking; webmasters activate keyword lists and gain controls for bulk deletion, IP blocking, user banning, and per-post-type restrictions.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Because censorship enforcement is operator-configured rather than uniformly applied at the GFW layer, circumvention tools that route outside Chinese social media platforms bypass the operator-compliance layer entirely — a structural advantage over in-platform obfuscation.
+    - Platforms with minimal operator configuration face much lighter automated filtering; when platform selection is possible, it functions as a partial circumvention strategy before any transport-layer tool is needed.
+section: Participant Observation
+extracted_by: claude-sonnet-4-6

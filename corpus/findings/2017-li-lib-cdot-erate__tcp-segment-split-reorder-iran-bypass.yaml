@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-lib-cdot-erate
+kind: evaluation
+summary: TCP segment splitting and out-of-order delivery evades DPI classification in the testbed, T-Mobile, and Iran, but fails against the GFC—which performs extensive packet validation and correctly reassembles reordered streams—and AT&T, which uses a transparent HTTP proxy that normalizes all traffic before inspection. Payload splitting to one byte in the first packet is sufficient to defeat packet-count-limited classifiers.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - TCP segment fragmentation is a viable unilateral evasion technique for Iran and most commercial ISP middleboxes but must be combined with other mechanisms against the GFW, whose packet-validation completeness defeats reordering attacks.
+    - Do not rely on segment-reordering alone as a GFW bypass; layer TTL-limited inert insertion or classification flushing on top, since the GFW's reassembly correctness is the documented differentiator.
+section: §4.3, Table 3
+extracted_by: claude-sonnet-4-6

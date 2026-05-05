@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-frolov-conjure
+kind: defense
+summary: IPv6 phantom addresses drawn from an ISP's /32 prefix provide 2^96 potential addresses, making exhaustive enumeration and pre-image attacks computationally infeasible. Analysis of 4013 observed IPv6 addresses in a deployed /32 found approximately 75 bits of entropy (out of a maximum 96), with enough overlap with legitimate address distributions that blocking high-entropy addresses would produce significant collateral damage to real IPv6 services.
+techniques:
+    - ip-blocking
+defenses:
+    - conjure
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Prioritize IPv6 phantom host deployment; the 2^96 address space makes both pre-image attacks and per-address blocking by censors computationally infeasible even at ZMap-scale throughput.
+    - Use the Entropy/IP Bayesian Network model to generate phantom addresses whose per-nibble entropy distribution matches observed legitimate IPv6 traffic, reducing the censor's ability to heuristically flag high-entropy phantom IPs.
+section: §6.2.2
+extracted_by: claude-sonnet-4-6

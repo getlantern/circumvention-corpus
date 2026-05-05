@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-anderson-dimming
+kind: evaluation
+summary: 'Throughput drops correlated directly with political mobilizations: the 2012-02-14 anniversary of political detentions registered a -102.9% weekly-minimum change relative to the two-month mean, and the October 2012 currency protests showed a -86.2% weekly minimum. Round-trip time did not increase proportionally during these drops, distinguishing them from ordinary congestion.'
+techniques:
+    - throttling
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - Monitor political calendars (elections, protest anniversaries) as leading indicators of imminent throttling; pre-position CDN capacity or trigger bridge distribution campaigns before anticipated events.
+    - When RTT is stable but throughput drops sharply, treat the event as a rate-limit policy rather than a routing failure and switch users to lower-bitrate or burst-and-cache transport modes.
+section: §5.1, Fig. 6
+extracted_by: claude-sonnet-4-6

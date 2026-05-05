@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-global
+kind: evaluation
+summary: DNS manipulation is heterogeneous within countries, not uniform across ISPs. In Iran, one cluster of domains is manipulated by approximately 80% of in-country resolvers while a second group is manipulated by fewer than 10%, consistent with differential blackholing by separate DNS manipulation infrastructure tiers. China shows a similar bimodal split (~80% vs ~50%), while Greece and Kuwait exhibit more homogeneous cross-resolver manipulation.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+    - ir
+    - gr
+    - kz
+defense_implications:
+    - Circumvention tool bootstrap logic should query multiple resolvers and cross-validate rather than trusting a single resolver result, since within a censored country a non-manipulating ISP resolver can mask actual national policy.
+    - Censor fingerprint databases used by circumvention infrastructure must be maintained at per-AS granularity, not just per-country, to be operationally useful for protocol designers.
+section: §5.3, Figure 7
+extracted_by: claude-sonnet-4-6

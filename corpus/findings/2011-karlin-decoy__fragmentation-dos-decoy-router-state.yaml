@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-karlin-decoy
+kind: detection
+summary: An adversary aware of a decoy router's location can force decoy-routed flows to be unprocessable by fragmenting all packets below the size of a complete TCP header in the first fragment, preventing flow assignment and forcing the router into expensive reassembly. Alternatively, the adversary can use small-fragment attacks to grow the router's state table, analogous to NAT resource exhaustion. The paper identifies fragmentation-based denial as a harder-to-mitigate attack class than sentinel replay.
+techniques:
+    - ip-blocking
+    - middlebox-interference
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Decoy router implementations must handle or drop IP fragments gracefully to avoid state-table exhaustion; consider dropping fragmented flows or enforcing a minimum reassembly-queue budget with strict timeouts.
+    - Distribute decoy router capacity across multiple upstream locations so that a fragment-flood DoS against one router degrades rather than eliminates service.
+section: §4.2
+extracted_by: claude-sonnet-4-6

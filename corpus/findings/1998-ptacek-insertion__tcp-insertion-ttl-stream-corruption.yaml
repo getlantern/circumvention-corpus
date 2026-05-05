@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1998-ptacek-insertion
+kind: defense
+summary: An 'insertion' attack sends TCP segments with forged TTL values low enough to expire at the IDS/censor but not at the true destination. The IDS incorporates the spurious segment into its reconstructed stream—seeing 'ATXTACK'—while the end-system assembles the intended byte stream 'ATTACK,' causing signature-based content matching to fail without disrupting delivery.
+techniques:
+    - dpi
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Inject low-TTL decoy packets into a censored flow to corrupt the censor's DPI stream reconstruction while the destination silently discards them; this is a concrete first-order Geneva packet strategy.
+    - Any DPI censor that does not verify TTL reachability before incorporating a segment into the tracked stream is vulnerable to insertion; probe for this before deploying more expensive obfuscation.
+section: §4
+extracted_by: claude-sonnet-4-6

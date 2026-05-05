@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-nasr-waterfall
+kind: evaluation
+summary: Table 2 shows that with 50 decoy ASes, the most powerful practical routing attack on downstream-only systems (rewiring-I) impacts 93% of China's routes (22.4% unreachable, 70% re-routed), compared to only 18.2% total impact from RAD on traditional upstream designs. Table 3 shows that even for Syria, the rewiring-II attack with just 1 downstream-only decoy AS already impacts 81% of routes versus 1.5% for RAD on upstream systems.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - sy
+defense_implications:
+    - Even against an all-or-nothing rewiring attack, downstream-only decoy routing forces devastating self-harm on censors; this asymmetry makes the architecture viable against China-tier adversaries with a tiny volunteer AS footprint.
+    - 'The result generalizes beyond highly-connected censors: weakly-connected countries like Syria face equally catastrophic routing costs, so downstream-only is a strong architectural choice regardless of the censor''s BGP connectivity.'
+section: §4.2.1, Table 2, Table 3
+extracted_by: claude-sonnet-4-6

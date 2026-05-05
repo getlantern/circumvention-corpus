@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-chen-tweeting
+kind: detection
+summary: 'Comments on Weibo (~18M per day) are not independently censored: when a tweet is deleted, its comments are deleted as a cascade, but no instances of standalone comment censorship were observed in 36.5M tweets and associated comments. This creates a structural asymmetry — there are an order of magnitude more comments than tweets, yet comments persist unless their parent tweet is removed.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - 'Exploit platform-architectural blind spots: embedding sensitive content in comment threads rather than top-level posts may substantially reduce censorship exposure if the parent tweet avoids direct keyword matches.'
+    - Censorship architecture that cascades deletions from parent to child (but not the reverse) is a systematic structural weakness; tool designs that route communications through less-monitored structural positions (replies, metadata, image captions) can reduce surface area.
+section: §2.3, §4.2
+extracted_by: claude-sonnet-4-6

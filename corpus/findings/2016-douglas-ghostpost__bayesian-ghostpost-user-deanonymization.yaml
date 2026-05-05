@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-ghostpost
+kind: detection
+summary: 'A censor tracking which deleted posts are resurrected can apply Bayesian inference to identify content-preservation system users: for each resurrected post r observed by set O(r), each observer''s suspicion score updates by factor (|O(r)|−1)/|O(r)|, while observers of non-resurrected deletions can be ruled out with certainty. The attack requires only that the censor join the preservation system with a few sock-puppet accounts spread across multiple followed-user lists.'
+techniques:
+    - keyword-filtering
+defenses:
+    - meta-resistance
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Restrict distribution of resurrected or preserved content to trusted-friend circles by default — this eliminates the censor's ability to correlate O(r) membership with known accounts, collapsing the Bayesian update.
+    - Apply automated post alteration (homophone substitution, timestamp jitter, author stripping) to prevent the censor from reliably constructing DR and thereby tracking which posts were resurrected.
+section: §5
+extracted_by: claude-sonnet-4-6

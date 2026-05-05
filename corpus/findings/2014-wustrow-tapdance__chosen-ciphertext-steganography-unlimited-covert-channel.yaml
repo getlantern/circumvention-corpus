@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wustrow-tapdance
+kind: defense
+summary: TapDance introduces chosen-ciphertext steganography, which allows the client to embed an arbitrary-length hidden message inside a valid TLS ciphertext without invalidating the TLS MAC or session. By exploiting ciphertext malleability in both stream-cipher (counter) mode and CBC mode, the client can choose specific byte values to appear in the ciphertext while constraining plaintext to a safe ASCII range (0x40–0x7F), encoding 6 bits of tag data per ciphertext byte. This provides unbounded covert-channel bandwidth, compared to the fixed 224-bit TLS nonce used by Telex and Decoy Routing or the 24-bit TCP ISN used by Cirripede.
+techniques:
+    - dpi
+    - random-payload-detect
+defenses:
+    - tapdance
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Embedding covert signals in application-layer ciphertext (post-handshake TLS data) rather than fixed handshake fields removes size constraints and eliminates the need for multiple flows to convey a full tag.
+    - Constrain the resulting plaintext to a plausible ASCII character class so that any middlebox inspecting plaintext (e.g., via TLS interception) does not observe anomalous byte patterns.
+section: §3, §6
+extracted_by: claude-sonnet-4-6

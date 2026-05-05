@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-danezis-economics
+kind: defense
+summary: In a random-distribution network, nodes whose utility is non-decreasing under censorship will set their defense budget to zero. For example, in a network with rs = 0.5 (equal red/blue), a censor shifting the distribution to rc = 0 (all blue) increases the utility of strongly blue-preferring nodes; they then invest nothing in resistance, reducing aggregate network defense.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Random relay-assignment schemes (e.g., DHT-based) create free-rider conditions where a subset of nodes actively benefits from censorship and will not resist it — system designers should account for this fragmentation in threat models.
+    - When evaluating P2P circumvention network resilience, do not assume uniform participation in resistance; model heterogeneous node incentives and identify the fraction of nodes likely to defect under a given censor strategy.
+section: §4–§5
+extracted_by: claude-sonnet-4-6

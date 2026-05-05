@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zarras-leveraging
+kind: evaluation
+summary: 'Camouflage bypassed GFW censorship in China across one month of daily testing with no plugin blocked. The GFW''s primary mechanism was identified as keyword filtering on web content rather than DNS hijacking (avoided due to risk of collateral international impact). Dropbox was inaccessible inside China during testing, demonstrating that plugin substitutability is operationally necessary: at least one alternative protocol must remain reachable in any given censored environment.'
+techniques:
+    - keyword-filtering
+    - dns-poisoning
+defenses:
+    - tunneling
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Maintain at least 3–4 distinct protocol plugins so regional blocks on individual services do not render the entire circumvention framework non-functional
+    - Keyword filtering in China operates at the content layer; end-to-end encryption of the tunneled payload (independent of transport-layer encryption) is required to defeat it even when the transport channel itself is allowed
+section: §5.3
+extracted_by: claude-sonnet-4-6

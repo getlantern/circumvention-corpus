@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-bocovich-lavinia
+kind: defense
+summary: 'Lavinia requires its underlying payment system to satisfy four properties for suitability in censorship-resistant contexts: (1) coercion-resistance through geo-political distribution or anonymization, (2) redeemable with a distributable secret, (3) time-locked escrow preventing early redemption, and (4) an append-only public log. The paper demonstrates that Bitcoin satisfies all four properties, with Zerocash extensions providing payment anonymization to prevent linking payments to specific documents.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Censorship-resistant storage payment systems must use time-locked escrow rather than upfront payment — otherwise servers have no incentive to continue storing documents after initial payment is received.
+    - Integrate payment anonymization (e.g., zero-knowledge proofs over the payment ledger) to prevent censors from identifying which documents are being funded and targeting their publishers or sponsors.
+section: §3.2
+extracted_by: claude-sonnet-4-6

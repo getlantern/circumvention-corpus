@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-ling-extensive
+kind: detection
+summary: Large-scale email and HTTPS enumeration of Tor bridges using 500+ PlanetLab nodes and 2,000 Yahoo accounts discovered 2,365 distinct bridges over approximately one month. The bridge https server rate-limits distribution to 3 bridges per 24-bit IP prefix per day, and the email server to 1 reply per account per day; these controls are circumvented by sourcing requests from hundreds of distinct prefixes. Bridge distribution follows a weighted coupon collector model proportional to bridge bandwidth, not uniform probability.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Rate-limiting bridge distribution by C-class (/24) IP prefix is insufficient against adversaries with distributed cloud or academic infrastructure; bridge distribution systems must assume adversaries can enumerate from hundreds of distinct prefixes simultaneously and must add behavioral or trust-based controls beyond IP rate limits.
+    - Bridge pools should be partitioned by behavioral signals (request timing, account age, social-graph trust) rather than solely by source IP prefix to increase the marginal cost of bulk enumeration.
+section: §III-B, §III-C, §IV-A, §V-A
+extracted_by: claude-sonnet-4-6

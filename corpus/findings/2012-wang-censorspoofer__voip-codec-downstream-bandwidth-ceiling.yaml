@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-wang-censorspoofer
+kind: evaluation
+summary: Using G.711 or G.722-64 codecs (64 Kbps downstream), CensorSpoofer clients in China downloaded Wikipedia's HTML file in approximately 6 seconds and the full 160 KB page in approximately 27 seconds; Tor and a proxy-based system (NetShade) were measurably faster. The iLBC codec limits downstream throughput to 15.6 Kbps, and all codecs impose equivalent dummy-traffic cost on the dummy host (G.711 consumes 87.2 Kbps at the dummy host).
+techniques:
+    - traffic-shape
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Treat 64 Kbps as the practical ceiling for VoIP-cover downstream channels; budget for a 27-second full-page load at this rate and target HTML-first delivery (6 seconds) to give users readable content quickly.
+    - Evaluate video-streaming UDP cover channels as a drop-in replacement to improve throughput without sacrificing IP-spoofing compatibility.
+section: §7.2.1, Table 1
+extracted_by: claude-sonnet-4-6

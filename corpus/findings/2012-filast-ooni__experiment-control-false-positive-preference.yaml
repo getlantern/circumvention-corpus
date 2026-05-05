@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-filast-ooni
+kind: evaluation
+summary: 'OONI''s experiment-control methodology explicitly favors false positives over false negatives: it is preferable to generate more censorship candidate events for further investigation than to miss genuine interference. Mismatch between experiment and control data is not always a definitive signal of manipulation but is treated as sufficient cause for flagging, and data collection and analysis are treated as distinct phases.'
+techniques:
+    - measurement-platform
+    - dpi
+    - keyword-filtering
+    - dns-poisoning
+    - rst-injection
+defense_implications:
+    - Censorship measurement infrastructure should encode an explicit false-positive/false-negative policy — favor over-detection when the cost of missed censorship events exceeds the cost of false alarms.
+    - Decouple raw data collection from analysis so evidence is preserved for retrospective review when detection heuristics are later refined.
+section: §4 Methodology
+extracted_by: claude-sonnet-4-6

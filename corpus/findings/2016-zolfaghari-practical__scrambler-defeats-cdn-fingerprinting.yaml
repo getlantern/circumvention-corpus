@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zolfaghari-practical
+kind: defense
+summary: CDNReaper's Scrambler defeats domain-based and Wang et al. k-NN fingerprinting by injecting decoy requests uniformly distributed across ndom popular domains and dropping ~24% of advertisement/analytics requests (which constitute on average 24% of top-1000 Alexa page requests); even at low traffic overheads, fingerprinting accuracy drops significantly from the 0.991/0.94 baseline, with dropping traffic providing more benefit at lower overhead budgets.
+techniques:
+    - website-fingerprint
+defenses:
+    - randomization
+    - tunneling
+defense_implications:
+    - 'Traffic overhead need not be extreme to substantially degrade fingerprinting: dropping non-critical ad/analytics objects (identifiable via URL pattern lists) provides defence at near-zero bandwidth cost and should be the first countermeasure implemented.'
+    - Decoy injection should distribute bandwidth uniformly across a large set of cover domains (ndom ∝ overhead limit) rather than concentrating on a small fixed set, to prevent the censor from learning the decoy distribution.
+section: §4.4
+extracted_by: claude-sonnet-4-6

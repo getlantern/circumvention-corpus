@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-mclachlan-risks
+kind: detection
+summary: Using Tor exit nodes to query the bridge authority, the authors enumerated 247 bridge descriptors over two weeks (out of 1,716 active bridges during that period). An adversary running a relay advertising just 10 MBps of bandwidth would discover 63% of bridges that relay at least 40 circuits and 87% of bridges running at least 80 circuits, because all Tor clients proactively build circuits every 10 minutes.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Bridge distribution systems must classify all relaying nodes—including Tor relays, open proxies, and anonymity services—as sharing a single IP prefix, not just the requesting IP, to prevent enumeration via exit nodes.
+    - Require bridges to authenticate discovery queries (e.g., prove knowledge of the bridge's public-key hash over the SSL connection) so adversaries cannot confirm a host is a bridge without prior knowledge from the Bridge Authority.
+section: §3.2
+extracted_by: claude-sonnet-4-6

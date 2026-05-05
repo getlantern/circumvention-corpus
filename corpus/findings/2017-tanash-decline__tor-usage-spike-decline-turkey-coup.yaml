@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-tanash-decline
+kind: evaluation
+summary: Tor usage in Turkey spiked sharply during the initial days of the July 2016 coup—when ISPs were actively throttling Twitter—but declined steadily in subsequent months back toward pre-coup baselines, consistent with post-coup suppression being driven by chilling effects rather than sustained network-level blocking.
+techniques:
+    - throttling
+defenses:
+    - tor
+censors:
+    - tr
+defense_implications:
+    - Crisis-driven circumvention adoption quickly reverses when fear of reprisal outweighs blocked access; design for sustained engagement beyond the crisis window, not just emergency onboarding.
+    - Distinguishing network blocking from chilling-effect-driven non-use requires correlating external traffic metrics (e.g., Tor direct-connect counts) with on-the-ground reports; build instrumentation that can disambiguate these two suppression mechanisms.
+section: §4.1, Figures 2–3
+extracted_by: claude-sonnet-4-6

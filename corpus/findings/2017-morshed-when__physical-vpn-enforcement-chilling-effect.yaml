@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-morshed-when
+kind: policy
+summary: During Bangladesh's 2015 internet ban, police conducted roadside stops and physically inspected mobile phones for VPN software, confiscating devices found with VPN installed and asserting VPN use was illegal — despite no official government directive prohibiting VPN. This extra-legal enforcement, carried out by low-ranking constables, created a chilling deterrent effect on circumvention adoption beyond the technical challenge of blocking.
+techniques:
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - In contexts where physical device inspection is a risk, circumvention tools should support inconspicuous UX — no prominent app icon, deniable cover UI, or stealth mode — to reduce the legal and physical cost of carrying the tool on the device.
+    - Tools that operate as background services or browser extensions rather than prominently branded standalone apps are harder to detect during a physical device inspection and therefore lower the risk to the end user.
+section: Findings – Response to the Ban
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-aceto-analyzing
+kind: evaluation
+summary: 'Across five Pakistani ISPs measured over six months (Oct 2013–Mar 2014), censorship splits cleanly by ISP: WiTribe, PTCL, and Nayatel block via DNS tampering, while Wateen and Qubee block via HTTP content tampering. The two techniques do not overlap within a single ISP, demonstrating that Pakistan''s censorship infrastructure is ISP-heterogeneous rather than centrally normalized.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - pk
+defense_implications:
+    - A circumvention tool bootstrapping in Pakistan must defeat both DNS-layer and HTTP-layer blocking simultaneously, since a user's ISP determines which technique applies and no single bypass (e.g., alternate DNS alone) covers all five major providers.
+    - Probe-based reachability checks should test DNS resolution, TCP connectivity, AND content integrity independently; a positive TCP result does not rule out HTTP substitution.
+section: §V
+extracted_by: claude-sonnet-4-6

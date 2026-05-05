@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-singh-politics
+kind: evaluation
+summary: A decision tree with linear regression at leaves (DTLR) trained on AS-topology features for 168 countries predicts Freedom House freedom category (Free/Partly Free/Not Free) with 95% accuracy. Average FPI prediction error was 3.47%, and prediction error remained ≤8 points (on a 0–100 scale) 90% of the time under leave-one-out cross-validation.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - AS-level topology features alone are sufficient to reliably classify a country's censorship risk category, enabling passive pre-deployment assessment of proxy viability without expensive in-country probing.
+    - Automated pipelines can use publicly available BGP and IP-registry data to continuously monitor shifts in a country's predicted freedom category as an early warning for emerging censorship.
+section: §3.3
+extracted_by: claude-sonnet-4-6

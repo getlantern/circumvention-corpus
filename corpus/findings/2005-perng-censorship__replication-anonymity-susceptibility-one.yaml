@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2005-perng-censorship
+kind: detection
+summary: Under a threat model granting the censor universal inspection of server communications and processing logs — with only the server's signing key withheld — data-replication systems (Freenet, Gnutella, Eternity Service) and anonymous-communication systems (Free Haven, Serjantov's scheme) all achieve censorship susceptibility of 1. Because document names are publicly known, a censor with full server visibility can selectively drop any targeted query without disrupting access to other documents.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Do not rely solely on data replication or anonymous routing against a censor who can inspect server internals — the publicly-observable document name is the exploitable invariant that enables selective filtering.
+    - Any design that links a visible query field to a specific document fails against a cooperative-server adversary; the query must be cryptographically unlinkable to the document identity (PIR-grade hiding).
+section: §4
+extracted_by: claude-sonnet-4-6

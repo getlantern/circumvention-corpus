@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-internet
+kind: detection
+summary: The survey identifies 'soft censorship' — including throttling, packet-loss injection, and quality-of-experience degradation — as detected by only 2 of 13 surveyed platforms (rTurtle and UBICA) as of 2015. The paper explicitly flags this as a measurement gap, noting that soft censorship symptoms are indistinguishable from ordinary network congestion without ground-truth probes placed outside the censor's network.
+techniques:
+    - throttling
+    - middlebox-interference
+defenses:
+    - randomization
+defense_implications:
+    - Circumvention tools should include baseline bandwidth benchmarks using uncensored control paths so that throttling can be distinguished from ordinary ISP congestion and accurately surfaced to users.
+    - Design protocols to degrade gracefully under sustained throttling (e.g., switching to lower-bandwidth modes or alternative routes) rather than treating only hard blocks as an adversarial signal requiring response.
+section: §3 / Table 2
+extracted_by: claude-sonnet-4-6

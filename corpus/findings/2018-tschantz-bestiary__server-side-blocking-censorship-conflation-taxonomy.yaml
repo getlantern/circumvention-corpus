@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-tschantz-bestiary
+kind: policy
+summary: The paper enumerates at least eight distinct non-censorship motivations for server-side geo-blocking — economic sanctions, third-party liability (SESTA), copyright, GDPR compliance, security/fraud concerns, hosting costs, revenue optimization, and misconfiguration — each of which can produce the same observable signals (403 blockpages, DNS failures, TCP resets) as government censorship. Naive measurement methods that treat all location-based unavailability as censorship will produce systematic false positives.
+techniques:
+    - measurement-platform
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Censorship measurement pipelines should classify blocking by actor (server-side vs. middlebox) and by declared motivation (blockpage text, HTTP status code) before attributing observed unavailability to a national censor.
+    - Circumvention tools that present themselves as fighting 'censorship' should be scoped carefully — users hitting GDPR or sanctions blocks need different solutions (e.g., a VPN) than users hitting Great Firewall DPI.
+section: §2, Table 1
+extracted_by: claude-sonnet-4-6

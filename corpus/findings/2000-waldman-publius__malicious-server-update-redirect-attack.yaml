@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2000-waldman-publius
+kind: evaluation
+summary: A malicious server operator with write access can mount a redirection attack by inserting a fake update file pointing to adversary-controlled content. If the client retrieves only k shares and Mallory controls k collaborating servers, all k update URLs match and the client proxy follows the redirect. A 1-bit non-updatable flag in the Publius URL blocks this vector by instructing clients to ignore all update files.
+techniques:
+    - active-probing
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Provide publishers a one-time, irrevocable 'lock' flag at publish time that prevents any server-side redirect from being honored, trading updateability for stronger censorship resistance.
+    - Require update consensus from all n servers rather than the minimum k quorum before following a redirect; a mismatch among servers should be treated as an active attack signal.
+section: §5.2
+extracted_by: claude-sonnet-4-6

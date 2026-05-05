@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zolfaghari-practical
+kind: detection
+summary: 'A domain-based website fingerprinting attack against CDNBrowsing traffic — using the per-domain packet volume exchanged during a browsing session as a decision-tree feature vector — achieves 0.991 ± 0.002 accuracy against CacheBrowser on 100 China/Iran-blocked HTTPS pages, modestly outperforming the state-of-the-art k-NN classifier of Wang et al. (0.94 ± 0.002) while being two orders of magnitude faster: 0.60 CPU-seconds training and 10 µs classification versus 90 CPU-seconds and 0.05 CPU-seconds on an Intel Xeon 3.5 GHz processor.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - dpi
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Proxy-less CDN circumvention systems must obfuscate the per-domain traffic distribution (e.g., injecting decoy requests to non-critical domains, dropping advertisement/analytics traffic) to defeat domain-based fingerprinting; pure payload encryption is insufficient.
+    - Because this attack is unique to proxy-less CDNBrowsing (proxy-based systems bundle all objects into a single encrypted tunnel), designers weighing CDNBrowsing vs. domain fronting should account for this exclusive fingerprinting surface.
+section: §3.2
+extracted_by: claude-sonnet-4-6

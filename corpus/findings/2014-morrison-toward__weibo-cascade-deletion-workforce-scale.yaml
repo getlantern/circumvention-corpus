@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-morrison-toward
+kind: evaluation
+summary: Censors on Sina Weibo were documented retroactively removing entire repost cascades started from a single sensitive post. Extrapolating from sampled data, prior work estimated that up to 4,200 workers working eight-hour shifts would be required to match the censorship demand on Sina Weibo alone, with documented peak hours for deletion activity.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Content that requires per-copy human review (many independent copies with distinct identifiers rather than a linear repost chain) forces censors to work at a scale that makes suppression economically unsustainable.
+    - Circumvention systems should avoid linear repost chains in favor of parallel independent propagation to prevent single-point cascade deletion.
+section: §2 Related work
+extracted_by: claude-sonnet-4-6

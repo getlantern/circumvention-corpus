@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ververis-understanding
+kind: policy
+summary: DNS hijacking of blocked gambling domains in Greece also destroyed MX records for those domains in seven of eight ISPs, making it impossible for users to send email to the censored companies. Only OTE preserved MX records for some (not all) blacklisted domains, and even those were not consistently updated. The Greek Gaming Commission's own public guidance directed affected users to consult prior bank statements for contact information.
+techniques:
+    - dns-poisoning
+censors:
+    - gr
+defense_implications:
+    - Circumvention infrastructure should treat DNS as a full-stack dependency — MX, SRV, and other record types are collaterally censored alongside A records; services that need out-of-band reachability must publish contact endpoints that do not depend on the censored domain's DNS.
+    - Design censorship-resistant communication channels (e.g., key-pinned HTTPS endpoints on uncensored domains) as fallback contact mechanisms, since email to censored domains will silently fail in DNS-hijacking regimes.
+section: §4.3
+extracted_by: claude-sonnet-4-6

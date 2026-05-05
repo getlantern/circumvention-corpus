@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-bocovich-lavinia
+kind: evaluation
+summary: Theorem 1 proves a dominant strategy Nash equilibrium in which all rational servers honestly store and serve all files, subject to the constraint that per-server audit payment exceeds routing cost and file-serving payment exceeds storage cost. At 2017 prices, storage hardware cost approximately $0.03/GB and bandwidth cost approximately $0.03/GB, so the minimum per-file hosting payment must exceed (η + BR) × $0.03/GB × |f|.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Set micropayment amounts for censorship-resistant storage servers above the combined storage and bandwidth cost floor — underpaying creates rational incentives to defect that no protocol enforcement can overcome.
+    - Use Poisson-distributed audit times to prevent servers from estimating the auditor-to-user ratio (BR) accurately enough to profitably refuse non-audit traffic.
+section: §5.1, Theorem 1
+extracted_by: claude-sonnet-4-6

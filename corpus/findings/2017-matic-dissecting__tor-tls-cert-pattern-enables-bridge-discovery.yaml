@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-matic-dissecting
+kind: detection
+summary: Tor's vanilla TLS certificate presents a distinctive pattern (SubjectCN=www.[random].com; IssuerCN=www.[random].net using base32 random strings), which never changes across certificate rotations every 2 hours. Using this pattern against Censys and Shodan scan data without running any active scans, the authors discovered 694 private bridges and 645 private proxies, and deanonymized the IP address of 35% of public bridges with clients (23% of all active public bridges) in April 2016.
+techniques:
+    - tls-fingerprint
+    - active-probing
+defenses:
+    - bridges
+    - tor
+    - obfs4
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Eliminate the distinctive vanilla Tor TLS certificate pattern immediately — even though PTs are the recommended solution, the open OR port running vanilla Tor remains exposed and scannable, leaking bridge IPs to any passive scan engine.
+    - Treat bridge IP addresses as having a much shorter secrecy half-life than currently assumed — infrastructure design should assume adversaries routinely harvest scan engine data and plan for rapid IP rotation or decoy infrastructure accordingly.
+section: §II-B, §VI-A, Table V
+extracted_by: claude-sonnet-4-6

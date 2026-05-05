@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-kohls-skypeline
+kind: evaluation
+summary: SkypeLine's m-ary modulation (Mode B using 128-bit Hadamard sequences) achieves a peak data rate of 2,407 bps, representing a 12,035% improvement over FHSS-based DSSS (Takahashi et al., 20.5 bps) and 19,256% over phase-coding techniques (Nutzinger et al., 12.5 bps). Four-layer parallel binary modulation (Mode A, Quattro) achieves a peak of 224 bps and mean of 106.61 bps at ≥99% reconstruction accuracy.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - DSSS-based VoIP steganography can now sustain low-bandwidth censorship-circumvention use cases (bridge address distribution, key exchange, messaging) at rates exceeding prior art by orders of magnitude — deployable today without a dedicated high-throughput channel.
+    - Select m-ary modulation with Hadamard matrices for key-exchange or bridge-distribution payloads where a single Skype call window is the carrier; reserve parallel binary layers for robustness-critical scenarios where codec interference is a concern.
+section: Table 1, Table 2
+extracted_by: claude-sonnet-4-6

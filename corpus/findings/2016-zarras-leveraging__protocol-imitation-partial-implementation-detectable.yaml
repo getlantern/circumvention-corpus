@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zarras-leveraging
+kind: detection
+summary: 'Protocol imitation systems (SkypeMorph, CensorSpoofer, StegoTorus) fail to achieve unobservability because they implement the target protocol only partially, creating statistical discrepancies that censors can detect. Houmansadr et al. (2013) demonstrated this as a fundamental flaw: unobservability by imitation is categorically insufficient as a circumvention design principle.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Avoid partial protocol reimplementation; if mimicking a protocol, execute the real, full protocol stack rather than a reimplemented approximation
+    - Prefer tunneling inside unmodified real applications over custom protocol imitation layers — discrepancies in partial implementations are the primary detection surface
+section: §1, §6
+extracted_by: claude-sonnet-4-6

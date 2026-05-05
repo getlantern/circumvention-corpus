@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-detor
+kind: defense
+summary: DeTor proves geographic avoidance using speed-of-light RTT constraints rather than Internet topology maps. If the measured end-to-end RTT satisfies (1+δ)·Re2e < Rmin, where Rmin is the theoretical minimum RTT that would include any point in the forbidden region, then packets provably could not have traversed that region — even against adversaries who forge traceroute and BGP responses.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - RTT-based geographic proof is manipulation-resistant because physics (speed of light) cannot be forged, unlike AS maps, traceroute, or BGP advertisements — prefer this over topology-inference for security-critical path proofs.
+    - The δ buffer parameter trades proof coverage for robustness to congestion; set δ low (~0.25) in low-jitter environments and accept fewer valid circuits, or raise it and lose more proofs during congestion.
+section: §3.1, §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-parrot
+kind: detection
+summary: The StegoTorus-HTTP module returns '200 OK' for non-existent URIs, produces no response to HEAD, OPTIONS, DELETE, and TEST method requests, and omits xref tables from generated PDF files. Using httprecon with 9 request types, the StegoTorus server is distinguishable from any real HTTP server by an OB (resource-limited) censor that records port-80 destination IPs at line speed and fingerprints them offline.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Synthesized HTTP responses must pass standard server fingerprinting tools such as httprecon; at minimum, return protocol-correct error codes (404, 400, 405) for malformed and non-existent requests rather than blanket '200 OK'.
+    - Embedded file payloads (PDF, SWF, JS) require valid semantic metadata — a simple script verifies PDF xref table validity at line speed without full parsing, so inserting a syntactically present but semantically wrong xref table is insufficient.
+section: §VIII-B, §VIII-C, Table III
+extracted_by: claude-sonnet-4-6

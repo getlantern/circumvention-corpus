@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-khattak-towards
+kind: detection
+summary: 'GFW maintains TCP connection state for up to ≈10 hours and tolerates up to ≈1 GB of client-to-server data, but drastically reduces these limits when a sequence hole exists: it abandons state after buffering only 1 KB above the hole (TCP9) and times out holed connections in 60–90 minutes rather than ≈10 hours (TCP10). These thresholds were confirmed over repeated measurements and represent the maxima tested, not precise censor-configured limits.'
+techniques:
+    - dpi
+    - keyword-filtering
+    - rst-injection
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - 'Introduce deliberate TCP sequence holes before transmitting sensitive payloads: GFW drops state after only 1 KB buffered above the gap, rendering keyword detection ineffective for the remainder of the connection.'
+    - Combine hole-injection with the 60–90 minute holed-connection timeout to gate sensitive transmissions, exploiting the asymmetry between GFW's normal ≥10-hour state window and its hole-triggered timeout.
+section: §5, Table 1 (TCP9, TCP10)
+extracted_by: claude-sonnet-4-6

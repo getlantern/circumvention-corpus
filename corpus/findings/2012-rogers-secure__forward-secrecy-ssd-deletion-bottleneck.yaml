@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-rogers-secure
+kind: defense
+summary: BTP's forward secrecy guarantee depends on reliably destroying old keys, but the paper notes that secure deletion from persistent storage—especially solid-state storage—is difficult with current operating systems and hardware. The recommended mitigation is passphrase-derived encryption of stored secrets, though this shifts the problem to passphrase protection.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Store forward-secrecy keys only inside a passphrase-encrypted container on disk, and keep active-rotation secrets exclusively in RAM with explicit zeroing on rotation to minimize flash-wear-leveling exposure.
+    - Treat 'key destroyed' as a probabilistic claim on SSDs—design threat models to account for adversaries with physical device access who may recover keys that the OS reported as deleted.
+section: §6.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-vasserman-one-way
+kind: defense
+summary: Content-oblivious replication delegates ongoing availability maintenance to 'manifest guarantors' — nodes holding content manifests — who periodically sample chunk replication factors and restore missing replicas without knowing the plaintext they protect, freeing the original publisher from any post-publication obligation. Two honest manifest holders (one content, one key) are sufficient to maintain replication with overwhelming probability even under adversarial conditions and high churn.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Decouple publisher liveness from content availability by assigning replication responsibility to distributed guarantors who cannot identify what they replicate, so compelling the publisher to remove content has no effect on availability.
+    - Make replication probes indistinguishable from real file accesses to prevent a censor from gaming replication factors by selectively responding only to maintenance queries.
+section: §3.3
+extracted_by: claude-sonnet-4-6

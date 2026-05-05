@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-come
+kind: detection
+summary: 'The paper identifies three distinct GFW resynchronization-state triggers with protocol-specific behavior: (1) a server payload on any non-SYN+ACK packet causes resync on the next SYN+ACK or client ACK-flagged packet for all protocols; (2) a server RST causes resync on the next client packet for all protocols except HTTPS; (3) a SYN+ACK with a corrupted acknowledgment number triggers resync only for FTP. Strategy 1''s 50% per-attempt success rate for HTTP is confirmed to result from the 50% probability of the GFW entering the resynchronization state on an injected RST, consistent with Wang et al. [36].'
+techniques:
+    - dpi
+    - rst-injection
+    - middlebox-interference
+censors:
+    - cn
+defense_implications:
+    - 'Target the GFW''s resynchronization state with protocol-appropriate triggers: use server RSTs for DNS/FTP/HTTP/SMTP but not HTTPS, and use corrupted ack numbers only for FTP-targeted evasion.'
+    - Design evasion strategies that exploit the GFW's failure to advance sequence numbers correctly during TCP simultaneous open—this desynchronization bug is protocol-agnostic and reproducible across multiple Geneva-discovered strategy families.
+section: §5.1
+extracted_by: claude-sonnet-4-6

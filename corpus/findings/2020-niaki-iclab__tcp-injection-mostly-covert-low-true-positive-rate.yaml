@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-niaki-iclab
+kind: detection
+summary: Of 19,493,925 TCP packet injection events ICLab detected, only 0.7% (143,225) could be definitively attributed to censorship after multi-heuristic filtering; a further 58% (15,589,882) were RST-or-ICMP-unreachable events classified only as 'probable censorship' because ordinary network failure could not be excluded. Block pages appeared in just 3.4% of definitively-censored injections, meaning the vast majority of censor-side TCP disruption is covert. DNS manipulation detection achieved a false positive rate of approximately 10⁻⁴ using a threshold of θ=11 autonomous systems, cross-checked against block page observations.
+techniques:
+    - packet-injection
+    - rst-injection
+    - dns-poisoning
+defense_implications:
+    - Covert RST injection without a block page dominates censored TCP connections; circumvention transports must treat any premature RST as potentially censor-induced and automatically retry on a different path or transport rather than surfacing a generic network error to the user.
+    - Cross-checking multiple detection signals (DNS response + block page + packet anomaly) is necessary to separate censorship from ordinary network failure; circumvention tools should similarly use multi-layer probing before marking a server unreachable.
+section: §IV-B, §V-A
+extracted_by: claude-sonnet-4-6

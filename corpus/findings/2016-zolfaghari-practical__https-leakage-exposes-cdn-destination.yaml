@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zolfaghari-practical
+kind: detection
+summary: Real-world CDN HTTPS deployments leak the identity of visited websites through three distinct channels — TLS certificate contents (A2, B1, B2 deployments), the plaintext SNI field (B1), and dedicated IP address mappings (B2) — enabling censors to block CDNBrowsing connections via standard DPI or IP filtering without collateral damage to non-forbidden CDN content. Each leakage channel requires inspecting only a single packet from an HTTPS connection, making the attack low-cost and deployable on off-the-shelf censorship boxes.
+techniques:
+    - dpi
+    - sni-blocking
+    - tls-fingerprint
+    - ip-blocking
+censors:
+    - cn
+    - ir
+defense_implications:
+    - CDNBrowsing systems must implement per-CDN HTTPS handling (SNI substitution, edge-server selection) rather than a one-size-fits-all approach; at minimum, replace forbidden domain SNI with a non-forbidden domain and avoid dedicated edge-server IP addresses.
+    - Any proxy-less CDN-based circumvention tool must audit every CDN's HTTPS deployment for certificate, SNI, and IP leakage before relying on it — CloudFlare's strict SNI enforcement makes it unusable against competent DPI-equipped censors.
+section: §3.1
+extracted_by: claude-sonnet-4-6

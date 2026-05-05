@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-censors
+kind: detection
+summary: GFW blocking was keyed on both IP address and port number, not IP address alone. Bridges with port 22 (SSH) open had that port remain reachable even as other ports on the same IP were blocked, confirming per-(IP, port) tuple granularity in the GFW blocklist.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Bridges can reuse blocked IPs on non-blocked ports; running a circumvention service on a port that carries legitimate traffic (e.g., 22/SSH, 443/TLS) may delay or prevent blocking if the censor avoids collateral damage.
+    - Port diversity across a bridge's lifetime increases the number of blocking actions the censor must take to fully suppress it.
+section: §4 Results
+extracted_by: claude-sonnet-4-6

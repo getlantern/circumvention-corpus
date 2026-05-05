@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hounsel-automatically
+kind: detection
+summary: 'The 1,125 newly discovered censored domains span a broad taxonomy: Chinese human rights organizations, Tibetan rights outlets, Falun Gong and religious freedom sites, minority news, privacy-enhancing technology providers, and sources covering Tiananmen and the 1989 democracy movement—none appearing on the Alexa Top 1,000 or FilteredWeb''s blocklist. Privacy-enhancing technology providers appear explicitly as a censored category alongside political and religious content.'
+techniques:
+    - keyword-filtering
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools targeting China must treat their own service domains and associated infrastructure as high-priority targets for proactive rotation, since privacy-enhancing technology is explicitly a censored content category—not a collateral casualty.
+    - Infrastructure operators should audit their full domain portfolio against the expanded content taxonomy (religious, minority, activist, PET categories) when assessing blocking risk, not just political news adjacency.
+section: §1, §5.1, §6
+extracted_by: claude-sonnet-4-6

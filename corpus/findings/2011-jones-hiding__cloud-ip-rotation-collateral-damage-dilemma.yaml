@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-jones-hiding
+kind: defense
+summary: 'Cloud-based onion routing confronts censors with a collateral-damage dilemma: blocking a cloud provider''s IP prefixes requires blocking all co-hosted services (Amazon EC2 hosted over 1 million instances sharing common IP prefixes in 2010), while allowing the traffic means circumvention succeeds. Rotating IP addresses—by retiring and spinning up new VM instances or via DHCP/gratuitous ARPs—reduces the window a blocked address remains in service, forcing censors into a perpetual cat-and-mouse game across all major cloud providers simultaneously.'
+techniques:
+    - ip-blocking
+    - asn-blackholing
+defenses:
+    - tor
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Deploy relay infrastructure on multiple major cloud providers (AWS, GCP, Azure, Rackspace) so no single prefix block removes all relays; rotate VM IPs on a schedule shorter than typical censor blocklist update cycles.
+    - Prefer cloud providers with large, multi-homed datacenter footprints over dedicated hosting precisely because the collateral damage of blocking them is prohibitive for most national censors.
+section: §2.3
+extracted_by: claude-sonnet-4-6

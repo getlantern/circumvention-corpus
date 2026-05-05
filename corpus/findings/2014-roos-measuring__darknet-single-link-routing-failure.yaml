@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-roos-measuring
+kind: evaluation
+summary: In a 140-hour measurement, requests forwarded into a 10-node Darknet connected to the Opennet by a single bridge link succeeded only 0.08% of the time, versus 8.46% for Opennet-forwarded requests — a ~100× failure-rate gap caused by ID-space isolation between the two overlay segments.
+techniques:
+    - measurement-platform
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Darknet clusters must have multiple Opennet bridge nodes rather than a single gateway link; single-link attachment causes near-total routing failure (0.08% success) that defeats the availability goal of the private overlay.
+    - When designing private-relay or bridge architectures, ensure the relay set is densely enough connected to the broader overlay to avoid isolated ID-space segments that black-hole routing.
+section: §4.3
+extracted_by: claude-sonnet-4-6

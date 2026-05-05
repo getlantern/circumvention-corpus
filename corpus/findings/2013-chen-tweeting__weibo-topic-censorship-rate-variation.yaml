@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-chen-tweeting
+kind: detection
+summary: 'Weibo employs keyword-based censorship with highly uneven application across topics: 82% of tweets in the Lushan topic (criticism of a local official) were censored, while 27 of 37 trending topics exhibited <2% censorship; overall ~1% of the 36.5M crawled tweets were censored. The Chinese government prioritizes censoring content that could incite public protest over content that is merely critical.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Design circumvention tools to prioritize topics with >10% censorship rates rather than optimizing for average-case ~1% censorship; the long tail of heavily censored topics is where tools matter most.
+    - Keyword-filter evasion needs to be topic-aware and dynamically updated, since censorship intensity is driven by specific political events rather than a static blocklist.
+section: §5.2, Table 1
+extracted_by: claude-sonnet-4-6

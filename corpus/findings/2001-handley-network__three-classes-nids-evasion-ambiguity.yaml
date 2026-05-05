@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-handley-network
+kind: detection
+summary: 'Passive NIDS can be evaded via three fundamental classes of ambiguity: incomplete protocol analysis (none of the four commercial systems tested by Ptacek and Newsham in 1998 correctly reassembled IP fragments), divergent end-system behavior (different OS stacks resolve overlapping TCP retransmissions differently), and topology uncertainty (low-TTL packets may not reach the victim end-system, so the NIDS cannot determine which packets are delivered).'
+techniques:
+    - dpi
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Circumvention traffic that exploits IP fragmentation or overlapping TCP segment ambiguities may evade uninstrumented DPI middleboxes — but censors can harden DPI with an inline normalizer, so protocol-ambiguity evasion is not a durable strategy.
+    - TTL manipulation (decoy packets with insufficient TTL to reach the proxy but visible to an upstream monitor) is a viable obfuscation layer only if the censor's DPI sits far upstream of the proxy and does not apply TTL normalization.
+section: §1
+extracted_by: claude-sonnet-4-6

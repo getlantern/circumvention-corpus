@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-govil-mimiq
+kind: evaluation
+summary: At a round-trip time of 50 ms, MIMIQ incurs only a 10% throughput drop when migrating every 25 packets (frequency = 4 per 100 packets). Per-migration latency ranges from 7–64 ms at 10 ms RTT and 43–99 ms at 50 ms RTT as migration frequency scales from 0 to 50 migrations per 100 packets.
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'A migration interval of 25 packets is a practical sweet spot: it keeps throughput loss ≤10% at typical WAN latencies while still fragmenting flows enough to defeat statistical classifiers.'
+    - Deploy randomized (not fixed-interval) migration schedules in production—fixed intervals were used only for measurement and are predictable to adversaries.
+section: §4.2
+extracted_by: claude-sonnet-4-6

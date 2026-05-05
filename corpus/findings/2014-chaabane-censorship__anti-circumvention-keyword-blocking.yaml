@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-chaabane-censorship
+kind: detection
+summary: 'Four circumvention tool names were explicitly blocked as URL substrings with zero allowed requests passing through: hotspotshield (126,127 blocked), ultrareach (50,769), ultrasurf (31,483), and the generic keyword israel (48,119). All matching requests — including update checks and background pings — were denied at 0% pass-through rate.'
+techniques:
+    - keyword-filtering
+defenses:
+    - pluggable-transport
+censors:
+    - sy
+defense_implications:
+    - Circumvention tool update servers and rendezvous endpoints must not include the product name or any recognizable string in their URLs; use randomly-generated or domain-fronted hostnames for all infrastructure.
+    - Assume censors maintain keyword blocklists of known tool names; design protocols so that no traffic artifact (hostname, path, User-Agent, TLS SNI) contains a recognizable tool identifier.
+section: §5.4, Table 9
+extracted_by: claude-sonnet-4-6

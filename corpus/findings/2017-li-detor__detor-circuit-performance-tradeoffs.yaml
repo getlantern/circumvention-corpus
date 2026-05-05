@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-detor
+kind: evaluation
+summary: DeTor circuits have significantly lower end-to-end RTTs than standard Tor circuits because high-RTT paths cannot satisfy avoidance proofs, effectively self-selecting for shorter routes. Bandwidth distributions are similar to standard Tor. However, intentional packet-delay defenses proposed for Tor (to defeat timing attacks) would increase effective δ and reduce DeTor proof coverage, creating a tension between delay-based anonymity defenses and RTT-based geographic avoidance.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - RTT-based geographic avoidance is incompatible with delay-injection anonymity defenses (WTFPAD, etc.) — deploying both simultaneously degrades avoidance proof coverage; choose one primary defense model.
+    - The latency advantage of DeTor circuits (shorter paths selected) is a secondary benefit but also a potential fingerprint — clients should be aware that DeTor circuits are statistically faster than normal Tor circuits.
+section: §6.2.3, §6.2.1 (δ discussion)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-singh-characterizing
+kind: evaluation
+summary: 20.03% of Alexa Top 500 website front-page loads showed discrimination against Tor exit users. Exercising search functionality on compatible sites raised discrimination by 3.89% (to 21.33%), while exercising login functionality raised it by 7.48% (to 24.56%), demonstrating that headless front-page-only crawlers significantly underestimate the true blocking rate Tor users face.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Discrimination at authenticated or interactive flows (login, search) is substantially higher than at front-page loads — circumvention tools must account for this compounding at real user workflows, not just homepage reachability.
+    - Measurement frameworks evaluating blocking of Tor-based tools should exercise login and search interactions, not just front-page loads, to avoid underestimating real-world discrimination by several percentage points.
+section: §6.4, Table 6
+extracted_by: claude-sonnet-4-6

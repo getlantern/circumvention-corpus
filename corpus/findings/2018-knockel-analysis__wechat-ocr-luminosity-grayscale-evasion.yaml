@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-knockel-analysis
+kind: detection
+summary: WeChat's OCR-based image filter converts images to grayscale using the luminosity formula (0.299r + 0.587g + 0.114b) before text recognition. All 150 test images with colored text on a luminosity-matched gray background evaded OCR filtering, while average and lightness formulas failed to evade filtering for most colors.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Color-encode sensitive text so its luminosity exactly matches the background; the OCR filter renders it invisible after grayscale conversion while humans reading in color see it clearly.
+    - Auditing a target filter's grayscale formula via controlled color tests is a cheap, generalizable technique applicable to any OCR-based image censor.
+section: §3.1.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-hiruncharoenvate-algorithmically
+kind: evaluation
+summary: Blocking all homophones of 422 censored keywords would generate approximately 47,000 false-positive weibos per day per keyword, totaling roughly 20 million false positives daily — approximately 20% of Sina Weibo's daily message volume — making blanket homophone blocklisting operationally infeasible without massive collateral censorship of innocent traffic.
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Design evasion substitutions to maximize overlap with common innocuous usage — the higher the false-positive rate for a censor counter-measure, the more politically costly the counter-measure becomes to deploy.
+    - Nondeterministic generation (sampling from top-20 candidates rather than the single best homophone) is essential; deterministic substitution collapses to a small fixed set that censors can add cheaply.
+section: 'Analysis: Cost to adversaries (RQ3)'
+extracted_by: claude-sonnet-4-6

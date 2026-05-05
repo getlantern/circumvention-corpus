@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zarras-leveraging
+kind: defense
+summary: 'To match legitimate user behavior, the Camouflage dispatcher enforces empirically derived per-protocol session time limits: email 1–3 minutes, file sharing 5–10 minutes, instant messaging 15–20 minutes, and VoIP 20–30 minutes (Table 1). Sessions exceeding these windows produce a detectable deviation from population-level usage norms.'
+techniques:
+    - traffic-shape
+defenses:
+    - meta-resistance
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Implement hard per-protocol session time budgets derived from usage studies and enforce protocol rotation before sessions exceed the observed window
+    - Expose per-user calibration of session durations, since age and regional cultural factors significantly shift normal usage distributions and a population-average default may itself be anomalous in a specific locale
+section: §5.2, Table 1
+extracted_by: claude-sonnet-4-6

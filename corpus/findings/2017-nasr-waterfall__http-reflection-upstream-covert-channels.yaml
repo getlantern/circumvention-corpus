@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-nasr-waterfall
+kind: defense
+summary: Evaluation of the top 10,000 Alexa websites finds that 3,916 (39%) support HTTPS, of which 1,976 (50%) perform HTTP 3XX redirects that echo the requested path in the Location header and 812 (20%) replay the URL in HTTP 404 error responses — both usable as upstream covert channels readable by downstream-only decoy routers without intercepting upstream traffic.
+techniques:
+    - dpi
+defenses:
+    - decoy-routing
+    - steganography
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - HTTP 3XX redirect and 404-echo channels provide sufficient upstream covert bandwidth for decoy routing using ~50% of HTTPS sites, requiring no per-site integration — implement both as the default channel set.
+    - Maintain a curated list of high-reliability reflective sites (popular search engines, www-redirecting hostnames) as priority overt destinations; fall back to TLS heartbeat channels only when HTTP reflection is unavailable, as heartbeats are rare in normal traffic and may draw DPI scrutiny.
+section: §7.1.1
+extracted_by: claude-sonnet-4-6

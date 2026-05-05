@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wiley-dust
+kind: defense
+summary: Dust defeats DPI fingerprinting by constructing all packets from entirely encrypted or single-use random bytes (defeating static string matching), appending a random number of random padding bytes to every packet (defeating length matching), and permitting a complete client–server conversation to be encoded in a single UDP or TCP packet (defeating timing analysis for sufficiently small payloads).
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - dust
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Protocol unobservability requires simultaneous randomization of payload content, packet length, and inter-packet timing — any one missing axis remains exploitable.
+    - Designing the minimal protocol exchange to fit inside a single packet eliminates timing side-channels for short messages; larger flows require a separate randomized scheduling layer.
+section: §3, §3 Discussion
+extracted_by: claude-sonnet-4-6

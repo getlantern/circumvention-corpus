@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-frolov-conjure
+kind: defense
+summary: 'For IPv4, Conjure derives both the phantom host IP and TCP port from the client''s registration seed, making exhaustive scanning infeasible: a censor enumerating from a /10 of potential client source IPs (4 million addresses) against a /16 of phantom IPs (65K addresses) across all 65K ports would require approximately 50 years at 10 Gbps with ZMap. Phantom hosts are additionally firewalled to respond only to the registering client IP, defeating single-vantage-point ZMap scans.'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - conjure
+    - decoy-routing
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Derive phantom host port dynamically from the session seed rather than using a fixed port, multiplying the censor's required scan space by a factor of 65,536 and extending exhaustive enumeration time to geologically impractical scales.
+    - Firewall phantom hosts at the station to accept TCP connections only from the registering client's source IP, preventing single-vantage-point ZMap-style scans used by the GFW to discover Tor bridges.
+section: §6.2.1
+extracted_by: claude-sonnet-4-6

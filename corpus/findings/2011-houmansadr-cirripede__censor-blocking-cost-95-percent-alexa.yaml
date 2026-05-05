@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-houmansadr-cirripede
+kind: defense
+summary: If clients probe the top 1,000 Alexa-ranked sites to discover a deflecting router, a censor would have to block more than 95% of those 1,000 sites to prevent any client from joining Cirripede. Clients aware of failed probes can continue cycling through additional popular sites, further raising the blocking cost.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Route circumvention signaling through overt destinations drawn from high-collateral-damage sites (top Alexa tier) so that blocking the system requires the censor to accept catastrophic disruption of normal traffic.
+    - Equip clients with a ranked fallback list of overt destinations and retry logic so a partial block only forces additional probing rather than total failure.
+section: §6.3, Figure 5c
+extracted_by: claude-sonnet-4-6

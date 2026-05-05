@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-jones-hiding
+kind: evaluation
+summary: Running a COR network matching Tor's 2011 aggregate bandwidth (estimated at 150 MB/s end-user demand, ~376 TB/month) would cost approximately $61,200/month on Amazon EC2 at July 2011 pricing. A single EC2 node at 17¢/hour plus bandwidth charges can relay approximately 110 Mbps and support up to 100 concurrent users at ~1 Mbps each; m1.large and c1.medium instances handled 100+ concurrent connections while t1.micro struggled beyond 10.
+defenses:
+    - tor
+    - tunneling
+defense_implications:
+    - Cloud relay costs are bandwidth-dominated and decrease over time (Amazon bandwidth costs fell >70% from 2008 to 2011); operators should continuously re-evaluate cloud vs. dedicated hosting economics as pricing shifts.
+    - 'Size relay VM instances to match expected concurrent-user load: micro instances are insufficient for production traffic, while large/high-CPU-medium instances can saturate 100+ Mbps with >100 users.'
+section: §2.5, §4.3, Figure 3(right)
+extracted_by: claude-sonnet-4-6

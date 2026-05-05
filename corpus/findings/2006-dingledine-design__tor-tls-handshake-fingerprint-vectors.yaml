@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-dingledine-design
+kind: detection
+summary: 'Tor''s 2006 TLS handshake contained multiple identifying fingerprints exploitable by censors: the X.509 organizationName field was set to ''Tor'', the relay nickname appeared in the commonName field, clients always presented certificates (unlike browsers), and Tor used two-certificate chains (identity cert + per-session TLS cert) while most consumer HTTPS services use a single certificate. The paper flags these as sufficient for a censor to identify Tor traffic without deep payload inspection.'
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - mimicry
+    - bridges
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Audit every field of your TLS ClientHello and certificate chain against browser baselines — any non-standard cipher ordering, extension set, or certificate structure becomes a censor-usable signature; bridges should present single self-signed certs with randomized CN/O fields.
+    - Clients behind censoring firewalls must not present client certificates unless the server requests them, to match browser behavior and avoid marking the connection as a non-browser Tor client.
+section: §6
+extracted_by: claude-sonnet-4-6

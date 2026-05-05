@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-hasan-building
+kind: defense
+summary: Mesh networks can reach meaningful scale only by adopting centralized management, planned growth, and a static topology—properties that simultaneously create a single point of failure and make nodes easy targets for government radio direction-finding. Decentralized, organic, mobile mesh retains safety properties but at the cost of near-zero effective capacity as network size grows.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Treat the scale-vs-safety tradeoff as a first-class architectural constraint: any mesh design that scales to meaningful numbers of users will be centralized enough to be shut down by a state adversary.'
+    - Prefer overlay architectures that do not require dedicated infrastructure nodes that can be located and seized.
+section: §4, §7
+extracted_by: claude-sonnet-4-6

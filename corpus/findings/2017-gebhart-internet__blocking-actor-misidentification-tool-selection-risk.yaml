@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gebhart-internet
+kind: evaluation
+summary: 'Approximately 10% of respondents (n=23) held uncertain or incorrect beliefs about which actor was responsible for a given block, systematically conflating government censorship with geoblocking, paywalls, and platform-side restrictions. This misidentification cascaded into inappropriate tool selection and inaccurate risk assessment: users who could not distinguish state blocking from licensing restrictions could neither choose the right circumvention tool nor accurately gauge the legal jeopardy of accessing the content. Respondents specifically requested a pre-visit blocking-actor classification tool.'
+techniques:
+    - ip-blocking
+    - packet-injection
+defenses:
+    - pluggable-transport
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Circumvention clients should expose blocking-actor attribution (government vs. geofence vs. platform takedown vs. network error) at the moment of failure, since users cannot select appropriate tools or assess risk without this signal.
+    - Browser-integrated or OS-level tooling that fingerprints block pages and cross-references known government block-page signatures can provide actionable attribution before a user decides whether to circumvent—reducing both misuse and unintentional self-incrimination.
+section: §5.2.3, §5.4.1, §6.2.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-winter-great
+kind: detection
+summary: 'Over 3295 active-probing scans observed across 17 days, 51% (1680) originated from a single IP address (202.108.181.70), while 98% of the remaining 1615 addresses were unique. All scanner IPs belong to three Chinese ASes: AS4837 (65.7%), AS4134 (30.5%), and AS17622 (3.8%). TTL analysis of 85 connections shows the scanner IPs are likely spoofed by the GFC—post-scan ping TTLs differed by +1 from during-scan TTLs.'
+techniques:
+    - active-probing
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - ASN-based allowlists (blocking all inbound unauthenticated probes from AS4134, AS4837, and AS17622) would eliminate the vast majority of GFC active probes, but TTL spoofing means IP-level blocklists are unreliable—rely on protocol-level authentication instead.
+    - The single high-volume scanner IP (202.108.181.70) is a candidate for targeted rate-limiting or logging, but because IPs appear to be spoofed, any IP-based defense must be treated as probabilistic rather than definitive.
+section: §4.5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-censors
+kind: evaluation
+summary: The Great Firewall of China blocked newly published obfs4 Tor Browser default bridges after delays of 7, 2, 18, 11, and 36 days following the first public software release, and up to 57 days after bridges were first discoverable via bug-tracker ticket filing. Iran showed no blocking of the same default bridges across the entire five-month measurement period.
+techniques:
+    - ip-blocking
+defenses:
+    - obfs4
+    - bridges
+    - tor
+censors:
+    - cn
+    - ir
+defense_implications:
+    - A rotation interval shorter than the observed minimum blocking delay (2 days) would keep bridges functional; releasing or cycling bridges every 1–2 days exploits the censor's processing lag.
+    - Targeting Iran with obfs4 default bridges appears viable without rapid rotation, since the GFW—not Iranian infrastructure—is the primary threat to this bridge class.
+section: §4 Results, Table 2
+extracted_by: claude-sonnet-4-6

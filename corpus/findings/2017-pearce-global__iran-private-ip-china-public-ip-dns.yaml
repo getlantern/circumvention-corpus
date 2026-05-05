@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-global
+kind: detection
+summary: Iranian DNS censorship returns special-purpose/private IPv4 addresses in 99.99% of manipulated responses (only 0.01% public), whereas Chinese manipulation returns public IPs 99.46% of the time—often addresses that host no services at all. The 10 most frequent Chinese censor-injected IPs constituted approximately 75% of all Chinese manipulated DNS responses.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Circumvention clients in IR can use private-IP-in-DNS-response as a cheap, high-confidence censorship signal to trigger bootstrap fallback immediately, without external measurement infrastructure.
+    - Circumvention clients in CN cannot rely on private-IP detection; they need AS-consistency checks or active TLS certificate validation since the GFW injects seemingly routable public IPs.
+section: §5.2, Table 8
+extracted_by: claude-sonnet-4-6

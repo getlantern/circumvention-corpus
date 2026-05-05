@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-nasr-enemy
+kind: evaluation
+summary: In a static proxy pool (λ=0, no new proxies added), the fraction of connected censored clients decreases monotonically to near zero regardless of censorship strategy, even at low censoring-agent fractions (ρ=0.05) and against a non-strategic aggressive censor with a strict-balanced distributor profile.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+defense_implications:
+    - 'Proxy pool replenishment rate (λ) is a first-order design variable: survivability guarantees must be parameterized by churn rate, not initial pool size.'
+    - Circumvention system capacity planning should model steady-state proxy turnover and set λ_s high enough to outpace the censor's discovery rate under the worst-case ρ for the deployment context.
+section: §VII-A
+extracted_by: claude-sonnet-4-6

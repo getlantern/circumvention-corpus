@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-kathuria-bypassing
+kind: evaluation
+summary: The BBC's Geostats prototype (2010) detects censorship events by normalizing hourly traffic from two sources — a web-bug-based Livestats API and approximately 30GB/day of uncompressed Akamai streaming logs — alerting when traffic deviates ±60% from a rolling historical average keyed to hour-of-day and day-of-week. A key limitation identified is that CDN log files arrive up to 24 hours behind real-time, preventing timely detection of live blocking events.
+techniques:
+    - measurement-platform
+censors:
+    - ir
+    - cn
+defense_implications:
+    - Operators building blocking-detection systems should combine near-real-time client-side telemetry (web beacons, app heartbeats) with server-side CDN logs to compensate for CDN log latency of up to 24 hours.
+    - A ±60% threshold against a rolling same-hour/same-weekday baseline is a workable starting point for anomaly alerting, but should be supplemented with ISP-level granularity to distinguish blocking from network outage.
+section: §2.2–§2.3
+extracted_by: claude-sonnet-4-6

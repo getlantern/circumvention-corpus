@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-levin-alibi
+kind: evaluation
+summary: 'Alibi Routing fails for source-destination pairs close to or inside the forbidden region: approximately 10% of pairs cannot provably avoid China and 22% cannot avoid the USA at δ=1.0 (Figure 5), with a strong monotonic correlation between proximity to the forbidden region and the number of available relays (Figure 6). Additionally, about 50% of nodes in target regions fail the alibi condition when avoiding the USA due to its BGP routing centrality causing actual paths to transit it despite geographic distance (Figure 7a).'
+techniques:
+    - bgp-hijack
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Alibi Routing is ineffective for users inside the censored jurisdiction and must be combined with traditional pluggable transports (obfs4, Shadowsocks, meek) to handle the in-country case.
+    - US BGP routing centrality causes alibi failures even for geographically eligible relays; prioritize relay infrastructure in regions with low routing centrality (e.g., Southeast Asia, Southern Africa) to maximize valid alibi availability.
+section: §6.1–6.2, Figures 4–7
+extracted_by: claude-sonnet-4-6

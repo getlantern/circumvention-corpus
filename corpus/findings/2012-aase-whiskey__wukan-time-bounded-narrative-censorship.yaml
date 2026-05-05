@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-aase-whiskey
+kind: evaluation
+summary: Bigram frequency analysis of Weibo around the December 2011 Wukan village protests (Figure 1) shows censorship of the keyword 'Wukan' was applied proactively before mainstream media coverage and lifted after the government announced a peaceful resolution on 21 December 2011 — demonstrating that censors operate on a news-cycle timescale and use temporary suppression to manage narrative rather than indefinitely blocking topics.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Time-sensitive protest and social-unrest information faces maximum censorship pressure in the first 48–72 hours; circumvention infrastructure must prioritize low-latency delivery specifically during breaking-event windows when suppression is most aggressive.
+    - Because keyword suppression is time-bounded rather than permanent, measurement systems polling at daily or slower granularity will miss transient blocking entirely; sub-daily polling is required to detect event-driven censorship.
+section: §3, Figure 1, §5
+extracted_by: claude-sonnet-4-6

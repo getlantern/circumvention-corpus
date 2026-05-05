@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-knockel-three
+kind: detection
+summary: The 158-word surveillance-only keyword list in TOM-Skype 5.1.4.10 focused predominantly on specific Beijing demolition sites and addresses (e.g., 'Ling Jing Alley demolition'), plus five Shouwang church keywords—none of which triggered message suppression. Messages matching these keywords were silently uploaded to a server, demonstrating that the censor operates event-specific surveillance lists targeting localized grievance communities independent of its censorship blacklist.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Surveillance-only keyword lists mean that politically sensitive but locally scoped topics (demolitions, religious gatherings) may be monitored without any user-visible censorship; circumvention tools serving at-risk communities should treat message delivery as zero evidence of non-surveillance.
+    - The narrow, event-specific focus of surveillance lists suggests rapid, targeted insertion of keywords after a community or event is identified; tool designers should assume any plaintext communication channel becomes surveilled shortly after a community adopts it.
+section: §3
+extracted_by: claude-sonnet-4-6

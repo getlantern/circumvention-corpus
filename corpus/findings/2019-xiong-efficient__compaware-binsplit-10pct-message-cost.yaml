@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-xiong-efficient
+kind: evaluation
+summary: The component-aware binary splitting algorithm (CompAwareBinSplit) requires on average 35.47 messages per article to isolate a sensitive keyword combination — 10.3% as many as the 342.72 required by the previously used algorithm — and is the only evaluated algorithm that correctly handles overlapping keyword components and multiple co-occurring combinations.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Adopt CompAwareBinSplit (open-sourced at citizenlab/censored-keyword-isolation) for server-side keyword enumeration on WeChat and similar platforms; the 10x message reduction is critical given account banning and phone-number registration costs.
+    - The algorithm's overlap-aware inner loop (advancing from index i+1 rather than j) is necessary to correctly detect components that share characters — a design detail to replicate in any reimplementation.
+section: §5.4, §6, Table 1
+extracted_by: claude-sonnet-4-6

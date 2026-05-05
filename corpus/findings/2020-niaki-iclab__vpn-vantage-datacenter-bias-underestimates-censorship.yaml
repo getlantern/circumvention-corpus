@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-niaki-iclab
+kind: evaluation
+summary: ICLab's commercial VPN vantage points reside in data-center ('content') ASes for 41% of monitored networks, which may experience less aggressive censorship than residential ISPs, making VPN-based measurements a systematic lower bound on blocking rates faced by ordinary users. In countries where both VPN and volunteer-operated device (VOD) vantages coexist, identical block pages were observed from both AS types, indicating similar overt blocking policies, but covert IP-based or RST-injection blocking may still differ by AS class.
+techniques:
+    - measurement-platform
+    - ip-blocking
+defense_implications:
+    - Circumvention tools tested only from data-center IP space will underestimate blocking rates on residential ISPs; validate transport reachability from residential or mobile vantage points before concluding a protocol is unblocked in a target country.
+    - Overt block pages propagate uniformly across AS types, but covert blocking likely does not; tools should probe for silent connection drops and RST injection — not just block page delivery — when assessing reachability from a new IP range.
+section: §III-B
+extracted_by: claude-sonnet-4-6

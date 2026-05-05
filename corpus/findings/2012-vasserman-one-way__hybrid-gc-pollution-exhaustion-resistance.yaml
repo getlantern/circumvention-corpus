@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-vasserman-one-way
+kind: defense
+summary: A hybrid garbage-collection scheme combining time-based expiry (last-access timestamp cutoff), popularity-based retention, and editor-signed manifest exemptions forces adversaries conducting pollution or exhaustion attacks to continuously re-access or re-upload junk to prevent its deletion. A single honest editor's signature is sufficient to exempt important but infrequently accessed content from deletion indefinitely, while malicious editors cannot explicitly remove content from the system.
+techniques:
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Build pollution resistance directly into the storage GC layer via access-timestamp-based lazy expiry; this converts a one-time upload attack into a continuous maintenance burden for the adversary.
+    - Bootstrap a small hard-coded set of editor public keys for curating high-value documents, accepting that a single corrupt editor can inject junk but cannot remove legitimate content — the asymmetry favors defenders.
+section: §3.3
+extracted_by: claude-sonnet-4-6

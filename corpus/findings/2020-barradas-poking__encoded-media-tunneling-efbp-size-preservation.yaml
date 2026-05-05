@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-poking
+kind: defense
+summary: Protozoa's encoded media tunneling embeds covert IP packets directly into VP8-encoded frame bitstream partitions (EFBP) after lossy compression, rather than into raw pixel data. Because SRTP uses a stream cipher that preserves plaintext size, overwriting EFBP bits leaves encrypted packet sizes identical to legitimate sessions, and the covert channel achieves 98.8% utilization of available frame space at an average throughput of 1422 Kbps—a 3× improvement over Facet and roughly three orders of magnitude over DeltaShaper's 7 Kbps maximum.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - steganography
+    - tunneling
+defense_implications:
+    - Inject covert data after codec compression so the transport-layer cipher preserves ciphertext length, making packet-size distributions indistinguishable from those of legitimate video streams.
+    - Choose carrier protocols whose encrypted payload field is both integrity-protected and size-preserving (e.g., SRTP stream cipher) to get encryption for free without payload expansion.
+section: §4.4, §6.2
+extracted_by: claude-sonnet-4-6

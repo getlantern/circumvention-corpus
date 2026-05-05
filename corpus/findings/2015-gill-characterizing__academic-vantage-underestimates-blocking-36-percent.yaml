@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-gill-characterizing
+kind: evaluation
+summary: 'Residential ISP vantage points detect 36% more blocking than academic networks: of 1,947,691 matched URL tests, 72,454 non-academic tests were classified as blocking versus 52,921 academic tests. Averaged across 10 countries, the Jaccard similarity between blocked-URL sets in academic vs. non-academic networks is 0.59, indicating substantial divergence.'
+techniques:
+    - measurement-platform
+defense_implications:
+    - Circumvention tool operators should instrument blocking detection from residential or mobile ISP probes rather than cloud or university VPS endpoints — academic vantage points will underestimate blocked surface area by roughly one-third.
+    - Deployment studies that measure whether a transport is blocked using PlanetLab or datacenter nodes will systematically miss blocks that only appear on residential paths, leading to false confidence in a protocol's reachability.
+section: §5.3, Fig. 12
+extracted_by: claude-sonnet-4-6

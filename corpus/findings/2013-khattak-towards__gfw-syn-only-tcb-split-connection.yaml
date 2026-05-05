@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-khattak-towards
+kind: detection
+summary: 'GFW instantiates a TCB upon observing a bare SYN before any SYN-ACK (TCP1), enabling a split-connection evasion: a client sends a low-TTL SYN visible to GFW but not the server, then opens the real connection on the same 5-tuple with a different initial sequence number. GFW tracks the phantom TCB and fails to detect banned keywords on the real, desynchronized connection. This same behavior also renders GFW vulnerable to SYN-flooding-style memory exhaustion.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - 'Implement a split-handshake: send a low-TTL SYN to anchor GFW to a phantom ISN, then open the real connection with a different ISN on the same 5-tuple — GFW''s sequence-number tracking is permanently desynchronized for the session.'
+    - This primitive requires raw-socket capability (or a cooperating kernel shim) but no server-side changes, making it practical for client-only circumvention tools.
+section: §5, Table 1 (TCP1)
+extracted_by: claude-sonnet-4-6

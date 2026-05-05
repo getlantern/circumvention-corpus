@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-vandersloot-quack
+kind: detection
+summary: Stateful DPI disruption in censoring countries disengages within approximately 100 seconds in 99.9% of observed cases, with roughly 50% of servers recovering within 60 seconds. A 2-minute empirically determined delay is sufficient to distinguish stateful per-connection blocking from persistent blocking when retrying with innocuous payloads against the same server.
+techniques:
+    - dpi
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients with retry logic should wait at least 120 seconds after a blocked connection before reusing the same server, to avoid stateful DPI state bleeding into subsequent connections.
+    - Stateful blocking that resets within 2 minutes means rapid connection cycling to the same endpoint will repeatedly trigger detection; implement exponential backoff rather than fast retry.
+section: §6.1, Figure 3
+extracted_by: claude-sonnet-4-6

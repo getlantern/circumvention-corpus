@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-tschantz-bestiary
+kind: evaluation
+summary: Across 85,421 Cloudflare-hosted domains crawled from five vantage points, 524 websites employed country-based blocking (Cloudflare error 1009). Ukraine (VPN) received 313 geo-blocks while Scotland (same VPN provider) received only 175, suggesting that IP/ASN reputation or exit-node characteristics cause significant variation in observed blocking rates even when controlling for the access method.
+techniques:
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Circumvention infrastructure should rotate across diverse ASNs and IP ranges — a single VPN provider's exit pool may face systematically elevated blocking even when geographically targeting the same destination.
+    - Measurement studies must account for vantage-point IP reputation as a confound; observed block rates may reflect the proxy's reputation rather than the client's perceived location.
+section: §4, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-ghostpost
+kind: defense
+summary: GhostPost's client-server coordination channel transfers only metadata and small text payloads, making it neither bandwidth-intensive nor latency-sensitive. The paper explicitly concludes that 'practically any means of communication, including low-performance covert channels, are adequate' for the coordination channel, enabling operation over DNS tunnels, steganographic channels, or other constrained transports when the central server's HTTPS endpoint is blocked.
+techniques:
+    - keyword-filtering
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - dns-tunneling
+censors:
+    - cn
+defense_implications:
+    - Design censored-content distribution architectures to decouple the coordination/metadata channel (low-bandwidth) from bulk content delivery, so each can independently use the most suitable transport under blocking.
+    - Explicitly budget for covert-channel constraints when specifying coordination protocol overhead — systems that keep coordination payloads under ~1 KB per exchange remain viable over DNS or steganographic transports.
+section: §2.1
+extracted_by: claude-sonnet-4-6

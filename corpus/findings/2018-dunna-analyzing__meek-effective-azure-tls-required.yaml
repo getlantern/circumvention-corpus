@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-dunna-analyzing
+kind: evaluation
+summary: Meek over Azure CDN successfully established Tor circuits from China in all tests; meek over Amazon was inconsistent and often failed mid-circuit. Meek requires TLS on the bridge — without it the GFW blocks the bridge within minutes and purges it from the blacklist, suggesting a separate meek-specific detection and blocklist is maintained.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - meek
+    - domain-fronting
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Meek deployments must enforce TLS on the bridge endpoint; plaintext meek triggers rapid GFW detection and a dedicated blacklist entry.
+    - 'Do not rely solely on meek: at the time of writing Google and Amazon had both disabled domain fronting, removing the two largest CDN backends and making long-term meek viability uncertain.'
+section: §5.1
+extracted_by: claude-sonnet-4-6

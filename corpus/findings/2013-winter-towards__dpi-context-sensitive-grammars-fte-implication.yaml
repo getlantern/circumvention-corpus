@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-towards
+kind: defense
+summary: DPI boxes used for censorship do not rely solely on simple regular expressions but also employ context-sensitive languages for protocol identification. The paper notes that precise knowledge of these DPI patterns could be fed directly into format-transforming encryption to enable targeted protocol misidentification.
+techniques:
+    - dpi
+defenses:
+    - format-transform
+    - pluggable-transport
+defense_implications:
+    - FTE and similar format-transforming approaches require accurate DPI grammar models as input; circumvention tool designers should invest in empirical DPI grammar recovery to keep mimicry models current and effective.
+    - Context-sensitive DPI grammars mean that simple regex-based mimicry (e.g., prepending an HTTP header) will fail against sophisticated censors — transport mimicry must correctly implement the full protocol state machine.
+section: §5
+extracted_by: claude-sonnet-4-6

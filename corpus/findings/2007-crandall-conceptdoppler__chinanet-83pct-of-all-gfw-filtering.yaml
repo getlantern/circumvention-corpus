@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-crandall-conceptdoppler
+kind: evaluation
+summary: ChinaNET (CHINANET-*) performed 324/389 = 83.3% of all filtering observed across 296 probed hosts over a two-week period, and 99.1% of all filtering that occurred at the first hop past the Chinese border, despite constituting only 77% of first-hop routers encountered.
+techniques:
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - 'AS-level infrastructure analysis is more actionable than router-level: paths transiting non-ChinaNET Chinese ISPs encounter significantly less filtering and may be preferable for circumvention relay placement.'
+    - Circumvention infrastructure sited in or peering with minority Chinese ISPs may benefit from structurally reduced filtering without any active evasion.
+section: §3.3.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-darer-filteredweb
+kind: evaluation
+summary: FilteredWeb discovered 1,355 DNS-poisoned domains and 115,337 filtered URLs in China through 54,000 web searches by February 2017 — 30 times more poisoned domains than the most widely-used published filter list (Citizen Lab, which identified 44 domains). Of the 1,355 domains, 759 fell outside the Alexa Top 1,000, demonstrating that automated search-based discovery surfaces obscure filtered content missed by manual and volunteer-driven lists.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Proxy operators should use automated blocklist discovery rather than manual lists to detect when infrastructure domains are GFW-poisoned — the 30x gap shows manual lists miss the vast majority of blocked domains.
+    - Domain selection for proxy infrastructure should check against comprehensive, continuously-updated poisoned-domain lists beyond Alexa Top 1,000 or Citizen Lab lists, since 759 of 1,355 blocked domains fell entirely outside those well-known sets.
+section: §V-A, Table I, Table II
+extracted_by: claude-sonnet-4-6

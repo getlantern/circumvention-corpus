@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-crandall-conceptdoppler
+kind: detection
+summary: GFC keyword filtering exhibits strong diurnal patterns in which filtering effectiveness drops markedly during busy network periods, sometimes letting more than one fourth of packets containing known filtered keywords pass through unimpeded; the blocking timeout after a keyword RST was measured at 90 seconds for the tested route.
+techniques:
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - The panopticon model — where consistent blocking promotes self-censorship even without complete coverage — means circumvention tools cannot rely on timing-based gaps alone; evasion must be robust across low-traffic periods when filtering is most reliable.
+    - The 90-second post-RST blocking window should be accounted for in reconnection logic to avoid cascading failures after a detected keyword probe.
+section: §3.2
+extracted_by: claude-sonnet-4-6

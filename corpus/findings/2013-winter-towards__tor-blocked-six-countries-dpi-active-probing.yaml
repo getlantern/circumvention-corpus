@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-towards
+kind: detection
+summary: As of March 2013, Tor is documented as blocked in China, Iran, Syria, Ethiopia, the UAE, and Kazakhstan. Blocking techniques range from simple IP address blacklisting to a sophisticated hybrid consisting of deep packet inspection (DPI) and active probing.
+techniques:
+    - dpi
+    - active-probing
+    - ip-blocking
+censors:
+    - cn
+    - ir
+    - sy
+    - et
+    - ae
+    - kz
+defense_implications:
+    - Proxy designs must resist both passive DPI fingerprinting and active probing simultaneously — a transport that defeats one but not the other will still be blocked.
+    - IP blocklisting of known relay/bridge IPs is a baseline censor capability; bridges must be distributed out-of-band and rotated to avoid enumeration.
+section: §1
+extracted_by: claude-sonnet-4-6

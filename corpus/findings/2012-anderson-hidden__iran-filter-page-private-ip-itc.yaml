@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-anderson-hidden
+kind: deployment
+summary: Iran's nationwide censorship redirect page is hosted at private IP 10.10.34.34, operated by Data Communication Affairs (a subdivision of TCI's Information Technology Company, AS12880). Traceroute data confirms the final public hop before this private host is 195.146.33.29, registered to Data Communication Affairs, and 24 of 27 tested Iranian networks (89%) can reach it.
+techniques:
+    - packet-injection
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - 'Treat reachability of 10.10.34.34 as a reliable in-country sentinel: a successful connection there confirms the user is inside Iran''s nationally administered filtering infrastructure routed through AS12880.'
+    - Centralization of filtering through AS12880 (ITC) means detection and blocking decisions flow through a small number of chokepoints — circumvention infrastructure should avoid or obfuscate against this AS specifically.
+section: §4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-aceto-analyzing
+kind: evaluation
+summary: Time-series analysis across five ISPs over six months reveals a near-universal stasis in January–February where blocklist changes were negligible for all ISPs, followed by significant fluctuations (e.g., a +20–35% swing in TCP unreachability between February and March for PTCL, Wateen, Qubee, and WiTribe). A ubiquitous drop in TCP-unreachability outcomes occurred December–January, suggesting a seasonal or policy-driven relaxation followed by re-tightening.
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - ip-blocking
+censors:
+    - pk
+defense_implications:
+    - Blocklist composition in Pakistan is dynamic on a monthly timescale; circumvention infrastructure must not hardcode assumptions about which IPs or domains are reachable—reachability probes should be continuous.
+    - Circumvention tools should treat sudden spikes in TCP unreachability as a signal to switch transport rather than retry the same path, since ISP-level policy changes can block entire IP ranges without per-URL granularity.
+section: §V-A
+extracted_by: claude-sonnet-4-6

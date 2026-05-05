@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-dingledine-design
+kind: defense
+summary: Tor's public relay list (a few thousand IP addresses as of 2006) can be trivially enumerated and blocked by a censor. The paper proposes 'bridge relays' drawn from Tor's existing user base of hundreds of thousands of people, creating a pool of frequently-changing IP addresses that is too large and dynamic for a censor to enumerate completely. Bridge relays rate-limit relayed connections to ~10 KB/s and publish descriptors only to a private bridge directory authority rather than the public consensus.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Design bridge infrastructure so that no single authority holds a complete list of all bridge addresses; partition bridges across multiple authorities and distribution strategies so full enumeration requires compromising every channel simultaneously.
+    - Source bridge IP addresses from volunteer end-users rather than static server infrastructure — churn in residential IPs is itself a censorship-resistance property.
+section: §5.1
+extracted_by: claude-sonnet-4-6

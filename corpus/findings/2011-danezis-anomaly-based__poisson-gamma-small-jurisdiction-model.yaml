@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-danezis-anomaly-based
+kind: defense
+summary: Per-jurisdiction user counts are modeled as a Poisson process; the detector infers the 99.99th-percentile credible interval for the underlying rate λ from the observed count via a Gamma-Poisson approximation rather than a Gaussian assumption, correctly treating small-jurisdiction zero-user days as non-anomalous.
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Apply Poisson/Gamma credible intervals rather than Gaussian confidence intervals when monitoring low-traffic jurisdictions to avoid spurious censorship alerts from natural count variation.
+    - Use jurisdiction-size-aware statistical models so high false-alarm rates in small-user regions do not crowd out real blocking events in alerting pipelines.
+section: §3–§4
+extracted_by: claude-sonnet-4-6

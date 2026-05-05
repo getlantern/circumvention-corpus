@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-narayanan-no
+kind: policy
+summary: 'ACM SIGCOMM 2015''s program committee accepted the Encore paper with an unprecedented ''signing statement'' after heated ethical debate. The committee''s core objections were: (1) users accessing censored URLs might face repercussions in regimes without due process; (2) most users under censorship would be unlikely to consent to the measurements; and (3) unlike ad-tracker third-party requests, Encore requests do not reflect any user intent.'
+techniques:
+    - measurement-platform
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Measurement tools that route test traffic through end-user browsers must model per-country legal risk for each probed URL, not just aggregate harm, because jurisdiction and enforcement capability vary dramatically.
+    - Designing measurement infrastructure with explicit opt-in or prominent notice reduces ethical exposure and strengthens the legal defensibility of any data collected.
+section: Ethical Oversight by Program Committees
+extracted_by: claude-sonnet-4-6

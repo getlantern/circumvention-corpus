@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-anderson-dimming
+kind: evaluation
+summary: During the November 2011 throttling event, every Iranian ASN under consideration experienced more than a 74% drop in throughput within the first two months; only one prefix (ITC's commercial hosting block 80.191.96.0/19) showed an increase. Academic networks (Sharif University AS12660, University of Tehran AS29068) recovered faster than consumer ISPs, suggesting selective prioritization or exemption for institutional traffic.
+techniques:
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - Hosting circumvention infrastructure on IP space registered to academic or government-affiliated ASNs may reduce throttling impact, since these appear to receive prioritization or earlier recovery during suppression events.
+    - 'Use ASN-level throughput variance as a real-time signal: when inter-ISP variance collapses toward zero, a centrally-imposed bandwidth ceiling is likely active and the protocol should adapt by switching to lower-bandwidth modes.'
+section: §5.2, Fig. 12
+extracted_by: claude-sonnet-4-6

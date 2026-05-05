@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-khattak-sok
+kind: evaluation
+summary: Of 73 censorship resistance systems surveyed through February 2016, only 11 address the Communication Establishment phase versus 62 for Conversation, even though Tschantz et al. document that real censorship attacks concentrate on Communication Establishment rather than on the Conversation tunnel.
+techniques:
+    - active-probing
+    - dpi
+defense_implications:
+    - Treat bootstrap and credential-distribution as a primary attack surface, not an afterthought — most real blocking starts at CE, not inside the tunnel.
+    - Evaluate CE-phase designs for active-probing resistance and flow obfuscation independently of Conversation-phase transports.
+section: §5.5
+extracted_by: claude-sonnet-4-6

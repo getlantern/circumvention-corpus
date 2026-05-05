@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-monitoring
+kind: evaluation
+summary: 'For the same blocked resource (YouTube) in Pakistan, UBICA found at least three distinct ISP-level techniques in parallel: Micronet Broadband and Witribe Pakistan use DNS injection redirecting to explicit blockpages; Pakistan Telecom Company Ltd. returns DNS responses yielding only 11.7% plausible IPs; while Transworld Associates and National Wi-Max/IMS apply HTTP tampering with no DNS interference, confirmed by passing TCP reachability tests but failing content-size ratio checks.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - pk
+defense_implications:
+    - Circumvention tools targeting Pakistan must independently address both DNS injection and HTTP-layer tampering, since different ISPs choose different blocking layers for the same target — a DNS-only fix leaves HTTP-tampering ISPs unremedied.
+    - Use multi-layer probing (DNS plausibility + TCP reachability + content-size ratio) rather than any single signal, since ISP-level diversity causes any one test to produce false negatives on the others.
+section: §3.1
+extracted_by: claude-sonnet-4-6

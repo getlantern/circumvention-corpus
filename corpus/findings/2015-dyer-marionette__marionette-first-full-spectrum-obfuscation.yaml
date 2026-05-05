@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-dyer-marionette
+kind: defense
+summary: 'Marionette is the first programmable obfuscation system to simultaneously satisfy all five threat-model dimensions evaluated in Figure 2: resistance to blacklist DPI, whitelist DPI, statistical-test DPI, protocol-enforcing proxy traversal, and multi-layer traffic control, while sustaining throughput above 1 Mbps (up to 6.7 Mbps). Every prior system (obfs4, ScrambleSuit, SkypeMorph, StegoTorus, FTE, JumpBox, etc.) fails at least one dimension, most commonly stateful proxy traversal or statistical-feature control.'
+techniques:
+    - dpi
+    - traffic-shape
+    - middlebox-interference
+    - active-probing
+defenses:
+    - marionette
+    - meta-resistance
+    - format-transform
+    - randomization
+defense_implications:
+    - Evaluate any candidate obfuscation transport against all five threat dimensions (blacklist DPI, whitelist DPI, statistical classifiers, stateful proxies, active probing) rather than optimizing for a single adversary — single-dimension systems are trivially blocked when censors advance their detection capabilities.
+    - Adopt a DSL-driven programmable obfuscation framework so the traffic strategy can be updated server-side without client binary redeployment when censor capabilities change.
+section: §2, Figure 2
+extracted_by: claude-sonnet-4-6

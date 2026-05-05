@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anderson-global
+kind: detection
+summary: 'Turkey''s filtering of Twitter relied overwhelmingly on DNS manipulation over IP blocking: as of April 24, 2014, only 167 IP addresses were blocked versus 40,566 domain names. Users who received valid DNS answers could browse Twitter without further interference, making foreign DNS servers (Google 8.8.8.8, OpenDNS) an effective circumvention mechanism — reportedly graffitied across Turkey in protest of the ban.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - tr
+defense_implications:
+    - Hardcode IP addresses or use DNS-independent bootstrapping so clients can reach proxies without relying on valid DNS resolution in a censored environment.
+    - Treat foreign DNS resolvers as untrusted in high-censorship environments; a censor that controls upstream routing can poison responses regardless of which resolver the client queries.
+section: §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-javaid-online
+kind: evaluation
+summary: ADVENTION's split-path design — fetching publisher content via relay and ad requests via the direct path — raises average ad-set overlap from 28% (Tor) to 70%; combining ADVENTION with Intelligent Relay Selection (language-matched relay) further increases average overlap to ~80%. For blocked sites, ADVENTION with IRS raised ad relevance from ~16% to 100%.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - A browser-extension PAC file is sufficient to implement split-path routing without modifying the underlying transport — publishers continue to see the relay IP while ad servers see the real client IP, requiring no changes to existing circumvention infrastructure.
+    - Language-matched relay selection (IRS) recovers contextual ad relevance at the cost of a smaller anonymity set; tool designers should expose this as an opt-in trade-off rather than a default.
+section: §5.1, §5.3, §5.4
+extracted_by: claude-sonnet-4-6

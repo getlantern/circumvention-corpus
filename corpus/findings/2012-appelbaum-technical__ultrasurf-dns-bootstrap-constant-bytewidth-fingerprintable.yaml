@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-appelbaum-technical
+kind: detection
+summary: Ultrasurf's DNS bootstrapping phase uses subdomain names that are always exactly 16 characters between delimiters and exclusively target .info TLDs, producing a constant byte-width network signature. The paper concludes that filtering this bootstrapping traffic is straightforward even without reverse engineering the client binary, as the client itself acts as a network discovery oracle for censors observing its connections.
+techniques:
+    - dpi
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - DNS-based bootstrapping must vary record length and TLD dynamically per session to avoid constant-width fingerprinting; encode server descriptors in record types (CNAME chains, TXT, etc.) that blend with legitimate CDN traffic patterns.
+    - Avoid parasitic use of open recursive resolvers for bootstrap queries — route all discovery traffic through the established proxy tunnel or a diversity of cover channels so the bootstrapping phase is indistinguishable from normal resolver activity.
+section: §5.6, §6.8
+extracted_by: claude-sonnet-4-6

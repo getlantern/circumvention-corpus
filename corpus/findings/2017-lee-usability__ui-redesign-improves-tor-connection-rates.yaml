@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lee-usability
+kind: defense
+summary: A redesigned Tor Launcher interface significantly increased success rates (Pearson χ² = 2.808, p < 0.047) and reduced median connection time in E3 from 40:08 to 20:25 (Mann–Whitney Z = −1.84, p < 0.0328, r = 0.172); configuration time also dropped significantly (Z = −3.28, p < 0.0005, r = 0.307). Changes included eliminating yes/no bridge and proxy question screens, adding auto-detection for proxies, consolidating options, and surfacing meek bridges as a fallback recommendation.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+    - meek
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Eliminate yes/no decision screens that require users to know technical terms (relay, bridge, proxy, transport) — replace with auto-detection and progressive disclosure that assumes users know only their country and desired risk level.
+    - Expose the hardest-to-block bridge type (e.g., domain-fronting / meek) as an explicit fallback recommendation when built-in bridges fail, not buried in an alphabetical list of equivalent-seeming options.
+section: §6.2, §7.3.1–7.3.3, Table 2
+extracted_by: claude-sonnet-4-6

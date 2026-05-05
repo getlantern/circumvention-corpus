@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-liu-tor
+kind: detection
+summary: Tor-like anonymizing overlays are easily censored because they rely on centralized, publicly visible relay lists; governments can blacklist Tor nodes or monitor all Tor exit traffic so that traffic analysis can reveal the source. Traffic to or from Tor 'essentially advertises itself as probably worth tracking.'
+techniques:
+    - ip-blocking
+    - flow-correlation
+    - active-probing
+defenses:
+    - tor
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Avoid designs that require a published, enumerable relay list; any centralized directory becomes a blocklist target
+    - Ensure the circumvention transport itself does not produce a recognizable traffic signature that distinguishes it from ambient traffic
+section: §1–§2
+extracted_by: claude-sonnet-4-6

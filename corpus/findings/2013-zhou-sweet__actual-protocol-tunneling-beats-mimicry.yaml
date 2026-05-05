@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-zhou-sweet
+kind: defense
+summary: SWEET argues that mimicking complex protocols (SkypeMorph, CensorSpoofer, StegoTorus) is fundamentally breakable because comprehensive imitation of today's protocols is infeasible. The paper instead advocates tunneling inside genuine traffic from actual, widely-used protocol providers — in this case real email services — so the censor observes authentic protocol behavior rather than a simulation.
+techniques:
+    - dpi
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tunneling
+    - mimicry
+defense_implications:
+    - Prefer transporting circumvention payload inside real protocol implementations (actual TLS stacks, real email protocols) over hand-crafted mimicry of those protocols, since behavioral divergence is detectable.
+    - Select cover channels that are run by large third-party providers (Gmail, Yahoo Mail) so the censor cannot distinguish circumvention traffic from millions of legitimate users of that service.
+section: §1
+extracted_by: claude-sonnet-4-6

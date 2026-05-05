@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wachs-feasibility
+kind: defense
+summary: In a DHT-based censorship-resistant name system, poisoning attacks (injecting invalid mappings) are neutralized by requiring signature verification on stored values; eclipse attacks (isolating specific mappings from the network) require replication across multiple DHT nodes. Critically, decentralizing lookups from a single ISP resolver to a DHT shifts query visibility from ISPs to arbitrary peers, requiring per-query encryption keyed to secrets known only to the querying client to limit adversaries to confirmation attacks.
+techniques:
+    - dns-poisoning
+defenses:
+    - meta-resistance
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Implement DHT value storage with mandatory signature verification to neutralize poisoning at near-zero cost; replicate each record across multiple DHT nodes to resist eclipse attacks.
+    - Encrypt DHT queries with per-user secrets (label + zone key) so forwarding peers cannot read query content; apply onion routing over the DHT for full query unlinkability at the cost of added latency.
+section: §4.4
+extracted_by: claude-sonnet-4-6

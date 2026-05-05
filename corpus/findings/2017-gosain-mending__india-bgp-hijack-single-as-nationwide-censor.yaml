@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-mending
+kind: evaluation
+summary: Any one of five Indian ASes — each needing control of only its BGP-speaking routers — can individually censor traffic for all ~896 Indian ASes via IP prefix hijacking. For example, AS4755 (Tata Comm.) fake advertisements can impact 955 ASes total (896 Indian + 41 foreign); AS9730 (Bharti Telesonic) requires as few as 7 edge routers to execute such an attack.
+techniques:
+    - bgp-hijack
+censors:
+    - in
+defense_implications:
+    - BGP hijacking redirects traffic at the routing layer regardless of transport encryption; circumvention tools must implement strict TLS certificate or public-key pinning so that connections redirected to a censor-controlled endpoint fail authentication rather than being silently intercepted.
+    - Distribute circumvention server credentials out-of-band and pin them in the client binary — IP-address changes triggered by a hijack will cause pinned clients to fail loudly rather than connect to a spoofed endpoint.
+section: §4.3, Table 4
+extracted_by: claude-sonnet-4-6

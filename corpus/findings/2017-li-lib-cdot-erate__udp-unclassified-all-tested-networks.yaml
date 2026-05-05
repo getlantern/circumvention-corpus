@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-lib-cdot-erate
+kind: detection
+summary: None of the operational networks tested—T-Mobile, AT&T, the Great Firewall of China, and Iran—classify UDP traffic; the authors describe this as 'a surprisingly easy way to evade their policies.' Iran's censor inspects the entire TCP flow but leaves UDP flows untouched across all tested applications.
+techniques:
+    - dpi
+censors:
+    - cn
+    - ir
+defense_implications:
+    - QUIC- or UDP-based transports (e.g., Hysteria 2) offer a structural evasion advantage wherever DPI infrastructure is TCP-focused; prefer UDP tunneling without additional obfuscation as a first-pass strategy.
+    - Probe whether a target network classifies UDP before adding obfuscation overhead; the asymmetry documented here suggests UDP may be exploitable without any payload transformation.
+section: §1 (key findings), §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-nabi-anatomy
+kind: detection
+summary: Every website blocked at the DNS level in Pakistan was also blocked by a secondary HTTP-layer mechanism, ruling out the use of alternative DNS resolution (web-based lookup tools or user-generated content hosting DNS records) as a standalone bypass. Multi-IP shared-service sites such as YouTube and Wikipedia were blocked only at the HTTP level, where a Host-header match triggered censorship regardless of the destination URL.
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - keyword-filtering
+censors:
+    - pk
+defense_implications:
+    - IP-based bypass techniques (resolving the real IP and connecting directly) are insufficient; the censor performs Host-header inspection at HTTP level, so circumvention must also hide or rewrite the HTTP Host field.
+    - Protocol-level mimicry or tunneling that does not expose a plaintext Host header (HTTPS with SNI, or full VPN) is required to defeat dual-layer DNS + HTTP blocking.
+section: §5.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ververis-understanding
+kind: evaluation
+summary: 'Across eight Greek ISPs measured in June–August 2014, DNS hijacking was the dominant blocking method: seven of eight ISPs used it exclusively, while only Vodafone deployed DPI (Bluecoat WebProxy/6.0) for URL-level filtering. Compliance with the EEEP blacklist of 438 entries ranged from 21.91% (Forthnet) to 100% (Cosmote, HOL, OTE), with no ISP exactly matching the regulator''s list.'
+techniques:
+    - dns-poisoning
+    - dpi
+censors:
+    - gr
+defense_implications:
+    - Configure circumvention clients to use out-of-band DNS (DoH/DoT/hardcoded IPs) by default, since DNS hijacking is the primary enforcement vector for Greek-style regulatory censorship and is trivially bypassed by any resolver change.
+    - Do not rely solely on domain-level evasion — Vodafone-style URL-exact DPI requires path-level variation or HTTPS to defeat, so proxies should expose HTTPS endpoints even where HTTP is technically sufficient.
+section: §4.2, Table 1
+extracted_by: claude-sonnet-4-6

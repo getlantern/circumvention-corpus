@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-hasan-building
+kind: defense
+summary: Purpose-built or uncommon radio hardware provides governments a legal pretext for crackdowns, is subject to import restrictions, and aids identification of dissidents via radio direction-finding equipment. The authors conclude that only ubiquitous, innocuous devices—smartphones and standard indoor WiFi access points—can be used in a dissent network without raising suspicion or endangering users.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should run exclusively on commodity hardware (smartphones, standard computers) and must not require users to acquire or install any non-standard radio equipment.
+    - Avoid designs that require rooftop antennas, unlicensed-band equipment outside standard WiFi, or any hardware whose presence alone could constitute evidence of dissent.
+section: §5.1
+extracted_by: claude-sonnet-4-6

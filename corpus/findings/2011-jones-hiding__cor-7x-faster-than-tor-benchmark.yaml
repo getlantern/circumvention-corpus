@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-jones-hiding
+kind: evaluation
+summary: In controlled benchmarks using TorPerf, the best COR circuit achieved a median file download time 7.6× faster than Tor across 50 KB, 1 MB, and 5 MB files (100 repetitions each). COR was also several times faster than Tor for downloading full web pages across the top 10 Alexa domains, even when COR relays were serving 50 simultaneous connections.
+defenses:
+    - tor
+defense_implications:
+    - Commercial cloud relays with datacenter-grade bandwidth can overcome Tor's primary user-experience barrier; performance alone is insufficient justification for maintaining volunteer-only relay infrastructure when cloud costs are low.
+    - Benchmark any new onion-routing deployment against both loaded and unloaded relay conditions—COR results show load at 50 concurrent users still outperforms Tor, but the gap narrows and must be measured explicitly.
+section: §4.1, §4.2, Figure 3
+extracted_by: claude-sonnet-4-6

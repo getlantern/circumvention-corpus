@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-mccoy-proximax
+kind: defense
+summary: Proximax uses fast-flux DNS — multiple IP addresses registered to one personalized domain with short TTLs and round-robin rotation — to resist channel-level DNS blocking. When a channel's domain is blocked, the system issues a fresh individualized hostname, forcing the censor to repeat discovery rather than permanently suppressing the channel with a single DNS entry removal.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Use fast-flux DNS (short TTL + rotating IP pool) for proxy distribution channels so a single DNS block invalidates only a snapshot rather than the channel permanently.
+    - Assign every distributor a unique subdomain so blocked channels can be retired and replaced individually without cycling the entire distribution infrastructure.
+section: §2.2
+extracted_by: claude-sonnet-4-6

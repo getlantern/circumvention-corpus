@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-birtel-slitheen
+kind: defense
+summary: Slitheen++ embeds covert upstream data by applying HTTP/2-like header field compression to overt HTTP requests, using the recovered space for covert data placement. This ensures that neither timing information nor observable changes to packet sizes or delays can reveal decoy routing use to an omni-scientist passive censor. GZIP compression was explicitly avoided to prevent the CRIME side-channel attack.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - decoy-routing
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Stealth upload channels should compress or substitute existing protocol overhead (e.g., redundant HTTP headers) rather than append bytes, so upstream packet sizes remain unchanged.
+    - Avoid payload-level compression algorithms (e.g., GZIP) that introduce compression-ratio side-channels; operate at the header-field level outside TLS record payload.
+section: §4
+extracted_by: claude-sonnet-4-6

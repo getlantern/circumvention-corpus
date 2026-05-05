@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-towards
+kind: defense
+summary: Protozoa creates a ≈1.4 Mbps covert channel over WebRTC by replacing encoded video frames with covert payload while preserving SRTP packet size and timing properties, making Protozoa flows 'hardly distinguishable from unmodified WebRTC streams using existing ML-based traffic classifiers.' Since all unencrypted packet fields remain intact, DPI cannot detect the tunnel either.
+techniques:
+    - dpi
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Preserving packet size and inter-arrival timing at the transport layer is the minimum requirement for defeating ML flow classifiers; covert channel designs must enforce this invariant end-to-end, not just at the application layer.
+    - 'Tunneling inside WebRTC streams exploits the collateral-damage asymmetry: blocking all WebRTC incurs massive disruption to legitimate video calling, raising the censor''s cost significantly above that of the circumvention operator.'
+section: §2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-ververis-internet
+kind: evaluation
+summary: DNS hijacking used by Cypriot ISPs to block gambling websites also suppressed MX record responses for blocked domains, rendering email delivery to those domains impossible — collateral damage not mandated by the 2012 gambling law, which required only URL blocking.
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - Coarse DNS-zone blocking produces collateral damage beyond HTTP traffic (email, API calls, subdomains); circumvention infrastructure should use domain names not shared with high-value non-proxy services to avoid collateral blocking.
+    - Out-of-band channels (email, API keys, bridge distribution) that rely on the same blocked domain will be simultaneously disrupted; circumvention systems should distribute configuration and bridges via multiple independent domain/transport paths.
+section: §6.7
+extracted_by: claude-sonnet-4-6

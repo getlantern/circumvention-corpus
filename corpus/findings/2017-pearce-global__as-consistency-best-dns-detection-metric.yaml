@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-global
+kind: evaluation
+summary: Among Iris's DNS manipulation detection metrics, AS-level consistency was most effective, classifying 90% of DNS responses as unmanipulated. IP-address identity matching flagged approximately 80% of correct responses, while HTTPS certificate validation improved from 38% to 55% accuracy when SNI was included in follow-up TLS probes.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+defense_implications:
+    - Circumvention tools validating DNS-resolved proxy IPs should prioritize AS-consistency checks first, then SNI-enabled TLS certificate verification—these two metrics together catch the vast majority of DNS manipulation with low false-positive rates.
+    - Non-SNI certificate matching misses roughly one-third of cases that SNI-aware probing catches; circumvention bootstrapping must use SNI when validating proxy endpoints to avoid accepting manipulated DNS answers.
+section: §5.1, Figure 3
+extracted_by: claude-sonnet-4-6

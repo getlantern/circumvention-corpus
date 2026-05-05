@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-narayanan-no
+kind: policy
+summary: To mitigate harm, Encore restricted its URL list to Twitter, Facebook, and YouTube on the grounds that widgets from these domains appear in ordinary web browsing, making Encore-induced cross-origin requests statistically indistinguishable from normal traffic. The authors argued that this renders the risk comparable to baseline browsing, though the SIGCOMM committee disputed whether contextual equivalence with ad-tracking constitutes adequate ethical justification.
+techniques:
+    - measurement-platform
+defenses:
+    - mimicry
+defense_implications:
+    - Selecting measurement or probe targets based on whether they appear in routine browsing traffic lowers the anomaly signal available to passive censor surveillance — the same principle applies to choosing cover-traffic domains for pluggable transports.
+    - Restricting the domain set traded measurement breadth for user safety; circumvention tool designers face the same breadth-vs-risk tension when selecting rendezvous or front domains.
+section: Mitigating Harm
+extracted_by: claude-sonnet-4-6

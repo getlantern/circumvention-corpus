@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-khattak-look
+kind: evaluation
+summary: Before censorship the local ISP resolver handled ≥99% of SOHO DNS queries for blocked categories; post-YouTube block, local ISP resolver usage fell to 68–74%, with Google Public DNS rising to 14–19% of queries and OpenDNS/LEVEL-3 also gaining significant share. Simultaneously, unique web-proxy domains in SOHO traffic averaged only 1 pre-block, jumped to 41 on average post-block, and peaked at 114 unique proxy domains on the block day itself.
+techniques:
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - pk
+defense_implications:
+    - DNS-only blocking is trivially bypassed by switching to a public resolver; circumvention tools must bundle a non-ISP DNS resolver (DoH/DoT) or hardcode IP addresses to eliminate DNS as a single point of failure.
+    - The rapid proliferation of web proxies on block day shows organic proxy discovery is fast — tools that appear prominently in search results or spread via word-of-mouth gain users quickly during censorship events.
+section: §6.2, Table 9
+extracted_by: claude-sonnet-4-6

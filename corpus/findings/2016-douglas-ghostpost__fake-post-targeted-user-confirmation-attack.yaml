@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-ghostpost
+kind: detection
+summary: A censor with platform-side control can definitively confirm a single suspected user by injecting a unique fake post visible only to that user, then querying the preservation system for resurrected posts attributed to that fabricated author. Presence of the fake post in the resurrection feed is binary confirmation of user membership. This targeted attack defeats automated post-alteration countermeasures when a human examines the result.
+techniques:
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Friends-only sharing is the only robust defense against targeted fake-post confirmation attacks — content alteration alone is insufficient when a human inspects the match.
+    - Preserve post attribution integrity via user-held signing keys so that injected fake posts authored by the censor's fabricated accounts are detectable by recipients who verify the cryptographic signature.
+section: §5.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-duan-hold-on
+kind: evaluation
+summary: A prototype Hold-On DNS proxy introduced no perceptible additional latency for either cached or uncached DNS queries in live testing; query-time measurements for both sets of names overlapped entirely with baseline (Hold-On disabled) measurements. The Hold-On timer (set to 5 seconds initial, 10s second try, 15s third try) is only reached under anomalous conditions; under normal operation the resolver returns as soon as the legitimate reply validates.
+techniques:
+    - dns-poisoning
+defense_implications:
+    - A Hold-On waiting period in a DNS forwarder imposes zero latency overhead in the common (non-attack) case, making it suitable as a transparent default in censored-network client software without user-visible performance degradation.
+    - 'Use a tiered retry timeout (5s → 10s → 15s) rather than a fixed maximum to balance responsiveness with robustness: most legitimate resolutions complete well within the first window, and the escalating timer avoids indefinite hangs when the remote resolver is unreachable.'
+section: §V.B
+extracted_by: claude-sonnet-4-6

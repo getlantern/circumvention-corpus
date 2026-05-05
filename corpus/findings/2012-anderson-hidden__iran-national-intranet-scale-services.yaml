@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-anderson-hidden
+kind: deployment
+summary: A scan of the full 10.0.0.0/8 block from within Iran identified 45,928 active hosts, including 20,060 on Telnet (port 23), 9,960 on HTTP (port 80), 8,029 on SSH (port 22), and 2,510 on DNS (port 53). Identified participants include TCI, government ministries (Agriculture, Education, Science), universities, and ADSL providers, establishing the private network as a purposefully designed national intranet in place since at least 2010.
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Iran's parallel domestic intranet allows the censor to provide credible domestic alternatives to blocked foreign services, reducing user demand for circumvention — tool designers should monitor whether popular blocked services (email, search) acquire domestic RFC1918-hosted equivalents.
+    - The scale and institutional breadth (ministries, universities, ISPs all participating) confirms a durable, centrally coordinated infrastructure, meaning the private network will remain accessible even during international connectivity disruptions and is not a transient artifact.
+section: §4, §5
+extracted_by: claude-sonnet-4-6

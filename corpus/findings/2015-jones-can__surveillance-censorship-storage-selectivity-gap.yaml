@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-can
+kind: evaluation
+summary: 'Surveillance systems are fundamentally more selective than censorship systems due to storage constraints: as of 2009 the NSA could store only 7.5% of received traffic across 592 tapped 10 Gbps links with only 69 10 Gbps backhaul links, and the authors'' campus network retains non-alert metadata for ~36 hours and IDS alerts for ~1 year. Censorship systems by contrast are transaction-focused and retain only enough data to process real-time requests. This asymmetry creates an exploitable gap: traffic that does not stand out from the population is discarded before reaching human analysts.'
+techniques:
+    - ml-classifier
+    - measurement-platform
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Design probing and measurement flows to resemble high-volume junk traffic (scanning, spam, DDoS) that surveillance MVR stages are known to discard before human review — the same principle applies to circumvention traffic that must survive passive surveillance without triggering targeted investigation.
+    - 'Exploit the censorship-vs-surveillance design divergence: trigger broad censorship rules (which automate responses at low cost) without triggering the more selective, human-intervention-requiring surveillance rules.'
+section: §2.1–§2.2
+extracted_by: claude-sonnet-4-6

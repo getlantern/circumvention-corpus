@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-pfitzmann-terminology
+kind: defense
+summary: 'The paper establishes a strict property hierarchy: unobservability ⇒ anonymity, and sender/recipient anonymity ⇒ relationship anonymity. Unobservability is strictly stronger than anonymity because it additionally requires undetectability against all uninvolved subjects — the IOI''s very existence must be hidden — while anonymity only hides the subject''s relationship to the IOI.'
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - randomization
+    - steganography
+    - tor
+defense_implications:
+    - Circumvention systems that achieve anonymity but not undetectability remain vulnerable to confirmation and intersection attacks; explicitly targeting unobservability as the design goal is necessary when facing traffic-analysis-capable adversaries.
+    - Relationship unobservability — hiding that a specific sender-recipient pair communicates — requires both undetectability for outsiders and anonymity for participants simultaneously; neither cryptographic nor traffic-shaping mechanisms alone are sufficient.
+section: §7
+extracted_by: claude-sonnet-4-6

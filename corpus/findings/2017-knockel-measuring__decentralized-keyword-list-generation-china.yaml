@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-knockel-measuring
+kind: policy
+summary: Analysis of over 183,111 unique keywords collected from 200+ Chinese mobile games found no central state or provincial authority controlling keyword list generation. The only consistently significant predictors of keyword list similarity were whether games shared the same developer (Mantel r=0.17, p<0.001) or publisher (r=0.15, p<0.001); city, province, and genre showed no significant correlation (p>0.58). This indicates Chinese companies have substantial flexibility in determining which content to block under the 'self-discipline' intermediary liability framework.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Keyword filtering evasion strategies must be platform-specific rather than universal; a single bypass list will not work across all Chinese apps since each developer maintains its own blacklist
+    - Circumvention tools operating in Chinese app ecosystems should expect heterogeneous filtering behavior — testing against one app's censorship does not predict another app's behavior
+section: §4.1–4.2
+extracted_by: claude-sonnet-4-6

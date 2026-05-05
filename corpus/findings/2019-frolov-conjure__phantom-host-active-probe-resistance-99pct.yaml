@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-frolov-conjure
+kind: defense
+summary: Conjure phantom hosts resist active probing by requiring knowledge of a per-client registration seed secret before the station responds. A ZMap scan of over 1 billion random IP/port combinations found that 99.4% of responding servers returned no data after a random OSSH-style probe and 7.42% closed with TCP RST — behavior indistinguishable from Conjure's OSSH transport — meaning censors face steep false-positive rates when attempting to identify phantom proxies via active probing.
+techniques:
+    - active-probing
+defenses:
+    - conjure
+    - decoy-routing
+    - obfs4
+censors:
+    - cn
+defense_implications:
+    - Use per-registration secrets derived from the session seed rather than globally distributed static secrets, so active probes from censors lacking the seed cannot distinguish a phantom host from a firewalled legitimate server.
+    - Design transport handshakes to silently drop unauthorized probe connections, matching the 99.4% silent-drop behavior observed across the real internet and maximizing the censor's false-positive burden.
+section: §7.1
+extracted_by: claude-sonnet-4-6

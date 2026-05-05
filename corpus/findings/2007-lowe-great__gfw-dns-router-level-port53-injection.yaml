@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-lowe-great
+kind: detection
+summary: 'TTL manipulation experiments demonstrated that the GFW injects forged DNS responses at the router level, not at the DNS server: responses to censored domain queries exhibited inconsistent IP ident fields and wildly varying TTL values — consistent with a stateless in-path router — while control (non-censored) responses to the same server showed monotonically increasing ident and stable TTL. The injection was observed exclusively on port 53; identical queries sent to port 80 received no injected responses.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - middlebox-interference
+    - port-blocking
+censors:
+    - cn
+defense_implications:
+    - DNS injection is port-53-specific; querying on any other port (443 for DoH, 853 for DoT, or even an arbitrary non-standard port) bypasses the in-path injection entirely.
+    - Circumvention tools must not assume DNS tampering is limited to the configured resolver — in-path routers may inject responses before the resolver is reached, making 'trusted resolver' strategies insufficient.
+section: §6.4, Table 3
+extracted_by: claude-sonnet-4-6

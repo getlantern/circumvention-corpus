@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-bock-geneva
+kind: evaluation
+summary: 'Evasion strategies are strongly censor-specific: TCB Teardown strategies that achieve 80–96% against the GFW fail completely (0%) against Kazakhstan''s HTTPS MITM; India''s Airtel is defeated uniquely by a ''Stutter Request'' (duplicating the PSH/ACK and replacing IP length to 64) at 100% success, which scores only 3% against the GFW. Geneva converged on distinct species for each censor within 4–8 hours of live training.'
+techniques:
+    - dpi
+    - rst-injection
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Do not assume a strategy effective in one country will transfer — deploy per-region strategy profiles and run automated retraining when blocking events are detected.
+    - Maintain a live genetic training pipeline so circumvention tools can evolve new strategies within hours of a censor updating its DPI implementation.
+section: Table 1, §5.1–5.4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-dainotti-analysis
+kind: policy
+summary: Both Egypt and Libya demonstrate that concentration of Internet infrastructure under state ownership—in Egypt, all submarine fiber backhaul terminated at a single facility, the Ramses Exchange, controlled by the state telecommunications provider—makes country-wide BGP-based shutdowns technically straightforward. The authors conclude that the small number of state-controlled parties involved in international connectivity was the critical enabling factor, not any novel technical capability.
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+censors:
+    - generic
+defense_implications:
+    - Infrastructure risk assessments for circumvention deployments should explicitly count the number of upstream ASes a target country uses for international connectivity; countries with fewer than five upstream transit ASes face substantially elevated single-order kill-switch risk.
+    - Satellite and stratospheric (balloon/HAPS) delivery channels are the only architecturally sound fallback for countries where all domestic ISPs connect to the global Internet through a single state-controlled exchange point.
+section: §5.1.1
+extracted_by: claude-sonnet-4-6

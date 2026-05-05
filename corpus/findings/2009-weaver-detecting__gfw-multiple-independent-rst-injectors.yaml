@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-weaver-detecting
+kind: detection
+summary: The Great Firewall of China deploys at least four distinct, simultaneously-operating RST injectors with separate fingerprints (IPID 64, IPID -26, SEQ 1460, RAE). The RAE injector—which sets RST+ACK+ECN-nonce-sum flags—is the most common, with 4,162 distinct source IPs observed at UCB alone. Of 298 ICSI hosts disrupted by Chinese injectors, 102 showed fingerprints of two or more injectors acting independently on the same connection.
+techniques:
+    - rst-injection
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools operating in China must handle multiple simultaneous RST injections per connection — ignoring one injector's RST is insufficient if a second injector fires independently on the same flow.
+    - Device-level fingerprints (IPID constants, flag combinations, sequence increment patterns) can be used to build a blocklist for selectively dropping forged RSTs from known GFW injectors.
+section: §7.1.6
+extracted_by: claude-sonnet-4-6

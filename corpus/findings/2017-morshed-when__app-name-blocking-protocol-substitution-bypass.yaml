@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-morshed-when
+kind: detection
+summary: 'Because Bangladesh''s ban targeted specific named applications rather than underlying protocols, users successfully substituted functionally equivalent but unlisted apps: ''Banning Facebook, Viber, and Whatsapp for security purposes was not sufficient. For example, I used IMO to operate those apps. So, ultimately, nothing happened.'' Authorities responded by expanding the blocklist to cover substitute apps, producing a reactive cat-and-mouse dynamic over the 26-day ban.'
+techniques:
+    - ip-blocking
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Application-name or brand-based blocking is inherently reactive; circumvention tools should avoid being identifiable by a stable branded name in app stores or traffic metadata, since blocklist expansion follows adoption curves.
+    - Designing circumvention at the protocol layer rather than as a named branded app makes blocklist expansion harder; generic or chameleon transports that blend with ambient traffic provide no stable target to block.
+section: Findings – Response to the Ban
+extracted_by: claude-sonnet-4-6

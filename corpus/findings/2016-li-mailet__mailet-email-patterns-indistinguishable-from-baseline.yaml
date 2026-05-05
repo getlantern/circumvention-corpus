@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-li-mailet
+kind: evaluation
+summary: Mailet clients' daily email traffic patterns remained within the normal range of genuine email users, validated against the Enron dataset (517,425 emails, 151 users) combined with simulated Twitter usage patterns from 100 randomly sampled accounts, demonstrating that per-user daily email frequency is a poor Mailet detector with high false-positive and false-negative rates.
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Email-tunneled systems should model per-user send/receive frequency from consumer email corpora rather than uniform request rates; business-biased datasets (e.g., Enron) undercount midnight traffic and may introduce detectable spikes.
+    - Parameterize request pacing against empirical cover-traffic distributions rather than worst-case throughput so that aggregate per-user statistics remain indistinguishable from the baseline population.
+section: §6.3
+extracted_by: claude-sonnet-4-6

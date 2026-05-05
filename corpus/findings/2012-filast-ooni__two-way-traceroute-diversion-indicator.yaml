@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-filast-ooni
+kind: detection
+summary: 'OONI''s traffic manipulation test suite uses bidirectional traceroute comparison: asymmetry between inbound and outbound paths for specific source/destination port pairs is treated as an indicator that traffic is being diverted to an interception device. Additional per-flow indicators include timing differences in packets directed at specific ports and layer-7 header field manipulation detectable at the receiving endpoint.'
+techniques:
+    - dpi
+    - middlebox-interference
+    - packet-injection
+    - traffic-shape
+defense_implications:
+    - Circumvention tools deployed in censored environments should run bidirectional path checks before establishing sensitive connections to detect in-path interception devices.
+    - Test HTTP header normalization behavior (e.g., Host capitalization, injected headers) on target networks to confirm whether a stripping or modifying middlebox is present before committing to a protocol.
+section: §5.5 Traffic Manipulation
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-global
+kind: evaluation
+summary: Iris filtered 4.2 million open DNS resolvers down to 6,564 infrastructure resolvers by retaining only those with PTR records matching ns[0-9]+ or nameserver[0-9]*, achieving coverage across 157 countries with a median of 6 resolvers per country. The ethical constraint of excluding end-user home routers reduced usable resolvers by 99.8% but preserved global geographic breadth sufficient to detect country-level DNS manipulation at scale.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Circumvention tool telemetry pipelines measuring DNS blocking in-field can safely use PTR-record-filtered infrastructure resolvers as vantage points without risking attribution of access attempts to individual users.
+    - A median of only 6 infrastructure resolvers per country is sufficient for detecting national-level DNS filtering policies; circumvention projects do not need dense resolver networks to build actionable country-level blocking maps.
+section: §3.3, §4.1, Table 1
+extracted_by: claude-sonnet-4-6

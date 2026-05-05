@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-dainotti-analysis
+kind: evaluation
+summary: 'Egypt''s Internet shutdown on January 27, 2011 was accomplished via BGP route withdrawals: approximately 2,500 IPv4 prefixes (out of 2,928 visible) disappeared within a 20-minute window beginning at 22:12:26 GMT, leaving only 176 prefixes visible by 23:30:00 GMT. The shutdown lasted more than five days, with BGP connectivity beginning to return at 09:29:31 GMT on February 2, and more than 2,500 Egyptian prefixes back in global BGP tables by 09:56:11 GMT.'
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+censors:
+    - generic
+defense_implications:
+    - Proxy infrastructure in countries with centralized state-owned ISPs must maintain backup connectivity through satellite or foreign providers, since a BGP-level kill switch eliminates domestic routing entirely within minutes.
+    - Circumvention systems should pre-position offline distribution mechanisms (e.g., Bluetooth mesh, SMS-based content delivery) triggered automatically when BGP reachability to a country drops below a threshold detectable via public routing monitors.
+section: §5.1.1, §5.1.2
+extracted_by: claude-sonnet-4-6

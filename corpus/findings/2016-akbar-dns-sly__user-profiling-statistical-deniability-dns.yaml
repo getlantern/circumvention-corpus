@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-akbar-dns-sly
+kind: defense
+summary: DNS-sly achieves statistical deniability by profiling each user's organic DNS behavior — recording accessed domains, semantic topics, and resolver-specific IP addresses — and constructing upstream requests that semantically overlap with that profile. Upstream communication is indistinguishable from normal DNS traffic in volume, frequency, and semantics; all DNS headers are fully legitimate with no unusual record types.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - dns-tunneling
+defense_implications:
+    - 'Per-user behavioral profiling is essential for DNS-based covert channels: a shared static request pattern is fingerprintable, but individualized patterns blend into each user''s own traffic baseline.'
+    - Restrict encoded A-record selections to IP addresses the user's resolver naturally returns, accounting for EDNS0 client-subnet effects, to avoid location-anomaly signals that would distinguish the covert channel.
+section: §3.1, §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-k-psell-achieve
+kind: defense
+summary: The paper proposes using CAPTCHAs (hard AI problems) to gate forwarder-list access, forcing the blocker to expend human resources solving every puzzle while each blockee solves only one. However, a 'stealing cycles from humans' attack allows a censor to relay CAPTCHAs to unwitting third parties (e.g., visitors to an attacker-operated website) who solve them on the censor's behalf.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+    - cn
+defense_implications:
+    - Bind CAPTCHA content to the target user population (e.g., language-specific characters plus politically sensitive slogans recognizable only to the censored community) to prevent the censor from relaying puzzles to out-of-country solvers.
+    - Treat CAPTCHA-gated bridge distribution as one layer in a defense-in-depth stack, not a complete solution; pair with forwarder credential verification (introducing-server signatures) to defeat censor-operated forwarder honeypots.
+section: §5.3
+extracted_by: claude-sonnet-4-6

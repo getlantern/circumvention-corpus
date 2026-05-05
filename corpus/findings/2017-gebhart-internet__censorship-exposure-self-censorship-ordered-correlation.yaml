@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gebhart-internet
+kind: evaluation
+summary: Nearly 70% (n=160) of respondents reported self-censoring online for fear of the law. Frequency of exposure to blocked content was a statistically significant, ordered predictor of self-censorship (Goodman-Kruskal's gamma = 0.421, 95% CI [0.247, 0.595], p < 0.05), with self-censorship increasing monotonically as exposure to blocked content increased. Notably, self-censorship rates did not differ significantly between respondents inside and outside Thailand, suggesting the chilling effect extends beyond the reach of domestic ISP-level blocking.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Reducing visible censorship events (e.g., through transparent proxying or pre-emptive rerouting that eliminates block pages) may directly reduce the chilling-effect feedback loop, independent of whether users are attempting to access sensitive content.
+    - Circumvention tools should treat self-censorship reduction as a measurable outcome alongside access metrics, since chilling effects persist even among users who successfully bypass blocks.
+section: §5.5.1
+extracted_by: claude-sonnet-4-6

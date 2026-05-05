@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-karlin-decoy
+kind: defense
+summary: 'TCP flow hijacking by the decoy proxy is practical under an asymmetric routing assumption: expected sequence numbers are recoverable from ACK values in client-originated packets alone, so the decoy router need not observe return traffic. The proxy forges a TCP RST to the decoy destination and mimics its TCP options (timestamp, window scale, SACK) to reduce detectability; these options are conveyed encrypted inside the sentinel''s 28-byte TLS random field.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - decoy-routing
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - When building session-hijacking infrastructure, design for asymmetric (one-directional) path visibility; recover all needed state from the client half of the flow to avoid depending on return-path access.
+    - Replicate the target server's TCP options in hijacked sessions to avoid statistical distinguishability from normal connections on timing and option-negotiation features.
+section: §3.3
+extracted_by: claude-sonnet-4-6

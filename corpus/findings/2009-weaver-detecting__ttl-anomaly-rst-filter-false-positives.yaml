@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-weaver-detecting
+kind: defense
+summary: 'The proposed countermeasure of ignoring RST packets with anomalous TTLs (to defeat GFW injection, per Clayton et al. 2006) is impractical: 28% of normal responder-terminated TCP flows have RST TTLs differing from prior data packets, with changes clustering around 64, 96, 128, and 192. Of 200 randomly sampled flows with differing TTLs, only 2 triggered the injection detector, confirming the high false-positive rate of single-field TTL heuristics.'
+techniques:
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Do not use TTL anomaly alone as an RST-ignore heuristic; multi-field correlation (sequence number consistency, IPID patterns, timing) is required to avoid false-positives that drop legitimate session teardowns.
+    - Any RST-filtering strategy should be validated against a real traffic baseline — header fields that appear forensically distinctive are often naturally volatile in production network traffic.
+section: Appendix C
+extracted_by: claude-sonnet-4-6

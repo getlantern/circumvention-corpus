@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-gill-characterizing
+kind: evaluation
+summary: Across MENA countries (UAE, Tunisia, Oman, Iran, Qatar, Yemen, Saudi Arabia, Burma), over 80% of blockpage-delivering tests delivered the blockpage without DNS redirection, indicating transparent web proxies performing deep HTTP inspection rather than the cheaper DNS-intercept approach dominant in China. McAfee SmartFilter was identified in Qatar, Saudi Arabia, and UAE; Netsweepr in Qatar, UAE, and Yemen.
+techniques:
+    - dpi
+    - packet-injection
+    - dns-poisoning
+censors:
+    - ae
+    - ir
+    - sa
+    - cn
+defense_implications:
+    - Circumvention tools targeting MENA must bypass HTTP-level web proxies (use HTTPS/TLS tunneling or domain fronting) rather than only defenses against DNS manipulation or RST injection.
+    - Because MENA censorship concentrates in a small number of commercial filtering products (SmartFilter, Netsweepr), tool designers can achieve broad regional coverage by fingerprinting and evading those specific products.
+section: §5.1, Table VI
+extracted_by: claude-sonnet-4-6

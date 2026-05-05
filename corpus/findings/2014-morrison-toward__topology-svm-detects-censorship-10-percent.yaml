@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-morrison-toward
+kind: detection
+summary: An SVM classifier using a 60-dimensional feature vector — 10 topological network metrics (assortativity, clustering coefficient, diameter, radius, betweenness centrality, degree distribution exponents) plus 50 Laplacian eigenvalues — can detect network-level censorship without any content analysis. The classifier successfully distinguishes censored from uncensored reply-graphs even at the lowest tested censorship level of γ=0.1 (10% edge removal), using 10-fold cross-validation repeated 10 times.
+techniques:
+    - ml-classifier
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Censorship measurement tools can detect and monitor content deletion by analyzing graph-topological changes in social-network communication patterns without requiring access to post content, enabling privacy-preserving censorship watchdog deployment.
+    - Circumvention operators can apply analogous topological monitoring to their own relay/bridge peer graphs to detect selective suppression by observing structural anomalies.
+section: §3–4
+extracted_by: claude-sonnet-4-6

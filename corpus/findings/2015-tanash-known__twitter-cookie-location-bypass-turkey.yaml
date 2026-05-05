@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-tanash-known
+kind: defense
+summary: Twitter's country-withheld content mechanism relies on a browser-set location cookie, not IP geolocation; the authors confirmed that viewing a known-withheld Turkish tweet via a Turkish proxy server did not trigger the withholding display, but manually changing the Twitter app's location setting to 'Turkey' did — meaning any Turkish user who sets their location to a different country can bypass the entire withholding mechanism without Tor or a VPN.
+techniques:
+    - ip-blocking
+censors:
+    - tr
+defense_implications:
+    - Platform-level censorship gated on user-controlled client state (cookies, location settings) is trivially bypassable; any tool designer relying on platform cooperation as a censorship layer should assume motivated users will circumvent it immediately.
+    - Document and publicize trivial bypasses like this so censored users are aware — the authors found no Turkish-language web guidance on the cookie/location bypass despite extensive Tor and VPN guides already circulating.
+section: §7
+extracted_by: claude-sonnet-4-6

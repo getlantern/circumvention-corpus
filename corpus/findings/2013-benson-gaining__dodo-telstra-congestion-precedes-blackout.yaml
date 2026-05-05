@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-benson-gaining
+kind: evaluation
+summary: During the February 2012 Dodo-Telstra BGP route leak, AS1221 (Telstra) exhibited a 20-minute congestion phase in which γC and γ3 both dropped while η rose from approximately 3 to 5 seconds, followed by a complete outage during which zero darknet sources were observed from the AS. The congestion phase produced measurable packet loss before the full blackout, providing an early-warning window of roughly 20 minutes.
+techniques:
+    - bgp-hijack
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Early η elevation (>4 s) on a path to a proxy AS can serve as a predictive signal of imminent full blockage — circumvention clients should begin failover to alternate relays before the link goes completely dark.
+    - A two-phase signature (congestion precedes blackout) can be detected with passive retransmit monitoring, giving circumvention infrastructure time to redistribute user load across providers.
+section: §IV-A
+extracted_by: claude-sonnet-4-6

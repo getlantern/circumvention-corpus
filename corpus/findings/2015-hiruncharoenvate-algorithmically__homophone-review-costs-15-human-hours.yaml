@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-hiruncharoenvate-algorithmically
+kind: evaluation
+summary: Falling back to human review to defeat the homophone technique would cost the Sina Weibo censorship apparatus more than 15 additional human-hours per day per censored keyword — derived from an efficient censorship worker reading approximately 50 weibos per minute (Zhu et al. 2013) applied to ~47,000 daily false-positive matches per keyword — a burden that scales with the number of simultaneously banned keywords, which may number in the thousands.
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Techniques that force censors onto the human-review path impose costs that scale super-linearly with the number of monitored keywords — a practical ceiling that grows more constraining as the censor's keyword list expands.
+    - Combine homophone evasion with timing diversity (posting at varied intervals) to further stress human review queues and reduce censor throughput.
+section: 'Analysis: Cost to adversaries (RQ3)'
+extracted_by: claude-sonnet-4-6

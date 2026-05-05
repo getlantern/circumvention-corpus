@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-mending
+kind: evaluation
+summary: 'India''s federated censorship model — each ISP independently enforces government blacklists — produces dramatically inconsistent filtering: Airtel censored only 1 of 50 pornographic sites probed, while MTNL censored 45 of 50; Reliance Jio censored 0 sites across all 540 test URLs. A well-informed user can escape censorship through a judicious choice of ISP.'
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - in
+defense_implications:
+    - Circumvention tools targeting India can exploit ISP-level inconsistency by probing which ISP a user is on and calibrating obfuscation aggressiveness accordingly — heavy obfuscation may not be needed for many Indian ISPs today.
+    - Bootstrap servers should maintain per-ISP reachability data for India so that clients are routed to endpoints that are reachable from their specific carrier.
+section: §3.1, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-nabi-anatomy
+kind: evaluation
+summary: A controlled survey of 67 technically literate users in Pakistan found that ~45% primarily use public VPN services (Hotspot Shield, Spotflux), 24% use web proxies, and 11% use HTTP proxies such as Ultrasurf to bypass censorship. The survey population skews technical, so real-world adoption of low-friction tools among average users is likely higher.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - tunneling
+    - mimicry
+censors:
+    - pk
+defense_implications:
+    - Free, client-app-based VPN services dominate user adoption over manual proxy configuration — circumvention tools should prioritize zero-configuration client deployment to match user behavior.
+    - Survey bias toward technical users means actual mass-market circumvention likely relies on even simpler interfaces; design for non-technical users as the primary case.
+section: §4.3
+extracted_by: claude-sonnet-4-6

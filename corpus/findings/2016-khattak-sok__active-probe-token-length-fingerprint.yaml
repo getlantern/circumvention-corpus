@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-khattak-sok
+kind: defense
+summary: A naive active-probing resistance scheme that embeds a fixed-length token in the initial request is vulnerable to flow fingerprinting because the censor can detect connections that always begin with a fixed byte count; pseudo-random padding removes this length-based signature. Separately, obfuscating-service schemes that reveal server aliveness by completing TCP expose the server IP to enumeration even before the application-layer challenge fires.
+techniques:
+    - active-probing
+    - traffic-shape
+defenses:
+    - randomization
+    - scramblesuit
+defense_implications:
+    - Combine active-probing resistance with pseudo-random packet padding from the very first byte of the handshake to eliminate fixed-length flow fingerprints that betray the protocol.
+    - 'Prefer obfuscating-aliveness over obfuscating-service: servers that silently drop unauthenticated TCP SYNs leak nothing, whereas servers that complete TCP before withholding the CRS protocol still reveal their IP as live and connectable.'
+section: §5.5
+extracted_by: claude-sonnet-4-6

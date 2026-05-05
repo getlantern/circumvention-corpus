@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-fifield-oss
+kind: detection
+summary: In the standard redirect design the cooperating proxy's IP address or domain name appears in plaintext HTTP redirect responses, because the censored client cannot present a valid TLS certificate to the OSS and must use plain HTTP. A censor inspecting OSS-bound traffic can extract the proxy address from the Location header or URL query parameters. The no-redirect variant (client and server each initiate single scans of each other) eliminates this leakage at the cost of higher latency and server-side OSS enumeration.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Obfuscate the proxy address in OSS URLs using JavaScript-generated values or URL-aliasing (multiple domain aliases, URL shorteners with parameter passthrough) to force the censor to execute JavaScript to locate the blocked endpoint.
+    - Consider a no-redirect single-scan design when proxy address confidentiality is the primary threat, accepting the tradeoff of increased latency and server-side OSS management complexity.
+section: §7
+extracted_by: claude-sonnet-4-6

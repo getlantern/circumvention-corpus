@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-oakley-protocol
+kind: evaluation
+summary: The Protocol Proxy achieves an observed goodput of only 182 bps against a 54 Mbps baseline link (>99.99% reduction), well below the theoretical ceiling of 15,477 bps; the gap is attributed to TCP retransmission overhead and the TCP header transiting the proxy. Tor baseline goodput measured at 7.31 Mbps by comparison.
+techniques:
+    - traffic-shape
+defenses:
+    - format-transform
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - FTE-based protocol mimicry with realistic timing emulation is viable only for high-value, low-bandwidth channels (authentication tokens, bridge addresses, command-and-control); bulk data transfer requires a different transport layer.
+    - Transmitting full TCP headers through the proxy accounts for a disproportionate share of overhead; stripping or compressing headers before FTE encoding is a direct path to a ~10× throughput improvement.
+section: §7, Table 2
+extracted_by: claude-sonnet-4-6

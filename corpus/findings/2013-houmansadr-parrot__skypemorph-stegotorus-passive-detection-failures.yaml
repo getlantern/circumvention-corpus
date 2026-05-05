@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-parrot
+kind: detection
+summary: SkypeMorph and StegoTorus-Embed fail 5 of 9 standard Skype identification tests (Table I), including the TCP control channel (T9), SoM packet headers (T3), and periodic message exchanges (T6/T7). All failures are detectable by a local (LO) passive censor at line speed without requiring ISP-scale statistical analysis.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Protocol mimicry must replicate all side protocols and control channels, not just the primary data stream — omitting Skype's TCP control channel is a trivial passive giveaway detectable by a Wi-Fi router.
+    - Threat-model against the weakest plausible adversary (local passive observer) before worrying about ISP-scale classifiers; a transport that fails a local censor provides no real protection.
+section: §VII-A, Table I
+extracted_by: claude-sonnet-4-6

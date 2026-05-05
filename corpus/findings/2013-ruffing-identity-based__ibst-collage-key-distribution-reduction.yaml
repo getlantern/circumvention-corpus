@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-ruffing-identity-based
+kind: defense
+summary: For a Collage-style system with T forward-security time intervals and k rendezvous-point identities (e.g., k popular Flickr hashtags), standard public-key steganography requires distributing kT public keys, whereas an IBST-based solution requires distributing only 1 master public key. This reduction is exact — the paper states it verbatim as an efficiency argument.
+defenses:
+    - steganography
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - When designing covert-channel rendezvous over user-generated-content platforms (Flickr, Twitter, etc.), prefer identity-based key encapsulation so that adding proxies or rotating time periods does not require distributing additional key material to censored clients.
+    - Limit-test your key-distribution channel to a few hundred bytes; if your scheme requires more per rotation, consider an IBE-based reduction.
+section: §4.1 Application to Collage
+extracted_by: claude-sonnet-4-6

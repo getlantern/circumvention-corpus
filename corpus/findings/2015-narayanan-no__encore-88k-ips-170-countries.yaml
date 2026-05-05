@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-narayanan-no
+kind: evaluation
+summary: The Encore system collected censorship measurements from 88,260 distinct IP addresses across 170 countries over seven months via installations by at least 17 volunteer website operators. China, India, the United Kingdom, and Brazil each contributed at least 1,000 measurements; Egypt, South Korea, Iran, Pakistan, Turkey, and Saudi Arabia each contributed more than 100.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+    - ir
+    - pk
+    - tr
+    - sa
+defense_implications:
+    - Browser-side cross-origin measurement achieves geographic coverage at scales impossible with dedicated volunteer probe networks, suggesting circumvention tools can borrow the web-ad delivery model for distributed censorship sensing.
+    - Passive recruitment via iframe injection into third-party sites yields vantage points inside censored networks without requiring users to knowingly install probe software.
+section: Introduction
+extracted_by: claude-sonnet-4-6

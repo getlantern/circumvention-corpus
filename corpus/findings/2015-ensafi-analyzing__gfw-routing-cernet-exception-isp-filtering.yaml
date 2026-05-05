@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ensafi-analyzing
+kind: evaluation
+summary: Routing is the dominant structural factor in GFW failures. CERNET (the Chinese Educational and Research Network) accounted for 503 of 135 destination IPs' failures — by far the most of any network — and packets transiting CERNET→CERNET links reached Tor destinations at an r=0.9896 ratio, near 1.0. Within CHINANET and CNC Group backbones, the Tor-to-non-Tor traversal ratio dropped to 0.403 and 0.272 respectively (Table 4), indicating heavy intra-ISP filtering.
+techniques:
+    - ip-blocking
+    - port-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention infrastructure peered via CERNET or academic exchange points in China is historically less aggressively filtered; university-adjacent deployment or CDN nodes with CERNET peering may provide better reachability.
+    - 'The sharp filtering ratio difference between ISP-internal links (CHINANET→CHINANET: 0.40) and border links (~1.0) confirms filtering is deployed inside ISP backbones, not only at international borders — infrastructure placement decisions should account for this topology.'
+section: §5.2, §5.3, Table 3, Table 4
+extracted_by: claude-sonnet-4-6

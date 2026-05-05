@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chen-impact
+kind: evaluation
+summary: 'Peer-to-peer knowledge spillovers were statistically significant but small: a student who actively browsed foreign news and learned of a sensitive event made her dormitory roommate 12.7 percentage points more likely to answer a quiz on that event correctly. Model calibration showed this transmission rate is insufficient to propagate knowledge to the broader student population given the low share of initially informed students.'
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Viral spread of censored information through social networks is too weak to be relied upon as a substitute for direct tool access; circumvention distribution must reach end users directly rather than counting on organic peer diffusion.
+    - Social-sharing features within circumvention tools (e.g., sharing censored articles to encrypted group chats) could amplify the otherwise-modest transmission rate, but designers should not assume organic spillover will scale adoption.
+section: §IV.B
+extracted_by: claude-sonnet-4-6

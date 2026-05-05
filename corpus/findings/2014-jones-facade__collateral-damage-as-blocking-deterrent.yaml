@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-facade
+kind: defense
+summary: 'By deploying covert channels inside legitimate high-traffic web services (e.g., OpenSearch sites), Facade raises the censor''s cost of blocking to unacceptable collateral damage: blocking Facade requires blocking the legitimate web service, which harms local businesses and normal users. Facade explicitly assumes censors are unwilling to block major platforms such as AWS or popular search services.'
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - mimicry
+    - tunneling
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Host covert-channel infrastructure on high-collateral-damage platforms (major CDNs, cloud providers, popular search services) to exploit censors' reluctance to block economically or politically important services.
+    - Assess a platform's blocking risk not just by its technical properties but by the economic and political cost to the censor of blocking it; platforms with large domestic user bases or business dependencies provide stronger protection.
+section: §3.2, §5.1
+extracted_by: claude-sonnet-4-6

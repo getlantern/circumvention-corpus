@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-tanash-decline
+kind: evaluation
+summary: Twitter's official Transparency Report for July–December 2016 reported 489 censored tweets in Turkey from non-withheld accounts; the authors identified 6,402 unique censored tweets from the same period—approximately 13× more than officially reported—replicating an earlier order-of-magnitude undercount finding by Tanash et al. (2015).
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Platform transparency reports systematically undercount government-ordered content removal; build independent censorship measurement pipelines rather than relying on platform disclosures.
+    - Treat platform-level censorship (government takedown orders honored by the platform) as a distinct threat surface from network-level blocking—network circumvention tools do not mitigate this.
+section: §5
+extracted_by: claude-sonnet-4-6

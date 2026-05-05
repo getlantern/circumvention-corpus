@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-scott-satellite
+kind: detection
+summary: Censors can evade external DNS measurement systems like Satellite by injecting spoofed DNS responses only for resolvers located within the censored country, returning correct answers to external probes. This targeted injection would be 'much less visible to Satellite' while remaining fully effective against in-country users; the paper flags this as a fundamental limitation of single-vantage external measurement.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - External DNS probing alone cannot certify that a CDN domain is unblocked for in-country users — circumvention tools should supplement CDN reachability checks with in-country probe agents or use OONI/ICLab data rather than relying solely on external resolver queries.
+    - Designs that depend on knowing whether a specific CDN IP is reachable in a target country need active in-country confirmation, not just external DNS consistency checks.
+section: §4.3
+extracted_by: claude-sonnet-4-6

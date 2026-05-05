@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-bock-geneva
+kind: detection
+summary: Geneva experiments revealed that the GFW determines TCP three-way handshake completion using only the presence of the ACK flag — without validating sequence numbers. Upon receiving a RST or RST/ACK before the handshake completes, the GFW enters a resynchronization state approximately 50% of the time rather than tearing down its TCB; strategies that exploit this pre-handshake window achieve 92–95% success rates (Strategies 3 and 4).
+techniques:
+    - dpi
+    - rst-injection
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Target pre-handshake RST injection to exploit the GFW's handshake-state tracking gap — sending a corrupted RST before SYN-ACK with a paired ACK-corruption tree achieves 92% success.
+    - Model the GFW's ~50% resynchronization rate when assessing TCB Teardown reliability and pair teardown with complementary techniques to achieve consistent evasion.
+section: '§5.2 Species 2: TCB Teardown'
+extracted_by: claude-sonnet-4-6

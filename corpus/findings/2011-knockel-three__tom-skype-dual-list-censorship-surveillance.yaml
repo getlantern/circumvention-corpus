@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-knockel-three
+kind: detection
+summary: 'TOM-Skype maintains two separate encrypted keyword lists: one triggering both message suppression and silent upload to a Chinese server, and a second triggering surveillance only. Version 5.1.4.10 introduced a distinct surveillance-only keyfile downloaded from a separate URL (skypetools.tom.com/agent/keyfile_u), allowing the censor to monitor users without alerting them via censorship.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Platform-embedded censorship can surveil without censoring—message delivery is not evidence of absence of monitoring; circumvention tools must assume any client-side keyword match may be logged even if the message appears sent.
+    - Separate surveillance-only keyword lists mean high-value targets can be silently tracked without triggering evasion behavior from the user; end-to-end encryption is the only durable defense.
+section: §2.1–§2.2
+extracted_by: claude-sonnet-4-6

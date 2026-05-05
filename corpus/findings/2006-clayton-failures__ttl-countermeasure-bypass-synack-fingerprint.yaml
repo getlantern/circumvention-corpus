@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-failures
+kind: defense
+summary: Brightview's countermeasure requiring a minimum probe TTL of 24 (to prevent low-TTL scans from stopping at the proxy) was bypassed by sending probes with TTL=128 and examining the TTL of returned SYN/ACK packets. The UK web proxy consistently returned TTL=49 (64−15 hops), while Russian destination servers returned TTL=45–49 or TTL=113–238 depending on initial OS TTL settings. The two populations were cleanly distinguishable, defeating the fix with no change to scan logic beyond raising the probe TTL.
+techniques:
+    - middlebox-interference
+    - packet-injection
+defense_implications:
+    - Configuration fixes that address the symptom of a side-channel (probe TTL depth) rather than the root cause (differential traffic handling) will fail; the proxy must normalize all observable response characteristics.
+    - Proxy infrastructure should randomize or spoof the TTL in SYN/ACK responses to match the statistical distribution of expected real-server TTLs for the target IP range.
+section: Postscript
+extracted_by: claude-sonnet-4-6

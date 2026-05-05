@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-knockel-measuring
+kind: evaluation
+summary: When controlling for shared-developer as a confound, shared-publisher correlation collapsed to r=0.047 (p=0.0015) in the first experiment and r=0.064 (p=0.015) in the second; when controlling for shared-publisher, shared-developer remained r=0.095 (p<0.001) and r=0.13 (p<0.001) respectively. This demonstrates that development teams — not publishing entities — are the primary locus of keyword list authorship in the Chinese mobile gaming ecosystem.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Studios acquired by larger publishers retain their distinct keyword filtering logic; evasion strategies valid for one studio's games may fail on games from another studio under the same publisher umbrella
+    - Mergers or publisher changes in the Chinese gaming industry do not reliably homogenize keyword filtering — tool designers should not assume corporate consolidation reduces filtering complexity
+section: §4.1–4.2
+extracted_by: claude-sonnet-4-6

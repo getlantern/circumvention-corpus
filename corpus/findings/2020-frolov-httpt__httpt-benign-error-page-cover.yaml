@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-httpt
+kind: evaluation
+summary: Censys scans of IPv4 HTTPS servers in June 2020 found that over 21% responded to a GET / with 400 Bad Request, 11.19% with 403 Forbidden, 8.62% with 404 Not Found, and 2.91% with 401 Unauthorized. These common error-response distributions provide a statistical baseline that HTTPT servers can match to avoid standing out to active probers.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - mimicry
+defense_implications:
+    - Serving a standard HTTP 4xx error page to unauthenticated probes is a low-collateral, highly credible cover response; restricting access via a login prompt or authorization gate is similarly common online (~3% of endpoints enforce SNI-level restrictions) and discourages blanket blocking.
+    - Proxy designers should periodically re-measure the real-world distribution of server response codes and content types to keep cover responses statistically indistinguishable from the live Internet.
+section: §3.2.3
+extracted_by: claude-sonnet-4-6

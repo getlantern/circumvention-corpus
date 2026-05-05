@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-khattak-sok
+kind: detection
+summary: Anderson's analysis of Iran's network connectivity from January 2010 to 2013 uncovered two extended throttling periods with 77% and 69% decreases in download throughput respectively, plus eight to nine shorter periods; these often coincided with holidays, protest events, international political turmoils, and important anniversaries.
+techniques:
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - Circumvention protocols must remain functional under sustained high packet-loss and severely degraded bandwidth — test at 20–30% of baseline throughput, not just under clean-network conditions.
+    - 'Detect throttling vs. hard blocking and adapt routing strategy: throttling is often politically timed, signaling that domain-fronted CDN or DNS-tunneled fallbacks may survive where direct connections are degraded.'
+section: §2.4.2
+extracted_by: claude-sonnet-4-6

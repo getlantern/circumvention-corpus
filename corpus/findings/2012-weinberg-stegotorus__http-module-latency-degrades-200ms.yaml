@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-weinberg-stegotorus
+kind: evaluation
+summary: 'The StegoTorus HTTP module degrades severely with network latency: it can sustain only a 50 kB/s stream at latencies below 200 ms and fails entirely at higher rates or latencies, because the HTTP request-response pattern transfers only one or two 512-byte Tor cells per round-trip. Plain Tor and chopper-only StegoTorus show no measurable throughput degradation at latencies up to 450 ms. Increasing parallel HTTP connections improves low-latency throughput but does not recover high-latency performance.'
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+    - mimicry
+defense_implications:
+    - HTTP/1.1 request-response serialization is fundamentally incompatible with high-latency links (> 200 ms RTT, covering East Asia, Africa, and South Asia); HTTP/2 multiplexing or a pipelined cover protocol should be used instead.
+    - Benchmark steganographic transports at 300–400 ms RTT (representative of censored regions) before deployment, not only at local-datacenter latency.
+section: §6, Figure 6
+extracted_by: claude-sonnet-4-6

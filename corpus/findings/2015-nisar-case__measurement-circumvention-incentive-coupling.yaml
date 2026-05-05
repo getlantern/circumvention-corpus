@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-nisar-case
+kind: defense
+summary: 'C-Saw''s design demonstrates that coupling circumvention capability with censorship measurement creates a self-reinforcing incentive loop: users opt in for improved page load times, their participation grows the vantage-point pool, and richer measurements enable finer-grained technique selection per ISP and URL. The system avoids requiring a pre-populated URL list by building a blocked-URL database dynamically from user-initiated requests.'
+techniques:
+    - measurement-platform
+defenses:
+    - meta-resistance
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Embed passive measurement instrumentation (blocking-mechanism detection, latency logging) directly in circumvention clients so that every user becomes a vantage point — eliminating the need for separate, incentive-less measurement deployments.
+    - Use per-ISP, per-URL blocking-mechanism records to dynamically select the minimum-overhead circumvention technique rather than applying a single universal method to all traffic.
+section: §1 / §3.3 / §4.2
+extracted_by: claude-sonnet-4-6

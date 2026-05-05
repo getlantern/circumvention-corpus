@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-roos-measuring
+kind: detection
+summary: The FNPProbeRequest message, designed to return location and uptime of a node sampled via an 18-hop Metropolis-Hastings random walk, can be used to reliably track individual node online times — capturing >98% of online nodes per sampling interval — enabling intersection attacks on anonymity even though it cannot target a specific node by design.
+techniques:
+    - flow-correlation
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Remove or strictly rate-limit any overlay API that exposes per-node uptime or location metadata, even when the node is ostensibly selected at random; such fields create an intersection-attack surface when correlated with IP-to-location mapping.
+    - Add timing noise and suppress uptime fields from probe responses; the paper demonstrates that session-length fingerprinting via repeated random probes is feasible even without the ability to query specific nodes.
+section: §5.2
+extracted_by: claude-sonnet-4-6

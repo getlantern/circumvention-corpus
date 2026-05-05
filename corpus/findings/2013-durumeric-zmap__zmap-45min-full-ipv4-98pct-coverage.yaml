@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-durumeric-zmap
+kind: evaluation
+summary: ZMap completes a single-port scan of the entire public IPv4 address space in under 45 minutes from a commodity machine with a gigabit Ethernet connection, over 1,300 times faster than the most aggressive Nmap configuration. A single-probe scan achieves approximately 97.9% coverage of live hosts, rising to 98.8% with two probes and 99.4% with three probes.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Censors can enumerate the entire proxy IP space on a known port in under an hour; circumvention infrastructure that relies on IP obscurity alone is insufficient — bridges must use indistinguishable protocols, not just unlisted addresses.
+    - Circumvention measurement teams can track large-scale censor-side IP blocking at hourly resolution using ZMap-class tools; build monitoring pipelines that detect new IP blocks within the same time window a censor would act.
+section: §3, §3.2, §3.4, Table 1
+extracted_by: claude-sonnet-4-6

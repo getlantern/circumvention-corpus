@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-bocovich-slitheen
+kind: defense
+summary: Slitheen replaces only 'leaf' HTTP resources (images, video) in overt-site responses with covert content, reusing all TCP/IP headers verbatim and forwarding packets immediately on arrival. This forces every observable feature—packet size, direction, inter-arrival timing—to be identical to a genuine access of the overt page, eliminating the censor's ability to apply latency analysis, website fingerprinting, or protocol fingerprinting to distinguish decoy sessions from normal traffic.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+    - dpi
+defenses:
+    - decoy-routing
+    - mimicry
+defense_implications:
+    - Confine content replacement to leaf resource types (images, video) whose size and position in the HTTP stream are fully determined by the overt server, so no packet resizing or timing adjustment is ever required at the relay.
+    - Reuse the overt server's TCP and IP headers unchanged; the only modified bytes are the encrypted TLS payload and recomputed TCP checksum, neither of which reveals replacement to a passive observer.
+section: §3.1, §4.1
+extracted_by: claude-sonnet-4-6

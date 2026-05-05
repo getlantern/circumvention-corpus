@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-scramblesuit
+kind: detection
+summary: Tor's traffic contains a characteristic prevalence of 586-byte packets (Tor's 512-byte cells plus TLS header overhead) that form a strong flow-level fingerprint detectable from a few dozen captured packets. ScrambleSuit's packet length morphing eliminates this signature and shifts the distribution toward MTU-sized packets, but the authors note that a censor using the VNG++ classifier — which relies on coarse features like connection duration, total bytes, and burstiness — would still require only a marginal increase in ScrambleSuit's overhead to defeat.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - dpi
+defenses:
+    - scramblesuit
+    - randomization
+    - tor
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Fixed-size cell protocols (Tor, WireGuard, etc.) leak their cell size in packet-length distributions; any PT layered on top must actively pad sub-MTU packets to break the fixed-size signature.
+    - Classifier features beyond payload (connection duration, total bytes, burst patterns) survive payload randomization — plan for burstiness distortion as a second-phase hardening step against ML classifiers like VNG++.
+section: §4.3.1, §5.1, Figure 10
+extracted_by: claude-sonnet-4-6

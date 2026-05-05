@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-rogers-secure
+kind: defense
+summary: BTP achieves forward secrecy over unidirectional transports—where ephemeral in-band key exchange is impossible—by using a one-way key derivation function (NIST SP 800-108) to produce sequential temporary secrets from an initial shared secret. Once both devices destroy a given temporary secret, no keys derived from it can be reconstructed even if devices are later compromised.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - For asymmetric or store-and-forward channels (Bluetooth, physical media, one-way radio), decouple forward secrecy from handshake availability by pre-deriving a KDF chain from a single bootstrapped shared secret.
+    - Set rotation periods independently of transport latency—even very short Rt is valid—and size retention periods as Rt + 2C + Lt to bound how long any secret must survive.
+section: §2, §5.2–5.3
+extracted_by: claude-sonnet-4-6

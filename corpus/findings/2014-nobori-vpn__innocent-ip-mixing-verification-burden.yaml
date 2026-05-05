@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-nobori-vpn
+kind: defense
+summary: Innocent IP mixing — inserting IP addresses of critical Internet infrastructure (DNS roots, Windows Update servers, popular mail servers) into the relay list distributed to users — forces the censor to manually verify each address before blocking. In March 2013, the GFW blocked every IP VPN Gate mixed in within 30 minutes, demonstrating it was trusting the list without verification; after the technique was noticed (March 20), the GFW switched to verifying IPs first, substantially slowing its blocking cadence.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Seed relay lists with a small number of high-value 'untouchable' IP addresses (CDN anycast nodes, OS update servers, DNS resolvers) to inject a verification burden that breaks automated batch-blocking pipelines.
+    - Even a brief window (30 minutes) where the censor blindly trusts your list gives you the ability to test censor behavior — use steganographic encoding in which decoy IPs are served to enumerate spy source addresses.
+section: §4.2, §6.3
+extracted_by: claude-sonnet-4-6

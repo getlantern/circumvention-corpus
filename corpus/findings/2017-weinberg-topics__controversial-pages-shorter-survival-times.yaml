@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-weinberg-topics
+kind: evaluation
+summary: Survival analysis of 423,265 pages with Wayback Machine histories shows pages on politically controversial topics have substantially shorter lifetimes than those on uncontroversial topics; topic change — not just page deletion — must be treated as 'death' for probe-list purposes, since a page that switches topic no longer contains the sensitive material that made it censorship-relevant.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Circumvention tool evaluation suites should use continuously-refreshed probe lists and discard URLs whose content has changed topic; stale lists overestimate how much sensitive content a tool actually unblocks.
+    - Prioritize testing circumvention access across topic categories (news, politics, human rights) rather than fixed URL sets, since individual pages turn over faster than the categories censors target.
+section: §6.1
+extracted_by: claude-sonnet-4-6

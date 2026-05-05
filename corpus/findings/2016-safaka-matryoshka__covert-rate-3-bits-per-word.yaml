@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-safaka-matryoshka
+kind: evaluation
+summary: Matryoshka achieves an average covert rate of ~3 bits/word after human enhancement; for a 5-word hidden message averaging 5.5 characters per word, the final enhanced stegotext is approximately 73 words. This is roughly 10× the covert rate of Spammimic (~0.3 bits/word), the prior leading approach.
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Linguistic steganography at 3 bits/word is now plausible for short operational messages (~5 words); designers should budget ~73 cover words per short hidden message when sizing cover-traffic channels.
+    - 'Prefer corpus-matched word bins over random word selection: the paper shows random baseline consistently required more user effort and introduced more detectable artifacts.'
+section: §5
+extracted_by: claude-sonnet-4-6

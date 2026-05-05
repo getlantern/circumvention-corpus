@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-darer-filteredweb
+kind: evaluation
+summary: Approximately 95% of the 115,337 filtered URLs discovered in China were concentrated in just 15 large domains; the overall hit rate across the full crawl was 4.11 poisoned domains per 1,000 domains crawled. This concentration means aggregate filtered-URL counts in existing lists are dominated by a few major platforms while the broader tail of blocked domains remains largely undiscovered.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention infrastructure should not use high-profile blocked platforms (social media, major news sites) as cover traffic targets — the GFW blanket-blocks these, making them unreliable for domain fronting or mimicry.
+    - Monitor the long tail of lower-traffic domains outside the Alexa Top 1,000 to identify viable proxy hosting candidates before they are detected and blocked; these domains are invisible to coarse measurement tools.
+section: §V-A, §V-C, Fig. 4
+extracted_by: claude-sonnet-4-6

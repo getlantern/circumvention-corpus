@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-knockel-three
+kind: detection
+summary: TOM-Skype keyword list encryption evolved from a simple XOR cipher in versions 3.6/3.8 to 256-bit AES-ECB in versions 5.0/5.1. Surveillance traffic was encrypted with DES-ECB using hardcoded ASCII keys embedded in the binary (SURVEIL_KEY4.0 = 'X7sRUjL\0'; SURVEIL_KEY3.6 = '32bnx23l'), both recovered via known-plaintext attack and DLL injection respectively.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Hardcoded secrets in client binaries offer no durable protection—reverse engineering reliably extracts them; any censorship-resistant messaging system that embeds keys in the client binary should assume those keys are public.
+    - ECB mode for both AES and DES keyword-list encryption provides no semantic security; if a censor wants operational security for its blacklist, authenticated encryption with random IVs is the minimum bar.
+section: §2.1.1–§2.1.3
+extracted_by: claude-sonnet-4-6

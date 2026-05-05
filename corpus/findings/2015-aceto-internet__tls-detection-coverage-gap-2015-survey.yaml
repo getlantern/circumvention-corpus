@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-internet
+kind: evaluation
+summary: 'As of 2015, TLS tampering detection was implemented by only a small minority of surveyed censorship measurement tools: explicitly by Holz et al.''s Crossbear (2012) and OONI (2012), and partially by Soghoian and Stamm (2011) and UBICA (2013). The majority of the 13+ surveyed platforms detected DNS tampering and HTTP manipulation but lacked TLS coverage, creating a systematic blind spot in published censorship measurement.'
+techniques:
+    - tls-fingerprint
+    - sni-blocking
+defenses:
+    - ech-esni
+defense_implications:
+    - Circumvention projects should not rely on published measurement studies to detect SNI-based or certificate-based blocking of their tools — coverage gaps mean TLS-layer interference is systematically underreported in the literature.
+    - When building diagnostic capability into a circumvention client, include TLS-layer probes (certificate validation, SNI echo response) as first-class signals alongside DNS and TCP-level checks.
+section: Table 2
+extracted_by: claude-sonnet-4-6

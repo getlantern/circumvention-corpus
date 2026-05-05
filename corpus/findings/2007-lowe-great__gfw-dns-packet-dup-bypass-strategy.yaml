@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-lowe-great
+kind: defense
+summary: 'Because the GFW injects forged DNS responses rather than dropping the original query packet, the legitimate response from the upstream DNS server may still arrive after the injected forgery. The authors propose two circumvention strategies: querying on a non-standard port to bypass the port-53-only injection filter, or issuing standard-port queries and selectively discarding responses matching the known bad-IP pool to recover the authentic answer.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+defenses:
+    - dns-tunneling
+censors:
+    - cn
+defense_implications:
+    - 'Implement a ''discard-and-wait'' DNS client strategy: drop any response whose answer IP matches the known bad-IP pool and accept the next arriving packet, which is likely the legitimate server response.'
+    - Use DNS-over-HTTPS (port 443) or DNS-over-TLS (port 853) as the primary DNS transport for censored-region clients; the paper's port-80 test confirmed no injection fires on non-53 ports.
+section: §6.4, §8
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-wang-censorspoofer
+kind: evaluation
+summary: Port-scanning 10,000 randomly selected non-China IPs found 1,213 (12.1%) acceptable as VoIP dummy hosts (SIP, RTP, RTCP ports not in 'closed' or 'host seems down' states). Of 100 sampled dummy hosts tracked over time, over 90% remained usable for more than 2 hours and over 80% for more than 6 hours; the total usable pool was stable across a 7-day measurement window (Feb. 9–16, 2012).
+techniques:
+    - ip-blocking
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Maintain a pre-scanned, continuously refreshed dummy-host list using nmap port-state heuristics ('open' or 'filtered/open'); the 12.1% yield from random IPs provides an ample, stable supply.
+    - Restrict dummy-host assignment to entries whose predicted AS path to the client is consistent with the spoofer's traceroute reference path, to preempt censor AS-path ingress-consistency checks.
+section: §7.2.2
+extracted_by: claude-sonnet-4-6

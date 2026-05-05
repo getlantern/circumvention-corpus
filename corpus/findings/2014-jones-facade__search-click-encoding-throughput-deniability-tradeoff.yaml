@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-facade
+kind: evaluation
+summary: 'Facade faces an inverse tradeoff between upstream throughput and deniability: pure search encoding maximizes bits per request (78.04 bits) but does not reflect real user click behavior, while mixing in click-range mapping (lg(k) bits per URL, k=8 → 3 bits) reduces throughput but better models normal browsing. Neither pure strategy is optimal; the design requires tuning the search-to-click ratio.'
+techniques:
+    - traffic-shape
+defenses:
+    - mimicry
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Covert-channel designs must model the full behavioral pattern of the cover service (both queries and result-click ratios), not just per-request entropy, or behavioral-anomaly detectors will flag the traffic.
+    - Expose a configurable security/performance parameter so operators can tune the encoding mix based on observed censor sophistication rather than hardcoding a single tradeoff point.
+section: §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-dingledine-design
+kind: detection
+summary: 'Tor encrypts payload but does not obscure traffic volume, leaving a residual publisher-vs-reader asymmetry: a user publishing a home video generates a markedly different upload/download ratio than one reading news. The paper also notes that website fingerprinting attacks — where the adversary pre-downloads hundreds of popular sites and matches traffic patterns to a Tor client''s stream — remain possible even through bridge circuits, and are exacerbated by Tor''s varying supported protocols (web vs. IM produce different timing signatures).'
+techniques:
+    - traffic-shape
+    - website-fingerprint
+    - flow-correlation
+defenses:
+    - bridges
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Consider injecting cover traffic (e.g., Tor drop cells) at bridge relays to break the upload/download asymmetry for high-risk users who may be publishing, not merely reading.
+    - Traffic-shape defenses must account for the mix of application types (HTTP, IM, video) being tunneled, since a single padding strategy calibrated for web browsing will leave IM or video flows as outliers.
+section: §8.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1996-anderson-eternity
+kind: defense
+summary: 'Anderson establishes that anonymity and physical redundancy are substitutes: ''Anonymity enables us to reduce diversity.'' Tamper-resistant hardware security modules controlling anonymized file servers ensure no identifiable group of people — including sysadmins — can locate or delete a specific file without breaking a quorum of hardware modules distributed across jurisdictions.'
+techniques:
+    - flow-correlation
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - When designing proxy networks, invest in location anonymization (unlisted bridges, onion routing) before scaling raw node count — the two provide overlapping protection and anonymization is often cheaper.
+    - Compartmentalize operator knowledge so that no single operator can enumerate the full topology; limit any operator's view to the nodes they directly manage.
+section: §4.5
+extracted_by: claude-sonnet-4-6

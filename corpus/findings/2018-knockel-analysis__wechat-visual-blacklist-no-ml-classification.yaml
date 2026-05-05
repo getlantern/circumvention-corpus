@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-knockel-analysis
+kind: detection
+summary: WeChat's visual-based image filter compares uploads against a specific blacklist using a perceptual similarity metric rather than ML classification. Semantic-preserving transformations — mirroring, cropping, adding whitespace — evaded all 15 tested blacklisted images, and images filtered visually were typically removed within 10 seconds, faster than OCR-filtered images (5–30 seconds).
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Simple geometric transformations (mirror, crop, canvas extension) reliably evade blacklist-based image filters that lack semantic ML classification and require no knowledge of the filter's internals.
+    - The sub-10-second visual filter latency suggests server-side perceptual hashing with a precomputed index; evasion must survive whatever normalization precedes the hash, not just the hash comparison itself.
+section: §3.2.2
+extracted_by: claude-sonnet-4-6

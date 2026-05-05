@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-espinoza-automated
+kind: evaluation
+summary: A maximum entropy named entity extraction (NEE) model trained on Chinese-language Wikipedia achieved 89.63% recall and 83.44% specificity for person names, 96.3% recall and 69.80% specificity for place names, and 87.56% recall and 88.40% specificity for organization names. Despite 0.42% precision for person names, the system reduces the number of words requiring censorship probes by nearly an order of magnitude while retaining nearly 90% of actual named entities.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Automated corpus-driven keyword generation can replace manual list curation for censorship measurement, enabling continuous broad probing that keeps pace with current events.
+    - Maximum entropy NEE trained on Wikipedia is viable for low-resource target languages (Arabic, Farsi, Spanish), making this approach extensible to censorship monitoring in additional regions.
+section: §4.1
+extracted_by: claude-sonnet-4-6

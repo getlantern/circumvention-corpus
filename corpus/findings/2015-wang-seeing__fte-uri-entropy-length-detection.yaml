@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-wang-seeing
+kind: detection
+summary: Format-transforming encryption (FTE) as deployed in the Tor Browser Bundle is detected by combining a URI Shannon-entropy threshold (≥5.5 bits) with an exact URI length check (239 bytes) on the first HTTP GET request. This embellished test produces only 264 false positives across approximately 10 million HTTP URIs in three campus datasets, while a length-only test causes roughly 15% false-positive rate over the same flows.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - format-transform
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Fixed-length, high-entropy URI fields are a strong fingerprint; FTE deployments must randomize URI length and reduce URI entropy (e.g., via base32/base64 encoding or URI stuffing with realistic path segments) to evade this two-feature test.
+    - Any mimicry transport that directly encodes ciphertext bytes into URL or header fields will exhibit anomalously high entropy; ciphertext should be hidden behind a realistic cover-format encoding before embedding.
+section: §5.2, Figure 6
+extracted_by: claude-sonnet-4-6

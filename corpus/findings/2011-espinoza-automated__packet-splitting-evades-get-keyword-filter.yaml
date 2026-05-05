@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-espinoza-automated
+kind: defense
+summary: To measure Chinese search engine censorship independently of backbone GET request filtering, the authors split each search engine HTTP GET request across multiple TCP packets so the server would reassemble the full query but routers performing single-packet keyword inspection would not see a complete match. This technique allowed ground-truth measurement of search engine responses free of backbone RST injection interference.
+techniques:
+    - keyword-filtering
+    - rst-injection
+defenses:
+    - middlebox-interference
+censors:
+    - cn
+defense_implications:
+    - TCP segmentation at the application layer is a viable and low-complexity technique for evading router-level keyword filtering in China; circumvention tools can use deliberate packet fragmentation as a lightweight evasion layer for HTTP traffic.
+    - Censorship measurement infrastructure must explicitly decouple backbone-layer and application-layer filtering when probing, or results from one layer will contaminate observations of the other.
+section: §3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-dyer-marionette
+kind: defense
+summary: Marionette defeats active fingerprinting by routing non-protocol probes into explicit error-state transitions that respond byte-identically to the target service. Across all 9 evaluated configurations (HTTP, FTP, SSH × nmap 6.4.7, Nessus 6.3.6, Metasploit 4.11.2), every fingerprinting tool reported the Marionette server as the intended target application (Apache 2.4.7, Pure-FTPd 1.0.39, or OpenSSH 6.6.1) while simultaneously passing live Marionette client traffic.
+techniques:
+    - active-probing
+defenses:
+    - marionette
+defense_implications:
+    - Build explicit error-state transitions into the obfuscation protocol state machine that emit byte-identical responses to scanner probes (nmap, Nessus, Metasploit) for the chosen cover service — this is necessary and sufficient to defeat the most common active fingerprinting toolchain.
+    - Separate the normal-operation state machine from the error-handling paths so that censor probe traffic triggers the mimic path without interrupting or exposing legitimate client sessions.
+section: §7.5
+extracted_by: claude-sonnet-4-6

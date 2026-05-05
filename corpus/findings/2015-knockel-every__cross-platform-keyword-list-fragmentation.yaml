@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-knockel-every
+kind: evaluation
+summary: Reverse engineering of four Chinese social video platforms (YY, 9158, Sina Show, GuaGua) yielded 42 keyword lists totaling 17,547 unique keywords. Jaccard similarity clustering shows very little overlap between lists from different companies, consistent with prior work that found only 3% overlap in unique keywords across TOM-Skype and Sina UC (4,256-keyword dataset). This provides the largest unbiased cross-platform evidence that Chinese platform censorship is decentralized rather than governed by a monolithic ruleset.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Testing keyword censorship against one Chinese platform dramatically underestimates total censored content — circumvention corpus work and probe-list construction must sample across multiple platforms and industry segments.
+    - The decentralized implementation means different platforms have different blind spots; a circumvention strategy that routes through a platform with a narrower keyword list (e.g., GuaGua's 58-keyword list vs. YY High's 13,242) leaks less content metadata.
+section: §5.1
+extracted_by: claude-sonnet-4-6

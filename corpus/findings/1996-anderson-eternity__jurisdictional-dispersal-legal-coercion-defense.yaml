@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1996-anderson-eternity
+kind: policy
+summary: Effective censorship of a distributed service requires simultaneous enforcement across every jurisdiction hosting nodes. With no head office to coerce, a legal attack requires coordination across multiple independent legal systems — making successful suppression 'very expensive indeed — hopefully beyond even the resources of governments.' Local bans (e.g., country-level) do not affect nodes in other jurisdictions.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Deliberately distribute infrastructure across many legal jurisdictions, especially those with conflicting or permissive speech laws, so no single court order or government action can reach a disabling fraction of nodes.
+    - Ensure that no operational dependency (payment processor, DNS registrar, CDN) constitutes a single choke-point that a hostile court could enjoin to take down the whole network.
+section: §4.1–§4.2
+extracted_by: claude-sonnet-4-6

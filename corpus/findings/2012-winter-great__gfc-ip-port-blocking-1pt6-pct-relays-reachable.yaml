@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-winter-great
+kind: detection
+summary: Of 2819 public Tor relays in the February 2012 consensus, only 47 (1.6%) were reachable via TCP from within China. After three days, only 1 of those 47 remained reachable. The GFC blocks relays by IP:port tuple rather than by IP to minimize collateral damage to co-hosted services.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Published relays and bridges will be enumerated and blocked quickly; distribute bridge addresses through out-of-band channels and treat each as single-use, rotating frequently.
+    - Hosting proxy infrastructure on IPs shared with high-value legitimate services may delay blocking, but the IP:port granularity means the censor can still target the proxy port without affecting the co-located service.
+section: §4.1, §4.3
+extracted_by: claude-sonnet-4-6

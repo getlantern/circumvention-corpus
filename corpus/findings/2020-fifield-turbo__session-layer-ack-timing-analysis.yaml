@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-fifield-turbo
+kind: detection
+summary: Geddes et al. demonstrated that acknowledgement packets in covert-channel circumvention systems can be identified through timing characteristics and selectively interfered with to disrupt the tunnel [§4.3, CCS 2013]. A Turbo Tunnel session layer adds fixed-overhead headers and periodic ACK/keepalive traffic that may produce distinctive timing patterns absent in legitimate flows, potentially increasing susceptibility to traffic-shape classifiers.
+techniques:
+    - traffic-shape
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Allow for padding in the packet encapsulation scheme and coalesce or delay session-layer packets so that on-the-wire packet boundaries do not directly reflect session-layer framing.
+    - Design keepalive and ACK cadence to mimic the timing distribution of the chosen cover protocol rather than emitting packets at fixed intervals.
+section: §2
+extracted_by: claude-sonnet-4-6

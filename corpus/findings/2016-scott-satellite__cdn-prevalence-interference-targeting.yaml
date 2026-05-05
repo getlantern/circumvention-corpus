@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-scott-satellite
+kind: evaluation
+summary: The top 10 CDNs collectively host nearly 20% of the Alexa top 10,000 domains (1,967 domains); CloudFlare alone accounts for ~10% of those sites (726 domains) and operates across 75 ASes with 107,008 IP addresses. CDN-hosted domains receive disproportionate interference relative to their 20% share, suggesting censors target popular shared-infrastructure sites as a high-leverage blocking strategy.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - 'The large IP footprint of major CDNs (CloudFlare: 107k IPs, Akamai: 265k IPs) makes IP-list blocking of CDN infrastructure extremely costly for censors — circumvention tools using CDN fronting should prefer providers with large, diverse IP spaces to raise the censor''s blocking cost.'
+    - CDN-hosted domains are disproportionately targeted; fronting designs should avoid domains that are already in censor block-page clusters even within nominally CDN-covered IP space.
+section: §4.2, Table 3, Table 4, §4.3
+extracted_by: claude-sonnet-4-6

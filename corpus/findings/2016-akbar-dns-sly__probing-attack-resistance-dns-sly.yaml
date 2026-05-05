@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-akbar-dns-sly
+kind: evaluation
+summary: Active probing resistance was evaluated by simultaneously querying 5 additional DNS resolvers for every domain during DNS-sly operation. DNS-sly's response change distribution falls within one standard deviation of the other resolvers, making probing attacks unable to distinguish DNS-sly servers from ordinary resolvers. TTL-based re-encoding prohibition neutralizes forced-divergence probing where an attacker sends repeated identical queries to expose responder state.
+techniques:
+    - active-probing
+defenses:
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - 'Enforce strict TTL-based replay limits on covert DNS responses: prohibiting re-encoding within the TTL window prevents forced-divergence probing while carrying only minimal performance cost since organic repeated queries are rare.'
+    - Validate covert DNS channel deniability by running a shadow resolver comparison — if the channel's A-record change distribution diverges from baseline resolvers by more than one standard deviation, the encoding strategy is too aggressive.
+section: §4.1
+extracted_by: claude-sonnet-4-6

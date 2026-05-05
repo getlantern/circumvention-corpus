@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-heydari-scalable
+kind: evaluation
+summary: For complete blockage (>99%) over 10 hours, the adversary requires a swarming ratio of 12.8, translating to 128,000 censors against a single server with 10,000 CoAs. Scaling to a 10-server, 10-interface deployment forces the adversary to operate 106,700 humans in parallel; with a 5-minute CAPTCHA registration and a 12-hour reset cycle, achieving complete blockage within 10 hours requires 1,067 non-stop human operators in the first two hours.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Deploying even modest server-side CoA rotation (10,000 CoAs per interval) converts complete IP blocking from a trivial automated task into a massively human-labor-intensive operation, making censorship economically impractical at scale.
+    - Combining MTD rotation with periodic forced re-registration (e.g., every 12 hours) compounds adversary costs non-linearly — replication across even 10 server instances raises attacker human requirements by ~100×.
+section: §IV-A, §IV-B
+extracted_by: claude-sonnet-4-6

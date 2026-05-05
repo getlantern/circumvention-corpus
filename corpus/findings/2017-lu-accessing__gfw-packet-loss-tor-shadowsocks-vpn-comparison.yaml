@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lu-accessing
+kind: evaluation
+summary: 'Measured packet loss rates under GFW censorship (Feb–Apr 2017, client at Tsinghua University/CERNET): Tor with meek obfuscation suffers 4.4% average PLR; Shadowsocks (AES-256-CFB) suffers 0.77% PLR; native VPN (PPTP/L2TP) and OpenVPN both achieve ~0.21% PLR. For comparison, the same tools accessed from a US vantage point show PLR below 0.1%, confirming the excess loss is GFW-induced. The GFW''s DPI and active probing techniques specifically target Tor and Shadowsocks protocol signatures.'
+techniques:
+    - dpi
+    - active-probing
+    - random-payload-detect
+defenses:
+    - tor
+    - shadowsocks
+    - meek
+censors:
+    - cn
+defense_implications:
+    - Protocols detectable by both DPI and active probing (Tor, Shadowsocks) suffer compounding packet loss; designs should address both attack surfaces simultaneously rather than treating them as independent problems.
+    - A 4.4% PLR for Tor-with-meek versus 0.21% for layer-2 VPN quantifies the gap between GFW-targeted and non-targeted protocols — use this baseline when evaluating new transport designs against the GFW.
+section: §4.3
+extracted_by: claude-sonnet-4-6

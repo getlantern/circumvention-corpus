@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-king-reverse-engineering
+kind: detection
+summary: 'Chinese social media censorship operates at two sequential stages: an instantaneous automated review that holds flagged posts before they receive a public URL, followed by human censors who read each held post and decide within roughly 24 hours whether to publish or delete it. The ex ante automated stage is invisible to observational methods that only monitor published content, creating a systematic blind spot in prior censorship measurement research.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Platform-level automated filtering operates before any URL is exposed; circumvention tools that only encrypt transport cannot protect content suppressed at the submission layer — client-side encryption before posting is the only effective defense.
+    - The ~24-hour human-review window makes time-sensitive coordination content especially vulnerable; circumvention tools should support secure channels that bypass platform submission entirely rather than relying on posting-then-deleting strategies.
+section: Participant Observation / Fig. 2
+extracted_by: claude-sonnet-4-6

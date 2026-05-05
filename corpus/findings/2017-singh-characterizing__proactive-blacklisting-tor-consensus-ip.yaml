@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-singh-characterizing
+kind: detection
+summary: '7% of 84 commercial IP blacklists proactively blacklist Tor exit relay IPs as a matter of policy: the Snort IP and Paid Aggregator blacklists listed newly deployed relay IPs within 3 hours of their first appearance in the Tor consensus and maintained the listing for the entire relay lifetime. In total, 88% of all Tor exits appear on at least one commercial blacklist, compared to 9% of VPNGate and 69% of HMA VPN endpoints.'
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - New Tor exit IPs are immediately identifiable via the public consensus — any circumvention approach using publicly enumerated Tor infrastructure inherits full reputation cost within hours; bridge-based or unlisted relay architectures avoid this.
+    - VPN endpoints face substantially lower blacklisting rates (9–69%) than Tor exits (88%), confirming that infrastructure not enumerated in a public consensus maintains better service reachability.
+section: §5.2, §5.3, §5.6
+extracted_by: claude-sonnet-4-6

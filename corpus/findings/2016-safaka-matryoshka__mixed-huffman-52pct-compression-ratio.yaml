@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-safaka-matryoshka
+kind: defense
+summary: A mixed Huffman codebook combining character-level coding with explicit entries for the 300 most frequent English words (covering ~65% of written material) achieves a 52% compression ratio on average across 4,825 sentences of 4–15 words—7 percentage points better than a character-only alphabet—directly increasing the covert bits available per output word.
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Include the top ~300 domain-specific words for the expected cover corpus (e.g., sports, finance) in the Huffman codebook to maximize compression and reduce stegotext length, which itself reduces detectability via length-inflation.
+    - Apply topic-specific corpus shaping at both the codebook and the word-bin level to produce stegotexts that are thematically coherent rather than generically English, defeating topic-model-based steganalysis.
+section: §3.1
+extracted_by: claude-sonnet-4-6

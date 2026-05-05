@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-luchaup-libfte
+kind: defense
+summary: A deterministic FTE scheme (T-DD) that maps 16-digit credit card numbers to 7-byte ciphertext strings achieves simultaneous encryption and compression, reducing on-disk table size from 112 MB (authenticated encryption) to 42 MB — a 62.5% reduction — while maintaining provable privacy. The compression arises because the ciphertext format's message space is smaller than the plaintext's.
+defenses:
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - When designing circumvention traffic formats, choosing a ciphertext format with a smaller alphabet than the plaintext format lets FTE simultaneously obfuscate and compress, reducing per-byte bandwidth costs.
+    - Deterministic (cycle-walking) FTE achieves this compression without randomness overhead, making it applicable in bandwidth-sensitive or metered-data deployment scenarios.
+section: §7.1, Table 10
+extracted_by: claude-sonnet-4-6

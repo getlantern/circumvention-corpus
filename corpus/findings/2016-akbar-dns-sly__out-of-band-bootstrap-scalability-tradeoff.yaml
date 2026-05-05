@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-akbar-dns-sly
+kind: defense
+summary: DNS-sly requires out-of-band distribution of a 2.3 MB compressed bootstrap package (user profile map) before covert communication begins. The authors explicitly reject automated in-band bootstrapping to preserve deniability, accepting a hard scalability constraint as the cost; the particular censored environment tested did not interfere with DNS traffic at all, enabling successful censored-site retrieval at the same throughput rates as uncensored tests.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - DNS covert channels requiring a pre-shared user profile must plan a secure out-of-band bootstrap delivery mechanism (app installer, QR code, steganographic image) as a first-run step — this is a fundamental UX and scalability bottleneck to address in any production deployment.
+    - The 2.3 MB bootstrap size is compressible; consider incremental or streaming profile delivery to reduce the initial distribution barrier without sacrificing per-user deniability guarantees.
+section: §3.2, §4.2
+extracted_by: claude-sonnet-4-6

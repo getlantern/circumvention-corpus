@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ensafi-analyzing
+kind: detection
+summary: The GFW blocks Tor primarily by dropping SYN/ACK segments entering China from blacklisted IP/port pairs, not by dropping SYN segments leaving China. Of 142,802 CN→Tor-Relay measurements, 81.52% were Server-to-client-dropped versus only 0.55% Client-to-server-dropped. Blocking Tor directory authorities also showed substantial Client-to-server drops (19.61%), suggesting authorities may be treated differently.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Circumvention relays serving Chinese clients should prioritize ensuring return traffic (SYN/ACKs, data) reaches the client — the outbound SYN typically passes; it is the inbound response that the GFW drops.
+    - Protocol designs that avoid the GFW seeing a recognizable IP/port pair in returning packets (e.g., via domain fronting or CDN-based relays where the response IP is a CDN address) directly target the identified blocking mechanism.
+section: §4.1, Table 1
+extracted_by: claude-sonnet-4-6

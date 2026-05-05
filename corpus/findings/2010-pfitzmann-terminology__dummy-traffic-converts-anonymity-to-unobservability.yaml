@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-pfitzmann-terminology
+kind: defense
+summary: 'Adding dummy traffic to any anonymity mechanism yields the corresponding kind of unobservability: ''A mechanism to achieve some kind of anonymity appropriately combined with dummy traffic yields the corresponding kind of unobservability.'' DC-nets achieve sender anonymity and MIX-nets achieve relationship anonymity; with dummy traffic both achieve the corresponding sender and relationship unobservability respectively.'
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - randomization
+    - tor
+    - pluggable-transport
+defense_implications:
+    - Pad or inject cover traffic at both sender and receiver links to achieve unobservability; anonymity systems without dummy traffic reveal whether communication is occurring even when sender/recipient identities are hidden.
+    - Constant-rate traffic on all links converts MIX-net anonymity into full unobservability — implement traffic padding at the transport layer, not only at the application layer.
+section: §8
+extracted_by: claude-sonnet-4-6

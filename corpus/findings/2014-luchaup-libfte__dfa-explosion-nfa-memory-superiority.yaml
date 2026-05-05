@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-luchaup-libfte
+kind: evaluation
+summary: 'DFA state-space explosion makes DFA-based FTE impractical for many realistic network-monitor regexes: the minimum DFA for `(a|b)*a(a|b){16}` has 131,073 states requiring 266 MB of precomputed tables, while the equivalent NFA has only 36 states requiring 73 KB — a reduction of roughly four orders of magnitude. Some formats in the Snort corpus required up to 383 MB under DFA-based ranking, rendering them prohibitive for deployment.'
+techniques:
+    - dpi
+defenses:
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - When selecting target protocol formats for FTE, evaluate the NFA state count rather than the DFA state count — regex patterns with bounded repetition (e.g., `.*a.{N}`) can produce exponentially larger DFAs that make the scheme undeployable.
+    - Audit all regex-based FTE format specifications against DFA explosion before shipping a transport; fall back to NFA-based ranking whenever DFA construction exceeds available memory.
+section: §4, Table 6
+extracted_by: claude-sonnet-4-6

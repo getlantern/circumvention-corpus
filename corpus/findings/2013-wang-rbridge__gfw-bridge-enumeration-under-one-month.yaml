@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wang-rbridge
+kind: detection
+summary: China's GFW was able to enumerate all Tor bridges distributed via IP address or Gmail account in under a month, demonstrating that standard small-subset distribution strategies are insufficient against a state-level adversary controlling large numbers of accounts and Sybils.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - IP/email-based bridge distribution is broken against state-level adversaries; any replacement scheme must rate-limit enumeration through reputation costs or cryptographic constraints, not account quotas alone.
+    - Assume the censor can register as an arbitrary number of legitimate users; bridge distribution must remain robust even when a significant fraction (up to 30%) of registered users are adversary-controlled.
+section: §2.1
+extracted_by: claude-sonnet-4-6

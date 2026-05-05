@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2000-waldman-publius
+kind: evaluation
+summary: Publius provides source anonymity once content is published but offers no connection-based anonymity at upload time. A network-layer eavesdropper between the publisher and the servers, or a server's connection log, can reveal the publisher's IP address. The paper explicitly states that Publius must be combined with a mix-network or crowd-anonymity tool (e.g., Crowds, Onion Routing) to protect publisher identity during the upload phase.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Never treat content-layer anonymity (distributed storage, encryption) as a substitute for transport-layer anonymity; route all publish/update operations through a separate connection-anonymity layer such as Tor.
+    - Log scrubbing on the hosting side is insufficient if the network path is observable; the upload tool itself must inject cover traffic or use an anonymizing relay before touching any server.
+section: §5.4
+extracted_by: claude-sonnet-4-6

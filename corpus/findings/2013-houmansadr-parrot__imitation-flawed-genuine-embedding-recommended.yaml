@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-parrot
+kind: defense
+summary: The authors enumerate 12 requirements a parrot system must satisfy simultaneously (Correct, SideProtocols, IntraDepend, InterDepend, Err, Network, Content, Patterns, Users, Geo, Soft, OS) while a censor need detect only one failure. They conclude 'unobservability by imitation is a fundamentally flawed approach' and recommend embedding covert traffic in genuine encrypted payloads of a real running protocol (e.g., FreeWave in Skype voice, SWEET in email), which constrains detection to OM adversaries performing large-scale multi-flow analysis.
+techniques:
+    - traffic-shape
+    - dpi
+    - active-probing
+    - ml-classifier
+defenses:
+    - mimicry
+    - steganography
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Design new transports to run the actual target protocol and embed covert content in its encrypted payload (voice, video, text) rather than synthesizing the protocol — this is the only approach empirically shown to withstand both passive and active detection.
+    - 'Partial imitation is worse than no imitation: a transport that attempts Skype mimicry but fails multiple requirements produces a more distinctive signature than plain Tor, because each violated requirement is an additional unique fingerprint.'
+section: §XI
+extracted_by: claude-sonnet-4-6

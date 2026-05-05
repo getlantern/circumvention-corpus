@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-ignoring
+kind: defense
+summary: The GFW's keyword-blocking mechanism relies entirely on endpoints honoring injected TCP RST packets; because the IDS operates out-of-band and cannot remove packets already queued in the router's transmission path, configuring both endpoints to silently discard incoming RSTs (e.g., via `iptables -A INPUT -p tcp --tcp-flags RST RST -j DROP`) allows blocked content to transfer unimpeded. In a controlled experiment, 28 injected RSTs were ignored and the complete blocked web page was successfully retrieved.
+techniques:
+    - rst-injection
+    - keyword-filtering
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Circumvention transports should discard TCP RST packets at the application layer (or via kernel firewall rules) rather than honoring them, since the GFW's architectural constraint — out-of-band IDS that cannot suppress in-flight packets — makes RST the sole enforcement mechanism.
+    - Server-side deployments outside China can equally drop incoming RSTs, providing bypass capability with no client-side software requirement.
+section: §5
+extracted_by: claude-sonnet-4-6

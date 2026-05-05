@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-benson-gaining
+kind: detection
+summary: 'Libya''s 2011 Internet shutdown combined two distinct censor techniques across separate episodes: BGP-level route withdrawal and later packet filtering. During the packet-filtering episode, γC remained near its pre-censorship baseline (~2.0 packets/flow) even as the number of reachable Conficker sources dropped, confirming that the mechanism was per-subnet allowlisting rather than link saturation.'
+techniques:
+    - ip-blocking
+    - bgp-hijack
+censors:
+    - generic
+defense_implications:
+    - When facing packet-filtering censorship, circumvention clients should not interpret reduced throughput as network failure; per-flow retransmit behavior remaining normal indicates targeted filtering that may be bypassable via different source subnets or IP ranges.
+    - Monitoring γ alongside source-count metrics allows accurate classification of censorship modality, informing whether to switch protocols (filtering) or wait for restoration (transient congestion).
+section: §IV-C
+extracted_by: claude-sonnet-4-6

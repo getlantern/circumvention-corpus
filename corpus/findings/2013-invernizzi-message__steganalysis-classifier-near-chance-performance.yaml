@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-invernizzi-message
+kind: defense
+summary: All trained ML classifiers (K-NN, Naive Bayes, ANN, SVM, vote ensemble) performed at near-chance levels when distinguishing RSA-encrypted stego messages from clean photos — best precision 52.05%, best meaningful recall 61.52% (K-NN on clean class). The authors attribute this to embedding only a few hundred bytes into cover photos hundreds of KB in size, with natural image entropy in noisy pixel regions being empirically indistinguishable from RSA-ciphertext statistics.
+techniques:
+    - ml-classifier
+    - random-payload-detect
+defenses:
+    - steganography
+defense_implications:
+    - Keeping the steganographic payload at least two orders of magnitude smaller than the cover object is the decisive parameter for defeating ML steganalysis — the square root law of steganography makes detection near-impossible at this embedding rate.
+    - Selecting cover-media pixels in high-entropy (noisy) image regions defeats entropy-based payload detectors even when the hidden payload is RSA-encrypted high-entropy data, since the two distributions are empirically indistinguishable.
+section: §5.1, Table 1
+extracted_by: claude-sonnet-4-6

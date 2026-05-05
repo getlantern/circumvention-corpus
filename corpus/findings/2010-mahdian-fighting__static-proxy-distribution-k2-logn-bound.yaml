@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-mahdian-fighting
+kind: defense
+summary: The static proxy distribution problem — giving k²-adversarial users keys from m proxies so that all n−k legitimate users retain at least one uncompromised proxy — requires at most O(k² log n) keys and cannot be solved with fewer than Ω(k log(n/k)) keys. This establishes the information-theoretic cost of one-shot proxy distribution against k colluding informants among n users.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - For one-shot proxy lists broadcast to n users with an estimated k% informant rate, budget O(k² log n) distinct proxy addresses — far more than naively expected — to guarantee all legitimate users survive a single compromise cycle.
+    - Any static distribution scheme with fewer than Ω(k log(n/k)) proxies is provably breakable; treat that as a hard floor when sizing bridge pools.
+section: §3 Theorem 2
+extracted_by: claude-sonnet-4-6

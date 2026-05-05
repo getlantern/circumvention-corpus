@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-hahn-games
+kind: defense
+summary: Castle's packet-size and inter-packet-time distributions (measured via Kolmogorov-Smirnov statistic) fall within the variance observed between legitimate human-game sessions when using ≤50 units/command at ~1 command/second; the best-performing classifier (Herrmann) achieved only ~60% accuracy—roughly 10% above random guessing—against multiple Castle configurations, while two other classifiers (Liberatore, Shmatikov timing) performed near chance.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - dpi
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Limit per-command unit selection to ≤50 and issue at ~1 Hz to stay within natural game traffic variance; vary selection count (0–k) rather than fixing it, since uniform selection sizes produce identically-sized packets that raise classifier accuracy.
+    - Prefer cover protocols whose legitimate traffic already exhibits high inter-user variance (e.g., RTS games with map/strategy diversity) so the covert channel's statistical footprint is absorbed by natural noise rather than requiring extra shaping.
+section: §6.1, Figures 3–5
+extracted_by: claude-sonnet-4-6

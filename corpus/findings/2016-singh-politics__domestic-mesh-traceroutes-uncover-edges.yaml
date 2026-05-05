@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-singh-politics
+kind: evaluation
+summary: Domestic mesh traceroutes (both source and destination inside the target country) uncovered 5,562 new AS edges not present in standard BGP table–derived topology datasets, far exceeding the 647 new edges found by inside-out/outside-in traceroutes using up to 25 probes. Russia, the US, France, the UK, and Ukraine gained the most new edges.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - BGP routing-table datasets systematically undercount domestic AS peering in censored countries; censorship measurement studies must supplement with active in-country RIPE Atlas–style probing to avoid blind spots in topology.
+    - Circumvention infrastructure placement decisions based solely on public BGP data may miss locally available ISPs and peering points that could serve as lower-latency or less-monitored relay candidates.
+section: §2.2, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-safaka-matryoshka
+kind: evaluation
+summary: The Viterbi-based probabilistic decoder achieves zero character error rate on 96%, 93%, and 95% of decoded messages across the three corpora experiments (dreams, animals, facebook). For the small fraction of failures, only 15% of characters on average were corrupted rather than total message loss.
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - A 6th-order character Markov model is sufficient for near-lossless decoding of this scheme; implementors should not rely on the decoder being error-free and should layer a short error-correction or checksum over the hidden payload.
+    - Partial corruption (15% character error rate on failures) means error-tolerant payload formats—hex-encoded keys, base32 addresses—are more robust than plain prose in the hidden message.
+section: §5
+extracted_by: claude-sonnet-4-6

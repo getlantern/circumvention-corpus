@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-liu-tor
+kind: defense
+summary: By integrating onion routing at the ISP/AS boundary (exactly one onion router per AS hop), the specific relay used is neither specified in the protocol nor addressable by end hosts, eliminating the enumerable relay list that makes overlay Tor blockable. The end host only knows ISP public keys, not individual relay addresses.
+defenses:
+    - tor
+    - meta-resistance
+defense_implications:
+    - Design relay infrastructure so individual relay addresses are never exposed to clients or published in a discoverable directory—use ISP-level or domain-level routing instead
+    - Bind relay identity to infrastructure-level keys (e.g., AS-level public keys) rather than per-server addresses to resist targeted blocking
+section: §5
+extracted_by: claude-sonnet-4-6

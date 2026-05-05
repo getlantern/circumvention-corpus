@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chen-impact
+kind: policy
+summary: 'The GFW''s robustness depends principally on suppressed citizen demand for uncensored information, not solely on access barriers. Calibration shows censorship remains stable even if the unencouraged access rate were substantially expanded, because low demand and moderate social transmission prevent information from reaching population-wide tipping points. However, censorship is fragile to demand stimulation: scaling the encouragement intervention to all students would, per the model, inform the entire student population.'
+techniques:
+    - ip-blocking
+    - keyword-filtering
+    - throttling
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - 'Circumvention strategy should treat demand cultivation as a security property: a large, engaged user base is harder to suppress than a small technical elite, because high aggregate demand raises the political cost of wholesale blocking.'
+    - Tools designed only to evade technical detection without addressing demand-side suppression will remain niche; complementary interventions (media literacy, event-triggered notifications, zero-click access to censored headlines) are necessary to achieve population-scale impact.
+section: §V
+extracted_by: claude-sonnet-4-6

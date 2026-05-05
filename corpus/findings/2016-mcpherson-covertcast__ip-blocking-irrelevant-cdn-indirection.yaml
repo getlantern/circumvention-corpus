@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-mcpherson-covertcast
+kind: defense
+summary: Because CovertCast clients connect to live-streaming service infrastructure (e.g., YouTube servers) rather than to CovertCast servers directly, IP-address blacklisting of CovertCast infrastructure does not allow censors to identify or disrupt client connections. Discovering the CovertCast server's IP address is therefore irrelevant to the censor's blocking goal.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - Route circumvention traffic exclusively through third-party CDN or platform servers so that the circumvention operator's IP address is never reachable from inside the censored network, rendering IP-blocklist attacks structurally ineffective.
+    - Treat the streaming platform as the apparent network endpoint — any censor attempt to block that endpoint creates collateral damage to millions of legitimate users, raising the political cost of blocking beyond what rational censors will accept.
+section: §7.3
+extracted_by: claude-sonnet-4-6

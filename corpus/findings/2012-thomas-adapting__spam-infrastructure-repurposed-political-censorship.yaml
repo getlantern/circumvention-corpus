@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-thomas-adapting
+kind: policy
+summary: The attack demonstrates that spam-as-a-service markets built for commercial spam (fake reviews, URL advertising) were directly repurposed for political censorship without modification, using the same compromised-host pools (39% blacklisted IPs) and bulk account infrastructure. This convergence means technical defenses against commercial spam infrastructure simultaneously constrain politically-motivated censorship operations by actors who lack direct Internet-access control.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - ru
+defense_implications:
+    - Political actors without state-level IP blocking capabilities can achieve censorship through platform-layer message dilution using commodity spam infrastructure — circumvention tool designers should treat social media flooding as a threat model complementary to, not replaceable by, transport-layer blocking.
+    - Spam blacklists and platform account-suspension algorithms provide collateral protection against censorship-by-dilution — circumvention tools operating on social platforms can leverage existing anti-spam signals rather than building dedicated anti-censorship detection from scratch.
+section: §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-crandall-conceptdoppler
+kind: detection
+summary: 'GFC keyword filtering is distributed across the backbone, not confined to border routers: only 29.6% of filtering occurred at the first hop into China''s address space, 11.8% occurred beyond the third hop (with as many as 13 hops past the border in one case), and 28.3% of the 296 probed Chinese hosts were reachable via paths with no filtering at all.'
+techniques:
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Evasion at a single border point is insufficient; traffic must defeat filtering routers distributed deep within the Chinese backbone, not just at international gateways.
+    - Path diversity to Chinese hosts matters — routing to the ~28% of destinations on unfiltered paths may provide a reliable channel without requiring active protocol-level evasion.
+section: §3.3
+extracted_by: claude-sonnet-4-6

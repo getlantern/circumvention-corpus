@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-dyer-marionette
+kind: defense
+summary: Format-Transforming Encryption (FTE) fails under proxy-induced ciphertext modification — a single character change causes decryption failure — while Marionette's probabilistic context-free grammar (CFG) templates tolerate header rewriting, connection multiplexing, and content alteration by intermediate proxies. Validated across 10,000 streams through Squid 3.4.9, achieving 5.8 Mbps downstream and 0.41 Mbps upstream goodput.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - marionette
+    - format-transform
+defense_implications:
+    - Use CFG-based template grammars rather than regex-constrained ciphertext formats when traffic must traverse HTTP caching proxies or application firewalls that rewrite headers — regex-level ciphertext formats are too brittle for real middlebox environments.
+    - Embed payload data in semantically flexible HTTP fields (URL, Cookie, response body with correct Content-Length) so that proxy header modifications do not break stream integrity.
+section: §7.3
+extracted_by: claude-sonnet-4-6

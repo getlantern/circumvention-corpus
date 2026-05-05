@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-aryan-internet
+kind: evaluation
+summary: Measurement of Alexa top-500 websites across 18 categories found that over 50% of the internet's most-visited sites were blocked in Iran, with adult content blocked at over 95% and the Art category the third-most censored. DNS hijacking was applied selectively to only three domains (facebook.com, youtube.com, plus.google.com), while HTTP Host filtering accounted for the vast majority of blocks.
+techniques:
+    - dpi
+    - dns-poisoning
+    - keyword-filtering
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools must handle multiple simultaneous blocking mechanisms — DNS hijacking and HTTP host filtering co-exist, so DNS-only fixes (e.g., DoH) are insufficient without also addressing HTTP-layer inspection.
+    - The selective scope of DNS hijacking (only the most high-profile domains) suggests censors conserve DNS-level mechanisms; tools relying on less-prominent domains may avoid DNS blocking entirely and only need to evade DPI.
+section: §4.1, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bachrach-h00t
+kind: defense
+summary: '#h00t achieves censorship resistance by truncating a key-derivation-function output to k bits to produce a ''short tag'', deliberately inducing collisions across unrelated groups. A censor cannot block a targeted group''s short tag without simultaneously blocking all colliding groups — including innocuous, high-traffic ones — forcing heavy-handed censorship that creates domestic blowback. The design provides plausible deniability: subscribers can claim they follow a foreign pop star rather than a dissident group.'
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Design group identifiers as truncated hashes that deliberately collide with high-volume innocuous content; any blocking action incurs collateral damage to non-targeted users, raising the political cost of fine-grained censorship.
+    - 'Tune the short-tag bit-length (k) as the primary anonymity dial: shorter tags mean larger anonymity sets and more cover traffic, but higher client bandwidth overhead from decrypting irrelevant messages.'
+section: §2.2, §3.1
+extracted_by: claude-sonnet-4-6

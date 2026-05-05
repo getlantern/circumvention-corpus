@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-nasr-game
+kind: evaluation
+summary: The game-theoretic optimal decoy placement (ε-Nash equilibrium via best-response dynamics against an optimal RAD adversary) achieves a censorship metric of 0.2 at budget ratio F/ρ₀ = 10^8, versus 0.42 for the best prior heuristic ('sorted' placement from Houmansadr et al. [14]) under the same budget—a 2× improvement in censorship resistance per dollar. Prior comparisons used ad hoc RAD deployments rather than the optimal adversary, understating the benefit of principled placement.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Use game-theoretic AS selection (budgeted maximum coverage with submodular optimization) rather than connectivity-ranked heuristics; the empirical gain is roughly 2× in censorship resistance at the same cost.
+    - Always benchmark decoy placement against an optimal RAD adversary—evaluating against ad hoc RAD inflates apparent effectiveness and produces misleading deployment guidance.
+section: §6.4 / Figure 3
+extracted_by: claude-sonnet-4-6

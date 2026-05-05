@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-roos-measuring
+kind: evaluation
+summary: An 8-week measurement in June–August 2012 discovered 58,571 unique Freenet installations across 102,376 distinct IP addresses; approximately 25% were in the US and 12.5% in Germany, with Europe and North America collectively representing the vast majority — users from countries typically associated with Internet censorship were a small minority.
+techniques:
+    - measurement-platform
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Censorship-resistance tools that rely on decentralized P2P overlays may fail to attract at-risk users in censored regions despite correct protocol design — discoverability, usability, and bootstrap-node accessibility in target geographies require dedicated investment.
+    - Measure the actual deployment geography before designing routing optimizations; Freenet's 2012 deployment did not match the expected high-censorship-country distribution, which affects threat-model assumptions about adversarial node presence.
+section: §5.1
+extracted_by: claude-sonnet-4-6

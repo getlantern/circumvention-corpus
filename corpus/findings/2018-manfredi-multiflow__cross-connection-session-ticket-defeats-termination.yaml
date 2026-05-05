@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-manfredi-multiflow
+kind: defense
+summary: 'MultiFlow mitigates TLS termination attacks—where an adversary drops a connection after one data exchange—by having the client exfiltrate TLS session resumption information (219 bytes: 208-byte psk identity plus ticket metadata) to the decoy router. The decoy router can then resume a session with a different decoy host, establishing a new covert channel even if the original connection is severed, and amortizing per-session setup cost across multiple connections.'
+techniques:
+    - middlebox-interference
+defenses:
+    - decoy-routing
+defense_implications:
+    - Design covert channels to be resumable across multiple distinct server connections so that connection termination by a censor does not kill the circumvention session.
+    - Pre-provision session resumption credentials during the initial handshake so that cross-server failover incurs no additional user-visible latency.
+section: §3.3
+extracted_by: claude-sonnet-4-6

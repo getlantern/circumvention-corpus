@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-bocovich-secure
+kind: evaluation
+summary: For China (a highly connected, routing-capable adversary), the gossip protocol combined with any symmetric decoy routing design requires only 5 heavyweight downstream stations plus 880 lightweight upstream gossip stations — versus 880 heavyweight stations for purely symmetric designs. Five downstream stations alone impact 78% of routes from Chinese users, while a single downstream station already covers nearly 25% of traffic.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+    - tapdance
+censors:
+    - cn
+defense_implications:
+    - Concentrate deployment of expensive inline-blocking relay stations on the downstream path where coverage impact per station is disproportionately high — 5 downstream stations achieve 78% route coverage against China.
+    - Use lightweight upstream gossip taps (requiring no inline blocking) to defend against BGP-based Routing Around Decoys attacks at scale, making RAD attacks prohibitively expensive for the censor without burdening ISPs.
+section: Table 2 / §3.2
+extracted_by: claude-sonnet-4-6

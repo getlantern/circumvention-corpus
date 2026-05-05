@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-detal-revealing
+kind: evaluation
+summary: tracebox identified a transparent HTTP proxy or IDS within a National Research Network (SUNET) that intercepted port-80 SYN probes but not port-21 SYN probes, producing shorter observed path lengths to port 80. It also found proxy misconfigurations causing forwarding loops for non-HTTP traffic, where ICMP replies alternated between two routers indefinitely.
+techniques:
+    - middlebox-interference
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Assume transparent port-80 proxies are present even in academic or research networks; circumvention transports must not assume TCP connections on well-known ports reach their intended destination without interception or protocol inspection.
+    - Test circumvention handshakes across both standard (80, 443) and non-standard ports to detect port-selective proxy interception that may silently terminate or reroute connections.
+section: §4.2
+extracted_by: claude-sonnet-4-6

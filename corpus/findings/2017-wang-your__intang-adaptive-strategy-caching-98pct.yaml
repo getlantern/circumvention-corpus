@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-wang-your
+kind: defense
+summary: INTANG, a measurement-driven tool that caches the best-performing TCP evasion strategy per server IP, achieves an average success rate of 98.3% (range 93.7%–100%) from vantage points inside China. Four combined new strategies — Improved TCB Teardown, Improved In-order Data Overlapping, TCB Creation + Resync/Desync, and TCB Teardown + TCB Reversal — each independently achieve average success rates of 94.5%–96.2% inside China and 84.6%–92.7% outside China, with Failure 2 rates below 1.1%.
+techniques:
+    - dpi
+    - rst-injection
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Implement per-destination strategy caching with expiry so the circumvention client converges to the optimal TCP manipulation for each server/path without manual tuning, yielding near-perfect evasion.
+    - Combine a legacy strategy (for old GFW devices) with a new resync/desync or TCB-reversal strategy in a single packet sequence so a single code path defeats both old and evolved GFW instances encountered on heterogeneous paths.
+section: §7, Table 4
+extracted_by: claude-sonnet-4-6

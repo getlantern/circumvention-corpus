@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2008-sovran-pass
+kind: evaluation
+summary: Simulation on a synthetic social graph of one million nodes (average degree 4.65, maximum 13) shows that when 1.5% of nodes act as proxies and random routes of length r=5 are used, the median node can reach 3 proxies and more than 90% of nodes can access at least one proxy.
+defenses:
+    - bridges
+    - meta-resistance
+defense_implications:
+    - A proxy fraction of ~1.5% of total network size is sufficient for 90%+ user coverage when advertisements traverse short trust-graph routes; volunteer-recruitment targets should be calibrated to this density.
+    - Geographic clustering in real social graphs reduces coverage — supplement random-route proxy distribution with relay hops to reach nodes lacking proxies in their immediate neighborhood.
+section: §3.2
+extracted_by: claude-sonnet-4-6

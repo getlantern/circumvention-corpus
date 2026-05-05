@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-king-censorship
+kind: detection
+summary: Censors apply categorical event-level judgment — whether a post is associated with a collective action topic — rather than per-post sentiment classification. The paper explicitly states that no known statistical or machine-learning technology can achieve the accuracy required for this task, and the authors obtained 98.9% intercoder agreement (86/87 events) using human coders applying the same five-category scheme.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Because censors target event-topic associations rather than individual content, circumvention tools used for collective action organizing should obscure the topical context of communication (via encryption, metadata stripping, or topic diversification), not just participant identity.
+    - ML-based classification alone is insufficient for the Chinese censorship task; a human-in-the-loop model catches what automated systems miss — circumvention techniques that defeat classifiers should still be evaluated against contextual human judgment.
+section: Analysis Strategy / Central Hypothesis; Coding Rules
+extracted_by: claude-sonnet-4-6

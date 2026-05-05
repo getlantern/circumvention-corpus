@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-deng-random
+kind: detection
+summary: The paper identifies that Shadowsocks can also serve as a transport layer for Tor and VPN connections, meaning a Shadowsocks flow detector functions as a first-stage classifier that unmasks compounded anonymity systems. The authors explicitly cite this as a motivation for detection.
+techniques:
+    - ml-classifier
+    - dpi
+defenses:
+    - shadowsocks
+    - tor
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Chaining Tor-over-Shadowsocks does not provide layered detection resistance if the outer Shadowsocks layer is already detectable by flow analysis — the outermost transport must independently evade classifiers.
+    - Circumvention stacks that combine protocols should ensure each layer is individually undetectable, not just the innermost.
+section: §II
+extracted_by: claude-sonnet-4-6

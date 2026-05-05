@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-sfakianakis-censmon
+kind: evaluation
+summary: 21% of all URLs that CensMon began tracking were found accessible on the very first re-probe, indicating initial inaccessibility was a transient network failure rather than censorship. The false-network-failure rate fell to near zero after 3 consecutive tracking attempts, providing a practical threshold for classifying persistent inaccessibility as filtering.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools using server reachability as a blocking signal should require at least 3 consecutive probe failures before treating a proxy as blocked — single-probe failures carry a ~21% false-positive rate.
+    - Short-interval retry logic (rather than human verification) is sufficient to separate censorship from network noise with high confidence.
+section: §4.2, Figure 4
+extracted_by: claude-sonnet-4-6

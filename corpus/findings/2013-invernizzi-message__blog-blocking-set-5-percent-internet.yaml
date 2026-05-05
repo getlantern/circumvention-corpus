@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-invernizzi-message
+kind: evaluation
+summary: Over 72 days, the authors observed 814,667,299 blog posts (average 11,314,823/day; peak 13,083,878/day). To blacklist all potential MIAB drop points, a censor would need to block 33,361,754 FQDNs (5% of all web servers per Netcraft) or 1,803,345 second-level domains (1.4% of global domain registrations); even a fully-maintained static blacklist retains an 11–12% daily miss ratio as new blogs appear.
+techniques:
+    - ip-blocking
+defenses:
+    - steganography
+defense_implications:
+    - Steganographic broadcast over a large organic content platform forces the censor into a high-collateral blocking decision affecting 1–5% of the global Internet — a cost the authors argue most regimes are unwilling to bear.
+    - The 11–12% daily miss rate on static blacklists means users can rotate to newly-created blog endpoints faster than censors can update blocklists; new-domain churn is a structural defense.
+section: §5.1, Figure 4
+extracted_by: claude-sonnet-4-6

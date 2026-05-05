@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-burnett-chipping
+kind: detection
+summary: 'Collage''s threat model identifies the censor''s two most dangerous capabilities as: (1) aggregate traffic-flow analysis (e.g., NetFlow statistics) to detect anomalous access patterns to specific content hosts, and (2) joining the system as a sender or receiver to discover content locations and mount denial-of-service or deniability attacks. The censor is assumed to monitor all egress traffic but is modeled as computationally limited against joint statistical distributions across arbitrary user pairs.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - dpi
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Throttle Collage task inter-request timing to match the empirical distribution of normal user behavior on the same platform, defeating clickstream anomaly detection without requiring formal traffic-shaping infrastructure.
+    - Partition users into small groups with distinct identifier-key spaces so that a censor who joins as a user can only learn content locations for one group, limiting the blast radius of a sybil or infiltration attack.
+section: §3.1
+extracted_by: claude-sonnet-4-6

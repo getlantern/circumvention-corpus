@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-levin-alibi
+kind: evaluation
+summary: For the vast majority of source-destination pairs avoiding the USA or China on PlanetLab, Alibi Routing introduces less than 50% latency inflation; some pairs even see latency improvement due to overlay shortcutting (Figure 9). Latency inflation is relatively insensitive to the inequality factor δ when relays are successfully found.
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Sub-50% latency overhead is within the acceptable range for most interactive applications; alibi-based relay selection is a viable production strategy for users who need provable geographic avoidance.
+    - Negative inflation cases (overlay shorter than BGP default) suggest relay nodes with favorable physical placement can improve performance — worth measuring whether alibi relays beat the censored-path baseline in target geographies.
+section: §6.3, Figure 9
+extracted_by: claude-sonnet-4-6

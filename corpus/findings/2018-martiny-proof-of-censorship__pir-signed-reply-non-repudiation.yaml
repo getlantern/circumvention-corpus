@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-martiny-proof-of-censorship
+kind: defense
+summary: The proof-of-censorship scheme uses single-server computational PIR with homomorphic encryption so that the server, having signed both the PIR query hash and its reply, cannot selectively omit responses for a targeted file without returning garbage data. A client detecting the mismatch publishes the upload ticket, signed reply, and query seed as a compact, transferable cryptographic proof of censorship verifiable by any third party holding the server's long-term public key.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Centralized content providers can be held accountable for selective removal by requiring them to sign PIR queries and responses at upload time, converting silent censorship into a detectable, transferable cryptographic artifact.
+    - Design upload protocols so the server commits to a file hash before learning the file's content (e.g., via encrypted upload + URL-embedded decryption key), preventing pre-upload targeted ticket refusal.
+section: §4.1
+extracted_by: claude-sonnet-4-6

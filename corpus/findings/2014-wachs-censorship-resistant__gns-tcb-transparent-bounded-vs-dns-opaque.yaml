@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wachs-censorship-resistant
+kind: evaluation
+summary: GNS bounds the trusted computing base (TCB) for any individual name resolution to fewer than approximately 125 entities (constrained by name label length) and makes the full trust chain transparent to the user. By contrast, even simple DNS lookups can silently depend on correct answers from over 100 DNS zones; China's DNS injection caused global collateral damage precisely because out-of-bailiwick NS record chains made the full trust graph invisible to resolvers and users alike.
+techniques:
+    - dns-poisoning
+defenses:
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Circumvention systems that rely on external name resolution (CDN fronting, domain generation algorithms) inherit a large, hidden TCB; designers should quantify and minimize the number of third-party authorities that can unilaterally break the resolution path.
+    - Prefer architectures where the trust chain to any circumvention endpoint is enumerable and short enough that users can verify it, enabling graceful recovery when one link in the chain is compromised or coerced.
+section: §5
+extracted_by: claude-sonnet-4-6

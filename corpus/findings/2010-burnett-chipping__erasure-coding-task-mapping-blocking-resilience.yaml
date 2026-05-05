@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-burnett-chipping
+kind: defense
+summary: Rateless erasure coding with ε=0.01 adds only a 0.5% storage and traffic overhead. Consistent hashing of message identifiers to task-database entries ensures that when 50% of tasks are replaced, sender and receiver still share at least one task if three or more tasks are mapped per identifier. At a 10× send rate, message recovery succeeds even if 90% of published vectors are blocked.
+techniques:
+    - ip-blocking
+defenses:
+    - steganography
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Map each message identifier to at least 3 tasks via consistent hashing to maintain rendezvous convergence through database churn of up to ~50%; trigger a database refresh only after 20% of task mappings fail.
+    - Apply rateless erasure coding with ε≈0.01 to any covert channel that distributes data across multiple third-party hosts; the overhead is negligible and survivability against partial blocking scales directly with send redundancy.
+section: §4.2, §4.3, Figure 4, Figure 5a
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-ensafi-detecting
+kind: detection
+summary: 'Client-to-server packet drops (RSTs from client to server are dropped in transit) indicate the simplest null-routing mechanism: the server''s destination IP is null-routed at the censor. The method distinguishes this from server-to-client drops (stateless return-path filtering) and from RST/ICMP injection—cases where the packet is not dropped but a forged termination packet is inserted—which both appear as the ''no-packets-dropped'' outcome in the IPID time series.'
+techniques:
+    - ip-blocking
+    - rst-injection
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - Tools that receive 'no-packets-dropped' IPID measurements against their server IPs should not conclude they are unblocked; stateful RST injection will produce the same signature, requiring complementary active probing to distinguish the cases.
+    - Client-to-server null-routing is the hardest blocking to evade by IP rotation alone since it operates on the destination address; defenses must obscure the destination (tunneling, domain fronting, decoy routing) rather than just rotating source IPs.
+section: §2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-sheffey-improving
+kind: defense
+summary: The paper identifies that Meek traffic is compared against average HTTPS traffic across all domains rather than against traffic specific to the CDN fronting host (e.g., ajax.aspnetcdn.com for meek-azure), meaning a transformed signature that mimics generic HTTPS may still appear anomalous relative to expected traffic to that specific CDN host. This dataset construction limitation means real-world GAN-guided shaping must target host-specific traffic baselines, not population-wide HTTPS baselines.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - meek
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - When training adversarial traffic shapers for domain-fronted transports, collect the baseline distribution from actual traffic to the specific CDN fronting host (not generic HTTPS) to avoid producing signatures that are statistically normal globally but anomalous for the specific host the censor observes.
+    - Implement per-fronting-host traffic profiles in the shaper so that clients using meek-azure mimic ajax.aspnetcdn.com traffic patterns while clients using meek-gcp mimic GCS traffic patterns.
+section: §6 Discussion
+extracted_by: claude-sonnet-4-6

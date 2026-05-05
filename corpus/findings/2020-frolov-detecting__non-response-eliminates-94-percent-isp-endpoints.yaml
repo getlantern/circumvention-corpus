@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-detecting
+kind: detection
+summary: Across 433,286 endpoints from a 10 Gbps university ISP passive tap, 94% responded with data to at least one of 8 protocol probes (TLS, HTTP, STUN, S7, Modbus, DNS-AXFR, random bytes, empty); all five tested probe-resistant proxies (obfs4, Lampshade, Shadowsocks, MTProto, OSSH) never responded with data to any probe. This single filter reduces the suspect set from 433,286 to ~26,000 endpoints and rules out 94% of ISP-observed hosts as non-proxies with zero false negatives against the tested protocols.
+techniques:
+    - active-probing
+defenses:
+    - obfs4
+    - shadowsocks
+    - pluggable-transport
+censors:
+    - generic
+    - cn
+defense_implications:
+    - Sending a syntactically plausible error response (e.g., a TLS Alert to a ClientHello) to at least one probe type would defeat this filtering step — but the response must be faithful enough to avoid committing the proxy to a protocol it cannot correctly speak.
+    - Proxy designers must test non-response behavior against realistic ISP traffic distributions, not just controlled lab datasets, since the 94% elimination rate is vantage-point dependent.
+section: §V, Table III
+extracted_by: claude-sonnet-4-6

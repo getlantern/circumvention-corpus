@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-xu-internet
+kind: evaluation
+summary: CNCGROUP's filtering interface count has grown to three times its 2007 level, now accounting for 17.4% of all 495 filtering interfaces found, while CHINANET's count has remained stable since 2007. This divergence indicates CNCGROUP is actively expanding its censorship infrastructure while CHINANET's filtering capacity has matured.
+techniques:
+    - dpi
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Do not treat CNCGROUP-transiting paths as lower-risk legacy infrastructure; its filtering density has tripled since 2007 and should be treated equivalently to CHINANET for circumvention deployment decisions.
+    - Longitudinal re-measurement of per-ISP filtering interface counts is necessary — circumvention strategies informed by pre-2010 topology data will underestimate CNCGROUP coverage by approximately 3×.
+section: §4.4
+extracted_by: claude-sonnet-4-6

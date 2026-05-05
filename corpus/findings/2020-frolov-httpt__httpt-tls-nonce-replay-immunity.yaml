@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-httpt
+kind: defense
+summary: HTTPT achieves replay-attack immunity by tunneling over TLS, which incorporates bidirectional nonces (client and server randoms) into key agreement so each connection uses unique cryptographic keys. Censors that replay a legitimate client's observed initial bytes are therefore unable to trigger a proxy response, unlike approaches that rely only on application-layer replay caches.
+techniques:
+    - active-probing
+defenses:
+    - mimicry
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Prefer TLS (or another nonce-based handshake) as the outer transport for probe-resistant proxies rather than building a custom replay cache, since TLS nonces eliminate the replay surface by construction.
+    - Any protocol that must authenticate clients should incorporate server-provided randomness into the client's proof-of-knowledge so that observed client messages cannot be replayed against the server.
+section: §1.1, §3.3
+extracted_by: claude-sonnet-4-6

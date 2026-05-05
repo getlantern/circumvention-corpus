@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-frolov-conjure
+kind: defense
+summary: 'Conjure registration is unidirectional: the client embeds a steganographic ciphertext tag in a complete HTTPS request payload encrypted under a Diffie-Hellman shared secret, and the station passively observes it without sending any reply or spoofing packets. This design makes registration flows indistinguishable from normal HTTPS traffic and enables 25% more viable registration decoys than TapDance by removing the requirement to exclude decoys with short TCP windows or connection timeouts.'
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - conjure
+    - decoy-routing
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Implement registration as a complete, one-way HTTPS request rather than a half-open or aborted request, so the decoy responds normally and the flow is indistinguishable from routine browsing to any passive observer.
+    - Avoid station-side responses or TCP spoofing during the registration phase — unidirectional signaling maximizes the usable decoy site pool by eliminating TCP-window and timeout constraints that otherwise shrink it by ~25%.
+section: §4.1
+extracted_by: claude-sonnet-4-6

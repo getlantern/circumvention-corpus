@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chen-impact
+kind: evaluation
+summary: 'Modest financial incentives (US$2.50 per quiz requiring a visit to the NYT Chinese edition) produced a persistent increase in foreign-news browsing: after the 4-month encouragement ended, Group-AE students spent 3.4 min/week more on top foreign news sites than access-only peers (6.7 min/week among active users). By the experiment''s end, 23% of newly exposed students paid US$4.50/month to continue uncensored access out of pocket.'
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - A bootstrapping phase—brief, low-cost exposure to high-quality censored content—can permanently shift user demand; circumvention products should include an initial 'discovery' experience rather than presenting a blank browser.
+    - 'Willingness-to-pay is not static: users who experience value will convert to paid tiers, so free trials tied to curated content are a viable retention strategy.'
+section: §III.B–C, §II.B
+extracted_by: claude-sonnet-4-6

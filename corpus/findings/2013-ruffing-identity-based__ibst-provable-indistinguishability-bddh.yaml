@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-ruffing-identity-based
+kind: defense
+summary: The IBST construction is provably secure under the bilinear decisional Diffie-Hellman (BDDH) assumption in the random oracle model. Any adversary with advantage ε(λ) against IBST indistinguishability implies an adversary against BDDH with advantage at least ε(λ)/e(1+qE), where qE is the number of private-key extraction queries. Tags produced by the scheme are computationally indistinguishable from uniform random bitstrings for any party lacking the recipient's private key.
+techniques:
+    - random-payload-detect
+    - dpi
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Use elliptic-curve x-coordinate encoding (quadratic-twist trick from Telex) to ensure steganographic tags are byte-for-byte indistinguishable from uniform random data, defeating entropy-based classifiers.
+    - When threat-modeling a covert-channel tagging scheme, verify that undetectability is provably reduced to a well-studied hardness assumption rather than relying on heuristic entropy arguments.
+section: §3.2 Construction / Theorem 1
+extracted_by: claude-sonnet-4-6

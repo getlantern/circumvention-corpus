@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2003-dornseif-government
+kind: defense
+summary: The paper evaluates all major circumvention techniques available in 2003 and concludes that only application-layer proxies (HTTP, SOCKS, JAP, peek-a-booty) and IP tunneling can defeat all three blocking layers (IP filtering, DNS tampering, filtering proxies) simultaneously. Encryption alone cannot circumvent IP or DNS blocking; HTTPS hides URL paths but not the destination host; DNS-over-HTTPS/DNSSEC can detect but not defeat DNS tampering without a third-party resolver.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - tunneling
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Full-stack circumvention requires a cooperating third-party endpoint outside the censor's jurisdiction — design proxy infrastructure so users can bootstrap discovery of that endpoint through out-of-band channels rather than relying on in-band DNS or IP routes the censor controls
+    - Layering transport-layer tunneling (carrying all protocols) above the censored ISP is the minimum viable architecture; partial measures such as HTTPS or DNS workarounds alone leave exploitable blocking vectors open
+section: §2.4
+extracted_by: claude-sonnet-4-6
