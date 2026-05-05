@@ -20,9 +20,15 @@
   <key>Label</key>
   <string>io.lantern.corpus-crawl</string>
 
+  <!--
+    Self-updating: deploy/run-crawl.sh pulls main + rebuilds the binary
+    before executing it, falling back to the existing binary on
+    pull/build failure. Code changes pushed to main land in the next
+    cron firing automatically.
+  -->
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/afisk/code/circumvention-corpus/corpus-crawl</string>
+    <string>/Users/afisk/code/circumvention-corpus/deploy/run-crawl.sh</string>
     <string>run</string>
     <string>--corpus</string>
     <string>/Users/afisk/code/circumvention-corpus</string>

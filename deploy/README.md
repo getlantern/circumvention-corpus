@@ -102,16 +102,35 @@ curl -X POST \
 
 ## Updating the bot
 
-When `cmd/corpus-crawl/main.go` changes:
+The cron-mode launchd agent self-updates: `deploy/run-crawl.sh` does
+`git pull --ff-only` + `go build` before exec'ing the binary on every
+firing. Code changes pushed to `main` land in the next Monday's run
+automatically. If pull or build fails, the wrapper falls back to the
+last-known-good binary so a broken commit doesn't take the bot down.
+
+To force an immediate update + run (rather than waiting for the next
+scheduled firing):
 
 ```bash
-ssh afisk@mini 'cd ~/code/circumvention-corpus && git pull && go build ./cmd/corpus-crawl'
+ssh afisk@mini 'launchctl start io.lantern.corpus-crawl'
 ```
 
-The launchd agents pick up the new binary on the next run; for the serve-mode agent, restart it:
+The serve-mode agent does NOT self-update on its own (it's a long-
+running process). Restart it to pick up new code:
 
 ```bash
-launchctl kickstart -k gui/$(id -u)/io.lantern.corpus-crawl-serve
+ssh afisk@mini 'launchctl kickstart -k gui/$(id -u)/io.lantern.corpus-crawl-serve'
+```
+
+If you change either plist file (e.g., to tweak the schedule or the
+launch arguments), the new plist itself has to be redeployed manually:
+
+```bash
+ssh afisk@mini
+cd ~/code/circumvention-corpus && git pull
+cp deploy/io.lantern.corpus-crawl.plist ~/Library/LaunchAgents/
+launchctl unload ~/Library/LaunchAgents/io.lantern.corpus-crawl.plist
+launchctl load   ~/Library/LaunchAgents/io.lantern.corpus-crawl.plist
 ```
 
 ## Logs
