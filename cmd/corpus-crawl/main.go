@@ -108,18 +108,20 @@ serve  — HTTP server with POST /crawl (used by Cloudflare Tunnel)`)
 // params. Kept in a struct so the HTTP handler can call runWith() with
 // the same shape that runOnce() uses.
 type runOptions struct {
-	corpus     string
-	maxN       int
-	windowDays int
-	dryRun     bool
-	noPR       bool
+	corpus      string
+	maxN        int // cap on accepted (relevant) papers per run — keeps PRs reviewable
+	maxClassify int // safety bound on how many candidates we send to the LLM
+	windowDays  int
+	dryRun      bool
+	noPR        bool
 }
 
 func runOnce(args []string) {
 	fs := flag.NewFlagSet("run", flag.ExitOnError)
 	opts := runOptions{}
 	fs.StringVar(&opts.corpus, "corpus", ".", "path to circumvention-corpus repo root")
-	fs.IntVar(&opts.maxN, "max", 10, "max papers to ingest per run")
+	fs.IntVar(&opts.maxN, "max", 12, "max ACCEPTED papers per PR (cap applied after classification)")
+	fs.IntVar(&opts.maxClassify, "max-classify", 80, "safety bound on classifier calls per run")
 	fs.IntVar(&opts.windowDays, "window-days", 14, "look back this many days")
 	fs.BoolVar(&opts.dryRun, "dry-run", false, "don't write YAML files; print what would happen")
 	fs.BoolVar(&opts.noPR, "no-pr", false, "write YAMLs but skip opening a PR")
@@ -194,9 +196,13 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	res.Novel = len(novel)
 	log.Printf("%d are novel", len(novel))
 
-	if len(novel) > opts.maxN {
-		log.Printf("capping at --max=%d", opts.maxN)
-		novel = novel[:opts.maxN]
+	// Apply the classifier safety bound BEFORE classification so we don't
+	// run away on a future high-volume source. Note: this is NOT --max;
+	// --max caps the *accepted* set after classification so we don't
+	// undercount because the classifier rejected most of the first N.
+	if len(novel) > opts.maxClassify {
+		log.Printf("capping classifier input at --max-classify=%d (was %d)", opts.maxClassify, len(novel))
+		novel = novel[:opts.maxClassify]
 	}
 	if len(novel) == 0 {
 		log.Println("nothing to ingest")
@@ -208,6 +214,9 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		if opts.dryRun {
 			log.Printf("DRY RUN: would classify %q (%s)", truncate(c.Title, 60), c.ArxivID)
 			out = append(out, accepted{c: c, k: classification{IsRelevant: true, Censors: []string{"generic"}, Techniques: []string{"dpi"}}})
+			if len(out) >= opts.maxN {
+				break
+			}
 			continue
 		}
 		k, err := classifyWithClaude(ctx, c, string(taxRaw))
@@ -221,6 +230,12 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		}
 		log.Printf("✓ %s — censors=%v techniques=%v", c.ArxivID, k.Censors, k.Techniques)
 		out = append(out, accepted{c: c, k: k})
+		// Stop classifying once we have maxN accepted — saves API calls
+		// without losing relevant papers (we only stop AFTER acceptance).
+		if len(out) >= opts.maxN {
+			log.Printf("hit --max=%d accepted; stopping classifier early", opts.maxN)
+			break
+		}
 	}
 	res.Accepted = len(out)
 
@@ -695,11 +710,12 @@ func serve(args []string) {
 			return
 		}
 		opts := runOptions{
-			corpus:     *corpus,
-			maxN:       intOrDefault(r.URL.Query().Get("max"), 10),
-			windowDays: intOrDefault(r.URL.Query().Get("window_days"), 14),
-			dryRun:     r.URL.Query().Get("dry_run") == "1",
-			noPR:       r.URL.Query().Get("no_pr") == "1",
+			corpus:      *corpus,
+			maxN:        intOrDefault(r.URL.Query().Get("max"), 12),
+			maxClassify: intOrDefault(r.URL.Query().Get("max_classify"), 80),
+			windowDays:  intOrDefault(r.URL.Query().Get("window_days"), 14),
+			dryRun:      r.URL.Query().Get("dry_run") == "1",
+			noPR:        r.URL.Query().Get("no_pr") == "1",
 		}
 		ctx, cancel := context.WithTimeout(r.Context(), 15*time.Minute)
 		defer cancel()
