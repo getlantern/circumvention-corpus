@@ -219,20 +219,50 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			cands = append(cands, gr...)
 		}
 	}
+	if source == "popets" || source == "all" {
+		// PoPETs publishes 4 issues per year. Pull the current year's
+		// index page (which lists all 4 issues' papers in one document)
+		// AND the previous year's, since the previous year's last
+		// issue often lands in early next year.
+		thisYear := time.Now().Year()
+		for _, y := range []int{thisYear, thisYear - 1} {
+			pp, err := fetchPETSymposiumProceedings(ctx, "PoPETs", fmt.Sprintf("https://petsymposium.org/popets/%d/", y), y, "popets")
+			if err != nil {
+				log.Printf("fetch PoPETs %d: %v (continuing)", y, err)
+				continue
+			}
+			log.Printf("fetched %d from PoPETs %d", len(pp), y)
+			cands = append(cands, pp...)
+		}
+	}
+	if source == "foci" || source == "all" {
+		thisYear := time.Now().Year()
+		for _, y := range []int{thisYear, thisYear - 1} {
+			f, err := fetchPETSymposiumProceedings(ctx, "FOCI", fmt.Sprintf("https://petsymposium.org/foci/%d/", y), y, "foci")
+			if err != nil {
+				log.Printf("fetch FOCI %d: %v (continuing)", y, err)
+				continue
+			}
+			log.Printf("fetched %d from FOCI %d", len(f), y)
+			cands = append(cands, f...)
+		}
+	}
 	res := &runResult{Considered: len(cands)}
 
-	// Net4people and gfw.report candidates are pre-curated by humans
-	// (reading-group posts and GFW Report blog posts are by definition
-	// relevant), so they bypass the keyword filter. arXiv candidates
-	// still need the cheap keyword gate before the expensive LLM call.
+	// Curation tier:
+	//   net4people + gfw.report — every entry is human-curated research, so
+	//     skip the keyword filter entirely.
+	//   arxiv + popets + foci — broad venues with many non-circumvention
+	//     papers; require keyword match before expensive LLM classification.
+	curatedSources := map[string]bool{"net4people": true, "gfw-report": true}
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
-		if c.Source != "arxiv" || matchesKeywords(c) {
+		if curatedSources[c.Source] || matchesKeywords(c) {
 			kept = append(kept, c)
 		}
 	}
 	res.Filtered = len(kept)
-	log.Printf("%d passed keyword filter (incl. all curated sources)", len(kept))
+	log.Printf("%d passed keyword filter", len(kept))
 
 	novel := make([]candidate, 0, len(kept))
 	skippedRejected := 0
@@ -717,6 +747,87 @@ func yearOrNow(t time.Time) int {
 		return time.Now().Year()
 	}
 	return t.Year()
+}
+
+// ── PoPETs / FOCI proceedings source ──────────────────────────────
+//
+// petsymposium.org renders both PoPETs (privacy) and FOCI (circumvention)
+// issue/proceedings pages in a consistent markdown-able format:
+//
+//   *   **[Title](paper-page.php)** \[[PDF](pdf-url)\] (artifact info)
+//        *Author1 (Affiliation), Author2 (Affiliation), ...*
+//
+// We fetch via wick (residential IP, browser-grade) and parse with a
+// regex tailored to that format. PoPETs publishes 4 issues per year;
+// the current-year index lists all of them. FOCI is annual.
+//
+// Most PoPETs papers aren't circumvention-relevant (privacy/crypto/ML
+// dominate), so candidates flow through the keyword filter before
+// classification — see runWith. FOCI papers are usually all relevant
+// but go through the same gate for safety.
+
+var (
+	petsPaperRE  = regexp.MustCompile(`(?ms)^\*\s+\*\*\[([^\]]+)\]\(([^)]+)\)\*\*[^\n]*\n\s+\*([^*\n]+)\*`)
+	petsAffixRE  = regexp.MustCompile(`\s*\([^)]*\)`)
+	petsAuthorRE = regexp.MustCompile(`\s*,\s*`)
+)
+
+func fetchPETSymposiumProceedings(ctx context.Context, venuePrefix, url string, year int, sourceName string) ([]candidate, error) {
+	md, err := wickFetch(ctx, url, "markdown")
+	if err != nil {
+		return nil, err
+	}
+	matches := petsPaperRE.FindAllStringSubmatch(string(md), -1)
+	if len(matches) == 0 {
+		return nil, fmt.Errorf("no papers parsed from %s (page format may have changed)", url)
+	}
+	out := make([]candidate, 0, len(matches))
+	for _, m := range matches {
+		title := strings.TrimSpace(m[1])
+		paperURL := strings.TrimSpace(m[2])
+		authorsLine := strings.TrimSpace(m[3])
+
+		// Skip non-paper entries (Editors' Introduction, prefaces).
+		lt := strings.ToLower(title)
+		if strings.Contains(lt, "editors' introduction") ||
+			strings.Contains(lt, "editor's introduction") ||
+			strings.Contains(lt, "preface") {
+			continue
+		}
+
+		// Resolve the URL: petsymposium.org links can be relative
+		// (../2026/popets-2026-0014.php). Prefix with the index URL's
+		// origin if needed.
+		if !strings.HasPrefix(paperURL, "http") {
+			// Strip ../ and join with the symposium origin.
+			cleaned := strings.TrimPrefix(paperURL, "../")
+			paperURL = "https://petsymposium.org/" + sourceName + "/" + cleaned
+			if strings.HasPrefix(cleaned, sourceName+"/") {
+				paperURL = "https://petsymposium.org/" + cleaned
+			}
+		}
+
+		// Strip "(Affiliation)" parens from the authors line, then split.
+		clean := petsAffixRE.ReplaceAllString(authorsLine, "")
+		var authors []string
+		for _, a := range petsAuthorRE.Split(clean, -1) {
+			a = strings.TrimSpace(a)
+			if a != "" {
+				authors = append(authors, a)
+			}
+		}
+
+		out = append(out, candidate{
+			Source:   sourceName,
+			Title:    title,
+			Authors:  authors,
+			URL:      paperURL,
+			Venue:    fmt.Sprintf("%s %d", venuePrefix, year),
+			Year:     year,
+			Refs:     []string{"url:" + paperURL},
+		})
+	}
+	return out, nil
 }
 
 // wickFetch shells out to `wick fetch <url>` for browser-grade page
