@@ -694,7 +694,7 @@ const indexBody = `
   <div class="hero-text">
     <p class="eyebrow">circumvention research · structured · LLM-callable</p>
     <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
-    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant — or ask the corpus directly.</p>
+    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a> &mdash; including work from <span class="researchers">Roya Ensafi, Amir Houmansadr, Eric Wustrow, Dave Levin, Nick Feamster, Nguyen Phong Hoang, David Fifield, J. Alex Halderman, Niklas Niere</span>, and many others. An MCP server exposes the whole thing to any AI assistant &mdash; or ask the corpus directly.</p>
   </div>
   <form class="hero-ask" action="/ask/" method="get" autocomplete="off">
     <label for="hero-ask-q" class="eyebrow">ASK · {{.FindingsCount}} extracted findings, cited by Claude</label>
@@ -1754,6 +1754,13 @@ a:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
 em { font-style: italic; }
 .muted { color: var(--ink-mute); }
 .lede { font-size: 1.08rem; line-height: 1.55; color: var(--ink-2); margin: 0.85rem 0; max-width: 38rem; font-family: "Newsreader", serif; font-weight: 400; }
+.lede .researchers {
+  /* Subtle italic emphasis for the named-researchers run, kept in
+   * Newsreader so it reads as part of the lede prose rather than a
+   * tag list. Color slightly darker than the surrounding ink-2. */
+  font-style: italic;
+  color: var(--ink);
+}
 
 code {
   background: var(--code-bg);
