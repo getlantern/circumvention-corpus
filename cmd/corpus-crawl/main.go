@@ -67,7 +67,12 @@ var keywords = []string{
 	"sni-based", "sni filter", "dns injection", "dns poison", "rst injection",
 	"middlebox", "traffic analysis", "website fingerprint", "flow correlat",
 	"tls fingerprint", "fully encrypted", "fully-encrypted", "entropy detect",
-	"tor ", "tor bridge", "snowflake", "obfs4", "scramblesuit",
+	// "tor " (with space) was too broad — matched "vec[tor ]Commitments",
+	// "ac[tor ]frameworks", etc. Use multi-word phrases that are
+	// specific to the Tor anonymity network.
+	"tor browser", "tor bridge", "tor relay", "tor network", "tor cell",
+	"onion router", "onion routing", "onion service", "anonymity network",
+	"snowflake", "obfs4", "scramblesuit",
 	"shadowsocks", "v2ray", "vless", "vmess", "trojan", "reality",
 	"hysteria", "amneziawg", "wireguard", "kindling",
 	"refraction", "decoy routing", "tapdance", "conjure", "telex",
@@ -247,18 +252,52 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			cands = append(cands, f...)
 		}
 	}
+	if source == "usenix-sec" || source == "all" {
+		// USENIX Security uses a 2-digit-year URL slug. Each year has
+		// up to 2 cycles (Cycle 1, Cycle 2) plus an aggregated
+		// technical-sessions page. We try both cycles for the current
+		// and previous year — broken cycles 404 and we skip cleanly.
+		thisYear := time.Now().Year()
+		for _, y := range []int{thisYear, thisYear - 1} {
+			yy := y % 100
+			for _, cycle := range []string{"cycle1-accepted-papers", "cycle2-accepted-papers"} {
+				url := fmt.Sprintf("https://www.usenix.org/conference/usenixsecurity%02d/%s", yy, cycle)
+				us, err := fetchUSENIXSecurity(ctx, url, y)
+				if err != nil {
+					log.Printf("fetch USENIX Sec %d %s: %v (continuing)", y, cycle, err)
+					continue
+				}
+				log.Printf("fetched %d from USENIX Security '%02d %s", len(us), yy, cycle)
+				cands = append(cands, us...)
+			}
+		}
+	}
 	res := &runResult{Considered: len(cands)}
 
 	// Curation tier:
 	//   net4people + gfw.report — every entry is human-curated research, so
 	//     skip the keyword filter entirely.
-	//   arxiv + popets + foci — broad venues with many non-circumvention
-	//     papers; require keyword match before expensive LLM classification.
+	//   arxiv — has full abstract on the API; we keyword-match title+abstract.
+	//   popets / foci / usenix-sec — proceedings pages give us full abstracts
+	//     too, but those abstracts mention many keywords ("Tor", "fingerprint",
+	//     etc.) tangentially in unrelated work. Match on title only — a paper
+	//     whose title doesn't contain a circumvention keyword is almost
+	//     certainly not circumvention research, regardless of abstract content.
 	curatedSources := map[string]bool{"net4people": true, "gfw-report": true}
+	titleOnlySources := map[string]bool{"popets": true, "foci": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
-		if curatedSources[c.Source] || matchesKeywords(c) {
+		switch {
+		case curatedSources[c.Source]:
 			kept = append(kept, c)
+		case titleOnlySources[c.Source]:
+			if matchesKeywordsInText(c.Title) {
+				kept = append(kept, c)
+			}
+		default:
+			if matchesKeywords(c) {
+				kept = append(kept, c)
+			}
 		}
 	}
 	res.Filtered = len(kept)
@@ -828,6 +867,176 @@ func fetchPETSymposiumProceedings(ctx context.Context, venuePrefix, url string, 
 		})
 	}
 	return out, nil
+}
+
+// ── USENIX Security source ────────────────────────────────────────
+//
+// USENIX Security publishes accepted papers as a Drupal-rendered HTML
+// page. Each paper section follows a regular pattern in markdown form
+// (after wick conversion):
+//
+//   ## [Title](/conference/usenixsecurityNN/presentation/slug)
+//
+//   Author1, *Affiliation;* Author2, *Affiliation; ...*
+//
+//   Short Presentation
+//   Available Media
+//   [icon links...]
+//
+//   Abstract paragraph(s)
+//
+// We split on top-level ## headings, then heuristically extract title,
+// authors, and abstract from each section.
+
+// usenixHeadingRE matches the top-level "## [Title](url)" line that
+// starts each paper section. Go's RE2 doesn't support lookahead, so
+// we use this just to find section starts and slice the body manually.
+var usenixHeadingRE = regexp.MustCompile(`(?m)^## \[([^\]]+)\]\(([^)]+)\)`)
+
+func fetchUSENIXSecurity(ctx context.Context, url string, year int) ([]candidate, error) {
+	md, err := wickFetch(ctx, url, "markdown")
+	if err != nil {
+		return nil, err
+	}
+	text := string(md)
+
+	// Find all paper section starts.
+	starts := usenixHeadingRE.FindAllStringSubmatchIndex(text, -1)
+	if len(starts) == 0 {
+		return nil, fmt.Errorf("no papers parsed from %s", url)
+	}
+
+	out := make([]candidate, 0, len(starts))
+	for i, s := range starts {
+		// Title is captures 2..3, URL is captures 4..5.
+		title := strings.TrimSpace(text[s[2]:s[3]])
+		paperURL := strings.TrimSpace(text[s[4]:s[5]])
+		// Body is everything from end-of-heading-line until the next
+		// section's start (or EOF for the last paper).
+		bodyStart := s[1]
+		bodyEnd := len(text)
+		if i+1 < len(starts) {
+			bodyEnd = starts[i+1][0]
+		}
+		body := text[bodyStart:bodyEnd]
+
+		// Skip the page-header section (the ## with the page title is
+		// also matched by our regex). USENIX header is usually the URL
+		// path matching the page itself or a fragment selector.
+		if strings.HasPrefix(paperURL, "#") || strings.Contains(strings.ToLower(title), "switcher") {
+			continue
+		}
+
+		// Resolve relative URLs.
+		if strings.HasPrefix(paperURL, "/") {
+			paperURL = "https://www.usenix.org" + paperURL
+		}
+
+		authors, abstract := extractUSENIXAuthorsAbstract(body)
+
+		out = append(out, candidate{
+			Source:   "usenix-sec",
+			Title:    title,
+			Authors:  authors,
+			Abstract: abstract,
+			URL:      paperURL,
+			Venue:    fmt.Sprintf("USENIX Security %d", year),
+			Year:     year,
+			Refs:     []string{"url:" + paperURL},
+		})
+	}
+	return out, nil
+}
+
+// extractUSENIXAuthorsAbstract pulls the authors line and abstract
+// paragraph out of a USENIX paper section body. Authors are the first
+// non-empty line containing italic markers (the affiliation marks);
+// the abstract is the longest paragraph in the section (skipping
+// metadata lines like "Short Presentation", "Available Media").
+func extractUSENIXAuthorsAbstract(body string) ([]string, string) {
+	lines := strings.Split(body, "\n")
+
+	// Find authors: first non-empty line with italics that isn't a
+	// metadata bullet.
+	var authorsLine string
+	for _, l := range lines {
+		lt := strings.TrimSpace(l)
+		if lt == "" {
+			continue
+		}
+		// Skip known metadata lines.
+		if strings.HasPrefix(lt, "[!") || strings.HasPrefix(lt, "![") {
+			continue
+		}
+		ll := strings.ToLower(lt)
+		if ll == "available media" || ll == "short presentation" || ll == "long presentation" ||
+			ll == "video" || ll == "slides" || strings.HasPrefix(ll, "view mode") {
+			continue
+		}
+		if strings.Contains(lt, "*") {
+			authorsLine = lt
+			break
+		}
+	}
+
+	// Parse authors: each entry is "Name, *Affiliation*" (semicolon-
+	// or comma-separated). Strip italic-wrapped affiliations and split
+	// on author boundaries.
+	var authors []string
+	if authorsLine != "" {
+		// Strip *...* italic blocks (affiliations).
+		clean := regexp.MustCompile(`\*[^*]*\*`).ReplaceAllString(authorsLine, "")
+		// Split by , or ; — each entry is one author name.
+		for _, a := range regexp.MustCompile(`[,;]`).Split(clean, -1) {
+			a = strings.TrimSpace(a)
+			a = strings.TrimSuffix(a, ",")
+			a = strings.Trim(a, "; ")
+			if a == "" {
+				continue
+			}
+			// Reject obvious junk (single chars, all-non-letters).
+			if len(a) < 2 || !regexp.MustCompile(`[A-Za-z]`).MatchString(a) {
+				continue
+			}
+			authors = append(authors, a)
+		}
+	}
+
+	// Find abstract: longest paragraph that isn't the authors line and
+	// isn't an icon-link block. We split on blank lines.
+	var paragraphs []string
+	var cur []string
+	for _, l := range lines {
+		if strings.TrimSpace(l) == "" {
+			if len(cur) > 0 {
+				paragraphs = append(paragraphs, strings.TrimSpace(strings.Join(cur, " ")))
+				cur = cur[:0]
+			}
+		} else {
+			cur = append(cur, l)
+		}
+	}
+	if len(cur) > 0 {
+		paragraphs = append(paragraphs, strings.TrimSpace(strings.Join(cur, " ")))
+	}
+
+	abstract := ""
+	for _, p := range paragraphs {
+		if p == authorsLine || strings.Contains(p, "![") || strings.HasPrefix(p, "[!") {
+			continue
+		}
+		if len(p) < 80 {
+			// Too short to be an abstract.
+			continue
+		}
+		if len(p) > len(abstract) {
+			abstract = p
+		}
+	}
+	abstract = strings.TrimSpace(abstract)
+	abstract = cleanText(abstract)
+
+	return authors, abstract
 }
 
 // wickFetch shells out to `wick fetch <url>` for browser-grade page
@@ -1405,7 +1614,11 @@ func serve(args []string) {
 // ── helpers ───────────────────────────────────────────────────────
 
 func matchesKeywords(c candidate) bool {
-	hay := strings.ToLower(c.Title + " " + c.Abstract)
+	return matchesKeywordsInText(c.Title + " " + c.Abstract)
+}
+
+func matchesKeywordsInText(s string) bool {
+	hay := strings.ToLower(s)
 	for _, k := range keywords {
 		if strings.Contains(hay, k) {
 			return true
