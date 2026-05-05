@@ -726,7 +726,9 @@ const indexBody = `
 </section>
 
 <section class="recent">
-  <p class="section-mark"><span class="sec-num">§ 03</span> <span class="sec-rule"></span> <span class="sec-title">recent additions</span></p>
+  <p class="section-mark"><span class="sec-num">§ 03</span> <span class="sec-rule"></span> <span class="sec-title">self-updating</span></p>
+  <h2 class="display-sm">The corpus keeps crawling without us.</h2>
+  <p class="lede">A pipeline polls <a href="https://arxiv.org" rel="external">arXiv</a>, <a href="https://github.com/net4people/bbs" rel="external">net4people/bbs</a>, <a href="https://gfw.report" rel="external">gfw.report</a>, <a href="https://petsymposium.org" rel="external">PoPETs</a>, <a href="https://www.usenix.org/conferences/byname/108" rel="external">FOCI</a>, <a href="https://www.usenix.org/conferences/byname/115" rel="external">USENIX Security</a>, and <a href="https://www.ermao.net/" rel="external">ermao.net</a> for new circumvention research, fetches each candidate via <a href="https://getwick.dev/" rel="external">wick</a> (browser-grade, residential-IP web access), then asks Claude to propose taxonomy tags and extract findings against the schema. Every new entry lands as an <code>auto-ingest</code> PR labeled for human review. Below: the most recent additions.</p>
   <ul class="paper-list">
     {{range .Recent}}
     <li>
@@ -1029,6 +1031,10 @@ const contributeBody = `
 <h1>Contribute</h1>
 
 <p>If you'd rather use the corpus than contribute to it, see <a href="/use/">use the corpus</a>.</p>
+
+<h2>Auto-ingest, briefly</h2>
+<p>You may not need to add anything by hand. A scheduled crawler watches arXiv, net4people/bbs, gfw.report, PoPETs, FOCI, USENIX Security, and ermao.net for new circumvention research. It fetches candidate pages via <a href="https://getwick.dev/" rel="external">wick</a> (browser-grade web access — works against bot-walls and residential-IP-only sources) and asks Claude to propose taxonomy tags and extract findings against the schema. Every accepted paper opens a PR labeled <code>auto-ingest</code>. Reviewing one of those PRs is the lowest-friction way to contribute — read the auto-proposed tags, tighten or drop them, replace the auto-generated notes with your team's perspective, and merge.</p>
+<p>If you want to add something the crawler missed (a private write-up, a blog post, a paper from a venue we don't poll yet), follow the manual steps below.</p>
 
 <h2>Add a paper</h2>
 <ol>
