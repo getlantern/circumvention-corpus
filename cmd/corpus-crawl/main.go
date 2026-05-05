@@ -109,8 +109,9 @@ serve  — HTTP server with POST /crawl (used by Cloudflare Tunnel)`)
 // the same shape that runOnce() uses.
 type runOptions struct {
 	corpus      string
-	maxN        int // cap on accepted (relevant) papers per run — keeps PRs reviewable
-	maxClassify int // safety bound on how many candidates we send to the LLM
+	source      string // "arxiv", "net4people", or "all"
+	maxN        int    // cap on accepted (relevant) papers per run — keeps PRs reviewable
+	maxClassify int    // safety bound on how many candidates we send to the LLM
 	windowDays  int
 	dryRun      bool
 	noPR        bool
@@ -120,9 +121,10 @@ func runOnce(args []string) {
 	fs := flag.NewFlagSet("run", flag.ExitOnError)
 	opts := runOptions{}
 	fs.StringVar(&opts.corpus, "corpus", ".", "path to circumvention-corpus repo root")
+	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, or all")
 	fs.IntVar(&opts.maxN, "max", 12, "max ACCEPTED papers per PR (cap applied after classification)")
 	fs.IntVar(&opts.maxClassify, "max-classify", 80, "safety bound on classifier calls per run")
-	fs.IntVar(&opts.windowDays, "window-days", 14, "look back this many days")
+	fs.IntVar(&opts.windowDays, "window-days", 30, "look back this many days")
 	fs.BoolVar(&opts.dryRun, "dry-run", false, "don't write YAML files; print what would happen")
 	fs.BoolVar(&opts.noPR, "no-pr", false, "write YAMLs but skip opening a PR")
 	_ = fs.Parse(args)
@@ -170,21 +172,45 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	}
 
 	since := time.Now().AddDate(0, 0, -opts.windowDays)
-	cands, err := fetchArxiv(ctx, since)
-	if err != nil {
-		return nil, fmt.Errorf("fetch arxiv: %w", err)
+	source := strings.ToLower(strings.TrimSpace(opts.source))
+	if source == "" {
+		source = "all"
 	}
-	log.Printf("fetched %d candidates from arXiv cs.CR (%d-day window)", len(cands), opts.windowDays)
+
+	var cands []candidate
+	if source == "arxiv" || source == "all" {
+		ax, err := fetchArxiv(ctx, since)
+		if err != nil {
+			return nil, fmt.Errorf("fetch arxiv: %w", err)
+		}
+		log.Printf("fetched %d from arXiv cs.CR (%d-day window)", len(ax), opts.windowDays)
+		cands = append(cands, ax...)
+	}
+	if source == "net4people" || source == "all" {
+		np, err := fetchNet4People(ctx, since)
+		if err != nil {
+			// net4people is best-effort; if it fails, log and continue
+			// so an arXiv outage / GH-API rate limit doesn't kill the run.
+			log.Printf("fetch net4people: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from net4people reading group", len(np))
+			cands = append(cands, np...)
+		}
+	}
 	res := &runResult{Considered: len(cands)}
 
+	// Net4people candidates are pre-curated by humans (every reading-
+	// group post is by definition relevant), so they bypass the keyword
+	// filter. arXiv candidates still need the cheap keyword gate before
+	// the expensive LLM call.
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
-		if matchesKeywords(c) {
+		if c.Source == "net4people" || matchesKeywords(c) {
 			kept = append(kept, c)
 		}
 	}
 	res.Filtered = len(kept)
-	log.Printf("%d passed keyword filter", len(kept))
+	log.Printf("%d passed keyword filter (incl. all net4people)", len(kept))
 
 	novel := make([]candidate, 0, len(kept))
 	for _, c := range kept {
@@ -220,15 +246,43 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			continue
 		}
 		k, err := classifyWithClaude(ctx, c, string(taxRaw))
+		ident := c.ArxivID
+		if ident == "" {
+			ident = c.URL
+		}
 		if err != nil {
-			log.Printf("classify %s: %v (skipping)", c.ArxivID, err)
+			log.Printf("classify %s: %v (skipping)", ident, err)
 			continue
 		}
 		if !k.IsRelevant {
-			log.Printf("not-relevant: %s — %s", c.ArxivID, k.Reason)
+			log.Printf("not-relevant: %s — %s", ident, k.Reason)
 			continue
 		}
-		log.Printf("✓ %s — censors=%v techniques=%v", c.ArxivID, k.Censors, k.Techniques)
+		// For net4people candidates the LLM has filled in authors/venue/
+		// year/abstract from the issue body — patch those onto the
+		// candidate so the YAML writer sees them.
+		if c.Source == "net4people" {
+			if k.Title != "" {
+				c.Title = k.Title
+			}
+			if len(k.Authors) > 0 {
+				c.Authors = k.Authors
+			}
+			if k.Venue != "" {
+				c.Venue = k.Venue
+			}
+			if k.Year != 0 {
+				c.Year = k.Year
+			}
+			if k.CleanAbstract != "" {
+				c.Abstract = k.CleanAbstract
+			}
+			if k.CanonicalURL != "" {
+				// Prefer the actual paper URL; keep the GH issue URL in Refs.
+				c.URL = k.CanonicalURL
+			}
+		}
+		log.Printf("✓ %s — censors=%v techniques=%v", ident, k.Censors, k.Techniques)
 		out = append(out, accepted{c: c, k: k})
 		// Stop classifying once we have maxN accepted — saves API calls
 		// without losing relevant papers (we only stop AFTER acceptance).
@@ -285,13 +339,18 @@ type arxivFeed struct {
 }
 
 type candidate struct {
+	Source   string // "arxiv" or "net4people" — drives downstream prompt + sources field
 	ArxivID  string
 	Title    string
 	Abstract string
 	Authors  []string
 	URL      string
+	Venue    string
 	Year     int
 	Updated  time.Time
+	// Refs are extra source URLs (e.g. for net4people, the GH issue URL)
+	// that get appended to the YAML's `sources` field.
+	Refs []string
 }
 
 // accepted pairs a candidate with its successful classification — the
@@ -341,10 +400,12 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 			continue
 		}
 		c := candidate{
+			Source:   "arxiv",
 			ArxivID:  arxivIDFromURL(e.ID),
 			Title:    cleanText(e.Title),
 			Abstract: cleanText(e.Summary),
 			URL:      strings.Replace(e.ID, "http://", "https://", 1),
+			Venue:    "arXiv preprint",
 			Updated:  updated,
 		}
 		for _, a := range e.Authors {
@@ -356,6 +417,87 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 		cands = append(cands, c)
 	}
 	return cands, nil
+}
+
+// ── net4people/bbs source ──────────────────────────────────────────
+//
+// net4people is a curated forum where the circumvention community
+// flags new papers — academic conf papers, journal articles, NGO
+// reports, MSc theses, and other primary sources. The "reading group"
+// label marks issues that discuss a specific paper. Body format is
+// fairly regular: title, authors, URL, summary written by the
+// community member who posted it.
+//
+// We pull all reading-group issues since `since` via the GitHub API
+// and create one candidate per issue. Authors and venue are extracted
+// by the LLM during classification (the bodies aren't structured
+// enough for regex parsing to reliably catch e.g. "Article 19" vs
+// "Vincent Brussee" vs five-author conference papers).
+
+type ghIssue struct {
+	Number    int       `json:"number"`
+	Title     string    `json:"title"`
+	Body      string    `json:"body"`
+	HTMLURL   string    `json:"html_url"`
+	CreatedAt time.Time `json:"created_at"`
+	Labels    []struct {
+		Name string `json:"name"`
+	} `json:"labels"`
+	State string `json:"state"`
+}
+
+func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) {
+	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+	defer cancel()
+	// Reading-group label only — high-precision (every issue with that
+	// label discusses a specific paper or report). We pull both open
+	// and closed issues; closed often means "merged into another thread"
+	// not "no longer relevant."
+	endpoint := "https://api.github.com/repos/net4people/bbs/issues"
+	q := fmt.Sprintf("?labels=reading%%20group&state=all&since=%s&per_page=100",
+		since.UTC().Format(time.RFC3339))
+	req, err := http.NewRequestWithContext(cctx, "GET", endpoint+q, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Accept", "application/vnd.github+json")
+	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
+	req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1")
+	if tok := os.Getenv("GITHUB_TOKEN"); tok != "" {
+		req.Header.Set("Authorization", "Bearer "+tok)
+	}
+	resp, err := (&http.Client{Timeout: httpTimeout}).Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
+		return nil, fmt.Errorf("github API: status %d: %s", resp.StatusCode, string(body))
+	}
+	var issues []ghIssue
+	if err := json.NewDecoder(resp.Body).Decode(&issues); err != nil {
+		return nil, err
+	}
+	out := make([]candidate, 0, len(issues))
+	for _, iss := range issues {
+		if iss.CreatedAt.Before(since) {
+			continue
+		}
+		// Title in the issue is usually the paper's title verbatim. We
+		// preserve it as-is and let the classifier extract structured
+		// metadata from the body.
+		out = append(out, candidate{
+			Source:   "net4people",
+			Title:    cleanText(iss.Title),
+			Abstract: cleanText(truncate(iss.Body, 4000)), // 4 KB body is plenty for context
+			URL:      iss.HTMLURL,
+			Updated:  iss.CreatedAt,
+			Year:     iss.CreatedAt.Year(),
+			Refs:     []string{fmt.Sprintf("url:%s", iss.HTMLURL)},
+		})
+	}
+	return out, nil
 }
 
 // wickFetch shells out to `wick fetch <url>` for browser-grade page
@@ -390,6 +532,16 @@ type classification struct {
 	DefensesDiscussed []string `json:"defenses_discussed,omitempty"`
 	EvaluationMethods []string `json:"evaluation_methods,omitempty"`
 	Notes             string   `json:"notes,omitempty"`
+	// For net4people candidates the classifier also extracts these
+	// (the GH issue title is the paper title but authors/venue/year
+	// live in the body). Empty for arXiv candidates which have these
+	// from the API directly.
+	Authors          []string `json:"authors,omitempty"`
+	Venue            string   `json:"venue,omitempty"`
+	Year             int      `json:"year,omitempty"`
+	Title            string   `json:"title,omitempty"`             // override if the issue title differs from paper title
+	CleanAbstract    string   `json:"clean_abstract,omitempty"`    // 1-3 sentence abstract LLM derives from body
+	CanonicalURL     string   `json:"canonical_url,omitempty"`     // first paper URL found in body
 }
 
 // classifyWithClaude shells out to `claude -p` to classify a paper. We
@@ -437,14 +589,26 @@ func classifyWithClaude(ctx context.Context, c candidate, taxonomy string) (clas
 
 func buildClassifyPrompt(c candidate, taxonomy string) string {
 	var b strings.Builder
-	b.WriteString(`You are a research librarian curating a censorship-circumvention research corpus.
-Given a paper's title, authors, and abstract, decide whether it is relevant to the corpus, and propose taxonomy tags from the controlled vocabulary below.
+	b.WriteString(`You are a research librarian curating a censorship-circumvention research corpus. Given a paper's title and surrounding context, decide whether it is relevant and propose taxonomy tags from the controlled vocabulary below.
 
-A paper is RELEVANT if it studies (a) censorship measurement, (b) censor capabilities or detection techniques, (c) circumvention protocol design, (d) evaluation of circumvention systems, (e) traffic analysis attacks/defenses on encrypted tunnels, or (f) policy/legal work that materially affects circumvention tooling. Generic crypto, cryptanalysis, ML adversarial robustness, or unrelated infosec is NOT relevant.
+RELEVANCE — be GENEROUS. A paper is relevant if it studies any of:
+  (a) censorship measurement (network-level or app-level)
+  (b) censor capabilities or detection techniques (DPI, fingerprinting, ML classifiers, active probing, traffic analysis)
+  (c) circumvention protocol design or evaluation
+  (d) anonymity systems / Tor / VPN ecosystem studies
+  (e) traffic-analysis attacks or defenses on encrypted tunnels
+  (f) NGO / advocacy / journalism reports on censorship infrastructure or policy
+  (g) primary-source measurements of internet shutdowns, blocking events, or surveillance regimes
+  (h) MSc / PhD theses, mailing-list crossposts, blog write-ups that materially advance the field
+  (i) policy, legal, or regulatory work that affects circumvention tooling
 
-Use ONLY the taxonomy IDs below. Do not invent new ones. If a paper is relevant but no existing tag fits exactly, pick the closest broader tag.
+NOT relevant: generic crypto/cryptanalysis, ML adversarial robustness without a censorship angle, IoT auth, smart-contract security, web bot detection without a proxy/VPN angle, biometric authentication, fraud detection unrelated to circumvention.
 
-Output STRICT JSON only. No prose, no markdown, no code fences. Schema:
+Default to is_relevant=true if uncertain. The human reviewer will tighten in PR review; we'd rather catch a borderline paper than miss it.
+
+Use ONLY taxonomy IDs from the vocabulary below. Pick the closest broader tag if no exact match exists. Tags can be empty arrays if nothing applies.
+
+Output STRICT JSON. No prose, no markdown, no code fences. Schema:
 {
   "is_relevant": boolean,
   "reason": "1 sentence",
@@ -452,15 +616,39 @@ Output STRICT JSON only. No prose, no markdown, no code fences. Schema:
   "techniques": ["array of technique ids"],
   "defenses_discussed": ["array of defense ids, optional"],
   "evaluation_methods": ["array, optional"],
+  "title": "the paper's actual title (omit unless different from input)",
+  "authors": ["author full names extracted from the body, in order"],
+  "venue": "publication venue (e.g. 'USENIX Security', 'PoPETs', 'Article 19 report', 'arXiv preprint')",
+  "year": integer,
+  "clean_abstract": "1-3 sentence summary of what the paper does",
+  "canonical_url": "the first non-github paper URL in the body",
   "notes": "1 sentence on Lantern relevance, or empty"
 }
+
+For arXiv candidates: title/authors/year/abstract are already correct in the input — you can skip those fields in your response (we keep what we have). Just give relevance + tags + notes.
+
+For net4people candidates: the input "Abstract" is actually the GitHub issue body and contains the metadata you need to extract (authors line, URL link, summary). Extract all the metadata fields above.
 
 === TAXONOMY ===
 `)
 	b.WriteString(taxonomy)
 	b.WriteString("\n=== PAPER ===\n")
-	fmt.Fprintf(&b, "Title: %s\nAuthors: %s\nArXiv: %s\n\nAbstract:\n%s\n",
-		c.Title, strings.Join(c.Authors, ", "), c.ArxivID, c.Abstract)
+	fmt.Fprintf(&b, "Source: %s\nTitle: %s\n", c.Source, c.Title)
+	if len(c.Authors) > 0 {
+		fmt.Fprintf(&b, "Authors: %s\n", strings.Join(c.Authors, ", "))
+	}
+	if c.ArxivID != "" {
+		fmt.Fprintf(&b, "ArXiv: %s\n", c.ArxivID)
+	}
+	if c.URL != "" {
+		fmt.Fprintf(&b, "URL: %s\n", c.URL)
+	}
+	if c.Year != 0 {
+		fmt.Fprintf(&b, "Year hint: %d\n", c.Year)
+	}
+	b.WriteString("\n--- Abstract / body ---\n")
+	b.WriteString(c.Abstract)
+	b.WriteString("\n")
 	return b.String()
 }
 
@@ -545,11 +733,20 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 			log.Printf("skip %s — file already exists", path)
 			continue
 		}
+		venue := a.c.Venue
+		if venue == "" {
+			venue = "arXiv preprint"
+		}
+		sources := []string{}
+		if a.c.ArxivID != "" {
+			sources = append(sources, "arxiv:"+a.c.ArxivID)
+		}
+		sources = append(sources, a.c.Refs...)
 		y := paperYAML{
 			ID:                id,
 			Title:             a.c.Title,
 			Authors:           a.c.Authors,
-			Venue:             "arXiv preprint",
+			Venue:             venue,
 			Year:              a.c.Year,
 			ArxivID:           a.c.ArxivID,
 			URL:               a.c.URL,
@@ -563,7 +760,7 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 			Visibility:        "public",
 			DateAdded:         time.Now().UTC().Format("2006-01-02"),
 			AddedBy:           "corpus-crawl-bot",
-			Sources:           []string{"arxiv:" + a.c.ArxivID},
+			Sources:           sources,
 		}
 		if dryRun {
 			log.Printf("DRY RUN: would write %s", path)

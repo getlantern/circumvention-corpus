@@ -1,0 +1,30 @@
+id: 2026-brussee-reverse-great-firewall
+title: "Conceptualizing the reverse great firewall: cybersecurity and the logics of government geo-blocking in China"
+authors:
+  - Vincent Brussee
+venue: Journal of Cybersecurity
+year: 2026
+doi: "10.1093/cybsec/tyag005"
+url: "https://academic.oup.com/cybersecurity/article-lookup/doi/10.1093/cybsec/tyag005"
+abstract: |
+  Studies the "reverse Great Firewall" — the growing pattern of Chinese
+  government websites blocking access from outside China. Develops a
+  conceptual framework for understanding outbound geo-blocking as a
+  cybersecurity practice rather than information control. Includes a
+  CSV dataset of Chinese government sites observed to block external
+  access (https://zenodo.org/records/18172145).
+censors: [cn]
+techniques: [ip-blocking, asn-blackholing]
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://github.com/net4people/bbs/issues/596"
+notes: |
+  Novel angle the rest of the corpus doesn't cover — the corpus has
+  extensive material on outbound circumvention from CN, but inbound
+  geo-blocking by CN itself is its own story (data sovereignty, signal
+  to outside observers, asymmetric internet topology). Worth a closer
+  read for anyone working on cross-border data flows or sanctions-
+  resilient infrastructure.

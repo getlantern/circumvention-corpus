@@ -1,0 +1,39 @@
+id: 2026-rks-russian-apps-vpn-detection
+title: "Russian Apps Search for VPNs: A Survey of Mandated VPN-Detection in 30 Popular Russian Android Apps"
+authors:
+  - RKS Global
+venue: RKS Global (research report)
+year: 2026
+url: "https://files.rks.global/russian_apps_search_for_vpn_en.pdf"
+abstract: |
+  Analysis of 30 popular Russian Android apps following Ministry of
+  Digital Development guidelines requiring apps to restrict access from
+  VPN-using devices starting April 15 2026. Findings: 22 of 30 apps
+  detect VPN status; 19 of those send the detected status to the
+  server. 11 apps received a "RED" rating (maximum surveillance). The
+  most aggressive class is banking apps (Sber, T-Bank, VTB, Alfa-Bank)
+  which combine VPN detection with behavioral biometrics (screen
+  pressure, touch coordinates, gesture timing) for cross-account
+  re-identification of users behind proxies. Anti-analysis features
+  observed in T-Bank, Yandex services, and MAX actively search for
+  research tooling on the device.
+censors: [ru]
+techniques: [tls-fingerprint, traffic-shape, ml-classifier, middlebox-interference]
+evaluation_methods: [measurement-study]
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://rks.global/en/research/vpn-detection/"
+  - "url:https://github.com/net4people/bbs/issues/605"
+notes: |
+  Significant escalation of Russia's VPN surveillance — moves detection
+  from network layer (TSPU) to client-application layer. Threat-model
+  implication for Lantern: even if a Russian client successfully reaches
+  a circumvention proxy, in-app surveillance can flag the VPN
+  connection at the app layer and block users that way. Behavioral
+  biometrics enable cross-account re-identification, defeating the
+  "anonymous account behind a proxy" usage pattern. Pairs with TSPU
+  measurement work (2024-xue-tspu-russia) as the application-layer
+  half of the Russian censorship picture.

@@ -1,0 +1,38 @@
+id: 2026-article19-tightening-the-net
+title: "Tightening the Net: China's Infrastructure of Oppression in Iran"
+authors:
+  - Article 19
+venue: Article 19 (research report)
+year: 2026
+url: "https://www.article19.org/wp-content/uploads/2026/02/A19-Tightening-the-Net-China-Iran-Report.pdf"
+abstract: |
+  Article 19 report documenting cooperation between the Chinese and
+  Iranian governments to implement network censorship in Iran. Maps the
+  institutional alignment (Iran's Supreme Council of Cyberspace mirrors
+  the Cyberspace Administration of China), the normative alignment
+  ("cyber sovereignty" doctrine shared by both regimes), and the
+  technology transfer pipeline under the Belt and Road Initiative's
+  Digital Silk Road framework. Frames Iran's National Information
+  Network as a deliberate replication of the Great Firewall.
+censors: [ir, cn]
+techniques: [dpi, sni-blocking, dns-poisoning, ip-blocking, bgp-hijack, throttling]
+evaluation_methods: [measurement-study]
+core: false
+visibility: public
+date_added: "2026-05-05"
+added_by: afisk
+sources:
+  - "url:https://www.article19.org/resources/tightening-the-net-chinas-infrastructure-of-oppression-in-iran/"
+  - "url:https://github.com/net4people/bbs/issues/582"
+references:
+  - 2025-jfm-silk-road-surveillance
+  - 2025-amnesty-pakistan-shadows
+  - 2025-interseclab-internet-coup
+notes: |
+  Pairs with the JFM/Amnesty/InterSecLab reports as primary-source
+  documentation of the China → client-state surveillance/censorship
+  export pipeline. Iran-specific angle complements the Myanmar (JFM),
+  Pakistan (Amnesty + InterSecLab), and broader Belt-and-Road
+  documentation already in the corpus. Operationally relevant: any
+  protocol designed for IR users should assume IR's censor capability
+  is converging on CN's, with shared vendor tooling.
