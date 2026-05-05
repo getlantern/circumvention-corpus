@@ -69,11 +69,20 @@ type Paper struct {
 	findingsText string `yaml:"-"`
 }
 
-type finding struct {
+// Finding mirrors corpus/findings/*.yaml. Its ID is the filename stem
+// (e.g. 2025-fan-wallbleed__memory-disclosure) and serves as a stable
+// permalink: /findings/<id>/.
+type Finding struct {
+	ID                  string   `yaml:"-"`
 	Paper               string   `yaml:"paper"`
+	Kind                string   `yaml:"kind,omitempty"`
 	Summary             string   `yaml:"summary"`
-	DefenseImplications []string `yaml:"defense_implications"`
-	Section             string   `yaml:"section"`
+	Techniques          []string `yaml:"techniques,omitempty"`
+	Censors             []string `yaml:"censors,omitempty"`
+	Defenses            []string `yaml:"defenses,omitempty"`
+	DefenseImplications []string `yaml:"defense_implications,omitempty"`
+	Section             string   `yaml:"section,omitempty"`
+	ExtractedBy         string   `yaml:"extracted_by,omitempty"`
 }
 
 type taxonomyEntry struct {
@@ -100,7 +109,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err := attachFindings(*corpusDir, papers); err != nil {
+	findings, err := loadFindings(*corpusDir, papers)
+	if err != nil {
 		log.Fatal(err)
 	}
 	tax, err := loadTaxonomy(*corpusDir)
@@ -123,21 +133,28 @@ func main() {
 	}
 
 	site := &site{
-		out:          *outDir,
-		papers:       papers,
-		byID:         map[string]*Paper{},
-		tax:          tax,
-		template:     mustTemplates(),
-		assetVersion: assetVersion,
+		out:             *outDir,
+		papers:          papers,
+		byID:            map[string]*Paper{},
+		findings:        findings,
+		findingsByID:    map[string]*Finding{},
+		findingsByPaper: map[string][]*Finding{},
+		tax:             tax,
+		template:        mustTemplates(),
+		assetVersion:    assetVersion,
 	}
 	for _, p := range papers {
 		site.byID[p.ID] = p
+	}
+	for _, f := range findings {
+		site.findingsByID[f.ID] = f
+		site.findingsByPaper[f.Paper] = append(site.findingsByPaper[f.Paper], f)
 	}
 
 	if err := site.render(); err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("rendered %d papers to %s/", len(papers), *outDir)
+	log.Printf("rendered %d papers and %d findings to %s/", len(papers), len(findings), *outDir)
 }
 
 func loadPapers(corpusDir string, publicOnly bool) ([]*Paper, error) {
@@ -173,11 +190,17 @@ func loadPapers(corpusDir string, publicOnly bool) ([]*Paper, error) {
 	return out, nil
 }
 
-// attachFindings reads corpus/findings/*.yaml and concatenates each
-// finding's searchable text (summary + defense_implications + section)
-// onto the matching paper's findingsText. A missing findings dir is
-// fine; broken files are logged and skipped.
-func attachFindings(corpusDir string, papers []*Paper) error {
+// loadFindings reads corpus/findings/*.yaml. For every finding it
+// (a) appends the searchable text onto the matching paper's
+// findingsText so the search bar can hit findings via the haystack,
+// and (b) returns the structured Finding records — drives /findings/,
+// per-finding permalinks, and findings sections on paper / tag pages.
+//
+// Findings whose `paper` field doesn't resolve to a known paper id
+// are dropped (with a log) — they would render as orphan permalinks
+// otherwise. A missing findings dir is fine; bad individual files
+// are logged and skipped.
+func loadFindings(corpusDir string, papers []*Paper) ([]*Finding, error) {
 	byID := map[string]*Paper{}
 	for _, p := range papers {
 		byID[p.ID] = p
@@ -186,10 +209,11 @@ func attachFindings(corpusDir string, papers []*Paper) error {
 	entries, err := os.ReadDir(dir)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return nil
+			return nil, nil
 		}
-		return err
+		return nil, err
 	}
+	var out []*Finding
 	var b strings.Builder
 	for _, e := range entries {
 		if e.IsDir() || !strings.HasSuffix(e.Name(), ".yaml") {
@@ -200,13 +224,15 @@ func attachFindings(corpusDir string, papers []*Paper) error {
 			log.Printf("findings: read %s: %v", e.Name(), rerr)
 			continue
 		}
-		var f finding
+		var f Finding
 		if uerr := yaml.Unmarshal(raw, &f); uerr != nil {
 			log.Printf("findings: parse %s: %v", e.Name(), uerr)
 			continue
 		}
+		f.ID = strings.TrimSuffix(e.Name(), ".yaml")
 		p, ok := byID[f.Paper]
 		if !ok {
+			log.Printf("findings: %s references unknown paper %q — skipping", f.ID, f.Paper)
 			continue
 		}
 		b.Reset()
@@ -221,8 +247,9 @@ func attachFindings(corpusDir string, papers []*Paper) error {
 			p.findingsText += " "
 		}
 		p.findingsText += b.String()
+		out = append(out, &f)
 	}
-	return nil
+	return out, nil
 }
 
 func loadTaxonomy(corpusDir string) (*taxonomy, error) {
@@ -238,12 +265,15 @@ func loadTaxonomy(corpusDir string) (*taxonomy, error) {
 }
 
 type site struct {
-	out          string
-	papers       []*Paper
-	byID         map[string]*Paper
-	tax          *taxonomy
-	template     pageTemplates
-	assetVersion string // appended as ?v=... to /style.css and /search.js
+	out             string
+	papers          []*Paper
+	byID            map[string]*Paper
+	findings        []*Finding
+	findingsByID    map[string]*Finding
+	findingsByPaper map[string][]*Finding
+	tax             *taxonomy
+	template        pageTemplates
+	assetVersion    string // appended as ?v=... to /style.css and /search.js
 }
 
 func (s *site) render() error {
@@ -280,6 +310,14 @@ func (s *site) render() error {
 	}
 	if err := s.renderTaxonomy(); err != nil {
 		return err
+	}
+	if err := s.renderFindingsIndex(); err != nil {
+		return err
+	}
+	for _, f := range s.findings {
+		if err := s.renderFinding(f); err != nil {
+			return err
+		}
 	}
 	if err := s.renderUse(); err != nil {
 		return err
@@ -363,6 +401,9 @@ func (s *site) writeFile(rel string, name string, data any) error {
 		if _, present := m["PaperCount"]; !present {
 			m["PaperCount"] = len(s.papers)
 		}
+		if _, present := m["FindingsCount"]; !present {
+			m["FindingsCount"] = len(s.findings)
+		}
 	}
 	dir := filepath.Join(s.out, rel)
 	if err := os.MkdirAll(dir, 0o755); err != nil {
@@ -427,13 +468,178 @@ func (s *site) renderPaper(p *Paper) error {
 		"Tax":        s.tax,
 		"Related":    related,
 		"References": refResolved,
+		"Findings":   s.findingsByPaper[p.ID],
 	})
 }
 
+// renderFindingsIndex emits /findings/ — a single page listing every
+// finding with paper context and tag pills. Sorted by paper year desc,
+// then alphabetical, so the freshest findings rise to the top. With
+// ~1200 entries this comes out to ~700KB of HTML; if it ever crosses
+// 5000 we should paginate or shard by year.
+func (s *site) renderFindingsIndex() error {
+	rows := s.findingRows(s.findings)
+	techCounts := map[string]int{}
+	censorCounts := map[string]int{}
+	yearCounts := map[int]int{}
+	for _, f := range s.findings {
+		for _, t := range f.Techniques {
+			techCounts[t]++
+		}
+		for _, c := range f.Censors {
+			censorCounts[c]++
+		}
+		if p, ok := s.byID[f.Paper]; ok {
+			yearCounts[p.Year]++
+		}
+	}
+	return s.writeFile("findings", "findings_index", map[string]any{
+		"Title":         "Findings — circumvention-corpus",
+		"Rows":          rows,
+		"Tax":           s.tax,
+		"FindingsCount": len(s.findings),
+		"TechCounts":    techCounts,
+		"CensorCounts":  censorCounts,
+		"YearCounts":    yearCounts,
+	})
+}
+
+// renderFinding emits /findings/<id>/ — the per-finding permalink page.
+// Shows the full summary, paper context, defense implications, taxonomy
+// pills, and links to other findings from the same paper or sharing the
+// same techniques.
+func (s *site) renderFinding(f *Finding) error {
+	p, ok := s.byID[f.Paper]
+	if !ok {
+		return nil
+	}
+	// Sibling findings = other findings extracted from the same paper.
+	var siblings []*Finding
+	for _, sf := range s.findingsByPaper[f.Paper] {
+		if sf.ID != f.ID {
+			siblings = append(siblings, sf)
+		}
+	}
+	// Related findings = findings from other papers that share at least
+	// one technique. Capped to a handful, recency-biased.
+	var related []*Finding
+	techSet := map[string]bool{}
+	for _, t := range f.Techniques {
+		techSet[t] = true
+	}
+	if len(techSet) > 0 {
+		type scored struct {
+			f     *Finding
+			score int
+			year  int
+		}
+		var pool []scored
+		for _, other := range s.findings {
+			if other.ID == f.ID || other.Paper == f.Paper {
+				continue
+			}
+			score := 0
+			for _, t := range other.Techniques {
+				if techSet[t] {
+					score++
+				}
+			}
+			if score == 0 {
+				continue
+			}
+			y := 0
+			if op, ok := s.byID[other.Paper]; ok {
+				y = op.Year
+			}
+			pool = append(pool, scored{other, score, y})
+		}
+		sort.SliceStable(pool, func(i, j int) bool {
+			if pool[i].score != pool[j].score {
+				return pool[i].score > pool[j].score
+			}
+			return pool[i].year > pool[j].year
+		})
+		for i := 0; i < len(pool) && i < 6; i++ {
+			related = append(related, pool[i].f)
+		}
+	}
+	return s.writeFile(filepath.Join("findings", f.ID), "finding", map[string]any{
+		"Title":    truncate(f.Summary, 80) + " — circumvention-corpus",
+		"Finding":  f,
+		"Paper":    p,
+		"Tax":      s.tax,
+		"Siblings": siblings,
+		"Related":  related,
+	})
+}
+
+// findingsForTag returns every finding tagged with tagID under category
+// (censors / techniques / defenses). A finding contributes via its own
+// tag list — we don't fall back to the parent paper's tags here, since
+// /techniques/sni-blocking/ should list findings that actually discuss
+// SNI blocking, not findings whose parent paper happens to mention it.
+func (s *site) findingsForTag(category, tagID string) []*Finding {
+	var out []*Finding
+	for _, f := range s.findings {
+		var bag []string
+		switch category {
+		case "censors":
+			bag = f.Censors
+		case "techniques":
+			bag = f.Techniques
+		case "defenses":
+			bag = f.Defenses
+		default:
+			return nil
+		}
+		if slices.Contains(bag, tagID) {
+			out = append(out, f)
+		}
+	}
+	return out
+}
+
+// findingRows returns findings annotated with their parent paper for
+// row rendering, sorted by paper year desc then finding id.
+func (s *site) findingRows(in []*Finding) []findingRow {
+	rows := make([]findingRow, 0, len(in))
+	for _, f := range in {
+		p := s.byID[f.Paper]
+		if p == nil {
+			continue
+		}
+		rows = append(rows, findingRow{Finding: f, Paper: p})
+	}
+	sort.SliceStable(rows, func(i, j int) bool {
+		if rows[i].Paper.Year != rows[j].Paper.Year {
+			return rows[i].Paper.Year > rows[j].Paper.Year
+		}
+		return rows[i].Finding.ID < rows[j].Finding.ID
+	})
+	return rows
+}
+
+type findingRow struct {
+	Finding *Finding
+	Paper   *Paper
+}
+
+func truncate(s string, n int) string {
+	s = strings.TrimSpace(s)
+	if len(s) <= n {
+		return s
+	}
+	cut := s[:n]
+	if i := strings.LastIndex(cut, " "); i > n/2 {
+		cut = cut[:i]
+	}
+	return cut + "…"
+}
+
 func (s *site) renderTagPages(category string, entries map[string]taxonomyEntry, extract func(*Paper) []string) error {
-	// One page per tag — but skip tags with zero papers. They clutter the
-	// URL space and the content is empty; they re-appear as soon as a
-	// paper picks up that tag.
+	// One page per tag — but skip tags with zero papers AND zero findings.
+	// They clutter the URL space and the content is empty; they re-appear
+	// as soon as a paper or finding picks up that tag.
 	for tagID, entry := range entries {
 		matches := []*Paper{}
 		for _, p := range s.papers {
@@ -441,7 +647,8 @@ func (s *site) renderTagPages(category string, entries map[string]taxonomyEntry,
 				matches = append(matches, p)
 			}
 		}
-		if len(matches) == 0 {
+		findingMatches := s.findingsForTag(category, tagID)
+		if len(matches) == 0 && len(findingMatches) == 0 {
 			continue
 		}
 		if err := s.writeFile(filepath.Join(category, tagID), "tag", map[string]any{
@@ -450,6 +657,7 @@ func (s *site) renderTagPages(category string, entries map[string]taxonomyEntry,
 			"TagID":    tagID,
 			"Entry":    entry,
 			"Papers":   matches,
+			"Findings": s.findingRows(findingMatches),
 		}); err != nil {
 			return err
 		}

@@ -556,14 +556,16 @@ func strokeDensity(w, h int, r *rand32) template.HTML {
 // placeholder; per-page rendering clones the root + parses the
 // page body, which overrides the empty block.
 var pages = map[string]string{
-	"index":        indexBody,
-	"papers_index": papersIndexBody,
-	"paper":        paperBody,
-	"tag":          tagBody,
-	"tag_index":    tagIndexBody,
-	"taxonomy":     taxonomyBody,
-	"contribute":   contributeBody,
-	"use":          useBody,
+	"index":           indexBody,
+	"papers_index":    papersIndexBody,
+	"paper":           paperBody,
+	"tag":             tagBody,
+	"tag_index":       tagIndexBody,
+	"taxonomy":        taxonomyBody,
+	"contribute":      contributeBody,
+	"use":             useBody,
+	"findings_index":  findingsIndexBody,
+	"finding":         findingBody,
 }
 
 // pageTemplates is a map[pageName]*template.Template, each one a clone
@@ -617,6 +619,7 @@ const layoutTmpl = `<!doctype html>
     </div>
     <nav>
       <a href="/papers/">papers</a>
+      <a href="/findings/">findings</a>
       <a href="/censors/">censors</a>
       <a href="/techniques/">techniques</a>
       <a href="/defenses/">defenses</a>
@@ -801,6 +804,27 @@ const paperBody = `
 </article>
 {{end}}
 
+{{if .Findings}}
+<section class="findings-section">
+  <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">findings extracted from this paper</span></p>
+  <ul class="findings-list">
+    {{range .Findings}}
+    <li class="finding-row">
+      <a class="finding-link" href="/findings/{{.ID}}/">
+        <p class="finding-summary">{{.Summary}}</p>
+        <p class="finding-meta">
+          {{if .Section}}<span class="finding-section mono">{{.Section}}</span>{{end}}
+          {{if .Kind}}<span class="finding-kind">{{.Kind}}</span>{{end}}
+          {{range .Techniques}}<span class="tag technique">{{.}}</span>{{end}}
+          {{range .Censors}}<span class="tag censor">{{.}}</span>{{end}}
+        </p>
+      </a>
+    </li>
+    {{end}}
+  </ul>
+</section>
+{{end}}
+
 {{if .References}}
 <section class="related-section">
   <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">references in this corpus</span></p>
@@ -838,6 +862,7 @@ const tagBody = `
 {{if .Entry.Notes}}<p class="lede">{{.Entry.Notes}}</p>{{end}}
 {{if .Entry.Synonyms}}<p class="muted"><strong>Synonyms:</strong> {{join ", " .Entry.Synonyms}}</p>{{end}}
 
+{{if .Papers}}
 <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">{{len .Papers}} paper{{if ne (len .Papers) 1}}s{{end}} on file</span></p>
 <ul class="paper-list">
   {{range .Papers}}
@@ -848,6 +873,25 @@ const tagBody = `
   </a></li>
   {{end}}
 </ul>
+{{end}}
+
+{{if .Findings}}
+<p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">{{len .Findings}} finding{{if ne (len .Findings) 1}}s{{end}} tagged here</span></p>
+<ul class="findings-list">
+  {{range .Findings}}
+  <li class="finding-row">
+    <a class="finding-link" href="/findings/{{.Finding.ID}}/">
+      <p class="finding-summary">{{.Finding.Summary}}</p>
+      <p class="finding-meta">
+        <span class="finding-paper mono">{{.Paper.ID}}</span>
+        {{if .Finding.Section}}<span class="finding-section mono">{{.Finding.Section}}</span>{{end}}
+        {{if .Finding.Kind}}<span class="finding-kind">{{.Finding.Kind}}</span>{{end}}
+      </p>
+    </a>
+  </li>
+  {{end}}
+</ul>
+{{end}}
 `
 
 const tagIndexBody = `
@@ -1005,6 +1049,101 @@ const contributeBody = `
 <h2>Extract findings from a paper</h2>
 <p>The <code>findings/</code> directory holds extracted claims (one- to three-sentence statements like <em>"the GFW's classifier achieves 94% precision on Snowflake DTLS handshakes"</em>) tagged against the same vocabulary as papers. This is the highest-leverage curation work — it's what makes the corpus answer questions like <em>"what did anyone find about technique X"</em> without re-reading every paper.</p>
 <p>An LLM (Claude/GPT/etc.) can propose findings if you feed it a paper; commit them only after a human review.</p>
+`
+
+const findingsIndexBody = `
+<p class="eyebrow">FINDINGS</p>
+<h1 class="display-sm">{{.FindingsCount}} extracted findings</h1>
+<p class="lede muted">One- to three-sentence claims pulled from the full text of each paper, tagged against the same taxonomy as the papers themselves. Listed newest first.</p>
+
+<ul class="findings-list big">
+  {{range .Rows}}
+  <li class="finding-row">
+    <a class="finding-link" href="/findings/{{.Finding.ID}}/">
+      <p class="finding-summary">{{.Finding.Summary}}</p>
+      <p class="finding-meta">
+        <span class="finding-paper mono">{{.Paper.ID}}</span>
+        <span class="finding-paper-year">{{yearString .Paper.Year}}</span>
+        {{if .Finding.Section}}<span class="finding-section mono">{{.Finding.Section}}</span>{{end}}
+        {{if .Finding.Kind}}<span class="finding-kind">{{.Finding.Kind}}</span>{{end}}
+        {{range .Finding.Techniques}}<span class="tag technique">{{.}}</span>{{end}}
+        {{range .Finding.Censors}}<span class="tag censor">{{.}}</span>{{end}}
+      </p>
+    </a>
+  </li>
+  {{end}}
+</ul>
+`
+
+const findingBody = `
+{{with .Finding}}
+<article class="finding">
+  <p class="eyebrow">FINDING{{if .Kind}} · {{upper .Kind}}{{end}}</p>
+  <h1 class="finding-title">{{.Summary}}</h1>
+
+  <p class="finding-attrib">
+    From <a href="/papers/{{.Paper}}/" class="mono">{{.Paper}}</a>{{if $.Paper}} — <em>{{$.Paper.Title}}</em>{{end}}
+    {{if .Section}} · <span class="mono">{{.Section}}</span>{{end}}
+    {{if $.Paper.Year}} · {{yearString $.Paper.Year}}{{end}}
+    {{if $.Paper.Venue}} · {{$.Paper.Venue}}{{end}}
+  </p>
+
+  {{if .DefenseImplications}}
+  <h2>Implications</h2>
+  <ul class="finding-implications">
+    {{range .DefenseImplications}}<li>{{.}}</li>{{end}}
+  </ul>
+  {{end}}
+
+  <h2>Tags</h2>
+  <dl class="tags-dl">
+    {{if .Censors}}<dt>censors</dt><dd>{{range .Censors}}<a class="tag censor" href="/censors/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
+    {{if .Techniques}}<dt>techniques</dt><dd>{{range .Techniques}}<a class="tag technique" href="/techniques/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
+    {{if .Defenses}}<dt>defenses</dt><dd>{{range .Defenses}}<a class="tag defense" href="/defenses/{{.}}/">{{.}}</a>{{end}}</dd>{{end}}
+  </dl>
+
+  {{if .ExtractedBy}}<p class="muted finding-extractor">Extracted by <code>{{.ExtractedBy}}</code> — review before relying.</p>{{end}}
+</article>
+{{end}}
+
+{{if .Siblings}}
+<section class="related-section">
+  <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">other findings from this paper</span></p>
+  <ul class="findings-list">
+    {{range .Siblings}}
+    <li class="finding-row">
+      <a class="finding-link" href="/findings/{{.ID}}/">
+        <p class="finding-summary">{{.Summary}}</p>
+        <p class="finding-meta">
+          {{if .Section}}<span class="finding-section mono">{{.Section}}</span>{{end}}
+          {{if .Kind}}<span class="finding-kind">{{.Kind}}</span>{{end}}
+        </p>
+      </a>
+    </li>
+    {{end}}
+  </ul>
+</section>
+{{end}}
+
+{{if .Related}}
+<section class="related-section">
+  <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">related findings</span></p>
+  <ul class="findings-list">
+    {{range .Related}}
+    <li class="finding-row">
+      <a class="finding-link" href="/findings/{{.ID}}/">
+        <p class="finding-summary">{{.Summary}}</p>
+        <p class="finding-meta">
+          <span class="finding-paper mono">{{.Paper}}</span>
+          {{if .Section}}<span class="finding-section mono">{{.Section}}</span>{{end}}
+          {{range .Techniques}}<span class="tag technique">{{.}}</span>{{end}}
+        </p>
+      </a>
+    </li>
+    {{end}}
+  </ul>
+</section>
+{{end}}
 `
 
 // searchJS is the in-browser search client. Loaded on every page via
@@ -2016,10 +2155,123 @@ dl.tax dt code { font-family: inherit; background: none; border: none; padding: 
  * highlight is applied per-element via stroke="var(--accent)". */
 svg.plotter { color: var(--ink-2); }
 
+/* ────────────────── FINDINGS — extracted-claim cards ──────────────────
+ * Findings are short claims (1-3 sentences) extracted from full paper
+ * text, tagged against the same taxonomy. They show up:
+ *  - on /findings/ as a dense scannable list (.findings-list.big)
+ *  - on /findings/<id>/ as a single article (.finding)
+ *  - on /papers/<id>/ under "findings extracted from this paper"
+ *  - on tag pages under "findings tagged here"
+ * The summary is the lede; tags + paper-id are metadata at the bottom.
+ */
+.findings-list { list-style: none; padding: 0; margin: 1.2rem 0; }
+.findings-list .finding-row { margin: 0; padding: 0; border-top: 1px solid var(--rule-fade); }
+.findings-list .finding-row:last-child { border-bottom: 1px solid var(--rule-fade); }
+.findings-list .finding-link {
+  display: block; padding: 1rem 0;
+  color: var(--ink); border: none;
+  text-decoration: none;
+  transition: background 0.1s, padding-left 0.12s;
+}
+.findings-list .finding-link:hover {
+  background: var(--paper);
+  padding-left: 0.4rem; border: none;
+}
+.finding-summary {
+  font-family: "Newsreader", serif;
+  font-size: 1.02rem; line-height: 1.45;
+  color: var(--ink); margin: 0;
+}
+.findings-list.big .finding-summary { font-size: 1.08rem; }
+.finding-meta {
+  margin: 0.45rem 0 0;
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.55rem; align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem; color: var(--ink-mute);
+}
+.finding-paper { color: var(--ink-2); }
+.finding-paper-year { color: var(--ink-mute); }
+.finding-section { color: var(--ink-mute); }
+.finding-kind {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem; letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--rust);
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--rust);
+  border-radius: 1px;
+}
+.findings-section { max-width: 44rem; margin: 3rem auto 0; }
+
+/* Single-finding page */
+.finding { max-width: 44rem; margin: 0 auto; }
+.finding .finding-title {
+  font-family: "Newsreader", serif;
+  font-size: 1.85rem; line-height: 1.2; font-weight: 500;
+  margin: 0.5rem 0 1rem; color: var(--ink);
+}
+.finding-attrib {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem; color: var(--ink-mute);
+  margin: 0 0 1.6rem; line-height: 1.6;
+}
+.finding-attrib em { font-family: "Newsreader", serif; font-style: italic; color: var(--ink-2); }
+.finding-implications {
+  list-style: none; padding: 0; margin: 0.75rem 0 1.5rem;
+}
+.finding-implications li {
+  padding: 0.7rem 0 0.7rem 1.4rem;
+  border-top: 1px solid var(--rule-fade);
+  font-family: "Newsreader", serif; font-size: 1.02rem; line-height: 1.5;
+  position: relative;
+}
+.finding-implications li::before {
+  content: "→"; position: absolute; left: 0; top: 0.7rem;
+  color: var(--accent); font-family: "JetBrains Mono", monospace;
+}
+.finding-implications li:last-child { border-bottom: 1px solid var(--rule-fade); }
+.finding-extractor { margin-top: 2rem; font-size: 0.82rem; }
+
+@media (max-width: 35rem) {
+  .findings-list .finding-link { padding: 0.85rem 0; }
+  .findings-list .finding-link:hover { padding-left: 0; background: transparent; }
+  .finding-summary, .findings-list.big .finding-summary { font-size: 1rem; }
+  .finding .finding-title { font-size: 1.45rem; }
+  .finding-attrib { font-size: 0.8rem; }
+  .finding-implications li { font-size: 0.95rem; padding-left: 1.2rem; }
+}
+
 @media (max-width: 60rem) {
-  .site-header .wrap { flex-direction: column; align-items: stretch; }
-  .search-wrap { margin: 0; max-width: none; }
+  .site-header .wrap { flex-direction: column; align-items: stretch; gap: 0.7rem; padding: 0.75rem 1.25rem; }
+  /* In column flex, the parent's "flex: 1 1 24rem" basis applied to
+     height (24rem!) — visible as a giant gap with the kbd hint
+     floating mid-air. Reset to auto so each item is its own height. */
+  .search-wrap { margin: 0; max-width: none; flex: 0 0 auto; min-width: 0; }
   nav { gap: 0.25rem 1rem; }
+  main.wrap { padding: 2rem 1.25rem 4rem; }
+  .wrap { padding: 0 1.25rem; }
+}
+
+@media (max-width: 35rem) {
+  /* Phones: tighter gutters, smaller display headlines, cards full-width. */
+  main.wrap { padding: 1.5rem 1rem 3rem; }
+  .wrap { padding: 0 1rem; }
+  .site-header .wrap { padding: 0.65rem 1rem; }
+  .display-sm { font-size: 1.6rem; line-height: 1.15; }
+  .hero h1, h1 { font-size: 1.75rem; line-height: 1.15; }
+  .hero { padding: 1.5rem 0 0.5rem; }
+  .lede { font-size: 1rem; }
+  /* Paper rows: stack ID / title / meta vertically rather than the
+     three-column grid that overflows hard on phones. */
+  .paper-list li a { display: block !important; padding: 0.85rem 0; }
+  .paper-list .row-id { display: block; font-size: 0.72rem; margin-bottom: 0.15rem; }
+  .paper-list .row-title { display: block; font-size: 1rem; line-height: 1.3; }
+  .paper-list .row-meta { display: block; font-size: 0.78rem; margin-top: 0.2rem; }
+  /* Tag pills wrap — and never grow tall enough to overflow on a phone. */
+  .tag { font-size: 0.72rem; padding: 0.05rem 0.45rem; }
+  /* Tax / tags-dl / tag-index already collapse to 1 col at 50rem — no extra work. */
+  pre, code { font-size: 0.82rem; }
+  pre { padding: 0.75rem 0.85rem; overflow-x: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
