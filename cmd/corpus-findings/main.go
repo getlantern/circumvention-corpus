@@ -288,7 +288,7 @@ func extract(ctx context.Context, corpusRoot, paperID string, force bool) (int, 
 		return 0, err
 	}
 
-	findings, err := callClaude(ctx, paper, string(text), string(taxRaw))
+	findings, err := callClaude(ctx, corpusRoot, paper, string(text), string(taxRaw))
 	if err != nil {
 		return 0, fmt.Errorf("claude: %w", err)
 	}
@@ -375,16 +375,17 @@ func pdfToText(ctx context.Context, pdfPath, txtPath string) error {
 
 // ── Claude call ──
 
-func callClaude(ctx context.Context, paper Paper, fullText, taxonomy string) ([]finding, error) {
+func callClaude(ctx context.Context, corpusRoot string, paper Paper, fullText, taxonomy string) ([]finding, error) {
 	prompt := buildPrompt(paper, fullText, taxonomy)
 	cctx, cancel := context.WithTimeout(ctx, 5*time.Minute)
 	defer cancel()
-	cmd := exec.CommandContext(cctx, "claude",
+	args := []string{
 		"-p", prompt,
 		"--model", classModel,
 		"--output-format", "json",
-		"--max-turns", "1",
-	)
+	}
+	args = append(args, claudeMCPArgs(corpusRoot)...)
+	cmd := exec.CommandContext(cctx, "claude", args...)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
@@ -561,6 +562,38 @@ func slugFromSummary(s string) string {
 		return "finding"
 	}
 	return strings.Join(keep, "-")
+}
+
+// claudeMCPArgs returns the per-invocation MCP flags for `claude -p`,
+// or an empty slice if no MCP manifest is present at the expected
+// location (deploy/corpus-bot-mcp.json under the corpus root). When
+// the manifest IS present:
+//   - --mcp-config points at it (wick + corpus-mcp servers)
+//   - --max-turns is bumped so the model can call MCP tools mid-turn
+//   - --allowed-tools enumerates which MCP tools are auto-approved
+//     so we don't need an interactive permission prompt
+//   - --permission-mode bypassPermissions tells claude -p to skip
+//     prompts on the listed tools (the harness still refuses unlisted
+//     tools)
+func claudeMCPArgs(corpusRoot string) []string {
+	manifest := filepath.Join(corpusRoot, "deploy", "corpus-bot-mcp.json")
+	if _, err := os.Stat(manifest); err != nil {
+		return []string{"--max-turns", "1"}
+	}
+	allowed := strings.Join([]string{
+		"mcp__wick__wick_fetch",
+		"mcp__wick__wick_search",
+		"mcp__circumvention-corpus__search_papers",
+		"mcp__circumvention-corpus__get_paper",
+		"mcp__circumvention-corpus__list_taxonomy",
+		"mcp__circumvention-corpus__find_related",
+	}, ",")
+	return []string{
+		"--mcp-config", manifest,
+		"--max-turns", "5",
+		"--permission-mode", "bypassPermissions",
+		"--allowed-tools", allowed,
+	}
 }
 
 // ── helpers ──

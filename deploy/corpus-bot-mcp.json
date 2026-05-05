@@ -1,0 +1,13 @@
+{
+  "_comment": "MCP manifest for corpus-crawl + corpus-findings non-interactive claude -p calls. Two servers wired in: wick (residential-IP web fetcher with browser-grade rendering, used as a fallback when our direct net/http download misses or returns thin content) and circumvention-corpus (the corpus's own MCP, lets the classifier and findings extractor dedupe against existing records and look up taxonomy IDs without us shoving the whole vocabulary into every prompt).",
+  "mcpServers": {
+    "wick": {
+      "command": "wick",
+      "args": ["mcp"]
+    },
+    "circumvention-corpus": {
+      "url": "https://corpus.lantern.io/mcp",
+      "transport": "http"
+    }
+  }
+}

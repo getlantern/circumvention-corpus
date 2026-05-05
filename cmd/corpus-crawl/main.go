@@ -345,7 +345,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			}
 			continue
 		}
-		k, err := classifyWithClaude(ctx, c, string(taxRaw))
+		k, err := classifyWithClaude(ctx, root, c, string(taxRaw))
 		ident := c.ArxivID
 		if ident == "" {
 			ident = c.URL
@@ -1166,16 +1166,17 @@ type classification struct {
 // output. claude -p uses the user's logged-in Claude subscription, so
 // no API key is needed — this is the load-bearing reason the crawler
 // lives on the user's residential machine instead of in CI.
-func classifyWithClaude(ctx context.Context, c candidate, taxonomy string) (classification, error) {
+func classifyWithClaude(ctx context.Context, corpusRoot string, c candidate, taxonomy string) (classification, error) {
 	prompt := buildClassifyPrompt(c, taxonomy)
-	ctx, cancel := context.WithTimeout(ctx, 90*time.Second)
+	ctx, cancel := context.WithTimeout(ctx, 3*time.Minute)
 	defer cancel()
-	cmd := exec.CommandContext(ctx, "claude",
+	args := []string{
 		"-p", prompt,
 		"--model", classModel,
 		"--output-format", "json",
-		"--max-turns", "1",
-	)
+	}
+	args = append(args, claudeMCPArgs(corpusRoot)...)
+	cmd := exec.CommandContext(ctx, "claude", args...)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
@@ -1822,6 +1823,37 @@ func noteWithProvenance(modelNote string) string {
 		return prefix
 	}
 	return prefix + " " + strings.TrimSpace(modelNote)
+}
+
+// claudeMCPArgs returns the per-invocation MCP flags for `claude -p`,
+// or just --max-turns=1 if no MCP manifest is present at the expected
+// location (deploy/corpus-bot-mcp.json under the corpus root). When
+// the manifest IS present:
+//   - --mcp-config points at it (wick + corpus-mcp servers)
+//   - --max-turns is bumped so the model can call MCP tools mid-turn
+//   - --allowed-tools enumerates which MCP tools are auto-approved,
+//     bypassing the interactive permission prompt
+//   - --permission-mode bypassPermissions tells claude -p to skip
+//     prompts on the listed tools
+func claudeMCPArgs(corpusRoot string) []string {
+	manifest := filepath.Join(corpusRoot, "deploy", "corpus-bot-mcp.json")
+	if _, err := os.Stat(manifest); err != nil {
+		return []string{"--max-turns", "1"}
+	}
+	allowed := strings.Join([]string{
+		"mcp__wick__wick_fetch",
+		"mcp__wick__wick_search",
+		"mcp__circumvention-corpus__search_papers",
+		"mcp__circumvention-corpus__get_paper",
+		"mcp__circumvention-corpus__list_taxonomy",
+		"mcp__circumvention-corpus__find_related",
+	}, ",")
+	return []string{
+		"--mcp-config", manifest,
+		"--max-turns", "5",
+		"--permission-mode", "bypassPermissions",
+		"--allowed-tools", allowed,
+	}
 }
 
 func requireTool(name string) error {
