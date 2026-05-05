@@ -47,11 +47,12 @@ import (
 )
 
 const (
-	arxivAPI    = "https://export.arxiv.org/api/query"
-	arxivCat    = "cs.CR"
-	arxivLimit  = 200
-	classModel  = "claude-haiku-4-5"
-	httpTimeout = 30 * time.Second
+	arxivAPI       = "https://export.arxiv.org/api/query"
+	arxivCat       = "cs.CR"
+	arxivLimit     = 200
+	gfwReportFeed  = "https://gfw.report/index.xml"
+	classModel     = "claude-haiku-4-5"
+	httpTimeout    = 30 * time.Second
 )
 
 // keywords gates which arXiv submissions are interesting enough to send
@@ -209,20 +210,29 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			cands = append(cands, np...)
 		}
 	}
+	if source == "gfw-report" || source == "all" {
+		gr, err := fetchGFWReport(ctx, since)
+		if err != nil {
+			log.Printf("fetch gfw.report: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from gfw.report", len(gr))
+			cands = append(cands, gr...)
+		}
+	}
 	res := &runResult{Considered: len(cands)}
 
-	// Net4people candidates are pre-curated by humans (every reading-
-	// group post is by definition relevant), so they bypass the keyword
-	// filter. arXiv candidates still need the cheap keyword gate before
-	// the expensive LLM call.
+	// Net4people and gfw.report candidates are pre-curated by humans
+	// (reading-group posts and GFW Report blog posts are by definition
+	// relevant), so they bypass the keyword filter. arXiv candidates
+	// still need the cheap keyword gate before the expensive LLM call.
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
-		if c.Source == "net4people" || matchesKeywords(c) {
+		if c.Source != "arxiv" || matchesKeywords(c) {
 			kept = append(kept, c)
 		}
 	}
 	res.Filtered = len(kept)
-	log.Printf("%d passed keyword filter (incl. all net4people)", len(kept))
+	log.Printf("%d passed keyword filter (incl. all curated sources)", len(kept))
 
 	novel := make([]candidate, 0, len(kept))
 	skippedRejected := 0
@@ -587,6 +597,126 @@ func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) 
 		})
 	}
 	return out, nil
+}
+
+// ── gfw.report source ──────────────────────────────────────────────
+//
+// gfw.report publishes editorially-curated GFW research — measurement
+// write-ups, leak analyses, blocking-event reports. The RSS feed at
+// /index.xml is clean RSS 2.0; description fields contain the full
+// HTML body. Every post is corpus-relevant, so we skip the keyword
+// filter (see runWith). The classifier still runs to extract author
+// list, venue, and tag the post against the taxonomy.
+
+type rssItem struct {
+	Title       string `xml:"title"`
+	Link        string `xml:"link"`
+	GUID        string `xml:"guid"`
+	PubDate     string `xml:"pubDate"`
+	Description string `xml:"description"`
+}
+
+type rssChannel struct {
+	XMLName xml.Name  `xml:"rss"`
+	Items   []rssItem `xml:"channel>item"`
+}
+
+func fetchGFWReport(ctx context.Context, since time.Time) ([]candidate, error) {
+	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+	defer cancel()
+	req, err := http.NewRequestWithContext(cctx, "GET", gfwReportFeed, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1 (https://github.com/getlantern/circumvention-corpus)")
+	resp, err := (&http.Client{Timeout: httpTimeout}).Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
+		return nil, fmt.Errorf("gfw.report feed: status %d: %s", resp.StatusCode, string(body))
+	}
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	var feed rssChannel
+	if err := xml.Unmarshal(body, &feed); err != nil {
+		return nil, fmt.Errorf("parse gfw.report feed: %w", err)
+	}
+	out := make([]candidate, 0, len(feed.Items))
+	// gfw.report posts often have multiple URL variants for the same
+	// piece — English at /en/ and Chinese at /zh/. We keep only English
+	// (heuristic: link ends in /en/ OR contains no /zh/ marker).
+	for _, it := range feed.Items {
+		if strings.Contains(it.Link, "/zh/") {
+			continue
+		}
+		// pubDate parsing: RSS uses RFC1123Z. Fall back to a few common
+		// alternatives if that fails.
+		var pub time.Time
+		for _, layout := range []string{time.RFC1123Z, time.RFC1123, time.RFC822Z, time.RFC822} {
+			if t, err := time.Parse(layout, it.PubDate); err == nil {
+				pub = t
+				break
+			}
+		}
+		// Skip items without a parseable pubDate. gfw.report's feed
+		// includes a placeholder entry (no pubDate, generic "Great
+		// Firewall Report - GFW Report" title) that's evidently a
+		// categorization/index marker rather than a real post.
+		if pub.IsZero() {
+			continue
+		}
+		if pub.Before(since) {
+			continue
+		}
+		out = append(out, candidate{
+			Source:   "gfw-report",
+			Title:    cleanText(it.Title),
+			Abstract: cleanText(stripHTML(truncate(it.Description, 6000))),
+			URL:      it.Link,
+			Venue:    "gfw.report (research blog)",
+			Updated:  pub,
+			Year:     yearOrNow(pub),
+			Refs:     []string{"url:" + it.Link},
+		})
+	}
+	return out, nil
+}
+
+// stripHTML is a coarse HTML-tag remover. We don't need full HTML
+// parsing — the LLM consumes the result and tolerates some leftover
+// markup. Just removes <tag> sequences and decodes a few entities.
+func stripHTML(s string) string {
+	// Drop tags.
+	s = regexp.MustCompile(`<[^>]+>`).ReplaceAllString(s, " ")
+	// Decode common entities.
+	s = strings.NewReplacer(
+		"&amp;", "&",
+		"&lt;", "<",
+		"&gt;", ">",
+		"&quot;", `"`,
+		"&#34;", `"`,
+		"&#39;", "'",
+		"&rsquo;", "'",
+		"&lsquo;", "'",
+		"&ldquo;", `"`,
+		"&rdquo;", `"`,
+		"&nbsp;", " ",
+		"&mdash;", "—",
+		"&ndash;", "–",
+	).Replace(s)
+	return s
+}
+
+func yearOrNow(t time.Time) int {
+	if t.IsZero() {
+		return time.Now().Year()
+	}
+	return t.Year()
 }
 
 // wickFetch shells out to `wick fetch <url>` for browser-grade page
