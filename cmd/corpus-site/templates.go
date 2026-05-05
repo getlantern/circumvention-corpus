@@ -702,7 +702,7 @@ const indexBody = `
       <input id="hero-ask-q" name="q" type="text" placeholder="e.g. How did Iran's June 2025 internet shutdown work?" maxlength="500" required>
       <button type="submit" class="btn primary">Ask →</button>
     </div>
-    <p class="hero-ask-help muted">Or <a href="/use/">install the MCP server</a> to query from your editor.</p>
+    <p class="hero-ask-help muted"><kbd>Tab</kbd> or <kbd>→</kbd> to use the example. Or <a href="/use/">install the MCP server</a> to query from your editor.</p>
   </form>
   <script>
   window.__askExamples = {{exampleQuestionsJS .ExampleQuestions}};
@@ -711,11 +711,24 @@ const indexBody = `
     if (!form) return;
     const input = form.querySelector('#hero-ask-q');
     if (!input) return;
+    let currentExample = (input.placeholder || '').replace(/^e\.g\. /, '');
+    // Tab / right-arrow on an empty field accepts the visible example.
+    // The user can then edit the question or press Enter to submit.
+    input.addEventListener('keydown', e => {
+      if (input.value.length > 0) return;
+      if (e.key === 'Tab' || (e.key === 'ArrowRight' && input.selectionStart === 0)) {
+        if (!currentExample) return;
+        e.preventDefault();
+        input.value = currentExample;
+        input.setSelectionRange(currentExample.length, currentExample.length);
+      }
+    });
     const examples = window.__askExamples || [];
     if (examples.length < 2) return;
     // Honor reduced-motion: don't rotate, but still show one example.
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      input.placeholder = 'e.g. ' + examples[0];
+      currentExample = examples[0];
+      input.placeholder = 'e.g. ' + currentExample;
       return;
     }
     // Fisher-Yates shuffle so visitors don't always see the same first one.
@@ -725,7 +738,8 @@ const indexBody = `
     }
     let idx = 0;
     let paused = false;
-    input.placeholder = 'e.g. ' + examples[0];
+    currentExample = examples[0];
+    input.placeholder = 'e.g. ' + currentExample;
     // Pause rotation while user interacts with the field.
     input.addEventListener('focus', () => paused = true);
     input.addEventListener('input', () => paused = true);
@@ -734,7 +748,8 @@ const indexBody = `
       idx = (idx + 1) % examples.length;
       input.classList.add('placeholder-fading');
       setTimeout(() => {
-        input.placeholder = 'e.g. ' + examples[idx];
+        currentExample = examples[idx];
+        input.placeholder = 'e.g. ' + currentExample;
         input.classList.remove('placeholder-fading');
       }, 280);
     }, 4500);
@@ -1857,38 +1872,52 @@ nav a.external { color: var(--ink-mute); }
 }
 .ambient-stream svg {
   display: block; width: 100%; height: auto;
-  animation: drift-up 110s linear infinite;
+  /* ~50% faster than the previous 110s — still calm, but the stream
+   * actually reads as moving rather than nearly-static. */
+  animation: drift-up 75s linear infinite;
   will-change: transform;
 }
 
-/* Breathing motifs: opacity oscillates so the artifacts fade in and
- * out gently. Different durations + delays so they feel independent. */
+/* Breathing motifs: opacity oscillates AND each piece drifts gently
+ * around its anchor so the page reads as alive. Per-element keyframes
+ * because each element has a unique base rotation that must be
+ * preserved in the transform animation. Durations bumped down ~30-40%
+ * from the previous breathe-only values, and the range of motion is
+ * wider so the effect is visible without being distracting. */
 .ambient-pkt {
   top: 5rem; right: 1rem;
   width: 26rem;
-  transform: rotate(0.5deg);
-  animation: breathe 11s ease-in-out infinite;
+  animation: pkt-float 8s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 .ambient-seq {
   bottom: 3rem; right: 1rem;
   width: 22rem;
-  transform: rotate(-0.3deg);
-  animation: breathe 14s ease-in-out -5s infinite;
+  animation: seq-float 10s ease-in-out -3s infinite;
+  will-change: transform, opacity;
 }
 .ambient-dns {
   top: 50%; right: 30%;
   width: 18rem;
-  transform: translateY(-50%) rotate(0.2deg);
-  animation: breathe 17s ease-in-out -8s infinite;
+  animation: dns-float 12s ease-in-out -6s infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes drift-up {
   from { transform: translateY(0); }
   to   { transform: translateY(-50%); }
 }
-@keyframes breathe {
-  0%, 100% { opacity: 0.08; }
-  50%      { opacity: 0.22; }
+@keyframes pkt-float {
+  0%, 100% { transform: rotate(0.5deg) translate(0, 0);          opacity: 0.10; }
+  50%      { transform: rotate(0.65deg) translate(-1.1rem, 0.6rem); opacity: 0.30; }
+}
+@keyframes seq-float {
+  0%, 100% { transform: rotate(-0.3deg) translate(0, 0);          opacity: 0.10; }
+  50%      { transform: rotate(-0.45deg) translate(0.9rem, -0.7rem); opacity: 0.28; }
+}
+@keyframes dns-float {
+  0%, 100% { transform: translateY(-50%) rotate(0.2deg) translateX(0);     opacity: 0.10; }
+  50%      { transform: translateY(-48%) rotate(0.35deg) translateX(-0.8rem); opacity: 0.30; }
 }
 
 /* Hide ambient layer on narrow viewports — it'd just clutter on phones.
@@ -1958,6 +1987,14 @@ nav a.external { color: var(--ink-mute); }
   font-size: 0.96rem;
 }
 .hero-ask-help { margin: 0.3rem 0 0; font-size: 0.86rem; }
+.hero-ask-help kbd {
+  font-family: "JetBrains Mono", monospace; font-size: 0.78rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  background: var(--paper);
+  color: var(--ink-2);
+}
 
 @media (max-width: 35rem) {
   .hero-ask-row { flex-direction: column; gap: 0.5rem; }
