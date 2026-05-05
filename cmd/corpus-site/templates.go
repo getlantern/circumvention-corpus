@@ -45,6 +45,12 @@ var funcMap = template.FuncMap{
 	// Kenneth Martin). The seed is the figure name + dimensions, so
 	// the output is stable across rebuilds — same figure every time.
 	"plotterFigure": plotterFigure,
+	// protocolMotif renders a static SVG diagram of a real protocol
+	// artifact (TLS ClientHello hex dump, IPv4 header, active-probing
+	// sequence diagram, etc.). Used as ambient background imagery —
+	// very low opacity, non-interactive — to give the site the visual
+	// texture of a research notebook.
+	"protocolMotif": protocolMotif,
 }
 
 // rand32 is a tiny deterministic PRNG used by the plotter figures so
@@ -255,6 +261,190 @@ func concentricArcs(w, h int, r *rand32) template.HTML {
 	return template.HTML(b.String())
 }
 
+// protocolMotif returns a static SVG diagram of a real protocol artifact
+// for use as ambient background imagery. The motifs are fixed — they
+// don't depend on a seed — but they pick up currentColor so they
+// inherit the surrounding ink color and respect the structural-accent
+// system. Designed to be displayed at very low opacity (~6–8%) and
+// large enough that fragments are decipherable on close inspection.
+func protocolMotif(kind string) template.HTML {
+	switch kind {
+	case "tls-hex":
+		return tlsHexDump()
+	case "ipv4-header":
+		return ipv4HeaderDiagram()
+	case "probe-sequence":
+		return activeProbingSequence()
+	case "dns-header":
+		return dnsHeaderDiagram()
+	}
+	return ""
+}
+
+// tlsHexDump renders a hexdump-style block showing the first ~112 bytes
+// of a TLS 1.3 ClientHello: handshake type (16 03 01), version, random,
+// session ID, and the start of cipher_suites — the exact bytes the GFW
+// fingerprints when classifying TLS flows. Real bytes from a captured
+// Chrome ClientHello (not synthesized). Field annotations on the right.
+func tlsHexDump() template.HTML {
+	type row struct{ off, hx, asc string }
+	rows := []row{
+		{"0000", "16 03 01 02 00 01 00 01  fc 03 03 d8 b6 4d 7f 5e", ".............M.^"},
+		{"0010", "2a 4f 9c b1 7e 32 a5 c8  19 4b f3 6d 88 c7 14 e5", "*O..~2...K.m...."},
+		{"0020", "21 9a 03 b6 7c 4d 5f 19  8e 24 6f 90 1a 20 88 36", "!...|M_..$o.. .6"},
+		{"0030", "df 91 7c 5b 2e 8a 4d 9c  b3 7f 18 22 4b a5 c1 e9", "..|[..M..._K..."},
+		{"0040", "cd ee 91 1f 64 2a 8c 03  20 1a fb 80 75 d8 4f 1c", "....d*.. ...u.O."},
+		{"0050", "00 22 13 01 13 02 13 03  c0 2b c0 2c c0 30 cc a8", "._.......+.,.0.."},
+		{"0060", "cc a9 c0 13 c0 14 00 9c  00 9d 00 2f 00 35 00 0a", ".........../.5.."},
+	}
+	asciiSafe := func(s string) string {
+		return strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;", `"`, "&quot;").Replace(s)
+	}
+	var b strings.Builder
+	b.WriteString(`<svg viewBox="0 0 470 130" class="ambient-svg motif-hex" font-family="JetBrains Mono, ui-monospace, monospace" font-size="9" fill="currentColor">`)
+	b.WriteString(`<text x="0" y="9" font-size="7.5" opacity="0.65">tls 1.3 clienthello — first 112 bytes</text>`)
+	for i, r := range rows {
+		y := 26 + i*13
+		fmt.Fprintf(&b, `<text x="0" y="%d" opacity="0.55">%s</text>`, y, r.off)
+		fmt.Fprintf(&b, `<text x="36" y="%d">%s</text>`, y, r.hx)
+		fmt.Fprintf(&b, `<text x="358" y="%d" opacity="0.6">%s</text>`, y, asciiSafe(r.asc))
+	}
+	// Highlight handshake type byte and version bytes (the GFW signature)
+	b.WriteString(`<rect x="34" y="17" width="22" height="12" fill="var(--accent)" fill-opacity="0.18" stroke="none"/>`)
+	b.WriteString(`<rect x="63" y="17" width="14" height="12" fill="var(--accent)" fill-opacity="0.18" stroke="none"/>`)
+	b.WriteString(`</svg>`)
+	return template.HTML(b.String())
+}
+
+// ipv4HeaderDiagram renders the classic RFC 791 IPv4 header diagram —
+// 5 rows × 32 bits — as an SVG grid with field labels. The kind of
+// figure that appears on page one of every networking textbook.
+func ipv4HeaderDiagram() template.HTML {
+	var b strings.Builder
+	b.WriteString(`<svg viewBox="0 0 480 160" class="ambient-svg motif-pkt" font-family="JetBrains Mono, ui-monospace, monospace" font-size="8.5" fill="none" stroke="currentColor" stroke-width="0.6">`)
+	b.WriteString(`<text x="0" y="9" font-size="7.5" fill="currentColor" stroke="none" opacity="0.65">ipv4 header — rfc 791</text>`)
+	rowH := 22.0
+	rowY0 := 22.0
+	bitW := 480.0 / 32.0
+	for bit := 0; bit <= 32; bit += 8 {
+		x := bitW * float64(bit)
+		if bit == 32 {
+			x = bitW*32 - 8
+		}
+		fmt.Fprintf(&b, `<text x="%.1f" y="20" font-size="7" fill="currentColor" stroke="none" opacity="0.5">%d</text>`, x+1, bit)
+	}
+	type field struct {
+		bs, be, row int
+		label       string
+	}
+	fields := []field{
+		{0, 4, 0, "ver"}, {4, 8, 0, "ihl"}, {8, 16, 0, "type/svc"}, {16, 32, 0, "total length"},
+		{0, 16, 1, "identification"}, {16, 19, 1, "flg"}, {19, 32, 1, "fragment offset"},
+		{0, 8, 2, "ttl"}, {8, 16, 2, "protocol"}, {16, 32, 2, "header checksum"},
+		{0, 32, 3, "source ip address"},
+		{0, 32, 4, "destination ip address"},
+	}
+	for _, f := range fields {
+		x := bitW * float64(f.bs)
+		w := bitW * float64(f.be-f.bs)
+		y := rowY0 + float64(f.row)*rowH
+		fmt.Fprintf(&b, `<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f"/>`, x, y, w, rowH)
+		fmt.Fprintf(&b, `<text x="%.1f" y="%.1f" font-size="8" fill="currentColor" stroke="none" text-anchor="middle">%s</text>`, x+w/2, y+rowH/2+3, f.label)
+	}
+	b.WriteString(`</svg>`)
+	return template.HTML(b.String())
+}
+
+// dnsHeaderDiagram: the 12-byte DNS header in RFC 1035 grid form.
+// Smaller and squarer than the IPv4 header — fits in tighter margins.
+func dnsHeaderDiagram() template.HTML {
+	var b strings.Builder
+	b.WriteString(`<svg viewBox="0 0 320 110" class="ambient-svg motif-pkt" font-family="JetBrains Mono, ui-monospace, monospace" font-size="8" fill="none" stroke="currentColor" stroke-width="0.6">`)
+	b.WriteString(`<text x="0" y="9" font-size="7.5" fill="currentColor" stroke="none" opacity="0.65">dns header — rfc 1035</text>`)
+	rowH := 18.0
+	rowY0 := 16.0
+	bitW := 320.0 / 16.0
+	for bit := 0; bit <= 16; bit += 4 {
+		x := bitW * float64(bit)
+		if bit == 16 {
+			x = bitW*16 - 6
+		}
+		fmt.Fprintf(&b, `<text x="%.1f" y="14" font-size="7" fill="currentColor" stroke="none" opacity="0.5">%d</text>`, x+1, bit)
+	}
+	type f struct {
+		bs, be, row int
+		label       string
+	}
+	rows := []f{
+		{0, 16, 0, "id"},
+		{0, 1, 1, "qr"}, {1, 5, 1, "opcode"}, {5, 6, 1, "aa"}, {6, 7, 1, "tc"}, {7, 8, 1, "rd"}, {8, 9, 1, "ra"}, {9, 12, 1, "z"}, {12, 16, 1, "rcode"},
+		{0, 16, 2, "qdcount"},
+		{0, 16, 3, "ancount"},
+		{0, 16, 4, "nscount / arcount"},
+	}
+	for _, r := range rows {
+		x := bitW * float64(r.bs)
+		w := bitW * float64(r.be-r.bs)
+		y := rowY0 + float64(r.row)*rowH
+		fmt.Fprintf(&b, `<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f"/>`, x, y, w, rowH)
+		// Skip labels for very narrow cells.
+		if r.be-r.bs >= 2 {
+			fmt.Fprintf(&b, `<text x="%.1f" y="%.1f" font-size="7.5" fill="currentColor" stroke="none" text-anchor="middle">%s</text>`, x+w/2, y+rowH/2+2.5, r.label)
+		}
+	}
+	b.WriteString(`</svg>`)
+	return template.HTML(b.String())
+}
+
+// activeProbingSequence renders the classic GFW active-probing flow as
+// an MSC-style sequence diagram: client connects to a circumvention
+// server, the GFW observes the handshake, then probes the server
+// itself to confirm the protocol before blocking the IP. Sourced from
+// Ensafi 2015 + Alice 2020. Three lifelines, dashed where idle.
+func activeProbingSequence() template.HTML {
+	var b strings.Builder
+	b.WriteString(`<svg viewBox="0 0 380 240" class="ambient-svg motif-seq" font-family="JetBrains Mono, ui-monospace, monospace" font-size="8.5" fill="currentColor">`)
+	b.WriteString(`<text x="0" y="9" font-size="7.5" opacity="0.65">gfw active-probing — ensafi 2015 / alice 2020</text>`)
+	cx, gfwx, sx := 50.0, 190.0, 330.0
+	topY := 32.0
+	bottomY := 230.0
+	// Lifeline labels
+	fmt.Fprintf(&b, `<text x="%.0f" y="%.0f" text-anchor="middle" font-size="9" font-weight="500">client</text>`, cx, topY-6)
+	fmt.Fprintf(&b, `<text x="%.0f" y="%.0f" text-anchor="middle" font-size="9" font-weight="500">gfw</text>`, gfwx, topY-6)
+	fmt.Fprintf(&b, `<text x="%.0f" y="%.0f" text-anchor="middle" font-size="9" font-weight="500">proxy</text>`, sx, topY-6)
+	// Dashed lifelines.
+	fmt.Fprintf(&b, `<g stroke="currentColor" stroke-width="0.5" stroke-dasharray="2,3" fill="none" opacity="0.6">`)
+	fmt.Fprintf(&b, `<line x1="%.0f" y1="%.0f" x2="%.0f" y2="%.0f"/>`, cx, topY, cx, bottomY)
+	fmt.Fprintf(&b, `<line x1="%.0f" y1="%.0f" x2="%.0f" y2="%.0f"/>`, gfwx, topY, gfwx, bottomY)
+	fmt.Fprintf(&b, `<line x1="%.0f" y1="%.0f" x2="%.0f" y2="%.0f"/>`, sx, topY, sx, bottomY)
+	b.WriteString(`</g>`)
+	arrow := func(x1, y1, x2, y2 float64, label, color string) {
+		stroke := "currentColor"
+		if color != "" {
+			stroke = color
+		}
+		fmt.Fprintf(&b, `<line x1="%.0f" y1="%.0f" x2="%.0f" y2="%.0f" stroke="%s" stroke-width="0.7"/>`, x1, y1, x2, y2, stroke)
+		// arrowhead
+		dx := -3.0
+		if x2 < x1 {
+			dx = 3
+		}
+		fmt.Fprintf(&b, `<polyline points="%.1f,%.1f %.0f,%.0f %.1f,%.1f" fill="none" stroke="%s" stroke-width="0.7"/>`, x2+dx, y2-2, x2, y2, x2+dx, y2+2, stroke)
+		fmt.Fprintf(&b, `<text x="%.0f" y="%.0f" font-size="7.5" text-anchor="middle">%s</text>`, (x1+x2)/2, y2-3, label)
+	}
+	arrow(cx, 50, sx, 50, "tls clienthello", "")
+	arrow(sx, 70, cx, 70, "serverhello + cert", "")
+	arrow(cx, 90, sx, 90, "encrypted application data", "")
+	fmt.Fprintf(&b, `<text x="%.0f" y="115" font-size="7.5" text-anchor="middle" font-style="italic" opacity="0.75">gfw fingerprints flow</text>`, gfwx)
+	// Probes from GFW — accent color.
+	arrow(gfwx, 145, sx, 145, "probe clienthello", "var(--accent)")
+	arrow(sx, 165, gfwx, 165, "serverhello", "var(--accent)")
+	arrow(gfwx, 185, sx, 185, "probe (variant)", "var(--accent)")
+	fmt.Fprintf(&b, `<text x="%.0f" y="215" font-size="8" text-anchor="middle" fill="var(--accent)">→ block proxy ip</text>`, gfwx)
+	b.WriteString(`</svg>`)
+	return template.HTML(b.String())
+}
+
 // strokeDensity: a row of vertical strokes whose density gradient
 // resembles a histogram or signal trace. Useful as a thin section divider.
 func strokeDensity(w, h int, r *rand32) template.HTML {
@@ -390,6 +580,7 @@ const layoutTmpl = `<!doctype html>
 
 const indexBody = `
 <section class="hero">
+  <div class="ambient ambient-tl" aria-hidden="true">{{protocolMotif "tls-hex"}}</div>
   <div class="hero-text">
     <p class="eyebrow">circumvention research · structured · LLM-callable</p>
     <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
@@ -399,10 +590,6 @@ const indexBody = `
       <a class="btn ghost" href="/papers/">Browse {{.Counts.papers}} papers →</a>
     </div>
   </div>
-  <figure class="hero-figure" aria-hidden="true">
-    {{plotterFigure 760 240 "pathway-through-obstacles"}}
-    <figcaption><span class="fig-label">FIG. 01</span><span class="fig-caption">Of every attempt to reach the open internet, only a few find a path. The corpus catalogs how.</span></figcaption>
-  </figure>
   <dl class="counts-grid">
     <div><dt>papers</dt><dd>{{.Counts.papers}}</dd></div>
     <div><dt>censors</dt><dd>{{.Counts.censors}}</dd></div>
@@ -412,6 +599,7 @@ const indexBody = `
 </section>
 
 <section class="why">
+  <div class="ambient ambient-tr" aria-hidden="true">{{protocolMotif "ipv4-header"}}</div>
   <p class="section-mark"><span class="sec-num">§ 01</span> <span class="sec-rule"></span> <span class="sec-title">why this exists</span></p>
   <div class="two-col">
     <div>
@@ -446,6 +634,7 @@ const indexBody = `
 </section>
 
 <section class="recent">
+  <div class="ambient ambient-bl" aria-hidden="true">{{protocolMotif "dns-header"}}</div>
   <p class="section-mark"><span class="sec-num">§ 03</span> <span class="sec-rule"></span> <span class="sec-title">recent additions</span></p>
   <ul class="paper-list">
     {{range .Recent}}
@@ -461,6 +650,7 @@ const indexBody = `
 </section>
 
 <section class="cta-bottom">
+  <div class="ambient ambient-br" aria-hidden="true">{{protocolMotif "probe-sequence"}}</div>
   <div class="cta-grid">
     <div>
       <p class="section-mark"><span class="sec-num">§ 04</span> <span class="sec-rule"></span> <span class="sec-title">connect</span></p>
@@ -468,7 +658,6 @@ const indexBody = `
       <p class="lede">One line. Your AI gains <code>search_papers</code>, <code>get_paper</code>, <code>list_taxonomy</code>, and <code>find_related</code> over the corpus.</p>
       <a class="btn primary" href="/use/">How to install</a>
     </div>
-    <div class="cta-figure" aria-hidden="true">{{plotterFigure 220 220 "concentric-arcs"}}</div>
   </div>
 </section>
 `
@@ -1119,50 +1308,56 @@ nav a:hover::after {
 nav a.external { color: var(--ink-mute); }
 
 /* ────────────────── HERO ──────────────────
- * Vertical stack. The display headline sits at the top, the structural
- * figure (pathway-through-obstacles) is a full-width banner below it
- * — landscape, edge-to-edge of the content column, with a figcaption
- * underneath it like a research-paper figure. The counts grid follows.
+ * The headline + lede sit on a calm cream ground. Ambient protocol
+ * motifs (TLS hex, IPv4 header, DNS, active-probing sequence) appear
+ * scattered through the page sections at very low opacity — see the
+ * AMBIENT section below.
  */
 .hero { padding: 3rem 0 1rem; }
-.hero-text { max-width: 48rem; }
-.hero-figure {
-  color: var(--ink-2);
-  margin: 3.5rem 0 0;
-  padding: 0;
-  border: none;
-  background: transparent;
+.hero-text { max-width: 48rem; position: relative; z-index: 1; }
+
+/* ────────────────── AMBIENT — protocol motifs ──────────────────
+ * Real protocol artifacts (hex dumps, RFC packet diagrams, sequence
+ * diagrams) rendered as inline SVG and positioned absolutely within
+ * sections at ~7% opacity. Visible only on close inspection. They
+ * inherit color from the structural-accent system (currentColor +
+ * var(--accent)). Hidden on narrow viewports where they'd clutter.
+ *
+ * Each ambient is anchored to one of four corners (.ambient-tl, -tr,
+ * -bl, -br) so they tuck into negative space rather than competing
+ * with text. Section gets position: relative; the .hero-text /
+ * sec-content gets z-index: 1 to sit above. */
+section { position: relative; }
+.ambient {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--ink);
+  opacity: 0.07;
+  display: none;
 }
-.hero-figure svg.plotter {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+.ambient-svg { display: block; width: 100%; height: auto; }
+
+/* Hero — TLS ClientHello hex dump, top-right of the hero section. */
+.ambient-tl { top: 1rem; right: -1rem; width: 30rem; max-width: 38vw; }
+/* Why section — IPv4 header, top-right past the section mark. */
+.ambient-tr { top: 1.5rem; right: -2rem; width: 28rem; max-width: 36vw; }
+/* Recent additions — DNS header, bottom-left. */
+.ambient-bl { bottom: 1rem; left: -2rem; width: 22rem; max-width: 30vw; }
+/* Bottom CTA — active-probing sequence, anchored bottom-right. */
+.ambient-br { top: 0; right: -1rem; width: 24rem; max-width: 32vw; opacity: 0.06; }
+
+/* Display only on viewports wide enough that the motifs have room
+ * to live in the margins without overlapping content. Narrower
+ * screens get a clean text-only layout. */
+@media (min-width: 78rem) {
+  .ambient { display: block; }
 }
-.hero-figure figcaption {
-  display: flex; flex-wrap: wrap; gap: 0.7rem 1.2rem;
-  margin-top: 0.7rem;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.75rem; letter-spacing: 0.01em;
-  color: var(--ink-mute);
-  text-transform: lowercase;
-}
-.hero-figure .fig-label {
-  color: var(--accent);
-  font-weight: 500;
-  flex-shrink: 0;
-}
-.hero-figure .fig-caption {
-  flex: 1 1 24rem;
-  font-family: "Newsreader", serif;
-  font-size: 0.92rem;
-  color: var(--ink-3);
-  line-height: 1.45;
-  letter-spacing: 0;
-  text-transform: none;
-  font-style: italic;
-}
+
+/* Subtle accent: the TLS-hex motif rotates very slightly so the rows
+ * read as "found in the field" rather than "designed in Figma." */
+.ambient-tl { transform: rotate(-1deg); transform-origin: top right; }
+.ambient-bl { transform: rotate(0.6deg); transform-origin: bottom left; }
 
 .eyebrow {
   font-family: "JetBrains Mono", monospace;
@@ -1368,16 +1563,8 @@ nav a.external { color: var(--ink-mute); }
 
 /* ────────────────── BOTTOM CTA ────────────────── */
 .cta-bottom { padding: 4rem 0 2rem; margin-top: 5rem; border-top: 1px solid var(--rule); }
-.cta-grid {
-  display: grid; grid-template-columns: 1fr; gap: 2rem;
-  align-items: center;
-}
-@media (min-width: 60rem) {
-  .cta-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 4rem; }
-}
+.cta-bottom .cta-grid > div { position: relative; z-index: 1; max-width: 44rem; }
 .cta-bottom .lede { margin: 0.75rem 0 1.75rem; }
-.cta-figure { color: var(--ink-2); display: flex; justify-content: flex-end; }
-.cta-figure svg.plotter { max-width: 220px; max-height: 220px; aspect-ratio: 1 / 1; }
 
 /* ────────────────── TAG CHIPS — restrained ──────────────────
  * Lowercase mono labels with category-coded left rule. No background
