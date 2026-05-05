@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  launchd agent that runs corpus-crawl weekly on Mondays at 10:00 local time.
+  Install:
+    cp deploy/io.lantern.corpus-crawl.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/io.lantern.corpus-crawl.plist
+
+  Reload after edits:
+    launchctl unload ~/Library/LaunchAgents/io.lantern.corpus-crawl.plist
+    launchctl load   ~/Library/LaunchAgents/io.lantern.corpus-crawl.plist
+
+  Manually fire now (without waiting for the schedule):
+    launchctl start io.lantern.corpus-crawl
+
+  Logs land in /tmp/corpus-crawl.{out,err}.log.
+-->
+<dict>
+  <key>Label</key>
+  <string>io.lantern.corpus-crawl</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/afisk/code/circumvention-corpus/corpus-crawl</string>
+    <string>run</string>
+    <string>--corpus</string>
+    <string>/Users/afisk/code/circumvention-corpus</string>
+    <string>--max</string>
+    <string>10</string>
+    <string>--window-days</string>
+    <string>10</string>
+  </array>
+
+  <!-- Mondays at 10:00 local time. Tweak Hour/Minute as desired. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>1</integer>
+    <key>Hour</key>
+    <integer>10</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <!-- If the mini was asleep when the schedule fires, run on wake. -->
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>HOME</key>
+    <string>/Users/afisk</string>
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/afisk/code/circumvention-corpus</string>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/corpus-crawl.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/corpus-crawl.err.log</string>
+</dict>
+</plist>

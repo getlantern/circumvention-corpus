@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  launchd agent that keeps `corpus-crawl serve` running so the
+  Cloudflare Tunnel has something to forward to.
+
+  Install:
+    cp deploy/io.lantern.corpus-crawl-serve.plist ~/Library/LaunchAgents/
+    # Set the auth token (any random string; share with anyone allowed
+    # to trigger the crawler):
+    launchctl setenv CORPUS_CRAWL_TOKEN "$(openssl rand -hex 24)"
+    launchctl load ~/Library/LaunchAgents/io.lantern.corpus-crawl-serve.plist
+-->
+<dict>
+  <key>Label</key>
+  <string>io.lantern.corpus-crawl-serve</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/afisk/code/circumvention-corpus/corpus-crawl</string>
+    <string>serve</string>
+    <string>--listen</string>
+    <string>127.0.0.1:8788</string>
+    <string>--corpus</string>
+    <string>/Users/afisk/code/circumvention-corpus</string>
+  </array>
+
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin</string>
+    <key>HOME</key>
+    <string>/Users/afisk</string>
+    <!-- CORPUS_CRAWL_TOKEN is set via `launchctl setenv` (see above). -->
+  </dict>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/afisk/code/circumvention-corpus</string>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/corpus-crawl-serve.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/corpus-crawl-serve.err.log</string>
+</dict>
+</plist>

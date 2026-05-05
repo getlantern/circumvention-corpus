@@ -1,0 +1,28 @@
+# cloudflared tunnel config for corpus-crawl serve mode.
+#
+# Sets up crawl.lantern.io → http://localhost:8788 (corpus-crawl serve)
+# so the bot can be triggered on-demand from anywhere with a Bearer token.
+#
+# Install (one-time interactive setup; see deploy/README.md):
+#   cp deploy/cloudflared-config.yml ~/.cloudflared/config.yml
+#   cloudflared tunnel login
+#   cloudflared tunnel create corpus-crawl
+#   # Update `tunnel:` and `credentials-file:` below with the values
+#   # printed after `tunnel create`.
+#   cloudflared tunnel route dns corpus-crawl crawl.lantern.io
+#   brew services start cloudflared
+#
+# Trigger from anywhere:
+#   curl -X POST -H "Authorization: Bearer $TOKEN" \
+#        https://crawl.lantern.io/crawl?max=10
+#
+# Health check (no auth):
+#   curl https://crawl.lantern.io/healthz
+
+tunnel: REPLACE_WITH_TUNNEL_UUID
+credentials-file: /Users/afisk/.cloudflared/REPLACE_WITH_TUNNEL_UUID.json
+
+ingress:
+  - hostname: crawl.lantern.io
+    service: http://localhost:8788
+  - service: http_status:404
