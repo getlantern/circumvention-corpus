@@ -1,8 +1,8 @@
 // MCP server for the circumvention corpus, served at corpus.lantern.io/mcp.
 // Implements the Streamable HTTP transport from the MCP spec — clients POST
 // JSON-RPC, we return JSON. No SSE streaming (our 4 tools all reply in one
-// shot). Same 4 tools as cmd/corpus-mcp's stdio version: search_papers,
-// get_paper, list_taxonomy, find_related.
+// shot). Same 5 tools as cmd/corpus-mcp's stdio version: search_papers,
+// get_paper, list_taxonomy, find_related, synthesize.
 //
 // The corpus is bundled into the Worker at build time by cmd/corpus-bundle
 // (Go) → functions/_data/corpus.json. Wrangler/esbuild inlines the JSON,
@@ -32,6 +32,7 @@ interface Paper {
 }
 
 interface Finding {
+  id?: string;
   paper: string;
   kind: string;
   summary: string;
@@ -71,7 +72,7 @@ for (const f of CORPUS.findings) {
   FINDINGS_TEXT_BY_PAPER.set(f.paper, existing + " " + text);
 }
 
-const SERVER_INFO = { name: "circumvention-corpus", version: "0.2.0" };
+const SERVER_INFO = { name: "circumvention-corpus", version: "0.3.0" };
 const PROTOCOL_VERSION = "2024-11-05";
 
 const TOOLS = [
@@ -130,6 +131,33 @@ const TOOLS = [
           enum: ["same_technique", "same_censor", "same_defense"],
         },
         limit: { type: "integer", default: 10 },
+      },
+    },
+  },
+  {
+    name: "synthesize",
+    description:
+      "Answer a research question by retrieving every relevant extracted finding " +
+      "across all papers, attaching paper-level citation metadata, and grouping by " +
+      "technique / censor / year. The caller (an LLM) writes the synthesized answer " +
+      "from this material — every claim should cite (paper_id, §section). Use this " +
+      "when the user asks 'what does the literature say about X', 'what's known about Y', " +
+      "or wants a defense recommendation backed by citations. Prefer over search_papers " +
+      "when the question is about a phenomenon rather than a specific paper.",
+    inputSchema: {
+      type: "object",
+      required: ["question"],
+      properties: {
+        question: {
+          type: "string",
+          description:
+            "The research question. Examples: 'What does the literature say about " +
+            "Iran SNI-based blocking?', 'What's the evidence on GFW active probing?'",
+        },
+        censors: { type: "array", items: { type: "string" } },
+        techniques: { type: "array", items: { type: "string" } },
+        defenses: { type: "array", items: { type: "string" } },
+        limit: { type: "integer", default: 30 },
       },
     },
   },
@@ -257,6 +285,136 @@ function findRelated(id: string, mode: string, limit: number): Paper[] {
   return scored.slice(0, Math.max(1, Math.min(50, limit))).map((x) => x.p);
 }
 
+interface SynthesizeArgs {
+  question: string;
+  censors?: string[];
+  techniques?: string[];
+  defenses?: string[];
+  limit?: number;
+}
+
+function synthesize(args: SynthesizeArgs): unknown {
+  const limit = Math.max(1, Math.min(100, args.limit ?? 30));
+  const tokens = tokenize(args.question || "");
+  const matched: Array<
+    Finding & {
+      paper_title: string;
+      paper_authors?: string[];
+      paper_year: number;
+      paper_venue?: string;
+      paper_url?: string;
+    }
+  > = [];
+  const matchedPaperIDs = new Set<string>();
+
+  for (const f of CORPUS.findings) {
+    const p = BY_ID.get(f.paper);
+    if (!p) continue;
+    if (
+      args.censors && args.censors.length > 0 &&
+      !anyOverlap(args.censors, f.censors) && !anyOverlap(args.censors, p.censors)
+    ) continue;
+    if (
+      args.techniques && args.techniques.length > 0 &&
+      !anyOverlap(args.techniques, f.techniques) && !anyOverlap(args.techniques, p.techniques)
+    ) continue;
+    if (args.defenses && args.defenses.length > 0) {
+      const paperDef = [
+        ...(p.defenses_discussed || []),
+        ...(p.defenses_evaluated_against || []),
+      ];
+      if (!anyOverlap(args.defenses, f.defenses) && !anyOverlap(args.defenses, paperDef)) continue;
+    }
+    if (tokens.length > 0) {
+      const hay = [
+        f.summary || "",
+        (f.defense_implications || []).join(" "),
+        f.section || "",
+        p.title,
+        p.abstract || "",
+      ].join(" ").toLowerCase();
+      let allHit = true;
+      for (const t of tokens) {
+        if (!hay.includes(t)) { allHit = false; break; }
+      }
+      if (!allHit) continue;
+    }
+    matched.push({
+      ...f,
+      paper_title: p.title,
+      paper_authors: p.authors,
+      paper_year: p.year,
+      paper_venue: p.venue,
+      paper_url: p.url,
+    });
+    matchedPaperIDs.add(f.paper);
+  }
+
+  matched.sort((a, b) => {
+    if (a.paper_year !== b.paper_year) return b.paper_year - a.paper_year;
+    return (a.id || "").localeCompare(b.id || "");
+  });
+  const truncated = matched.slice(0, limit);
+  const truncatedPaperIDs = new Set(truncated.map((f) => f.paper));
+
+  const byTechnique: Record<string, string[]> = {};
+  const byCensor: Record<string, string[]> = {};
+  const byYear: Record<string, string[]> = {};
+  for (const f of truncated) {
+    const fid = f.id || f.summary.slice(0, 32);
+    for (const t of f.techniques || []) (byTechnique[t] ||= []).push(fid);
+    for (const c of f.censors || []) (byCensor[c] ||= []).push(fid);
+    const y = String(f.paper_year);
+    (byYear[y] ||= []).push(fid);
+  }
+
+  // Papers that match the question lexically but have no findings extracted
+  // — surfacing them tells the caller "this paper looks relevant but its
+  // specific claims haven't been extracted; you may want to read it directly."
+  const orphans: Paper[] = [];
+  if (tokens.length > 0) {
+    const papersWithFindings = new Set(CORPUS.findings.map((f) => f.paper));
+    for (const p of CORPUS.papers) {
+      if (truncatedPaperIDs.has(p.id) || papersWithFindings.has(p.id)) continue;
+      const hay = [p.title, p.abstract || "", p.notes || ""].join(" ").toLowerCase();
+      let allHit = true;
+      for (const t of tokens) {
+        if (!hay.includes(t)) { allHit = false; break; }
+      }
+      if (!allHit) continue;
+      orphans.push(p);
+      if (orphans.length >= 10) break;
+    }
+  }
+
+  const papersWithAnyFindings = new Set(CORPUS.findings.map((f) => f.paper)).size;
+
+  return {
+    question: args.question,
+    findings: truncated,
+    grouped: { by_technique: byTechnique, by_censor: byCensor, by_year: byYear },
+    papers_without_findings: orphans,
+    counts: {
+      matched_findings: truncated.length,
+      matched_papers: truncatedPaperIDs.size,
+      papers_without_findings: orphans.length,
+      total_findings_in_corpus: CORPUS.findings.length,
+      total_papers_in_corpus: CORPUS.papers.length,
+      papers_with_any_findings: papersWithAnyFindings,
+    },
+    synthesis_hint: {
+      role: "You are answering a research question using extracted findings from a censorship-circumvention research corpus.",
+      format: "Produce a structured answer with three sections: (1) What's known — claims supported by multiple findings, (2) What's contested or uncertain — where findings diverge or are limited to one paper, (3) Open questions — gaps the literature hasn't addressed. Cite every claim inline as (paper_id, §section) using the IDs in the findings array.",
+      caveats: "If counts.matched_findings is low (< 3), say so explicitly — the corpus may not have strong evidence on this question yet. If papers_without_findings is non-empty, mention that those papers may contain relevant claims that haven't been extracted yet.",
+    },
+    coverage: {
+      corpus_size_papers: CORPUS.papers.length,
+      papers_with_findings: papersWithAnyFindings,
+      total_findings: CORPUS.findings.length,
+    },
+  };
+}
+
 interface RpcRequest {
   jsonrpc: "2.0";
   id?: string | number | null;
@@ -308,6 +466,10 @@ function callTool(name: string, args: Record<string, unknown>): unknown {
       return {
         content: [{ type: "text", text: JSON.stringify({ count: papers.length, papers }, null, 2) }],
       };
+    }
+    case "synthesize": {
+      const bundle = synthesize(args as unknown as SynthesizeArgs);
+      return { content: [{ type: "text", text: JSON.stringify(bundle, null, 2) }] };
     }
     default:
       throw new Error(`unknown tool: ${name}`);

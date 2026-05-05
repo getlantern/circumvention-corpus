@@ -37,7 +37,7 @@ import (
 
 const (
 	serverName    = "circumvention-corpus"
-	serverVersion = "0.1.0"
+	serverVersion = "0.3.0"
 	protocolRev   = "2024-11-05"
 )
 
@@ -78,24 +78,31 @@ type Paper struct {
 	findingsText string `yaml:"-" json:"-"`
 }
 
-// finding mirrors the subset of corpus/findings/*.yaml that contributes to
-// the search haystack. Findings carry the concrete, queryable detail that
-// abstracts often gloss over (e.g. "Iran blocks 443 unconditionally on
-// 2025-10-12") — folding them into search_papers means a single query
-// surfaces papers via their findings, not just their abstracts.
-type finding struct {
-	Paper               string   `yaml:"paper"`
-	Summary             string   `yaml:"summary"`
-	DefenseImplications []string `yaml:"defense_implications"`
-	Section             string   `yaml:"section"`
+// Finding mirrors corpus/findings/*.yaml. Findings carry the concrete,
+// queryable detail that abstracts often gloss over (e.g. "Iran blocks
+// 443 unconditionally on 2025-10-12") — folding them into search_papers
+// means a single query surfaces papers via their findings, not just
+// their abstracts. Synthesize uses the structured fields directly.
+type Finding struct {
+	ID                  string   `yaml:"-" json:"id"`
+	Paper               string   `yaml:"paper" json:"paper"`
+	Kind                string   `yaml:"kind,omitempty" json:"kind,omitempty"`
+	Summary             string   `yaml:"summary" json:"summary"`
+	Techniques          []string `yaml:"techniques,omitempty" json:"techniques,omitempty"`
+	Censors             []string `yaml:"censors,omitempty" json:"censors,omitempty"`
+	Defenses            []string `yaml:"defenses,omitempty" json:"defenses,omitempty"`
+	DefenseImplications []string `yaml:"defense_implications,omitempty" json:"defense_implications,omitempty"`
+	Section             string   `yaml:"section,omitempty" json:"section,omitempty"`
+	ExtractedBy         string   `yaml:"extracted_by,omitempty" json:"extracted_by,omitempty"`
 }
 
 // store holds the loaded corpus. Searches run over the in-memory slice;
 // the corpus is small enough that a linear scan is fine well past v0.
 type store struct {
-	mu     sync.RWMutex
-	papers []*Paper
-	byID   map[string]*Paper
+	mu       sync.RWMutex
+	papers   []*Paper
+	byID     map[string]*Paper
+	findings []*Finding
 	// taxonomy is loaded raw and passed through to list_taxonomy callers
 	// without parsing — clients want the whole document, not individual fields.
 	taxonomy map[string]any
@@ -135,9 +142,10 @@ func loadStore(corpusDir string, publicOnly bool) (*store, error) {
 		s.papers = append(s.papers, &p)
 	}
 
-	// Load findings and concatenate their searchable text into each paper's
-	// findingsText. A missing findings dir is fine (older corpora won't
-	// have one); broken individual files are logged but don't abort load.
+	// Load findings: concatenate their searchable text onto each paper for
+	// the search haystack AND keep structured copies on the store for the
+	// synthesize tool. A missing findings dir is fine; broken individual
+	// files are logged but don't abort load.
 	findingsDir := filepath.Join(corpusDir, "corpus", "findings")
 	if fEntries, err := os.ReadDir(findingsDir); err == nil {
 		var b strings.Builder
@@ -151,15 +159,19 @@ func loadStore(corpusDir string, publicOnly bool) (*store, error) {
 				log.Printf("findings: read %s: %v", fpath, ferr)
 				continue
 			}
-			var f finding
+			var f Finding
 			if ferr := yaml.Unmarshal(fraw, &f); ferr != nil {
 				log.Printf("findings: parse %s: %v", fpath, ferr)
 				continue
 			}
+			// Derive the finding id from the filename (stable across
+			// runs, matches what the curation tooling generates).
+			f.ID = strings.TrimSuffix(fe.Name(), ".yaml")
 			p, ok := s.byID[f.Paper]
 			if !ok {
 				continue
 			}
+			s.findings = append(s.findings, &f)
 			b.Reset()
 			b.WriteString(f.Summary)
 			b.WriteByte(' ')
@@ -388,6 +400,235 @@ func (s *store) findRelated(id, mode string, limit int) []*Paper {
 	return res
 }
 
+// synthesisFinding is a finding enriched with the parent paper's
+// citation metadata. The caller (an LLM) writes the synthesized answer
+// from these — every claim it produces should be citable back to a
+// paper_id + section.
+type synthesisFinding struct {
+	*Finding
+	PaperTitle   string   `json:"paper_title"`
+	PaperAuthors []string `json:"paper_authors,omitempty"`
+	PaperYear    int      `json:"paper_year"`
+	PaperVenue   string   `json:"paper_venue,omitempty"`
+	PaperURL     string   `json:"paper_url,omitempty"`
+}
+
+type synthesisBundle struct {
+	Question              string                  `json:"question"`
+	Findings              []synthesisFinding      `json:"findings"`
+	Grouped               synthesisGroups         `json:"grouped"`
+	PapersWithoutFindings []*Paper                `json:"papers_without_findings,omitempty"`
+	Counts                map[string]int          `json:"counts"`
+	Synthesis             map[string]string       `json:"synthesis_hint"`
+	Coverage              map[string]any          `json:"coverage"`
+}
+
+type synthesisGroups struct {
+	ByTechnique map[string][]string `json:"by_technique,omitempty"`
+	ByCensor    map[string][]string `json:"by_censor,omitempty"`
+	ByYear      map[string][]string `json:"by_year,omitempty"`
+}
+
+// synthesize retrieves every finding relevant to the question, attaches
+// paper-level citation metadata, and returns a structured bundle the
+// caller can synthesize from. Lexical match: a finding matches when
+// every token of the question appears somewhere in summary +
+// defense_implications + section + parent paper title/abstract.
+func (s *store) synthesize(question string, censors, techniques, defenses []string, limit int) synthesisBundle {
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	if limit <= 0 {
+		limit = 30
+	}
+	q := strings.ToLower(strings.TrimSpace(question))
+	tokens := tokenize(q)
+
+	var matched []synthesisFinding
+	matchedFindingIDs := map[string]bool{}
+	matchedPaperIDs := map[string]bool{}
+	for _, f := range s.findings {
+		p, ok := s.byID[f.Paper]
+		if !ok || !s.visible(p) {
+			continue
+		}
+		if len(censors) > 0 && !anyOverlap(censors, f.Censors) && !anyOverlap(censors, p.Censors) {
+			continue
+		}
+		if len(techniques) > 0 && !anyOverlap(techniques, f.Techniques) && !anyOverlap(techniques, p.Techniques) {
+			continue
+		}
+		if len(defenses) > 0 {
+			paperDef := append(append([]string{}, p.DefensesDiscussed...), p.DefensesEvaluatedAgainst...)
+			if !anyOverlap(defenses, f.Defenses) && !anyOverlap(defenses, paperDef) {
+				continue
+			}
+		}
+		if len(tokens) > 0 {
+			hay := strings.ToLower(strings.Join([]string{
+				f.Summary,
+				strings.Join(f.DefenseImplications, " "),
+				f.Section,
+				p.Title,
+				p.Abstract,
+			}, " "))
+			ok := true
+			for _, t := range tokens {
+				if !strings.Contains(hay, t) {
+					ok = false
+					break
+				}
+			}
+			if !ok {
+				continue
+			}
+		}
+		matched = append(matched, synthesisFinding{
+			Finding:      f,
+			PaperTitle:   p.Title,
+			PaperAuthors: p.Authors,
+			PaperYear:    p.Year,
+			PaperVenue:   p.Venue,
+			PaperURL:     p.URL,
+		})
+		matchedFindingIDs[f.ID] = true
+		matchedPaperIDs[f.Paper] = true
+	}
+
+	// Recency-biased: most recent first, then alphabetical for stability.
+	sort.SliceStable(matched, func(i, j int) bool {
+		if matched[i].PaperYear != matched[j].PaperYear {
+			return matched[i].PaperYear > matched[j].PaperYear
+		}
+		return matched[i].ID < matched[j].ID
+	})
+	if len(matched) > limit {
+		matched = matched[:limit]
+	}
+	// Recompute matched-paper set from the truncated slice so the
+	// counts match the findings actually returned.
+	matchedPaperIDs = map[string]bool{}
+	for _, f := range matched {
+		matchedPaperIDs[f.Paper] = true
+	}
+
+	groups := synthesisGroups{
+		ByTechnique: map[string][]string{},
+		ByCensor:    map[string][]string{},
+		ByYear:      map[string][]string{},
+	}
+	for _, f := range matched {
+		for _, t := range f.Techniques {
+			groups.ByTechnique[t] = append(groups.ByTechnique[t], f.ID)
+		}
+		for _, c := range f.Censors {
+			groups.ByCensor[c] = append(groups.ByCensor[c], f.ID)
+		}
+		groups.ByYear[fmt.Sprintf("%d", f.PaperYear)] = append(groups.ByYear[fmt.Sprintf("%d", f.PaperYear)], f.ID)
+	}
+
+	// Papers that match the question lexically (title/abstract/notes) but
+	// have no extracted findings yet — surfacing them tells the caller
+	// "this paper looks relevant but its specific claims haven't been
+	// extracted; you may want to read it directly."
+	var orphans []*Paper
+	if len(tokens) > 0 {
+		for _, p := range s.papers {
+			if !s.visible(p) || matchedPaperIDs[p.ID] {
+				continue
+			}
+			hay := strings.ToLower(p.Title + " " + p.Abstract + " " + p.Notes)
+			ok := true
+			for _, t := range tokens {
+				if !strings.Contains(hay, t) {
+					ok = false
+					break
+				}
+			}
+			if !ok {
+				continue
+			}
+			// Skip if this paper has any findings at all — its absence
+			// from `matched` means the findings didn't match the question,
+			// not that the paper is unextracted.
+			hasFindings := false
+			for _, f := range s.findings {
+				if f.Paper == p.ID {
+					hasFindings = true
+					break
+				}
+			}
+			if hasFindings {
+				continue
+			}
+			orphans = append(orphans, p)
+			if len(orphans) >= 10 {
+				break
+			}
+		}
+	}
+
+	// Coverage stats so the caller can flag low-evidence answers.
+	totalPapers := 0
+	papersWithFindings := map[string]bool{}
+	for _, p := range s.papers {
+		if !s.visible(p) {
+			continue
+		}
+		totalPapers++
+	}
+	for _, f := range s.findings {
+		if p, ok := s.byID[f.Paper]; ok && s.visible(p) {
+			papersWithFindings[f.Paper] = true
+		}
+	}
+
+	return synthesisBundle{
+		Question: question,
+		Findings: matched,
+		Grouped:  groups,
+		PapersWithoutFindings: orphans,
+		Counts: map[string]int{
+			"matched_findings":          len(matched),
+			"matched_papers":            len(matchedPaperIDs),
+			"papers_without_findings":   len(orphans),
+			"total_findings_in_corpus":  len(s.findings),
+			"total_papers_in_corpus":    totalPapers,
+			"papers_with_any_findings":  len(papersWithFindings),
+		},
+		Synthesis: map[string]string{
+			"role":   "You are answering a research question using extracted findings from a censorship-circumvention research corpus.",
+			"format": "Produce a structured answer with three sections: (1) What's known — claims supported by multiple findings, (2) What's contested or uncertain — where findings diverge or are limited to one paper, (3) Open questions — gaps the literature hasn't addressed. Cite every claim inline as (paper_id, §section) using the IDs in the findings array.",
+			"caveats": "If counts.matched_findings is low (< 3), say so explicitly — the corpus may not have strong evidence on this question yet. If papers_without_findings is non-empty, mention that those papers may contain relevant claims that haven't been extracted yet.",
+		},
+		Coverage: map[string]any{
+			"corpus_size_papers":   totalPapers,
+			"papers_with_findings": len(papersWithFindings),
+			"total_findings":       len(s.findings),
+		},
+	}
+}
+
+func tokenize(s string) []string {
+	var out []string
+	var cur strings.Builder
+	flush := func() {
+		if cur.Len() > 0 {
+			out = append(out, cur.String())
+			cur.Reset()
+		}
+	}
+	for _, r := range s {
+		switch {
+		case (r >= 'a' && r <= 'z') || (r >= '0' && r <= '9'):
+			cur.WriteRune(r)
+		default:
+			flush()
+		}
+	}
+	flush()
+	return out
+}
+
 // JSON-RPC envelope (subset of the spec we use here).
 type rpcRequest struct {
 	JSONRPC string          `json:"jsonrpc"`
@@ -467,6 +708,21 @@ var tools = []tool{
 				"id":    map[string]any{"type": "string"},
 				"mode":  map[string]any{"type": "string", "enum": []string{"same_technique", "same_censor", "same_defense"}},
 				"limit": map[string]any{"type": "integer", "default": 10},
+			},
+		},
+	},
+	{
+		Name: "synthesize",
+		Description: "Answer a research question by retrieving every relevant extracted finding (across all papers) along with full paper provenance, grouped by technique / censor / year. The caller is expected to be an LLM that turns this material into a synthesized answer with citations of the form (paper_id, §section). Use this when the user asks 'what does the literature say about X', 'what's known about Y', 'what's contested', or wants a defense recommendation backed by citations. Prefer this over search_papers when the question is about a phenomenon rather than a specific paper.",
+		InputSchema: map[string]any{
+			"type":     "object",
+			"required": []string{"question"},
+			"properties": map[string]any{
+				"question":   map[string]any{"type": "string", "description": "The research question to synthesize an answer to. Examples: 'What does the literature say about Iran SNI-based blocking?', 'What's the evidence on GFW active probing?', 'Which defenses have been evaluated against fully-encrypted traffic detection?'"},
+				"censors":    map[string]any{"type": "array", "items": map[string]any{"type": "string"}, "description": "Optional taxonomy filter — only consider findings tagged with at least one of these censors."},
+				"techniques": map[string]any{"type": "array", "items": map[string]any{"type": "string"}, "description": "Optional taxonomy filter — only consider findings tagged with at least one of these techniques."},
+				"defenses":   map[string]any{"type": "array", "items": map[string]any{"type": "string"}, "description": "Optional taxonomy filter — only consider findings tagged with at least one of these defenses."},
+				"limit":      map[string]any{"type": "integer", "default": 30, "description": "Max findings to return (most recent first)."},
 			},
 		},
 	},
@@ -578,6 +834,19 @@ func (s *store) callTool(name string, raw json.RawMessage) (string, error) {
 		}
 		results := s.findRelated(args.ID, args.Mode, args.Limit)
 		return jsonString(map[string]any{"papers": results, "count": len(results)})
+	case "synthesize":
+		var args struct {
+			Question   string   `json:"question"`
+			Censors    []string `json:"censors"`
+			Techniques []string `json:"techniques"`
+			Defenses   []string `json:"defenses"`
+			Limit      int      `json:"limit"`
+		}
+		if err := json.Unmarshal(raw, &args); err != nil {
+			return "", err
+		}
+		bundle := s.synthesize(args.Question, args.Censors, args.Techniques, args.Defenses, args.Limit)
+		return jsonString(bundle)
 	default:
 		return "", fmt.Errorf("unknown tool: %s", name)
 	}

@@ -44,6 +44,7 @@ type paper struct {
 }
 
 type finding struct {
+	ID                  string   `yaml:"-" json:"id"`
 	Paper               string   `yaml:"paper" json:"paper"`
 	Kind                string   `yaml:"kind" json:"kind"`
 	Summary             string   `yaml:"summary" json:"summary"`
@@ -113,6 +114,7 @@ func main() {
 			if err := yaml.Unmarshal(raw, &f); err != nil {
 				log.Fatalf("parse %s: %v", path, err)
 			}
+			f.ID = strings.TrimSuffix(e.Name(), ".yaml")
 			b.Findings = append(b.Findings, f)
 		}
 		sort.SliceStable(b.Findings, func(i, j int) bool {
