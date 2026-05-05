@@ -40,7 +40,10 @@ corpus/
   papers/            One YAML per paper.
   findings/          (Optional) extracted findings, one YAML per paper.
   pdfs/              (Optional) local PDF cache.
-cmd/corpus-mcp/      The MCP server.
+cmd/corpus-mcp/      Local stdio MCP server (Go) — offline / privacy fallback.
+cmd/corpus-bundle/   Bundles YAMLs into JSON for the Worker to inline.
+cmd/corpus-site/     Static site generator (Go html/template).
+functions/mcp/       Hosted MCP server (Cloudflare Pages Function, TS).
 ```
 
 ## Visibility model
@@ -77,8 +80,9 @@ can and can't do with the citation.
 ## Browsable site
 
 A static site rendered from the same YAMLs lives at
-**[corpus.lantern.io](https://corpus.lantern.io)** (in process — see
-the Cloudflare Pages config in `.github/workflows/`). Build it locally:
+**[corpus.lantern.io](https://corpus.lantern.io)**, auto-deployed from
+`main` via the workflow in `.github/workflows/deploy.yaml`. Build it
+locally:
 
 ```bash
 make site            # renders to ./dist/
@@ -89,29 +93,63 @@ The site uses `cmd/corpus-site/`, which reuses the same YAML loading
 the MCP server uses. There's no JS framework, no `node_modules`, just
 Go's `html/template`. About 0.1 seconds to render the whole corpus.
 
-## Running the MCP server
+## Using the MCP server
+
+### Hosted (recommended)
+
+The corpus runs as a Cloudflare Pages Function at
+`https://corpus.lantern.io/mcp`. Zero install, no toolchain, no version
+drift — auto-deploys on every push to `main` so connected clients always
+see the latest committed state.
 
 ```bash
-go build -o corpus-mcp ./cmd/corpus-mcp/
-./corpus-mcp --corpus /path/to/circumvention-corpus
+claude mcp add --transport http -s user circumvention-corpus \
+  https://corpus.lantern.io/mcp
 ```
 
-Register with Claude Code at user scope:
+Or in any MCP client's config:
+
+```json
+{
+  "mcpServers": {
+    "circumvention-corpus": {
+      "url": "https://corpus.lantern.io/mcp",
+      "transport": "http"
+    }
+  }
+}
+```
+
+### Self-hosted (offline / privacy)
+
+For users behind censorship that blocks Cloudflare, or anyone who'd
+rather not send queries off-machine. The Go stdio server in
+`cmd/corpus-mcp/` reads YAMLs directly from a local clone:
 
 ```bash
+go install github.com/getlantern/circumvention-corpus/cmd/corpus-mcp@latest
+git clone https://github.com/getlantern/circumvention-corpus ~/code/circumvention-corpus
+
 claude mcp add -s user circumvention-corpus \
-  /usr/local/bin/corpus-mcp -- --corpus $HOME/go/src/github.com/getlantern/circumvention-corpus
+  $(go env GOPATH)/bin/corpus-mcp -- --corpus $HOME/code/circumvention-corpus
 ```
 
-For a local team instance that also reads the private repo, point at a
-parent directory containing both, or run two server instances and let
-the agent compose results.
+For a local team instance that also reads the private companion repo,
+point at a parent directory containing both, or run two server
+instances and let the agent compose results. Use `--public-only` to
+mirror the visibility clamp the hosted endpoint applies.
 
-For the public read-only endpoint:
+### Architecture
 
-```bash
-./corpus-mcp --corpus /path/to/circumvention-corpus --public-only
-```
+The hosted MCP is a Cloudflare Pages Function (`functions/mcp/index.ts`)
+implementing MCP's Streamable HTTP transport directly — POST JSON-RPC,
+get JSON back. The corpus is bundled into the Worker at deploy time by
+`cmd/corpus-bundle/` (Go), which reads every YAML and emits
+`functions/_data/corpus.json`; esbuild inlines that JSON into the
+Worker bundle, so there's no R2 read or runtime fetch.
+
+Push to `main` → CI runs the bundler → Wrangler deploys the static site
++ the Function together → live in ~60 s for everyone.
 
 ## Tools the MCP exposes
 
