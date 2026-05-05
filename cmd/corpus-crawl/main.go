@@ -128,7 +128,7 @@ func runOnce(args []string) {
 	fs := flag.NewFlagSet("run", flag.ExitOnError)
 	opts := runOptions{}
 	fs.StringVar(&opts.corpus, "corpus", ".", "path to circumvention-corpus repo root")
-	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, or all")
+	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, or all")
 	fs.IntVar(&opts.maxN, "max", 12, "max ACCEPTED papers per PR (cap applied after classification)")
 	fs.IntVar(&opts.maxClassify, "max-classify", 80, "safety bound on classifier calls per run")
 	fs.IntVar(&opts.windowDays, "window-days", 30, "look back this many days")
@@ -261,6 +261,24 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			cands = append(cands, em...)
 		}
 	}
+	if source == "paderborn" || source == "all" {
+		pb, err := fetchPaderbornSyssec(ctx, since)
+		if err != nil {
+			log.Printf("fetch Paderborn syssec publications: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from Paderborn syssec publications", len(pb))
+			cands = append(cands, pb...)
+		}
+	}
+	if source == "paderborn-blog" || source == "all" {
+		pb, err := fetchPaderbornBlog(ctx, since)
+		if err != nil {
+			log.Printf("fetch Paderborn syssec blog: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from Paderborn syssec blog", len(pb))
+			cands = append(cands, pb...)
+		}
+	}
 	if source == "usenix-sec" || source == "all" {
 		// USENIX Security uses a 2-digit-year URL slug. Each year has
 		// up to 2 cycles (Cycle 1, Cycle 2) plus an aggregated
@@ -292,7 +310,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	//     etc.) tangentially in unrelated work. Match on title only — a paper
 	//     whose title doesn't contain a circumvention keyword is almost
 	//     certainly not circumvention research, regardless of abstract content.
-	curatedSources := map[string]bool{"net4people": true, "gfw-report": true, "ermao": true}
+	curatedSources := map[string]bool{"net4people": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true}
 	titleOnlySources := map[string]bool{"popets": true, "foci": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
@@ -1293,6 +1311,182 @@ func extractUSENIXAuthorsAbstract(body string) ([]string, string) {
 // fetching. Used by the (future) JS-rendered conference-page scrapers
 // — PETS / FOCI / USENIX / NDSS / IMC. arXiv's plain XML API uses
 // net/http above; wick's markdown/html/text output formats would
+// ────────────────── Paderborn upb-syssec ──────────────────
+// The University of Paderborn's System Security group (Niklas Niere,
+// Juraj Somorovsky, Robert Merget, Felix Lange, Sven Hebrok) is one of
+// the strongest TLS-layer-circumvention research outfits operating
+// today. Their canonical publications page lives at jonsnowwhite.de
+// (Niklas's personal site, listing all his and the group's
+// circumvention papers with abstracts). Their group blog at
+// upb-syssec.github.io carries technical posts that don't always
+// graduate to a paper but document concrete censor behavior.
+//
+// We treat both as curated (skip keyword filter) since the entire
+// catalog is on-topic for circumvention research.
+
+const (
+	paderbornPubsURL = "https://www.jonsnowwhite.de/publications/"
+	paderbornBlogURL = "https://upb-syssec.github.io/blog/"
+)
+
+// paderbornPubHeadingRE matches a publication heading on the
+// jonsnowwhite.de publications page. The page uses an "✏" prefix to
+// mark first-author papers; we strip it. Each H2 starts a publication
+// block; the line directly under is "*Venue*, Year".
+var (
+	paderbornPubHeadingRE = regexp.MustCompile(`(?m)^## (?:✏)?(.+)$`)
+	paderbornPubVenueRE   = regexp.MustCompile(`(?m)^\*([^*]+)\*,\s*(\d{4})\s*$`)
+	paderbornPubLinkRE    = regexp.MustCompile(`\[Download Paper\]\(\s*<?\s*(\S+?)\s*>?\s*\)`)
+)
+
+func fetchPaderbornSyssec(ctx context.Context, since time.Time) ([]candidate, error) {
+	md, err := wickFetch(ctx, paderbornPubsURL, "markdown")
+	if err != nil {
+		return nil, err
+	}
+	text := string(md)
+
+	// Trim the page to the "## Conference Papers" section onward — the
+	// header above is bio/links, not publications.
+	if i := strings.Index(text, "## Conference Papers"); i >= 0 {
+		text = text[i:]
+	}
+
+	starts := paderbornPubHeadingRE.FindAllStringSubmatchIndex(text, -1)
+	var out []candidate
+	for i, m := range starts {
+		titleStart, titleEnd := m[2], m[3]
+		title := strings.TrimSpace(text[titleStart:titleEnd])
+		// Skip section dividers ("Conference Papers", "Workshop Papers", etc.).
+		if !strings.ContainsAny(title, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") || len(title) < 8 {
+			continue
+		}
+		// Slice from this heading to the next.
+		blockStart := m[1]
+		blockEnd := len(text)
+		if i+1 < len(starts) {
+			blockEnd = starts[i+1][0]
+		}
+		block := text[blockStart:blockEnd]
+
+		venue, year := "", 0
+		if vm := paderbornPubVenueRE.FindStringSubmatch(block); len(vm) == 3 {
+			venue = strings.TrimSpace(vm[1])
+			fmt.Sscanf(vm[2], "%d", &year)
+		}
+		if year == 0 {
+			continue // not a real publication entry
+		}
+		// Date filter — at the year granularity we have, anything from
+		// the year of `since` or later is included.
+		if year < since.Year() {
+			continue
+		}
+
+		// Abstract: everything between "Abstract" and the next heading
+		// or "[Download Paper]".
+		abstract := ""
+		if i := strings.Index(block, "Abstract"); i >= 0 {
+			tail := block[i+len("Abstract"):]
+			if j := strings.Index(tail, "[Download"); j >= 0 {
+				tail = tail[:j]
+			}
+			abstract = strings.TrimSpace(tail)
+		}
+
+		url := ""
+		if lm := paderbornPubLinkRE.FindStringSubmatch(block); len(lm) == 2 {
+			url = strings.Trim(lm[1], "<> ")
+		}
+		if url == "" {
+			// Fall back to the publications page anchor — better than nothing.
+			url = paderbornPubsURL
+		}
+
+		out = append(out, candidate{
+			Source:   "paderborn",
+			Title:    title,
+			Abstract: abstract,
+			URL:      url,
+			Venue:    venue,
+			Year:     year,
+			Updated:  time.Date(year, 1, 1, 0, 0, 0, 0, time.UTC),
+			Refs:     []string{"url:" + url, "url:" + paderbornPubsURL},
+		})
+	}
+	return out, nil
+}
+
+// paderbornBlogEntryRE matches the upb-syssec blog index format —
+// each post is "### [Title](/blog/YYYY/slug/)" then a one-line summary
+// then a "N min read   ·   Month DD, YYYY" line.
+var (
+	paderbornBlogEntryRE = regexp.MustCompile(`(?m)^\s*(?:\*\s+)?### \[([^\]]+)\]\(([^)]+)\)\s*$`)
+	paderbornBlogDateRE  = regexp.MustCompile(`\b([A-Z][a-z]+) (\d{1,2}), (\d{4})\b`)
+)
+
+func fetchPaderbornBlog(ctx context.Context, since time.Time) ([]candidate, error) {
+	md, err := wickFetch(ctx, paderbornBlogURL, "markdown")
+	if err != nil {
+		return nil, err
+	}
+	text := string(md)
+	starts := paderbornBlogEntryRE.FindAllStringSubmatchIndex(text, -1)
+	var out []candidate
+	for i, m := range starts {
+		title := strings.TrimSpace(text[m[2]:m[3]])
+		href := strings.TrimSpace(text[m[4]:m[5]])
+		if !strings.HasPrefix(href, "/blog/") {
+			continue
+		}
+		blockStart := m[1]
+		blockEnd := len(text)
+		if i+1 < len(starts) {
+			blockEnd = starts[i+1][0]
+		}
+		block := text[blockStart:blockEnd]
+
+		// One-line summary is the first non-empty paragraph after the heading.
+		summary := ""
+		for _, line := range strings.Split(block, "\n") {
+			line = strings.TrimSpace(line)
+			if line == "" {
+				continue
+			}
+			if strings.HasPrefix(line, "[") || strings.Contains(line, "min read") {
+				continue
+			}
+			summary = line
+			break
+		}
+
+		// Date.
+		var posted time.Time
+		if dm := paderbornBlogDateRE.FindStringSubmatch(block); len(dm) == 4 {
+			t, err := time.Parse("January 2, 2006", dm[0])
+			if err == nil {
+				posted = t
+			}
+		}
+		if !posted.IsZero() && posted.Before(since) {
+			continue
+		}
+
+		fullURL := "https://upb-syssec.github.io" + href
+		out = append(out, candidate{
+			Source:   "paderborn-blog",
+			Title:    title,
+			Abstract: summary,
+			URL:      fullURL,
+			Venue:    "upb-syssec blog (Paderborn University, System Security group)",
+			Year:     yearOrNow(posted),
+			Updated:  posted,
+			Refs:     []string{"url:" + fullURL},
+		})
+	}
+	return out, nil
+}
+
 // mangle it.
 //
 // The "format" argument controls what wick extracts: "html" for raw
