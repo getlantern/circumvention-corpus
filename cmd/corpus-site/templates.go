@@ -88,8 +88,102 @@ func plotterFigure(w, h int, kind string) template.HTML {
 		return concentricArcs(w, h, r)
 	case "stroke-density":
 		return strokeDensity(w, h, r)
+	case "pathway-through-obstacles":
+		return pathwayThroughObstacles(w, h, r)
 	}
 	return template.HTML(fmt.Sprintf(`<svg viewBox="0 0 %d %d" width="%d" height="%d"></svg>`, w, h, w, h))
+}
+
+// pathwayThroughObstacles renders the corpus's central metaphor.
+//
+// Most paths (in ink) enter from the left and terminate at a hatched
+// vertical barrier — they're "blocked." A handful of paths (in the
+// structural accent) trace clean Bézier arcs above or below the
+// barrier and exit cleanly on the right — these are the circumvention
+// research that the corpus catalogs.
+//
+// The figure is fully deterministic given the (w, h, kind) seed, so
+// the page renders identically across rebuilds. Designed to read as a
+// landscape banner; works at aspect ratios from ~3:1 to ~4:1.
+func pathwayThroughObstacles(w, h int, r *rand32) template.HTML {
+	var b strings.Builder
+	fw := float64(w)
+	fh := float64(h)
+	barrierStart := fw * 0.45
+	barrierEnd := fw * 0.58
+	pad := 5.0
+	clipID := fmt.Sprintf("p-bar-%d", r.next()&0xffff)
+
+	fmt.Fprintf(&b, `<svg viewBox="0 0 %d %d" width="100%%" height="100%%" preserveAspectRatio="xMidYMid meet" class="plotter">`, w, h)
+
+	// clipPath confines the diagonal hatching to the barrier zone.
+	fmt.Fprintf(&b, `<defs><clipPath id="%s"><rect x="%.2f" y="0" width="%.2f" height="%.2f"/></clipPath></defs>`,
+		clipID, barrierStart, barrierEnd-barrierStart, fh)
+
+	// Layer 1: failed paths — short horizontal traces stopping at the
+	// barrier, with a tiny quadratic wobble so they don't read as a
+	// ruled grid. Density biased toward middle vertically.
+	b.WriteString(`<g fill="none" stroke="currentColor" stroke-width="0.55" stroke-linecap="round" opacity="0.85">`)
+	nFails := 72
+	for i := 0; i < nFails; i++ {
+		y := pad + r.f()*(fh-2*pad)
+		startX := r.inRange(2, fw*0.06)
+		endX := barrierStart - r.inRange(0, 5)
+		wobble := r.inRange(-0.9, 0.9)
+		midX := (startX + endX) / 2
+		fmt.Fprintf(&b, `<path d="M %.2f %.2f Q %.2f %.2f %.2f %.2f"/>`,
+			startX, y, midX, y+wobble, endX, y)
+	}
+	b.WriteString(`</g>`)
+
+	// Layer 2: barrier — diagonal hatching clipped to the barrier rect.
+	fmt.Fprintf(&b, `<g fill="none" stroke="currentColor" stroke-width="0.6" clip-path="url(#%s)">`, clipID)
+	spacing := 4.0
+	nLines := int((barrierEnd - barrierStart + fh) / spacing)
+	for i := 0; i < nLines; i++ {
+		off := float64(i)*spacing - fh
+		x1 := barrierStart + off
+		x2 := x1 + fh
+		fmt.Fprintf(&b, `<line x1="%.2f" y1="0" x2="%.2f" y2="%.2f"/>`, x1, x2, fh)
+	}
+	b.WriteString(`</g>`)
+
+	// Layer 3: barrier vertical edges (a quiet frame around the hatch).
+	b.WriteString(`<g fill="none" stroke="currentColor" stroke-width="0.85">`)
+	fmt.Fprintf(&b, `<line x1="%.2f" y1="0" x2="%.2f" y2="%.2f"/>`, barrierStart, barrierStart, fh)
+	fmt.Fprintf(&b, `<line x1="%.2f" y1="0" x2="%.2f" y2="%.2f"/>`, barrierEnd, barrierEnd, fh)
+	b.WriteString(`</g>`)
+
+	// Layer 4: success paths — Bézier arcs in the accent color that
+	// pass above or below the barrier and exit cleanly on the right.
+	// Six paths is enough to read as "a few make it through."
+	b.WriteString(`<g fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-linecap="round">`)
+	nSuccess := 6
+	for i := 0; i < nSuccess; i++ {
+		entryY := r.inRange(fh*0.20, fh*0.80)
+		exitY := r.inRange(fh*0.20, fh*0.80)
+		startX := r.inRange(2, fw*0.05)
+		endX := r.inRange(fw*0.92, fw-2)
+		goesAbove := r.f() < 0.5
+		var cp1y, cp2y float64
+		if goesAbove {
+			cp1y = -fh * r.inRange(0.18, 0.55)
+			cp2y = -fh * r.inRange(0.18, 0.55)
+		} else {
+			cp1y = fh + fh*r.inRange(0.18, 0.55)
+			cp2y = fh + fh*r.inRange(0.18, 0.55)
+		}
+		cp1x := barrierStart - r.inRange(fw*0.06, fw*0.16)
+		cp2x := barrierEnd + r.inRange(fw*0.06, fw*0.16)
+		fmt.Fprintf(&b, `<path d="M %.2f %.2f C %.2f %.2f %.2f %.2f %.2f %.2f"/>`,
+			startX, entryY, cp1x, cp1y, cp2x, cp2y, endX, exitY)
+		// Endpoint dot — punctuation for "the path arrives."
+		fmt.Fprintf(&b, `<circle cx="%.2f" cy="%.2f" r="2.2" fill="var(--accent)" stroke="none"/>`, endX, exitY)
+	}
+	b.WriteString(`</g>`)
+
+	b.WriteString(`</svg>`)
+	return template.HTML(b.String())
 }
 
 // interruptedGrid: Vera Molnar / "Interruptions" homage. A grid of
@@ -296,18 +390,19 @@ const layoutTmpl = `<!doctype html>
 
 const indexBody = `
 <section class="hero">
-  <div class="hero-grid">
-    <div class="hero-text">
-      <p class="eyebrow">circumvention research · structured · LLM-callable</p>
-      <h1 class="display">A field index of <em>how the internet is jammed</em> — and unjammed.</h1>
-      <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant.</p>
-      <div class="cta">
-        <a class="btn primary" href="/use/">Install the MCP server</a>
-        <a class="btn ghost" href="/papers/">Browse {{.Counts.papers}} papers →</a>
-      </div>
+  <div class="hero-text">
+    <p class="eyebrow">circumvention research · structured · LLM-callable</p>
+    <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
+    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant.</p>
+    <div class="cta">
+      <a class="btn primary" href="/use/">Install the MCP server</a>
+      <a class="btn ghost" href="/papers/">Browse {{.Counts.papers}} papers →</a>
     </div>
-    <div class="hero-figure" aria-hidden="true">{{plotterFigure 280 380 "interrupted-grid"}}</div>
   </div>
+  <figure class="hero-figure" aria-hidden="true">
+    {{plotterFigure 760 240 "pathway-through-obstacles"}}
+    <figcaption><span class="fig-label">FIG. 01</span><span class="fig-caption">Of every attempt to reach the open internet, only a few find a path. The corpus catalogs how.</span></figcaption>
+  </figure>
   <dl class="counts-grid">
     <div><dt>papers</dt><dd>{{.Counts.papers}}</dd></div>
     <div><dt>censors</dt><dd>{{.Counts.censors}}</dd></div>
@@ -1024,28 +1119,50 @@ nav a:hover::after {
 nav a.external { color: var(--ink-mute); }
 
 /* ────────────────── HERO ──────────────────
- * Two-column grid: text on the left, generative SVG figure on the right.
- * On narrow screens the figure stacks below the text, scaled down. */
-.hero { padding: 3rem 0 2.5rem; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-@media (min-width: 60rem) {
-  .hero-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 4rem; }
-}
-.hero-text { max-width: 42rem; }
+ * Vertical stack. The display headline sits at the top, the structural
+ * figure (pathway-through-obstacles) is a full-width banner below it
+ * — landscape, edge-to-edge of the content column, with a figcaption
+ * underneath it like a research-paper figure. The counts grid follows.
+ */
+.hero { padding: 3rem 0 1rem; }
+.hero-text { max-width: 48rem; }
 .hero-figure {
   color: var(--ink-2);
-  display: flex; align-items: stretch; justify-content: center;
-  min-height: 280px;
-  border: 1px solid var(--rule);
-  background: var(--paper);
-  padding: 1rem;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  border: none;
+  background: transparent;
 }
-.hero-figure svg.plotter { width: 100%; height: 100%; min-height: 260px; }
+.hero-figure svg.plotter {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.hero-figure figcaption {
+  display: flex; flex-wrap: wrap; gap: 0.7rem 1.2rem;
+  margin-top: 0.7rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem; letter-spacing: 0.01em;
+  color: var(--ink-mute);
+  text-transform: lowercase;
+}
+.hero-figure .fig-label {
+  color: var(--accent);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.hero-figure .fig-caption {
+  flex: 1 1 24rem;
+  font-family: "Newsreader", serif;
+  font-size: 0.92rem;
+  color: var(--ink-3);
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: italic;
+}
 
 .eyebrow {
   font-family: "JetBrains Mono", monospace;
