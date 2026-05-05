@@ -752,6 +752,11 @@ func proposeID(c candidate) string {
 	return fmt.Sprintf("%d-%s-%s", year, last, titleSlug(c.Title))
 }
 
+// titleSlug returns the first 3 meaningful words of a title joined
+// by dashes. We split BEFORE slugifying so word boundaries are
+// preserved — slugify() collapses all non-alphanumerics into dashes,
+// which would turn the whole title into a single dash-joined word
+// and break Fields-based splitting downstream.
 func titleSlug(title string) string {
 	stop := map[string]bool{
 		"a": true, "an": true, "the": true, "of": true, "for": true, "and": true,
@@ -759,13 +764,14 @@ func titleSlug(title string) string {
 		"how": true, "what": true, "when": true, "where": true, "why": true, "by": true,
 		"as": true, "from": true, "or": true, "are": true, "be": true, "at": true,
 	}
-	words := strings.Fields(slugify(title))
+	words := strings.Fields(strings.ToLower(title))
 	var keep []string
 	for _, w := range words {
-		if w == "" || stop[w] {
+		clean := slugify(w)
+		if clean == "" || stop[clean] {
 			continue
 		}
-		keep = append(keep, w)
+		keep = append(keep, clean)
 		if len(keep) == 3 {
 			break
 		}
