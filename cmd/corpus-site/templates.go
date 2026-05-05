@@ -265,12 +265,14 @@ func concentricArcs(w, h int, r *rand32) template.HTML {
 // for use as ambient background imagery. The motifs are fixed — they
 // don't depend on a seed — but they pick up currentColor so they
 // inherit the surrounding ink color and respect the structural-accent
-// system. Designed to be displayed at very low opacity (~6–8%) and
+// system. Designed to be displayed at very low opacity (~5–7%) and
 // large enough that fragments are decipherable on close inspection.
 func protocolMotif(kind string) template.HTML {
 	switch kind {
 	case "tls-hex":
 		return tlsHexDump()
+	case "tls-stream":
+		return tlsHexStream()
 	case "ipv4-header":
 		return ipv4HeaderDiagram()
 	case "probe-sequence":
@@ -279,6 +281,87 @@ func protocolMotif(kind string) template.HTML {
 		return dnsHeaderDiagram()
 	}
 	return ""
+}
+
+// hexToAscii converts a space-separated hex string to its printable
+// ASCII representation, with non-printable bytes rendered as ".".
+func hexToAscii(hex string) string {
+	var sb strings.Builder
+	for _, p := range strings.Fields(hex) {
+		if len(p) != 2 {
+			continue
+		}
+		var b byte
+		_, _ = fmt.Sscanf(p, "%02x", &b)
+		if b >= 0x20 && b <= 0x7e {
+			sb.WriteByte(b)
+		} else {
+			sb.WriteByte('.')
+		}
+	}
+	return sb.String()
+}
+
+// tlsHexStream renders a tall scrollable hex dump composed of bytes
+// from many real protocol artifacts: TLS handshake, DNS query/response,
+// IPv4 header, HTTP/2 frames, Tor cell, WireGuard initiation,
+// Shadowsocks first packet (high-entropy), QUIC long header, ECH.
+//
+// Designed for use inside a clipping container with a CSS
+// translateY(-50%) animation. The rows are duplicated 2× so the
+// scroll loops seamlessly: at translateY(0) the top row is the first
+// unique row; at translateY(-50%) the top row is also the first
+// unique row (now from the second copy), so there is no visible seam.
+func tlsHexStream() template.HTML {
+	rows := []string{
+		"16 03 01 02 00 01 00 01  fc 03 03 d8 b6 4d 7f 5e", // TLS ClientHello, version, random...
+		"2a 4f 9c b1 7e 32 a5 c8  19 4b f3 6d 88 c7 14 e5",
+		"21 9a 03 b6 7c 4d 5f 19  8e 24 6f 90 1a 20 88 36",
+		"df 91 7c 5b 2e 8a 4d 9c  b3 7f 18 22 4b a5 c1 e9", // session_id (32 bytes)
+		"cd ee 91 1f 64 2a 8c 03  20 1a fb 80 75 d8 4f 1c",
+		"00 22 13 01 13 02 13 03  c0 2b c0 2c c0 30 cc a8", // cipher_suites
+		"cc a9 c0 13 c0 14 00 9c  00 9d 00 2f 00 35 00 0a",
+		"01 00 00 ff 01 00 01 00  00 33 04 7f 03 1d 00 20", // extensions, supported_versions
+		"12 34 01 20 00 01 00 00  00 00 00 00 03 77 77 77", // DNS query header + www
+		"06 67 6f 6f 67 6c 65 03  63 6f 6d 00 00 01 00 01", // .google.com IN A
+		"ab cd 81 80 00 01 00 01  00 00 00 00 03 77 77 77", // DNS response
+		"45 00 00 3c 1c 46 40 00  40 06 b1 e6 c0 a8 01 64", // IPv4 header to 192.168.1.100
+		"ac d9 1f 78 00 50 d0 c5  4f 21 0c f5 a3 e8 9f 14", // TCP to :80, seq, ack
+		"00 00 0c 04 00 00 00 00  00 00 03 00 00 00 64 00", // HTTP/2 SETTINGS frame
+		"00 00 1c 01 25 00 00 00  01 82 84 87 5c 8e 9b ca", // HTTP/2 HEADERS frame, HPACK
+		"4d a8 14 c9 00 04 f3 e1  00 00 27 ab 80 ed 90 33", // Tor cell: CircID + RELAY cmd
+		"12 fe 3c 4a c1 8f 27 ab  bd a4 61 5e cd 90 28 11", // Tor relay payload
+		"01 00 00 00 0c 4a fe 92  3b a1 7d 04 e6 88 f5 31", // WireGuard initiation
+		"55 9c 23 d8 60 1e 4a b7  cf 28 91 0d 3e 7c f4 2b", // WireGuard ephemeral
+		"8b f7 c2 19 4a 6e d3 81  77 b9 22 9c f0 e4 56 23", // Shadowsocks high-entropy
+		"1f 95 c4 0d 7e 88 32 a6  bd 11 4f 60 da 38 e9 c7", // (more SS bytes)
+		"c0 00 00 00 01 08 fe d6  87 1d 9a 4c 28 ef 00 00", // QUIC long header
+		"00 41 00 00 00 02 03 03  00 00 b1 c4 9d 25 38 a7", // ECH ClientHelloOuter
+		"16 03 03 00 7a 02 00 00  76 03 03 92 a4 51 e8 7c", // TLS ServerHello
+		"5e 18 33 a0 4d 9b 7c 22  88 fb 04 e6 1a 35 c9 71",
+	}
+
+	asciiSafe := func(s string) string {
+		return strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;", `"`, "&quot;").Replace(s)
+	}
+
+	const lineH = 13
+	totalRows := len(rows) * 2
+	height := totalRows*lineH + 2
+	var b strings.Builder
+	fmt.Fprintf(&b, `<svg viewBox="0 0 470 %d" preserveAspectRatio="xMidYMin meet" class="ambient-svg motif-stream" font-family="JetBrains Mono, ui-monospace, monospace" font-size="9" fill="currentColor">`, height)
+	for i := 0; i < totalRows; i++ {
+		hx := rows[i%len(rows)]
+		// Offset cycles through 0x0000, 0x0010, ... 0x00f0 then resets.
+		off := fmt.Sprintf("%04x", (i%len(rows))*16)
+		asc := asciiSafe(hexToAscii(hx))
+		y := lineH + i*lineH
+		fmt.Fprintf(&b, `<text x="0" y="%d" opacity="0.5">%s</text>`, y, off)
+		fmt.Fprintf(&b, `<text x="36" y="%d">%s</text>`, y, hx)
+		fmt.Fprintf(&b, `<text x="362" y="%d" opacity="0.6">%s</text>`, y, asc)
+	}
+	b.WriteString(`</svg>`)
+	return template.HTML(b.String())
 }
 
 // tlsHexDump renders a hexdump-style block showing the first ~112 bytes
@@ -513,6 +596,12 @@ const layoutTmpl = `<!doctype html>
 <script src="/search.js" defer></script>
 </head>
 <body>
+<div class="ambient-layer" aria-hidden="true">
+  <div class="ambient-stream">{{protocolMotif "tls-stream"}}</div>
+  <div class="ambient-pkt">{{protocolMotif "ipv4-header"}}</div>
+  <div class="ambient-seq">{{protocolMotif "probe-sequence"}}</div>
+  <div class="ambient-dns">{{protocolMotif "dns-header"}}</div>
+</div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/">
@@ -580,7 +669,6 @@ const layoutTmpl = `<!doctype html>
 
 const indexBody = `
 <section class="hero">
-  <div class="ambient ambient-tl" aria-hidden="true">{{protocolMotif "tls-hex"}}</div>
   <div class="hero-text">
     <p class="eyebrow">circumvention research · structured · LLM-callable</p>
     <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
@@ -599,7 +687,6 @@ const indexBody = `
 </section>
 
 <section class="why">
-  <div class="ambient ambient-tr" aria-hidden="true">{{protocolMotif "ipv4-header"}}</div>
   <p class="section-mark"><span class="sec-num">§ 01</span> <span class="sec-rule"></span> <span class="sec-title">why this exists</span></p>
   <div class="two-col">
     <div>
@@ -634,7 +721,6 @@ const indexBody = `
 </section>
 
 <section class="recent">
-  <div class="ambient ambient-bl" aria-hidden="true">{{protocolMotif "dns-header"}}</div>
   <p class="section-mark"><span class="sec-num">§ 03</span> <span class="sec-rule"></span> <span class="sec-title">recent additions</span></p>
   <ul class="paper-list">
     {{range .Recent}}
@@ -650,7 +736,6 @@ const indexBody = `
 </section>
 
 <section class="cta-bottom">
-  <div class="ambient ambient-br" aria-hidden="true">{{protocolMotif "probe-sequence"}}</div>
   <div class="cta-grid">
     <div>
       <p class="section-mark"><span class="sec-num">§ 04</span> <span class="sec-rule"></span> <span class="sec-title">connect</span></p>
@@ -1316,48 +1401,90 @@ nav a.external { color: var(--ink-mute); }
 .hero { padding: 3rem 0 1rem; }
 .hero-text { max-width: 48rem; position: relative; z-index: 1; }
 
-/* ────────────────── AMBIENT — protocol motifs ──────────────────
- * Real protocol artifacts (hex dumps, RFC packet diagrams, sequence
- * diagrams) rendered as inline SVG and positioned absolutely within
- * sections at ~7% opacity. Visible only on close inspection. They
- * inherit color from the structural-accent system (currentColor +
- * var(--accent)). Hidden on narrow viewports where they'd clutter.
+/* ────────────────── AMBIENT — animated protocol layer ──────────────────
+ * A position:fixed layer behind every page that renders a few real
+ * protocol artifacts at very low opacity, each gently animated:
  *
- * Each ambient is anchored to one of four corners (.ambient-tl, -tr,
- * -bl, -br) so they tuck into negative space rather than competing
- * with text. Section gets position: relative; the .hero-text /
- * sec-content gets z-index: 1 to sit above. */
-section { position: relative; }
-.ambient {
-  position: absolute;
+ *   - .ambient-stream — tall hex dump of mixed protocol bytes (TLS,
+ *     DNS, IPv4, HTTP/2, Tor, WireGuard, Shadowsocks, QUIC, ECH).
+ *     Slowly scrolls upward in a continuous loop. The SVG content is
+ *     doubled internally so the loop has no visible seam.
+ *   - .ambient-pkt — IPv4 header diagram, breathes (opacity oscillates).
+ *   - .ambient-seq — active-probing sequence diagram, breathes on a
+ *     different phase so the motifs feel independent.
+ *   - .ambient-dns — DNS header, breathes.
+ *
+ * Together they read as "the network is alive, somewhere behind the
+ * page." Honors prefers-reduced-motion and is hidden under 78rem. */
+.ambient-layer {
+  position: fixed; inset: 0;
   pointer-events: none;
   z-index: 0;
+  overflow: hidden;
   color: var(--ink);
-  opacity: 0.07;
-  display: none;
 }
+.ambient-layer > div { position: absolute; }
 .ambient-svg { display: block; width: 100%; height: auto; }
 
-/* Hero — TLS ClientHello hex dump, top-right of the hero section. */
-.ambient-tl { top: 1rem; right: -1rem; width: 30rem; max-width: 38vw; }
-/* Why section — IPv4 header, top-right past the section mark. */
-.ambient-tr { top: 1.5rem; right: -2rem; width: 28rem; max-width: 36vw; }
-/* Recent additions — DNS header, bottom-left. */
-.ambient-bl { bottom: 1rem; left: -2rem; width: 22rem; max-width: 30vw; }
-/* Bottom CTA — active-probing sequence, anchored bottom-right. */
-.ambient-br { top: 0; right: -1rem; width: 24rem; max-width: 32vw; opacity: 0.06; }
-
-/* Display only on viewports wide enough that the motifs have room
- * to live in the margins without overlapping content. Narrower
- * screens get a clean text-only layout. */
-@media (min-width: 78rem) {
-  .ambient { display: block; }
+/* Scrolling hex stream: clipped tall column on the left side. Inner
+ * SVG translates upward by 50% (since rows are doubled inside). */
+.ambient-stream {
+  top: 0; left: -2.5rem;
+  width: 30rem;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.055;
+  transform: rotate(-0.4deg);
+  transform-origin: top left;
+}
+.ambient-stream svg {
+  display: block; width: 100%; height: auto;
+  animation: drift-up 110s linear infinite;
+  will-change: transform;
 }
 
-/* Subtle accent: the TLS-hex motif rotates very slightly so the rows
- * read as "found in the field" rather than "designed in Figma." */
-.ambient-tl { transform: rotate(-1deg); transform-origin: top right; }
-.ambient-bl { transform: rotate(0.6deg); transform-origin: bottom left; }
+/* Breathing motifs: opacity oscillates so the artifacts fade in and
+ * out gently. Different durations + delays so they feel independent. */
+.ambient-pkt {
+  top: 6rem; right: -2rem;
+  width: 26rem;
+  opacity: 0.06;
+  transform: rotate(0.5deg);
+  animation: breathe 11s ease-in-out infinite;
+}
+.ambient-seq {
+  bottom: 4rem; right: -1rem;
+  width: 22rem;
+  opacity: 0.06;
+  transform: rotate(-0.3deg);
+  animation: breathe 14s ease-in-out -5s infinite;
+}
+.ambient-dns {
+  top: 50%; right: 8rem;
+  width: 18rem;
+  opacity: 0.05;
+  transform: translateY(-50%) rotate(0.2deg);
+  animation: breathe 17s ease-in-out -8s infinite;
+}
+
+@keyframes drift-up {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.025; }
+  50%      { opacity: 0.085; }
+}
+
+/* Hide ambient layer on narrow viewports — it'd just clutter on phones. */
+@media (max-width: 78rem) {
+  .ambient-layer { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-stream svg { animation: none; }
+  .ambient-pkt, .ambient-seq, .ambient-dns { animation: none; opacity: 0.05; }
+}
 
 .eyebrow {
   font-family: "JetBrains Mono", monospace;
