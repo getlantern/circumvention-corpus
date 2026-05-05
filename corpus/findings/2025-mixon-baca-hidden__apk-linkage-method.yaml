@@ -1,0 +1,22 @@
+paper: 2025-mixon-baca-hidden
+kind: evaluation
+summary: |
+  Beyond business-filing cross-references, the paper introduces a method of linking
+  VPN provider families by showing they share VPN server cryptographic credentials
+  (Shadowsocks passwords, server TLS fingerprints) across distinct app identities.
+  This extends prior ownership-attribution methods that relied solely on corporate
+  registry data and code similarity, adding shared live infrastructure as a
+  linkage signal that is harder for operators to obscure.
+techniques: [tls-fingerprint, dpi]
+defenses: [shadowsocks, vless, vmess]
+censors: [generic]
+defense_implications:
+  - "Circumvention tool auditors and researchers can fingerprint covert VPN app
+    families by extracting and comparing hardcoded server credentials (passwords,
+    certificates) across APKs — a signal that survives code obfuscation."
+  - "Legitimate CT providers operating multiple branded products should ensure each
+    brand uses completely independent key material to prevent this linkage method from
+    being used against them by adversarial auditors seeking to conflate distinct
+    efforts."
+section: "§3 (Methodology), §4"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,22 @@
+paper: 2026-khanlari-iranian-ios-stores
+kind: policy
+summary: |
+  The paper documents the compounding effect of U.S. sanctions and Iranian
+  state censorship on app distribution: sanctions block Iranian users from
+  Apple's App Store via IP/payment geolocation, while Iranian censorship
+  simultaneously blocks Apple's CDN endpoints for app downloads. The
+  combined effect forces 100% of iOS app distribution in Iran through
+  unofficial channels, making the sanctions-censorship interaction a
+  structural condition rather than an edge case.
+techniques: [ip-blocking]
+censors: [ir]
+defense_implications:
+  - "Sanctions-based access restrictions (Apple, Google Play) are a permanent
+    structural barrier in IR that circumvention cannot fix at the network layer
+    alone; distribution strategy must treat app delivery as a first-class
+    circumvention problem alongside protocol evasion."
+  - "The sanctions + censorship combination creating mandatory sideloading in IR
+    applies equally to Lantern; publish .ipa files with direct-download
+    instructions as a first-class distribution channel, not an afterthought."
+section: "§1, §2"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2025-amnesty-pakistan-shadows
+kind: deployment
+summary: |
+  The report documents IMSI-catcher and mobile-network interception deployments
+  in Pakistan that complement fixed-line DPI infrastructure. Mobile broadband
+  users (dominant internet access mode in Pakistan) face surveillance at both
+  the carrier level and via OTT platform coercion, with major platforms
+  (YouTube, Twitter/X, TikTok) receiving and complying with blocking and content
+  takedown orders from PTA, reducing the scope of accessible content even for
+  users not running circumvention tools.
+techniques: [traffic-shape, ip-blocking]
+censors: [pk]
+defense_implications:
+  - "Pakistan's mobile-dominant user base means circumvention tools must perform
+    well under high-latency, low-bandwidth mobile conditions — protocol overhead
+    is a practical deployment constraint, not just a theoretical one."
+  - "Platform-level cooperation with PTA (YouTube, TikTok) means domain-fronting
+    through those CDNs may be unavailable or unreliable in PK."
+section: "§6"
+extracted_by: claude-sonnet-4-6

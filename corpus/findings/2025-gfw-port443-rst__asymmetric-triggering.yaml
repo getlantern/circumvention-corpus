@@ -1,0 +1,23 @@
+paper: 2025-gfw-port443-rst
+kind: detection
+summary: |
+  The August 20, 2025 unconditional RST event revealed an asymmetry in the GFW's
+  triggering mechanism: for traffic originating inside China, both the client SYN
+  and the server SYN+ACK each independently triggered three injected RST+ACK packets
+  (six total per connection). For traffic to China from outside, only the Chinese
+  server's SYN+ACK triggered RSTs — the foreign client's SYN alone was insufficient.
+  This asymmetry implies the responsible device observed the SYN+ACK from the Chinese
+  server as the trigger condition, not a port-match rule on the SYN.
+techniques: [rst-injection, port-blocking, dpi]
+censors: [cn]
+defense_implications:
+  - "The GFW's injection logic can be triggered by the server-side SYN+ACK packet
+    alone, meaning that even a client sending a SYN with no identifying payload
+    will cause the server's response to be disrupted — passive traffic analysis or
+    probe-free detection paths are possible using this mechanism."
+  - "Connection-level retry logic in circumvention clients should differentiate
+    between RSTs arriving before any data was sent (SYN-phase RST, suggesting port-
+    level blocking) and RSTs after the first payload (payload-triggered, suggesting
+    protocol detection); different fallback strategies are appropriate for each."
+section: "§2.1, §2.2"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,22 @@
+paper: 2026-article19-tightening-the-net
+kind: deployment
+summary: |
+  The report maps specific Belt and Road Initiative Digital Silk Road projects
+  through which Chinese technology vendors have transferred censorship and
+  surveillance infrastructure to Iran, including fiber backbone investments,
+  data-center co-location agreements, and equipment supply chains. Specific
+  vendors named include Huawei and ZTE as network infrastructure providers,
+  with the report noting that equipment exports include filtering-capable
+  hardware that Iran's ISPs have deployed at network choke points.
+techniques: [dpi, sni-blocking, throttling]
+censors: [ir, cn]
+defense_implications:
+  - "Huawei/ZTE equipment at Iranian ISP choke points means Iran's DPI capability
+    is tied to Chinese vendor firmware update cycles; track CVEs and firmware
+    updates in these product lines as a signal of capability evolution."
+  - "Iran's deep-packet inspection is distributed across multiple ISP choke
+    points (not a single centralized GFW-style architecture); blocking decisions
+    may be inconsistent across ISPs — multi-path probing remains valuable for
+    diagnosing IR blocking events."
+section: "§4, §5"
+extracted_by: claude-sonnet-4-6

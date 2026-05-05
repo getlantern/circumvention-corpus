@@ -1,0 +1,22 @@
+paper: 2024-xue-bridging
+kind: evaluation
+summary: |
+  Circumvention tools circulate through word-of-mouth and underground distribution
+  networks rather than official app stores, making the ecosystem opaque and creating
+  a supply-chain attack surface: adversarially-operated tools (including, per prior
+  work, apps linked to the People's Liberation Army) reach users through the same
+  channels as legitimate tools. The survey documents that providers are aware of
+  misbehaving players but lack coordinated mechanisms to flag or exclude them.
+techniques: [measurement-platform]
+defenses: [pluggable-transport]
+censors: [generic]
+defense_implications:
+  - "Protocols should include cryptographically-verifiable provenance (signed
+    binaries, reproducible builds, attestation of server operator identity) so that
+    users can verify they are running software from a trustworthy provider even when
+    distribution is informal."
+  - "Consider building provider-reputation or transparency-log infrastructure
+    analogous to Certificate Transparency, so that the research and activist community
+    can audit which CT providers are operating legitimately."
+section: "§1, §4.3, §6"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+paper: 2025-himmelberger-drivel
+kind: defense
+summary: |
+  Most deployed circumvention protocols (obfs4, Shadowsocks, Trojan, VMess, etc.)
+  still rely on pre-quantum primitives (X25519, AES-GCM, ChaCha20). Drivel is the
+  first published treatment of how to perform this migration in the specific context of
+  a fully-encrypted pluggable transport, providing a design template and security
+  analysis that does not exist elsewhere in the circumvention literature.
+techniques: [fully-encrypted-detect]
+defenses: [obfs4, scramblesuit, randomization]
+censors: [cn, generic]
+defense_implications:
+  - "Use Drivel as the reference design when adding PQ key exchange to any
+    obfs4-lineage or fully-encrypted transport; it covers the threat model and
+    primitive selection in a circumvention-specific context."
+  - "Lantern protocols (Reflex, Unbounded, any new fully-encrypted design) should
+    document their PQ migration path now, even if implementation is deferred."
+section: "§2, §5"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2024-kon-spotproxy
+kind: defense
+summary: |
+  SpotProxy exploits cloud Spot VMs — instances backed by excess capacity that can be
+  reclaimed at any moment and re-spawned at new IP addresses — to create a high-churn
+  proxy fleet. The observation is that Spot VM preemption, which is an operational
+  liability for normal workloads, is a circumvention asset: it continuously refreshes
+  proxy IP addresses, making censor enumeration and blocklisting structurally
+  ineffective.
+techniques: [ip-blocking]
+defenses: [bridges]
+censors: [generic]
+defense_implications:
+  - "Use cloud spot/preemptible instances for proxy infrastructure: their involuntary
+    IP rotation is a circumvention feature, not a bug, and the preemption rate provides
+    a lower bound on enumeration difficulty for the censor."
+  - "Design proxy clients for seamless migration across changing server IPs so that
+    Spot VM preemption is invisible to the user."
+section: "§1, §3"
+extracted_by: claude-sonnet-4-6

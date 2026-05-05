@@ -1,0 +1,22 @@
+paper: 2026-rks-russian-apps-vpn-detection
+kind: detection
+summary: |
+  Banking apps from major Russian institutions (Sber, T-Bank, VTB, Alfa-Bank)
+  combine VPN detection with behavioral biometrics — screen pressure, touch
+  coordinates, and gesture timing — enabling cross-account re-identification of
+  users behind proxies. 11 apps received a "RED" (maximum surveillance) rating.
+  T-Bank, Yandex services, and MAX additionally deploy active anti-analysis
+  features that detect research tooling on the device (rooted devices, emulators,
+  Frida, etc.).
+techniques: [ml-classifier, traffic-shape]
+censors: [ru]
+defense_implications:
+  - "Behavioral biometrics in Russian banking apps defeat the anonymous-account-
+    behind-a-proxy usage pattern; users should be warned that high-value apps
+    may fingerprint and link accounts across VPN sessions."
+  - "Anti-analysis features (Frida detection, emulator detection) in T-Bank and
+    Yandex apps indicate these apps are hardened against circumvention research;
+    static analysis of APKs may be the only viable approach for characterizing
+    their detection logic."
+section: "§5, §6"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+paper: 2025-amnesty-pakistan-shadows
+kind: policy
+summary: |
+  Pakistan's PECA (Prevention of Electronic Crimes Act) and PTA (Pakistan
+  Telecommunication Authority) regulations grant authority to block content
+  without court orders, enabling the deployment of a persistent national
+  filtering infrastructure. The report documents 11,000+ URLs blocked by PTA
+  and confirms that VPN use and circumvention tools are among the targeted
+  categories, with blocking orders issued under national security grounds.
+techniques: [ip-blocking, sni-blocking, dns-poisoning]
+censors: [pk]
+defense_implications:
+  - "PK's legal framework enables rapid ad-hoc blocking without public notice;
+    circumvention infrastructure should anticipate sudden IP/domain blacklisting
+    and build in fast rotation of server addresses."
+  - "VPNs are an explicitly targeted category in Pakistan — tools should minimize
+    VPN-like traffic signatures at both network and application layers."
+section: "§2, §4"
+extracted_by: claude-sonnet-4-6

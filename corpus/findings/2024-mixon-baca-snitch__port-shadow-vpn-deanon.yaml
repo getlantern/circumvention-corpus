@@ -1,0 +1,27 @@
+paper: 2024-mixon-baca-snitch
+kind: detection
+summary: |
+  The "port shadow" exploit abuses five shared, limited resources in Linux
+  conntrack/Netfilter (and analogous frameworks in BSD, Windows) to let an
+  off-path attacker intercept or redirect encrypted VPN traffic, de-anonymize a VPN
+  peer's source IP, or portscan a peer hidden behind a VPN server — all without
+  compromising the VPN's cryptographic layer. Four concrete attacks are demonstrated;
+  formal model checking with bounded model checking verified six process-isolation
+  mitigations that prevent the shared-resource collision.
+techniques: [middlebox-interference, packet-injection, flow-correlation]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "VPN servers (including circumvention proxies with a VPN-like forwarding model)
+    should isolate per-client conntrack namespaces; without namespace isolation, any
+    co-located or on-path adversary can exploit shared port tables to deanonymize
+    users."
+  - "For circumvention tools, this attack does not require breaking TLS/crypto — it
+    exploits the OS networking layer. Server-side hardening (network namespaces,
+    per-user iptables chains) is necessary even when the proxy protocol itself is
+    cryptographically sound."
+  - "Threat models for proxy servers should include the network operator of the
+    server's host (cloud provider, VPS) as a potential adversary capable of mounting
+    port-shadow style attacks without direct access to the proxy process."
+section: "Abstract, §3, §5"
+extracted_by: claude-sonnet-4-6

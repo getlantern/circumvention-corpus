@@ -1,0 +1,21 @@
+paper: 2026-rks-russian-apps-vpn-detection
+kind: policy
+summary: |
+  Russia's Ministry of Digital Development issued guidelines effective April 15, 2026
+  requiring popular apps to detect and restrict access from VPN-using devices.
+  RKS Global's analysis of 30 popular Russian Android apps found that 22 of 30
+  implement VPN detection, and 19 of those transmit the detected VPN status to
+  their servers. This represents a shift from network-layer blocking (TSPU) to
+  app-layer enforcement as an additional censorship vector.
+techniques: [tls-fingerprint, ml-classifier]
+censors: [ru]
+defense_implications:
+  - "Russian users of circumvention tools now face app-layer VPN detection in
+    addition to TSPU network-layer blocking; protocols that avoid OS-level VPN
+    APIs (e.g., running as a local SOCKS/HTTP proxy rather than a TUN device)
+    may evade app-layer VPN detection heuristics."
+  - "19 of 22 detecting apps phone home with VPN status — account-level
+    flagging of VPN users is happening at scale in RU; users need tools that
+    don't trigger the device-level VPN detection APIs that apps query."
+section: "§3, §4"
+extracted_by: claude-sonnet-4-6

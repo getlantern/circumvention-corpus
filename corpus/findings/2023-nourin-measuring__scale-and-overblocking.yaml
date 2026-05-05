@@ -1,0 +1,20 @@
+paper: 2023-nourin-measuring
+kind: detection
+summary: |
+  The largest measurement study of Turkmenistan censorship to date tested 15.5 million
+  domains and found more than 122,000 domains censored using separate blocklists for
+  DNS, HTTP, and HTTPS. Reverse-engineering the blocking rules revealed approximately
+  6,000 over-blocking rules that cause incidental filtering of more than 5.4 million
+  additional domains — a 44x collateral damage ratio relative to intentionally
+  blocked domains.
+techniques: [dns-poisoning, dpi, keyword-filtering, ip-blocking]
+censors: [tm]
+defense_implications:
+  - "Turkmenistan maintains separate protocol-layer blocklists for DNS, HTTP, and HTTPS;
+    a circumvention tool must address all three layers independently — DNS-over-HTTPS
+    alone does not unblock HTTP-level filtering."
+  - "The 44x over-blocking ratio means many legitimate domains are caught in the same
+    rules; tools can exploit this by using domains co-hosted with widely-used allowed
+    sites as cover traffic."
+section: "§Results"
+extracted_by: claude-sonnet-4-6

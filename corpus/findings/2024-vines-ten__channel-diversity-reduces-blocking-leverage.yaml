@@ -1,0 +1,22 @@
+paper: 2024-vines-ten
+kind: defense
+summary: |
+  The paper argues that a greater diversity of signaling channels reduces the
+  censor's leverage: when many independent services (cloud storage, email, push
+  notifications, domain fronting) can each bootstrap a circumvention connection,
+  a censor must block all of them to prevent access, and the collateral damage
+  of blocking each may deter action. Skyhook specifically targets cloud storage
+  as an additional independent pathway alongside existing channels like meek,
+  Raven (email), and PushRSS.
+techniques: [traffic-shape, ip-blocking]
+defenses: [tunneling, bridges, domain-fronting, meek]
+censors: [generic]
+defense_implications:
+  - "Implement at least one non-CDN signaling channel (cloud storage, email,
+    push notification) in addition to domain-fronting so that CDN policy changes
+    or ISP-level CDN blocks do not eliminate all bootstrap paths simultaneously."
+  - "The signaling channel only needs ~1KB per direction at ~1-minute latency;
+    high-bandwidth transport channels are not needed for bridge distribution,
+    enabling use of high-collateral-damage services like S3."
+section: "§1"
+extracted_by: claude-sonnet-4-6

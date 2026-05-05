@@ -1,0 +1,21 @@
+paper: 2024-chi-just
+kind: defense
+summary: |
+  Traditional circumvention tool development and deployment is slow because new
+  strategies must be developed, integrated into each tool separately, and then
+  distributed via platform app-stores. WATER's WASM module architecture specifically
+  addresses this asymmetry: censors evolve blocking techniques quickly, while
+  circumventors are bottlenecked by binary release cycles. The paper argues that
+  dynamic WATM delivery breaks this bottleneck by decoupling transport updates from
+  application releases.
+techniques: [dpi, traffic-shape]
+defenses: [water-wasm, pluggable-transport, protocol-versioning]
+censors: [generic, cn, ir, ru]
+defense_implications:
+  - "Design for hot-swappable transports from the start: architectures that require a
+    full application binary release to change transport behavior will always lag behind
+    censor adaptation speed."
+  - "Treat transport binaries as configuration/data artifacts that can be fetched and
+    rotated without user-visible app updates."
+section: "§1"
+extracted_by: claude-sonnet-4-6

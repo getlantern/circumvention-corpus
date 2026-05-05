@@ -1,0 +1,21 @@
+paper: 2025-alaraj-iran-refraction
+kind: detection
+summary: |
+  An internet-wide scan of 500k IP addresses from an in-country VPS vantage point
+  found TCP establishment-interception injections on 43,479 addresses (8.7% of
+  scanned), with over 70% concentrated in two Akamai ASes (AS16625 and AS20940).
+  The injection pattern — triggered by the first packet sent to these addresses —
+  is consistent with targeted blocking of domain-fronting proxies hosted on Akamai CDN.
+techniques: [packet-injection, rst-injection, ip-blocking]
+defenses: [domain-fronting]
+censors: [ir]
+defense_implications:
+  - "Akamai CDN IPs used for domain fronting face pre-establishment TCP injection
+    in Iran; operators should test CDN-specific blocking and consider rotating to
+    CDN providers with smaller IP footprint (CloudFront, Fastly) that may not yet
+    be targeted."
+  - "Pre-establishment injection (before any application data) means SNI or
+    content-based fingerprinting is not required; the censor is blocking the
+    CDN IP range itself, not the TLS payload."
+section: "§4.1.2"
+extracted_by: claude-sonnet-4-6

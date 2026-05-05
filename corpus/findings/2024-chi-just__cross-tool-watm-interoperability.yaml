@@ -1,0 +1,19 @@
+paper: 2024-chi-just
+kind: deployment
+summary: |
+  WATMs are designed to be generic: any application that embeds the WATER host runtime
+  can use the same WATM binary without modification. This means a single successfully
+  deployed transport module reaches users of every WATER-enabled application
+  simultaneously, collapsing the per-app porting effort that traditionally delays
+  circumvention tool updates.
+techniques: []
+defenses: [water-wasm, pluggable-transport]
+censors: [generic]
+defense_implications:
+  - "Invest in WATER module compliance: a transport built to the WATM ABI reaches every
+    WATER-capable host (lantern-box, standalone WATER, future integrations) at once —
+    write once, deploy everywhere."
+  - "Treat the WATM binary as the primary artifact; the specific host application is
+    incidental to the transport's deployment surface."
+section: "§1, §4"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2025-tusing-minecraft-tunnels
+kind: defense
+summary: |
+  MinecruftPT achieves mimicry by implementing enough of the Minecraft protocol to
+  pass as a real client-server game session, not just in header structure but in
+  behavioral sequence. The paper evaluates it under DPI and traffic-shape analysis,
+  finding that faithful protocol mimicry at the behavioral level (packet sequence,
+  message types, timing) is necessary to defeat classifiers that go beyond simple
+  byte-pattern matching.
+techniques: [dpi, traffic-shape]
+defenses: [steganography, mimicry, pluggable-transport]
+censors: [generic]
+defense_implications:
+  - "Superficial protocol mimicry (matching packet structure but not behavioral
+    sequence) fails against traffic-shape classifiers; cover channels must replicate
+    the cover protocol's behavioral patterns, not just its header format."
+  - "For game-protocol covers specifically, implement enough of the game state machine
+    to produce plausible session-level sequences, not just syntactically valid packets."
+section: "§3, §4"
+extracted_by: claude-sonnet-4-6

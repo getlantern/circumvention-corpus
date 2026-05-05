@@ -1,0 +1,24 @@
+paper: 2024-xue-bridging
+kind: evaluation
+summary: |
+  The first multi-perspective study of the circumvention-tool ecosystem surveyed 12
+  leading CT providers collectively serving over 100 million users, plus CT users
+  in Russia and China. Beyond technical blocking challenges, the study found that
+  funding constraints, usability problems, misconceptions (users and providers hold
+  inaccurate beliefs about each other's capabilities), and misbehaving players (tools
+  operated by adversarial actors) are equally significant threats to the ecosystem's
+  health — and are largely unaddressed by the academic research community.
+techniques: [measurement-platform]
+defenses: [pluggable-transport, domain-fronting, tor, bridges]
+censors: [generic]
+defense_implications:
+  - "Circumvention tool teams should invest in provider-to-provider information
+    sharing about misbehaving or adversarially-operated tools; users cannot
+    distinguish legitimate from adversarial providers based on app-store presence
+    alone."
+  - "Usability is a first-class security property for circumvention tools: a tool
+    that works but that users cannot configure correctly provides no protection.
+    The survey identifies this as an underinvested area relative to the amount of
+    academic work on cryptographic strength."
+section: "Abstract, §4, §6"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2024-bocovich-snowflake
+kind: deployment
+summary: |
+  Snowflake has been deployed in Tor Browser and Orbot for several years and served as
+  a significant circumvention tool during the Russia 2021 network disruptions and Iran
+  2022 protests. The paper documents a history of deployment and blocking attempts,
+  providing empirical evidence that the ephemeral WebRTC proxy design has sustained
+  availability under real censor pressure across multiple high-profile events.
+techniques: [ip-blocking]
+defenses: [webrtc-pluggable, bridges, tor]
+censors: [ru, ir]
+defense_implications:
+  - "WebRTC-based pluggable transports have demonstrated real-world resilience during
+    politically-motivated censorship events; integrate them as a fallback path in
+    circumvention clients."
+  - "Document blocking events systematically during deployment — retrospective analysis
+    of what blocking techniques were tried (and failed) informs future proxy pool
+    design."
+section: "§1, §6"
+extracted_by: claude-sonnet-4-6

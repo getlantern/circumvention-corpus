@@ -1,0 +1,22 @@
+paper: 2026-rks-russian-apps-vpn-detection
+kind: deployment
+summary: |
+  The RKS Global report documents a two-tier Russian censorship architecture:
+  TSPU network-layer blocking (documented by Xue et al. 2024) at the ISP level,
+  now supplemented by mandated app-layer VPN detection in the 30 most popular
+  Russian Android apps. This layered approach means a circumvention tool that
+  successfully bypasses TSPU at the network layer can still be detected and
+  reported by the app layer, closing the gap that network-only circumvention
+  leaves open.
+techniques: [tls-fingerprint, ml-classifier, middlebox-interference]
+censors: [ru]
+defense_implications:
+  - "Russia has closed the network-bypasses-but-app-detects gap by mandating
+    app-layer VPN checks; for RU deployments, run circumvention as a system-wide
+    local proxy that masks VPN status from in-app queries (e.g., by spoofing
+    VPN-status APIs or not using a VPN tunnel device at all)."
+  - "The two-tier architecture separates network circumvention (TSPU evasion)
+    from application-layer evasion (avoiding VPN-detection APIs) as distinct
+    engineering problems — both must be addressed for Russian users."
+section: "§2, §7"
+extracted_by: claude-sonnet-4-6

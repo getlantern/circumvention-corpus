@@ -1,0 +1,18 @@
+paper: 2024-chi-just
+kind: defense
+summary: |
+  WATER (WebAssembly Transport Executables Runtime) separates transport logic from the
+  host application by compiling it to a WASM module (WATM) that is distributed and
+  loaded independently at runtime. Deploying a new or updated circumvention technique
+  requires only distributing the new WATM binary and optional configuration — no change
+  to the host application and no app-store update cycle is required.
+techniques: [dpi, fully-encrypted-detect, traffic-shape]
+defenses: [water-wasm, pluggable-transport, protocol-versioning]
+censors: [generic, cn, ir]
+defense_implications:
+  - "Ship transport logic as a WASM module so that a blocking-adapted update can reach
+    deployed clients without waiting for an app-store review or full binary release."
+  - "Keep the host-application ABI as narrow as possible (dial/accept/read/write) so
+    any future transport that fits the interface requires zero application changes."
+section: "§1, §3"
+extracted_by: claude-sonnet-4-6

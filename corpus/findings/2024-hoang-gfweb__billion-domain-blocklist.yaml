@@ -1,0 +1,20 @@
+paper: 2024-hoang-gfweb
+kind: detection
+summary: |
+  GFWeb tested 1.02 billion domains against the GFW over 20 months and discovered
+  943,000 pay-level domains blocked by HTTP filters and 55,000 by HTTPS filters —
+  the largest GFW blocklist dataset ever published. The HTTP-to-HTTPS ratio (17:1)
+  confirms that the GFW's HTTPS keyword-based and SNI-based blocking covers far fewer
+  domains than its HTTP host-header blocking, likely because HTTPS blocks carry
+  higher collateral-damage risk.
+techniques: [dpi, dns-poisoning, ip-blocking, keyword-filtering, sni-blocking]
+censors: [cn]
+defense_implications:
+  - "HTTPS (SNI-based) circumvention frontends benefit from a much smaller blocklist
+    than HTTP frontends; CDN-based domain-fronting using HTTPS to a large CDN provider
+    is less likely to be on the GFW's HTTPS blocklist than a custom HTTP endpoint."
+  - "The GFW's HTTP host-header blocking covers almost 1 million domains, meaning
+    any circumvention technique that relies on HTTP (unencrypted) is at severe risk
+    of domain-list blocking; always use HTTPS/TLS at minimum."
+section: "Abstract, §5.1"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+paper: 2025-jfm-silk-road-surveillance
+kind: policy
+summary: |
+  The report traces the specific corporate pathway through which Geedge Networks
+  exported GFW-derived technology to Myanmar: via front companies, shell entities,
+  and Belt and Road Initiative contract frameworks that obscure the Chinese state's
+  direct involvement. The report names at least three intermediary entities used
+  to transfer equipment and technical personnel to the Myanmar military, and
+  documents that the same export channel was used for ongoing product updates
+  post-deployment.
+techniques: [dpi, ml-classifier]
+censors: [mm, cn]
+defense_implications:
+  - "Ongoing software updates via the same supply chain mean Myanmar's detection
+    stack does not stagnate post-deployment; plan for capability evolution at the
+    same pace as the GFW itself."
+  - "Belt-and-Road export mechanisms are documented and replicable; threat-model
+    any state with active BRI digital infrastructure projects as a potential TSG
+    customer regardless of public confirmation."
+section: "§4, §6"
+extracted_by: claude-sonnet-4-6

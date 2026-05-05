@@ -1,0 +1,19 @@
+paper: 2025-jfm-silk-road-surveillance
+kind: deployment
+summary: |
+  The report documents that Myanmar's military has used its TSG-based infrastructure
+  to execute targeted throttling and selective shutdowns of specific services and
+  platforms, not only blanket internet shutdowns. This includes selective disruption
+  of VPNs and circumvention tools during periods of civil unrest, demonstrating
+  that Myanmar's censors have operationalized the granular per-service traffic
+  control capabilities documented in the Geedge/MESA leak.
+techniques: [throttling, ip-blocking, traffic-shape]
+censors: [mm]
+defense_implications:
+  - "Myanmar's selective VPN throttling (not full block) implies detection is
+    occurring and throttle policy is being applied; protocols that look indistinguishable
+    from normal HTTPS will survive where identified VPN protocols are slowed."
+  - "Granular per-service control (not just kill-switch shutdowns) means circumvention
+    tools should expect service-level blocking events rather than full internet outages."
+section: "§5"
+extracted_by: claude-sonnet-4-6

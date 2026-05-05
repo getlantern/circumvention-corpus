@@ -1,0 +1,22 @@
+paper: 2025-wrana-sok-surveillance
+kind: policy
+summary: |
+  The paper concludes with design guidelines for future FIA-based
+  privacy-enhancing technologies, identifying that path-aware routing in
+  SCION and NDN's in-network caching both create new surveillance exposure:
+  SCION path headers reveal routing metadata to on-path censors; NDN caching
+  at routers means content is replicated at points under censor control.
+  The authors recommend that PETs built on FIAs treat these architectural
+  features as threat vectors, not privacy benefits.
+techniques: [dpi, flow-correlation]
+censors: [generic]
+defenses: [meta-resistance, tunneling]
+defense_implications:
+  - "SCION path headers are a new surveillance surface not present in IP; any
+    circumvention protocol carried over SCION should treat AS-level path
+    information as potentially censor-visible metadata."
+  - "NDN in-network caching creates censor-accessible content replication; do
+    not rely on FIA-native caching for circumvention content distribution — use
+    end-to-end encrypted overlays instead."
+section: "§6"
+extracted_by: claude-sonnet-4-6

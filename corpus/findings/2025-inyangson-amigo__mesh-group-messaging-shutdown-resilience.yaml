@@ -1,0 +1,23 @@
+paper: 2025-inyangson-amigo
+kind: defense
+summary: |
+  Amigo introduces a decentralized continuous key agreement protocol and novel
+  routing scheme for secure group mesh messaging over short-range radio (Bluetooth/
+  Wi-Fi Direct) when governments disable the Internet during protests. Extensive
+  simulations demonstrate that prior approaches fail to scale to realistic protest
+  environments that have high link churn, physical spectrum contention, and dense
+  mobility — Amigo's protest-specific optimizations address these but also reveal
+  that scaling to protests with thousands of participants remains an open challenge.
+techniques: [dpi]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "Bluetooth/Wi-Fi Direct mesh communication is a viable Internet-bypass channel
+    during shutdowns for small-to-medium groups; tool operators should integrate
+    mesh fallback modes but must budget for key agreement overhead that degrades
+    significantly above a few hundred nodes."
+  - "Prior mesh apps (Bridgefy) had cryptographic weaknesses; any mesh messaging
+    integration must use a protocol with forward secrecy and group key agreement
+    (e.g., MLS-based) to avoid passive surveillance by infiltrators in the mesh."
+section: "§Abstract"
+extracted_by: claude-sonnet-4-6

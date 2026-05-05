@@ -1,0 +1,22 @@
+paper: 2026-edorh-shieldshare
+kind: deployment
+summary: |
+  ShieldShare's modular architecture (VPN detection, hotspot management,
+  HTTP/HTTPS/SOCKS5 proxy forwarding, traffic metering) shows that
+  community-proxy deployment on commodity Android hardware is technically
+  feasible without root, and that accurate per-client bandwidth allocation
+  and accounting can be maintained under the constraint. The evaluation
+  confirms reliable routing of client traffic through VPN tunnels.
+techniques: [ip-blocking]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "Circumvention tool operators targeting shared-household or group settings
+    should consider a hotspot-proxy mode alongside the standard per-device
+    VPN install path; ShieldShare's open-source code provides a reference
+    implementation to adapt."
+  - "Device-limit enforcement by commercial VPN providers is a deployment
+    bottleneck; open-source tools without device limits (Lantern, Psiphon)
+    have a structural advantage in shared-access deployment scenarios."
+section: "§Abstract, §Evaluation"
+extracted_by: claude-sonnet-4-6

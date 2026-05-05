@@ -1,0 +1,20 @@
+paper: 2024-hoang-gfweb
+kind: detection
+summary: |
+  Longitudinal GFWeb data spanning 20 months shows the GFW actively patched
+  previously-published evasion findings during the measurement period: overblocking
+  bugs reported in academic papers were fixed, and fragmented-packet reassembly
+  failures that researchers used to bypass blocking were corrected. This demonstrates
+  that the GFW operator monitors published research and iterates on the system in
+  response to disclosed vulnerabilities.
+techniques: [dpi, middlebox-interference]
+censors: [cn]
+defense_implications:
+  - "Published evasion techniques have a limited operational lifetime once disclosed;
+    circumvention tools should not rely on a single known GFW bug and must have
+    layered fallback strategies that remain effective after the bug is patched."
+  - "Coordinated disclosure or embargo of evasion techniques (delaying publication
+    until a fix is deployed in tools and propagated to users) is especially important
+    given the GFW's demonstrated ability to patch quickly after public disclosure."
+section: "Abstract, §5.4, §6"
+extracted_by: claude-sonnet-4-6

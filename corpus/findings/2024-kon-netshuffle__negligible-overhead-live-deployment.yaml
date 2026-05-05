@@ -1,0 +1,20 @@
+paper: 2024-kon-netshuffle
+kind: evaluation
+summary: |
+  NetShuffle was prototyped in testbed environments and operated on a live campus
+  network for more than one month. The evaluation shows that the in-network address
+  shuffling provided by programmable switches is transparent to both services and
+  clients and incurs negligible performance overhead, validating the drop-in appliance
+  deployment model.
+techniques: [ip-blocking]
+defenses: [bridges]
+censors: [generic]
+defense_implications:
+  - "In-network shuffling via programmable switches has been demonstrated at production
+    scale with negligible overhead; latency and throughput impact are not a barrier to
+    adopting this approach."
+  - "Live-network evaluation over 30+ days provides stronger evidence of operational
+    viability than testbed-only results; replicate this evaluation methodology when
+    assessing new proxy infrastructure designs."
+section: "§5"
+extracted_by: claude-sonnet-4-6

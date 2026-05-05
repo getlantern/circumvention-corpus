@@ -1,0 +1,22 @@
+paper: 2025-alaraj-iran-refraction
+kind: detection
+summary: |
+  Iran's censorship of refraction-networking proxies (Conjure via Psiphon) is not
+  monolithic: different ISPs independently deploy different techniques and timelines.
+  Over 800 million logged Conjure connections from July 2023–February 2025 across
+  10+ Iranian ASes show TCI (AS58224, ~33% of traffic) uses packet injection, while
+  MCCI/Hamrah-e Avval (AS197207, ~22%) applies IP-based blocking, and some ASes
+  (Parsonline AS16322, Shatel AS31549) show no proxy blocking at all.
+techniques: [rst-injection, ip-blocking, packet-injection, dpi]
+defenses: [decoy-routing, conjure]
+censors: [ir]
+defense_implications:
+  - "Treat Iranian ISPs as independent adversaries: a proxy subnet that evades
+    TCI may still be blocked by MCCI. Configuration files must support per-ASN
+    phantom-subnet weighting to steer traffic to unblocked ISPs."
+  - "Maintaining multiple phantom subnets across geographically diverse ISP-networks
+    is essential; don't expose all subnets publicly (e.g., in a client config file)
+    as MCCI was observed to proactively block even rarely-used subnets once the
+    full list was enumerated."
+section: "§4"
+extracted_by: claude-sonnet-4-6

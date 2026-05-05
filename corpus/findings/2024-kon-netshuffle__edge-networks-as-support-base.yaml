@@ -1,0 +1,21 @@
+paper: 2024-kon-netshuffle
+kind: defense
+summary: |
+  NetShuffle targets edge networks — small autonomous systems and entities that obtain
+  IP address blocks from upstream providers — as a new class of support base for
+  circumvention infrastructure. This class has received scant attention from prior
+  work, which has focused on cloud providers and volunteer desktop machines. Edge
+  networks represent a large pool of diverse IP space that is harder to block via ASN
+  blackholing compared to a small number of major cloud providers.
+techniques: [ip-blocking, asn-blackholing]
+defenses: [bridges]
+censors: [generic, cn]
+defense_implications:
+  - "Diversify proxy infrastructure across small edge ASNs rather than concentrating it
+    on major cloud providers; edge-ASN IP space is harder to blackhole without
+    significant collateral damage to legitimate traffic."
+  - "Identify and engage edge-network operators (campus networks, regional ISPs, small
+    enterprise networks) as a proxy support base distinct from cloud VMs and volunteer
+    desktops."
+section: "§1, §2"
+extracted_by: claude-sonnet-4-6

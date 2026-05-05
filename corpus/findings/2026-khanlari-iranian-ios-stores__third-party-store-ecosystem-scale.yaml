@@ -1,0 +1,22 @@
+paper: 2026-khanlari-iranian-ios-stores
+kind: deployment
+summary: |
+  Khanlari and Rahmati conduct the first comprehensive empirical study of Iranian
+  third-party iOS app stores, collecting over 1,700 iOS app packages from three
+  major stores. The ecosystem emerged because U.S. sanctions barred Iranian users
+  and developers from accessing Apple's App Store and developer services, while
+  Iranian censorship simultaneously blocked official app download infrastructure.
+  The stores distribute both Iranian-exclusive apps (unavailable on the App Store)
+  and cracked/modified versions of paid international apps.
+techniques: [ip-blocking]
+censors: [ir]
+defense_implications:
+  - "Iranian iOS users rely on third-party app stores for app distribution;
+    Lantern iOS releases intended for Iran must be distributable via these
+    channels (IPA sideloading, enterprise certificates, or unofficial store
+    listings) as the official App Store is inaccessible to most Iranian users."
+  - "App distribution in IR is outside Apple's normal update-and-signing pipeline;
+    design for a distribution model where updates can be pushed through non-App-Store
+    channels with user-visible trust indicators that don't rely on Apple's CA."
+section: "§3, §4"
+extracted_by: claude-sonnet-4-6

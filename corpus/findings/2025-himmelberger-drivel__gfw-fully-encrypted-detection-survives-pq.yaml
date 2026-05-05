@@ -1,0 +1,20 @@
+paper: 2025-himmelberger-drivel
+kind: detection
+summary: |
+  Drivel evaluates its design against the GFW's fully-encrypted-traffic detector
+  (documented in Wu et al. 2023). The thesis demonstrates that switching to
+  post-quantum primitives does not by itself change the traffic's appearance to a
+  statistical censor classifier — the fully-encrypted detection problem is independent
+  of the underlying cryptographic algorithm and must be addressed at the traffic-shaping
+  layer regardless of key-exchange choice.
+techniques: [fully-encrypted-detect, random-payload-detect]
+defenses: [obfs4, randomization]
+censors: [cn]
+defense_implications:
+  - "Post-quantum migration and fully-encrypted traffic evasion are orthogonal problems;
+    a PQ-upgraded protocol still needs explicit cover-traffic or format-mimicry to
+    defeat the GFW's entropy-based classifier."
+  - "Test any new fully-encrypted protocol against the Wu 2023 GFW classifier
+    (not just active probing) before deployment in China."
+section: "§3, §4"
+extracted_by: claude-sonnet-4-6

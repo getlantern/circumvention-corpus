@@ -1,0 +1,23 @@
+paper: 2025-alaraj-iran-refraction
+kind: detection
+summary: |
+  Two Iranian ASes apply a protocol allowlist that drops traffic not matching
+  known application-layer protocol patterns (after ~6 packets), independently
+  of the destination IP. Experiments with fresh /26 phantom subnets showed that
+  prefixing Conjure connections with a plain HTTP GET payload evaded this blocking
+  for four weeks, while TLS Client Hello-prefixed and SSH-prefixed connections were
+  blocked within 72 hours (TLS) or 72 hours after port rotation (SSH). HTTP GET on
+  port 80 was the only tested prefix that survived the full experiment window.
+techniques: [dpi, fully-encrypted-detect]
+defenses: [decoy-routing, conjure, mimicry]
+censors: [ir]
+defense_implications:
+  - "Prefix circumvention connections with a legitimate plaintext protocol header
+    (HTTP GET on port 80) to pass Iran's protocol allowlist; TLS and SSH prefixes
+    are detected and blocked more quickly."
+  - "Server-side injection of protocol bytes (server sends first, mimicking a
+    server-initiated response) can reduce censor injection rates in at least one
+    major ISP (AS58224), offering a server-side evasion lever that requires no
+    client code changes."
+section: "§4.4, §5"
+extracted_by: claude-sonnet-4-6

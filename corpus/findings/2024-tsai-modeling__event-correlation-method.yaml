@@ -1,0 +1,22 @@
+paper: 2024-tsai-modeling
+kind: evaluation
+summary: |
+  CenDTect uses cross-classification accuracy — how well a decision tree trained on
+  one domain's blocking pattern predicts another domain's blocking — as a distance
+  metric to cluster domains that share the same blocking policy. This metric
+  outperforms prior time-series approaches because it is interpretable (the resulting
+  decision tree directly reveals the blocking mechanism: which ISP, which port, which
+  protocol) rather than producing opaque anomaly scores. The approach scales to
+  planetary-measurement volumes without requiring labelled training data.
+techniques: [measurement-platform, ml-classifier]
+censors: [generic]
+defense_implications:
+  - "When building automated monitoring of circumvention server reachability, model
+    blocking patterns as decision-tree classifiable features (port, protocol, ASN,
+    time-of-day) rather than purely time-series anomalies — this produces actionable
+    blocking-rule hypotheses rather than raw anomaly alerts."
+  - "Heterogeneous blocking policies across ISPs within the same country are a
+    confirmed, measurable phenomenon; circumvention tools should not assume a single
+    national policy and must test each major ISP/AS independently."
+section: "§3 (CenDTect Design), §5.3"
+extracted_by: claude-sonnet-4-6

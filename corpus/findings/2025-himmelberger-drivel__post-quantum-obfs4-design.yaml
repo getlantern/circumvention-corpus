@@ -1,0 +1,20 @@
+paper: 2025-himmelberger-drivel
+kind: defense
+summary: |
+  Drivel is an obfs4-style fully-encrypted proxy protocol that replaces obfs4's
+  pre-quantum cryptographic primitives with post-quantum alternatives. It is one of the
+  first circumvention protocols explicitly designed to remain secure under a quantum
+  adversary, addressing the forward-secrecy threat to deployed circumvention traffic
+  recorded today for future decryption.
+techniques: [fully-encrypted-detect, random-payload-detect]
+defenses: [obfs4, randomization]
+censors: [cn, generic]
+defense_implications:
+  - "Begin planning PQ migration for any circumvention protocol that relies on X25519
+    or classical Diffie-Hellman for key agreement; Drivel provides a concrete reference
+    for how to retrofit obfs4-lineage protocols."
+  - "Treat post-quantum key exchange as a near-term requirement for new protocol
+    designs, not a distant future concern — harvest-now-decrypt-later attacks on
+    circumvention traffic are a real threat model."
+section: "§1, §2"
+extracted_by: claude-sonnet-4-6

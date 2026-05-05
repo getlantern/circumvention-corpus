@@ -1,0 +1,22 @@
+paper: 2025-inyangson-amigo
+kind: evaluation
+summary: |
+  Simulations show that previous secure mesh messaging systems fail to provide
+  efficient private group communication under realistic protest conditions —
+  specifically high node mobility, link churn, and RF spectrum contention —
+  conditions that prior work did not evaluate. Bridgefy, the most widely deployed
+  protest mesh app, was broken cryptographically in 2021 and 2022, and even
+  its successor designs lack the scalability needed for protests with thousands
+  of participants.
+techniques: [dpi]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "Do not deploy Bridgefy or similar apps with known cryptographic breaks as
+    a censorship fallback channel; the security failure (exposing sender identity
+    and message content to infiltrators) outweighs the availability benefit."
+  - "Any production mesh fallback must be evaluated in adversarial RF environments
+    with mobility models based on real protest crowd-dynamics data, not idealized
+    static topologies."
+section: "§Abstract, §Simulations"
+extracted_by: claude-sonnet-4-6

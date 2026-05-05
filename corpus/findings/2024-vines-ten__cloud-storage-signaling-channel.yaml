@@ -1,0 +1,23 @@
+paper: 2024-vines-ten
+kind: defense
+summary: |
+  Skyhook redesigns the 2014 CloudTransport concept as a signaling channel for
+  bridge/proxy bootstrapping rather than a general-purpose browsing channel.
+  By scoping to two-message exchanges (~1KB per direction, ~1 minute latency
+  tolerance), Skyhook eliminates the requirement for censored users to create
+  paid cloud storage accounts — the key usability barrier in the original design —
+  and uses unilateral permissioning over AWS S3 objects so blocking Skyhook
+  requires blocking all HTTPS traffic to an entire AWS S3 region.
+techniques: [traffic-shape]
+defenses: [tunneling, bridges, domain-fronting]
+censors: [generic]
+defense_implications:
+  - "Cloud storage (AWS S3) is a viable bootstrap/signaling channel because
+    blocking it requires blocking an entire S3 region — a collateral damage
+    threshold most censors won't cross. Use regional S3 endpoints (not
+    account-specific subdomains) to prevent targeted blocklisting."
+  - "Requiring censored users to create accounts to use a circumvention channel
+    imposes critical friction; eliminate pre-registration requirements by having
+    operators own the storage accounts and offer unauthenticated public-write access."
+section: "§2, §4"
+extracted_by: claude-sonnet-4-6

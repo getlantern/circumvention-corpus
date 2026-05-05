@@ -1,0 +1,20 @@
+paper: 2024-kon-netshuffle
+kind: defense
+summary: |
+  NetShuffle decouples regular proxy services (e.g., HTTPS proxies, Tor bridges) from
+  their network addresses via continuous in-network change using programmable switches
+  at edge networks. Because the network location of a proxy is in constant flux,
+  blocking by IP or address enumeration becomes structurally ineffective: the proxy
+  service itself is unchanged but its visible address rotates continuously.
+techniques: [ip-blocking]
+defenses: [bridges]
+censors: [generic]
+defense_implications:
+  - "Network-layer address shuffling (implemented in programmable switches) can be
+    layered on top of existing proxy services as a drop-in appliance without modifying
+    the service or client — a deployment model that lowers adoption friction."
+  - "Separating proxy identity from network address is a durable anti-blocking design
+    principle: any mechanism that makes the address a transient attribute achieves
+    similar resistance."
+section: "§1, §3"
+extracted_by: claude-sonnet-4-6

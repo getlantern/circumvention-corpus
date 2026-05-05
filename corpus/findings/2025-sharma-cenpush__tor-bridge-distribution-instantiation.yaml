@@ -1,0 +1,19 @@
+paper: 2025-sharma-cenpush
+kind: deployment
+summary: |
+  CenPush is implemented and evaluated specifically for Tor bridge distribution,
+  replacing the existing polled bridge-line fetching with push delivery. The design is
+  presented as a general mechanism applicable to any circumvention tool that needs to
+  push fresh proxy addresses to clients — not just Tor bridges — whenever censors
+  block the tool's normal update channel.
+techniques: [ip-blocking]
+defenses: [bridges, tor, meta-resistance]
+censors: [generic]
+defense_implications:
+  - "The CenPush architecture is directly applicable to Lantern's proxy config
+    distribution: replace or supplement the polled /config endpoint with a push-
+    notification channel to improve resilience when the config endpoint is blocked."
+  - "Ensure the push payload is small (bridge lines / IP:port pairs) and encrypted;
+    the push channel is not a data-plane channel but a bootstrap/config-update channel."
+section: "§3, §5"
+extracted_by: claude-sonnet-4-6

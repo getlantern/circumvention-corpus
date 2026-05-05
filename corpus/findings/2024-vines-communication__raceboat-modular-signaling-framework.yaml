@@ -1,0 +1,23 @@
+paper: 2024-vines-communication
+kind: defense
+summary: |
+  Raceboat formalizes a decomposition of application-protocol-tunneling channels
+  into three reusable components (Transport, User Model, Encoding) and a channel
+  manager that supports mixing unidirectional channels. By composing seven different
+  channels from these modular components (including email, AWS S3, and Redis variants),
+  the paper demonstrates that the current ad-hoc one-protocol-one-implementation
+  model wastes significant re-implementation effort: the same transport or encoding
+  logic is duplicated across Snowflake, meek, CloudTransport, and others.
+techniques: [traffic-shape, ip-blocking]
+defenses: [tunneling, domain-fronting, bridges, meek]
+censors: [generic]
+defense_implications:
+  - "Bridge distribution currently depends almost entirely on a single domain-fronting
+    channel (meek); the Raceboat model enables composing multiple independent channels
+    (email + S3 + Redis) so that blocking domain fronting does not eliminate all
+    bootstrap paths."
+  - "Signaling channels require only ~1KB per direction at ~1-minute latency; design
+    and implement the control-plane channel separately from the data-plane transport
+    to enable independent blocking resilience for each."
+section: "§1–§5"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2025-tusing-minecraft-tunnels
+kind: defense
+summary: |
+  MinecruftPT encodes circumvention traffic steganographically inside the Minecraft
+  Java Edition network protocol, making a censored connection appear to a network
+  observer as an ordinary online Minecraft game session. The cover channel is a
+  high-volume, varied-packet-size TCP protocol with a large and active user population,
+  making statistical fingerprinting harder than for lower-volume cover protocols.
+techniques: [dpi, traffic-shape, tls-fingerprint]
+defenses: [steganography, mimicry, tunneling, pluggable-transport]
+censors: [generic]
+defense_implications:
+  - "Gaming protocols are a viable and under-explored cover channel: they carry high
+    traffic volumes with complex, varied packet patterns that are harder to model for
+    a statistical classifier than simpler protocols like HTTP or DNS."
+  - "When selecting a cover protocol, prefer ones with large existing user populations
+    and high per-session bandwidth variability — both raise the false-positive cost of
+    blocking for the censor."
+section: "§1, §3"
+extracted_by: claude-sonnet-4-6

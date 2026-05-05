@@ -1,0 +1,19 @@
+paper: 2025-sharma-cenpush
+kind: defense
+summary: |
+  The blocking-resistance of CenPush derives from the collateral damage a censor would
+  incur by blocking APNs or FCM: doing so would break push notifications for every app
+  on iOS or Android respectively. This is the same collateral-damage deterrent
+  mechanism that makes CDN-based domain fronting and TLS-over-CDN transports resilient,
+  applied to the control plane rather than the data plane.
+techniques: [ip-blocking]
+defenses: [bridges, meta-resistance]
+censors: [generic, cn, ir]
+defense_implications:
+  - "Collateral damage is a structural defense property; choose control-plane channels
+    that are shared with high-value legitimate traffic so the censor cannot block them
+    without visible political cost."
+  - "The same principle that protects domain fronting on CDNs protects push notification
+    channels; both should be considered as circumvention control-plane components."
+section: "§2, §4"
+extracted_by: claude-sonnet-4-6

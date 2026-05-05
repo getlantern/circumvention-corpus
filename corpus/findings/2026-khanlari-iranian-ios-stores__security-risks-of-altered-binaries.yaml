@@ -1,0 +1,22 @@
+paper: 2026-khanlari-iranian-ios-stores
+kind: evaluation
+summary: |
+  The study finds that apps distributed via Iranian third-party iOS stores
+  frequently contain embedded third-party tracking SDKs and piracy libraries
+  inserted during repackaging, and that cracked/modified binaries have
+  stripped or replaced code-signing certificates with enterprise distribution
+  certificates. The paper quantifies developer revenue loss from piracy and
+  documents that the repackaging process introduces both surveillance and
+  integrity risks that users are generally unaware of.
+techniques: [ip-blocking]
+censors: [ir]
+defense_implications:
+  - "Circumvention apps distributed via Iranian third-party stores may be
+    repackaged with added tracking SDKs or malicious modifications; consider
+    publishing SHA-256 hashes of official binaries and in-app integrity self-checks
+    that warn users of tampered builds."
+  - "Enterprise certificate distribution (the primary mechanism these stores use)
+    can be revoked by Apple; circumvention app distribution in IR should have a
+    fallback that doesn't depend on a single enterprise certificate remaining valid."
+section: "§5, §6"
+extracted_by: claude-sonnet-4-6

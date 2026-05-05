@@ -1,0 +1,17 @@
+paper: 2023-nourin-measuring
+kind: evaluation
+summary: |
+  The paper introduces TMC, a remote measurement tool that infers domain-blocking
+  status across DNS, HTTP, and HTTPS without requiring in-country vantage points,
+  using only 38% Internet penetration in a country of 6 million people. TMC enabled
+  the largest Turkmenistan censorship measurement to date by exploiting middlebox
+  reflection properties observable from outside the country.
+techniques: [measurement-platform, dpi, dns-poisoning]
+censors: [tm]
+defense_implications:
+  - "Remote measurement techniques based on middlebox side-channel reflection
+    can characterize censorship in low-penetration countries where recruiting
+    in-country volunteers is dangerous or infeasible; tool operators can adopt
+    this approach for continuous monitoring without exposing users."
+section: "§TMC"
+extracted_by: claude-sonnet-4-6

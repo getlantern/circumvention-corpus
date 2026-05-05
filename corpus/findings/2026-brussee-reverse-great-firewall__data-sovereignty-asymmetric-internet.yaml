@@ -1,0 +1,22 @@
+paper: 2026-brussee-reverse-great-firewall
+kind: policy
+summary: |
+  Brussee develops a conceptual framework distinguishing two logics of government
+  geo-blocking: (1) information control (blocking inbound foreign content from
+  domestic users) and (2) data sovereignty / attack-surface reduction (blocking
+  outbound access by foreign actors to domestic systems). Chinese government
+  site blocking of external IPs is motivated primarily by the second logic,
+  creating an asymmetric internet topology where CN citizens cannot reach the
+  outside world, and outside actors cannot probe CN government infrastructure.
+techniques: [ip-blocking, asn-blackholing]
+censors: [cn]
+defense_implications:
+  - "Measurement methodology for GFW studies should account for asymmetric
+    access: vantage points outside CN may be blocked from probing certain CN-
+    hosted endpoints, leading to measurement blind spots distinct from GFW
+    blocks of outbound traffic."
+  - "Reverse-GFW blocking of foreign ASNs means circumvention proxy IPs should
+    not be in well-known datacenter ASN blocks that CN-side firewalls block
+    inbound — residential IPs or less-known ASNs are better hosting choices."
+section: "§2, §4"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+paper: 2025-jfm-silk-road-surveillance
+kind: deployment
+summary: |
+  Justice for Myanmar documents that Geedge Networks supplied Myanmar's military
+  junta with GFW-derived surveillance and censorship infrastructure under Belt and
+  Road frameworks following the February 2021 coup. The deployed system (Tiangou
+  Secure Gateway / TSG) incorporates the same DPI, active-probing, and ML-classifier
+  capabilities as the domestic Chinese GFW, giving Myanmar one of the most
+  technically capable censorship systems in Southeast Asia.
+techniques: [dpi, sni-blocking, ip-blocking, traffic-shape, ml-classifier, active-probing]
+censors: [mm, cn]
+defense_implications:
+  - "Myanmar's post-2021 detection capability is GFW-grade; do not treat MM as a
+    lower-capability censor — circumvention protocols that work against GFW are the
+    correct baseline for MM."
+  - "Active probing is documented in the TSG product; any circumvention endpoint
+    deployed for Myanmar users must respond correctly to active probes or be silently
+    blacklisted."
+section: "§3, §5"
+extracted_by: claude-sonnet-4-6

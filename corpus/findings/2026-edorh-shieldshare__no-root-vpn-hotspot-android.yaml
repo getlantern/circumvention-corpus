@@ -1,0 +1,22 @@
+paper: 2026-edorh-shieldshare
+kind: deployment
+summary: |
+  ShieldShare demonstrates that an Android application can route all hotspot-client
+  traffic through a VPN tunnel without root access by using a SOCKS5/HTTP/HTTPS
+  proxy layer between the hotspot and the VPN, with per-client traffic accounting
+  and quota management. The system works because Android's native hotspot does not
+  forward VPN routing tables to connected clients; ShieldShare interposes a proxy
+  that handles this. Released as open-source.
+techniques: [ip-blocking]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "A no-root Android proxy-hotspot architecture enables community-controlled
+    VPN sharing: a single phone with a circumvention VPN can serve multiple
+    co-located users (e.g., shared household, protest group) without requiring
+    each device to install its own circumvention app."
+  - "Per-user traffic accounting is achievable without root; this architecture
+    is relevant for deploying Lantern or similar tools as a shared-access point
+    in censored environments where device-by-device enrollment is impractical."
+section: "§Abstract"
+extracted_by: claude-sonnet-4-6

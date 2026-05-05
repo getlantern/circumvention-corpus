@@ -1,0 +1,20 @@
+paper: 2024-bocovich-snowflake
+kind: defense
+summary: |
+  Snowflake's blocking resistance rests on a large, constantly changing pool of
+  volunteer WebRTC proxies implemented as lightweight JavaScript browser extensions or
+  web pages. Because the proxy population is in constant churn and new addresses appear
+  faster than censors can enumerate and block them, IP-list blocking is structurally
+  ineffective. The system is designed so that when an in-use proxy goes offline, the
+  client seamlessly migrates to another with no disruption to upper network layers.
+techniques: [ip-blocking, traffic-shape]
+defenses: [webrtc-pluggable, bridges]
+censors: [generic, cn, ir, ru]
+defense_implications:
+  - "Build proxy pools around high-churn, volunteer-supplied addresses rather than
+    stable server IPs; the enumeration cost for the censor must exceed the replenishment
+    rate to make IP-list blocking effective."
+  - "Implement seamless client-side proxy migration (without session teardown) so that
+    proxy churn does not degrade user experience."
+section: "§1, §2"
+extracted_by: claude-sonnet-4-6

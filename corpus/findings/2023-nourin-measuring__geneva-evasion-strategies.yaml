@@ -1,0 +1,20 @@
+paper: 2023-nourin-measuring
+kind: defense
+summary: |
+  Using Geneva (genetic algorithm censorship evasion), five new evasion strategies
+  were discovered that defeat Turkmenistan's censorship at both transport and
+  application layers across DNS, HTTP, and HTTPS. The strategies exploit Turkmenistan's
+  use of a commercial DPI box ("Golden DPI" by Qurium) and can be applied server-side
+  without requiring changes to censored users' client software.
+techniques: [dpi, dns-poisoning]
+defenses: [geneva]
+censors: [tm]
+defense_implications:
+  - "Geneva-discovered packet manipulation strategies (e.g., TTL manipulation,
+    TCP segmentation tricks) can defeat the specific DPI vendor used by Turkmenistan;
+    these strategies should be added to the Geneva strategy corpus and tested on
+    other Golden DPI deployments."
+  - "Server-side evasion is viable in Turkmenistan; deploying evasion strategies on
+    the server side avoids requiring client-side updates to reach censored users."
+section: "§Evasion"
+extracted_by: claude-sonnet-4-6

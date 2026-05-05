@@ -1,0 +1,22 @@
+paper: 2026-brussee-reverse-great-firewall
+kind: deployment
+summary: |
+  Brussee measures a systematic pattern of Chinese government websites actively
+  blocking access from outside China (the "reverse Great Firewall"), publishing a
+  CSV dataset of affected domains (available at zenodo.org/records/18172145).
+  The paper frames this outbound geo-blocking as a cybersecurity-motivated
+  practice — Chinese authorities classify foreign access to domestic government
+  infrastructure as an attack surface — distinct from the inbound information
+  control goal of the GFW.
+techniques: [ip-blocking, asn-blackholing]
+censors: [cn]
+defense_implications:
+  - "Circumvention infrastructure hosted on foreign ASNs may be blocked from
+    accessing CN government endpoints (e.g., for connectivity testing or
+    captive-portal detection); keep test endpoints out of CN-blocked foreign ASN ranges."
+  - "The reverse GFW's IP/ASN-based approach differs from DPI-based inbound
+    blocking — any circumvention proxy IP that appears in a foreign datacenter
+    ASN may be treated as a hostile source by CN-side hosts, affecting probe
+    and active-connectivity-test infrastructure."
+section: "§3, §5"
+extracted_by: claude-sonnet-4-6

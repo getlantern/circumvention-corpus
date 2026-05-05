@@ -1,0 +1,21 @@
+paper: 2025-h-ller-evaluating
+kind: evaluation
+summary: |
+  Combining six onion search engines/repositories plus clearnet search engines,
+  Tor2web-style DNS leakage, and 20 days of self-run crawling (2.9 million pages),
+  the authors assembled 482,614 unique v3 onion addresses — the largest known
+  collection. Verifying against HSDir blinded public keys showed the collected
+  addresses accounted for 25% of observed blinded keys but were responsible for
+  66% of all successful service descriptor downloads, confirming a heavy-tailed
+  usage distribution.
+techniques: [measurement-platform]
+defenses: [tor]
+censors: [generic]
+defense_implications:
+  - "A small fraction of onion addresses accounts for most descriptor downloads;
+    privacy-sensitive circumvention onion services (Cwtch, Briar) that avoid
+    public indexing will be systematically underrepresented in any collection-based
+    study — measurement results about 'Tor onion usage' are skewed toward popular/
+    commercial services, not dissident use cases."
+section: "§4, §5"
+extracted_by: claude-sonnet-4-6

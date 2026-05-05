@@ -1,0 +1,20 @@
+paper: 2026-article19-tightening-the-net
+kind: policy
+summary: |
+  Article 19 documents that Iran's National Information Network (NIN / SHOMA) was
+  designed with explicit reference to China's Great Firewall as a model, with
+  institutional mirroring: Iran's Supreme Council of Cyberspace parallels China's
+  Cyberspace Administration of China, and both governments share a "cyber sovereignty"
+  doctrine used to justify domestic content controls and cross-border technology
+  transfer. The report frames Iran's filtering infrastructure as deliberately
+  architected to replicate GFW capabilities, not as an independently developed system.
+techniques: [dpi, sni-blocking, dns-poisoning, ip-blocking, bgp-hijack, throttling]
+censors: [ir, cn]
+defense_implications:
+  - "Iran's censorship trajectory is toward GFW parity — tools designed for GFW
+    should be the baseline for IR deployments, not a separate capability tier."
+  - "Institutional convergence between IR and CN means future Chinese censorship
+    R&D (including MESA Lab outputs) is likely to flow into Iran's detection stack
+    via the Belt and Road Digital Silk Road framework."
+section: "§2, §3"
+extracted_by: claude-sonnet-4-6

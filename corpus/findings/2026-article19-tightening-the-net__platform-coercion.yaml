@@ -1,0 +1,23 @@
+paper: 2026-article19-tightening-the-net
+kind: policy
+summary: |
+  Article 19 documents that Iran combines technical filtering with formal coercion
+  of major foreign platforms (including Telegram, Instagram, and WhatsApp) to
+  comply with content removal orders under threat of full blocking. The report
+  notes that Iran's 2022 Women Life Freedom protests accelerated platform blocking
+  when foreign operators refused compliance, demonstrating that the censorship
+  system operates in two modes: coerce-and-allow for compliant platforms, block
+  for non-compliant ones. Domain fronting via these platforms is therefore
+  subject to sudden revocation if political conditions change.
+techniques: [ip-blocking, dns-poisoning, throttling]
+censors: [ir]
+defenses: [domain-fronting, tunneling]
+defense_implications:
+  - "Domain-fronting via major platforms (Telegram CDN, Instagram, WhatsApp) in
+    Iran carries platform-cooperation risk: if IR demands the CDN operator block
+    fronted traffic, the fronting domain may be yanked without warning."
+  - "Platform blocking in IR is event-driven (tied to civil unrest / protest
+    activity); circumvention tools should have automatic fallback when a fronting
+    domain becomes unreachable."
+section: "§6"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+paper: 2024-xue-fingerprinting
+kind: detection
+summary: |
+  While stream multiplexing reduces the visibility of encapsulated TLS handshakes by
+  merging inner connections, the paper cautions that multiplexing plus random padding
+  alone is "inherently limited" as a long-term countermeasure. Censors can adapt by
+  monitoring burst sizes and round-trip counts at the outer-connection level, which
+  remain correlated with the number of inner TLS sessions regardless of padding.
+techniques: [dpi, tls-fingerprint, traffic-shape]
+defenses: [vmess, vless, reality]
+censors: [generic]
+defense_implications:
+  - "Multiplexing must be combined with active burst shaping (deliberate inter-packet
+    delays and size normalization) to prevent the outer connection's timing pattern
+    from leaking the inner TLS session count."
+  - "REALITY and TLS-forwarding approaches that make the outer handshake
+    indistinguishable from a real TLS server still expose inner-handshake structure
+    once the censor can observe full-stream patterns; complete replacement of inner
+    TLS with non-TLS app-layer framing would be required to fully close this vector."
+section: "§7 (Limitations and Future Work)"
+extracted_by: claude-sonnet-4-6

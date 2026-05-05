@@ -1,0 +1,24 @@
+paper: 2025-gfw-port443-rst
+kind: detection
+summary: |
+  On August 20, 2025 from approximately 00:34 to 01:48 Beijing Time (74 minutes),
+  the GFW unconditionally injected TCP RST+ACK packets on all port 443 traffic,
+  regardless of payload content, disrupting all TCP/443 connections between China
+  and the rest of the world. The injected packets came in triples with incrementally
+  increasing TTL and window size fields — a fingerprint that does not match any
+  previously catalogued GFW device — indicating either a new device or a known device
+  in a novel or misconfigured state. The blocking was port-443-specific: ports 22,
+  80, 8443, and others were unaffected during the same window.
+techniques: [rst-injection, port-blocking]
+censors: [cn]
+defense_implications:
+  - "A sudden China-wide spike in port-443 failures should not be automatically
+    attributed to targeted circumvention-protocol blocking; this event demonstrates
+    that the GFW can produce short-lived misconfiguration events that look identical
+    to deliberate protocol-specific blocking from a client's perspective."
+  - "Circumvention tools relying exclusively on TCP/443 (TLS mimicry, HTTPS fronting)
+    have no fallback when the GFW enters an unconditional-RST mode on that port;
+    maintain at least one alternative port path (e.g., 8443, 2053, or UDP/QUIC)
+    that activates automatically on detected RST storms."
+section: "§1, §2.3, §3"
+extracted_by: claude-sonnet-4-6

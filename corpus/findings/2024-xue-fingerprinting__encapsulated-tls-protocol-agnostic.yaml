@@ -1,0 +1,26 @@
+paper: 2024-xue-fingerprinting
+kind: detection
+summary: |
+  Obfuscated proxy traffic (including Shadowsocks, VMess, VLESS, Trojan, obfs4, and
+  REALITY) can be reliably fingerprinted by detecting encapsulated TLS handshakes —
+  the inner TLS ClientHello that appears inside an outer encrypted tunnel. This
+  fingerprint is protocol-agnostic: any proxy that wraps TLS-bearing application
+  traffic will produce it. The authors deployed a similarity-based classifier within
+  a mid-size ISP serving over one million users and demonstrated detection with
+  minimal collateral damage.
+techniques: [dpi, tls-fingerprint, ml-classifier]
+defenses: [shadowsocks, vmess, vless, trojan, obfs4, reality]
+censors: [generic]
+defense_implications:
+  - "Random padding and multiple encapsulation layers do NOT defeat this attack; they
+    cannot reduce the size of traffic bursts or the number of round trips that expose
+    the inner TLS handshake structure."
+  - "Stream multiplexing (e.g., mux.cool, smux, h2mux) shows promise as a
+    countermeasure by merging multiple inner connections into one outer flow, hiding
+    per-connection TLS handshakes; protocol designers should treat mux as a required
+    component, not an optional optimization."
+  - "Protocols that never expose an inner TLS ClientHello — e.g., QUIC-based
+    transports where the inner layer is not TLS-over-TCP — are structurally immune
+    to this specific fingerprint."
+section: "Abstract, §5, §7"
+extracted_by: claude-sonnet-4-6

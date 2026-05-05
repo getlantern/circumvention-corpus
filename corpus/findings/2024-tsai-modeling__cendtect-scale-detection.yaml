@@ -1,0 +1,24 @@
+paper: 2024-tsai-modeling
+kind: evaluation
+summary: |
+  CenDTect, an unsupervised decision-tree system using iterative parallel DBSCAN,
+  analyzed more than 70 billion Censored Planet data points (January 2019 –
+  December 2022) and discovered 15,360 HTTP(S) censorship event clusters across 192
+  countries and 1,166 DNS event clusters across 77 countries. Manual validation
+  against 38 known censorship events from news reports confirmed all human-identified
+  events were recoverable from CenDTect's output. The system additionally identified
+  more than 100 ASes in 32 countries with persistent ISP-level blocking and 11
+  temporary blocking events in 2022 correlated with elections, protests, and armed
+  conflict.
+techniques: [measurement-platform, dpi, dns-poisoning]
+censors: [generic]
+defense_implications:
+  - "Large-scale longitudinal censorship datasets (Censored Planet, OONI) are now
+    automatically mineable for ISP-level blocking patterns; circumvention tools
+    should monitor these feeds to detect when their infrastructure IPs enter ISP
+    blocklists before users report failures."
+  - "The discovery of 100+ ASes with persistent ISP-level blocking (separate from
+    national-level GFW-style blocking) means circumvention tools need per-AS fallback
+    logic, not just per-country logic."
+section: "Abstract, §5, §6"
+extracted_by: claude-sonnet-4-6

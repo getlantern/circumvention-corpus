@@ -1,0 +1,21 @@
+paper: 2024-hoang-gfweb
+kind: detection
+summary: |
+  GFWeb discovered that the GFW's bidirectional blocking is not symmetric: certain
+  domains trigger blocking only when probed from inside China, not from outside. This
+  overturns the prior assumption that the GFW blocks the same domains symmetrically
+  in both directions. The paper also documents that the GFW has been upgraded to fix
+  previously-reported evasion techniques, including overblocking mitigation and
+  improved fragmented-packet reassembly, indicating active engineering iteration on
+  the censor side.
+techniques: [dpi, keyword-filtering, sni-blocking]
+censors: [cn]
+defense_implications:
+  - "Circumvention measurement infrastructure that probes the GFW only from outside
+    China will miss a subset of blocked domains; vantage points inside China are
+    required to characterize the full blocklist."
+  - "Fragmented-packet evasion techniques (splitting ClientHello across TCP segments,
+    IP fragmentation) that bypassed the GFW in earlier publications may no longer
+    be effective; treat them as deprecated without fresh empirical validation."
+section: "Abstract, §5.3, §6"
+extracted_by: claude-sonnet-4-6

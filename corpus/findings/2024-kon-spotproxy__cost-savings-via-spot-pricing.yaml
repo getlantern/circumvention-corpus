@@ -1,0 +1,20 @@
+paper: 2024-kon-spotproxy
+kind: defense
+summary: |
+  SpotProxy's active fleet-management algorithm continuously searches for cheaper Spot
+  and regular VM instances and migrates the proxy fleet to lower-cost options. The
+  paper demonstrates that this approach yields significant cost savings compared to
+  operating a fixed fleet of on-demand instances, while simultaneously improving
+  anti-blocking properties through higher IP churn.
+techniques: [ip-blocking]
+defenses: [bridges]
+censors: [generic]
+defense_implications:
+  - "Proxy infrastructure cost and anti-blocking strength are not in tension when using
+    spot pricing: cost-optimization through fleet turnover directly increases IP churn
+    rate, providing both financial and security benefits."
+  - "Active migration (moving clients to new proxies before old ones are terminated)
+    can maintain connection continuity while the fleet changes, making cost-driven
+    churn operationally viable."
+section: "§4, §5"
+extracted_by: claude-sonnet-4-6

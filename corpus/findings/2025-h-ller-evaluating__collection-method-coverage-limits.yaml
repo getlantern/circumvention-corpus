@@ -1,0 +1,20 @@
+paper: 2025-h-ller-evaluating
+kind: evaluation
+summary: |
+  The Ahmia search engine provided the most onion addresses (18,069 in a single day,
+  ranging 18,000–22,000 week-to-week), outperforming five other sources combined
+  (36,028 total across six engines). However, Ahmia's intentional exclusion blacklist
+  contains 46,000+ hashed addresses, and crawling onion services for 20 days yielded
+  48,745 unique v3 addresses, 11,809 of which were on Ahmia's blacklist — meaning
+  any index-based collection systematically misses a significant share of the onion
+  ecosystem by design.
+techniques: [measurement-platform]
+defenses: [tor]
+censors: [generic]
+defense_implications:
+  - "Onion addresses maintained outside search-engine indices (e.g., private bridges,
+    restricted distribution circumvention services) are not discoverable by adversaries
+    using only public collection methods; operators can use non-indexed .onion addresses
+    as a modest privacy layer for distribution endpoints."
+section: "§4.1, §4.3"
+extracted_by: claude-sonnet-4-6

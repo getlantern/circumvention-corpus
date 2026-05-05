@@ -1,0 +1,19 @@
+paper: 2025-tusing-minecraft-tunnels
+kind: defense
+summary: |
+  MinecruftPT uses the TCP-based Minecraft protocol rather than a WebRTC/UDP approach.
+  The paper notes this gives it an availability advantage in environments where WebRTC
+  is filtered or where UDP is blocked — a common configuration in corporate or
+  institutional networks and some national censorship regimes. This positions it as
+  complementary to Snowflake in the circumvention transport portfolio.
+techniques: [dpi, traffic-shape]
+defenses: [steganography, mimicry, tunneling, pluggable-transport]
+censors: [generic]
+defense_implications:
+  - "Maintain a portfolio of transports across TCP and UDP/WebRTC; environments that
+    block one transport family may not block the other, and TCP-based mimicry transports
+    cover a gap that WebRTC-based designs (Snowflake, Unbounded) leave open."
+  - "Test transport availability in networks with strict UDP filtering; TCP-based cover
+    channels remain viable in environments where QUIC and WebRTC are blocked."
+section: "§4, §5"
+extracted_by: claude-sonnet-4-6

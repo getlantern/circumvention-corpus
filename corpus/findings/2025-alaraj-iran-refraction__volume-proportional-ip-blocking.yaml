@@ -1,0 +1,21 @@
+paper: 2025-alaraj-iran-refraction
+kind: detection
+summary: |
+  MCCI (AS197207) blocks proxy IPs proportionally to observed connection volume:
+  the more connections a phantom IP receives, the faster it gets blocked. A
+  controlled experiment with a fresh /27 IPv4 subnet divided into 7 /30 sub-ranges
+  with increasing weights confirmed that higher-weighted subnets were blocked first,
+  demonstrating that the censor infers proxy IP reputation from traffic rate rather
+  than from a static blocklist.
+techniques: [ip-blocking, traffic-shape]
+defenses: [decoy-routing, conjure]
+censors: [ir]
+defense_implications:
+  - "Distribute user load uniformly across many proxy IPs rather than concentrating
+    on a few popular endpoints; popularity-based blocking means any high-traffic IP
+    is quickly flagged regardless of obfuscation technique."
+  - "Avoid publishing phantom subnets in client config files that are enumerable
+    by the censor; use per-client private registration (API registrar via domain
+    fronting) so the censor cannot pre-emptively blocklist unused addresses."
+section: "§4.2.3"
+extracted_by: claude-sonnet-4-6

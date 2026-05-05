@@ -1,0 +1,22 @@
+paper: 2025-wrana-sok-surveillance
+kind: evaluation
+summary: |
+  Wrana et al. systematically assess how well existing surveillance and censorship
+  mechanisms can target users of Future Internet Architectures (FIAs) — including
+  NDN, SCION, XIA, and MobilityFirst — finding that DPI and flow-correlation
+  techniques from the current internet map onto FIA traffic with moderate
+  adaptation. The paper identifies that FIA naming/addressing schemes introduce
+  new censorship attack surfaces (e.g., content-name-based filtering in NDN)
+  not present in IP-based architectures.
+techniques: [dpi, flow-correlation, measurement-platform]
+censors: [generic]
+defenses: [meta-resistance]
+defense_implications:
+  - "FIA adoption (if it occurs) will not automatically provide circumvention
+    benefits — censors can adapt DPI and flow-correlation techniques to FIA
+    traffic; circumvention-by-architecture-change is not a free lunch."
+  - "NDN's content-name routing introduces keyword-filtering attack surfaces
+    that do not exist in IP networking; any circumvention protocol built on
+    NDN-like naming must treat content names as censorable metadata."
+section: "§4, §5"
+extracted_by: claude-sonnet-4-6

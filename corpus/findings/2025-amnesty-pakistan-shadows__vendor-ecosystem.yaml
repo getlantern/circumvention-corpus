@@ -1,0 +1,20 @@
+paper: 2025-amnesty-pakistan-shadows
+kind: deployment
+summary: |
+  Amnesty International's 102-page investigation identifies a multi-vendor surveillance
+  stack deployed in Pakistan: Chinese DPI (Geedge/MESA-derived), Canadian social-media
+  monitoring (Netsweeper), and Emirati commercial spyware (Pegasus and FinFisher).
+  The system enables deep packet inspection, SNI-based filtering, and traffic-shape
+  classification at national scale, including targeted interception of encrypted
+  messaging apps and VPN traffic.
+techniques: [dpi, sni-blocking, ip-blocking, traffic-shape, ml-classifier]
+censors: [pk]
+defense_implications:
+  - "Pakistan's detection stack is heterogeneous — defeating DPI-layer detection
+    (Geedge/MESA) is insufficient if Netsweeper-layer URL/SNI filters also target
+    circumvention tools; protocols must address both layers."
+  - "Pakistan's infrastructure includes traffic-shape classifiers likely identical to
+    those documented in the Geedge/TSG leak; assume fully-encrypted-protocol detection
+    is active in PK."
+section: "§3, §5"
+extracted_by: claude-sonnet-4-6

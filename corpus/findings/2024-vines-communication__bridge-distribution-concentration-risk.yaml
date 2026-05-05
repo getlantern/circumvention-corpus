@@ -1,0 +1,22 @@
+paper: 2024-vines-communication
+kind: evaluation
+summary: |
+  The paper documents that bridge distribution across major circumvention tools
+  (Tor Browser's Moat, Snowflake) relies entirely on domain fronting (meek) for
+  automated, user-friendly bootstrapping. This concentration means a censor that
+  defeats domain fronting — or that pressures CDN providers to stop offering it —
+  removes essentially all automated bridge-discovery pathways simultaneously,
+  leaving only manual out-of-band methods (email/Telegram accounts) that require
+  many user interactions.
+techniques: [ip-blocking, traffic-shape]
+defenses: [domain-fronting, bridges, meek, tunneling]
+censors: [generic]
+defense_implications:
+  - "Implement at least two independent automated signaling channels (domain fronting
+    plus one indirect channel: cloud storage, email, push notification) to ensure
+    bridge distribution survives a single CDN policy change or targeted block."
+  - "The Raceboat framework (open source at github.com/tst-race/raceboat-pets2024)
+    provides production-ready modular signaling channel components that can be
+    integrated without re-implementing common transport logic."
+section: "§2.1"
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+paper: 2024-bocovich-snowflake
+kind: defense
+summary: |
+  Snowflake proxies are simple enough to run as JavaScript inside a web page or browser
+  extension, making them far cheaper to operate than a traditional VPN or proxy server.
+  This low operational cost enables a large volunteer pool (orders of magnitude more
+  participants than server-hosted bridge networks), which is the structural property
+  that makes IP enumeration hard for censors.
+techniques: [ip-blocking]
+defenses: [webrtc-pluggable, bridges]
+censors: [generic]
+defense_implications:
+  - "Minimize the technical and cost barrier for volunteers to run a proxy node; the
+    protection against IP-blocking scales directly with the size of the volunteer pool."
+  - "Browser-based or OS-native background helpers (no server required) are a viable
+    volunteer proxy form factor that broadens the contributor base compared to
+    server-hosted relays."
+section: "§2, §3"
+extracted_by: claude-sonnet-4-6

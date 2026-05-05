@@ -1,0 +1,20 @@
+paper: 2024-kon-spotproxy
+kind: defense
+summary: |
+  SpotProxy adapts both WireGuard and Snowflake to work with its active proxy migration
+  mechanism, demonstrating that the approach is protocol-agnostic. The active migration
+  mechanism allows clients to move between proxies seamlessly without performance
+  degradation or connection disruption when a proxy is replaced — a requirement for
+  any high-churn proxy infrastructure.
+techniques: [ip-blocking, traffic-shape]
+defenses: [bridges, webrtc-pluggable]
+censors: [generic]
+defense_implications:
+  - "Protocol-level connection migration (not just reconnect-on-failure) is a
+    prerequisite for operating high-churn proxy fleets; design proxy protocols to
+    support in-flight server-address changes."
+  - "The active migration pattern from SpotProxy is applicable to any proxy protocol:
+    pre-negotiate the next proxy address before the current one expires, then switch
+    transparently."
+section: "§3, §5"
+extracted_by: claude-sonnet-4-6

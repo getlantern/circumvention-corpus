@@ -1,0 +1,22 @@
+paper: 2024-mixon-baca-snitch
+kind: detection
+summary: |
+  The root cause of port-shadow vulnerabilities is that connection-tracking frameworks
+  maintain five shared, globally-accessible resources across all VPN clients on the
+  same server. The paper's formal model identifies these as: the conntrack table,
+  the NAT table, the port space, the routing table, and the ARP/neighbor cache. Any
+  of these shared resources can be used as a side-channel. Bounded model checking
+  confirmed that enforcing strict process isolation around all five resources
+  eliminates the attack surface.
+techniques: [middlebox-interference, flow-correlation]
+defenses: [tunneling]
+censors: [generic]
+defense_implications:
+  - "Deploy proxy servers in dedicated network namespaces with per-client isolation
+    rather than sharing a single conntrack instance across all user sessions; this is
+    the primary mitigation verified by the paper's model checker."
+  - "Review whether your proxy's deployment model (Docker bridge, shared-IP VPS,
+    cloud NAT gateway) creates shared conntrack state that an adversary co-tenant
+    could exploit to correlate or redirect traffic."
+section: "§4 (Formal Model), §6 (Mitigations)"
+extracted_by: claude-sonnet-4-6
