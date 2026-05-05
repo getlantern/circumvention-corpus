@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"hash/fnv"
 	"html/template"
+	"math"
 	"strings"
 )
 
@@ -38,6 +40,148 @@ var funcMap = template.FuncMap{
 		}
 		return fmt.Sprintf("%d", y)
 	},
+	// plotterFigure generates a deterministic SVG figure inspired by
+	// 1960s plotter / generative art (Vera Molnar, Manfred Mohr,
+	// Kenneth Martin). The seed is the figure name + dimensions, so
+	// the output is stable across rebuilds — same figure every time.
+	"plotterFigure": plotterFigure,
+}
+
+// rand32 is a tiny deterministic PRNG used by the plotter figures so
+// the geometry is stable across rebuilds without pulling in math/rand
+// state. xorshift32 — perfectly fine for visual noise.
+type rand32 struct{ s uint32 }
+
+func newRand32(seed string) *rand32 {
+	h := fnv.New32a()
+	_, _ = h.Write([]byte(seed))
+	v := h.Sum32()
+	if v == 0 {
+		v = 0x9e3779b9
+	}
+	return &rand32{s: v}
+}
+
+func (r *rand32) next() uint32 {
+	x := r.s
+	x ^= x << 13
+	x ^= x >> 17
+	x ^= x << 5
+	r.s = x
+	return x
+}
+
+func (r *rand32) f() float64 { return float64(r.next()) / float64(math.MaxUint32) }
+func (r *rand32) inRange(a, b float64) float64 {
+	return a + (b-a)*r.f()
+}
+
+// plotterFigure renders one of a few hand-tuned generative figures as
+// inline SVG. The figures use only currentColor so they pick up the
+// surrounding ink color and respect the structural-accent system.
+func plotterFigure(w, h int, kind string) template.HTML {
+	r := newRand32(fmt.Sprintf("%s-%d-%d", kind, w, h))
+	switch kind {
+	case "interrupted-grid":
+		return interruptedGrid(w, h, r)
+	case "concentric-arcs":
+		return concentricArcs(w, h, r)
+	case "stroke-density":
+		return strokeDensity(w, h, r)
+	}
+	return template.HTML(fmt.Sprintf(`<svg viewBox="0 0 %d %d" width="%d" height="%d"></svg>`, w, h, w, h))
+}
+
+// interruptedGrid: Vera Molnar / "Interruptions" homage. A grid of
+// short vertical strokes; some columns sag, some are missing entirely.
+// The accent color renders one outlier column to give the eye a place
+// to land.
+func interruptedGrid(w, h int, r *rand32) template.HTML {
+	var b strings.Builder
+	fmt.Fprintf(&b, `<svg viewBox="0 0 %d %d" width="100%%" height="100%%" preserveAspectRatio="xMidYMid meet" class="plotter">`, w, h)
+	const cols = 14
+	const rows = 22
+	cw := float64(w) / float64(cols+1)
+	rh := float64(h) / float64(rows+1)
+	margin := math.Min(cw, rh)
+	highlightCol := int(r.f() * float64(cols))
+	b.WriteString(`<g fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="square">`)
+	for c := 0; c < cols; c++ {
+		// 8% chance the whole column is missing — silence in the field.
+		if r.f() < 0.08 {
+			continue
+		}
+		x := margin + float64(c)*cw
+		isAccent := c == highlightCol
+		colorAttr := ""
+		if isAccent {
+			colorAttr = ` stroke="var(--accent)"`
+		}
+		for rr := 0; rr < rows; rr++ {
+			// 12% chance of a missing stroke within the column.
+			if r.f() < 0.12 {
+				continue
+			}
+			y := margin + float64(rr)*rh
+			// each stroke ranges 30%-95% of cell height, with a small jitter.
+			lenFrac := r.inRange(0.3, 0.95)
+			jit := r.inRange(-1.0, 1.0)
+			y2 := y + lenFrac*rh
+			fmt.Fprintf(&b, `<line x1="%.2f" y1="%.2f" x2="%.2f" y2="%.2f"%s/>`, x+jit*0.3, y, x+jit*0.3, y2, colorAttr)
+		}
+	}
+	b.WriteString(`</g></svg>`)
+	return template.HTML(b.String())
+}
+
+// concentricArcs: nested arc segments at a single corner — Kenneth
+// Martin / Bridget Riley flavor. Used as a smaller secondary figure.
+func concentricArcs(w, h int, r *rand32) template.HTML {
+	var b strings.Builder
+	fmt.Fprintf(&b, `<svg viewBox="0 0 %d %d" width="100%%" height="100%%" preserveAspectRatio="xMidYMid meet" class="plotter">`, w, h)
+	cx, cy := float64(w), float64(h)
+	maxR := math.Hypot(float64(w), float64(h))
+	b.WriteString(`<g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">`)
+	const n = 36
+	accent := int(r.f() * float64(n))
+	for i := 1; i <= n; i++ {
+		rad := maxR * (float64(i) / float64(n)) * 1.05
+		colorAttr := ""
+		sw := 0.6
+		if i == accent {
+			colorAttr = ` stroke="var(--accent)"`
+			sw = 1.4
+		}
+		// describe a quarter arc from (0, cy-rad) to (cx-rad, cy)... no, simpler:
+		// arc from (cx, cy-rad) sweeping to (cx-rad, cy) — the upper-left quadrant.
+		fmt.Fprintf(&b, `<path d="M %.2f %.2f A %.2f %.2f 0 0 1 %.2f %.2f" stroke-width="%.2f"%s/>`,
+			cx-rad, cy, rad, rad, cx, cy-rad, sw, colorAttr)
+	}
+	b.WriteString(`</g></svg>`)
+	return template.HTML(b.String())
+}
+
+// strokeDensity: a row of vertical strokes whose density gradient
+// resembles a histogram or signal trace. Useful as a thin section divider.
+func strokeDensity(w, h int, r *rand32) template.HTML {
+	var b strings.Builder
+	fmt.Fprintf(&b, `<svg viewBox="0 0 %d %d" width="100%%" height="100%%" preserveAspectRatio="none" class="plotter">`, w, h)
+	b.WriteString(`<g fill="none" stroke="currentColor" stroke-width="0.6">`)
+	const n = 120
+	for i := 0; i < n; i++ {
+		x := float64(i) * (float64(w) / float64(n))
+		// density envelope: low at edges, peaks twice across the figure
+		t := float64(i) / float64(n)
+		envelope := 0.3 + 0.7*math.Abs(math.Sin(t*math.Pi*2))
+		if r.f() > envelope {
+			continue
+		}
+		hLine := float64(h) * r.inRange(0.4, 1.0)
+		y0 := (float64(h) - hLine) / 2
+		fmt.Fprintf(&b, `<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f"/>`, x, y0, x, y0+hLine)
+	}
+	b.WriteString(`</g></svg>`)
+	return template.HTML(b.String())
 }
 
 // pages maps the logical page name (used by site.writeFile) to the
@@ -75,26 +219,24 @@ const layoutTmpl = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#14120d">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f1e6">
 <title>{{.Title}}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script src="/search.js" defer></script>
 </head>
 <body>
-<div class="grain" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true">▮▮</span>
-      <span class="brand-name">CIRCUMVENTION//CORPUS</span>
+      <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true" width="22" height="22"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2" width="24" height="24"/><line x1="2" y1="9" x2="26" y2="9"/><line x1="2" y1="15" x2="26" y2="15"/><line x1="2" y1="21" x2="26" y2="21"/><line x1="9" y1="2" x2="9" y2="26"/><line x1="15" y1="2" x2="15" y2="26"/><line x1="21" y1="2" x2="21" y2="26"/></g></svg>
+      <span class="brand-name">circumvention<span class="brand-dot">·</span>corpus</span>
     </a>
     <div class="search-wrap">
-      <span class="search-prompt" aria-hidden="true">$</span>
-      <input id="search" type="search" placeholder="grep papers — active probing, GFW, Iran 2025…" autocomplete="off" spellcheck="false">
+      <input id="search" type="search" placeholder="search 393 papers…" autocomplete="off" spellcheck="false">
       <kbd class="search-kbd">/</kbd>
       <div id="search-results" hidden></div>
     </div>
@@ -154,12 +296,17 @@ const layoutTmpl = `<!doctype html>
 
 const indexBody = `
 <section class="hero">
-  <p class="eyebrow"><span class="stamp-mark" aria-hidden="true">▸</span> TRANSMISSION 0001 · FIELD STATION OPEN · LLM-CALLABLE</p>
-  <h1 class="display">The field's literature.<br><span class="redact" aria-hidden="true">▮▮▮▮▮</span><em> Indexed.</em></h1>
-  <p class="lede">A controlled-vocabulary corpus of censorship-circumvention research. Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant.</p>
-  <div class="cta">
-    <a class="btn primary" href="/use/">▸ Install the MCP server</a>
-    <a class="btn ghost" href="/papers/">Browse {{.Counts.papers}} papers</a>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">circumvention research · structured · LLM-callable</p>
+      <h1 class="display">A field index of <em>how the internet is jammed</em> — and unjammed.</h1>
+      <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a>. An MCP server exposes the whole thing to any AI assistant.</p>
+      <div class="cta">
+        <a class="btn primary" href="/use/">Install the MCP server</a>
+        <a class="btn ghost" href="/papers/">Browse {{.Counts.papers}} papers →</a>
+      </div>
+    </div>
+    <div class="hero-figure" aria-hidden="true">{{plotterFigure 280 380 "interrupted-grid"}}</div>
   </div>
   <dl class="counts-grid">
     <div><dt>papers</dt><dd>{{.Counts.papers}}</dd></div>
@@ -170,7 +317,7 @@ const indexBody = `
 </section>
 
 <section class="why">
-  <p class="section-mark"><span class="exhibit">EXHIBIT</span> <span class="exhibit-num">№01</span> <span class="exhibit-rule"></span> WHY THIS EXISTS</p>
+  <p class="section-mark"><span class="sec-num">§ 01</span> <span class="sec-rule"></span> <span class="sec-title">why this exists</span></p>
   <div class="two-col">
     <div>
       <h2 class="display-sm">A layer the field doesn't have yet.</h2>
@@ -178,15 +325,15 @@ const indexBody = `
       <p>None of them are LLM-callable. None of them have a consistent structured-metadata schema. None of them let an AI assistant compose a corpus query with operational data in the same conversation.</p>
       <p>This corpus adds that one missing layer.</p>
     </div>
-    <div class="aside">
+    <aside class="aside">
       <p class="aside-label">The thing that compounds</p>
-      <p>The schema and the controlled vocabulary outlive whatever model you read it through. Frontier models change every six months. The taxonomy of censors / techniques / defenses doesn't.</p>
-    </div>
+      <p>The schema and the controlled vocabulary outlive whatever model you read it through. Frontier models change every six months. The taxonomy of censors, techniques, and defenses doesn't.</p>
+    </aside>
   </div>
 </section>
 
 <section class="core">
-  <p class="section-mark"><span class="exhibit">EXHIBIT</span> <span class="exhibit-num">№02</span> <span class="exhibit-rule"></span> CORE PAPERS</p>
+  <p class="section-mark"><span class="sec-num">§ 02</span> <span class="sec-rule"></span> <span class="sec-title">core papers</span></p>
   <h2 class="display-sm">Hand-selected as load-bearing.</h2>
   <p class="muted">If a Lantern protocol designer hadn't read these, the team would expect them to be slowed down. Team consensus marks them as <code>core: true</code>; everyone using the corpus sees them surfaced first.</p>
   <ul class="paper-cards">
@@ -204,7 +351,7 @@ const indexBody = `
 </section>
 
 <section class="recent">
-  <p class="section-mark"><span class="exhibit">EXHIBIT</span> <span class="exhibit-num">№03</span> <span class="exhibit-rule"></span> RECENT ADDITIONS</p>
+  <p class="section-mark"><span class="sec-num">§ 03</span> <span class="sec-rule"></span> <span class="sec-title">recent additions</span></p>
   <ul class="paper-list">
     {{range .Recent}}
     <li>
@@ -219,10 +366,15 @@ const indexBody = `
 </section>
 
 <section class="cta-bottom">
-  <p class="section-mark"><span class="exhibit">EXHIBIT</span> <span class="exhibit-num">№04</span> <span class="exhibit-rule"></span> JOIN THE NETWORK</p>
-  <h2 class="display-sm">Plug it into your assistant.</h2>
-  <p class="lede">One install. Your AI gains <code>search_papers</code>, <code>get_paper</code>, <code>list_taxonomy</code>, and <code>find_related</code> over the corpus.</p>
-  <a class="btn primary" href="/use/">▸ How to install</a>
+  <div class="cta-grid">
+    <div>
+      <p class="section-mark"><span class="sec-num">§ 04</span> <span class="sec-rule"></span> <span class="sec-title">connect</span></p>
+      <h2 class="display-sm">Plug it into your assistant.</h2>
+      <p class="lede">One line. Your AI gains <code>search_papers</code>, <code>get_paper</code>, <code>list_taxonomy</code>, and <code>find_related</code> over the corpus.</p>
+      <a class="btn primary" href="/use/">How to install</a>
+    </div>
+    <div class="cta-figure" aria-hidden="true">{{plotterFigure 220 220 "concentric-arcs"}}</div>
+  </div>
 </section>
 `
 
@@ -280,7 +432,7 @@ const paperBody = `
 
 {{if .References}}
 <section class="related-section">
-  <p class="section-mark"><span class="exhibit-rule short"></span> REFERENCES IN THIS CORPUS</p>
+  <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">references in this corpus</span></p>
   <ul class="paper-list">
     {{range .References}}
     <li><a href="/papers/{{.ID}}/">
@@ -295,7 +447,7 @@ const paperBody = `
 
 {{if .Related}}
 <section class="related-section">
-  <p class="section-mark"><span class="exhibit-rule short"></span> RELATED PAPERS</p>
+  <p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">related papers</span></p>
   <ul class="paper-list">
     {{range .Related}}
     <li><a href="/papers/{{.ID}}/">
@@ -315,7 +467,7 @@ const tagBody = `
 {{if .Entry.Notes}}<p class="lede">{{.Entry.Notes}}</p>{{end}}
 {{if .Entry.Synonyms}}<p class="muted"><strong>Synonyms:</strong> {{join ", " .Entry.Synonyms}}</p>{{end}}
 
-<p class="section-mark"><span class="exhibit-rule short"></span> {{len .Papers}} PAPER{{if ne (len .Papers) 1}}S{{end}} ON FILE</p>
+<p class="section-mark"><span class="sec-rule short"></span> <span class="sec-title">{{len .Papers}} paper{{if ne (len .Papers) 1}}s{{end}} on file</span></p>
 <ul class="paper-list">
   {{range .Papers}}
   <li><a href="/papers/{{.ID}}/">
@@ -695,576 +847,538 @@ const searchJS = `(() => {
 const styleCSS = `
 /* circumvention-corpus — visual design.
  *
- * "FIELD STATION 01: THE WALL"
+ * "PLOTTER STATION"
  *
- * Concrete-wall base (dark, gritty), cream wheatpaste poster cards
- * stuck on top with masking-tape corners, stenciled headlines in
- * Anton with resistance-red spray-paint accents, terminal-style
- * search and data display.
+ * Plotter-pen aesthetic. Warm cream paper as the ground, deep ink
+ * black for type, a single structural accent (plotter-pen blue) used
+ * sparingly as the second voice. Generative SVG line-art appears as
+ * a structural element rather than decoration — the figures share the
+ * same currentColor / accent system as the rest of the page.
+ *
+ * Lineage: Vera Molnar's Interruptions, Manfred Mohr's P-series,
+ * Kenneth Martin's Chance Lines, Edward Tufte's information design,
+ * Distill.pub's typographic grammar.
  *
  * Typography:
- *   Anton — display / poster headlines (heavy condensed, all caps)
- *   Atkinson Hyperlegible — body (distinctive humanist grotesque)
- *   JetBrains Mono — IDs, controlled vocabulary, terminal data
- *   Special Elite — typewriter-stamp accents (eyebrows, evidence)
+ *   Newsreader — variable serif, optical sizing, for display + paper
+ *                titles. Pentagram-designed, Google Fonts.
+ *   Atkinson Hyperlegible — body sans, distinctive humanist grotesque.
+ *   JetBrains Mono — IDs, controlled vocabulary, terminal data.
  *
- * No light/dark toggle — the wall is the wall. The cream paper cards
- * carry the readable typography; the wall provides the atmosphere.
+ * No light/dark toggle: this is a paper interface, not a screen.
  */
 
 :root {
-  --wall:        #14120d;  /* dark concrete wall */
-  --wall-2:      #1f1c14;  /* lighter wall — sticky-note layer */
-  --wall-3:      #2a2618;  /* warmer panel */
-  --paper:       #efe4cc;  /* wheatpaste poster cream */
-  --paper-2:     #e6d8b9;  /* paper hover / tinted */
-  --paper-edge:  #c9b896;  /* paper torn edge */
-  --ink:         #0a0907;  /* street-stencil black */
-  --ink-2:       #1c1812;  /* body */
-  --ink-3:       #5a5241;  /* tertiary / muted on paper */
-  --paper-mute:  #8a7e63;  /* secondary text on paper */
-  --wall-mute:   #8b7f64;  /* secondary text on wall */
-  --wall-mute-2: #b9a880;  /* primary text on wall */
-  --accent:      #e63946;  /* RESISTANCE RED — spray paint, alert */
-  --accent-2:    #ff5963;  /* lighter red — hover */
-  --accent-3:    #b62633;  /* darker red — pressed / trim */
-  --phosphor:    #7cff8c;  /* terminal CRT green */
-  --caution:     #f4d03f;  /* caution-tape yellow */
-  --rule:        #2e2a1f;  /* wall hairline */
-  --rule-2:      #3d3826;  /* heavier wall rule */
-  --paper-rule:  #b9a880;  /* paper hairline */
-  --code-bg:     #14120d;  /* terminal block */
-  --code-fg:     #e0d5b9;
+  --paper:       #f5f0e2;  /* warm cream */
+  --paper-2:     #ede7d2;  /* slight tint */
+  --paper-edge:  #d8cfb4;  /* paper hairline */
+  --ink:         #14130f;  /* warm deep black */
+  --ink-2:       #2a2823;  /* body text */
+  --ink-3:       #5a554a;  /* secondary */
+  --ink-mute:    #857f6f;  /* tertiary, captions */
+  --rule:        #c5beae;  /* hairline rule */
+  --rule-fade:   #dfd7c2;  /* faintest rule */
+  --accent:      #1a3a8a;  /* plotter-pen blue — Pilot G-2 deep blue */
+  --accent-2:    #2851b8;  /* lighter pen-blue, hover */
+  --accent-soft: #e2e6f2;  /* tint for accent backgrounds */
+  --rust:        #9b3a26;  /* secondary plotter color, used very sparingly */
+  --moss:        #2e5a3a;  /* tertiary plotter color */
+  --code-bg:     #ede7d2;  /* code block background */
+  --selection:   #ffe680;  /* highlighter yellow */
 }
 
 * { box-sizing: border-box; }
-html { font-size: 16px; -webkit-text-size-adjust: 100%; background: var(--wall); }
+::selection { background: var(--selection); color: var(--ink); }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; background: var(--paper); }
 body {
   margin: 0;
-  background: var(--wall);
-  color: var(--wall-mute-2);
-  font-family: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: "Atkinson Hyperlegible", -apple-system, system-ui, sans-serif;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  background-image:
-    radial-gradient(ellipse at 20% 10%, color-mix(in oklab, var(--accent) 7%, transparent) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 90%, color-mix(in oklab, var(--phosphor) 4%, transparent) 0%, transparent 60%);
-  background-attachment: fixed;
-  position: relative;
 }
 
-/* Concrete grain overlay — fixed full-screen SVG turbulence at very low
- * opacity. Sits below content (z-index:1, content gets >=2). The pointer
- * events are off so it never intercepts clicks. */
-.grain {
+/* Faint graph-paper grid behind everything. So subtle it's almost
+ * subliminal — provides the "engineering notebook" undercurrent
+ * without competing with type. */
+body::before {
+  content: "";
   position: fixed; inset: 0;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.10;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, var(--rule-fade) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule-fade) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: -1px -1px;
+  opacity: 0.42;
 }
 
-.site-header, main.wrap, .site-footer { position: relative; z-index: 2; }
+.site-header, main.wrap, .site-footer { position: relative; z-index: 1; }
 
 .mono, code, pre, .row-id, .card-id, .tag, .paper-id {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-feature-settings: "calt" 0;
 }
-.display, .display-sm {
-  font-family: "Anton", "Oswald", "Helvetica Neue Condensed Bold", Impact, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.005em;
-  line-height: 0.95;
-  font-weight: 400;
+
+.display, .display-sm, h1, h2, h3, .row-title, .paper-card h3, article.paper h1 {
+  font-family: "Newsreader", "Iowan Old Style", "Source Serif 4", Georgia, serif;
+  font-feature-settings: "ss01", "kern", "liga";
+  letter-spacing: -0.012em;
+  line-height: 1.18;
+  font-weight: 500;
+  color: var(--ink);
 }
-h1, h2, h3 {
-  font-family: "Atkinson Hyperlegible", -apple-system, system-ui, sans-serif;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  font-weight: 700;
-}
-.display { font-size: clamp(3rem, 8vw, 6rem); margin: 0; color: var(--paper); }
-.display em { font-style: normal; color: var(--accent); position: relative; }
-/* Spray-paint drip on the accented word — a soft red glow underneath. */
+
+.display { font-size: clamp(2.4rem, 4.8vw, 3.6rem); margin: 0; line-height: 1.05; font-weight: 500; letter-spacing: -0.02em; }
+.display em { font-style: italic; color: var(--ink); font-weight: 500; position: relative; white-space: nowrap; }
+/* hand-drawn underline beneath italic accent — uses the structural accent. */
 .display em::after {
   content: "";
-  position: absolute; left: 0; right: 0; bottom: -0.05em; height: 0.18em;
+  position: absolute;
+  left: 0; right: 0; bottom: -0.04em;
+  height: 0.06em;
   background: var(--accent);
-  filter: blur(8px);
-  opacity: 0.55;
-  z-index: -1;
+  border-radius: 1px;
+  opacity: 0.85;
 }
-.display .redact {
-  display: inline-block;
-  background: var(--ink);
-  color: var(--ink);
-  margin-right: 0.3em;
-  padding: 0 0.05em;
-  letter-spacing: -0.05em;
-}
-.display-sm { font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin: 0 0 0.7rem; color: var(--paper); }
-h1 { font-size: clamp(1.75rem, 3vw, 2.4rem); margin: 0 0 0.5rem; color: var(--paper); }
-h2 { font-size: 1.3rem; margin: 2.5rem 0 0.6rem; color: var(--paper); text-transform: uppercase; letter-spacing: 0.02em; font-family: "Anton", Impact, sans-serif; font-weight: 400; }
-h3 { font-size: 1.1rem; margin: 0 0 0.3rem; color: var(--paper); font-weight: 700; }
+.display-sm { font-size: clamp(1.5rem, 2.4vw, 1.9rem); margin: 0 0 0.7rem; font-weight: 500; }
+h1 { font-size: clamp(1.8rem, 3vw, 2.2rem); margin: 0 0 0.5rem; }
+h2 { font-size: 1.25rem; margin: 2.5rem 0 0.6rem; font-family: "Newsreader", serif; font-weight: 600; }
+h3 { font-size: 1.05rem; margin: 0 0 0.3rem; font-weight: 600; font-family: "Newsreader", serif; }
 
-a { color: var(--accent); text-decoration: none; transition: color 0.15s; border-bottom: 1px dashed transparent; }
+a { color: var(--accent); text-decoration: none; transition: color 0.12s; border-bottom: 1px solid transparent; }
 a:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
 em { font-style: italic; }
-.muted { color: var(--wall-mute); }
-.lede { font-size: 1.1rem; line-height: 1.6; color: var(--wall-mute-2); margin: 0.75rem 0; max-width: 42rem; }
+.muted { color: var(--ink-mute); }
+.lede { font-size: 1.08rem; line-height: 1.55; color: var(--ink-2); margin: 0.85rem 0; max-width: 38rem; font-family: "Newsreader", serif; font-weight: 400; }
 
 code {
-  background: var(--wall-2);
-  color: var(--phosphor);
-  padding: 0.05rem 0.4rem;
-  border: 1px solid var(--rule-2);
-  font-size: 0.88em;
-  font-weight: 600;
+  background: var(--code-bg);
+  color: var(--ink);
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--paper-edge);
+  border-radius: 2px;
+  font-size: 0.86em;
 }
 pre {
-  background: var(--wall-2);
-  color: var(--phosphor);
-  padding: 1rem 1.25rem;
+  background: var(--code-bg);
+  color: var(--ink);
+  padding: 1rem 1.2rem;
   overflow-x: auto;
-  border: 1px solid var(--rule-2);
-  border-left: 3px solid var(--phosphor);
+  border: 1px solid var(--paper-edge);
+  border-left: 2px solid var(--accent);
   font-size: 0.85rem;
   line-height: 1.6;
+  border-radius: 0;
   position: relative;
-}
-pre::before {
-  content: "// terminal";
-  position: absolute; top: 0.4rem; right: 0.7rem;
-  font-size: 0.65rem; letter-spacing: 0.1em;
-  color: var(--wall-mute);
-  font-family: "Special Elite", "Courier New", monospace;
-  text-transform: uppercase;
 }
 pre code { background: none; padding: 0; border: none; color: inherit; }
 
-.wrap { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
-main.wrap { padding: 3rem 1.5rem 5rem; }
+.wrap { max-width: 76rem; margin: 0 auto; padding: 0 1.75rem; }
+main.wrap { padding: 3.5rem 1.75rem 6rem; }
 
-/* ───────────────────────── HEADER ───────────────────────── */
+/* ────────────────── HEADER ────────────────── */
 .site-header {
-  background: color-mix(in oklab, var(--wall) 88%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--rule-2);
+  background: color-mix(in oklab, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
   position: sticky; top: 0;
-  box-shadow: 0 0 0 0 transparent, 0 1px 0 var(--accent), 0 2px 0 var(--ink);
 }
 .site-header .wrap {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-  gap: 1rem; padding: 0.85rem 1.5rem;
+  gap: 1.2rem; padding: 0.9rem 1.75rem;
 }
-.brand { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--paper); border: none; }
-.brand:hover { color: var(--paper); border: none; }
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); border: none; }
+.brand:hover { color: var(--ink); border: none; }
 .brand-mark {
   color: var(--accent);
-  font-size: 1rem;
-  letter-spacing: -0.15em;
-  text-shadow: 0 0 8px color-mix(in oklab, var(--accent) 40%, transparent);
+  flex-shrink: 0;
 }
 .brand-name {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.92rem; font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.95rem; font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
+.brand-dot { color: var(--accent); padding: 0 0.05em; font-weight: 600; }
+
 nav { display: flex; gap: 0.25rem 1.4rem; flex-wrap: wrap; align-items: center; }
 nav a {
-  color: var(--wall-mute-2); font-size: 0.82rem;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  padding: 0.25rem 0; position: relative;
+  color: var(--ink-2); font-size: 0.86rem;
+  padding: 0.3rem 0; position: relative;
   font-family: "JetBrains Mono", monospace;
+  letter-spacing: -0.01em;
   border: none;
 }
 nav a:hover { color: var(--accent); border: none; }
 nav a:hover::after {
-  content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px;
+  content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px;
   background: var(--accent);
 }
-nav a.external { color: var(--wall-mute); }
+nav a.external { color: var(--ink-mute); }
 
-/* ───────────────────────── HERO ───────────────────────── */
-.hero { padding: 4rem 0 3rem; max-width: 56rem; }
-.eyebrow {
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.85rem; letter-spacing: 0.05em;
-  color: var(--accent); margin: 0 0 1.4rem;
-  text-transform: uppercase;
-  display: inline-block;
-  padding: 0.35rem 0.7rem 0.3rem;
-  border: 1px solid var(--accent);
-  background: color-mix(in oklab, var(--accent) 8%, transparent);
+/* ────────────────── HERO ──────────────────
+ * Two-column grid: text on the left, generative SVG figure on the right.
+ * On narrow screens the figure stacks below the text, scaled down. */
+.hero { padding: 3rem 0 2.5rem; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
 }
-.eyebrow .stamp-mark { color: var(--accent); margin-right: 0.4rem; }
-.cta { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2rem; }
+@media (min-width: 60rem) {
+  .hero-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 4rem; }
+}
+.hero-text { max-width: 42rem; }
+.hero-figure {
+  color: var(--ink-2);
+  display: flex; align-items: stretch; justify-content: center;
+  min-height: 280px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 1rem;
+}
+.hero-figure svg.plotter { width: 100%; height: 100%; min-height: 260px; }
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem; letter-spacing: 0.02em;
+  color: var(--ink-mute); margin: 0 0 1.4rem;
+  text-transform: lowercase;
+  position: relative; padding-left: 1.5rem;
+}
+.eyebrow::before {
+  content: "";
+  position: absolute; left: 0; top: 50%;
+  width: 1rem; height: 1px;
+  background: var(--accent);
+}
+
+.cta { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.8rem; }
 .btn {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.75rem 1.3rem;
-  font-size: 0.85rem; font-weight: 700;
-  font-family: "JetBrains Mono", monospace;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  border: 2px solid; transition: all 0.12s;
+  padding: 0.62rem 1.1rem;
+  font-size: 0.92rem; font-weight: 500;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  border: 1px solid; transition: all 0.12s;
+  border-radius: 1px;
 }
 .btn.primary {
-  background: var(--accent); color: var(--paper);
-  border-color: var(--accent);
-  box-shadow: 4px 4px 0 var(--ink);
+  background: var(--ink); color: var(--paper);
+  border-color: var(--ink);
 }
 .btn.primary:hover {
-  background: var(--paper); color: var(--ink);
-  border-color: var(--paper);
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--accent);
-  border-bottom-color: var(--paper);
+  background: var(--accent); border-color: var(--accent);
+  color: var(--paper);
+  border-bottom-color: var(--accent);
 }
 .btn.ghost {
-  background: transparent; color: var(--paper);
-  border-color: var(--paper);
+  background: transparent; color: var(--ink);
+  border-color: var(--ink);
 }
 .btn.ghost:hover {
-  background: var(--paper); color: var(--ink);
+  background: var(--ink); color: var(--paper);
   border-bottom-color: var(--ink);
 }
 
 .counts-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
   margin: 3.5rem 0 0;
-  border: 1px solid var(--rule-2);
-  background: var(--wall-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 .counts-grid div {
-  display: flex; flex-direction: column; gap: 0.3rem;
-  padding: 1.4rem 1.4rem;
-  border-right: 1px solid var(--rule-2);
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 1.4rem 1.4rem 1.4rem 0;
+  border-right: 1px solid var(--rule);
 }
 .counts-grid div:last-child { border-right: none; }
 .counts-grid dt {
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.72rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--wall-mute);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem; letter-spacing: 0.04em;
+  text-transform: lowercase; color: var(--ink-mute);
   margin: 0;
 }
 .counts-grid dd {
-  font-family: "Anton", Impact, sans-serif;
-  font-size: 2.6rem; line-height: 1; margin: 0;
-  color: var(--paper);
+  font-family: "Newsreader", serif;
+  font-size: 2.4rem; line-height: 1; margin: 0;
+  color: var(--ink);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
 @media (max-width: 50rem) {
   .counts-grid { grid-template-columns: repeat(2, 1fr); }
   .counts-grid div:nth-child(2) { border-right: none; }
-  .counts-grid div:nth-child(1), .counts-grid div:nth-child(2) { border-bottom: 1px solid var(--rule-2); }
+  .counts-grid div:nth-child(1), .counts-grid div:nth-child(2) { border-bottom: 1px solid var(--rule); }
 }
 
-/* ───────────────────── SECTION MARKS ─────────────────────
- * Typewriter "EXHIBIT №01 ━━━━━━ TITLE" pattern. The exhibit
- * label is rotated stamp-style for the wheatpaste-poster vibe. */
+/* ────────────────── SECTION MARKS ──────────────────
+ * Quiet typographic markers: § number, a hairline rule extending across
+ * the column, and the section title in lowercase mono. No badges,
+ * no rotated stamps, no caution-tape stripes. The number does the
+ * structural work. */
 .section-mark {
-  display: flex; align-items: center; gap: 0.7rem;
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.92rem; letter-spacing: 0.06em;
-  color: var(--paper);
-  margin: 4.5rem 0 1.5rem; padding-top: 2rem;
-  text-transform: uppercase;
-  border-top: 1px dashed var(--rule-2);
-  position: relative;
-}
-.section-mark .exhibit {
-  display: inline-block;
-  padding: 0.18rem 0.5rem 0.12rem;
-  background: var(--accent); color: var(--paper);
-  font-size: 0.75rem; letter-spacing: 0.1em;
-  transform: rotate(-1.5deg);
-  font-weight: 700;
-  box-shadow: 2px 2px 0 var(--ink);
-}
-.section-mark .exhibit-num {
-  font-family: "Anton", Impact, sans-serif;
-  font-size: 1.4rem; color: var(--paper);
-  letter-spacing: 0;
-}
-.section-mark .exhibit-rule {
-  flex: 1; height: 4px;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--caution) 0, var(--caution) 6px,
-    var(--ink) 6px, var(--ink) 12px
-  );
-  max-width: 8rem;
-  align-self: center;
-}
-.section-mark .exhibit-rule.short { max-width: 4rem; }
-
-/* ───────────────────── TWO-COL "WHY" ──────────────────── */
-.two-col { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-@media (min-width: 60rem) { .two-col { grid-template-columns: 2fr 1fr; gap: 3.5rem; } }
-.aside {
-  padding: 1.5rem 1.6rem;
-  background: var(--wall-2);
-  border: 1px solid var(--rule-2);
-  border-left: 4px solid var(--phosphor);
-  position: relative;
-  transform: rotate(0.3deg);
-}
-.aside::before {
-  content: "// SIDEBAR";
-  position: absolute; top: -0.7rem; left: 1rem;
-  background: var(--wall); padding: 0 0.4rem;
+  display: flex; align-items: baseline; gap: 0.7rem;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem; color: var(--phosphor);
-  letter-spacing: 0.1em;
+  font-size: 0.82rem; letter-spacing: 0;
+  color: var(--ink-mute);
+  margin: 4.5rem 0 1.5rem;
+  text-transform: lowercase;
+  font-weight: 400;
+}
+.section-mark .sec-num {
+  color: var(--accent);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.section-mark .sec-rule {
+  flex: 1; height: 1px;
+  background: var(--rule);
+  align-self: center;
+  max-width: 100%;
+}
+.section-mark .sec-rule.short { max-width: 4rem; flex: 0 0 4rem; }
+.section-mark .sec-title { color: var(--ink-mute); }
+
+/* ────────────────── TWO-COL "WHY" ────────────────── */
+.two-col { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 60rem) { .two-col { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 3.5rem; } }
+.aside {
+  padding: 1.4rem 1.5rem;
+  background: transparent;
+  border-left: 1px solid var(--accent);
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
 }
 .aside-label {
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.78rem; letter-spacing: 0.08em;
-  color: var(--phosphor); text-transform: uppercase;
-  margin: 0 0 0.6rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem; letter-spacing: 0.02em;
+  color: var(--accent); text-transform: lowercase;
+  margin: 0 0 0.5rem;
 }
-.aside p { color: var(--wall-mute-2); }
+.aside p { color: var(--ink-2); }
 .aside p:last-child { margin-bottom: 0; }
 
-/* ─────────────── PAPER CARDS — wheatpaste posters ───────────────
- * Each card is a cream poster pasted onto the wall. Slight rotation
- * alternates by nth-child so the grid breathes. Masking-tape strips
- * appear as ::before pseudo-elements at the top corners. */
+/* ────────────────── PAPER CARDS — calm grid ──────────────────
+ * Plain rectangles. No rotation, no shadows. Single hairline border.
+ * Hover: a single accent line draws underneath (a pen-stroke). */
 .paper-cards {
-  list-style: none; padding: 1.5rem 0 0; margin: 1rem 0 0;
+  list-style: none; padding: 1rem 0 0; margin: 0;
   display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 1.5rem 1.2rem;
+  gap: 1.2rem 1.5rem;
 }
 .paper-card {
-  background: var(--paper); color: var(--ink);
-  border: 1px solid var(--paper-edge);
+  background: transparent;
+  border: 1px solid var(--rule);
   position: relative;
-  transition: transform 0.18s, box-shadow 0.18s;
-  box-shadow: 4px 4px 0 var(--ink), 4px 4px 0 1px var(--rule-2);
+  transition: border-color 0.12s;
+  overflow: hidden;
 }
-.paper-card:nth-child(odd)  { transform: rotate(-0.4deg); }
-.paper-card:nth-child(even) { transform: rotate(0.3deg); }
-.paper-card:nth-child(3n)   { transform: rotate(0.2deg); }
-.paper-card::before {
+.paper-card::after {
   content: "";
-  position: absolute; top: -8px; left: 14%;
-  width: 72px; height: 18px;
-  background: color-mix(in oklab, var(--caution) 70%, transparent);
-  border: 1px solid color-mix(in oklab, var(--caution) 90%, var(--ink));
-  transform: rotate(-3deg);
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  z-index: 1;
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.18s ease-out;
 }
-.paper-card:nth-child(even)::before { left: auto; right: 12%; transform: rotate(4deg); background: color-mix(in oklab, var(--paper) 60%, transparent); border-color: var(--paper-edge); }
-.paper-card:hover {
-  transform: rotate(0deg) translateY(-2px);
-  box-shadow: 6px 6px 0 var(--accent);
-  z-index: 3;
-}
-.card-link { display: block; padding: 1.3rem 1.2rem 1.1rem; color: var(--ink); border: none; }
+.paper-card:hover { border-color: var(--ink); }
+.paper-card:hover::after { transform: scaleX(1); }
+.card-link { display: block; padding: 1.15rem 1.2rem 1rem; color: var(--ink); border: none; }
 .card-link:hover { color: var(--ink); border: none; }
 .card-id {
-  font-size: 0.7rem; color: var(--ink-3);
-  margin-bottom: 0.5rem; letter-spacing: 0.02em;
-  text-transform: uppercase;
-  border-bottom: 1px dashed var(--paper-edge);
-  padding-bottom: 0.4rem;
+  font-size: 0.7rem; color: var(--ink-mute);
+  margin-bottom: 0.55rem; letter-spacing: 0;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.45rem;
 }
 .paper-card h3 {
-  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
-  font-size: 1.05rem; font-weight: 700;
+  font-family: "Newsreader", serif;
+  font-size: 1.08rem; font-weight: 500;
   margin: 0 0 0.5rem; color: var(--ink); line-height: 1.25;
   letter-spacing: -0.005em;
 }
 .card-meta {
-  font-size: 0.85rem; color: var(--paper-mute);
+  font-size: 0.85rem; color: var(--ink-3);
   margin-bottom: 0.7rem;
 }
 .card-meta em { color: var(--ink-3); font-style: italic; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 
-/* ─────────────── PAPER LIST — declassified docket rows ─────────── */
+/* ────────────────── PAPER LIST — compact rows ────────────────── */
 .paper-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
 .paper-list li { border-bottom: 1px solid var(--rule); }
-.paper-list li:first-child { border-top: 1px solid var(--rule-2); }
+.paper-list li:first-child { border-top: 1px solid var(--rule); }
 .paper-list li a {
   display: grid; grid-template-columns: minmax(15rem, 18rem) 1fr auto;
-  gap: 1.5rem; padding: 1rem 0.75rem;
-  color: var(--paper); border: none;
-  align-items: baseline; transition: background 0.15s, color 0.15s;
+  gap: 1.5rem; padding: 0.95rem 0.4rem;
+  color: var(--ink); border: none;
+  align-items: baseline; transition: background 0.12s, color 0.12s;
+  position: relative;
+}
+.paper-list li a::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--accent);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.15s ease-out;
 }
 .paper-list li a:hover {
-  background: var(--wall-2); color: var(--accent);
+  background: var(--paper-2);
+  color: var(--ink);
   border: none;
+  padding-left: 0.7rem;
 }
-.paper-list li a:hover .row-title { color: var(--paper); }
-.paper-list li a:hover::before {
-  content: "▸";
-  color: var(--accent);
-  position: absolute;
-  margin-left: -1rem;
-}
-.paper-list li { position: relative; }
-.row-id { font-size: 0.78rem; color: var(--wall-mute); }
+.paper-list li a:hover::before { transform: scaleY(1); }
+.row-id { font-size: 0.78rem; color: var(--ink-mute); }
 .row-title {
-  font-family: "Atkinson Hyperlegible", sans-serif;
-  font-size: 1rem; font-weight: 700; line-height: 1.3;
-  color: var(--paper); transition: color 0.15s;
+  font-family: "Newsreader", serif;
+  font-size: 1.05rem; font-weight: 500; line-height: 1.3;
+  color: var(--ink);
 }
-.row-meta { font-size: 0.83rem; color: var(--wall-mute); white-space: nowrap; }
+.row-meta { font-size: 0.83rem; color: var(--ink-mute); white-space: nowrap; font-family: "JetBrains Mono", monospace; }
 @media (max-width: 50rem) {
   .paper-list li a { grid-template-columns: 1fr; gap: 0.25rem; }
   .row-meta { white-space: normal; }
 }
 
-/* ──────────────── BOTTOM CTA ──────────────── */
-.cta-bottom { text-align: center; padding: 4rem 0 2rem; margin-top: 5rem; }
-.cta-bottom .section-mark { justify-content: center; border-top: none; padding-top: 0; }
-.cta-bottom .lede { margin: 0.75rem auto 1.75rem; }
+/* ────────────────── BOTTOM CTA ────────────────── */
+.cta-bottom { padding: 4rem 0 2rem; margin-top: 5rem; border-top: 1px solid var(--rule); }
+.cta-grid {
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 60rem) {
+  .cta-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 4rem; }
+}
+.cta-bottom .lede { margin: 0.75rem 0 1.75rem; }
+.cta-figure { color: var(--ink-2); display: flex; justify-content: flex-end; }
+.cta-figure svg.plotter { max-width: 220px; max-height: 220px; aspect-ratio: 1 / 1; }
 
-/* ──────────────── TAG CHIPS — rubber stamps ────────────────
- * Rectangular stamp borders, mono caps. Color-coded by category:
- * red = censor (the threat), yellow = technique (caution),
- * green = defense (resistance / phosphor terminal). */
+/* ────────────────── TAG CHIPS — restrained ──────────────────
+ * Lowercase mono labels with category-coded left rule. No background
+ * fill, no rotation. Censor=pen-blue, technique=ink, defense=moss.
+ * Quiet by default; the type does the work. */
 .tag {
   display: inline-flex; align-items: center;
-  padding: 0.18rem 0.55rem 0.14rem;
+  padding: 0.12rem 0.5rem 0.1rem;
   margin: 0.2rem 0.25rem 0.2rem 0;
   background: transparent;
-  border: 1px solid var(--ink-3);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink); font-weight: 600;
+  border: 1px solid var(--rule);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  color: var(--ink-2);
+  font-weight: 500;
   transition: all 0.12s;
   white-space: nowrap;
+  border-radius: 1px;
+  border-left-width: 2px;
 }
 .tag:hover {
   background: var(--ink); color: var(--paper);
-  border-color: var(--ink); transform: rotate(-1deg);
+  border-color: var(--ink);
   border-bottom-color: var(--ink);
 }
-.tag.censor    { color: var(--accent-3); border-color: var(--accent-3); }
-.tag.censor:hover    { background: var(--accent-3); color: var(--paper); border-color: var(--accent-3); }
-.tag.technique { color: #997708; border-color: #997708; }
-.tag.technique:hover { background: #997708; color: var(--paper); border-color: #997708; }
-.tag.defense   { color: #186a3b; border-color: #186a3b; }
-.tag.defense:hover   { background: #186a3b; color: var(--paper); border-color: #186a3b; }
+.tag.censor    { border-left-color: var(--accent); }
+.tag.technique { border-left-color: var(--rust); }
+.tag.defense   { border-left-color: var(--moss); }
+.tag.censor:hover    { background: var(--accent); border-color: var(--accent); border-bottom-color: var(--accent); }
+.tag.technique:hover { background: var(--rust); border-color: var(--rust); border-bottom-color: var(--rust); }
+.tag.defense:hover   { background: var(--moss); border-color: var(--moss); border-bottom-color: var(--moss); }
 
-/* On the dark wall (e.g. paper-list rows, search results), tags need
- * lighter colors to read against the dark bg. */
-.paper-list .tag, #search-results .tag, .related-section .tag {
-  color: var(--paper); border-color: var(--wall-mute);
-}
-.paper-list .tag.censor, #search-results .tag.censor { color: var(--accent-2); border-color: var(--accent-2); }
-.paper-list .tag.technique, #search-results .tag.technique { color: var(--caution); border-color: var(--caution); }
-.paper-list .tag.defense, #search-results .tag.defense { color: var(--phosphor); border-color: var(--phosphor); }
-
-/* ──────────────── PAPER DETAIL — declassified document ──────────────── */
+/* ────────────────── PAPER DETAIL — narrow research column ──────────────────
+ * Single column, narrow measure (~36rem) in line with academic paper
+ * conventions. Marginal numbering. The "DECLASSIFIED" stamp from the
+ * old design is gone — restraint signals seriousness more reliably than
+ * theatrics. */
 article.paper {
-  max-width: 50rem; margin: 0 auto;
-  background: var(--paper); color: var(--ink);
-  padding: 3rem 3rem 2.5rem;
-  border: 1px solid var(--paper-edge);
-  position: relative;
-  box-shadow: 6px 6px 0 var(--ink), 6px 6px 0 1px var(--accent);
-}
-article.paper::before {
-  content: "DECLASSIFIED";
-  position: absolute; top: 1.2rem; right: 1.5rem;
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 1rem; letter-spacing: 0.1em;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-  padding: 0.25rem 0.65rem 0.18rem;
-  transform: rotate(8deg);
-  opacity: 0.85;
+  max-width: 44rem; margin: 0 auto;
+  padding: 0;
 }
 article.paper .paper-id {
-  font-size: 0.72rem; color: var(--ink-3);
-  margin: 0 0 0.7rem; letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.74rem; color: var(--ink-mute);
+  margin: 0 0 0.7rem; letter-spacing: 0;
 }
 article.paper h1 {
-  font-family: "Atkinson Hyperlegible", sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+  font-family: "Newsreader", serif;
+  font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 500;
   margin: 0 0 0.6rem; color: var(--ink);
-  letter-spacing: -0.015em; line-height: 1.2;
-  text-transform: none; max-width: 90%;
+  letter-spacing: -0.014em; line-height: 1.18;
+  text-transform: none;
 }
 article.paper h2 {
-  font-family: "Anton", Impact, sans-serif;
+  font-family: "Newsreader", serif;
   color: var(--ink); font-size: 1.2rem;
-  margin: 2rem 0 0.6rem; letter-spacing: 0.04em;
+  margin: 2.4rem 0 0.7rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
 }
-article.paper h3 { color: var(--ink); }
+article.paper h3 { color: var(--ink); font-family: "Newsreader", serif; }
 article.paper p { color: var(--ink-2); }
 article.paper a { color: var(--accent); }
-article.paper a:hover { color: var(--accent-3); }
-article.paper code { background: var(--wall); color: var(--phosphor); border-color: var(--ink); }
+article.paper a:hover { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+article.paper code { background: var(--code-bg); color: var(--ink); border-color: var(--paper-edge); }
 article.paper .paper-links {
-  font-size: 0.92rem; color: var(--ink-3);
+  font-size: 0.92rem; color: var(--ink-mute);
   margin: 0 0 2rem; padding-bottom: 1.5rem;
-  border-bottom: 1px dashed var(--paper-edge);
+  border-bottom: 1px solid var(--rule);
 }
-.related-section { max-width: 50rem; margin: 3rem auto 0; }
-.tag-name { color: var(--accent); }
-.byline { font-size: 0.95rem; color: var(--paper-mute); margin: 0 0 1.5rem; }
-.byline em { color: var(--ink-2); font-style: italic; }
+.related-section { max-width: 44rem; margin: 3rem auto 0; }
+.tag-name { color: var(--accent); font-family: "JetBrains Mono", monospace; }
+.byline {
+  font-size: 0.96rem; color: var(--ink-3);
+  margin: 0 0 1.5rem;
+  font-family: "Newsreader", serif;
+}
+.byline em { color: var(--ink-3); font-style: italic; }
 .badge {
   display: inline-block;
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.7rem; letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem 0.14rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem; letter-spacing: 0.02em;
+  text-transform: lowercase;
+  padding: 0.16rem 0.55rem 0.1rem;
   background: var(--accent); color: var(--paper);
-  vertical-align: middle; margin-left: 0.7rem;
-  transform: rotate(-3deg); display: inline-block;
+  vertical-align: middle; margin-left: 0.6rem;
+  border-radius: 1px;
+  font-weight: 500;
 }
 .badge.core { background: var(--accent); }
 .abstract, .notes { white-space: pre-wrap; }
-article.paper .abstract { color: var(--ink-2); }
+article.paper .abstract { color: var(--ink-2); font-family: "Newsreader", serif; font-size: 1.02rem; line-height: 1.6; }
 article.paper .notes {
-  padding: 1.25rem 1.4rem;
-  background: var(--wall);
-  color: var(--wall-mute-2);
-  border: 1px solid var(--rule-2);
-  border-left: 3px solid var(--phosphor);
+  padding: 1rem 1.25rem;
+  background: var(--paper-2);
+  color: var(--ink-2);
+  border-left: 2px solid var(--accent);
   margin: 1rem 0;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.88rem;
+  font-size: 0.94rem;
   position: relative;
-}
-article.paper .notes::before {
-  content: "▸ INTERNAL NOTES";
-  display: block; font-size: 0.7rem; color: var(--phosphor);
-  letter-spacing: 0.1em; margin-bottom: 0.6rem;
-  text-transform: uppercase;
 }
 .tags-dl {
   display: grid; grid-template-columns: max-content 1fr;
-  gap: 0.6rem 1.5rem; margin: 1rem 0;
+  gap: 0.5rem 1.5rem; margin: 1rem 0;
 }
 .tags-dl dt {
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.75rem; letter-spacing: 0.1em;
-  color: var(--accent); padding-top: 0.35rem;
-  text-transform: uppercase;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem; letter-spacing: 0;
+  color: var(--ink-mute); padding-top: 0.3rem;
+  text-transform: lowercase;
 }
 .tags-dl dd { margin: 0; padding: 0; }
 
-@media (max-width: 50rem) {
-  article.paper { padding: 2rem 1.5rem; }
-  article.paper::before { font-size: 0.78rem; padding: 0.2rem 0.5rem; }
-}
-
-/* ──────────────── TAG INDEX ──────────────── */
+/* ────────────────── TAG INDEX ────────────────── */
 .tag-index {
   list-style: none; padding: 0; margin: 1.5rem 0;
   display: grid;
   grid-template-columns: max-content max-content 1fr max-content;
-  gap: 0.6rem 1.5rem;
+  gap: 0.55rem 1.5rem;
 }
 .tag-index li { display: contents; }
 .tag-index li > a {
@@ -1273,47 +1387,39 @@ article.paper .notes::before {
   border: none;
 }
 .tag-index li > a:hover { color: var(--accent-2); border: none; }
-.tag-index li > span:nth-child(2) { color: var(--paper); font-weight: 600; }
+.tag-index li > span:nth-child(2) { color: var(--ink); font-family: "Newsreader", serif; font-weight: 500; }
 .tag-index li > span.muted {
-  color: var(--wall-mute); font-size: 0.82rem;
+  color: var(--ink-mute); font-size: 0.84rem;
   font-family: "JetBrains Mono", monospace;
 }
 
-/* ──────────────── TAXONOMY PAGE ──────────────── */
+/* ────────────────── TAXONOMY PAGE ────────────────── */
 .tax {
   display: grid; grid-template-columns: max-content 1fr;
-  gap: 0.6rem 1.5rem; margin: 1rem 0;
+  gap: 0.5rem 1.5rem; margin: 1rem 0;
 }
 .tax dt {
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.88rem; padding-top: 0.25rem;
-  color: var(--paper);
+  font-size: 0.86rem; padding-top: 0.25rem;
+  color: var(--ink);
+  font-weight: 500;
 }
 .tax dt a { color: var(--accent); border: none; }
 .tax dt a:hover { color: var(--accent-2); border: none; }
-.tax dd { margin: 0; padding: 0 0 0.4rem; color: var(--wall-mute-2); font-size: 0.95rem; }
-.tax dd .muted { display: block; font-size: 0.82rem; margin-top: 0.15rem; color: var(--wall-mute); }
+.tax dd { margin: 0; padding: 0 0 0.4rem; color: var(--ink-2); font-size: 0.95rem; }
+.tax dd .muted { display: block; font-size: 0.82rem; margin-top: 0.15rem; color: var(--ink-mute); }
 @media (max-width: 50rem) {
   .tax, .tags-dl, .tag-index { grid-template-columns: 1fr; gap: 0.2rem; }
   .tax dt, .tags-dl dt { padding-top: 0.6rem; }
 }
 
-/* ──────────────── FOOTER — classified document ──────────────── */
+/* ────────────────── FOOTER ────────────────── */
 .site-footer {
-  border-top: 1px solid var(--accent);
+  border-top: 1px solid var(--rule);
   margin-top: 5rem; padding: 0 0 1.5rem;
-  background: var(--wall-2);
-  color: var(--wall-mute-2); font-size: 0.88rem;
+  background: transparent;
+  color: var(--ink-2); font-size: 0.88rem;
   position: relative;
-}
-.site-footer::before {
-  content: "";
-  display: block; height: 8px;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--caution) 0, var(--caution) 14px,
-    var(--ink) 14px, var(--ink) 28px
-  );
 }
 .site-footer .wrap { padding-top: 3rem; }
 .foot-grid {
@@ -1322,122 +1428,122 @@ article.paper .notes::before {
 }
 @media (max-width: 50rem) { .foot-grid { grid-template-columns: 1fr 1fr; } }
 .foot-title {
-  font-family: "Special Elite", "Courier New", monospace;
-  font-size: 0.78rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--accent);
-  margin-bottom: 0.6rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem; letter-spacing: 0;
+  text-transform: lowercase; color: var(--ink);
+  margin-bottom: 0.55rem;
+  font-weight: 500;
 }
 .foot-grid ul { list-style: none; padding: 0; margin: 0; }
 .foot-grid li { margin-bottom: 0.35rem; }
-.foot-grid a { color: var(--wall-mute-2); border: none; }
+.foot-grid a { color: var(--ink-2); border: none; }
 .foot-grid a:hover { color: var(--accent); border: none; }
 .legal {
-  padding-top: 1.5rem; border-top: 1px dashed var(--rule-2);
-  color: var(--wall-mute); font-size: 0.78rem;
-  max-width: 70rem;
-  font-family: "JetBrains Mono", monospace;
-  letter-spacing: 0.02em;
+  padding-top: 1.5rem; border-top: 1px solid var(--rule);
+  color: var(--ink-mute); font-size: 0.82rem;
+  max-width: 60rem;
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
-.legal a { color: var(--wall-mute-2); border: none; }
+.legal a { color: var(--ink-2); border: none; }
 .legal a:hover { color: var(--accent); }
 
 /* Use page sections */
 dl.tax dt code { font-family: inherit; background: none; border: none; padding: 0; color: inherit; }
 
-/* ──────────────── SEARCH — terminal CRT ──────────────── */
+/* ────────────────── SEARCH — restrained terminal ──────────────────
+ * Single-line input with a ghost slash key, no boxes-around-boxes.
+ * Results dropdown is a calm panel with hairline rules. */
 .search-wrap {
   position: relative;
-  flex: 1 1 28rem; max-width: 32rem; min-width: 14rem;
+  flex: 1 1 24rem; max-width: 30rem; min-width: 14rem;
   margin: 0 1rem;
-}
-.search-prompt {
-  position: absolute; left: 0.85rem; top: 50%;
-  transform: translateY(-50%);
-  color: var(--phosphor);
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1rem; font-weight: 700;
-  pointer-events: none; z-index: 2;
-  text-shadow: 0 0 6px color-mix(in oklab, var(--phosphor) 50%, transparent);
 }
 #search {
   width: 100%;
-  padding: 0.6rem 2.2rem 0.55rem 2rem;
-  border: 1px solid var(--rule-2);
-  background: var(--wall);
-  color: var(--phosphor);
+  padding: 0.55rem 2.2rem 0.5rem 0.85rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.88rem;
-  letter-spacing: 0.01em;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  caret-color: var(--phosphor);
+  font-size: 0.86rem;
+  letter-spacing: 0;
+  transition: border-color 0.12s, box-shadow 0.12s;
+  border-radius: 1px;
 }
-#search::placeholder { color: var(--wall-mute); }
+#search::placeholder { color: var(--ink-mute); }
 #search:focus {
   outline: none;
-  border-color: var(--phosphor);
-  box-shadow: 0 0 0 1px var(--phosphor), 0 0 14px color-mix(in oklab, var(--phosphor) 35%, transparent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
 }
 .search-kbd {
-  position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%);
+  position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
   font-family: "JetBrains Mono", monospace; font-size: 0.7rem;
-  padding: 0.1rem 0.4rem;
-  border: 1px solid var(--rule-2);
-  color: var(--wall-mute); background: var(--wall-2);
+  padding: 0.08rem 0.42rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-mute); background: var(--paper-2);
   pointer-events: none;
+  border-radius: 1px;
 }
 #search:focus + .search-kbd { display: none; }
+
 #search-results {
-  position: absolute; top: calc(100% + 0.5rem); left: 0; right: 0;
-  background: var(--wall);
-  border: 1px solid var(--phosphor);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.6), 0 0 0 1px color-mix(in oklab, var(--phosphor) 30%, transparent);
+  position: absolute; top: calc(100% + 0.4rem); left: 0; right: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 0 12px 32px rgba(20, 19, 15, 0.08);
   max-height: 70vh; overflow-y: auto;
   z-index: 30;
+  border-radius: 1px;
 }
 #search-results .empty {
-  padding: 1rem 1.1rem; color: var(--wall-mute);
+  padding: 1rem 1.1rem; color: var(--ink-mute);
   font-size: 0.92rem;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
-#search-results .empty::before { content: "// "; color: var(--accent); }
 #search-results .summary {
   padding: 0.5rem 1.1rem;
-  color: var(--phosphor); font-size: 0.72rem;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  border-bottom: 1px solid var(--rule-2);
+  color: var(--ink-mute); font-size: 0.74rem;
+  letter-spacing: 0; text-transform: lowercase;
+  border-bottom: 1px solid var(--rule);
   font-family: "JetBrains Mono", monospace;
 }
-#search-results .summary::before { content: "▸ "; color: var(--phosphor); }
 #search-results a {
   display: grid; grid-template-columns: 1fr auto;
-  gap: 0.4rem 1rem; padding: 0.7rem 1.1rem;
-  color: var(--paper);
+  gap: 0.4rem 1rem; padding: 0.65rem 1.1rem;
+  color: var(--ink);
   border-bottom: 1px solid var(--rule);
-  border: none; border-bottom: 1px solid var(--rule);
+  border-top: none;
+  border-left: 2px solid transparent;
+  border-right: none;
+  transition: background 0.1s, border-color 0.1s;
 }
 #search-results a:last-child { border-bottom: none; }
 #search-results a:hover, #search-results a.active {
-  background: var(--wall-2); color: var(--accent);
+  background: var(--paper-2);
+  border-left-color: var(--accent);
 }
 #search-results .r-title {
-  font-family: "Atkinson Hyperlegible", sans-serif;
-  font-size: 0.95rem; font-weight: 700; line-height: 1.25;
-  color: var(--paper);
+  font-family: "Newsreader", serif;
+  font-size: 0.98rem; font-weight: 500; line-height: 1.25;
+  color: var(--ink);
 }
-#search-results a:hover .r-title, #search-results a.active .r-title { color: var(--accent); }
-#search-results .r-meta { font-size: 0.78rem; color: var(--wall-mute); white-space: nowrap; }
+#search-results .r-meta { font-size: 0.78rem; color: var(--ink-mute); white-space: nowrap; font-family: "JetBrains Mono", monospace; }
 #search-results .r-id {
   grid-column: 1 / 3;
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.7rem; color: var(--wall-mute);
+  font-size: 0.7rem; color: var(--ink-mute);
 }
 #search-results .r-tags { grid-column: 1 / 3; display: flex; gap: 0.3rem; flex-wrap: wrap; }
-#search-results .r-tags .tag { font-size: 0.65rem; padding: 0.05rem 0.4rem; }
+#search-results .r-tags .tag { font-size: 0.68rem; padding: 0.05rem 0.4rem; }
 #search-results mark {
-  background: color-mix(in oklab, var(--caution) 50%, transparent);
-  color: var(--paper); padding: 0;
-  text-shadow: 0 0 4px color-mix(in oklab, var(--caution) 60%, transparent);
+  background: var(--selection);
+  color: var(--ink); padding: 0;
 }
+
+/* Plotter SVG figures inherit color through currentColor; the accent
+ * highlight is applied per-element via stroke="var(--accent)". */
+svg.plotter { color: var(--ink-2); }
 
 @media (max-width: 60rem) {
   .site-header .wrap { flex-direction: column; align-items: stretch; }
@@ -1450,6 +1556,5 @@ dl.tax dt code { font-family: inherit; background: none; border: none; padding: 
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-  .paper-card, .paper-card:hover { transform: none; }
 }
 `
