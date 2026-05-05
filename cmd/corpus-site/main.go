@@ -27,6 +27,7 @@ import (
 	"slices"
 	"sort"
 	"strings"
+	"time"
 
 	"gopkg.in/yaml.v3"
 )
@@ -93,12 +94,24 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Asset version stamp — read from GITHUB_SHA in CI, fall back to a
+	// per-second timestamp for local dev. Used to cache-bust the
+	// stylesheet and search.js URLs across deploys.
+	assetVersion := os.Getenv("GITHUB_SHA")
+	if assetVersion == "" {
+		assetVersion = fmt.Sprintf("dev%d", time.Now().Unix())
+	}
+	if len(assetVersion) > 12 {
+		assetVersion = assetVersion[:12]
+	}
+
 	site := &site{
-		out:      *outDir,
-		papers:   papers,
-		byID:     map[string]*Paper{},
-		tax:      tax,
-		template: mustTemplates(),
+		out:          *outDir,
+		papers:       papers,
+		byID:         map[string]*Paper{},
+		tax:          tax,
+		template:     mustTemplates(),
+		assetVersion: assetVersion,
 	}
 	for _, p := range papers {
 		site.byID[p.ID] = p
@@ -156,11 +169,12 @@ func loadTaxonomy(corpusDir string) (*taxonomy, error) {
 }
 
 type site struct {
-	out      string
-	papers   []*Paper
-	byID     map[string]*Paper
-	tax      *taxonomy
-	template pageTemplates
+	out          string
+	papers       []*Paper
+	byID         map[string]*Paper
+	tax          *taxonomy
+	template     pageTemplates
+	assetVersion string // appended as ?v=... to /style.css and /search.js
 }
 
 func (s *site) render() error {
@@ -264,7 +278,18 @@ func (s *site) renderUse() error {
 	})
 }
 
+// writeFile injects the build-time AssetVersion into the page data so
+// the layout's <link rel="stylesheet" href="/style.css?v={{.AssetVersion}}">
+// busts CDN/browser caches whenever the build changes. Without this,
+// users continue to see the old CSS after a deploy until they hard
+// reload — which has bitten us once already (z-index fix on the search
+// dropdown didn't take effect for users with cached style.css).
 func (s *site) writeFile(rel string, name string, data any) error {
+	if m, ok := data.(map[string]any); ok {
+		if _, present := m["AssetVersion"]; !present {
+			m["AssetVersion"] = s.assetVersion
+		}
+	}
 	dir := filepath.Join(s.out, rel)
 	if err := os.MkdirAll(dir, 0o755); err != nil {
 		return err
