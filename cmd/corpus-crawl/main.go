@@ -115,6 +115,7 @@ type runOptions struct {
 	windowDays  int
 	dryRun      bool
 	noPR        bool
+	reclassify  bool // ignore the rejection cache and re-classify everything
 }
 
 func runOnce(args []string) {
@@ -127,6 +128,7 @@ func runOnce(args []string) {
 	fs.IntVar(&opts.windowDays, "window-days", 30, "look back this many days")
 	fs.BoolVar(&opts.dryRun, "dry-run", false, "don't write YAML files; print what would happen")
 	fs.BoolVar(&opts.noPR, "no-pr", false, "write YAMLs but skip opening a PR")
+	fs.BoolVar(&opts.reclassify, "reclassify", false, "ignore the rejection cache and re-classify everything")
 	_ = fs.Parse(args)
 
 	res, err := runWith(context.Background(), opts)
@@ -165,6 +167,16 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		return nil, fmt.Errorf("load existing corpus: %w", err)
 	}
 	log.Printf("loaded %d existing paper records for dedup", len(existing.byID))
+
+	rejected, err := loadRejectStore(root)
+	if err != nil {
+		return nil, fmt.Errorf("load reject cache: %w", err)
+	}
+	if opts.reclassify {
+		log.Printf("--reclassify set: ignoring %d cached rejections this run", len(rejected.seen))
+	} else {
+		log.Printf("loaded %d cached rejections (will skip re-classifying these)", len(rejected.seen))
+	}
 
 	taxRaw, err := os.ReadFile(filepath.Join(root, "schema", "taxonomy.yaml"))
 	if err != nil {
@@ -213,14 +225,23 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	log.Printf("%d passed keyword filter (incl. all net4people)", len(kept))
 
 	novel := make([]candidate, 0, len(kept))
+	skippedRejected := 0
 	for _, c := range kept {
 		if existing.contains(c) {
+			continue
+		}
+		if !opts.reclassify && rejected.Has(c.identityKey()) {
+			skippedRejected++
 			continue
 		}
 		novel = append(novel, c)
 	}
 	res.Novel = len(novel)
-	log.Printf("%d are novel", len(novel))
+	if skippedRejected > 0 {
+		log.Printf("%d are novel (%d skipped via rejection cache)", len(novel), skippedRejected)
+	} else {
+		log.Printf("%d are novel", len(novel))
+	}
 
 	// Apply the classifier safety bound BEFORE classification so we don't
 	// run away on a future high-volume source. Note: this is NOT --max;
@@ -256,6 +277,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		}
 		if !k.IsRelevant {
 			log.Printf("not-relevant: %s — %s", ident, k.Reason)
+			rejected.Add(c, k.Reason)
 			continue
 		}
 		// For net4people candidates the LLM has filled in authors/venue/
@@ -293,8 +315,30 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	}
 	res.Accepted = len(out)
 
+	// Persist the rejection cache regardless of whether anything was
+	// accepted — even an all-reject run is valuable cache data we want
+	// to keep.
+	rejectPath := ""
+	if !opts.dryRun {
+		rp, err := rejected.Save()
+		if err != nil {
+			log.Printf("warning: failed to save rejection cache: %v", err)
+		} else if rp != "" {
+			rejectPath = rp
+			log.Printf("saved rejection cache (%d total entries)", len(rejected.seen))
+		}
+	}
+
 	if len(out) == 0 {
 		log.Println("classifier rejected all; nothing to write")
+		// Still try to commit the rejection-cache delta so future runs
+		// don't re-pay for these classifications. Only do this if we
+		// actually have a delta and aren't in dry-run / no-pr mode.
+		if rejectPath != "" && !opts.noPR && !opts.dryRun {
+			if err := commitRejectCacheOnly(ctx, root, rejectPath, len(rejected.seen)); err != nil {
+				log.Printf("warning: couldn't commit rejection cache: %v", err)
+			}
+		}
 		return res, nil
 	}
 
@@ -308,7 +352,12 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		return res, nil
 	}
 
-	prURL, err := openPR(ctx, root, out, written)
+	// Include the rejection cache in the PR if it was updated this run.
+	prFiles := append([]string{}, written...)
+	if rejectPath != "" {
+		prFiles = append(prFiles, rejectPath)
+	}
+	prURL, err := openPR(ctx, root, out, prFiles)
 	if err != nil {
 		log.Printf("PR creation failed (YAMLs are written, push manually): %v", err)
 	} else {
@@ -316,6 +365,46 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		log.Printf("PR opened: %s", prURL)
 	}
 	return res, nil
+}
+
+// commitRejectCacheOnly pushes a small commit on main containing only
+// the rejection-cache update — no PR, since there's nothing for a human
+// to review. Used when a run produced no accepted papers but did burn
+// LLM cycles classifying things we'd like to remember.
+func commitRejectCacheOnly(ctx context.Context, root, rejectPath string, totalEntries int) error {
+	run := func(args ...string) error {
+		cmd := exec.CommandContext(ctx, "git", args...)
+		cmd.Dir = root
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			return fmt.Errorf("git %v: %v\n%s", args, err, string(out))
+		}
+		return nil
+	}
+	_ = run("config", "user.name", "circumvention-corpus-bot")
+	_ = run("config", "user.email", "bot@lantern.io")
+	if err := run("checkout", "main"); err != nil {
+		return err
+	}
+	if err := run("add", rejectPath); err != nil {
+		return err
+	}
+	// Skip the commit if there's nothing staged (e.g., the cache was
+	// already up to date on disk relative to what's committed).
+	cmd := exec.CommandContext(ctx, "git", "diff", "--cached", "--quiet")
+	cmd.Dir = root
+	if cmd.Run() == nil {
+		log.Printf("rejection cache already up to date on main; nothing to commit")
+		return nil
+	}
+	if err := run("commit", "-m", fmt.Sprintf("auto-ingest: cache %d rejection(s)", totalEntries)); err != nil {
+		return err
+	}
+	if err := run("push", "origin", "main"); err != nil {
+		return err
+	}
+	log.Printf("pushed rejection-cache update to main")
+	return nil
 }
 
 // ── arXiv fetch ────────────────────────────────────────────────────
@@ -652,6 +741,127 @@ For net4people candidates: the input "Abstract" is actually the GitHub issue bod
 	return b.String()
 }
 
+// ── rejection cache ───────────────────────────────────────────────
+//
+// The crawler classifies the same arXiv papers every run since the
+// arXiv recent-submissions API doesn't give us a "since-token." Without
+// a cache, we re-pay the LLM cost for every recurring not-relevant
+// paper — dozens per week, mostly cs.CR malware/IoT/ML-adversarial work.
+//
+// Rejections are persisted to .crawl-state/rejected.json at the repo
+// root. The file commits with the auto-ingest PR so the cache survives
+// machine moves and is auditable — if the LLM is rejecting things it
+// shouldn't, the file shows what + why + when.
+//
+// Identity key: "arxiv:<id>" for arxiv candidates, "url:<url>" for
+// net4people candidates. Stable across re-fetches.
+//
+// To re-evaluate everything (e.g., after broadening relevance criteria
+// or upgrading the model), pass --reclassify.
+
+type rejection struct {
+	Key        string `json:"key"`
+	Title      string `json:"title"`
+	Source     string `json:"source"`
+	Reason     string `json:"reason,omitempty"`
+	RejectedAt string `json:"rejected_at"`
+}
+
+type rejectStore struct {
+	path  string
+	seen  map[string]rejection
+	dirty bool
+}
+
+func loadRejectStore(corpusRoot string) (*rejectStore, error) {
+	path := filepath.Join(corpusRoot, ".crawl-state", "rejected.json")
+	rs := &rejectStore{path: path, seen: map[string]rejection{}}
+	raw, err := os.ReadFile(path)
+	if os.IsNotExist(err) {
+		return rs, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	var items []rejection
+	if err := json.Unmarshal(raw, &items); err != nil {
+		// Tolerate a malformed file rather than blocking the run.
+		log.Printf("warning: rejected.json is malformed (%v); starting fresh", err)
+		return rs, nil
+	}
+	for _, it := range items {
+		rs.seen[it.Key] = it
+	}
+	return rs, nil
+}
+
+func (rs *rejectStore) Has(key string) bool {
+	if rs == nil {
+		return false
+	}
+	_, ok := rs.seen[key]
+	return ok
+}
+
+func (rs *rejectStore) Add(c candidate, reason string) {
+	if rs == nil {
+		return
+	}
+	key := c.identityKey()
+	if key == "" {
+		return
+	}
+	rs.seen[key] = rejection{
+		Key:        key,
+		Title:      c.Title,
+		Source:     c.Source,
+		Reason:     reason,
+		RejectedAt: time.Now().UTC().Format("2006-01-02"),
+	}
+	rs.dirty = true
+}
+
+// Save writes the rejection cache, sorted for stable git diffs. Returns
+// the path written (empty if nothing was dirty).
+func (rs *rejectStore) Save() (string, error) {
+	if rs == nil || !rs.dirty {
+		return "", nil
+	}
+	items := make([]rejection, 0, len(rs.seen))
+	for _, v := range rs.seen {
+		items = append(items, v)
+	}
+	sort.Slice(items, func(i, j int) bool {
+		if items[i].RejectedAt != items[j].RejectedAt {
+			return items[i].RejectedAt > items[j].RejectedAt
+		}
+		return items[i].Key < items[j].Key
+	})
+	if err := os.MkdirAll(filepath.Dir(rs.path), 0o755); err != nil {
+		return "", err
+	}
+	buf, err := json.MarshalIndent(items, "", "  ")
+	if err != nil {
+		return "", err
+	}
+	buf = append(buf, '\n')
+	if err := os.WriteFile(rs.path, buf, 0o644); err != nil {
+		return "", err
+	}
+	return rs.path, nil
+}
+
+// identityKey returns a stable identifier across re-fetches.
+func (c candidate) identityKey() string {
+	if c.ArxivID != "" {
+		return "arxiv:" + c.ArxivID
+	}
+	if c.URL != "" {
+		return "url:" + c.URL
+	}
+	return ""
+}
+
 // ── existing-corpus dedup ─────────────────────────────────────────
 
 type existingCorpus struct {
@@ -783,10 +993,17 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 
 // ── PR creation (gh CLI) ───────────────────────────────────────────
 
-func openPR(ctx context.Context, root string, items []accepted, written []string) (string, error) {
+// openPR commits prFiles (new YAMLs + optionally the rejection cache)
+// on a fresh auto-ingest branch and opens a PR labeled `auto-ingest`.
+// `accepted` count comes from the items slice (one per new YAML).
+func openPR(ctx context.Context, root string, items []accepted, prFiles []string) (string, error) {
 	if err := requireTool("gh"); err != nil {
 		return "", err
 	}
+	// Number of paper YAMLs (everything in prFiles except the rejection
+	// cache) drives the commit/PR title text.
+	numPapers := len(items)
+
 	branch := fmt.Sprintf("auto-ingest/%s", time.Now().UTC().Format("2006-01-02-150405"))
 
 	run := func(name string, args ...string) error {
@@ -806,12 +1023,12 @@ func openPR(ctx context.Context, root string, items []accepted, written []string
 	if err := run("git", "checkout", "-b", branch); err != nil {
 		return "", err
 	}
-	args := append([]string{"add"}, written...)
+	args := append([]string{"add"}, prFiles...)
 	if err := run("git", args...); err != nil {
 		return "", err
 	}
 	commitMsg := fmt.Sprintf("Auto-ingest: %d new paper%s from arXiv cs.CR\n\nProposed by corpus-crawl. Review tags + notes before merging.",
-		len(written), pluralS(len(written)))
+		numPapers, pluralS(numPapers))
 	if err := run("git", "commit", "-m", commitMsg); err != nil {
 		return "", err
 	}
@@ -826,7 +1043,7 @@ func openPR(ctx context.Context, root string, items []accepted, written []string
 	}
 	defer os.Remove(bodyFile)
 
-	title := fmt.Sprintf("Auto-ingest: %d new paper%s (%s)", len(written), pluralS(len(written)), time.Now().UTC().Format("2006-01-02"))
+	title := fmt.Sprintf("Auto-ingest: %d new paper%s (%s)", numPapers, pluralS(numPapers), time.Now().UTC().Format("2006-01-02"))
 	cmd := exec.CommandContext(ctx, "gh", "pr", "create",
 		"--title", title,
 		"--body-file", bodyFile,
