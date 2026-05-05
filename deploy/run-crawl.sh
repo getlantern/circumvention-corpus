@@ -54,21 +54,42 @@ else
     stamp "pull FAILED; using existing tree @ $(git rev-parse --short HEAD)"
 fi
 
-# 4. Build into a tempfile, atomically rename.
-stamp "building corpus-crawl"
+# 4. Build both binaries into tempfiles, atomically rename. corpus-crawl
+# shells out to corpus-findings for full-text findings extraction on
+# each accepted paper, so both need to be current.
 build_log=$(mktemp /tmp/corpus-crawl-build.XXXXXX.log)
-if go build -o "$BINARY.new" ./cmd/corpus-crawl 2>"$build_log"; then
-    mv -f "$BINARY.new" "$BINARY"
-    chmod +x "$BINARY"
+build_one() {
+    local pkg="$1" target="$2"
+    if go build -o "$target.new" "$pkg" 2>>"$build_log"; then
+        mv -f "$target.new" "$target"
+        chmod +x "$target"
+        return 0
+    fi
+    rm -f "$target.new"
+    return 1
+}
+
+stamp "building corpus-crawl + corpus-findings"
+ok=1
+for pair in "./cmd/corpus-crawl|$REPO/corpus-crawl" "./cmd/corpus-findings|$REPO/corpus-findings"; do
+    pkg="${pair%%|*}"; target="${pair##*|}"
+    if ! build_one "$pkg" "$target"; then
+        stamp "build FAILED for $pkg — using existing binary if present"
+        ok=0
+    fi
+done
+if [[ $ok -eq 1 ]]; then
     stamp "build ok"
     rm -f "$build_log"
 else
-    stamp "build FAILED — using existing binary. Build log:"
+    stamp "Build log:"
     sed 's/^/    /' "$build_log"
-    rm -f "$BINARY.new" "$build_log"
+    rm -f "$build_log"
 fi
 
-# 5. Sanity: binary must exist.
+# 5. Sanity: corpus-crawl binary must exist (corpus-findings is best-
+# effort — its absence just disables findings extraction, doesn't kill
+# the run).
 if [[ ! -x "$BINARY" ]]; then
     stamp "no executable binary at $BINARY; aborting"
     exit 1

@@ -431,8 +431,16 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		return res, nil
 	}
 
+	// Extract findings from each accepted paper's full text. Best-effort:
+	// PDF download failures, paywalled servers, scan-only PDFs etc. are
+	// logged and skipped — the YAML still ships even if no findings
+	// could be extracted. Findings get committed alongside the YAML in
+	// the same auto-ingest PR.
+	findingFiles := extractFindingsForAccepted(ctx, root, out)
+
 	// Include the rejection cache in the PR if it was updated this run.
 	prFiles := append([]string{}, written...)
+	prFiles = append(prFiles, findingFiles...)
 	if rejectPath != "" {
 		prFiles = append(prFiles, rejectPath)
 	}
@@ -444,6 +452,76 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		log.Printf("PR opened: %s", prURL)
 	}
 	return res, nil
+}
+
+// extractFindingsForAccepted runs the corpus-findings tool for each
+// paper we just accepted, returning the file paths of the new finding
+// YAMLs so they can be added to the auto-ingest PR. Findings extraction
+// is best-effort: failures (PDF unreachable, scan-only PDF, paywall,
+// LLM error) are logged but don't abort the run. The YAML still ships
+// even if no findings can be extracted.
+//
+// Locating the binary: prefer a sibling binary at the same directory
+// as this corpus-crawl binary (the wrapper builds both into the repo
+// root); fall back to PATH lookup; if neither is found, skip findings
+// extraction entirely with a warning.
+func extractFindingsForAccepted(ctx context.Context, root string, items []accepted) []string {
+	bin := locateFindingsBinary(root)
+	if bin == "" {
+		log.Printf("findings: corpus-findings binary not found; skipping findings extraction")
+		return nil
+	}
+	var out []string
+	for _, a := range items {
+		id := proposeID(a.c)
+		// Snapshot the existing findings dir so we can diff after the run.
+		before := snapshotFindings(root, id)
+		fctx, cancel := context.WithTimeout(ctx, 7*time.Minute)
+		cmd := exec.CommandContext(fctx, bin, "extract", "--paper", id, "--corpus", root)
+		cmd.Stdout = os.Stderr
+		cmd.Stderr = os.Stderr
+		if err := cmd.Run(); err != nil {
+			log.Printf("findings: %s extraction failed: %v (continuing)", id, err)
+		}
+		cancel()
+		after := snapshotFindings(root, id)
+		for f := range after {
+			if !before[f] {
+				out = append(out, f)
+			}
+		}
+	}
+	if len(out) > 0 {
+		log.Printf("findings: extracted %d new finding(s) across %d papers", len(out), len(items))
+	}
+	return out
+}
+
+func locateFindingsBinary(root string) string {
+	// Sibling binary in the corpus-crawl directory (the launchd wrapper
+	// builds both via `go build ./cmd/corpus-crawl/` AND we ship a
+	// build of corpus-findings the same way — checked first).
+	for _, candidate := range []string{
+		filepath.Join(root, "corpus-findings"),
+		filepath.Join(filepath.Dir(os.Args[0]), "corpus-findings"),
+	} {
+		if info, err := os.Stat(candidate); err == nil && !info.IsDir() {
+			return candidate
+		}
+	}
+	if path, err := exec.LookPath("corpus-findings"); err == nil {
+		return path
+	}
+	return ""
+}
+
+func snapshotFindings(root, paperID string) map[string]bool {
+	matches, _ := filepath.Glob(filepath.Join(root, "corpus", "findings", paperID+"__*.yaml"))
+	out := make(map[string]bool, len(matches))
+	for _, m := range matches {
+		out[m] = true
+	}
+	return out
 }
 
 // commitRejectCacheOnly pushes a small commit on main containing only
