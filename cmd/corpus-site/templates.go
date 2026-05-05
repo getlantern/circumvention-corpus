@@ -907,6 +907,13 @@ const useBody = `
 </code></pre>
 <p>Verify with <code>claude mcp list</code>; it should show <code>✓ Connected</code>. The server's four tools become available in any conversation.</p>
 
+<h3>Codex CLI</h3>
+<p>Add the server to <code>~/.codex/config.toml</code> (create the file if it doesn't exist):</p>
+<pre><code>[mcp_servers.circumvention-corpus]
+url = "https://corpus.lantern.io/mcp"
+</code></pre>
+<p>Then in any Codex session: <code>/mcp</code> lists configured servers; <code>circumvention-corpus</code> should appear with its four tools.</p>
+
 <h3>Claude Desktop</h3>
 <p>Edit your config (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS, <code>%APPDATA%/Claude/claude_desktop_config.json</code> on Windows):</p>
 <pre><code>{
