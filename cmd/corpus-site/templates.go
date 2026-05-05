@@ -375,13 +375,37 @@ const taxonomyBody = `
 const useBody = `
 <h1>Use the corpus</h1>
 
-<p>The corpus is designed to be useful in several ways, sorted from
-least to most setup. Pick whichever fits your workflow.</p>
+<p>The corpus is designed to be useful in several ways. Pick whichever fits your workflow.</p>
 
-<h2>1. Browse this site</h2>
-<p>The simplest mode. Every paper has a stable URL: <code>/papers/&lt;id&gt;/</code>. Tag indexes (<a href="/censors/">censors</a>, <a href="/techniques/">techniques</a>, <a href="/defenses/">defenses</a>) let you walk the field by axis. The whole site rebuilds from the YAML on every push to <code>main</code>; whatever you see here matches the source repo.</p>
+<h2>1. Plug into your AI assistant (one line, hosted)</h2>
 
-<h2>2. Read the YAML directly</h2>
+<p>The fastest path. The corpus runs as a hosted MCP server at <code>corpus.lantern.io/mcp</code>. Zero install, no toolchain, always reflects the latest committed state of the repo (auto-deploys on every push to <code>main</code>).</p>
+
+<h3>Claude Code</h3>
+<pre><code>claude mcp add --transport http -s user circumvention-corpus https://corpus.lantern.io/mcp
+</code></pre>
+<p>Verify with <code>claude mcp list</code>; it should show <code>✓ Connected</code>. The server's four tools become available in any conversation.</p>
+
+<h3>Claude Desktop</h3>
+<p>Edit your config (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS, <code>%APPDATA%/Claude/claude_desktop_config.json</code> on Windows):</p>
+<pre><code>{
+  "mcpServers": {
+    "circumvention-corpus": {
+      "url": "https://corpus.lantern.io/mcp",
+      "transport": "http"
+    }
+  }
+}
+</code></pre>
+<p>Restart Claude Desktop.</p>
+
+<h3>Cursor / VS Code Copilot / other MCP clients</h3>
+<p>Any MCP-compliant client takes a URL via the Streamable HTTP transport. Same shape — drop the URL above into your client's MCP config.</p>
+
+<h2>2. Browse this site</h2>
+<p>Every paper has a stable URL: <code>/papers/&lt;id&gt;/</code>. Tag indexes (<a href="/censors/">censors</a>, <a href="/techniques/">techniques</a>, <a href="/defenses/">defenses</a>) let you walk the field by axis. The whole site rebuilds from the YAML on every push to <code>main</code>; whatever you see here matches the source repo.</p>
+
+<h2>3. Read the YAML directly</h2>
 <p>Every paper is a small YAML file in <a href="https://github.com/getlantern/circumvention-corpus/tree/main/corpus/papers">corpus/papers/</a>. The <a href="https://github.com/getlantern/circumvention-corpus/blob/main/schema/paper.schema.json">JSON schema</a> documents every field. The <a href="/taxonomy/">taxonomy</a> documents the controlled-vocabulary IDs that tag fields use. If you're building your own tooling on top of the corpus, this is the most boring, most stable interface — clone the repo, walk the directory.</p>
 
 <pre><code>git clone https://github.com/getlantern/circumvention-corpus
@@ -390,55 +414,17 @@ ls corpus/papers/                       # one YAML per paper
 yq '.censors' corpus/papers/2023-wu-fully-encrypted-detect.yaml
 </code></pre>
 
-<h2>3. Run the MCP server (recommended)</h2>
-<p>The most powerful mode: an LLM can query the corpus on demand and compose its results with whatever else it knows. The corpus ships its own <a href="https://github.com/getlantern/circumvention-corpus/tree/main/cmd/corpus-mcp">MCP server</a> in Go — single binary, zero non-stdlib runtime deps, reads the YAMLs at startup.</p>
+<h2>4. Self-host the MCP server (offline / privacy)</h2>
 
-<h3>Install</h3>
-<pre><code>git clone https://github.com/getlantern/circumvention-corpus
-cd circumvention-corpus
-go build -o corpus-mcp ./cmd/corpus-mcp/
+<p>For users behind aggressive censorship who can't reach Cloudflare, or anyone who'd rather not send queries off-machine. The corpus ships a Go MCP server with stdio transport — single binary, no runtime deps.</p>
 
-# Optional: put it on your PATH so MCP clients can launch it by name.
-sudo mv corpus-mcp /usr/local/bin/
-</code></pre>
-
-<p>Or, if you only want to run the binary without managing a checkout:</p>
 <pre><code>go install github.com/getlantern/circumvention-corpus/cmd/corpus-mcp@latest
-</code></pre>
 
-<h3>Register with Claude Code</h3>
-<pre><code>claude mcp add -s user circumvention-corpus \
-  /usr/local/bin/corpus-mcp -- --corpus $HOME/code/circumvention-corpus
+# Then register it. The --corpus flag points at a local clone of the repo.
+git clone https://github.com/getlantern/circumvention-corpus ~/code/circumvention-corpus
+claude mcp add -s user circumvention-corpus \
+  $(go env GOPATH)/bin/corpus-mcp -- --corpus $HOME/code/circumvention-corpus
 </code></pre>
-<p>Replace the <code>--corpus</code> path with wherever you cloned the repo. Verify with <code>claude mcp list</code>; it should show <code>✓ Connected</code>.</p>
-
-<h3>Register with Claude Desktop</h3>
-<p>Edit your Claude Desktop config:</p>
-<ul>
-  <li>macOS: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></li>
-  <li>Windows: <code>%APPDATA%/Claude/claude_desktop_config.json</code></li>
-</ul>
-<pre><code>{
-  "mcpServers": {
-    "circumvention-corpus": {
-      "command": "/usr/local/bin/corpus-mcp",
-      "args": ["--corpus", "/Users/you/code/circumvention-corpus"]
-    }
-  }
-}
-</code></pre>
-<p>Restart Claude Desktop; the server's tools become available in your conversations.</p>
-
-<h3>Register with Cursor / VS Code Copilot / other MCP clients</h3>
-<p>Any MCP-compliant client takes a stdio-launched binary. The shape:</p>
-<pre><code>{
-  "circumvention-corpus": {
-    "command": "/usr/local/bin/corpus-mcp",
-    "args": ["--corpus", "/path/to/circumvention-corpus"]
-  }
-}
-</code></pre>
-<p>For VS Code: drop the above into <code>.vscode/mcp.json</code> under a <code>"servers"</code> key. For Cursor: add it via <em>Settings → MCP → Add new MCP server</em>.</p>
 
 <h2>What the MCP server exposes</h2>
 <p>Four tools, designed to compose:</p>
@@ -446,7 +432,7 @@ sudo mv corpus-mcp /usr/local/bin/
   <dt><span class="mono">search_papers</span></dt>
   <dd>Keyword + tag-filter search. Filters: <code>censors</code>, <code>techniques</code>, <code>defenses</code>, <code>year_min</code>, <code>year_max</code>, <code>venue</code>, <code>core_only</code>. Returns ranked records with abstract, tags, and team notes.</dd>
   <dt><span class="mono">get_paper</span></dt>
-  <dd>Full record for a single paper id. Use after <code>search_papers</code> when the agent needs the full notes / references / metadata.</dd>
+  <dd>Full record for a single paper id, plus any extracted findings tagged to it. Use after <code>search_papers</code> when the agent needs the full notes / references / metadata.</dd>
   <dt><span class="mono">list_taxonomy</span></dt>
   <dd>Returns the controlled vocabulary so the agent knows the canonical IDs to filter on. Especially useful as the first call in a session — gives the model the mental model of the field's structure.</dd>
   <dt><span class="mono">find_related</span></dt>
@@ -460,9 +446,6 @@ sudo mv corpus-mcp /usr/local/bin/
   <li><em>"For my new protocol design: which papers should I read about active probing?"</em></li>
   <li><em>"Show me the citation neighborhood of <code>2023-wu-fully-encrypted-detect</code>."</em></li>
 </ul>
-
-<h2>4. Public MCP HTTPS endpoint</h2>
-<p><em>Not yet live.</em> A read-only HTTPS endpoint at <code>corpus.lantern.io/mcp</code> is on the roadmap so other circumvention-tool teams can plug the corpus into their AI assistants without running anything locally. When it lands, point your MCP client at the HTTPS URL instead of a local binary.</p>
 
 <h2>5. Build something on top</h2>
 <p>The schema is CC0. The metadata is CC0. Build whatever you want with it — your own UI, a notification system that pings you when papers tagged with a specific technique appear, a sister index for a different region. The whole point of having a structured-metadata layer is that the data outlives whatever interface we put on top of it.</p>

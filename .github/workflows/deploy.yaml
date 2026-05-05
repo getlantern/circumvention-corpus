@@ -1,6 +1,7 @@
 name: deploy
 
-# Auto-deploys the static site to Cloudflare Pages on every push to main.
+# Auto-deploys the static site + MCP Pages Function to Cloudflare on
+# every push to main.
 #
 # This workflow uses no event payload inputs in any run: step (no
 # github.event.*, no github.head_ref). Secrets flow only through the
@@ -30,11 +31,24 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.23"
-      - name: build site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: bundle corpus for Worker
+        # Produces functions/_data/corpus.json — imported by functions/mcp/
+        # at deploy time and inlined into the Worker bundle by Wrangler.
+        run: go run ./cmd/corpus-bundle/ --corpus .
+      - name: build static site
         run: go run ./cmd/corpus-site/ --corpus . --out dist
+      - name: install TS deps for Worker typecheck
+        run: npm ci || npm install
+      - name: typecheck Worker
+        run: npx tsc --noEmit
       - name: deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Wrangler picks up functions/ at the project root and compiles
+          # it into the Pages deployment. dist/ is the static assets.
           command: pages deploy dist --project-name circumvention-corpus --branch main
