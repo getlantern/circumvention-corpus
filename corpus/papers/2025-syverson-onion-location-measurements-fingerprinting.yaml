@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-syverson-onion-location-measurements-fingerprinting
+title: Onion-Location Measurements and Fingerprinting
+authors:
+    - Paul Syverson
+    - Rasmus Dahlberg
+    - Tobias Pulls
+    - Rob Jansen
+venue: PoPETs 2025
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0074.php
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Tor anonymity and traffic-analysis research informs circumvention protocol robustness against fingerprinting and measurement attacks.
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2025/popets-2025-0074.php

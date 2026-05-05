@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-lee-onions-got-puzzled
+title: 'Onions Got Puzzled: On the Challenges of Mitigating Denial-of-Service Problems in Tor Onion Services'
+authors:
+    - Jinseo Lee
+    - Hobin Kim
+    - and Min Suk Kang
+venue: USENIX Security 2025
+year: 2025
+url: https://www.usenix.org/conference/usenixsecurity25/presentation/lee
+abstract: Denial-of-service (DoS) attacks present significant challenges for Tor onion services, where strict anonymity requirements render conventional mitigation strategies inapplicable. In response, the Tor community has recently revived the client puzzle idea in an official update to address real-world DoS attacks, leading to its adoption by several major onion services. In this paper, we uncover a critical vulnerability in the current puzzle system in Tor through a novel family of attacks, dubbed OnionFlation. The proposed attacks artificially inflate the required puzzle difficulty for all clients without causing noticeable congestion at the targeted service, rendering any existing onion service largely unusable at an attack cost of a couple of dollars per hour. Our ethical evaluation on the live Tor network demonstrates the impact of these attacks, which we have reported to the Tor Project and received acknowledgment. Our analysis reveals an undesirable trade-off in the client puzzle mechanism, which is the root cause of the discovered vulnerability, that forces the Tor onion system to choose between inflation resistance and congestion resistance, but not both. We offer practical guidance for Tor onion services aimed at balancing the mitigation of these attacks.
+censors:
+    - generic
+techniques:
+    - measurement-platform
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - measurement-study
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant as a study of Tor infrastructure resilience to attacks that could compromise onion service availability to circumvention users.
+visibility: public
+date_added: "2026-05-05"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.usenix.org/conference/usenixsecurity25/presentation/lee

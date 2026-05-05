@@ -299,5 +299,173 @@
     "source": "arxiv",
     "reason": "Smart contract security and DeFi exploit synthesis have no connection to censorship, circumvention, detection techniques, or internet freedom.",
     "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2025/popets-2025-0005.php",
+    "title": "\"What are they gonna do with my data?\": Privacy Expectations, Concerns, and Behaviors in Virtual Reality",
+    "source": "popets",
+    "reason": "General privacy study on VR user expectations and behaviors; unrelated to censorship, circumvention techniques, censor capabilities, or surveillance infrastructure.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2025/popets-2025-0009.php",
+    "title": "Privacy Perceptions Across the XR Spectrum: An Extended Reality Cross-Platform Comparative Analysis of A Virtual House Tour",
+    "source": "popets",
+    "reason": "Paper studies privacy perceptions in VR/XR environments; unrelated to censorship measurement, circumvention protocols, censor detection techniques, or traffic analysis in censorship contexts.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2025/popets-2025-0011.php",
+    "title": "Revealing Hidden IoT Devices through Passive Detection, Fingerprinting, and Localization",
+    "source": "popets",
+    "reason": "This paper studies IoT device detection through passive fingerprinting and localization; it has no connection to censorship, circumvention, censor capabilities, or anonymity systems.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2025/popets-2025-0092.php",
+    "title": "Referrer Policy: Implementation and Circumvention",
+    "source": "popets",
+    "reason": "Paper studies HTTP Referrer-Policy privacy implementation, not censorship measurement, censor capabilities, or circumvention protocols.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2025/popets-2025-0158.php",
+    "title": "Rethinking Fingerprinting: An Assessment of Behavior-based Methods at Scale and Implications for Web Tracking",
+    "source": "popets",
+    "reason": "Paper focuses on browser fingerprinting for web tracking purposes, not censorship detection, circumvention techniques, or traffic-analysis attacks on encrypted tunnels.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/el-hajj-chehade",
+    "title": "Double-Edged Shield: On the Fingerprintability of Customized Ad Blockers",
+    "source": "usenix-sec",
+    "reason": "This is a web privacy / browser fingerprinting paper about ad-blocker customization and tracking evasion, not a censorship circumvention or censor detection study.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/hashimoto-blocklistable",
+    "title": "Exploring How to Authenticate Application Messages in MLS: More Efficient, Post-Quantum, and Anonymous Blocklistable",
+    "source": "usenix-sec",
+    "reason": "This is a pure cryptography paper about authentication mechanisms in MLS (Messaging Layer Security), not about censorship circumvention, censor detection, or related topics.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/jin-weifei",
+    "title": "Whispering Under the Eaves: Protecting User Privacy Against Commercial and LLM-powered Automatic Speech Recognition Systems",
+    "source": "usenix-sec",
+    "reason": "Paper addresses privacy against commercial ASR and LLM-powered speech recognition, not censorship circumvention, censor detection, or circumvention protocol design.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/liao",
+    "title": "A Framework for Designing Provably Secure Steganography",
+    "source": "usenix-sec",
+    "reason": "Pure cryptographic theory on steganography frameworks; no engagement with censorship, circumvention, or practical network applications.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/pan-yumingzhi",
+    "title": "TORCHLIGHT: Shedding LIGHT on Real-World Attacks on Cloudless IoT Devices Concealed within the Tor Network",
+    "source": "usenix-sec",
+    "reason": "Cybersecurity paper focused on detecting malicious attacks on IoT devices via Tor; does not study censorship measurement, censor detection capabilities, circumvention protocols, or Tor in the context of censorship evasion.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/pasquini",
+    "title": "LLMmap: Fingerprinting for Large Language Models",
+    "source": "usenix-sec",
+    "reason": "Fingerprinting technique for Large Language Models; no connection to censorship measurement, censor capabilities, circumvention protocols, or anonymity systems.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/shen",
+    "title": "HateBench: Benchmarking Hate Speech Detectors on LLM-Generated Content and Hate Campaigns",
+    "source": "usenix-sec",
+    "reason": "Paper benchmarks hate speech detectors against LLM-generated content and adversarial attacks; no connection to censorship, blocking, circumvention, or network-level filtering.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/shih",
+    "title": "zk-promises: Anonymous Moderation, Reputation, and Blocking from Anonymous Credentials with Callbacks",
+    "source": "usenix-sec",
+    "reason": "Paper studies anonymous credentials and reputation systems for platform moderation, not censorship, censor detection, or circumvention.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/song-mingyang",
+    "title": "Assuring Certified Database Utility in Privacy-Preserving Database Fingerprinting",
+    "source": "usenix-sec",
+    "reason": "Database fingerprinting and cryptographic verification protocols for data utility assurance are pure database security and cryptography topics with no connection to censorship, circumvention, anonymity, or network blocking.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/teymourian",
+    "title": "SoK: Come Together – Unifying Security, Information Theory, and Cognition for a Mixed Reality Deception Attack Ontology \u0026 Analysis Framework",
+    "source": "usenix-sec",
+    "reason": "Paper studies deception attacks in Mixed Reality (VR/AR) environments; no connection to censorship, circumvention, internet filtering, or surveillance.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/wang-canran",
+    "title": "Secure Information Embedding in Forensic 3D Fingerprinting",
+    "source": "usenix-sec",
+    "reason": "Paper studies forensic fingerprinting of 3D-printed physical objects for authentication and tamper detection; unrelated to censorship, circumvention, or network-level detection techniques.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/wang-yaofei",
+    "title": "SparSamp: Efficient Provably Secure Steganography Based on Sparse Sampling",
+    "source": "usenix-sec",
+    "reason": "Pure steganography cryptography paper; no censorship measurement, censor evaluation, or circumvention application discussed.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/wu-haolin",
+    "title": "When Translators Refuse to Translate: A Novel Attack to Speech Translation Systems",
+    "source": "usenix-sec",
+    "reason": "Adversarial ML attack on speech translation with no censorship, blocking, or circumvention angle.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/yan-yihui",
+    "title": "OneTouch: Effortless 2FA Scheme to Secure Fingerprint Authentication with Wearable OTP Token",
+    "source": "usenix-sec",
+    "reason": "Biometric authentication security with hardware OTP tokens; no censorship, circumvention, or anonymity angle.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/zhang-jingmiao",
+    "title": "SpeechGuard: Recoverable and Customizable Speech Privacy Protection",
+    "source": "usenix-sec",
+    "reason": "Speech privacy protection for cloud-uploaded audio data; no censorship, circumvention, or detection-evasion angle.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/zhang-zhisheng",
+    "title": "SafeSpeech: Robust and Universal Voice Protection Against Malicious Speech Synthesis",
+    "source": "usenix-sec",
+    "reason": "Paper addresses deepfake audio defense via adversarial perturbations; no censorship measurement, censor capability analysis, circumvention protocol work, or surveillance angle.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/zong",
+    "title": "AudioMarkNet: Audio Watermarking for Deepfake Speech Detection",
+    "source": "usenix-sec",
+    "reason": "Paper studies deepfake audio detection via watermarking; no connection to censorship measurement, censor techniques, circumvention protocols, or internet surveillance.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity26/presentation/pang",
+    "title": "Provable Secure Steganography Based on Adaptive Dynamic Sampling",
+    "source": "usenix-sec",
+    "reason": "Generic steganography cryptography paper on language models; lacks censorship measurement, censor capability evaluation, or explicit circumvention application context.",
+    "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity26/presentation/qu",
+    "title": "Tracegram: Framing Trace-Level Traffic Analysis with Temporally-Aware Multiple Instance Learning",
+    "source": "usenix-sec",
+    "reason": "This is a cybersecurity/APT detection paper focused on multi-flow traffic analysis for attack attribution in enterprise networks, not censorship measurement or circumvention analysis.",
+    "rejected_at": "2026-05-05"
   }
 ]
