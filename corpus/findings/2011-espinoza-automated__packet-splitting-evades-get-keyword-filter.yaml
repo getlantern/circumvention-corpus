@@ -6,7 +6,6 @@ summary: To measure Chinese search engine censorship independently of backbone G
 techniques:
     - keyword-filtering
     - rst-injection
-defenses:
     - middlebox-interference
 censors:
     - cn
