@@ -1,32 +1,88 @@
 id: 2025-iran-shutdown-measurement
-title: "Measuring the June 2025 Iran nationwide internet shutdown"
+title: "Characterizing Iran's Phased National Internet Shutdown in 2025: A Progressive and Distributed Action"
 authors:
-  - "[multiple, see paper]"
-venue: "preprint"
-year: 2025
-url: "https://example.invalid/placeholder"
+  - Shibo Cui
+  - Mingxuan Liu
+  - Baojun Liu
+  - Haixin Duan
+  - Ruixuan Li
+  - Chaoyi Lu
+  - Jin Zhang
+  - Zhicheng Wang
+  - Jinghua Bai
+venue: "WWW '26 (Proceedings of the ACM Web Conference 2026)"
+year: 2026
+doi: "10.1145/3774904.3792699"
+url: "https://dl.acm.org/doi/10.1145/3774904.3792699"
 abstract: |
-  PLACEHOLDER seed entry. Replace with the actual canonical measurement
-  paper(s) on the June 2025 Iran shutdown once published. This entry
-  exists so the corpus has a stable id to reference Iran-specific
-  protocol findings against until the canonical write-ups land.
+  In June 2025 the Iranian government executed a nationwide shutdown
+  that did not employ traditional large-scale BGP route withdrawals
+  but instead relied on service-level restrictions — rendering
+  existing passive-traffic and network-level active probing systems
+  ill-equipped to capture its fine-grained characteristics. The
+  authors develop a service-level shutdown monitoring framework
+  driven by continuous large-scale active port scanning of Iran's
+  entire IPv4 space (8.65M results, treated as a statistically
+  representative sample) and detect shutdowns by significant drops
+  in service activity against a dynamic adaptive-sliding-window
+  baseline.
 
+  The shutdown was not monolithic but a phased, progressive, and
+  distributed operation in four phases: two complementary localized
+  drills shifting from infrastructure control to information
+  obstruction, escalation to a near-total nationwide blockade, and
+  a tiered censorship-oriented recovery. The blockade's scope
+  expanded to 98 of the top 100 ASes and 49 of the top 50 network
+  services, with significant heterogeneity in impact and recovery
+  across ASes indicating distributed enforcement. Collateral
+  impacts included unexpected port exposure and traffic surges.
+  The aggregated network-service dataset is publicly released.
 censors: [ir]
-techniques: [dpi, port-blocking, ip-blocking, asn-blackholing, http3-quic-block]
-defenses_discussed: [vless, vmess, dns-tunneling, amp-cache, domain-fronting]
-evaluation_methods: [measurement-study]
-
+techniques:
+  - dpi
+  - port-blocking
+  - ip-blocking
+  - asn-blackholing
+  - http3-quic-block
+defenses_discussed:
+  - vless
+  - vmess
+  - dns-tunneling
+  - amp-cache
+  - domain-fronting
+evaluation_methods:
+  - measurement-study
+  - active-probing
 core: true
 visibility: public
-
-date_added: 2026-05-04
+date_added: 2026-05-05
 added_by: afisk
-sources: ["manual"]
-
+sources:
+  - "url:https://dl.acm.org/doi/10.1145/3774904.3792699"
+  - "url:https://www.liumx.net/publications/WWW26-Internet_Shutdown.pdf"
+references:
+  - 2025-alaraj-iran-refraction
+  - 2025-tai-irblock
+  - 2024-tsai-modeling
 notes: |
-  PLACEHOLDER. Promote to a real paper id once a canonical write-up of
-  the June 2025 Iran shutdown lands (likely OONI / Censored Planet /
-  Article 19 / IODA). Until then, references to "Iran June 2025" in
-  other corpus entries can resolve here. Lantern's own internal
-  observations (Linode-only port-53 UDP, etc.) belong in a private
-  companion record in circumvention-corpus-private.
+  Canonical academic write-up of the June 2025 Iran nationwide
+  shutdown. Frames Iran's strategy as a deliberate departure from
+  the BGP-withdrawal model used in Iran 2019 and Myanmar 2021 —
+  the shutdown is implemented at the service / DPI layer and
+  recovered tiered by AS, which is exactly why circumvention-tool
+  performance diverged sharply across users (see the existing
+  findings 2025-iran-shutdown-measurement__circumvention-tool-survival-rates
+  and __no-bgp-withdrawal-dpi-shutdown).
+
+  Implications for Lantern: a service-level shutdown is what makes
+  IP/ASN diversity worth less than protocol diversity (the censor
+  isn't black-holing routes, it's filtering on what flows through
+  them). Pairs naturally with 2025-tai-irblock (Iran's GFW-style
+  TLS SNI blocking) and 2025-alaraj-iran-refraction (refraction
+  networking measurement from in-country) to triangulate the
+  shape of Iran's enforcement stack.
+
+  This entry was previously a PLACEHOLDER seed; promoted to the
+  Cui et al. WWW '26 paper on 2026-05-05. Other corpus findings
+  that reference this id were written against the placeholder
+  intent and remain accurate against the real paper.
