@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-robinson-collateral
+kind: evaluation
+summary: Tor, which has minimal commercial footprint and a distinctive network signature, was blocked throughout China using tailor-made GFW countermeasures and lost approximately 85% of its Chinese users as a result. In contrast to GoAgent and VPNs, China's censors can block Tor without significant economic collateral damage, making it uniquely vulnerable despite its strong privacy properties.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Protocols with no commercial footprint cannot rely on economic deterrence; they must achieve technical undetectability via traffic mimicry or steganography, or accept high and growing block rates.
+    - Economic cost to the censor is a more durable protection than technical evasion alone — a protocol the censor is economically constrained from blocking survives even after its fingerprint is known.
+section: §2 Tool Usage, §3 Collateral Freedom Matters
+extracted_by: claude-sonnet-4-6

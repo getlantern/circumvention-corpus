@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-weaver-detecting
+kind: detection
+summary: 'Injectors sending multiple RSTs with increasing sequence numbers to overcome the RST_SEQ_DATA race condition produce a detection signature (RST_SEQ_CHANGE) that cannot arise from a standards-compliant TCP endpoint: the second RST must have a sequence number exceeding both the preceding RST and any ACK yet observed from the receiver. This creates an inherent design tension — a robust injector that uses sequence-incremented multi-packet RSTs to ensure delivery is precisely the kind most detectable by passive monitoring.'
+techniques:
+    - rst-injection
+    - packet-injection
+censors:
+    - cn
+    - generic
+defense_implications:
+    - A circumvention endpoint can safely ignore any RST whose sequence number exceeds the last observed ACK by more than 2 bytes without risk of suppressing legitimate teardowns, since no conforming stack generates such a packet.
+    - Protocol designers should treat multi-packet RST bursts (common in GFW and Sandvine deployments) as a high-confidence injection signal and respond by continuing the connection rather than tearing it down.
+section: §5
+extracted_by: claude-sonnet-4-6

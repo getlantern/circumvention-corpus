@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-singh-politics
+kind: evaluation
+summary: Singapore's AS topology — 257 domestic ASes with 3,022 international connections — resembles that of high-freedom countries, yet its Freedom of Press Index is 33 (Partly Free), making it a structural outlier where rich international BGP connectivity coexists with enforced information controls. Our DTLR model predicts Singapore's FPI should be ≥70 (Free).
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Rich international AS connectivity does not preclude application-layer censorship; circumvention deployments in topologically 'open' but politically restrictive countries must still deploy full protocol obfuscation rather than relying on routing-layer bypass.
+    - Topology-derived freedom predictions should be cross-validated against empirical censorship measurements (e.g., OONI), as structural openness can mask policy-driven filtering invisible at the BGP level.
+section: §5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-appelbaum-technical
+kind: evaluation
+summary: BlueCoat's commercial DPI hardware/software, deployed in Syria, was confirmed capable of detecting and blocking Ultrasurf connections. BlueCoat logs recovered from Syria additionally exposed real Ultrasurf user behavior, including unproxied traffic leaking to non-Ultrasurf servers before and after bootstrapping completed.
+techniques:
+    - dpi
+censors:
+    - sy
+defense_implications:
+    - Assume commercial off-the-shelf DPI (BlueCoat, Fortinet, etc.) is deployed in-country and has vendor-supplied Ultrasurf/proxy signatures; design protocols so any single observable session is indistinguishable from a normal TLS connection to a popular service.
+    - Eliminate any unproxied network contact (cover traffic, chaff, updates) before the tunnel is fully established — pre-tunnel leakage exposes users even when the proxy itself is undetected.
+section: Abstract, §5.8, §6.8
+extracted_by: claude-sonnet-4-6

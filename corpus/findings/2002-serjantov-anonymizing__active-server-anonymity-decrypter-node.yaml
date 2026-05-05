@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2002-serjantov-anonymizing
+kind: defense
+summary: 'Active-server document anonymity is achieved by routing decryption through a randomly chosen ephemeral ''decrypter'' node: the storer holds only ciphertext {h}k while key k is delivered separately to the decrypter via onion routing. Neither the storer nor any other single node can reconstruct the plaintext share, so a storer cannot identify the document it is hosting even by attempting to retrieve it.'
+defenses:
+    - meta-resistance
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Separate key custody from ciphertext custody across distinct, independently chosen nodes so that compromising a storer reveals no plaintext and compromising a key-holder reveals no storage location.
+    - Use onion routing for key delivery to the decrypter to prevent traffic analysis from linking a storer to a particular document retrieval event.
+section: §2–§3
+extracted_by: claude-sonnet-4-6

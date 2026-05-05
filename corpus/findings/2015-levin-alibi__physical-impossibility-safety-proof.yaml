@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-levin-alibi
+kind: defense
+summary: 'Property 1 proves that a peer inside a forbidden region F cannot satisfy the safety condition: appearing safe would require reporting an RTT lower than (3/c)·distance(peer,F), a physical impossibility. Property 2 follows: all trustworthy peers ignore packets routing through F regardless of attacker-controlled neighbor sets, making Alibi Routing safe without assuming honest neighbor selection.'
+techniques:
+    - bgp-hijack
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Relay trustworthiness in alibi-based systems depends only on verifiable physics (RTT vs. distance), not on reputation or PKI — a censor inside its own territory cannot impersonate a relay outside it.
+    - 'Eclipse attacks on neighbor sets are self-limiting: in-region peers have small minimum-RTT values and are deprioritized by the routing heuristic, degrading efficiency but not breaking safety.'
+section: §5
+extracted_by: claude-sonnet-4-6

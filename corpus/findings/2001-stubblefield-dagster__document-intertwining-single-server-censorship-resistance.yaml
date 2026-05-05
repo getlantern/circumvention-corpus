@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-stubblefield-dagster
+kind: defense
+summary: 'Dagster achieves censorship resistance on a single server — without geographic replication — by cryptographically intertwining legitimate and illegitimate data into a directed acyclic graph. Each new block XORs the publisher''s content with c pre-existing blocks before encrypting with a fresh key, so removing any one block destroys the decodability of every block that later links to it. This creates a legal constraint: a censor cannot excise a censorable block without simultaneously destroying an unknown number of legally protected blocks that depend on it.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design censorship-resistant stores so that sensitive and benign content share cryptographic dependencies — a censor attacking one payload must provably destroy protected content, raising the legal cost of interference.
+    - Single-server deployment can satisfy anti-censorship goals if the dependency graph is maintained; replicate for availability, not as the primary censorship defense.
+section: §1, §3.1, §5.5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-liu-tor
+kind: defense
+summary: Encrypting traffic at the application layer still discloses communicating parties to every ISP along the path; overlay anonymization is subject to blacklisting of exit nodes and traffic analysis. The paper argues that effective privacy requires building anonymity into the network routing layer itself, with the necessary tradeoff being hardware cost and routing inefficiency for privacy-requiring circuits.
+techniques:
+    - flow-correlation
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Do not rely solely on payload encryption—metadata (who communicates with whom) must also be obscured via multi-hop routing or indirection to resist ISP-level surveillance
+    - Accept and explicitly account for latency overhead in protocol design when anonymity hops are required; optimize by prefetching partial paths to reduce per-connection setup cost
+section: §1, §8
+extracted_by: claude-sonnet-4-6

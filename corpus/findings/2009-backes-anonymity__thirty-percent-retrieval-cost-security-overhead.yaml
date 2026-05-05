@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-backes-anonymity
+kind: evaluation
+summary: The Clouds protocol retrieves approximately 70% of available answers even in the absence of attackers, representing a ~30% retrieval performance decrease relative to an insecure SON. This baseline loss stems from the cloud-based routing mechanism's probabilistic message delivery, not from adversarial interference.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Accept and budget for a 20–30% baseline recall penalty when adding anonymity and censorship-resistance layers to overlay search; report this to users so they do not interpret incomplete results as censorship.
+    - Consider supplementary retrieval confirmation mechanisms (e.g., retries with different cloud seeds) to recover the missing ~30% without weakening anonymity properties.
+section: §5.6
+extracted_by: claude-sonnet-4-6

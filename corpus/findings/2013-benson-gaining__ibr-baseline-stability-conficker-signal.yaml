@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-benson-gaining
+kind: evaluation
+summary: Conficker-like traffic to TCP port 445 constitutes more than 40% of packets observed at the UCSD /8 Network Telescope and Windows XP/NT hosts consistently emit exactly 2-packet SYN flows; γC stayed within the narrow band 1.98–2.02 throughout an entire month (January 2012) with no large-scale outages. A second signal from default Windows 3-SYN flows (approximately 156 million flows/month from ~14K hosts/hour) provides a non-malware-specific validation stream with inter-packet times consistently between 3.09 and 3.37 seconds.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Censorship-circumvention measurement infrastructure can exploit stable IBR baselines (γ within ±0.02 of 2.0) as a passive, always-on network health signal without deploying active probes that might themselves be blocked or flagged.
+    - Because the Conficker signal is malware-dependent and shrinks as machines are patched, long-term circumvention monitoring systems should build parallel signals from OS-default behavior (3-SYN flows) to remain viable as legacy infection pools decline.
+section: §II–III
+extracted_by: claude-sonnet-4-6

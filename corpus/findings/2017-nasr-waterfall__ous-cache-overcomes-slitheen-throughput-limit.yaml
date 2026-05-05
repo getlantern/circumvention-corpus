@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-nasr-waterfall
+kind: defense
+summary: Waterfall's Overt User Simulator caches previously loaded overt-website responses and replays them to generate cover traffic, overcoming Slitheen's 40% downstream throughput ceiling (caused by restricting covert replacement to leaf HTTP objects only). Because downstream-only decoy routers intercept all downstream TLS records — not just leaf content — Waterfall achieves higher covert capacity while perfectly mimicking overt browsing patterns against traffic analysis.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+defenses:
+    - decoy-routing
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Use response-caching headless browsers (Selenium/PhantomJS pattern) to generate cover traffic rather than live leaf-content replacement; this removes the 40% throughput cap while preserving packet-size and timing patterns against statistical classifiers.
+    - Avoid TLS heartbeat messages as a primary upstream covert channel in overt-mimicking systems — their rarity in normal connections makes them a high-salience anomaly under deep packet inspection.
+section: §9
+extracted_by: claude-sonnet-4-6

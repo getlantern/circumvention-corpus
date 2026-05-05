@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-dainotti-analysis
+kind: evaluation
+summary: 'Libya implemented escalating Internet disruptions before executing a sustained blackout: a 6.8-hour curfew on February 18 and an 8.3-hour curfew on February 19, followed by a 3.7-day near-total blackout beginning March 3. The authors detected what they believe were Libya''s attempts to test firewall-based packet filtering before transitioning to more aggressive BGP-based disconnection, demonstrating a two-phase escalation pattern.'
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Short repeated curfews preceding a sustained blackout constitute a detectable precursor pattern; circumvention operators should treat periodic brief outages in a target country as a signal to pre-position emergency out-of-band infrastructure before the sustained cut.
+    - Circumvention tools should detect which blocking regime is in effect—packet filtering vs. BGP-based disconnection—and switch operational modes accordingly, since the two regimes require fundamentally different bypass strategies.
+section: §1, §5.2
+extracted_by: claude-sonnet-4-6

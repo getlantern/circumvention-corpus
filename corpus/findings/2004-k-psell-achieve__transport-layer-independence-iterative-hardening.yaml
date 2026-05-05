@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-k-psell-achieve
+kind: defense
+summary: The protocol between blockee and volunteer forwarder is designed to be transport-layer independent from the outset, allowing substitution of plain TCP with SSL tunnels, SMTP, or steganographic channels as the censor escalates detection. The system is intentionally deployed in a weak initial form to observe how quickly and in what manner the censor adapts, then hardened iteratively based on measured censor behavior.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - meta-resistance
+    - tunneling
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Decouple application-layer circumvention logic from the transport layer at design time so the obfuscation layer can be swapped (TCP → TLS → SMTP → steganography) without re-architecting the proxy protocol when the censor upgrades detection.
+    - 'Treat initial deployment as a measurement experiment: instrument which blocking techniques the censor deploys in response to each protocol feature, and use that signal to prioritize hardening efforts.'
+section: §6.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-invernizzi-message
+kind: defense
+summary: MIAB reduces the bootstrap requirement to only the operator's public key — no pre-shared rendezvous point is needed — by using blog pings as a real-time broadcast discovery channel. Since every blog post on the Internet is a potential drop point, the censor cannot enumerate entry points by posing as a legitimate user, unlike Collage (requires an up-to-date task database) or Telex (requires ISP collaboration).
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - steganography
+    - meta-resistance
+defense_implications:
+    - Bootstrap protocols should reduce shared secrets to a single long-lived public key; any additional per-session rendezvous information creates a censor-enumerable attack surface.
+    - Using a high-volume broadcast public channel (blog pings, social-media feeds) as the discovery layer shifts blocking cost onto the censor, who must disrupt the entire channel rather than discrete endpoints.
+section: §3
+extracted_by: claude-sonnet-4-6

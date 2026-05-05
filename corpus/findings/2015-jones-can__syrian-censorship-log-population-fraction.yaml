@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-can
+kind: evaluation
+summary: Analysis of two days of leaked censorship log files from Syria shows that 1.57% of the population accessed at least one censored site — a proportion the authors argue is far too large for a user-focused surveillance system to pursue individually. This implies that simply flagging all users who access censored content is not a feasible targeting strategy for surveillance.
+techniques:
+    - measurement-platform
+censors:
+    - sy
+defense_implications:
+    - Circumvention tool deployments that achieve meaningful adoption (even low single-digit percent of national internet users) are likely to exceed the targeted-surveillance capacity of censor governments, reducing per-user risk.
+    - Measurement and circumvention platforms should track adoption rates relative to country population as a proxy for collective safety — a larger, harder-to-individually-target user base is a structural defense.
+section: §2.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-xiong-efficient
+kind: evaluation
+summary: The previously used bisection algorithm required an average of 342.72 messages per news article to isolate a triggering keyword combination, and produced incorrect results in 44% of test cases — primarily because the Unilateral Elimination Flaw caused it to miss components that appeared multiple times in an article.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - 'Research relying on the earlier bisection method for WeChat keyword enumeration should be re-evaluated: nearly half of all identified ''sensitive keywords'' may be wrong or incomplete due to the unilateral elimination flaw.'
+    - Any future keyword-measurement pipeline must iteratively (not unilaterally) remove characters, and must handle articles containing multiple sensitive combinations independently.
+section: §4, §6
+extracted_by: claude-sonnet-4-6

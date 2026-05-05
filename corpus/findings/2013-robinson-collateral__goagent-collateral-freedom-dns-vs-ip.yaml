@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-robinson-collateral
+kind: defense
+summary: GoAgent, the most widely used circumvention tool among the 1,175 surveyed users, routes traffic through Google App Engine IP addresses also used by Gmail and Google Apps for Businesses. The GFW resorts to DNS poisoning of appspot.com domains rather than IP-blocking these shared addresses because a blanket IP block would disrupt commercially critical Google services — and GoAgent bypasses the poisoned DNS by connecting directly to the unblocked IPs, making surgical separation of circumvention traffic from business traffic infeasible.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Route circumvention traffic through IP ranges also essential to multinational business operations — the censor's economic calculus constrains which blocking techniques it will deploy against shared infrastructure.
+    - Prefer cloud or CDN infrastructure with significant corporate customer bases in the censored country; inability to distinguish circumvention from commercial traffic is the core protection, more durable than technical evasion alone.
+section: §2 Tool Usage, §3 Collateral Freedom Matters
+extracted_by: claude-sonnet-4-6

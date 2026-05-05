@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-tanash-known
+kind: policy
+summary: The Chilling Effects database contained only 33 notices from Twitter across all countries, far fewer than the 108 account-withholding requests disclosed in Twitter's own transparency reports for the same period; Twitter itself acknowledges its transparency reporting is neither 100% comprehensive nor complete, and the authors confirmed that at least 86% of Turkish government withholding requests for non-protected tweets were approved by Twitter.
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Third-party disclosure mechanisms (Chilling Effects, Lumen) capture only a fraction of actual government censorship requests — researchers and tool designers should treat these databases as strict lower bounds, not representative samples.
+    - A platform approval rate of ≥86% for government withholding requests means platform cooperation is a near-reliable enforcement channel for censors; circumvention designs that route around censored platforms entirely (rather than relying on platform transparency) are more robust.
+section: §3.1, §4.2
+extracted_by: claude-sonnet-4-6

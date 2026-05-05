@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-schuchard-routing
+kind: evaluation
+summary: Containment analysis shows that surrounding China with a 'ring' of decoy routers at AS-hop depth 1 requires covering 161 ASes; depth-2 expands by a factor of more than 23, becoming untenable, while depth-3 is slightly smaller but leaves the majority of the Internet reachable via clean paths. Cutting China off from at least half the Internet would require all 96 of the world's largest ISPs to deploy decoy routers at all exit points simultaneously.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - True BGP-containment of a large warden is economically and politically infeasible; decoy routing should be viewed as a cost-raising measure rather than a definitive solution, and must be paired with other circumvention layers (end-to-end pluggable transports, domain fronting) that do not depend on AS-level topology guarantees.
+    - Infrastructure deployment plans should not invest in refraction-networking infrastructure as the sole circumvention layer for high-capability wardens like China; complementary end-to-end obfuscation remains essential.
+section: §6, Table 2
+extracted_by: claude-sonnet-4-6

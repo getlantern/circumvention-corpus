@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-smits-bridgespa
+kind: evaluation
+summary: Measured over 5,000 SYN/SYN-ACK pairs on a shared physical network hub—the best-case vantage for an adversary—BridgeSPA's DoorKeeper adds a mean latency of approximately 90 µs (280±20 µs baseline vs. 370±80 µs with BridgeSPA). This overhead is consistent with prior SilentKnock analysis concluding that an adversary would need hundreds of observed connections before gaining statistical advantage in distinguishing SPA-protected hosts from dynamic-firewall behavior.
+techniques:
+    - active-probing
+    - traffic-shape
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Sub-100 µs per-connection overhead is operationally negligible for bridge deployments; lightweight kernel-space SPA is a viable design pattern that does not meaningfully degrade user experience.
+    - Timing-based SPA detection requires an adversary to be topologically close and to collect hundreds of samples; protection is practical even without perfect timing concealment.
+section: §6.2, Table 3
+extracted_by: claude-sonnet-4-6

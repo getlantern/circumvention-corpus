@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-towards
+kind: detection
+summary: 'Even when individual WebRTC flows pass traffic analysis, a censor can identify CRON users via three long-term statistical attack types: S1 (simultaneous video calls, atypical for normal users), S2 (sudden connections to previously unknown parties), and S3 (calls at anomalous times, frequencies, or durations). Relay nodes in multi-hop circuits are particularly exposed via S1 because conducting multiple simultaneous video calls is highly atypical in normal user profiles.'
+techniques:
+    - traffic-shape
+    - flow-correlation
+    - ml-classifier
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+    - cn
+    - ir
+defense_implications:
+    - 'Flow-level traffic analysis resistance is necessary but not sufficient: circumvention systems that create new connection patterns (simultaneous calls, novel peer pairings) must account for long-term behavioral profiling across the user''s full connection history.'
+    - Multi-hop relay roles are the highest-risk configuration under S1 profiling; protocol designers should consider restricting relay participation to delay-tolerant operation or camouflaging it within group-call scenarios that legitimately involve multiple simultaneous streams.
+section: §4.1
+extracted_by: claude-sonnet-4-6

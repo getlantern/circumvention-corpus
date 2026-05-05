@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-k-psell-achieve
+kind: defense
+summary: 'The paper presents a systematic taxonomy of blocking criteria across ISO/OSI layers: circumstance-based (addresses including sender/receiver/kind/physical location; timing including send time, receive time, duration, frequency; data-transfer properties; services including protocols, names, addresses) and content-based (file type/MIME, statistical detection of encrypted or compressed data, pattern matching for keywords or phrases, and website fingerprinting via request-count/byte-volume signatures).'
+techniques:
+    - dpi
+    - ip-blocking
+    - port-blocking
+    - traffic-shape
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any circumvention system must address blocking at all layers simultaneously — IP/port blocking is only the first tier; fingerprinting by traffic statistics and encrypted-content detection are the harder subsequent tiers.
+    - 'Design protocol obfuscation to defeat both circumstance-based and content-based classification: randomize timing/size AND ensure payloads are indistinguishable from legitimate covered traffic.'
+section: §4, Appendix A
+extracted_by: claude-sonnet-4-6

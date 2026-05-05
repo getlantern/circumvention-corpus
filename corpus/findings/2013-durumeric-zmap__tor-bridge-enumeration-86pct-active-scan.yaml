@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-durumeric-zmap
+kind: detection
+summary: By scanning ports 443 and 9001 and fingerprinting responses with Tor's TLS v1 cipher-suite handshake pattern, ZMap identified 79–86% of all allocated Tor bridge fingerprints in a single scan, demonstrating that bridges whose protocol is distinguishable are largely discoverable through comprehensive Internet-wide scanning even though their addresses are not publicly listed.
+techniques:
+    - active-probing
+    - tls-fingerprint
+    - measurement-platform
+defenses:
+    - bridges
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Bridges that speak an identifiable protocol on well-known ports (443, 9001) are enumerable by any censor with a gigabit uplink; bridges must combine address secrecy with full protocol indistinguishability to resist this attack.
+    - Tor's TLS v1 cipher-suite ordering is the fingerprint exploited here — circumvention transports must randomize TLS parameters (cipher suites, extensions, GREASE) to defeat heuristic-based active enumeration.
+section: §4.4
+extracted_by: claude-sonnet-4-6

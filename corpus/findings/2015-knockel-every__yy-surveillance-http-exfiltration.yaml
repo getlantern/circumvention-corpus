@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-knockel-every
+kind: detection
+summary: YY version 7.1 silently exfiltrates the full text of any triggering message via HTTP GET to sere.hiido.com, including sending user ID, receiving user ID, and the triggering keyword. The surveillance endpoint authenticates using md5(⌊unix_epoch/1000⌋ + ";username=report;password=pswd@1234") with hardcoded credentials, making the surveillance traffic structurally distinguishable from normal YY traffic.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Application-layer surveillance that exfiltrates to a remote server bypasses all network-level circumvention — anonymizing the transport layer (Tor, VPN) does not prevent a client application from reporting keyword hits directly to a censor-accessible endpoint.
+    - Circumvention tools shipping as client applications must be audited for outbound surveillance callbacks; hardcoded credential patterns like this are detectable by static analysis of application binaries.
+section: §4.1.1
+extracted_by: claude-sonnet-4-6

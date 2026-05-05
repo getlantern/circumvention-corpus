@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2003-dornseif-government
+kind: evaluation
+summary: 'Survey of NRW provider DNS implementations revealed at least five distinct tampering strategies in the wild: name hijacking to a government redirect server, NXDOMAIN for entire zones, name astrayment to 127.0.0.1 (user''s own machine) or to unallocated IPs such as 1.1.1.1, silence (no reply), and provoked SERVERFAIL. One provider (tops.net) additionally set tracking cookies on users redirected to its block-notification page, demonstrating that name hijacking creates a surveillance vector beyond the blocking itself.'
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - Name-hijacking DNS responses that redirect to a censor-controlled server expose user identities and access patterns; circumvention designs should treat any DNS response pointing to a local or redirected IP as a confirmed blocking signal and immediately fall back to an alternate resolution path
+    - Detecting block-notification pages and cookies via HTTP response analysis is a viable measurement signal for determining which users are actively being DNS-intercepted by their provider
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-karlin-decoy
+kind: defense
+summary: Clients embed HMAC-derived, time-varying sentinels into the 28-byte random field of the TLS ClientHello message, which decoy routers can scan at line rate. Sentinels are keyed to the current hour and a per-hour sequence number, providing freshness. This covert channel requires no out-of-band signaling and is invisible to passive observers who see only a normal TLS handshake toward the decoy destination.
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - decoy-routing
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Embed covert signals in fixed-offset, high-entropy fields of legitimate handshakes (e.g., TLS random) so line-rate routers can detect them without full payload parsing.
+    - Use time-keyed HMACs rather than static shared secrets to limit replay and preplay windows; rotate keys at least hourly.
+section: §3.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wustrow-telex
+kind: detection
+summary: 'The paper identifies two unresolved fingerprinting surfaces: (1) traffic-shape analysis of packet sizes and inter-arrival times could distinguish Telex flows from normal TLS, and (2) the prototype exhibits detectable deviations from real servers at the IP layer (stale IP ID fields), TCP layer (incorrect congestion windows detectable by early acknowledgements), and TLS layer (different compression methods and cipher-suite extensions). Convincingly mimicking a diverse population of TCP/TLS server implementations is flagged as requiring substantial engineering effort.'
+techniques:
+    - traffic-shape
+    - tls-fingerprint
+    - middlebox-interference
+defenses:
+    - telex
+    - mimicry
+defense_implications:
+    - Decoy-routing stations must maintain per-cover-destination TCP stack emulation (correct congestion windows, IP ID counters, TLS extension lists) to avoid fingerprinting by the censor at multiple protocol layers.
+    - Implement dynamic traffic shaping that mirrors the cover destination's real response timing and document sizes, rather than forwarding blocked-site content at the actual blocked-site rate.
+section: §9
+extracted_by: claude-sonnet-4-6

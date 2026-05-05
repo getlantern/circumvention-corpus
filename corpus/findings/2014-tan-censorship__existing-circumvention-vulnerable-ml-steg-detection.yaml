@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-tan-censorship
+kind: defense
+summary: Known attacks on existing circumvention tools include steganographic detection, enumeration of decoy-router locations, and machine-learning traffic classifiers. The paper acknowledges these defeat current approaches (Infranet, Collage, Telex, SkypeMorph, Freewave) and argues that no iterative patch can neutralize the censor's long-term structural advantage.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+defenses:
+    - steganography
+    - decoy-routing
+    - mimicry
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Protocol mimicry and steganography alone are not sufficient long-term defenses; the censor can apply ML classifiers and steganographic detectors that evolve faster than individual transports.
+    - Pair traffic-shaping or mimicry with a deployment strategy that maximizes political blocking cost, since technical obfuscation without adoption leverage is a losing arms-race position.
+section: §1
+extracted_by: claude-sonnet-4-6

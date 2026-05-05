@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-espinoza-automated
+kind: detection
+summary: A controlled probe of two Chinese search engines found that the query 'fuck' triggered a legal notice that results had been removed, while 'fuck you' did not, suggesting that search engine censorship suppresses websites where a sensitive term appears prominently rather than matching exact byte strings in the query itself. The paper concludes this mechanism is topical and website-removal-based, not a static keyword blacklist.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Search engine censorship in China is better modeled as a ranked-document-removal system than as a query-string filter; censorship measurement probes must account for this distinction to avoid false negatives.
+    - Circumvention tools that restore access to censored search results must address application-layer document suppression, not just backbone-level query interception.
+section: §4.2
+extracted_by: claude-sonnet-4-6

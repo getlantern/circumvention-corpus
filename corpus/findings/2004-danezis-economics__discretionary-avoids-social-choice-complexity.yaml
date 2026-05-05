@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-danezis-economics
+kind: defense
+summary: Discretionary P2P networks avoid the social-choice and incentive-manipulation problems inherent in random distribution, which requires collective agreement on a system-wide resource ratio (rs, bs) and thus creates incentives to subvert voting or reputation mechanisms. By allowing nodes to self-select content, discretionary systems need no election schemes, reputation systems, or electronic cash, enabling simpler and more stable designs.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Avoid global coordination mechanisms (reputation scores, token economies, democratic content voting) in circumvention network designs — each such mechanism is a manipulable attack surface that also increases implementation complexity.
+    - Prefer architectures where each relay's participation incentive is self-contained and locally computable, rather than contingent on network-wide state that must be agreed upon.
+section: §7
+extracted_by: claude-sonnet-4-6

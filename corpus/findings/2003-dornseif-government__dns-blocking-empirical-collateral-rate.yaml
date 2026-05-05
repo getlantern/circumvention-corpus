@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2003-dornseif-government
+kind: evaluation
+summary: An empirical DNS survey of North Rhine-Westphalia providers (May 2003) found that kids.stormfront.org — not named in the blocking order — was returned with obscure errors by 56% of surveyed servers, while rotten.com (also not in the order) was erroneously blocked by 11% of providers. www.stormfront.org itself was blocked by 12 providers with 0% still accessible, demonstrating that real-world DNS-tampering deployments systematically over-block non-targeted names at high rates.
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - 'DNS-based blocking is operationally sloppy: subdomain diversity (kids.*, api.*, cdn.*) increases the chance that a censor''s blanket zone block is visible and measurable, providing evidence for legal and advocacy challenges'
+    - Measuring unintended collateral blocking via DNS surveys is a practical technique for documenting censor over-reach
+section: §4.2, Table 1
+extracted_by: claude-sonnet-4-6

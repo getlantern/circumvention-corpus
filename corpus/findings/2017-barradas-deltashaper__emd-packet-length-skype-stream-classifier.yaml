@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-barradas-deltashaper
+kind: detection
+summary: 'Packet-length frequency distributions reliably distinguish regular Skype calls from irregular streams using Earth Mover''s Distance (EMD): regular streams consistently produce EMD < 0.1 against a reference stream, while irregular streams range from 0.025 to 0.25. At the breakeven threshold ∆I = 0.066, an EMD classifier achieves 83% accuracy (equal sensitivity and specificity). An aggressive policy (∆A) blocks 95% of legitimate calls to catch all irregular streams; a conservative policy (∆C = 0.11) passes 80% of irregular streams to avoid false positives.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Any steganographic scheme that alters the packet-size distribution of a whitelisted application (Skype, Zoom, etc.) must measure and bound its EMD against a reference stream before deployment — even modest payload blending that shifts large-packet proportions will cross detection thresholds.
+    - 'Adaptive per-session calibration (measuring the reference distribution under current network conditions before embedding data) is necessary, not optional: bandwidth regime changes the packet-length CDF enough to require separate reference tables for 128–300 Kbps vs 400–500 Kbps ranges.'
+section: §6.1, Figure 7
+extracted_by: claude-sonnet-4-6

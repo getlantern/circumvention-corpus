@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-javaid-online
+kind: evaluation
+summary: ADVENTION provides up to 47% improvement in average page load time (PLT) compared to Tor, because ad requests — which are often on the critical rendering path — are served over the direct channel rather than through the relay. The exact improvement depends on webpage structure and bottleneck resources.
+defenses:
+    - tor
+    - tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - PLT improvement from split-path routing is a user-visible deployment incentive; circumvention tools should surface this as a feature (not just a side effect) to counteract ad-blocker incentives and increase adoption.
+    - When designing relay selection logic, treat ad-request latency as a first-class metric alongside censorship bypass — a high-latency relay that degrades PLT will drive users away from the tool regardless of its circumvention effectiveness.
+section: §5.1, Figure 4
+extracted_by: claude-sonnet-4-6

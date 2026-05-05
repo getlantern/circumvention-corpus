@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-khattak-sok
+kind: detection
+summary: Wiley's Bayesian classifier against obfuscated protocols (Dust, SSL, obfs-openssh) found that entropy detection achieved 94% accuracy using only the first packet, timing-based detection achieved 89% accuracy over entire packet streams, and length-based detection achieved only 16% accuracy.
+techniques:
+    - random-payload-detect
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+defense_implications:
+    - The first packet's entropy is the highest-yield censor signal — ensure initial bytes of any new flow are indistinguishable from a specific allowed protocol rather than uniformly random.
+    - Mimicking a whitelisted protocol's packet-size distribution yields far more evasion benefit than timing mimicry alone, given the 16% vs. 89% accuracy gap between the two classifiers.
+section: §2.4.1
+extracted_by: claude-sonnet-4-6

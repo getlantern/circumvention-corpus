@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-aryan-internet
+kind: evaluation
+summary: Traceroutes from one major Iranian ISP to 3,160 destination IPs across 13 countries consistently showed a single private-address node (10.10._._) as the first observable external hop, preceded by one of only two TCI-owned transit nodes. TTL-based probing confirmed that both HTTP and DNS blocking originated at this same centralized node, suggesting that the processing capacity of this national chokepoint is a key bottleneck in Iran's censorship infrastructure.
+techniques:
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - The centralized single-node architecture creates a throughput bottleneck; high-volume spoofed or decoy traffic strategies (e.g., flooding the monitoring node) could degrade its inspection capacity — future protocol designs may exploit this.
+    - Tunneling traffic inside an allowlisted protocol past the central node and then distributing it peer-to-peer within the country is a viable architectural pattern, since filtering occurs nationally rather than at each ISP.
+section: §4.5, §6, Figure 5
+extracted_by: claude-sonnet-4-6

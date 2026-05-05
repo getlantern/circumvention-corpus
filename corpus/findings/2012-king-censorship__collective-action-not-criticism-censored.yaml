@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-king-censorship
+kind: policy
+summary: Chinese government censorship is aimed at suppressing collective action potential, not state criticism. Average censorship magnitude is 27% for collective action events but −1% for policy and −4% for news events. Posts criticizing and supporting the state are both censored at ~80% during collective action events, compared to ~10% for non-collective-action topics.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Tools designed to support political organizing in China face substantially higher interdiction risk than tools used only for individual criticism — collective coordination features require stronger obfuscation and anonymity than individual expression features.
+    - 'Censor targeting is event-driven and categorical: once a collective action event is identified, all associated posts are swept regardless of sentiment — obfuscation should focus on breaking the association between a communication and a known organizing event, not on disguising the communication''s political tone.'
+section: Results / Figure 3
+extracted_by: claude-sonnet-4-6

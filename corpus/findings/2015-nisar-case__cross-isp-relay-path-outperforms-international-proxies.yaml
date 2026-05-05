@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-nisar-case
+kind: evaluation
+summary: Routing traffic from a user on ISP-B through a peer relay on ISP-A (which applied only HTTP-level filtering and permitted HTTPS) produced the smallest page load times in most cross-ISP comparison runs, beating both HTTPS/domain-fronting and Tor. The performance gain is attributed to lower end-to-end latency on the intra-country cross-ISP path relative to international relay routes.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tunneling
+    - bridges
+censors:
+    - pk
+defense_implications:
+    - 'Build in-country peer relay networks that exploit differential blocking across ISPs: a peer at a less-restrictive ISP can serve as a low-latency relay for users at a more restrictive one, without routing traffic internationally.'
+    - For centralized censorship architectures (e.g., Iran), in-country cross-ISP relaying will not help; reserve this optimization for decentralized, ISP-level filtering regimes.
+section: §3.2 / Figure 2c / Insight-3
+extracted_by: claude-sonnet-4-6

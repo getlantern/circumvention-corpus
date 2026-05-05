@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-detecting
+kind: evaluation
+summary: Testing the Alexa top-20,000 websites from within Iran, 3,595 IP addresses (17.9%) triggered the protocol filter at least 8 out of 10 times, and 3,499 (17.4%) were affected all 10 times. IP address provider is not correlated with filtering; instead, specific IP prefixes are targeted—for Cloudflare, only two prefixes (104.18.0.0/16 and 104.31.82.0/24) were fully affected while all others were unaffected.
+techniques:
+    - ip-blocking
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - CDN-based circumvention (domain fronting) must account for prefix-level selectivity; not all CDN IPs are filtered, so operators should probe which prefixes are affected before deploying.
+    - IP selection for proxy infrastructure in Iran should prefer providers and prefixes empirically confirmed as unaffected by the protocol filter.
+section: §4.2
+extracted_by: claude-sonnet-4-6

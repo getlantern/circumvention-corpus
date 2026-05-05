@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-khattak-towards
+kind: detection
+summary: 'GFW exhibits three confirmed HTTP analysis gaps: it inspects only the first Request-URI and Host header in HTTP-pipelined requests (HTTP3), will not scan beyond 2,048 bytes into a Request-URI (HTTP2), and recognizes only standard percent-encoding while ignoring alternative URI encodings such as overlong UTF-8 (HTTP4). The authors classify all three as low-difficulty fixes for the censor, meaning they may be patched quickly once disclosed.'
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Place sensitive domain names or keywords in pipelined HTTP requests beyond the first, or encode them with non-percent URI encoding schemes; both yield confirmed GFW evasion under 2013 measurement conditions but should be treated as fragile given the low fix cost.
+    - When constructing HTTP-based circumvention channels, push identifying content past byte offset 2048 in the URI as a low-overhead obfuscation layer, while layering stronger defenses for long-term resilience.
+section: §5, Table 1 (HTTP2, HTTP3, HTTP4)
+extracted_by: claude-sonnet-4-6

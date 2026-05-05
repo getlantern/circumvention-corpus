@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-weaver-detecting
+kind: detection
+summary: Individual RST injectors exhibit stable, idiosyncratic header-field fingerprints enabling device-level identification across geographically separated sites. Sandvine devices produce back-to-back RST pairs where the second packet's sequence number is exactly 12,503 higher than the first (a known implementation bug confirmed by Sandvine's CTO) with IPID increments of 4 then 1; 90% of 193 alerting Comcast IP addresses across all four datasets matched this fingerprint. The GFW SEQ 1460 injector always increments sequence numbers by 1,460 regardless of actual MTU or window size.
+techniques:
+    - rst-injection
+    - packet-injection
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Circumvention clients can maintain a shared fingerprint database of known injector signatures and selectively suppress matching RSTs, reducing spurious session teardowns without disabling RST handling entirely.
+    - 'Injector fingerprints are stable enough across sites to be crowdsourced: the Sandvine signature matched consistently across ICSI, UCB, Columbia, and GMU, suggesting a community blocklist is viable.'
+section: §7.1, Table 1
+extracted_by: claude-sonnet-4-6

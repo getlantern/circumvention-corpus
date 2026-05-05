@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-oakley-protocol
+kind: evaluation
+summary: 'A deterministic Hidden Markov Model trained on 770,000+ real Synchrophasor samples produces interpacket timing that is statistically indistinguishable from the host protocol: the two-sample Kolmogorov–Smirnov test yields p = 0.21 (threshold 0.05, fail to reject null), and χ² homogeneity p-values for all three timing states are 0.82, 0.37, and 0.15 respectively.'
+techniques:
+    - traffic-shape
+defenses:
+    - format-transform
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Model interpacket timing with a per-state HMM inferred from large real-traffic captures rather than a global distribution; state-wise KS and χ² tests are the appropriate acceptance criteria before production deployment.
+    - When there is no payload to send, inject cover packets with random (dummy) data and correct timing to maintain the timing model — gaps in traffic are themselves a detectable side-channel.
+section: §4, §7
+extracted_by: claude-sonnet-4-6

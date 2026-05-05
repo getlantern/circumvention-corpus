@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-monitoring
+kind: evaluation
+summary: 'In Italy, gambling and betting sites were censored primarily via DNS hijacking toward explicit blockpages with ISP-level plausible-DNS-resolution rates as low as 4.5% (NGI), 31.2% (Wind), and 46.1% (Telecom Italia), while the academic GARR network showed no censorship. File-sharing sites (thepiratebay.sx) faced a more aggressive multi-layer response: 2 of 4 ISPs showed less than 50% TCP reachability (versus near 100% for betting sites), and control DNS resolvers were also affected, indicating coordinated infrastructure-wide blocking rather than ISP-level DNS hijacking alone.'
+techniques:
+    - dns-poisoning
+    - port-blocking
+censors:
+    - generic
+defense_implications:
+    - File-sharing circumvention in Italy requires evasion at both DNS and TCP layers simultaneously, whereas gambling-site users need only DNS-layer fixes — tools should probe both layers and activate only the minimal necessary evasion stack.
+    - Academic and research network exemptions (GARR in Italy was uncensored) represent low-censorship access paths worth identifying and advertising to users with institutional network access.
+section: §3.3
+extracted_by: claude-sonnet-4-6

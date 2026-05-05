@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bachrach-h00t
+kind: detection
+summary: 'Even with end-to-end encrypted messages, a censor observing subscription queries can detect anomalous interest in a short tag (e.g., a sudden domestic surge in followers of a foreign pop star''s hashtag) and use timing/size traffic analysis to distinguish #h00t subscriptions from ordinary hashtag follows. The paper flags this as an open threat and proposes two mitigations: (1) push cover traffic for randomly selected short tags to all clients regardless of their actual subscriptions, or (2) silently redirect normal clients'' hashtag follows to the corresponding #h00t short tags.'
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - 'Subscription-pattern traffic analysis must be a first-class threat model: push unconditional cover-traffic for random short tags to all clients so that following a sensitive tag is statistically indistinguishable from baseline client behavior.'
+    - Evaluate whether packet-size and timing normalization is necessary beyond content encryption to defeat flow-level fingerprinting of group membership, especially over low-bandwidth mobile connections where cover-traffic bandwidth costs are non-trivial.
+section: §6.1
+extracted_by: claude-sonnet-4-6

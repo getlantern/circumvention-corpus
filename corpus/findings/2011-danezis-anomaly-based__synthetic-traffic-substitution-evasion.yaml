@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-danezis-anomaly-based
+kind: detection
+summary: A censor can defeat the anomaly detector without triggering an alert by replacing blocked user traffic with synthetic requests from adversary-controlled machines, keeping per-jurisdiction connection counts within the typical range. The paper explicitly identifies this as an unaddressed active-attack vector.
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Aggregate connection-count monitors are vulnerable to state-level traffic injection; supplement with per-bridge or per-relay behavioral signals that cannot be spoofed by substituting synthetic clients.
+    - Design detection systems to cross-validate connection counts against independent signals (e.g., bridge reachability probes, OONI data) to resist adversarial substitution.
+section: §6
+extracted_by: claude-sonnet-4-6

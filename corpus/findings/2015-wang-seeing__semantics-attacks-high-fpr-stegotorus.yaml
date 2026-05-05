@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-wang-seeing
+kind: detection
+summary: A semantics-based attack that flags HTTP flows carrying structurally invalid PDF documents as Stegotorus produces false-positive rates as high as 43% across three campus datasets (10,847 PDF flows examined), because malformed, partial, and non-standard PDFs are common in real network traffic. By contrast, active HTTP-response fingerprinting of a suspected Stegotorus server yields only 0.03% false positives (3 matching servers out of 9,320 Alexa-top-10K servers), but requires active probing and is detectable by the proxy operator.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Passive semantics checks against cover-protocol standards are unreliable because real traffic routinely violates standards; mimicry transports should not assume that protocol-validity checks alone will protect them — active probing is the practical threat.
+    - Mimicry transports can harden against active fingerprinting by adopting the most common real-server HTTP-response fingerprint (shared by ~845/9,320 servers examined), pushing the censor's active-probe FPR above 9%.
+section: §4.1–§4.2, Tables 3–4
+extracted_by: claude-sonnet-4-6

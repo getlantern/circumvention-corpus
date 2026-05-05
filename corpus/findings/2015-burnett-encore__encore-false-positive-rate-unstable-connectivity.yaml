@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-burnett-encore
+kind: evaluation
+summary: In 8,573 controlled testbed measurements across image, stylesheet, and script task types, Encore produced zero false negatives and a ~5% false positive rate in India (attributed to unreliable network connectivity rather than filtering), establishing that cross-origin browser probes reliably detect DNS, IP, and HTTP filtering under stable network conditions but require aggregation to control noise.
+techniques:
+    - measurement-platform
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - in
+defense_implications:
+    - Network instability in target countries inflates false positives; aggregate measurements across multiple clients within a short window (e.g., 60 seconds) before concluding a site is blocked.
+    - A conservative per-region binomial hypothesis test (modeled p ≥ 0.7 success, α = 0.05) provides a reproducible statistical baseline that distinguishes transient connectivity failures from systematic censorship.
+section: §7.1
+extracted_by: claude-sonnet-4-6

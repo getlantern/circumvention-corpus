@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-lib-cdot-erate
+kind: detection
+summary: 'Middlebox classification state is ephemeral: the testbed carrier-grade DPI device flushes results after 120 seconds (or 10 seconds after a TCP RST), and the GFC flushes state after 40–240 seconds depending on time of day. A strategically timed pause before the matching payload, or a TTL-limited RST packet, causes the classifier to re-evaluate the connection as unclassified traffic.'
+techniques:
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Circumvention protocols can exploit GFW classification timeouts by delaying the identifying handshake bytes past the classifier's state-flush window—particularly effective during peak hours when GFW state resources are more constrained.
+    - A TTL-limited RST before the real payload is a near-zero-overhead pre-handshake step to clear classifier state; implement as an optional mode in transports targeting GFW where latency budget allows a 40+ second pause.
+section: §4.3, §5.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hoang-empirical
+kind: detection
+summary: 'A simpler but effective complement to IP-list blocking is to block access to I2P''s small set of hardcoded reseed servers: first-time users cannot fetch RouterInfos of other peers and are entirely prevented from joining the network. Reseed servers are functionally equivalent to Tor directory authorities as a single point of failure for bootstrapping.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - Hardcoded bootstrap servers are a high-leverage blocking target; distribute reseeding over domain-fronted, steganographic, or out-of-band channels (email, social media, mirrors) so the bootstrapping step survives IP-level blocking of the primary reseed infrastructure.
+    - Treat the bootstrapping channel as a separate threat surface from the relay channel and design it with independent censorship resistance, since blocking a handful of reseed server IPs costs the censor almost nothing yet denies all new users.
+section: §2, §6.1
+extracted_by: claude-sonnet-4-6

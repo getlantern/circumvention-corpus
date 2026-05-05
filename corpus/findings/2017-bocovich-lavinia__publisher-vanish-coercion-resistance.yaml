@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-bocovich-lavinia
+kind: defense
+summary: Lavinia allows a publisher to publish content, submit payments, and then cease all interaction with the system — continued document availability is not contingent on the original publisher remaining online or reachable. This specifically protects against out-of-band coercion tactics such as rubber-hose cryptanalysis in the case that the publisher is captured or prosecuted.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design censorship-resistant storage so the publisher's private keys and ongoing participation are not required after the initial publication step — eliminate the coercible post-publication attack surface entirely.
+    - Separate the payment commitment phase from the long-running storage phase so that third-party benefactors can extend a document's lifetime without involving the original publisher.
+section: §4.1
+extracted_by: claude-sonnet-4-6

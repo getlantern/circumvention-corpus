@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-tan-censorship
+kind: defense
+summary: 'The paper argues that the advantage in the censor-vs-circumvention arms race lies with the censor due to fundamental asymmetry: a nation state controls centralized communication infrastructure while dissidents depend on it. Standalone anti-censorship tools therefore face a structurally disadvantaged security posture that iterative patching cannot overcome.'
+techniques:
+    - dpi
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design circumvention tools as general-purpose communication primitives with independent utility, not as obviously purpose-built anti-censorship apps, to raise the political and economic cost of blocking.
+    - Avoid framing or branding that signals censorship circumvention as the primary use case — doing so lowers the censor's political cost to block.
+section: §1
+extracted_by: claude-sonnet-4-6

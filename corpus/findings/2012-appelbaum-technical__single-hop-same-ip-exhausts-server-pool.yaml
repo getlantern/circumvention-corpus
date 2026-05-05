@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-appelbaum-technical
+kind: detection
+summary: Because Ultrasurf is a single-hop proxy where client ingress and remote web-server egress share the same IP address, any web server contacted through the network can log and report the proxy IP. The paper notes an attacker running a popular web server for a short time would passively harvest the full set of Ultrasurf server addresses for subsequent IP-list blocking.
+techniques:
+    - ip-blocking
+defense_implications:
+    - Use separate ingress and egress IP addresses (or multi-hop architectures) so the proxy's client-facing IP is never exposed to destination servers and cannot be enumerated by honeypot sites.
+    - Rotate egress IPs frequently and share ingress IPs with high-traffic CDN/hosting ranges so any single blocking action incurs collateral damage, raising the political cost of blocking.
+section: §6.9
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2002-serjantov-anonymizing
+kind: defense
+summary: An adversary who wishes to expose storers by having forwarders log storer identities must compromise all n−k+1 chosen forwarders before or during the publication event; forwarders that legitimately delete the storer mapping immediately after acknowledging publication render this attack ineffective unless the adversary pre-positions malicious nodes at sufficient density. The paper notes that with a reasonably large forwarder population the probability of the required simultaneous compromise is small.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Enforce immediate, irreversible state deletion at forwarders the moment publication acknowledgment is sent — the forget step is a load-bearing security invariant, not an optimization.
+    - Increase forwarder count n to reduce the per-publication probability that all n−k+1 selected forwarders are simultaneously adversarial; this is an adjustable security parameter independent of the secret-sharing threshold k.
+section: §3
+extracted_by: claude-sonnet-4-6

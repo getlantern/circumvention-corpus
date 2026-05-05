@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-httpt
+kind: detection
+summary: Frolov et al. (2020) found that over 94% of Internet servers respond with data to at least one popular protocol probe, making probe-resistant proxies that remain entirely silent statistically anomalous. Censors can further fingerprint silent proxies by their unique timeout or data-limit behaviors before connection close (e.g., Lampshade closes immediately after 256 bytes of unrecognized data, or waits exactly 90 seconds before timing out).
+techniques:
+    - active-probing
+    - traffic-shape
+defenses:
+    - obfs4
+    - scramblesuit
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - Proxies must respond to unauthenticated probes with plausible benign data (e.g., realistic HTTP error pages) rather than silently closing; silence is now a detectable signal.
+    - Avoid fixed timeout or data-limit thresholds unique to the proxy; timing behavior should match the distribution of real web servers.
+section: §2 Background
+extracted_by: claude-sonnet-4-6

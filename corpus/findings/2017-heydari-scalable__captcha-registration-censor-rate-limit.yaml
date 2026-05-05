@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-heydari-scalable
+kind: defense
+summary: A CAPTCHA-gated registration scheme with sequences of reCAPTCHAs at random intervals and short solve windows limits automated censor deployment. With 5 minutes spent per registration, a human adversary working non-stop for 24 hours can create at most 288 censors; combined with a 12-hour registration reset cycle, this bounds the adversary's censor accumulation rate.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Registration rate-limiting via time-gated multi-step CAPTCHAs is a necessary complement to IP rotation — without it, adversaries can automate censor provisioning at a rate that overwhelms the swarming ratio defense.
+    - Periodic global registration resets (e.g., every 12 hours) amortize the human cost of censor maintenance, forcing adversaries to repeat expensive registration for every censor at each reset, not just at initial deployment.
+section: §IV-B
+extracted_by: claude-sonnet-4-6

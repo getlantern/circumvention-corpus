@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-safaka-matryoshka
+kind: evaluation
+summary: After crowdsourced (MTurk) enhancement, 88% of stegotexts on average pass a One-Class SVM trained on 150K sentences from Wikipedia, Brown, and Reuters corpora as natural language; pre-enhancement, only 25–58% pass. For calibration, the same classifier correctly rejects 97% of randomly generated sentences as non-natural-language.
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - A human polishing step—even a few minutes—collapses ML detection accuracy from ~65–75% to ~12% false-positive rate; circumvention tools handling text channels should expose a lightweight review/edit interface rather than fully automating stego output.
+    - Train and test evasion against One-Class SVM with parse-score + POS-tag features, not just entropy/n-gram baselines, as this is the most naturalistic detector evaluated.
+section: §5
+extracted_by: claude-sonnet-4-6

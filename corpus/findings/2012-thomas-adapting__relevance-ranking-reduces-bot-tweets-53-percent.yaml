@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-thomas-adapting
+kind: evaluation
+summary: Twitter's relevance-ranked search returned 53% fewer bot-generated tweets compared to real-time chronological search across 1.1 million queries during the attack; restricting analysis to the top 5 most-recently returned relevance results reduced spam by 64% versus real-time. Relevance ranking incorporates social-graph overlap and content popularity signals to demote mass-produced low-engagement content.
+techniques:
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - ru
+defense_implications:
+    - Relevance and reputation-based ranking offers meaningful partial protection against content-flooding censorship — information-distribution components in circumvention tools should incorporate engagement-signal weighting to resist dilution attacks.
+    - Real-time chronological feeds are inherently vulnerable to flooding; circumvention communication channels should not rely solely on FIFO ordering of messages.
+section: §5
+extracted_by: claude-sonnet-4-6

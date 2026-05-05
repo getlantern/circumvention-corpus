@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-fingerprintability
+kind: defense
+summary: 'The authors extend Houmansadr et al.''s ''parrot is dead'' argument to WebRTC: because WebRTC is a large multi-protocol framework, superficial mimicry that fails to replicate exact DTLS version, cipher suite ordering, certificate common name (''WebRTC''), 30-day validity period, STUN server selection, and ICE packet sequence leaves detectable residual distinguishers, making deep fingerprint conformance especially hard for standalone non-browser implementations such as Snowflake''s client.'
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Prefer running circumvention code inside a real browser (as Snowflake's browser-extension proxy component does) rather than a headless libwebrtc client, since the browser naturally produces authentic, population-representative fingerprints across all protocol layers simultaneously.
+    - Audit all fingerprintable layers—DTLS, STUN/TURN attributes, certificate fields—before deployment rather than after blocking is observed; retrofitting mimicry to an established protocol incurs compounding technical debt as Tor's TLS history demonstrates.
+section: §3, §4.6
+extracted_by: claude-sonnet-4-6

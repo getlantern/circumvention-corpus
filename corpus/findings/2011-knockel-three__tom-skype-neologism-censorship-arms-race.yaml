@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-knockel-three
+kind: detection
+summary: The TOM-Skype keyword blacklist contained numerous user-coined neologisms added after the originals were censored—e.g., 'Lu Si' (a homophone for the Tiananmen date '64') and 'Oscar best actor winner' (a euphemism for Wen Jiabao)—demonstrating an adversarial arms race in which evasion vocabulary spreads freely until censors detect and blacklist the neologisms. The authors observed that some sensitive concepts (e.g., '64' rendered as '32+32' or '8 squared') spawn so many variants that the neologism strategy may not scale for the censor.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Neologism-based evasion has a short half-life once adoption is detectable; circumvention messaging protocols should not rely on semantic obfuscation—network-level transport encryption is the only approach that does not decay as the censor observes evasion patterns.
+    - The speed of neologism detection implies censors monitor unfiltered channels to harvest new evasion terms; secure communication channels are preferable to any strategy that assumes evasion vocabulary stays private.
+section: §4 (Conjecture 5)
+extracted_by: claude-sonnet-4-6

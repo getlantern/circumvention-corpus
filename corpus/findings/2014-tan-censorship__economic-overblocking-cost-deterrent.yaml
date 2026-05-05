@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-tan-censorship
+kind: defense
+summary: If a communication protocol is regularly used for business and commerce, blocking it may be too politically and economically costly for a censor. The paper posits that censorship resistance achieved as a side-effect of widespread general adoption is harder to defeat than a niche protocol designed solely to circumvent censorship.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - meta-resistance
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Invest in making the circumvention transport genuinely useful for non-circumvention workloads (VoIP, file transfer, messaging) so that blocking imposes real economic collateral damage on the censor.
+    - Seek mainstream commercial or developer adoption as a deployment strategy — not just activist deployment — to maximize the political cost of a block.
+section: §1–§2
+extracted_by: claude-sonnet-4-6

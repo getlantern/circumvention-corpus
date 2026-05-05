@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-towards
+kind: detection
+summary: Tor's TLS handshake exhibited multiple distinguishing fingerprints — including the client cipher list, server certificates, and randomly generated SNIs — that were used for TLS-based filtering in Ethiopia, China, and Iran. Inferring the exact byte-level pattern matched by DPI boxes required manual analysis and remains a difficult open problem as of 2013.
+techniques:
+    - tls-fingerprint
+    - dpi
+    - sni-blocking
+censors:
+    - cn
+    - ir
+    - et
+defense_implications:
+    - Any proxy that reuses a consistent TLS cipher suite ordering, certificate structure, or SNI pattern is vulnerable to fingerprint-based blocking; transports must randomize or mimic legitimate TLS profiles (e.g., REALITY, Cloak) to survive.
+    - Automated DPI pattern inference via grammatical inference would enable targeted countermeasures; tool designers should invest in or integrate with tools that can reverse-engineer censor DPI signatures rather than guessing at them.
+section: §3.1.5, §5
+extracted_by: claude-sonnet-4-6

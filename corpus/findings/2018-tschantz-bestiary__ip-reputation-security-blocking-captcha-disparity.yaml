@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-tschantz-bestiary
+kind: detection
+summary: Ukraine and Scotland both used the same VPN provider yet Ukraine received 1,874 CAPTCHA challenges vs. 309 for Scotland, and 1,519 browser verification challenges vs. 1,091 — a roughly 6× and 1.4× difference respectively. Only Ukraine was flagged as a VPN or Tor node by OctoNet's HTTP filter, indicating that IP/ASN reputation drives security-motivated blocking independently of the transport protocol used.
+techniques:
+    - ip-blocking
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Shared VPN exit IPs that have been flagged by abuse-reputation databases will trigger CAPTCHA and browser-challenge walls regardless of protocol obfuscation — circumvention deployments must continuously rotate IP inventory and monitor reputation scores.
+    - Residential or datacenter IPs with clean reputations are functionally distinct infrastructure from flagged VPN ranges; treat IP reputation as a first-class property when selecting relay infrastructure.
+section: §5, Table 2
+extracted_by: claude-sonnet-4-6

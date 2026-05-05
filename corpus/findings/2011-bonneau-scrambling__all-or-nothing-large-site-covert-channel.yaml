@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bonneau-scrambling
+kind: defense
+summary: 'If a large site such as Google or Wikipedia scrambled all served content using a publicly known de-scrambling algorithm, the censor faces a strict all-or-nothing blocking decision: it cannot selectively filter banned scrambled content without blocking the entire site, since scrambled legitimate and banned content are computationally indistinguishable prior to running S⁻¹. This property scales the political cost of blocking proportionally to the size of the co-scrambling platform.'
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - tunneling
+    - randomization
+    - meek
+defense_implications:
+    - Colocate censorship-resistant transport on high-value CDN or platform domains (Google, Cloudflare, Akamai) that censors are politically unwilling to block entirely — this is the structural basis of domain-fronting and meek.
+    - Negotiate with large content providers to serve a fraction of their traffic through the same scrambled channel as circumvention traffic, raising the censor's collateral-damage cost to unacceptable levels.
+section: §1
+extracted_by: claude-sonnet-4-6

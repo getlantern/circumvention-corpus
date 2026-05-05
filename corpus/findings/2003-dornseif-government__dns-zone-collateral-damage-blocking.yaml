@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2003-dornseif-government
+kind: detection
+summary: DNS zone architecture prevents providers from blocking individual hostnames without also disrupting all other services (email, chat, file transfer) for every name in the same DNS zone. A provider blocking www.bad.example.com must create a synthetic zone for bad.example.com, requiring continuous re-synchronization with authoritative servers at 3–24 hour intervals; failing to replicate MX records blocks email to non-targeted addresses in the zone.
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - Register circumvention endpoints in their own isolated DNS zones with no collateral services, so DNS-tampering by a censor cannot be argued to cause acceptable collateral damage that limits enforcement pressure
+    - Avoid co-locating a proxy's domain with other services under the same parent zone that would create collateral harm giving censors political cover to block the whole zone
+section: §2.2.3
+extracted_by: claude-sonnet-4-6

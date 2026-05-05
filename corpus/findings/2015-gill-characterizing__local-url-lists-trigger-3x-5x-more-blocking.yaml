@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-gill-characterizing
+kind: evaluation
+summary: Locally curated URL lists elicit 3–5× higher blocking rates than global lists in high-censorship countries. In China and Yemen, local content was blocked three to five times more than globally sensitive content, attributed to language filtering and active censorship of local political discourse; China's 99% block rate on 'falun' in HTTP path vs. 81% for 'falun' in domain name further illustrates trigger sensitivity.
+techniques:
+    - keyword-filtering
+    - dpi
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that auto-detect local blocking (to drive adaptive transport selection) must test against locally curated URL lists, not only global probe lists like OONI's — global lists will miss the majority of active filtering in China and similar environments.
+    - 'Protocol designers should treat keyword-in-URL-path as a distinct trigger class from domain-name matching: defenses that obscure the domain (SNI hiding, domain fronting) do not address keyword-level RST injection against URL paths.'
+section: §5.4, §4.9, Fig. 13
+extracted_by: claude-sonnet-4-6

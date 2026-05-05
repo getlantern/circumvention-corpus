@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-hoang-measuring
+kind: detection
+summary: 'China''s GFW poisons DNS responses from major open resolvers (Google 8.8.8.8/8.8.4.4, Cloudflare 1.1.1.1/1.0.0.1, OpenDNS 208.67.222.222/220) for I2P domains, returning public IPs belonging to Facebook, SoftLayer, and other non-Chinese organizations. Blocking is non-uniform: AS9808 (Guangdong Mobile) appended a loopback 127.0.0.1 record alongside falsified IPs—a pattern not seen at other ASes—while the I2P mirror site remained accessible from most Chinese locations despite the homepage being blocked.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Do not rely on open resolvers as a bypass for DNS censorship in China—the GFW intercepts and poisons these queries in transit regardless of the resolver used.
+    - Use DNS-over-HTTPS or DNS-over-TLS exclusively for bootstrap resolution of circumvention service hostnames, since plaintext DNS is intercepted even when directed to third-party resolvers.
+section: §5.1
+extracted_by: claude-sonnet-4-6

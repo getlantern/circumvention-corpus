@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-barradas-deltashaper
+kind: defense
+summary: 'DeltaShaper embeds covert TCP/IP data into Skype''s encrypted video stream using a virtual camera interface, treating Skype as a black box rather than mimicking its protocol. This approach provides active-attack resistance by design: any in-path perturbation affects covert and legitimate streams identically, because real Skype software processes both. The system achieves a goodput of 2.56 Kbps (with Reed-Solomon ECC) or 3.12 Kbps (without ECC) at optimal encoding parameters (320x240 area, 8x8 cell size, 6 bits/cell, 1 fps), with RTT of approximately 3 seconds.'
+techniques:
+    - traffic-shape
+    - dpi
+    - active-probing
+defenses:
+    - steganography
+    - mimicry
+defense_implications:
+    - Use a legitimate application as the actual carrier rather than mimicking its protocol — this eliminates active-probing vulnerabilities that afflict protocol-mimicry systems, since real handshakes and real infrastructure respond correctly to probe traffic.
+    - Accept a throughput ceiling (~2–3 Kbps) as the cost of preserving packet-level unobservability; design the application layer (protocol selection, compression) for low-throughput high-latency links rather than trying to push the covert channel beyond what the cover traffic's packet-size distribution can absorb.
+section: §4, §5, Table 2
+extracted_by: claude-sonnet-4-6

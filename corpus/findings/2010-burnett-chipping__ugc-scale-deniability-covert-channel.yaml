@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-burnett-chipping
+kind: defense
+summary: 'Collage leverages platform-scale user-generated content—Flickr''s 3.6 billion images with 6 million new per day and Twitter''s ~500K tweets/day as of 2009—as a covert channel substrate. Because the censor cannot block all UGC platforms simultaneously without removing massive amounts of legitimate content, the system achieves availability and user deniability that fixed-infrastructure proxies (e.g., Tor relays) cannot: accessing Flickr or Twitter does not implicate the user as a circumvention tool operator.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - steganography
+    - tunneling
+    - mimicry
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Embed covert channels inside high-volume, state-sanctioned UGC platforms (photo-sharing, microblogging) to raise the cost of blocking to politically unacceptable levels.
+    - Design rendezvous so that receiver traffic patterns (e.g., image search by popular tag) are statistically indistinguishable from innocuous browsing, defeating clickstream-based user targeting.
+section: §1, §4.1
+extracted_by: claude-sonnet-4-6

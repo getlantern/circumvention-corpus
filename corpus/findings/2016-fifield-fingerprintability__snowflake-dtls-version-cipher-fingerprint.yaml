@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-fingerprintability
+kind: detection
+summary: Among the five WebRTC applications analyzed (Google Hangouts, Facebook Messenger, OpenTokRTC, Sharefest, Snowflake), Snowflake is uniquely identifiable by its use of DTLSv1.2 (all others use DTLSv1.0), its 17 offered cipher suites, and its exclusive selection of TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256—a cipher suite not chosen by any other application in the study.
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Snowflake's DTLS parameters must be aligned with the dominant real-world browser profile rather than exposing standalone libwebrtc defaults; DTLS version, cipher suite ordering, and extension list should match Chrome's current fingerprint.
+    - Any upgrade to a newer DTLS version or cipher set must be validated against the live browser population to avoid re-introducing a uniqueness signal.
+section: §4.5, §4.6
+extracted_by: claude-sonnet-4-6

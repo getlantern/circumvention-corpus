@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-deng-random
+kind: evaluation
+summary: The authors trained on 1 GB of captured Shadowsocks traffic and 1 GB of non-Shadowsocks traffic from a single host, then tested on over 1 GB of each from 26 randomly selected hosts. The cross-host generalization of the model is demonstrated but no explicit false-positive or false-negative rates are reported.
+techniques:
+    - ml-classifier
+defenses:
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - The absence of reported FPR/FNR numbers is a significant methodological gap — circumvention designers should treat the 85% figure as an optimistic lab bound that may not hold at ISP-scale with diverse benign traffic.
+    - Evaluating evasion against classifiers trained on only 1–2 GB of capture is tractable; real-world deployment would require adversarially probing larger, more diverse training sets.
+section: §V.B–C
+extracted_by: claude-sonnet-4-6

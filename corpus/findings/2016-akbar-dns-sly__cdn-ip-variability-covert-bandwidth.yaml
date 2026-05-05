@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-akbar-dns-sly
+kind: defense
+summary: DNS-sly encodes downstream data by selecting A records from the IP address pool of CDN-hosted domains. For the top 25% of Alexa Top 500 domains, approximately one third of DNS responses contain more than 8 A records and ~15% contain 15 A records; the global IP pool has a median of ~2,000 IPs per domain (maximum ~16,000), enabling b = floor(log2(s!/(s-c)!)) bits per response.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - dns-tunneling
+    - steganography
+defense_implications:
+    - Use CDN-hosted domains with large, frequently rotating IP pools as the covert channel substrate — natural CDN variability provides statistical cover without requiring synthetic traffic generation.
+    - Compute per-response bit capacity dynamically from the local IP pool size and A-record count to maximize throughput while staying within deniable IP-selection patterns.
+section: §2.2
+extracted_by: claude-sonnet-4-6

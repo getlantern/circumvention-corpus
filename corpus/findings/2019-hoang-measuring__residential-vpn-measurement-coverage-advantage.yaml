@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-hoang-measuring
+kind: evaluation
+summary: A measurement infrastructure built on VPN Gate's 192K volunteer-operated residential vantage points (3.5K ASes, 181 countries) detected I2P blocking events that were missed entirely by both OONI—which had no test data for four of the five affected countries—and ICLab—which had vantage points in only two of the five countries and obtained only intermittent connections there. Residential vantage points reveal filtering policies invisible from datacenter-hosted probes, with ISP-level granularity confirming partial national blocking (one of six Kuwaiti ASes, heterogeneous Chinese AS behavior) that aggregate measurements would miss.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Circumvention tools should instrument blocking detection across multiple residential ASes per country before concluding a service is accessible nationally—datacenter-only probes systematically undercount real-user blocking.
+    - Volunteer-distributed measurement infrastructure (analogous to VPN Gate) can serve as low-cost, high-coverage censorship telemetry for circumvention services to detect newly blocked relays or bootstrap servers.
+section: §5.4, §7
+extracted_by: claude-sonnet-4-6

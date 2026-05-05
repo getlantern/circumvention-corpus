@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-filast-ooni
+kind: evaluation
+summary: OONI pairs client-submitted test reports with data independently collected at the OONIB backend TestHelper, providing both connection endpoints' viewpoints in a single unified report. The backend is designed to be run by anyone and exposed both over HTTPS and as Tor Hidden Services to resist simplistic denial-of-service and reduce fingerprint-ability of the reporting infrastructure.
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+defense_implications:
+    - Censorship measurement architectures should collect data from both ends of a connection to detect asymmetric interference (injected RSTs, forged DNS responses) that is invisible from a single vantage point.
+    - Expose measurement collection backends as Tor Hidden Services to protect collector infrastructure and prevent adversaries from blocking the reporting channel via IP or SNI.
+section: §5 Architecture
+extracted_by: claude-sonnet-4-6

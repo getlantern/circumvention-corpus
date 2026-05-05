@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-alharbi-opening
+kind: evaluation
+summary: 'Saudi Arabia progressively unblocked VoIP and messaging applications after 2017: all 18 tested apps were blocked during 2013–2017, 67% were accessible in 2018, 93% in 2019, and all except WeChat in 2020, following CITC''s 2017 announcement lifting the ban on compliant applications.'
+techniques:
+    - ip-blocking
+    - dpi
+censors:
+    - sa
+defense_implications:
+    - Regulatory compliance status directly determines app accessibility in SA; circumvention tools operating as standalone apps face less friction than those bundled with clearly non-compliant services.
+    - WeChat's persistent block despite other apps being unblocked suggests politically-driven blocking not amenable to protocol-level circumvention alone.
+section: §3.2
+extracted_by: claude-sonnet-4-6

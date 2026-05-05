@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-brubaker-cloudtransport
+kind: defense
+summary: Because CloudTransport uses the same network servers as legitimate cloud services, blocking it requires statistical classification of every cloud connection; false positives will disrupt popular and business-critical cloud applications (enterprise software, games, file backups), raising the economic and social costs of censorship. Empirical evidence shows that Chinese censors declined to block Amazon S3 even after it was used to mirror censored websites because doing so would disrupt 'thousands of services in China' with significant economic consequences. Due to the base-rate fallacy, even an accurate classifier will either miss many CloudTransport connections or cause collateral damage to non-circumventing cloud users.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Route traffic through infrastructure with large legitimate user bases and significant economic footprint (major cloud storage providers) to impose collateral-damage costs that deter censors from applying statistical blocking.
+    - Maximize diversity of traffic patterns across all legitimate cloud application traffic — not just one reference application — to exploit the base-rate fallacy and force high false-positive rates on ML classifiers.
+section: §4.1, §7
+extracted_by: claude-sonnet-4-6

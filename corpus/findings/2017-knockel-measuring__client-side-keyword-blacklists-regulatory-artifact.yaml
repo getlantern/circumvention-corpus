@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-knockel-measuring
+kind: detection
+summary: Chinese mobile games widely implement keyword censorship client-side — blacklists were found embedded in plain text, XML, JSON, compiled Lua, compiled C++, and encrypted formats requiring reverse engineering to extract. The client-side implementation exposed 132 keyword lists from 113 different games in the first experiment alone. Games must submit their blocked keyword list to regulators (MOC/SAPPRFT) to obtain a publication license, making keyword filtering a regulatory compliance artifact rather than purely an operational choice.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Client-side keyword lists in Chinese apps are a measurable, reversible artifact; circumvention researchers can statically analyze APKs/IPAs to enumerate filtered terms without needing network traffic
+    - Regulatory submission requirements mean keyword lists are semi-stable and tied to approval dates, giving circumvention tools a temporal foothold for predicting what filtering is in force
+section: §2, §3.1
+extracted_by: claude-sonnet-4-6

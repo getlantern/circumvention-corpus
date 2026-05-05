@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-durumeric-zmap
+kind: detection
+summary: Comprehensive Internet-wide scanning enables cross-IP tracking of users and devices by correlating stable cryptographic identifiers — TLS certificates or SSH host keys presented by home routers and cable modems — with public geolocation data across DHCP lease changes, defeating the anonymity assumption behind dynamic IP addresses.
+techniques:
+    - tls-fingerprint
+    - measurement-platform
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention relays and bridges that reuse TLS certificates or SSH host keys across IP address changes are trackable by adversarial scanners; rotate cryptographic identifiers on each IP change or use ephemeral server keys.
+    - Circumvention clients must not expose stable fingerprints (static public keys, predictable cert serial numbers) to unauthenticated scanners; challenge-based or session-ticket-only key exchange limits adversarial fingerprinting surface.
+section: §4.6
+extracted_by: claude-sonnet-4-6

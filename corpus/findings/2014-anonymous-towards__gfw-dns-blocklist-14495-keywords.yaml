@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anonymous-towards
+kind: detection
+summary: Testing approximately 130 million domain names uncovered 35,332 censored domains from which 14,495 keywords were extracted across 7 distinct matching patterns. The blocklist grew by approximately 10% over eight months (August 2013–April 2014), and more than two-thirds of censored domains had expired registrations, suggesting the GFW rarely removes entries.
+techniques:
+    - dns-poisoning
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention infrastructure domains must avoid containing any of the GFW's 14,495-keyword substrings — including as suffixes — since overblocking (e.g., purefacebook.com blocked via facebook.com) is an accepted side effect.
+    - Because the GFW rarely removes blocklist entries even after domain expiration, using ephemeral or rotating domain strategies provides limited long-term benefit; encrypted-SNI or domain-fronting approaches are more durable.
+section: §6
+extracted_by: claude-sonnet-4-6

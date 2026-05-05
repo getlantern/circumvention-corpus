@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-hasan-building
+kind: evaluation
+summary: TCP-based web traffic performs poorly on mesh networks because each wireless hop halves effective bandwidth (bidirectional ACKs share the same half-duplex channel) and introduces highly variable latency and loss; voice traffic is similarly unsuitable due to jitter. Applications leveraging delay-tolerant networking principles or requiring only very low bandwidth are identified as the category of workloads that can function within mesh constraints.
+defenses:
+    - meta-resistance
+defense_implications:
+    - When designing store-and-forward or asynchronous messaging for censorship-circumvention, explicitly embrace delay-tolerant semantics rather than attempting to retrofit TCP-based protocols onto low-capacity wireless hops.
+    - Evaluate candidate protocols against worst-case mesh conditions (high contention, variable loss) rather than laboratory point-to-point links.
+section: §4.2
+extracted_by: claude-sonnet-4-6

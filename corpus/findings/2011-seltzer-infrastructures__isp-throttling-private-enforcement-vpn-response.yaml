@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-seltzer-infrastructures
+kind: policy
+summary: The U.S. 'five strikes' program had major ISPs reduce bandwidth of accused subscribers; challenging required a $35 fee with only one permitted defense category ('unauthorized use of account'). Users responded by routing traffic through VPNs and anonymizing networks such as I2P to bypass ISP-level monitoring entirely.
+techniques:
+    - throttling
+defenses:
+    - tunneling
+    - tor
+censors:
+    - generic
+defense_implications:
+    - When ISPs are recruited as enforcement proxies, traffic must be tunneled through providers outside the enforcement network; VPN and mix-network onboarding is the direct and necessary user response.
+    - 'Design for the ISP as adversary: assume any plaintext flow-level metadata (source/destination IP, timing) visible to the access network can and will be acted upon.'
+section: §1.4.2
+extracted_by: claude-sonnet-4-6

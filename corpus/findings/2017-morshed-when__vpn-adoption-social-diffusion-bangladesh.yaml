@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-morshed-when
+kind: evaluation
+summary: Prior to Bangladesh's 2015 internet ban, only 1 of 21 study participants had prior knowledge of VPN or IP-masking software; during the 26-day ban, VPN knowledge spread virally through social networks until it was described as 'fairly commonplace,' with adoption driven almost entirely by peer-to-peer instruction rather than technical documentation. Users required only procedural knowledge — installation steps and connection — not understanding of VPN mechanics.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that require minimal technical understanding and can be installed and configured in a few taps are most likely to propagate through social networks during censorship events — privileging mobile-first, one-tap UX over configurability.
+    - Social-network diffusion is the dominant adoption pathway during acute censorship events; tool designers should optimize for shareability (small binary size, shareable install links, referral flows) to exploit this channel.
+section: Findings – Response to the Ban
+extracted_by: claude-sonnet-4-6

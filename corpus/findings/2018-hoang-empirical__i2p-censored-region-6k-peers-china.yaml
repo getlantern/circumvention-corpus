@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hoang-empirical
+kind: evaluation
+summary: Of approximately 32K active I2P peers observed daily during a three-month measurement (February–April 2018), roughly 6,000 peers came from 30 countries with poor Press Freedom scores (index > 50); China led with more than 2,000 peers, followed by Singapore (~700) and Turkey (~600). This suggests I2P is being used as a Tor/VPN alternative in heavily censored regions, despite China configuring I2P peers to hidden mode by default.
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Significant usage already exists inside high-censorship jurisdictions despite poor censorship resistance — prioritize shipping a blocking-resistant bootstrapping and transport layer rather than waiting for an ideal design, as users in these regions are adopting the tool regardless.
+    - Default-hidden mode for peers in high-censorship countries reduces network contribution but improves user safety; circumvention tools should apply geolocation-aware defaults that trade routing participation for reduced exposure in censored jurisdictions.
+section: §5.3.2
+extracted_by: claude-sonnet-4-6

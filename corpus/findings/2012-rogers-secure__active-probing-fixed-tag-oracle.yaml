@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-rogers-secure
+kind: detection
+summary: 'The paper explicitly flags that BTP''s fixed-size b-byte connection tag creates an active-probing oracle: a censor that sends b−1 bytes and observes no close, then sends one more byte and observes a close, can confirm the endpoint is running BTP. Preventing such active-probing attacks is identified as future work.'
+techniques:
+    - active-probing
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Do not use a fixed-length connection opener as the sole identifier; either randomize the tag-recognition window length or implement a decoy handler that accepts partial probes without closing.
+    - This is the same oracle-style weakness that broke early Tor bridge detection—any fixed-size boundary that triggers a state transition is a fingerprinting surface.
+section: §8
+extracted_by: claude-sonnet-4-6

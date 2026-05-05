@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-vasserman-one-way
+kind: evaluation
+summary: In a 250-node PlanetLab deployment with 10–15% silent node failures and high churn, the median user retrieved a 20MB file in 65–85 seconds end-to-end (search + manifest download + chunk fetch + reconstruction + decryption). 15.12% of DHT lookups and 11.24% of maintenance operations failed; 20% of nodes accounted for 80% of failures, yet nodes with working connections completed lookups and maintained sufficient guarantors for manifest replication.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Latency rather than throughput is the binding constraint in adversarial DHT environments; invest in parallel chunk lookups and downloads rather than higher per-node bandwidth.
+    - Design for a 10–15% baseline silent-failure rate; the system remains functional at this level, so availability guarantees should be expressed in terms of surviving this background noise.
+section: §4.1, Figure 3
+extracted_by: claude-sonnet-4-6

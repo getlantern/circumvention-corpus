@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-deng-random
+kind: detection
+summary: A Random Forest classifier with 100 CART trees and a sqrt(C) feature-selection strategy achieves over 85% accuracy detecting Shadowsocks traffic from biflow statistics. Accuracy increases monotonically with train-set and test-set size before plateauing.
+techniques:
+    - ml-classifier
+    - dpi
+defenses:
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - Biflow-level features (packet counts, burst statistics, timing) are sufficient for >85% RF classification — Shadowsocks operators must add traffic-shaping or padding to break these features.
+    - ML detector accuracy is train-set-limited at small scales, so obscuring flow shape during deployment limits effective adversarial retraining.
+section: §V, Abstract
+extracted_by: claude-sonnet-4-6

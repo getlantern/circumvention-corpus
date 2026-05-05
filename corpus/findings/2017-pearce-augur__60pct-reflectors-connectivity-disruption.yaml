@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-augur
+kind: evaluation
+summary: Aggregate measurements across nearly 180 countries over 17 days found that 60% of reflectors experienced some degree of connectivity disruption; the bias of detected blocks toward Citizen Lab Block List sites held for both inbound and outbound filtering, and temporal variability corroborated documented censorship events around political timelines.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Because 60% of global reflectors show some connectivity disruption, circumvention deployments should assume any new IP will face partial filtering in at least one target country and must implement graceful multi-path fallback from launch rather than treating blocking as an exception.
+    - Temporal monitoring over days reveals censorship onset patterns tied to political events; circumvention infrastructure should integrate automated reachability checks so blocking is detected in near-real-time rather than through lagged user-reported failures.
+section: §VI-B
+extracted_by: claude-sonnet-4-6

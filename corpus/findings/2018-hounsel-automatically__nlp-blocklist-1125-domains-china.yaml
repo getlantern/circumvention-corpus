@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hounsel-automatically
+kind: evaluation
+summary: Using NLP phrase extraction on Chinese-language censored pages, the system discovered 1,125 new censored domains not present on any publicly available blocklist, producing a list 12.5× larger than the standard Citizen Lab list (220 web pages, 85 domains). Across three evaluations (unigrams, bigrams, trigrams, each capped at 1,000,000 URLs), only 3 of the top 50 discovered domains overlapped with FilteredWeb's top 50.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Treat Citizen Lab and FilteredWeb lists as strict lower bounds; NLP-bootstrapped expansion discovers an order-of-magnitude more blocked domains, so circumvention tools distributing bootstrap server lists or blocked-domain databases should incorporate automated expansion pipelines.
+    - DNS-query probing to non-DNS IPs inside China remains a valid lightweight censorship oracle for validating new candidate domains before adding them to blocklists.
+section: §5.1, Table 1
+extracted_by: claude-sonnet-4-6

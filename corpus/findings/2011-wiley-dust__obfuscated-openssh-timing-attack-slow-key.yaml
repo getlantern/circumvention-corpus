@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wiley-dust
+kind: detection
+summary: The obfuscated-openssh handshake encrypts SSH with a key derived from an iterated-hash PBKDF whose slowness was intended to prevent real-time censor analysis; Wiley argues this defense fails because modern censors use statistical packet sampling with offline processing, and the slow key generation itself introduces a timing side-channel detectable from the inter-packet delay between the first and second packets.
+techniques:
+    - dpi
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Computational cost is not a reliable security margin against nation-state censors that batch-process sampled flows offline — cryptographic indistinguishability is required, not just slowness.
+    - Any protocol design that makes the first-to-second-packet timing anomalous (e.g., due to key derivation) leaks a detectable fingerprint even when payload bytes are opaque.
+section: §2.2
+extracted_by: claude-sonnet-4-6

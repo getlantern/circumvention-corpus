@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-ververis-internet
+kind: evaluation
+summary: The northern Cyprus ISP Multimax (AS197792) employed IP-based blocking rather than DNS hijacking, and its blocked-site list — including Wikipedia, Tor Project, Wikileaks, and Psiphon — matched Turkish ISP blocklists rather than the RoC NBA gambling blocklist, demonstrating that geopolitically distinct ISP operators on the same island implement categorically different censorship regimes.
+techniques:
+    - ip-blocking
+censors:
+    - tr
+defense_implications:
+    - IP-based blocking (as used by Multimax/Turkey-aligned ISPs) is not bypassed by DNS resolver substitution alone; circumvention tools deployed in Turkish-aligned networks must also route around IP-level filtering via a proxy or VPN.
+    - Tor Project and Psiphon infrastructure were explicitly IP-blocked on the Turkish-aligned ISP; circumvention tools serving these environments must not rely on well-known IP ranges associated with their own infrastructure and should use domain fronting or CDN egress.
+section: §6.6
+extracted_by: claude-sonnet-4-6

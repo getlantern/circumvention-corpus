@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-detal-revealing
+kind: evaluation
+summary: In 80% of measured paths (72 PlanetLab VPs × 5,000 Alexa targets), at least one intermediate router returns the full IP packet in ICMP time-exceeded replies (RFC1812-compliant), enabling per-hop detection of packet modifications. The majority of these full-ICMP routers reside in the network core rather than the access segment.
+techniques:
+    - measurement-platform
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Use tracebox-style active probing (incrementing TTL, comparing ICMP-quoted packets against originals) to audit paths for on-path interference before committing to a circumvention architecture; 80% path coverage makes pre-deployment audits operationally feasible.
+    - Leverage RFC1812-compliant core routers as passive 'mirrors' to detect and localize censorship middleboxes in the access segment without needing control of the destination host.
+section: §3.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-ling-extensive
+kind: detection
+summary: 'With 512 PlanetLab nodes each advertising 50 KB/s as malicious Tor middle routers, the theoretical catch probability that at least one bridge circuit traverses a controlled node reaches P(512, 50, 30) ≈ 99% after only 30 circuits. In real-world validation, the 21st circuit created by a bridge client traversed one of the 512 controlled PlanetLab nodes, matching theory. The result generalizes: the 30-circuit exposure threshold applies to any adversary whose nodes'' aggregated bandwidth reaches the equivalent of 512 × 50 KB/s = ~25.6 MB/s.'
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - A bridge that accumulates even 21–30 client circuits is highly likely to be identified by a modestly resourced adversary; bridge lifetimes and circuit counts should be strictly bounded, and fresh bridge credentials issued to users on short rotation cycles.
+    - Per-circuit credential or address diversity (e.g., each client receives a distinct bridge IP mapped to a shared backend) prevents circuit count accumulation against any single enumerable IP.
+section: §IV-B, §V-B, Fig. 7, Theorem 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dyer-protocol
+kind: evaluation
+summary: 'FTE proxy overhead compared to socks-over-ssh: the intersection-ssh format incurred 0% average latency increase and only 16% bandwidth overhead (1,164 KB vs. 1,348 KB per Alexa Top 50 site). The worst-case auto-http format incurred 29% latency increase (5.5 s vs. 7.1 s) and 181% bandwidth overhead (3,279 KB), primarily due to ciphertext expansion and FTE/SOCKS negotiation on persistent empty TCP connections.'
+techniques:
+    - dpi
+defenses:
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - Prefer intersection or manually-authored regexes over auto-generated ones in production; the auto-http format's DFA has 13,815 states vs. 38 for manual-http and requires 184 MB for BuildTable, making it impractical for resource-constrained clients.
+    - Set FTE format parameter m > 0 (raw AE ciphertext appended after the formatted prefix) to maximize goodput; formats with m=0 are constrained to the language's capacity alone and achieved only 1.9 Mbps vs. 42 Mbps for intersection-ssh at 100 MB file transfer.
+section: §5, Figure 5–6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-dyer-marionette
+kind: detection
+summary: Randomization-based obfuscation systems (obfs2/3, obfs4, ScrambleSuit, Dust) resist blacklist DPI but fail entirely under protocol-whitelist filtering, as explicitly demonstrated during the Iranian elections where censors permitted only known-good protocols. Pure randomization provides no signal of being a permitted protocol, making it trivially blockable under any whitelist regime.
+techniques:
+    - dpi
+    - random-payload-detect
+defenses:
+    - randomization
+    - obfs4
+    - scramblesuit
+censors:
+    - ir
+defense_implications:
+    - Deploy protocol-mimicry or tunneling-based transports rather than pure randomization in any environment where censors may apply whitelist-style filtering — detect whitelist conditions in-band and switch strategies accordingly.
+    - Treat randomization as a blacklist-only defense; always pair it with a mimicry fallback for deployments in Iran or other environments with known whitelist enforcement.
+section: §1, §2
+extracted_by: claude-sonnet-4-6

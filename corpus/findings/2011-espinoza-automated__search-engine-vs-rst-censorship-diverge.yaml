@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-espinoza-automated
+kind: detection
+summary: During the 2011 Jasmine Revolution, words such as 'Jasmine Flower,' terms linked to Liu Xiaobo's Nobel Prize, and numeric references to presidential rent criticism triggered Chinese search engine censorship (results-removed warnings) but produced no HTTP GET request RST injections. This demonstrates that search engine filtering and backbone keyword filtering are independently operated layers that diverge sharply for rapidly evolving current-event content.
+techniques:
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool designers should treat search-engine censorship and backbone RST injection as separate threat surfaces requiring distinct measurement and evasion strategies.
+    - Rapid-response content blocking is concentrated at the application layer (search engines) rather than the backbone; protocols that bypass the backbone do not automatically preserve access to search results.
+section: §4.2
+extracted_by: claude-sonnet-4-6

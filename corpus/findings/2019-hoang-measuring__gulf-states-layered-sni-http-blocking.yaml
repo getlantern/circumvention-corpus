@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-hoang-measuring
+kind: detection
+summary: 'Oman and Qatar deploy layered blocking: after a TCP handshake to geti2p.net completes normally, a TCP RST is injected immediately after the TLS ClientHello (SNI-based blocking), while HTTP connections to the mirror site receive injected packets redirecting to explicit national block pages. Kuwait applied only the HTTP mirror block, and only at one of six tested ASes (AS47589, Kuwait Telecommunication Company), with all other Kuwaiti networks leaving I2P fully accessible—illustrating significant ISP-level variation within a single country.'
+techniques:
+    - sni-blocking
+    - rst-injection
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - 'A two-layer defense is required in Gulf-state deployments: ECH/ESNI to defeat SNI blocking of HTTPS bootstrap, plus domain-fronting or meek-style tunneling to defeat HTTP-layer packet injection on mirror sites.'
+    - ISP-level variation means circumvention tools must not conclude a country is universally blocked from a single vantage point—multi-AS sampling is necessary before classifying traffic as nationally censored.
+section: §5.2–5.3
+extracted_by: claude-sonnet-4-6

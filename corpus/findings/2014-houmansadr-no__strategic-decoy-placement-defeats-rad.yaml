@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-houmansadr-no
+kind: defense
+summary: 'The RAD paper''s random decoy placement is heavily biased in favor of the censor: 86.2% of all Internet ASes are edge ASes with customer cone size 1, so random selection rarely hits transit ASes. Replacing random with sorted-no-ring placement (decoys chosen from ASes that appear most on adversary BGP routes) disconnects China from 30% of Internet destinations using only 2% decoy coverage, versus the 4% disconnection reported in the original RAD paper.'
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Prioritize decoy placement in high-customer-cone transit ASes rather than random ASes; sorted-no-ring placement dramatically amplifies censor cost per deployed decoy.
+    - Exclude ring ASes (non-adversary ASes with direct business relationships with the censor) from decoy placement to prevent easy re-routing workarounds.
+section: §V, §VII-A
+extracted_by: claude-sonnet-4-6

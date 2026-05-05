@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anderson-global
+kind: detection
+summary: 'Rostelecom (AS12389) performed network-layer redirection of blacklisted traffic rather than DPI-based filtering: 40 of 343 Russian probes returned SSL certificates attributed to Russian ISPs (State Institute of Information Technologies, Rostelecom, Electron Telecom Network). The interference affected all protocols and ports holistically across Rostelecom''s downstream peers, consistent with BGP-level false advertisements or forwarding rules rather than application-layer classification.'
+techniques:
+    - bgp-hijack
+    - middlebox-interference
+censors:
+    - ru
+defense_implications:
+    - Certificate pinning or out-of-band public-key verification is essential for detecting routing-layer MITM before transmitting sensitive data; protocol-layer encryption alone cannot defeat a censor that controls the transit path.
+    - Include path-integrity checks (e.g., traceroute anomaly detection) in circumvention health monitoring — unexpected shortening of hop count or disappearance of international transit hops is a reliable signal of BGP-level hijacking.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-bocovich-secure
+kind: evaluation
+summary: Between 80% and 90% of internet routes are asymmetric, with only about 10% of flows symmetric in Tier-1 (backbone) networks and roughly 70% symmetric at the network edge. This asymmetry makes decoy routing systems requiring relay stations on both upstream and downstream paths impractical for the majority of real-world deployments.
+defenses:
+    - decoy-routing
+    - tapdance
+    - telex
+defense_implications:
+    - Design decoy routing systems to function with relay stations on only one direction of the path rather than requiring symmetric coverage — upstream-only or downstream-only architectures must be the default, not a special case.
+    - Prefer downstream-only relay placement (as in Waterfall) since adversaries find it harder and more expensive to route around downstream stations than upstream ones.
+section: §3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-frolov-isp-scale
+kind: evaluation
+summary: 'The one-week trial served over 50,000 unique users (peak daily count: 57,000) with up to 4,000 concurrent sessions simultaneously, demonstrating that a four-station refraction deployment co-located at two mid-sized network operators can support tens of thousands of real censored users.'
+defenses:
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Integrate refraction-networking as a modular pluggable transport inside an existing circumvention tool (as done here with Psiphon Android) to reach a large user base immediately without requiring separate client installs.
+    - Use privacy-preserving session tokens (client-generated identifiers) rather than source IPs for operational logging; the deployment deliberately avoided logging source addresses or destination URLs.
+section: §4.2, Figures 4, 7
+extracted_by: claude-sonnet-4-6

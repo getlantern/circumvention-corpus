@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-can
+kind: policy
+summary: The authors argue that it is almost certainly impossible to eliminate — or even definitively quantify — the risk to users who perform censorship measurements, because surveillance system capabilities are rapidly evolving and in some cases unknowable; retribution in adversarial environments may not follow due process. The paper explicitly states that its techniques had not been deployed on real networks as of writing because "a better consideration of the associated risks is warranted."
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Risk-reduction for both measurement and circumvention should be treated as layered best-effort property, not a binary guarantee — tool designers must communicate residual uncertainty to users rather than offering safety assurances.
+    - Ethical deployment of measurement or circumvention infrastructure requires explicit informed consent from users, proportional benefit-to-risk evaluation per locale, and avoidance of generating spurious load on third-party infrastructure without consent.
+section: §6–§7
+extracted_by: claude-sonnet-4-6

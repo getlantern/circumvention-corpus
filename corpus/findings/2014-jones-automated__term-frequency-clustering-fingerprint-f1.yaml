@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-automated
+kind: evaluation
+summary: Term frequency clustering of block pages achieves an F-1 measure of 0.98, correctly recovering manually identified block-page templates; page-length clustering performs far worse at F-1 of 0.64. Across the full ONI dataset, only 37 distinct term frequency vectors were found from five years of measurements, indicating that filtering vendors rarely change block-page HTML structure.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - The structural stability of block-page templates (only 37 distinct vectors over 5 years) means a small, static signature library suffices for reliably identifying which commercial filtering product is in use — circumvention tools can use this to tailor evasion to a specific vendor.
+    - HTML-structure clustering is more reliable than byte-length heuristics for fingerprinting, so diagnostic tooling should prefer tag-frequency vectors over size thresholds when attributing blocking to a specific ISP product.
+section: §5.1, §5.2
+extracted_by: claude-sonnet-4-6

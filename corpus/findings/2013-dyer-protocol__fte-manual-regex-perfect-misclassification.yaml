@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dyer-protocol
+kind: defense
+summary: Manually-generated FTE regexes achieve a 100% misclassification rate against all six tested DPI systems — appid, l7-filter, YAF, bro, nProbe, and the proprietary enterprise-grade DPI-X — for HTTP, SSH, and SMB target protocols. Each regex took less than 30 minutes to specify and debug against known classifiers.
+techniques:
+    - dpi
+    - ml-classifier
+defenses:
+    - format-transform
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Use manually-authored FTE regexes drawn from RFC requirements of the target protocol rather than lifted verbatim from a single DPI system; the intersection of multiple DPI regexes provides the broadest coverage.
+    - For any protocol where nProbe-style length-field or banner-length constraints exist, set the FTE format parameter m=0 and encode a fixed, valid length value to satisfy semantic checks without sacrificing capacity.
+section: §4.2, Figure 4
+extracted_by: claude-sonnet-4-6

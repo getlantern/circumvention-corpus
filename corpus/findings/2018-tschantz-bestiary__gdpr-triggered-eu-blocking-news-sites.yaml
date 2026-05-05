@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-tschantz-bestiary
+kind: evaluation
+summary: After GDPR took effect on May 25, 2018, 74 websites that had previously served all three EU vantage points (London, Sofia, Frankfurt) began blocking them; 40 returned explicit 'Blocked due to GDPR' blockpages with HTTP 403, 7 used HTTP 451 Unavailable For Legal Reasons, and all 47 sites with explicit blockpages were local news outlets.
+techniques:
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Server-side geo-blocks triggered by compliance law (rather than political censorship) are indistinguishable at the network layer from government-mandated blocks — circumvention tools targeting 'censorship' must handle both classes or they will silently fail for users encountering compliance-motivated blocks.
+    - HTTP 451 can be used as a programmatic signal to distinguish legal-compliance blocks from political censorship; incorporate status-code parsing into blockpage classifiers.
+section: §6, Table 3
+extracted_by: claude-sonnet-4-6

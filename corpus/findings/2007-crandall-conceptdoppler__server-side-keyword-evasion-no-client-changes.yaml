@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-crandall-conceptdoppler
+kind: defense
+summary: 'When the GFC keyword blacklist is known, multiple server-side-only evasion techniques become viable requiring no client modification: IP packet fragmentation to split keywords across MTU boundaries, HTML comment injection mid-keyword (e.g., ''Fa<!- Comment ->lun Gong''), alternative URL percent-encodings (e.g., ''F%61lun Gong''), and spam-style character substitution (''F@1un G0-ng''); the GFC implementation was observed not to check control characters in URL requests.'
+techniques:
+    - keyword-filtering
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Server operators (CDN nodes, proxy backends) can apply blacklist-aware packet fragmentation or keyword obfuscation transparently, allowing censored clients to use unmodified browsers with no special software installation.
+    - These techniques are only as current as the blacklist replica — coupling them to a ConceptDoppler-style live monitoring system is necessary to handle keywords added in response to breaking news events.
+section: §5
+extracted_by: claude-sonnet-4-6

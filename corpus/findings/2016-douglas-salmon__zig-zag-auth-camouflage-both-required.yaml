@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-salmon
+kind: defense
+summary: Salmon's defense against the active zig-zag attack — where a censor blocks a known server to force users onto new ones and watches for correlated reassignments — requires both per-user authentication (unique login credentials per server so unauthorized probes receive a plausible HTTPS page) and traffic camouflage. Without authentication, the server must respond as a functioning proxy to any connection, fully exposing itself to the censor; without camouflage, even a rejected connection may reveal the server's nature.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - bridges
+    - mimicry
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Proxy servers must present a convincing cover identity (e.g., a real HTTPS response) to unauthenticated connections, not a generic error or timeout — any discriminating response allows the censor to confirm the server is a proxy without requiring a block event.
+    - Warn users to use private/incognito browsing and avoid leaving browser sessions open across VPN reconnections, as cookie-based cross-session correlation can allow a censor controlling a monitored site to map multiple proxy IPs to a single user.
+section: §3.10
+extracted_by: claude-sonnet-4-6

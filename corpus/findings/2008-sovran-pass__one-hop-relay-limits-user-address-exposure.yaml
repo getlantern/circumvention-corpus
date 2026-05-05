@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2008-sovran-pass
+kind: defense
+summary: Kaleidoscope uses at most one intermediate relay hop so proxies can serve users beyond their immediate trust neighborhood without directly learning user addresses. If a system allowed each proxy to directly advertise to N users, a censor posing as a proxy would learn N user identities; the one-hop relay design caps per-proxy exposure to r=5 relay addresses and keeps end-user identities hidden from proxies.
+techniques:
+    - active-probing
+defenses:
+    - bridges
+    - meta-resistance
+defense_implications:
+    - Cap per-proxy user-address exposure by routing user traffic through at most one blind relay, so a compromised proxy reveals relay addresses rather than end-user identities.
+    - Architecturally separate 'proxy learns user address' (high-risk) from 'relay forwards encrypted traffic' (low-risk) — proxies should never need to know who their users are.
+section: §3
+extracted_by: claude-sonnet-4-6

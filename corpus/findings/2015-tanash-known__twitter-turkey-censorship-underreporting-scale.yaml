@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-tanash-known
+kind: evaluation
+summary: Twitter's official transparency reports for Turkey recorded 183 withheld tweets (Jan–Jun 2014) and 1,820 withheld tweets (Jul–Dec 2014), but the authors' collection of 17 million geo-bounded Turkish tweets yielded 3,258 withheld tweets from the streaming phase alone, and expanding to followers of censored accounts produced 171,652 withheld tweets—roughly two orders of magnitude more than Twitter's own disclosures.
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Platform-side content withholding is underreported by two orders of magnitude; tools that rely on official transparency reports to model censor behavior will systematically underestimate the threat surface.
+    - Crawling the social graph outward from known-censored accounts is an effective method for discovering the true scope of censorship — circumvention researchers should build similar probing pipelines rather than trusting official disclosures.
+section: §4.1, §5.2
+extracted_by: claude-sonnet-4-6

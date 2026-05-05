@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-monitoring
+kind: evaluation
+summary: UBICA's crowdsourced measurement campaign across 31 countries deployed 200+ probes (47 GUI clients, 188 headless clients, 16 BISmark routers) and tested more than 16,000 targets (~15,000 hostnames) over 4 months. Its content-size ratio algorithm detects blockpage substitution by comparing average resource size per country against a global baseline, using a threshold of 0.3 (midpoint between the two observed distribution modes minus a 0.2 guard interval) without requiring a pre-existing uncensored ground truth.
+techniques:
+    - measurement-platform
+    - dns-poisoning
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - Embed a content-size ratio check (threshold ~0.3× global average) in circumvention clients as a lightweight first-pass detector for in-path HTTP blockpage injection, avoiding the need to maintain a curated uncensored baseline.
+    - Deploy distributed probes at multiple ISPs per target country before selecting an evasion layer — ISP-level heterogeneity means a single country-wide technique assumption will miss or over-engineer the fix.
+section: §2, §3
+extracted_by: claude-sonnet-4-6

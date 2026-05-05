@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anderson-global
+kind: evaluation
+summary: Monitoring Twitter, YouTube, Tor, and Google Public DNS across 10 Atlas probes spanning 9 ASNs cost 19,200 credits per day (under 1 probe-day equivalent), and Atlas's external queuing allowed measurement scheduling to begin within hours of reported blocks. The platform documented 6 distinct shifts in Turkey's filtering strategy and identified private-sector cooperation in Russia that would have been missed by platforms limited to DNS and HTTP measurements.
+techniques:
+    - measurement-platform
+censors:
+    - tr
+    - ru
+defense_implications:
+    - Integrate lightweight RIPE Atlas measurements (DNS + SSLCert + traceroute) into circumvention infrastructure monitoring pipelines to detect filtering shifts and adapt server selection or protocol fallback in near real time.
+    - Traceroute path-change detection is a low-cost, high-signal complement to DNS and SSL reachability checks — route shortening and loss of international hops are early indicators of BGP-level interference before full blocking takes effect.
+section: §3.2, Table 3
+extracted_by: claude-sonnet-4-6

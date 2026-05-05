@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-automated
+kind: evaluation
+summary: Page length comparison at a 30.19% size-difference threshold achieves a 95.03% true positive rate and 1.371% false positive rate for block page detection, outperforming DOM similarity (95.35% TP, 3.732% FP) on false positive rate and cosine similarity (97.94% TP, 1.938% FP, 74.23% precision) on precision. These metrics were evaluated via ten-fold cross-validation on the ONI dataset of ~500,000 entries from 49 countries spanning 2007–2012.
+techniques:
+    - dpi
+    - measurement-platform
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools can embed lightweight block-page detectors (page-length delta ≥30%) to provide in-band signal that a connection was censored rather than failed for other reasons.
+    - Block-page detection enables longitudinal monitoring of censor behavior; wire this into proxy health checks to distinguish IP-level blocking from content-specific blocking automatically.
+section: §4.2, Table 1
+extracted_by: claude-sonnet-4-6

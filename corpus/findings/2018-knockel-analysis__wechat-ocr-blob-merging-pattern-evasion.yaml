@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-knockel-analysis
+kind: detection
+summary: WeChat's OCR filter performs blob merging to reconstruct characters from disconnected components. Filling character strokes with tiled letter patterns evaded OCR filtering in 100% of tests (vs. 92% for tiled square patterns), because tiled letters distract the blob-merging stage into finding the letter tiles rather than the composed characters.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Render sensitive text with complex fill patterns — tiled letters are more effective than tiled squares — to fragment characters into blobs that defeat blob-merging OCR stages.
+    - Use larger font sizes when applying blob-disruption techniques; smaller text has fewer blobs per character and reduces evasion effectiveness, as seen in the two 25-keyword failures.
+section: §3.1.2
+extracted_by: claude-sonnet-4-6

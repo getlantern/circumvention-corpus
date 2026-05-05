@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-morshed-when
+kind: deployment
+summary: The Bangladesh Telecommunication Regulatory Commission (BTRC) directed ISPs to block Facebook, Viber, WhatsApp, and Facebook Messenger on November 18, 2015; the ban expanded over 26 days to include Twitter, Skype, IMO, and Instagram, with a coincidental 1-hour complete internet blackout at the outset. Blocking was enforced at the ISP level via written BTRC directives, targeting specific named platforms rather than underlying protocols or ports.
+techniques:
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Protocols that avoid operating under well-known application names or brand identities are harder to add to a platform-name blocklist — unnamed or generic-looking proxies survive longer before authorities discover and add them.
+    - ISP-level enforcement via written directive creates a lag between the decision to block and implementation; circumvention tools that can shift traffic during the confusion window gain additional operational reach.
+section: Background
+extracted_by: claude-sonnet-4-6

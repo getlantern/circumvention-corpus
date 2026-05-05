@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-weinberg-stegotorus
+kind: evaluation
+summary: HTTP steganography in StegoTorus expands upstream traffic by a factor of 41× and downstream by 12× compared to a direct connection (uploading 966,964 bytes vs. 23,643 bytes to transfer a 1 MB file). Chopper-only operation adds only ~2.7× upstream overhead, comparable to plain Tor. Maximum achievable goodput with the HTTP module is ~27 kB/s (~4× a 56 kbps modem), which the authors attribute to a minimum expansion factor of 8× inherent in contemporary steganographic schemes.
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+    - mimicry
+defense_implications:
+    - HTTP-body steganography (embedding in JS/PDF/SWF response bodies) is bandwidth-expensive by design; designers should evaluate whether per-bit encoding efficiency (target < 8× expansion) is achievable before committing to this cover channel.
+    - A two-tier architecture — lightweight randomization layer for bulk data plus steganographic cover only for handshakes and metadata — can preserve detectability resistance while avoiding 40× bandwidth amplification.
+section: §6, Table 3, Figure 7
+extracted_by: claude-sonnet-4-6

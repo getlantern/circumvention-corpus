@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-kathuria-bypassing
+kind: defense
+summary: The BBC has distributed international audio and video through Akamai CDN since 2003 using URLs that do not include bbc.co.uk, making URL and IP-based blocking harder than targeting *.bbc.co.uk directly. However, individual Akamai edge machines have been blocked in China, causing thousands of co-hosted websites to become collaterally unavailable, illustrating the concentration risk when many services share CDN IP space.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - CDN-hosted delivery under non-branded URLs provides meaningful resistance to domain and IP blocklists, but operators must monitor individual CDN node availability and be prepared to route around blocked edge nodes.
+    - 'The collateral-damage dynamic of CDN blocking (one blocked IP affects thousands of sites) can be a strategic asset: deploying on widely-shared CDN infrastructure raises the cost to the censor and may deter blocking.'
+section: §4.2
+extracted_by: claude-sonnet-4-6

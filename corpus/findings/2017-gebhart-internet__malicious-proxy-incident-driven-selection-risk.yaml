@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gebhart-internet
+kind: detection
+summary: 'Users in Thailand relied on incident-driven tool selection—running a fresh Google search for a proxy or VPN each time they hit a block—which the paper identifies as a systematic vulnerability: the Thai Royal Police exploited this pattern after the 2014 coup by linking a phishing application to a government block page, harvesting email addresses and gaining application-level access to Facebook profile information. The paper further notes that orchestrated stricter censorship could drive users to a government-operated malicious tool.'
+techniques:
+    - ip-blocking
+    - packet-injection
+defenses:
+    - tunneling
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools must be distributed before users need them (pre-positioned in browsers or OS defaults) to break the incident-driven Google-search pattern that makes users susceptible to malicious proxies.
+    - Tool authenticity signals (e.g., code signing, reproducible builds, official app-store listings) are a first-order defense requirement in high-repression environments where government honeypot proxies are a documented threat.
+section: §5.3.3, §6.2.2
+extracted_by: claude-sonnet-4-6

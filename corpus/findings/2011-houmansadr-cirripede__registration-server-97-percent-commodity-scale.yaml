@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-houmansadr-cirripede
+kind: evaluation
+summary: Replaying 94 million TCP SYN packets from 6.4 million unique client IPs at ~41,000 packets/second, the Cirripede registration server (quad-core Xeon E5530, 12 GB RAM) achieved a 97% detection rate — 1,038,689 out of 1,069,318 embedded registrations — with average CPU utilization of 56% (max 73%) and average memory of 1.1 GB (max 1.6 GB). The 3% miss rate was caused entirely by network-layer packet reordering, not server capacity.
+defenses:
+    - decoy-routing
+defense_implications:
+    - ISN-based covert registration is viable at Internet backbone scale on commodity hardware; design the registration state machine to tolerate out-of-order SYN delivery to close the 3% gap.
+    - Memory growth is proportional to registered-client state, not total traffic volume — set registration TTLs aggressively to bound memory under adversarial re-registration floods.
+section: §6.1
+extracted_by: claude-sonnet-4-6

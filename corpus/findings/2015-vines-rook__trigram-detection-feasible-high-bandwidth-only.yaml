@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-vines-rook
+kind: evaluation
+summary: Game-specific trigram analysis of mutable fields distinguishes high-bandwidth Rook (1-in-2 substitution rate) in server-side packet counts, showing clearly reduced distinct-trigram counts versus baseline. Standard Rook (1-in-10) produces only a few outliers and is not reliably distinguishable; any detector would face a high false-negative or false-positive rate against normal-rate Rook.
+techniques:
+    - dpi
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - A game-specific n-gram detector is feasible but requires the censor to build a per-game packet parser and perform full-capture stateful analysis — this raises the attack cost significantly above stateless DPI.
+    - Dynamic self-adjusting symbol tables (monitoring how substitutions shift statistical distributions and reweighting accordingly) are the recommended mitigation if trigram-based detection becomes a practical threat.
+section: §4.3 Game-Specific n-gram Analysis
+extracted_by: claude-sonnet-4-6

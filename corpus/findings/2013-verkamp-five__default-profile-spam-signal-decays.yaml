@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-verkamp-five
+kind: detection
+summary: Default-profile usage was significantly elevated among spam accounts in China'11 (89.4% spam vs 51.2% non-spam), Russia (57.8% vs 34.7%), and China'12 (95.1% vs 47.8%); however, Mexico inverted this trend with only 1.7% of spam accounts using default profiles vs 27.0% of non-spam accounts, indicating that newer campaigns actively customize profiles to evade appearance-based detection.
+techniques:
+    - ml-classifier
+    - keyword-filtering
+censors:
+    - cn
+    - ru
+defense_implications:
+    - Default-profile heuristics must be weighted against campaign recency — adversaries have already adapted to this signal in post-2012 operations.
+    - Profile customization effort should be treated as evidence of a more sophisticated, better-resourced campaign, not as evidence of legitimacy.
+section: §4.2, Table 7
+extracted_by: claude-sonnet-4-6

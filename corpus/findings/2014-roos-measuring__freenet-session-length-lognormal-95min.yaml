@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-roos-measuring
+kind: evaluation
+summary: Freenet users exhibit a median session length of 95–99 minutes (p=0.975–0.99), substantially longer than all measured P2P file-sharing systems (1–60 minutes for Napster, Gnutella, FastTrack, Overnet, BitTorrent, KAD); ~2% of sessions exceeded 100 hours, and the distribution is best modeled by a lognormal fit (residual error 0.019) rather than Weibull or exponential.
+techniques:
+    - measurement-platform
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design P2P overlay maintenance and neighbor-selection algorithms to assume long-lived sessions (lognormal median ~95 min); aggressive short-interval churn assumptions waste bandwidth and destabilize routing unnecessarily for this user population.
+    - Use lognormal (not Weibull or exponential) churn models when simulating decentralized censorship-resistance overlays to avoid overestimating peer turnover and underestimating sustained peer availability for replica storage.
+section: §5.2
+extracted_by: claude-sonnet-4-6

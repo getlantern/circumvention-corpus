@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2005-perng-censorship
+kind: detection
+summary: PIR alone does not achieve censorship resistance. Using the QRA (Quadratic Residuosity Assumption) PIR scheme as a direct CR implementation, a filter can replace a query component — substituting a quadratic residue for a non-residue at the target column index — forcing the server to return an incorrect result for the targeted document while leaving all other documents unaffected, yielding censorship susceptibility of 1.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - A PIR-based censorship-resistant system must include query-integrity protection; query modification by an in-path censor is a concrete, exploitable attack that PIR privacy guarantees do not prevent.
+    - Do not treat PIR adoption alone as sufficient for censorship resistance — the client must be able to verify that the server received an unmodified query before trusting the response.
+section: §6
+extracted_by: claude-sonnet-4-6

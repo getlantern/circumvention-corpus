@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-ververis-internet
+kind: detection
+summary: Cypriot ISPs could not enforce HTTPS URL entries from the NBA blocklist because SSL/TLS interception was not deployed; connections to port 443 for blocked domains simply timed out with no block page or user notification, meaning HTTPS entries were effectively under-blocked.
+techniques:
+    - dpi
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - In regulatory blocking regimes without SSL/TLS interception capability, HTTPS is sufficient to defeat URL-level blocking; circumvention tools should ensure all control-plane and proxy traffic runs over TLS to reduce the ISP's ability to identify specific URLs or paths.
+    - Absence of a block page on HTTPS makes censorship invisible to users; circumvention tools targeting similar regulatory environments should detect silent connection failures (timeouts vs. block pages) to distinguish censorship from network errors.
+section: §4.1
+extracted_by: claude-sonnet-4-6

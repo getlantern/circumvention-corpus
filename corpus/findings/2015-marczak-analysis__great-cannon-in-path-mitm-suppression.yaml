@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-marczak-analysis
+kind: detection
+summary: The Great Cannon (GC) operates as a distinct in-path system — not an extension of the GFW — capable of both injecting and suppressing traffic, enabling full man-in-the-middle capability against targeted IP addresses. Unlike the on-path GFW, the GC only examines the first data packet of each connection (avoiding TCP bytestream reassembly), targets specific destination IP addresses rather than all border traffic, and maintains a per-source-IP flow cache of approximately 16,000 entries to ignore already-processed connections.
+techniques:
+    - packet-injection
+    - dpi
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Any circumvention infrastructure reachable by IP from within China (CDN edges, bridge distribution servers, domain-fronting CDN nodes) is a potential GC injection target for unencrypted responses — enforce end-to-end TLS on all user-facing connections with no HTTP fallback.
+    - The GC's per-IP flow cache (~16,000 entries) and single-packet-per-connection analysis model mean it is stateless enough to be deployed at line rate on international links; circumvention designs must not assume in-path suppression is impossible just because the GFW historically only injected.
+section: §3, §3.1
+extracted_by: claude-sonnet-4-6

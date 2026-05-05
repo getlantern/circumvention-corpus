@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-augur
+kind: evaluation
+summary: Of 2,134 tested sites, 229 (10.7%) were invalid for inbound blocking detection due to ingress filtering or network-origin discrimination; 431 additional sites were invalid for outbound blocking detection, of which 75% were Cloudflare-hosted and 7% Fastly-hosted because anycast topology prevents RST packets from returning to the originating anycast node.
+techniques:
+    - measurement-platform
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools relying on CDN fronting (Cloudflare, Fastly) cannot be tested for outbound blocking via IP ID side-channel methods — use direct probing or OONI-style in-country tests for CDN-fronted endpoints instead.
+    - Proxy IPs that apply per-origin ingress filtering will appear blocked in side-channel measurements even when reachable; operators must verify that reflector-to-proxy paths are free of asymmetric ingress filtering before interpreting Augur-style signals as censor action.
+section: §V-E
+extracted_by: claude-sonnet-4-6

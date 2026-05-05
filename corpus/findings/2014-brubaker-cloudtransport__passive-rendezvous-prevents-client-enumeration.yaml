@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-brubaker-cloudtransport
+kind: defense
+summary: CloudTransport's passive-rendezvous design ensures clients never establish direct connections to bridges; consequently, even a censor in complete control of a bridge cannot enumerate client IP addresses without computationally intensive flow-correlation analysis. Blacklisting the IP address of a CloudTransport bridge has zero effect on CloudTransport connections, and when a bridge migrates to a new IP address this change is completely transparent to clients.
+techniques:
+    - ip-blocking
+    - active-probing
+    - flow-correlation
+defenses:
+    - tunneling
+    - bridges
+defense_implications:
+    - Route circumvention traffic through an intermediary (cloud storage, CDN) so the bridge IP never appears on the censor-side network path — this eliminates IP-based blocking and passive client enumeration with a single architectural choice.
+    - Separate the rendezvous layer from the bridge's IP so that bridge compromise does not cascade to user identification, since correlation still requires large-scale traffic analysis even under full bridge compromise.
+section: §4.3
+extracted_by: claude-sonnet-4-6

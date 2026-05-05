@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wachs-censorship-resistant
+kind: policy
+summary: 'DNSSEC fails to withstand legal attacks because governments can legally compel DNS authority operators to manipulate entries and certify the changes; the trust chains DNSSEC establishes mirror DNS zone delegations and therefore inherit the same jurisdictional vulnerabilities. A Danish police incident demonstrated the collateral damage: 8,000 legitimate domains were accidentally removed when censorship procedures were executed against a single target. Chinese DNS injection has been shown to have worldwide effects on name resolution through out-of-bailiwick NS record chains.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Do not rely on DNS or DNSSEC for resolving circumvention infrastructure hostnames; a single legal order to a TLD operator or registrar can sever access for all users globally.
+    - Use cryptographically self-certifying identifiers (public keys as names) rather than registrar-controlled names so that name ownership cannot be transferred by judicial or executive action.
+section: §1, §2.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chai-importance
+kind: detection
+summary: 'In China''s Great Firewall, SNI filtering is almost never the sole blocking mechanism: only 70 of the 21,446 SNI-filtered sites are exclusively censored via SNI. The GFW uses SNI filtering as a ''third gatekeeper'' — applied after DNS hijacking and IP blocking — and maintains separate blacklists for SNI filtering and DNS hijacking, evidenced by 2,764 sites under DNS injection but not SNI filtering.'
+techniques:
+    - sni-blocking
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumventing SNI leakage (via ESNI or SNI omission) must be paired with encrypted DNS (DoH/DoT) and IP-hiding techniques to provide meaningful unblocking; any single-layer bypass is insufficient against layered GFW censorship.
+    - The existence of separate GFW blacklists for SNI and DNS suggests censors can selectively upgrade blocking of a domain without immediately applying all techniques — designers should monitor for incremental escalation rather than assuming an all-or-nothing response.
+section: §4.1
+extracted_by: claude-sonnet-4-6

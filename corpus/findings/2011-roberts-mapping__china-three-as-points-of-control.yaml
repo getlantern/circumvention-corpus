@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-roberts-mapping
+kind: deployment
+summary: China has only 3 points of control covering approximately 240 million IP addresses (roughly 80 million IPs per point of control), the lowest ratio among large-population countries. This enabled China to cut off nearly all Internet access for the Xinjiang region for ten months beginning July 2009.
+techniques:
+    - asn-blackholing
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Deploy relay infrastructure across diverse non-Chinese ASes; any relay transiting China's 3 core PoC ASes is trivially severable with a single administrative action.
+    - When bootstrapping connections from CN, prefer paths that exit via non-dominant transit ASes to avoid the chokepoints identified in this mapping.
+section: §II, §VI
+extracted_by: claude-sonnet-4-6

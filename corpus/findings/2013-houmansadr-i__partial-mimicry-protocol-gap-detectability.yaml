@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-i
+kind: detection
+summary: 'Protocol mimicry approaches (SkypeMorph, StegoTorus, CensorSpoofer) do not execute the target protocol in full and leave detectable discrepancies: SkypeMorph fails to replicate Skype''s TCP handshake, and CensorSpoofer''s IP-spoofing downstream channel enables active traffic analysis by censors who can inject manipulated packets and observe whether the purported VoIP endpoint reacts. The authors state that morphing approaches provide no provable indistinguishability, and protocol evolution further invalidates mimicry over time.'
+techniques:
+    - dpi
+    - traffic-shape
+    - active-probing
+defenses:
+    - mimicry
+    - pluggable-transport
+defense_implications:
+    - Run the full target cover protocol stack (complete TLS negotiation, real VoIP codec frames, authentic TCP handshake) rather than shaping or morphing; partial imitation leaves fingerprints that improve as censors invest in deeper classifiers.
+    - Avoid out-of-band upstream channels (IP spoofing, steganographic email) that create asymmetric traffic patterns exploitable via active probing — a censor can manipulate the supposed VoIP call and detect whether the server responds in a way inconsistent with a real call.
+section: §IX / §X
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-bock-geneva
+kind: defense
+summary: Geneva, a genetic algorithm using four packet-manipulation primitives (drop, tamper, duplicate, fragment), independently re-derived 30 of 36 (83.3%) previously published evasion strategies in controlled lab experiments and discovered successful strategies in 23 of 27 live training sessions against China's GFW, yielding 4 unique species, 8 subspecies (5 novel), and 21 fundamentally different variants. Each training session ran for 4–8 hours against a real censor.
+techniques:
+    - dpi
+    - rst-injection
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Automate evasion strategy discovery with genetic algorithms rather than manually reverse-engineering censors — Geneva reduces time-to-new-strategy from months to under 8 hours per training session.
+    - Build circumvention tools with composable packet-manipulation primitives (duplicate, fragment, tamper, drop) to enable programmatic exploration of the evasion strategy space without prior knowledge of censor internals.
+section: §5, Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-barradas-effective
+kind: detection
+summary: Capturing as little as 30 seconds of a multimedia-tunneling flow is sufficient for XGBoost to reach the same AUC achieved with a 60-second window (AUC=0.99 for Facet s=50%, AUC=0.95 for DeltaShaper h320×240, 8×8, 6, 1i at 30s). Classification performance degrades monotonically below 30 seconds, reaching AUC≈0.81 (Facet) and 0.75 (DeltaShaper) at 1 second.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Transports that require long warm-up periods before covert data flow begins (e.g., genuine calibration or negotiation phases) do not gain meaningful detection resistance, since 30 seconds of steady-state traffic is all a classifier needs.
+    - Short-lived connections or connection rotation every <30 seconds could in principle degrade classifier performance, but must be weighed against session-establishment overhead and the risk that handshake patterns themselves become fingerprints.
+section: §4.6, Table 4
+extracted_by: claude-sonnet-4-6

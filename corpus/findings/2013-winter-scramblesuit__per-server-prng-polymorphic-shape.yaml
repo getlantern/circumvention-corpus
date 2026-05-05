@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-scramblesuit
+kind: defense
+summary: ScrambleSuit achieves polymorphism by seeding each server's PRNG with a randomly generated 256-bit value, which generates server-specific probability distributions over packet lengths (up to 100 bins) and inter-arrival times (bins in [0, 10) ms). The seed is shared with clients after authentication, so both sides shape traffic identically; a censor monitoring two distinct ScrambleSuit servers observes different distributions and cannot build a single universal classifier.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - scramblesuit
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Per-server unique traffic shapes force a censor to train and deploy separate classifiers per server rather than one global model — exploit this by cycling seeds periodically or on each new server deployment.
+    - Sharing the PRNG seed in-band (post-authentication, via a dedicated control message) lets clients reproduce exact server distributions without additional out-of-band coordination; adopt this pattern in any randomized PT.
+section: §4.3
+extracted_by: claude-sonnet-4-6

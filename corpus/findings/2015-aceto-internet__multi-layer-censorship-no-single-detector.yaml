@@ -1,0 +1,24 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-internet
+kind: detection
+summary: Table 1 of the survey documents that by 2013–2014 censors were deploying simultaneous blocking across BGP, DNS, IP/port filtering, TCP disruption, TLS, and application-layer keyword filtering. No single detection tool in the survey covers all six layers; the most comprehensive, OONI (2012), covers DNS, IP/port, TCP, TLS, keyword, and HTTP but notes only partial BGP coverage.
+techniques:
+    - bgp-hijack
+    - dns-poisoning
+    - port-blocking
+    - ip-blocking
+    - rst-injection
+    - tls-fingerprint
+    - keyword-filtering
+    - dpi
+defenses:
+    - pluggable-transport
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Circumvention tools must address all six protocol layers independently — a tool blocked only at the IP layer may still leak identifying information at the TLS or DNS layer that triggers separate enforcement.
+    - Instrument deployed proxies to detect which layer triggered a block (DNS non-resolution vs. TCP RST vs. TLS alert vs. HTTP redirect) so that the correct per-layer mitigation can be applied automatically.
+section: Table 1
+extracted_by: claude-sonnet-4-6

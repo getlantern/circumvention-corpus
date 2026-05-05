@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-can
+kind: defense
+summary: Beverly et al. found that 77% of Internet clients can spoof source addresses within their own /24 and 11% can spoof within their own /16, with these characteristics holding across a wide range of countries and regions. The authors use this result to argue that IP-spoofed cover traffic — where measurement probes appear to originate from many hosts in the same AS — is broadly feasible in practice.
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Censorship measurement (and circumvention probe) traffic can be distributed across spoofed source IPs within the same /24 subnet on most networks, making per-host attribution by surveillance systems significantly harder without triggering unusually selective IDS rules.
+    - For stateful protocols where spoofed replies would cause a RST from the real host, use TTL-limited server responses calibrated to die between the surveillance observation point and the actual host — requires pre-scanning to count hops from the network boundary to each host.
+section: §4.2
+extracted_by: claude-sonnet-4-6

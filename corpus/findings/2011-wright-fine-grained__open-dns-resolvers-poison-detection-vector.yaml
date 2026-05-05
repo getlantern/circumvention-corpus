@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wright-fine-grained
+kind: evaluation
+summary: 'Open DNS resolvers, widely available across the internet as public services, make DNS poisoning trivially detectable globally: a researcher can connect to a resolver in a target country and compare responses against a trusted reference resolver, without requiring volunteer proxies or in-country infrastructure.'
+techniques:
+    - dns-poisoning
+censors:
+    - tr
+    - cn
+    - generic
+defense_implications:
+    - DNS poisoning remains one of the cheapest and easiest censor techniques to detect and bypass — circumvention clients should treat DNS responses from within censored networks as untrusted and always use an encrypted, out-of-band resolver (DoH/DoT).
+    - Use open-resolver divergence as a fast, low-cost signal to detect new DNS-based blocking before investing in full active probing campaigns.
+section: §4.2
+extracted_by: claude-sonnet-4-6

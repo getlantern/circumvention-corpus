@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-lowe-great
+kind: evaluation
+summary: A single bad Chinese DNS server queried 600 times about the same censored domain consistently returned a random address from the same pool of 8 IPs across all responses, confirming that the tampered behavior is deterministic and centrally coordinated rather than ISP-specific or probabilistic. The same 8-IP pool appeared uniformly across servers from China Telecom, China Unicom, and other carriers.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - The cross-carrier uniformity of the 8-IP pool confirms centralized GFW policy enforcement; a static compile-time denylist of those IPs is sufficient to detect poisoning without per-ISP calibration.
+    - The consistency means there is no 'safe' Chinese recursive resolver to fall back on — all in-country DNS is compromised, and any resilient circumvention bootstrap must use out-of-country or encrypted DNS resolution.
+section: §6.1, §6.3, Table 1, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-moghaddam-skypemorph
+kind: evaluation
+summary: SkypeMorph achieves a goodput of 33.9 ± 0.8 KB/s (naïve shaping) and 34 ± 1 KB/s (enhanced Traffic Morphing) versus 200 ± 100 KB/s for a normal Tor bridge, with overhead of ~28% compared to 12% for normal Tor. The two traffic-shaping methods perform statistically identically (KS p > 0.5), but the overhead grows during silent periods because the transport must transmit padding to maintain Skype's constant bitrate even when the Tor buffer is empty.
+techniques:
+    - traffic-shape
+defenses:
+    - mimicry
+    - pluggable-transport
+    - tor
+defense_implications:
+    - Protocol-mimicry transports that enforce a cover protocol's constant transmission rate impose a hard throughput ceiling; designers must accept that goodput will be bounded by the cover protocol's rate regardless of available bandwidth.
+    - 'Padding budget during low-traffic periods is a predictable cost: plan for ~43 KB/s sustained bandwidth consumption even when user traffic is idle, matching a real Skype video session.'
+section: Table 1, §8
+extracted_by: claude-sonnet-4-6

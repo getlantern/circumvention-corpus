@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wang-gohop
+kind: defense
+summary: A pre-shared key enables encrypting the entire GoHop packet—header, payload, and padding bytes—achieving true randomness in the full byte stream. Standard VPN protocols such as OpenVPN encrypt only the payload while leaving headers in plaintext, exposing protocol-identifying fields to DPI without payload inspection. This design choice is a prerequisite for defeating header-based fingerprinting.
+techniques:
+    - dpi
+    - random-payload-detect
+defenses:
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Encrypt every byte from the first octet of the on-wire packet, including framing headers and padding; partial plaintext headers expose enough structure for DPI-based protocol identification.
+    - Distribute the shared secret or session key out-of-band before first connection to make full-packet encryption feasible without an observable plaintext handshake.
+section: §III.A
+extracted_by: claude-sonnet-4-6

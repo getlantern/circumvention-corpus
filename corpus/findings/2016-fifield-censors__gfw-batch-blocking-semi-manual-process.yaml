@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-censors
+kind: evaluation
+summary: 'All bridges in a given Tor Browser release batch were blocked simultaneously within a 20-minute window, and every blocking event occurred during China Standard Time business hours (between 10:40 and 17:00 CST). The combination of unpredictable multi-day delay followed by abrupt simultaneous batch blocking suggests a semi-manual process: human analysts discover bridges after an irregular delay, then an automated system applies blocks.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Bridge lifecycle management should treat batch blocking as the threat model—once one bridge in a release is blocked, all co-released bridges should be considered compromised and rotated.
+    - Introducing bridges gradually across releases (rather than in large batches) limits the blast radius of a single blocking event.
+section: §4 Results, Table 3
+extracted_by: claude-sonnet-4-6

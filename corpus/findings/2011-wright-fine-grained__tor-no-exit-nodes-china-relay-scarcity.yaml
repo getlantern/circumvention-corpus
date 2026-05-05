@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wright-fine-grained
+kind: evaluation
+summary: 'At the time of writing, the Tor network had no publicly announced exit nodes located on the Chinese mainland, making direct Tor-based measurement of GFW filtering unavailable. The paper generalizes this: heavily filtered countries show systematically low availability of relay services, precisely where measurement need is highest.'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Bridge and unlisted-relay strategies (Tor bridges, Snowflake, Psiphon) are the correct architecture for providing coverage in the most heavily filtered regions where publicly listed relays are blocked.
+    - Measurement studies relying on in-country Tor nodes will have systematic blind spots in the highest-censorship environments.
+section: §4.2
+extracted_by: claude-sonnet-4-6

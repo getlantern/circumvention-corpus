@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-nabi-anatomy
+kind: defense
+summary: All 307 blocked websites in Pakistan's test dataset were accessible via CoralCDN (by appending .nyud.net to the hostname) and via Google, Bing, and Internet Archive search-engine caches at the time of the study (2013), representing simple but underutilized bypass vectors. The paper flags these as 'surprisingly unexplored' circumvention options.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - tunneling
+    - domain-fronting
+censors:
+    - pk
+defense_implications:
+    - CDN-based proxying (domain fronting, coralized URLs) can bypass host-specific DNS and HTTP blocks if the CDN's IP range is not itself blocked — monitor CDN reachability as a fallback channel.
+    - Cache-based access degrades over time as censors add CDN IP ranges to blocklists; treat it as a temporary bypass, not a durable architecture.
+section: §5.2, §5.3
+extracted_by: claude-sonnet-4-6

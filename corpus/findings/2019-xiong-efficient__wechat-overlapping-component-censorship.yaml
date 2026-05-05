@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-xiong-efficient
+kind: detection
+summary: WeChat censors messages even when keyword components overlap within the message text — e.g., the combination 帶來 + 調整 + 整體 + 領域 triggers filtering in the fused form 帶來abc調整體xyz領域 where 調整 and 整體 share a character. No previously published algorithm correctly identified overlapping components; only CompAwareBinSplit resolves this by advancing the search window from index i+1 rather than past the full matched span.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Paraphrasing tools aiming to defeat combination filters must avoid character-level overlaps with known component pairs, not just word-level co-occurrence — the censor's matching is more permissive than most researchers assumed.
+    - Keyword enumeration studies that did not use an overlap-aware algorithm have likely underreported sensitive combinations; re-enumeration with CompAwareBinSplit is warranted before drawing conclusions about censorship scope.
+section: §4.2, §5.4
+extracted_by: claude-sonnet-4-6

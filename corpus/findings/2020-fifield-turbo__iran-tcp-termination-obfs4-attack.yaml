@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-fifield-turbo
+kind: detection
+summary: In Iran in 2013, censors dropped or throttled certain TCP connections after 60 seconds, severely disrupting circumvention protocols like obfs4 that fuse session state with a single long-lived TCP connection, while short-lived HTTP connections were largely unaffected. obfs4 has no session concept independent of the underlying TCP connection; when that connection is terminated, all end-to-end state is lost and a new session must restart from scratch.
+techniques:
+    - rst-injection
+    - throttling
+defenses:
+    - obfs4
+censors:
+    - ir
+defense_implications:
+    - Protocols that rely on a single long-lived TCP connection are acutely vulnerable to connection-duration-based throttling; a session layer that reconnects and retransmits transparently is the direct countermeasure.
+    - Include fixed-duration TCP termination (e.g., after 60 s) as a standard evaluation case when testing circumvention tools, not only full blocking.
+section: §1
+extracted_by: claude-sonnet-4-6

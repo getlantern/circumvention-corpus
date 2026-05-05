@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-bock-geneva
+kind: detection
+summary: 'The GFW does not verify TCP checksums or validate RST flag combinations: Strategy 5 using the entirely invalid flag set FRAPUN with TTL 10 achieved 96% success. Separately, increasing the TCP data offset (dataofs) field to 10 in an insertion duplicate causes the GFW to reinterpret the beginning of the HTTP payload as TCP header bytes, preventing keyword detection and achieving 98% success (Strategy 2) — while the destination server discards the malformed packet.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Exploit the GFW's skipped checksum verification by injecting RST or insertion packets with corrupted checksums — the server will reject them while the censor accepts and acts on them.
+    - 'Use TCP dataofs manipulation as a high-reliability insertion primitive: inflating dataofs causes the GFW to misparse the HTTP header and skip keyword inspection while the server treats the decoy packet as malformed.'
+section: §5.2 Species 1 and Species 2
+extracted_by: claude-sonnet-4-6

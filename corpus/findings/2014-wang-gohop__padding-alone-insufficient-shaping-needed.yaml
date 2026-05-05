@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wang-gohop
+kind: defense
+summary: Packet padding alone is insufficient to defeat statistical traffic analysis unless every packet is padded to MTU; small-size padding has minimal effect on classifier accuracy (citing Hjelmvik & John 2010). Traffic shaping that also fragments large packets—transforming the full packet-size CDF to match a target distribution rather than merely inflating small packets—is required to statistically impersonate a target traffic class.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+defense_implications:
+    - Implement a traffic shaper that both pads and splits packets to reproduce the target CDF end-to-end; padding-only implementations leave the upper tail of the size distribution intact and classifiable.
+    - Padding to MTU universally is an effective but bandwidth-expensive alternative; evaluate the tradeoff against shaping overhead (~30%) for the deployment's throughput budget.
+section: §III.B
+extracted_by: claude-sonnet-4-6

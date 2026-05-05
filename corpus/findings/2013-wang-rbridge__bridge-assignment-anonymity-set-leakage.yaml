@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wang-rbridge
+kind: defense
+summary: Knowing a user's bridge assignment narrows the adversary's anonymity set to the small group sharing that bridge, deanonymizing Tor users even when the bridge itself is not compromised; rBridge addresses this using 1-out-of-m Oblivious Transfer, Pedersen commitments, and non-interactive zero-knowledge proofs so the bridge distributor learns nothing about which bridges a user holds.
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Treat the bridge distributor as honest-but-curious rather than fully trusted; use oblivious transfer for bridge retrieval so the distributor cannot link retrieved bridges to specific users.
+    - 'Enforce transaction unlinkability across bridge requests: without it, a distributor can infer a user''s blocked bridge by timing correlation between a bridge going offline and the user''s next replacement request.'
+section: §5, §5.1
+extracted_by: claude-sonnet-4-6

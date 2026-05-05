@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wustrow-telex
+kind: evaluation
+summary: A PlanetLab node in Beijing successfully loaded all 100 Alexa top-100 websites through a prototype Telex station at the University of Michigan; without Telex, 17 of the 100 sites were blocked (including facebook.com, youtube.com, blogspot.com, and twitter.com from the top 10), using forged RST packets, false DNS results, and destination IP blackholes. The median latency overhead for routing through Telex was approximately 60% for the 83 unblocked sites.
+techniques:
+    - rst-injection
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - telex
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - A ~60% latency overhead is acceptable for real-world browsing and video streaming in a prototype; production deployment should target further reductions via geographic station placement closer to high-traffic cover destinations.
+    - The GFW's concurrent use of RST injection, DNS poisoning, and IP blackholing confirms that circumvention designs must neutralize all three blocking vectors simultaneously, not just one.
+section: §8.4
+extracted_by: claude-sonnet-4-6

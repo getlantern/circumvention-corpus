@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-detor
+kind: evaluation
+summary: Never-once avoidance succeeds for 75% of source-destination pairs that do not already terminate in the US (a highly routing-central country) at δ=0.5, and for nearly all pairs avoiding less central countries. Russia is the hardest case at ~35% success (δ=0.5) due to proximity to the dense European node cluster. The median successful source-destination pair has over 1,000 valid DeTor circuits when avoiding the US and 500 when avoiding China.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tor
+censors:
+    - cn
+    - ru
+    - sa
+    - sy
+defense_implications:
+    - Geographic avoidance of routing-central nations (US, China) is feasible in practice at the cost of a reduced but still large circuit pool; routing-adjacent nations (Russia) are harder to avoid and may require accepting lower proof coverage.
+    - Circuit pre-filtering using the ratio of maximum-acceptable-distance to minimum-circuit-distance is a viable a priori predictor of proof success, reducing wasted connection setup attempts.
+section: §6.2.1, §6.2.4
+extracted_by: claude-sonnet-4-6

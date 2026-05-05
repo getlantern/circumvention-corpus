@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-moghaddam-skypemorph
+kind: defense
+summary: 'Encrypted channels expose only two statistical features to an external observer: packet sizes and inter-packet arrival times. Original Traffic Morphing (Wright et al. 2009) shaped only packet-size distributions, leaving inter-packet timing as an unobfuscated fingerprint identical to the source (Tor) distribution. SkypeMorph extends Traffic Morphing to jointly sample from nth-order conditional distributions of both packet sizes and inter-packet delays (tested up to n = 3), closing the timing gap.'
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - randomization
+    - mimicry
+    - meta-resistance
+defense_implications:
+    - Any traffic-shaping layer must independently shape both packet sizes and inter-arrival times; omitting timing from the morphing matrix leaves a trivially detectable fingerprint even when sizes are correctly distributed.
+    - Maintain empirical nth-order joint distributions (n ≥ 2) of the cover protocol so the oracle can condition each packet's timing and size on recent history, reproducing higher-order statistical patterns the censor may exploit.
+section: §4.3, §4.4
+extracted_by: claude-sonnet-4-6

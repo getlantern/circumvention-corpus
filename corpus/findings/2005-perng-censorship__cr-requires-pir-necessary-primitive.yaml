@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2005-perng-censorship
+kind: defense
+summary: 'Theorem 1 proves that censorship resistance (CR) implies Private Information Retrieval (PIR): any system achieving low censorship susceptibility must implement PIR as an underlying primitive. CR systems cannot be built with cryptographic primitives weaker than PIR.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Systems aiming for strong censorship resistance against a server-inspecting adversary must implement PIR or an equivalent query-index-hiding primitive — no weaker primitive suffices per the reduction proof.
+    - When evaluating a proposed censorship-resistant protocol, verify it provides PIR-level query privacy; absence of this property is sufficient to conclude it fails under the cooperative-server threat model.
+section: §5
+extracted_by: claude-sonnet-4-6

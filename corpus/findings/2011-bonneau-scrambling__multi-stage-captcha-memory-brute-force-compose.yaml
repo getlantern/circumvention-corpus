@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bonneau-scrambling
+kind: defense
+summary: 'The proposed multi-stage scrambling composes four orthogonal layers: (a) 128-bit AES with 20 bits stripped, requiring brute-force search; (b) an AES key derived from a CAPTCHA solution; (c) a memory-bound function key; and (d) blocks whose de-scrambling exploits JavaScript floating-point and string-processing quirks. Each layer independently forces a censor to build or emulate a distinct acceleration environment, multiplying total reverse-engineering cost.'
+techniques:
+    - dpi
+    - ml-classifier
+defenses:
+    - randomization
+    - meta-resistance
+defense_implications:
+    - Layer multiple orthogonal obfuscation mechanisms — at least one human-interactive or memory-latency-bound layer that cannot be parallelized on GPU clusters — so no single hardware accelerator defeats all layers simultaneously.
+    - Include at least one layer that exploits platform-specific runtime quirks (JVM, V8 float semantics, browser date handling) so that censor emulation environments must achieve exact behavioral parity to classify correctly.
+section: §3
+extracted_by: claude-sonnet-4-6

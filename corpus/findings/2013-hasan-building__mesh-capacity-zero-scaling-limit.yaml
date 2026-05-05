@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-hasan-building
+kind: evaluation
+summary: Gupta and Kumar proved that the per-node capacity of a multihop wireless network approaches zero as the number of nodes increases; Li et al. experimentally validated this result for 802.11-based mesh networks. The authors emphasize this is an architectural constraint derived from fundamental radio physics, holding for arbitrary networks regardless of routing protocol.
+defenses:
+    - meta-resistance
+defense_implications:
+    - Do not rely on wireless mesh as the primary data plane for blackout-circumvention systems serving more than a handful of users; capacity collapses as the network grows.
+    - If mesh is used at all, scope it to delay-tolerant, low-bandwidth message passing rather than TCP-based interactive traffic.
+section: §4.1
+extracted_by: claude-sonnet-4-6

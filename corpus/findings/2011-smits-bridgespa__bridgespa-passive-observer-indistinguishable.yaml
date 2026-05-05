@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-smits-bridgespa
+kind: defense
+summary: A passive observer of BridgeSPA traffic sees only a TCP connection timeout on failed authorization or a successful TLS connection on success—exactly what they would observe with an unmodified Tor bridge. The ConnectionTag is indistinguishable from the normally-random ISN and timestamp fields in Linux 2.6, so no new observable artifact is introduced. However, BridgeSPA does not address the separate problem that Tor traffic itself remains fingerprint-distinguishable from HTTPS; this is an orthogonal concern.
+techniques:
+    - dpi
+    - traffic-shape
+    - tls-fingerprint
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Innocuous SPA over TCP header covert channels provides aliveness-hiding without adding new detection surface, but must be paired with a separate traffic-normalization layer to defeat protocol-level Tor fingerprinting.
+    - SPA authorization should reuse field distributions already present in the target OS's TCP stack to avoid introducing statistical anomalies that betray the mechanism.
+section: §4, §6.2.1
+extracted_by: claude-sonnet-4-6

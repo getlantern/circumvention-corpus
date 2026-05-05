@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-bocovich-slitheen
+kind: evaluation
+summary: 'Measurement of the Alexa top 10,000 TLS sites showed that the fraction of traffic replaceable by a Slitheen relay varies from 0% (Facebook, due to large TLS records preventing leaf replacement) to 100% (Wikipedia, Yahoo). For representative sites: Reddit achieved 70% ±10% of leaf bytes replaced (19% ±3% of total page bytes), Gmail 87.7% ±0.2% of leaf bytes (23% ±9% total), and Quora 99% ±5% of leaf bytes (20% ±10% total), as reported in Table 2.'
+techniques:
+    - dpi
+defenses:
+    - decoy-routing
+defense_implications:
+    - Slitheen clients should prefer overt sites with abundant small-to-medium leaf resources (e.g., Reddit, Wikipedia) over sites like Facebook or Netflix whose large TLS records block leaf replacement entirely, as overt-site selection directly determines covert bandwidth.
+    - A pre-computed compatibility table of overt sites ranked by practical replaceable bandwidth should guide client-side overt-site selection logic.
+section: §6.1, Table 2
+extracted_by: claude-sonnet-4-6

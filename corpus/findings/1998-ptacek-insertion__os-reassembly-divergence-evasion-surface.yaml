@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1998-ptacek-insertion
+kind: defense
+summary: Different operating systems apply different precedence rules when TCP segments overlap—some implementations use 'first data wins,' others 'last data wins.' An IDS applying a single universal reassembly policy will systematically diverge from the actual target end-system whenever overlapping segments appear, creating a predictable and repeatable evasion surface that is an inherent consequence of policy misalignment rather than a configuration flaw.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Determine the censor's TCP overlap policy by probing with overlapping segments to a controlled endpoint, then craft overlap sequences that match the destination OS's reassembly while diverging from the censor's.
+    - Build a lookup table of per-OS TCP reassembly behaviors to automate evasion strategy selection; when a censor upgrades to emulate one OS, rotate to a strategy targeting a different OS.
+section: §4
+extracted_by: claude-sonnet-4-6

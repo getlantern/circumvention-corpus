@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lee-usability
+kind: evaluation
+summary: 'In the heavily censored environment (E3), all successful connections used meek domain-fronting bridges (meek-amazon: 11 participants, meek-google: 9, meek-azure: 3); not a single participant successfully connected using flashproxy, fte, fte-ipv6, obfs4, or scramblesuit, despite all being available as built-in options.'
+techniques:
+    - ip-blocking
+defenses:
+    - meek
+    - domain-fronting
+    - bridges
+    - obfs4
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - When IP-based bridge blocking is active, domain-fronting transports (meek/CDN-routed) are the only built-in options that survive — surface them first or exclusively in high-censorship modes rather than treating all transports as equivalent.
+    - The effective bridge set under heavy censorship is much smaller than the configured set; tools should auto-probe bridge reachability and surface only working options to avoid user confusion and wasted timeouts.
+section: §7.3.1, Table 3
+extracted_by: claude-sonnet-4-6

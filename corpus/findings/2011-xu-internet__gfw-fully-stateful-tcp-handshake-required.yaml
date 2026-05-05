@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-xu-internet
+kind: detection
+summary: 'The GFW is fully stateful as of 2010: probing all 11,824 Chinese IP prefixes with single TCP packets containing the keyword ''falun'' produced no RST responses, confirming that a complete TCP handshake must precede any filtering trigger. Earlier measurements (2006, 2007) reported contradictory results; this study finds statefulness is now universal across all probed prefixes.'
+techniques:
+    - dpi
+    - rst-injection
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention transports must complete a real TCP three-way handshake before sending any distinguishing payload; sending a bare probe packet or injecting keywords without a handshake will not reveal or trigger the censor.
+    - 'Active-probing defenses can exploit statefulness: a server that silently drops or resets connections from unrecognized clients before completing a handshake avoids fingerprinting by stateful IDS probes.'
+section: §4.1
+extracted_by: claude-sonnet-4-6

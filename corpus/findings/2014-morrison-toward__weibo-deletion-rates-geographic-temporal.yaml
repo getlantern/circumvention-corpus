@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-morrison-toward
+kind: evaluation
+summary: 'A random sample of Sina Weibo messages found that 16.25% were deleted overall, with geographic distribution having a strong impact: up to 53% of messages from some Chinese provinces were deleted. Nearly 30% of all deletions occurred within the first 5–30 minutes of posting, and up to 90% within 24 hours of the posting.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Dissemination tools should prioritize immediate, wide replication of sensitive content within the first few minutes of posting, before censors can act.
+    - Geographic routing strategies must account for regional censorship intensity — users in high-deletion provinces need faster mirror propagation and redundancy.
+section: §2 Related work
+extracted_by: claude-sonnet-4-6

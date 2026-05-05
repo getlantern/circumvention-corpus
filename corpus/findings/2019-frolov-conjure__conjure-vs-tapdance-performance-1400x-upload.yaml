@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-frolov-conjure
+kind: evaluation
+summary: Conjure achieves 20% lower latency, 14% faster download bandwidth, and over 1400 times faster upload bandwidth compared to TapDance on a 20 Gbps ISP testbed. TapDance upload is throttled to approximately 0.1 Mbps because it must reconnect for every 32 KBytes sent; Conjure maintains a single persistent connection. At the 99th percentile, Conjure is 281 ms (92%) faster than TapDance.
+defenses:
+    - conjure
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Prefer the phantom-host (Conjure) architecture over decoy-site hijacking (TapDance) for any deployment requiring upload-heavy use cases or long-lived connections — the 1400x upload advantage alone justifies migration.
+    - Eliminate connection-window constraints by owning the full phantom-host TCP stack rather than hijacking mid-stream decoy connections, enabling unlimited connection duration.
+section: §6.1
+extracted_by: claude-sonnet-4-6

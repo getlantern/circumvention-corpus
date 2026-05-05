@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hobbs-sudden
+kind: policy
+summary: New Twitter users who joined because of the Instagram block were initially apolitical (80% Chinese-language preference vs. 39% for existing Chinese Twitter users; ~80% of first follows were entertainment/sports accounts) but within two days their rate of political discussion about Hong Kong converged with that of established users. This confirms the gateway effect operates without pre-existing political motivation and without a Streisand-style backlash.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools need not rely on politically motivated users for growth; entertainment-driven adoption can scale the user base, with political engagement emerging organically post-onboarding.
+    - Governments seeking to limit gateway effects should avoid sudden, blunt censorship of high-habit services — graduated or announced blocks give users time to find substitutes without acquiring general-purpose evasion tools.
+section: 4. Politicization
+extracted_by: claude-sonnet-4-6

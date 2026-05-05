@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1998-ptacek-insertion
+kind: defense
+summary: The paper proves that any network IDS operating without maintaining complete, OS-specific per-connection state cannot reliably reconstruct the byte stream seen by the end-system. TCP and IP reassembly ambiguities guarantee unavoidable blind spots unless the IDS performs full per-target OS emulation—a fundamental architectural limitation, not an implementation bug, that applies equally to any DPI-based censor.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design circumvention protocols to structurally trigger TCP/IP reassembly ambiguities (out-of-order delivery, overlapping fragments, TTL-limited decoys) as a baseline layer; no DPI censor can resolve these without full per-endpoint OS emulation.
+    - 'Treat the censor''s OS emulation strategy as an attackable assumption: probe to identify which reassembly model the censor implements, then target a different OS''s divergent behavior.'
+section: §5
+extracted_by: claude-sonnet-4-6

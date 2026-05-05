@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-schuchard-routing
+kind: detection
+summary: 'A routing-capable warden can enumerate over 90% of decoy-router-deploying ASes for deployments as large as 4,000 ASes using an intersection-based discovery attack: the warden probes many paths, accumulates a set of ''clean'' ASes, and prunes candidate paths until a single ''tainted'' AS remains. All evaluated wardens (China, Syria, Iran, Australia, France, Venezuela) achieved roughly equal detection success across all deployment sizes.'
+techniques:
+    - active-probing
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - Decoy routing schemes that publish a public directory (as Telex does) hand the warden the enumeration directly; any viable design must keep decoy-router locations secret and prevent intersection attacks by ensuring probe paths cannot be disambiguated.
+    - Because shadowing by one tainted AS masks others behind it, deployment strategies that maximize 'shadow depth' (putting decoy routers near the warden's upstream transit) may reduce the warden's enumeration accuracy for interior ASes.
+section: §4.1
+extracted_by: claude-sonnet-4-6

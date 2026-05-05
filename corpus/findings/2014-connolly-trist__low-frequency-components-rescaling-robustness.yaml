@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-connolly-trist
+kind: defense
+summary: Using low DCT frequency components (indices 10, 9, 8, 3) at JPEG quality 30 achieves near-zero message error rates for image rescaling in the 75–95% range across a wide range of sharpening sigma values. Higher-frequency component sets (indices 18, 17, 16, 10) only survive rescaling above 100%, making them unsuitable for scenarios where censors reduce image dimensions.
+techniques:
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Select the lowest-index DCT frequency components available when deploying image steganography over channels that may rescale images (social media, CDN thumbnail pipelines); reserve higher-frequency components only for channels where scaling is unlikely.
+    - After image reduction, apply an inverse rescaling operation plus a sharpening step before extraction to recover the message from rescaled images — inversion of a known linear filter is sufficient even without knowledge of the exact filter parameters.
+section: §5
+extracted_by: claude-sonnet-4-6

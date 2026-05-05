@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-li-facet
+kind: detection
+summary: Without traffic morphing, a χ² packet-length classifier can identify 90% of Facet (video-over-Skype) sessions with only a 10% false positive rate on genuine videoconferencing. To block 80% of Facet connections, the censor need only disrupt 4% of genuine Skype calls; blocking 70% requires disrupting only 2%.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Any cover-protocol system transmitting non-native content over VBR-encoded channels (Skype, VoIP) must apply active traffic shaping — simply using the real transport layer is insufficient if payload statistics diverge from natural use.
+    - The censor's required false-positive cost is the correct operationalizable security metric; target designs where blocking X% of circumvention traffic forces disruption of >20% of legitimate cover traffic.
+section: §6, Figure 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chai-importance
+kind: evaluation
+summary: Of the Alexa top 1 million websites censored in China, 84.5% are blocked by IP address, meaning that even if both DNS hijacking and SNI filtering are fully circumvented, the vast majority of blocked sites remain inaccessible. Only 66 currently censored sites can be unblocked by ESNI alone (combined with an encrypted DNS channel), while 101,049 ESNI-supported sites remain blocked by IP.
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Tools relying solely on ESNI + DoH for circumvention will fail for ~84.5% of blocked destinations in China; proxy or decoy-routing architectures that hide the true destination IP remain indispensable.
+    - ESNI should be treated as a layered complement to IP-hiding transports, not a standalone unblocking mechanism.
+section: §4.1, §4.3
+extracted_by: claude-sonnet-4-6

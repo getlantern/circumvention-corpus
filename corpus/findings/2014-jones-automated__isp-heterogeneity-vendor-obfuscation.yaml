@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-automated
+kind: detection
+summary: 'Within a single country mandate, different ISPs implement censorship with different filtering tools and mechanisms: Thailand''s AS 9737 and AS 17552 use structurally distinct block-page templates (vector 17 is ~1,000 bytes using div layout; vector 8 is ~6,000 bytes using table layout). Both ISPs actively obfuscate their filtering product by reporting generic ''Server: Apache/2.2.9 (Debian)'' or ''Server: Apache'' HTTP headers instead of the actual product identifier.'
+techniques:
+    - dpi
+    - middlebox-interference
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Per-ASN heterogeneity means circumvention tools cannot assume uniform blocking behavior within a country; probe and adapt per-ISP rather than per-country to avoid breakage in minority ISPs not covered by the dominant blocking profile.
+    - Censors deliberately spoof server identity headers, making active product fingerprinting unreliable; passive block-page content analysis (HTML structure, response size) is a more robust attribution signal than HTTP headers.
+section: §6
+extracted_by: claude-sonnet-4-6

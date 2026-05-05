@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-smits-bridgespa
+kind: defense
+summary: BridgeSPA encodes a 32-bit SHA256-HMAC ConnectionTag derived from a time-limited MACKey into the TCP SYN packet's ISN (lower 3 bytes) and TCP timestamp (lower 1 byte) fields—values that are uniformly random in Linux 2.6 and therefore carry the tag innocuously. Bridges silently drop unauthorized SYN packets without returning any response, preventing aliveness queries. MACKeys rotate every 1–7 days (bridge-configured), so hoarded descriptors become stale within the epoch.
+techniques:
+    - active-probing
+defenses:
+    - bridges
+    - tor
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Embed short-lived authorization tokens in already-random TCP/IP header fields so the authorization handshake is indistinguishable from a normal connection to a passive observer.
+    - Configure key rotation frequency to balance bridge availability against the window an adversary has to exploit a hoarded descriptor; 1–7 day epochs are the suggested range.
+section: §4, §5
+extracted_by: claude-sonnet-4-6

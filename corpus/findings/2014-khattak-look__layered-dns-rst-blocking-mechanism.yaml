@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-khattak-look
+kind: detection
+summary: 'Pakistan''s censorship used layered, evolving mechanisms: DNS redirection by local ISP resolvers appeared in all post-block traces, supplemented by HTTP 3XX redirection to a local provider''s error page in Sep 2012 and shifting to RST injection by Aug 2013 (where ≈95% of YouTube HTTP requests received no response, vs. ≈2% pre-block). Porn blocking similarly combined DNS redirection with IP blocking (41% blacklist overlap) in Sep 2012 and RST injection in Aug 2013.'
+techniques:
+    - dns-poisoning
+    - rst-injection
+    - ip-blocking
+    - packet-injection
+censors:
+    - pk
+defense_implications:
+    - Censors layer DNS + IP + HTTP blocking redundantly, so circumvention must operate above all three layers simultaneously — a tool that bypasses only DNS will still be blocked at the IP or HTTP layer.
+    - The shift from HTTP redirect to RST injection over ~11 months indicates censors harden mechanisms as users adapt; protocol designs must anticipate that the initial blocking method will be replaced by a more aggressive one within months.
+section: §4.2–4.3, Table 4
+extracted_by: claude-sonnet-4-6

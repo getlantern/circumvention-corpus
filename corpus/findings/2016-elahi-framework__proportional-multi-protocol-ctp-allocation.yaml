@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-elahi-framework
+kind: defense
+summary: The optimal multi-protocol CRS traffic allocation distributes circumvention traffic across n cover protocols proportionally to each protocol's non-circumvention traffic volume (CTPi = Li · CTP/(1−CTP)), keeping every individual protocol below the blocking threshold. This makes individual protocol channels independently optimizable, with the sole selection criterion being maximizing cover traffic volume L rather than any other protocol property.
+defenses:
+    - meta-resistance
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - When selecting mimicry targets, prioritize cover protocols with the largest available non-circumvention traffic (highest Li), since cover volume directly sets the ceiling on how much circumvention traffic can be hidden without triggering blocking.
+    - Allocate CRS traffic across protocols in proportion to each protocol's share of total cover traffic rather than evenly; even distribution will inadvertently exceed the blocking threshold on low-traffic protocols while under-utilizing high-traffic ones.
+section: §5.1
+extracted_by: claude-sonnet-4-6

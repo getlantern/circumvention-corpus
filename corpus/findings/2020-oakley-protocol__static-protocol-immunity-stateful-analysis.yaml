@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-oakley-protocol
+kind: defense
+summary: 'Static protocols — UDP-based with no application-layer handshake — are immune to stateful protocol analysis that defeated SkypeMorph: without a handshake state machine, a censor cannot flag discrepancies between observed and expected protocol states. This eliminates the detection vector that Houmansadr et al. (2013) exploited to identify SkypeMorph via handshake mismatch.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - format-transform
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Prefer UDP-based, handshake-free protocols as cover channels when possible; eliminating the handshake removes the state-machine oracle that censors can use to distinguish mimicry from the genuine protocol.
+    - If a TCP-based cover protocol is unavoidable, ensure the complete handshake sequence is reproduced faithfully, including packet order and timing, not just payload syntax.
+section: §3
+extracted_by: claude-sonnet-4-6

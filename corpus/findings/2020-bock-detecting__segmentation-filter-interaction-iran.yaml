@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-detecting
+kind: defense
+summary: 'Existing segmentation strategies effective against Iran''s standard HTTP DPI can be counterproductive when the protocol filter is also active: if the first segment is fewer than 8 bytes, it fails the HTTP fingerprint check and trips the filter. However, segmenting such that the first segment is a valid HTTP fingerprint (≥8 bytes, well-formed verb + space) while splitting the Host: header into the second segment defeats both the protocol filter and the standard DPI censor simultaneously.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+    - pluggable-transport
+censors:
+    - ir
+defense_implications:
+    - 'Segmentation-based evasion tools targeting Iran must be filter-aware: the first segment must be ≥8 bytes and start with a supported HTTP verb followed by a space, or the filter will block the connection before the DPI evasion takes effect.'
+    - Censorship-in-depth systems require evasion strategies to be co-designed across all active filtering layers; testing against only one layer is insufficient and can produce regressions against the other.
+section: §5.1
+extracted_by: claude-sonnet-4-6

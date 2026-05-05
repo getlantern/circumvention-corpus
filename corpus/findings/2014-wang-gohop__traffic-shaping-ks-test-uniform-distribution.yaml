@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wang-gohop
+kind: evaluation
+summary: 'GoHop''s naïve traffic shaping targeting a uniform packet-size distribution (0–MTU) successfully morphed both HTTP and SSH flows: K-S test D values were 0.019 (HTTP) and 0.022 (SSH), both below the 0.025 rejection threshold, with p-values of 0.20 and 0.11 respectively. After shaping, packet-size CDFs and statistical metrics (mean ~782–783 bytes, variance ~163,600) for both protocols became nearly identical, eliminating the size signals that distinguish them.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - A CDF-oracle that draws next packet size from a uniform or chosen target distribution is sufficient to defeat packet-size-based classifiers; validate with K-S tests rather than visual inspection alone.
+    - Choose a single target distribution that collapses distinguishing features across all carried protocols, so the obfuscated shape is invariant to what application traffic runs inside the tunnel.
+section: §V.A, Table I
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-li-facet
+kind: detection
+summary: 'Content inconsistency — transmitting non-native payloads (e.g., modem signals or general web traffic) over VBR-encoded VoIP/video channels — is sufficient for censors to detect camouflage systems via packet-length traffic analysis. Channel inconsistency — requiring reliable transport over a loss-tolerant UDP channel — allows selective disruption: dropping 5% of packets stalls SkypeMorph indefinitely, and dropping 90% for under one second desynchronizes the FreeWave modem.'
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Circumvention systems using VoIP/video cover protocols must transmit only content with natural codec statistics; tunneling arbitrary TCP traffic over VBR video leaks a distinguishable fingerprint regardless of encryption.
+    - Match the channel reliability model of the cover protocol exactly — do not layer reliable delivery over a lossy-tolerant transport, as this creates an orthogonal disruption vector.
+section: §3.3
+extracted_by: claude-sonnet-4-6

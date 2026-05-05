@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-facade
+kind: defense
+summary: Analysis of the AOL search corpus shows an average search query length of 17.42 bytes with an entropy of 4.48 bits/byte, yielding 78.04 bits of deniable information per HTTP GET request. This entropy matches real user search behavior, making entropy-based traffic analysis unable to distinguish Facade traffic from genuine search sessions.
+techniques:
+    - random-payload-detect
+    - traffic-shape
+defenses:
+    - mimicry
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Ground covert-channel entropy targets in empirical measurements of the chosen cover traffic (e.g., real query corpora), not theoretical maximums, so statistical tests on per-request entropy cannot flag the channel.
+    - Use site-specific OpenSearch or equivalent real-service query formats as cover rather than synthetic HTTP requests; the diversity of legitimate traffic provides natural statistical cover.
+section: §5.2
+extracted_by: claude-sonnet-4-6

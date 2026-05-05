@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-fifield-evading
+kind: evaluation
+summary: Flash proxies provide mean throughput of 79.7 KB/s when uninterrupted — comparable to direct Tor (69.5 KB/s) — but throughput drops to 56.6 KB/s (20–40% lower) when proxies alternate on 8-second duty cycles, with most variance attributable to Tor circuit reconstruction overhead rather than transport switching.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - pluggable-transport
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Maintain a pool of up to 5 reserve proxy connections so the transport plugin can switch immediately when a proxy disappears, amortizing the Tor circuit rebuild cost.
+    - Proxy switching overhead is dominated by circuit rebuilding, not connection setup — pre-establish circuits over backup proxies before the primary fails to recover most of the 20–40% throughput penalty.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wustrow-telex
+kind: evaluation
+summary: On a single 2.93 GHz Intel Core 2 Duo CPU core, the Telex elliptic-curve tagging scheme achieves approximately 5,482 tag generations per second and 11,074 tag verifications per second across 10 trials of 100,000 tags each (standard deviations of 0.016 s and 0.0083 s respectively). Tag verification is therefore unlikely to be a throughput bottleneck in a deployed Telex station.
+defenses:
+    - telex
+    - decoy-routing
+defense_implications:
+    - Elliptic-curve steganographic tagging is computationally cheap enough on commodity hardware that it can be deployed inline at ISP link speeds without dedicated crypto acceleration.
+    - When evaluating in-path proxy designs, benchmark tag/flow classification throughput separately from connection relay throughput, as the cryptographic check is not the bottleneck.
+section: §8.2
+extracted_by: claude-sonnet-4-6

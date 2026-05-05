@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-sparks-collateral
+kind: evaluation
+summary: TraceQuery probing identified 3,120 router IPs performing DNS injection belonging to exactly 39 Chinese ASes. AS4134 (Chinanet) alone accounts for 1,952 router IPs (62.6% of injecting routers); the top 5 ASes account for over 77% of all identified injecting routers.
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Routing circumvention traffic to avoid AS4134, AS4837, AS4812, AS9394, and AS9929 eliminates the majority of DNS injection exposure for external resolvers.
+    - Use TTL-probing (TraceQuery-style) to detect whether a resolver's upstream path traverses these specific Chinese ASes before trusting its DNS responses.
+section: §4.2, Table 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-i
+kind: evaluation
+summary: 'FreeWave over Skype reliably achieves 16 kbps for clients in Berlin, Frankfurt, Paris, and the UK (0% packet drop) and 19.2 kbps for Chicago, IL (0.01% drop), using 4-QAM with 8–9.6 kHz symbol rate and rate-0.5 Turbo channel coding. The maximum achievable bit rate is hard-bounded by the VoIP codec''s sampling rate: 40 kbps for Skype SILK, 64 kbps for G.711, and 128 kbps for the L16 codec.'
+defenses:
+    - steganography
+    - tunneling
+defense_implications:
+    - Select the VoIP codec with the highest available constant bit rate (e.g., L16 at 128 kbps, G.711 at 64 kbps) when throughput is the primary constraint, trading off codec ubiquity for capacity headroom.
+    - Deploy region-local servers (e.g., Europe-based servers for Middle East users) to reduce channel SNR degradation from geographic distance — Table I shows US-local clients achieve 19.2 kbps vs. 16 kbps for transatlantic connections.
+section: §VIII-B / Table I
+extracted_by: claude-sonnet-4-6

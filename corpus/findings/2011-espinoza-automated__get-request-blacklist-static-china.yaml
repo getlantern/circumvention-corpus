@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-espinoza-automated
+kind: evaluation
+summary: During a two-month run in 2011 that coincided with the Jasmine Revolution protests, China's HTTP GET request backbone blacklist showed no additions or removals of keywords on a daily, weekly, or even monthly basis. Numerous current-event terms that triggered search engine censorship produced zero GET request RST responses, indicating the two censorship mechanisms operate on entirely different update timescales.
+techniques:
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should not rely on periodically scraping GET-request keyword lists to avoid detection; those lists are effectively static and not a leading indicator of what content is being targeted.
+    - Monitoring search engine suppression is a faster signal than backbone keyword probing for tracking which topics are actively censored in near-real-time.
+section: §4.2
+extracted_by: claude-sonnet-4-6

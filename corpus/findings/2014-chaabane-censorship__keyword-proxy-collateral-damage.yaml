@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-chaabane-censorship
+kind: detection
+summary: 'Syria''s Blue Coat proxies blocked any URL containing the string "proxy," generating 3,954,795 censored requests (53.61% of all policy-censored traffic in Dfull). The collateral damage was severe: Google Toolbar''s /tbproxy/af/query API calls and Facebook social plugins (/plugins/like.php at 43.04% and /extern/login_status.php at 38.99% of facebook.com censored traffic) together account for over 80% of censored facebook.com requests, all denied with 0 allowed counterparts.'
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - sy
+defense_implications:
+    - Never embed the string 'proxy' (or any circumvention tool brand name) in a URL path, query parameter, or hostname — Syrian-style string-match censors will block all matching traffic indiscriminately, including legitimate update and CDN calls.
+    - Design obfuscated endpoint paths that are lexically neutral; audit all third-party SDKs and CDN integrations for URL patterns that could trigger keyword-based collateral blocking.
+section: §5.4, Tables 9 & 14
+extracted_by: claude-sonnet-4-6

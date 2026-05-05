@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-ignoring
+kind: evaluation
+summary: 'Post-trigger blocking persisted for an average of ~20 minutes (observed range: a few minutes to nearly an hour) per source-IP/destination-IP pair, but was scoped to the 128 TCP port numbers sharing the same 7 most-significant bits as the triggering connection''s ephemeral port. On pseudo-random ephemeral-port systems such as OpenBSD, the probability of a subsequent connection falling in the blocked port range is only ~1 in 500; on sequential-port systems such as Windows, an average of 64 further connections are blocked.'
+techniques:
+    - rst-injection
+    - port-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients should randomize local port selection to minimize exposure to post-trigger port-range blocking, particularly on Windows where sequential ephemeral ports create a ~64-connection blast radius.
+    - Retry logic after a detected RST block can succeed within minutes by selecting a port outside the blocked 128-port window, making exponential backoff unnecessary.
+section: §6.1
+extracted_by: claude-sonnet-4-6

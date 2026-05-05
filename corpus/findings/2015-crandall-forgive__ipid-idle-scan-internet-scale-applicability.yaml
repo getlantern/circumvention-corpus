@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-crandall-forgive
+kind: evaluation
+summary: Approximately 1% of the IPv4 address space has globally incrementing IP ID counters, making IPID idle scans viable for Internet-scale censorship detection at roughly 5 packets per second. The technique is well-understood in terms of noise properties but is difficult to apply in IPv6 because the fragment ID field appears only in fragments.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Use IPID idle scans to verify whether a circumvention server's traffic is being dropped by a censor without requiring any software on the client-side vantage point.
+    - Do not rely on IPID side channels for IPv6 reachability verification; use fragment cache or ICMP rate-limit side channels instead.
+section: §3.3, Table 1
+extracted_by: claude-sonnet-4-6

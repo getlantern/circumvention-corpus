@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-nasr-waterfall
+kind: evaluation
+summary: BGP simulation shows that a censor's source-block attack against 100 downstream-only decoy ASes disconnects 23% of Chinese Internet destinations, versus only 8% when applying the standard RAD attack against 100 upstream decoy ASes — imposing nearly 3× more unreachability collateral damage on the censor for the same decoy count.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - 'Use downstream-only decoy routing to sharply raise the censor''s self-harm cost: every attempt to evade decoy ASes disconnects disproportionately more of its own users from the open Internet.'
+    - Select decoy ASes that appear on many downstream paths into the censored country to maximize the per-AS collateral damage the censor must absorb.
+section: §4.1.1, Figure 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ververis-understanding
+kind: evaluation
+summary: After the EEEP blacklist was updated in July 2014 to remove pokerstarsblog.com, multiple ISPs continued blocking it — overblocking was observed at Cosmote (7 entries), Wind (7 entries), Vodafone (7 entries), Cyta (3 entries), Forthnet (3 entries), HOL (3 entries), and OTE (3 entries). The blacklist itself contained 28 duplicate domains (6.39%), 17 malformed entries (3.88%), and 3 entries (0.68%) with no gambling content (expired or parked domains).
+techniques:
+    - dns-poisoning
+censors:
+    - gr
+defense_implications:
+    - 'Blocklist staleness is exploitable: circumvention services can rotate to domains recently removed from regulatory blacklists, as ISPs frequently fail to propagate removals promptly.'
+    - Malformed or canonicalization-failing URLs in regulator blacklists create systematic blind spots — circumvention proxies operating under path or query-parameter variations may persist unblocked for months.
+section: §5.2, Table 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-mahdian-fighting
+kind: defense
+summary: By reusing keys already held by trusted (non-suspicious) users for ℓ−1 of ℓ subgroups when bisecting the suspicious cohort — issuing only one fresh key per round — the total proxy count drops from O(k log n) to O(k² log n / log log n) in expectation. The information-theoretic lower bound is Ω(k log(n/k) / log(k + log n)), so this bound is tight in n up to a factor of k.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Reuse existing bridge credentials for confirmed-clean user subgroups rather than minting fresh bridges for every sub-cohort; this reduces bridge consumption by a log log n factor, materially lowering operational cost at scale.
+    - The O(k) gap between the upper and lower bounds means there is room for further algorithmic improvement — current schemes are not proven optimal in their dependence on k.
+section: §4 Theorems 4–6
+extracted_by: claude-sonnet-4-6

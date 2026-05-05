@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-wang-your
+kind: detection
+summary: The GFW evolved to create a TCB not only on SYN packets but also on SYN/ACK packets, and enters a 're-synchronization state' upon seeing multiple SYN packets, multiple SYN/ACK packets, or a SYN/ACK with an incorrect acknowledgment number. Once in this state, it re-synchronizes its TCB using the next client-to-server data packet or server SYN/ACK, invalidating prior TCB-creation evasion strategies that assumed the GFW used only the first SYN sequence number.
+techniques:
+    - dpi
+    - rst-injection
+    - middlebox-interference
+censors:
+    - cn
+defense_implications:
+    - 'Evasion strategies must account for GFW re-synchronization: any SYN insertion packet must be followed by a desynchronization packet with an out-of-window sequence number before the real payload, not left as a standalone TCB creation attempt.'
+    - Do not assume the GFW ignores duplicate SYNs — design combined strategies (e.g., TCB Creation + Resync/Desync) that defeat both old and evolved GFW models simultaneously.
+section: §4
+extracted_by: claude-sonnet-4-6

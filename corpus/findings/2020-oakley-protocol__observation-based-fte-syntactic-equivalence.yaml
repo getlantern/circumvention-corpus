@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-oakley-protocol
+kind: defense
+summary: Observation-based FTE constructs each packet field exclusively from values previously observed in real host-protocol traffic, guaranteeing syntactic equivalence. Wireshark correctly decodes Protocol Proxy-generated packets as valid Synchrophasor frames with correct checksums, and the Phasor Data Concentrator hardware accepts them; any rule blocking Protocol Proxy traffic must therefore also block legitimate PMU packets.
+techniques:
+    - dpi
+defenses:
+    - format-transform
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Implement FTE by building a lookup table of empirically observed field values rather than a PCFG grammar; this avoids the open research question of grammar derivation while guaranteeing all emitted values are indistinguishable from real traffic.
+    - Validate syntactic equivalence with a protocol-aware parser (e.g., Wireshark dissector) before deployment — a failed parse is a detectable fingerprint even when payload entropy looks correct.
+section: §5.1, §7
+extracted_by: claude-sonnet-4-6

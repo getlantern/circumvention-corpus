@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-kohls-skypeline
+kind: evaluation
+summary: A Skype prototype operating under real-world conditions achieves 64 bps (WGN noise, no ECC) at ≥99% reconstruction accuracy and ≥23 dB SNR. With OPUS/Silk encoding (vector quantization), throughput is constrained to approximately 72 bps at two modulation layers; additional layers fail to satisfy the 99% accuracy bound because VQ codec noise reduction filters the embedded pseudo-noise sequences.
+techniques:
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Force the Opus codec into CELT mode (≥20 kbps channel) rather than Silk mode to preserve embedded pseudo-noise sequences through compression; without this, each additional modulation layer fails the 99% accuracy threshold.
+    - Treat codec type as a first-class deployment parameter — protocol designers should negotiate or detect the active codec and cap modulation layers accordingly to avoid silent accuracy degradation.
+section: §5.2, §7.2, Table 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wustrow-tapdance
+kind: detection
+summary: Because TapDance does not block client-to-server packets, a censor can inject a TCP packet with a stale acknowledgment number directly to the true decoy server; the server will reply with its actual TCP sequence state, which will differ from the sequence numbers the TapDance station has been using — confirming the flow is proxied. This active packet-injection attack is qualitatively easier to execute against TapDance than against Telex or Cirripede, which used inline blocking to prevent such probes from reaching the server. Table 1 in the paper confirms that TapDance, unlike Telex, lacks replay/preplay attack resistance and has no traffic-analysis defense.
+techniques:
+    - active-probing
+    - packet-injection
+    - rst-injection
+defenses:
+    - tapdance
+censors:
+    - generic
+defense_implications:
+    - 'Implement active-defense countermeasures at the station: when a stale-ACK probe is detected on a non-proxied flow, spoof a ''stale'' response identical to what a proxy connection would produce, forcing the censor to accept false positives and degrading the reliability of the detection signal.'
+    - Limit each proxy session to a single request/response cycle followed by immediate connection teardown; this closes the TCP-state divergence window to a very small interval, reducing the censor's opportunity to inject a detectable probe.
+section: §5.2, Table 1
+extracted_by: claude-sonnet-4-6

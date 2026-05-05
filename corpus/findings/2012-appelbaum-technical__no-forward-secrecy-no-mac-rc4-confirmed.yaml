@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-appelbaum-technical
+kind: defense
+summary: Ultrasurf confirmed to the researcher that its protocol has no forward secrecy and uses RC4 without any integrity check (no MAC or HMAC). This means all recorded ciphertext can be retrospectively decrypted once a session key is recovered, and the stream is trivially malleable — both properties confirmed by the UltraReach team during disclosure.
+techniques:
+    - dpi
+defense_implications:
+    - Every circumvention protocol must use ephemeral Diffie-Hellman (ECDHE) for key exchange so session compromise does not retroactively expose recorded traffic; forward secrecy is non-negotiable for high-risk users.
+    - Stream ciphers must be paired with a MAC (HMAC-SHA256, Poly1305, or an AEAD construction) to prevent ciphertext manipulation — unauthenticated RC4 or ChaCha20 streams allow in-path censors to inject or flip bits silently.
+section: §8.1, §5.15
+extracted_by: claude-sonnet-4-6

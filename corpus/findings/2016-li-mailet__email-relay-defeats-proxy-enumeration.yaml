@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-li-mailet
+kind: defense
+summary: Mailet resists proxy enumeration because clients communicate exclusively through widely-used email hosting providers over standard POP3/SMTP/IMAP ports; no direct client-to-Mailet-server connection ever exists, so even if a censor learns a Mailet server's IP address, blocking it requires blocking all email to major providers — collateral damage that is politically infeasible.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - steganography
+    - tunneling
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Route circumvention traffic exclusively through large collateral-damage-proof third-party services so that any IP block causes service disruption for millions of innocent users, raising the political cost of blocking above the censor's acceptable threshold.
+    - Eliminate all direct client-to-proxy connection paths; indirect rendezvous through third-party mail or cloud infrastructure prevents the censor from obtaining a blockable endpoint via active probing or enumeration.
+section: §1, §2.1
+extracted_by: claude-sonnet-4-6

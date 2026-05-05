@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-fingerprintability
+kind: evaluation
+summary: A DTLS fingerprinting script run on one full day of network traffic at Lawrence Berkeley National Laboratory found only 7 DTLS handshakes with 3 unique client fingerprints and 3 unique server fingerprints, suggesting there may not be enough naturally occurring WebRTC traffic to provide meaningful cover for a WebRTC-based circumvention system.
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Do not assume WebRTC prevalence alone prevents censors from blocking all DTLS flows; empirical cover-population size must be periodically revalidated across diverse vantage points before relying on it as a defense.
+    - Consider whether the realistic base rate of WebRTC traffic at a given network vantage point is large enough to make wholesale blocking prohibitively costly to the censor.
+section: §5
+extracted_by: claude-sonnet-4-6

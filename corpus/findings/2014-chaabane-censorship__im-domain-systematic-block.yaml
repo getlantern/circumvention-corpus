@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-chaabane-censorship
+kind: detection
+summary: Skype.com (503,932 censored, 0 allowed) and live.com IM services were blocked with 100% denial rates at all times. During the August 3, 2011 protest events Skype accounted for up to 29.24% of all censored traffic; 9% of Skype requests were software update attempts, which were also denied, confirming content-agnostic domain-level blocking rather than content-selective filtering.
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - sy
+defense_implications:
+    - IM and VoIP circumvention traffic must masquerade as non-IM protocols at both the domain and traffic-shape level; blocking is domain-wide, so a single blocked domain name takes down all traffic including updates.
+    - Separate the update channel and the communication channel across distinct domains and transports so that blocking one does not disable the other.
+section: §5.1, §5.5, Tables 5 & 7
+extracted_by: claude-sonnet-4-6

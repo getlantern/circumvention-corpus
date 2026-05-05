@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-sheffey-improving
+kind: detection
+summary: 'An adaptive censor that retrains classifiers on both unmodified and GAN-transformed Meek traffic (''informed NN'') partially recovers detection capability: informed NN achieves a PR-AUC of 0.440 against modified traffic versus 0.309 for the naive NN, and achieves FPR of 0.667 versus 1.000 for the naive NN. However, the informed NN suffers from catastrophic interference and performs worse on FPR than the naive classifier on unmodified data (0.545 vs. 0.002).'
+techniques:
+    - ml-classifier
+defenses:
+    - randomization
+    - meek
+censors:
+    - generic
+defense_implications:
+    - 'GAN-based traffic shaping triggers a cat-and-mouse arms race: once a censor retrains on modified samples, the transformer must be retrained or the distribution shifted; build the retraining loop into the defense tooling, not just the initial generation.'
+    - Adaptive censor retraining increases false positives on legitimate HTTPS traffic (FPR 0.545), which may create political pressure on the censor to relax detection — exploit this collateral-damage dynamic in deployment.
+section: §5 Results, §6 Discussion
+extracted_by: claude-sonnet-4-6

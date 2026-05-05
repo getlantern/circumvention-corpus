@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-frolov-detecting
+kind: detection
+summary: 'Each probe-resistant proxy exposes a unique TCP close-threshold fingerprint: obfs4 closes with FIN at 8,192–16,384 bytes and RST at the next multiple of 1,448 bytes beyond that; Lampshade at FIN 256 bytes / RST 257 bytes; Shadowsocks-python and -outline both at FIN 50 bytes (outline also RST at 51); OSSH at FIN 24 bytes / RST 25 bytes. A binary-search tool using random probes can discover these thresholds remotely without knowing any shared secret, providing a protocol-specific fingerprint independent of payload content.'
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - obfs4
+    - shadowsocks
+    - pluggable-transport
+censors:
+    - generic
+    - cn
+defense_implications:
+    - 'Eliminate fixed close thresholds entirely: proxy servers should read from the connection indefinitely rather than closing after a fixed byte count so censors cannot binary-search for a threshold.'
+    - Use event-driven I/O that drains the socket buffer on every read to prevent RST-vs-FIN divergence from leaking threshold boundaries at the OS level.
+section: §IV-C, Table II
+extracted_by: claude-sonnet-4-6

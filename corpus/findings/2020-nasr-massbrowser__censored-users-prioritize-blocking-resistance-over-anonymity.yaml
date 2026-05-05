@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-nasr-massbrowser
+kind: policy
+summary: Survey data indicates 31% of Chinese Internet users use VPN services compared to Tor's approximately 2 million daily users globally, and centralized non-anonymous systems like Lantern and Psiphon dominate adoption over anonymity-focused tools. The paper argues this demonstrates that the majority of censored users prioritize blocking resistance over anonymity, supporting a separation-of-properties design principle.
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Design circumvention systems with blocking resistance as the primary objective and offer anonymity only as an opt-in feature, to avoid imposing QoS penalties on the majority of users who do not require it.
+    - Restricting proxy use to censored destinations only reduces proxy congestion and lowers volunteer legal exposure, increasing the pool of willing proxy operators.
+section: §III-B
+extracted_by: claude-sonnet-4-6

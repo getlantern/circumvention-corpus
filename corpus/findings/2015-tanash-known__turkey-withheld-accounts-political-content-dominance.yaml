@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-tanash-known
+kind: evaluation
+summary: Manual review of 46 fully-withheld Turkish accounts found that 36 (78%) were classified as posting anti-government political content critical of President Erdoğan, 2 as pornography, 1 as advertising bots, 3 as unidentified, and 4 as no-longer-findable; NMF/tf-idf topic modeling of withheld individual tweets confirmed that the dominant censored themes were criticism of government-aligned media and ruling-party politicians.
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Political speech critical of the sitting government accounts for the overwhelming majority of targeted content — circumvention tools deployed in Turkey should be designed with the assumption that the user population is primarily political dissidents, not general privacy seekers.
+    - Topic modeling of censored content is a viable intelligence method for identifying censor priorities and predicting future blocking targets; operators should build similar pipelines to anticipate which keywords or hashtags will trigger new blocking events.
+section: §6.1, §6.2
+extracted_by: claude-sonnet-4-6

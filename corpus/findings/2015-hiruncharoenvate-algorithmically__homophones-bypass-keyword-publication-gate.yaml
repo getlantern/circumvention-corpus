@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-hiruncharoenvate-algorithmically
+kind: evaluation
+summary: Replacing censored keywords with algorithmically-generated homophones increased the initial publication rate on Sina Weibo from 90.79% for unaltered posts to 94.74% for transformed posts (χ²=6.219, p=0.01), demonstrating that the technique successfully bypasses automatic keyword matching at the publication gate even when posts are ultimately censored at similar rates.
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Keyword-evasion tools should target the initial automated filter pass (publication gate), not just final censorship — even partial bypass dramatically expands audience reach before human review.
+    - Score candidate substitutions by character frequency so generated terms blend into normal usage patterns and avoid triggering secondary anomaly detectors.
+section: Experiment 1 / Results — Table 1
+extracted_by: claude-sonnet-4-6

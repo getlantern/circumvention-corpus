@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-dyer-marionette
+kind: evaluation
+summary: 'High-fidelity statistical mimicry of Amazon.com traffic — simultaneously matching HTTP response payload length distributions, request-response pairs per TCP connection, and simultaneously active connection counts — reduced goodput to 0.45 Mbps downstream and 0.32 Mbps upstream, versus 6.6/6.7 Mbps for simple RFC-compliant FTP mimicry. The bottleneck was the prevalence of very short payloads (most common length: 43 bytes) forcing frequent TCP connection setup and teardown, with the server blocked on network I/O 98.8% of the time.'
+techniques:
+    - traffic-shape
+defenses:
+    - marionette
+defense_implications:
+    - Reserve full multi-dimensional statistical mimicry (payload sizes + inter-arrival times + connection counts) only when a traffic-analysis-capable censor is confirmed present; accept the ~15× throughput penalty relative to simple content mimicry as a deliberate operational tradeoff.
+    - When selecting a statistical mimicry target, prefer protocols with long average payload lengths — mimicking traffic patterns dominated by sub-100-byte messages causes TCP handshake overhead to dominate and makes the channel impractical for most use cases.
+section: §7.4, §7.6
+extracted_by: claude-sonnet-4-6

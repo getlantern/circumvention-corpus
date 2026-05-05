@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-cho-churn
+kind: evaluation
+summary: Combining boolean network tomography with BGP path churn from the ICLab platform identifies 108 censoring ASes located in 49 countries across 4.9M measurements, reducing the candidate set of potential censoring ASes by 97% on average. 97.9% of constructed SAT CNFs return exactly one solution enabling exact AS-level censor identification, with less than 0.7% returning no solution.
+techniques:
+    - measurement-platform
+    - rst-injection
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - Circumvention infrastructure placement should consult AS-level censor maps derived from tomographic analysis to avoid hosting bridges on or routing through confirmed censoring ASes.
+    - Boolean network tomography applied to OONI or M-Lab data can produce high-confidence censor maps without dedicated in-country vantage points — integrate these into automated bridge selection logic.
+section: Abstract, §4
+extracted_by: claude-sonnet-4-6

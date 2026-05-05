@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-frolov-isp-scale
+kind: deployment
+summary: Without per-site connection limits, popular decoy hosts risk resource exhaustion (Apache's default cap is 150 simultaneous connections); enforcing an initial limit of 30 concurrent clients per site—coordinated across stations via a central collector—kept the median site load at ~5 simultaneous clients, with the 99th-percentile site peaking at 37 after the limit was raised to 45.
+defenses:
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Implement a central coordinator that tracks per-decoy-site concurrent user counts across all stations and signals stations to redirect new clients when a site nears its connection limit.
+    - Apply exponential back-off when a client fails to connect to its chosen decoy site to prevent thundering-herd load spikes from cascading across backup sites.
+section: §3.5, §4.3, Figure 9
+extracted_by: claude-sonnet-4-6

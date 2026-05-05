@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-censors
+kind: evaluation
+summary: Some obfs4 bridges exhibited a roughly 24-hour periodic semi-blocking pattern from China, where bridges cycled between reachable and blocked states with a ~24-hour period. This diurnal pattern differed between the two China probe sites and between bridges, and one blocking failure coincided with a documented nationwide GFW outage that also briefly restored access to Google services.
+techniques:
+    - ip-blocking
+defenses:
+    - obfs4
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients should implement automatic retry with backoff rather than treating a failed connection as permanently blocked; diurnal patterns mean a bridge that fails at one time of day may succeed hours later.
+    - Monitoring bridge reachability at multiple times of day from multiple vantage points is necessary to distinguish permanent blocking from periodic enforcement gaps.
+section: §4 Results, Figure 3
+extracted_by: claude-sonnet-4-6

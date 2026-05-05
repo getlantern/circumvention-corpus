@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-cho-churn
+kind: evaluation
+summary: 'Network-level path churn is critical for censor localization: 25%, 30%, 38%, and 67% of ICLab source-destination pairs observe distinct AS-level path changes over periods of one day, week, month, and year respectively. Without path churn, nearly 90% of constructed CNFs return five or more solutions (ambiguous), compared to less than 2% when multiple distinct paths are included.'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Monitor AS-level path churn to bridge and proxy servers as an early warning signal — sudden path stabilization routing through a known-censoring AS may indicate deliberate route manipulation targeting the circumvention infrastructure.
+    - Path diversity between clients and proxies provides both reliability and enables tomographic censor localization; designs that deliberately vary routing paths improve the accuracy of any downstream measurement-based censor map.
+section: §4
+extracted_by: claude-sonnet-4-6

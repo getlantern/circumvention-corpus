@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2003-dornseif-government
+kind: detection
+summary: IP-level blocking causes severe over-blocking because more than 87% of all domains deploy name-based virtual hosting on shared IP addresses (per Edelman's 2003 survey of .com/.net/.org). A single blocked IP can deny access to thousands of unrelated sites; when xs4all.nl was blocked in 1996/1997, between 3,000 and 6,000 separate websites were collaterally blocked.
+techniques:
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Host circumvention infrastructure on dedicated IP addresses with no virtual-hosting co-tenants to eliminate collateral-blocking pressure that might motivate censor to narrow targeting
+    - Rotating IP addresses (demonstrated by xs4all at hourly intervals in 1997) forces censors into reactive re-blocking and raises operational cost, though xs4all halted after a few days due to side-effects
+section: §2.1.2
+extracted_by: claude-sonnet-4-6

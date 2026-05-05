@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hoang-empirical
+kind: evaluation
+summary: A blocking rate of more than 70% of I2P peer IP addresses is sufficient to cause significant latency in web browsing activities, while blocking more than 90% of peer IP addresses can make the I2P network unusable. The cost to reach the 95% blocking threshold is operating only 10 censor-controlled routers.
+techniques:
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Network usability collapses well before full enumeration is achieved (70% = significant degradation, 90% = unusable), so resilience requires that enough peers remain unblockable — not that the full set survives; prioritize a hard-to-enumerate unlisted-relay tier.
+    - 'Design for graceful degradation: ensure clients can continue operating at reduced peer-set sizes by pre-caching multiple alternative entry points obtained through out-of-band channels before the blocking event occurs.'
+section: Abstract
+extracted_by: claude-sonnet-4-6

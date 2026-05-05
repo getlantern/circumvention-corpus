@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-geddes-cover
+kind: detection
+summary: FreeWave's modem synchronization depends on a preamble transmitted only at connection start (approximately 0.25 seconds for a 2048-symbol preamble); a censor applying 95% packet loss for under one second at the beginning of the session reliably prevents synchronization and breaks the connection, while reducing VoIP MOS only briefly and leaving the remainder of the session intact (Figure 2). With fixed data-frame designs, the censor can repeat preamble-targeted drops on every frame, achieving complete desynchronization at low average packet loss rates tolerable to legitimate VoIP.
+techniques:
+    - traffic-shape
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Covert modems or framing layers embedded in a cover channel must not place synchronization markers at predictable offsets; randomizing or continuously distributing synchronization state across the session removes the brief high-loss-window attack surface.
+    - Connection-startup bursts (handshakes, preambles) are disproportionately high-value targets; consider spreading critical keying material across the first several seconds of traffic rather than front-loading it.
+section: §4.2, Figure 2
+extracted_by: claude-sonnet-4-6

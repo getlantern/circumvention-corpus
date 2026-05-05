@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-vines-rook
+kind: evaluation
+summary: Kolmogorov-Smirnov two-sample tests on packet-size distributions and inter-packet timing show that standard Rook (altering ~1-in-10 packets) is statistically indistinguishable from normal TF2 gameplay across 20 samples each. High-bandwidth Rook (1-in-2 packets) shows a slightly higher average bandwidth but remains difficult to distinguish on traffic-shape metrics.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Embedding rate must be kept well below 50% of packets — the 1-in-10 rate tested here passed all traffic-shape tests, while 1-in-2 raised detectable anomalies in trigram counts.
+    - Traffic-shape invariance requires that the covert channel add no packets and change no packet lengths or timing — altering only field values within existing packets is the correct architecture.
+section: §4.3 Traffic Shape Analysis
+extracted_by: claude-sonnet-4-6

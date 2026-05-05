@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-connolly-trist
+kind: evaluation
+summary: 'TRIST integrated with StegoTorus as a one-hop SOCKS proxy introduces minimal additional bandwidth overhead: JPEG steganography throughput falls between StegoTorus''s PDF and JSON schemes across link delays of 20–400 ms and 1–4 parallel circuits. The steganographic expansion factor is 1:6 to 1:12 (message bytes to cover JPEG file length), adequate for basic web surfing.'
+techniques:
+    - dpi
+defenses:
+    - steganography
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - A 1:6–1:12 message-to-carrier ratio is the practical bandwidth budget for JPEG steganography; protocol designers should size cover image selection and parallelism (multiple circuits) to achieve acceptable throughput rather than tuning the embedding algorithm alone.
+    - Parallelize StegoTorus-style circuits (4 concurrent circuits showed meaningful throughput gains) to compensate for the inherent bandwidth overhead of steganographic encoding.
+section: §6
+extracted_by: claude-sonnet-4-6

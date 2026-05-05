@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wright-fine-grained
+kind: policy
+summary: 'National-level filtering is not homogeneous: the administrative burden of maintaining up-to-date filtering rules at national scale leads states to delegate implementation to regional authorities or individual ISPs, producing measurable filtering differences between geographic regions and providers within the same country.'
+techniques:
+    - ip-blocking
+    - dpi
+    - dns-poisoning
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Circumvention infrastructure should probe and model sub-national filtering variation rather than assuming uniform national policy — a server blocked in one province or ISP may be reachable from another.
+    - Bandit-style server selection that incorporates ISP and regional factors will outperform country-level routing decisions.
+section: §2, §6
+extracted_by: claude-sonnet-4-6

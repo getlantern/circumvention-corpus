@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-xu-internet
+kind: detection
+summary: 14 of 495 filtering interfaces (2.9%) are located in non-border internal ASes, all but two belonging to CHINANET provincial subsidiaries. The paper notes that CHINANET's provincial filtering architecture creates infrastructure capable of inspecting inter-provincial domestic traffic, even though there is no current evidence it is being used for that purpose.
+techniques:
+    - dpi
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention designs that route through purely domestic Chinese infrastructure to reduce latency cannot assume filtering-free paths; filtering capability in internal ASes is documented, and the architecture is already positioned for domestic expansion.
+    - Measurement studies probing only border ASes will miss approximately 3% of active filtering devices; comprehensive topology probes must target servers in internal ASes to characterize the full filtering surface.
+section: §4.4, Table 2
+extracted_by: claude-sonnet-4-6

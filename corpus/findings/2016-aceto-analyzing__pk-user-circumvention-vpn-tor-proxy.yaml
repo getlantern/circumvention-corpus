@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-aceto-analyzing
+kind: evaluation
+summary: A university closed survey of 64 Pakistani users found that 51% evade censorship using VPNs (Hotspot Shield being the most prominent), 25% use web proxies, 17% use Tor/onion routing, and approximately 7.2% use CDNs, mirror sites, search-engine caches, or web-based DNS lookup services.
+techniques:
+    - dns-poisoning
+    - packet-injection
+defenses:
+    - tor
+    - tunneling
+    - domain-fronting
+censors:
+    - pk
+defense_implications:
+    - VPN is the dominant user-facing circumvention UX in Pakistan (51%); tools should present a VPN-like interface or integrate with existing VPN clients to minimize the friction of adoption.
+    - Tor's 17% share indicates meaningful demand for anonymity alongside censorship circumvention—tools serving Pakistan should offer or integrate Tor-bridge modes, not just unencrypted proxying.
+section: §V-B
+extracted_by: claude-sonnet-4-6

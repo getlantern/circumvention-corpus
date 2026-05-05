@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-ling-extensive
+kind: detection
+summary: 'A single malicious Tor middle router advertising 10 MB/s bandwidth discovered 2,369 distinct bridges in 14 days. The catch probability is determined solely by the aggregated bandwidth M = k·b of malicious middle routers regardless of how that bandwidth is distributed across nodes: three routers at 10 MB/s each achieve strictly greater catch probability than 512 nodes at 50 KB/s each. This means a well-resourced single node is equivalent to or surpasses hundreds of low-bandwidth Sybil nodes.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - tor
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Treat any high-bandwidth relay that appears near a bridge circuit as a discovery risk; bridge assignment logic should deprioritize circuits that route through newly joined or anomalously high-bandwidth middle nodes.
+    - Bridges should rotate IP addresses or cease accepting new circuits after a small threshold (well under 30 cumulative client circuits) to bound catch probability before a high-bandwidth malicious middle can identify them.
+section: §IV-B, §V-B, Theorem 3
+extracted_by: claude-sonnet-4-6

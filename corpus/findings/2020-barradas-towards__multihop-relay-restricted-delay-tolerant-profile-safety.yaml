@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-towards
+kind: defense
+summary: CRON restricts multi-hop covert circuits (N≥1 relays) to delay-tolerant traffic only, because establishing multiple simultaneous WebRTC video calls is 'highly atypical in normal user profiles' and would trigger S1 behavioral anomaly detection. Real-time interactive tunneling is limited to direct circuits (N=0) within pre-existing calls, and active mode introduces only bounded variability in call times and frequency to stay within plausible user-profile ranges.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - webrtc-pluggable
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Protocol designers must explicitly model which circuit topologies are behaviorally distinguishable from legitimate usage and restrict or camouflage those topologies accordingly; multi-hop relay configurations need cover traffic or structural changes to avoid anomaly detection.
+    - 'Decoupling delay-tolerant from real-time circumvention paths allows each to be optimized for its threat model independently: delay-tolerant paths can accept higher latency in exchange for stronger behavioral mimicry.'
+section: §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-govil-mimiq
+kind: defense
+summary: Against censors that detect blacklisted application protocols by examining only the first 30 packets of a flow (e.g., the technique in Wang et al. 2015), a single IP migration after 30 packets have been exchanged is sufficient to defeat detection while incurring minimal performance overhead—the client continues the connection normally on the new address.
+techniques:
+    - dpi
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Match migration timing to the censor''s known inspection window depth: one well-timed hop can defeat detection-by-first-N-packets without the overhead of continuous migration.'
+    - Design circumvention clients to be configurable on migration triggers (packet count, byte count, time) so operators can tune to observed censor inspection depths in the field.
+section: §5
+extracted_by: claude-sonnet-4-6

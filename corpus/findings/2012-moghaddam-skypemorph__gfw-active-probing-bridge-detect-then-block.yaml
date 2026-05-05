@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-moghaddam-skypemorph
+kind: detection
+summary: 'After a Tor client inside China connected to a US-based bridge, that bridge subsequently received a series of Tor connection-initiation messages from different Chinese hosts — consistent with GFW active probing triggered by the initial client connection. The probe burst was followed by loss of the original client connection, demonstrating a two-phase detect-then-block pattern: passive identification of suspicious traffic triggers active re-probing to confirm the protocol before blocking.'
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - pluggable-transport
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - 'A pluggable transport must be robust against active probes: if the bridge responds to probe connections with Tor protocol bytes (or any non-cover-protocol bytes), the censor can confirm and block it regardless of how well the original client traffic was obfuscated.'
+    - Bridges should behave identically whether the incoming connection is a legitimate SkypeMorph client or a censor probe — i.e., require a valid cover-protocol handshake before revealing any Tor behavior.
+section: §1
+extracted_by: claude-sonnet-4-6

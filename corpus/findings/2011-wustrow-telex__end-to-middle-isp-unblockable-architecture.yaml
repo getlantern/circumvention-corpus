@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wustrow-telex
+kind: defense
+summary: Telex embeds steganographic tags in TLS ClientHello nonces using elliptic-curve Diffie-Hellman, placing proxy stations at ISP level on paths between the censor's network and popular uncensored destinations. Because the cover destinations are ordinary popular HTTPS websites, the censor cannot block Telex without simultaneously blocking a large class of legitimate TLS traffic — converting the censor's own reluctance to over-block into an unblockability guarantee.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - telex
+    - decoy-routing
+    - steganography
+    - mimicry
+defense_implications:
+    - Design circumvention systems around cover destinations whose blocking would impose unacceptable collateral damage on the censor, rather than dedicated proxy IPs that can be enumerated and blacklisted.
+    - Place proxy infrastructure in-path at ISP transit points rather than at edge servers; this eliminates the IP-based discovery and blocking that defeats Tor bridges and conventional VPNs.
+section: §2, §4
+extracted_by: claude-sonnet-4-6

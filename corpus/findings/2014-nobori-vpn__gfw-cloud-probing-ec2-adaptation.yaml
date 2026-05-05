@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-nobori-vpn
+kind: detection
+summary: After VPN Gate blocked the GFW's original probe IP (210.72.128.200, operated by China Science and Technology Network / CSTNET), the GFW authority immediately pivoted to Amazon EC2 and commercial hosting (Gorilla Servers) to enumerate relay lists, using a Python-urllib user agent at fixed polling intervals. Following this adaptation, approximately 80% of all VPN Gate servers became unreachable from China.
+techniques:
+    - active-probing
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - IP-based blocklisting of censor probe sources is a short-lived defense — censors will trivially switch to cloud-provider IPs; invest instead in behavioral detection (connection pattern anomalies) that is cloud-source-agnostic.
+    - 'Fixed polling intervals and scripted user agents are detectable signals, but treat them as temporary: design spy detection around call-completion behavior rather than HTTP metadata the censor can trivially vary.'
+section: §6.3, Figure 13
+extracted_by: claude-sonnet-4-6

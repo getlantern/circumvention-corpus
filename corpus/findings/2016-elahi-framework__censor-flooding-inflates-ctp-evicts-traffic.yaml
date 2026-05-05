@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-elahi-framework
+kind: detection
+summary: A censor can mount a zero-collateral-damage flooding attack by injecting fake CRS-protocol-conformant traffic into open channels, inflating the apparent CTP and evicting real circumvention traffic to throttled or sacrificial protocols. If injection is costless the censor can drive real circumvention throughput to zero while keeping all channels nominally open; the attack is equally effective against both throttling and dumping CTP control strategies.
+techniques:
+    - dpi
+    - packet-injection
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Authenticate or cryptographically distinguish legitimate client traffic from censor-injected traffic at CRS ingress—e.g., via per-client flow credentials or cryptographic CTP tokens—to prevent inflation of the apparent circumvention traffic proportion.
+    - Recognize that any throttle-based CTP control is vulnerable to this attack if the censor can freely generate protocol-conformant traffic; client authentication is a necessary architectural requirement, not an optional hardening.
+section: §6.1
+extracted_by: claude-sonnet-4-6

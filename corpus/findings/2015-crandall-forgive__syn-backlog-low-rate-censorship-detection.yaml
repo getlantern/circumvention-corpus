@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-crandall-forgive
+kind: evaluation
+summary: The SYN backlog side channel can detect censorship for any Internet host with an open port at approximately 5 packets per second without causing denial of service, provided only one measurement machine targets any given server at a time. Updated implementations require only that the backlog be half full rather than requiring full exhaustion, eliminating the earlier DoS requirement.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Circumvention infrastructure operators can run low-rate SYN backlog scans from an external vantage point to detect on-path filtering of their proxy endpoints without deploying client software in the censored country.
+    - Restrict concurrent SYN backlog scans to one measurement machine per target server to stay below DoS thresholds on older Windows stacks.
+section: §3.3, Table 1
+extracted_by: claude-sonnet-4-6

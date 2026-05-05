@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-ensafi-detecting
+kind: evaluation
+summary: Using TCP IPID side channels combined with SYN backlog state inference, the authors detect intentional packet drops between two arbitrary Internet hosts without controlling either host. The only requirements are a client with a globally incrementing IPID (~1% of IP space) and a server with an open port; an ARMA model handles autocorrelated noise.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool operators can use this technique to passively audit whether their server IPs are being blocked for specific client populations without deploying probes inside censored networks.
+    - 'The directional attribution (server-to-client vs. client-to-server) reveals which layer of the blocking stack to target: stateless return-path filters versus null-routed destination IPs.'
+section: §2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-barradas-deltashaper
+kind: detection
+summary: Across eight combinations of traffic features (packet length, bi-gram packet length, inter-packet time, bi-gram inter-packet time) and two similarity metrics (EMD, KS), adversarial classification accuracy against DeltaShaper streams ranges from 72–90% in unperturbed conditions. Bi-gram inter-packet times with EMD achieves 88% accuracy, matching packet-length/EMD, but requires roughly 10x the computation (~64s vs ~6s). Bandwidth throttling to 300 Kbps degrades classifier accuracy from 88% to 75%, but also drops Skype frame rate from 30 to 5 FPS, creating collateral damage that limits censor deployment of throttling as a detection aid.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - throttling
+censors:
+    - generic
+defense_implications:
+    - 'Preserving packet-length distribution is necessary but not sufficient: defenses should also target inter-packet timing, since bi-gram inter-packet time achieves equivalent classification accuracy (88%) and a sophisticated censor will use both features in ensemble.'
+    - Throttling-assisted detection has significant collateral damage even at moderate rates (300 Kbps causes 5 FPS Skype video); censors face a political/operational constraint that limits how aggressively they can degrade whitelisted applications to improve detection — exploit this asymmetry by choosing carriers with high visibility and political cost to degrade.
+section: §6.4, §6.5, Table 3
+extracted_by: claude-sonnet-4-6

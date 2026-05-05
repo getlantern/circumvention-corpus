@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-fifield-turbo
+kind: evaluation
+summary: Simultaneous upload and download of a 10 MB file took 10.6 s over TCP-encapsulated QUIC, 23.3 s over traditional meek, and 34.9 s over meek with encapsulated QUIC (Table 1), showing that naively adding a QUIC session layer to meek degraded throughput by approximately 50% relative to unmodified meek. Performance was sensitive to HTTP body size limits and request-thread count, but the root cause remained uncertain.
+defenses:
+    - meek
+    - meta-resistance
+defense_implications:
+    - When inserting a session/reliability layer into a request-response carrier like meek, aggressively tune maximum HTTP body size and request concurrency — default parameters are likely to degrade performance significantly.
+    - Benchmark session-layer additions against baseline transport performance before deployment; session-layer overhead can exceed the cost of the obfuscation layer itself.
+section: Table 1, §3.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-fifield-oss
+kind: evaluation
+summary: The bulk-transfer mode requires both the censored client and the cooperating proxy to accept incoming TCP connections, rendering it unusable for clients behind NAT without port-forwarding capability. Rendezvous mode is unaffected because it only requires the client to send a single outbound request. The authors note that many real-world residential users are behind NAT, limiting practical deployment of the bidirectional channel.
+defenses:
+    - tunneling
+    - pluggable-transport
+    - bridges
+defense_implications:
+    - Design OSS-based transports to operate in a client-initiates-only mode (no incoming connections required) to remain viable for NAT-constrained residential users.
+    - Treat OSS bulk transport as a relay-server capability and OSS rendezvous as the universally deployable primitive; pair it with a NAT-traversal mechanism (e.g., WebRTC, TURN) for full duplex.
+section: §6
+extracted_by: claude-sonnet-4-6

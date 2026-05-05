@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-dainotti-analysis
+kind: evaluation
+summary: During Egypt's 5.5-day Internet blackout, active CAIDA Ark measurements found that only 1% of probes to Egyptian IPv4 prefixes received responses, compared to 16–17% on normal days. The minority of addresses that retained bidirectional connectivity all mapped to BGP prefixes that had not been withdrawn—including prefixes serving the Egyptian stock exchange and two national banks, whose 83 prefixes were kept live until January 31 at 20:46:48 GMT before being simultaneously withdrawn.
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+censors:
+    - generic
+defense_implications:
+    - Proxy endpoints co-located with economically or diplomatically protected institutions may survive selective BGP shutdowns longer than general-purpose hosting; this suggests a tiered survival strategy where some circumvention infrastructure is provisioned via financial or governmental network connections.
+    - The near-zero (1%) residual reachability during a BGP blackout means conventional IP routing is inadequate for continuity; emergency fallback to satellite uplinks or licensed radio-frequency channels must be designed in from the start for high-risk deployments.
+section: §5.1.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-seltzer-infrastructures
+kind: defense
+summary: 'Each round of copyright enforcement drove deeper architectural decentralization: centralized servers (BBSs/FTP) → central directory (Napster) → supernodes (KaZaA/Grokster) → pure protocol (BitTorrent). Even after Grokster was shut down its software continued to work, because no fixed corporate entity remained as the control point.'
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design circumvention tools as protocols rather than services — eliminate any central directory or company-controlled routing component that can be compelled or shut down.
+    - Distribute trust across peers rather than a fixed server hierarchy so that takedown of any single node does not degrade the network.
+section: §1.1
+extracted_by: claude-sonnet-4-6

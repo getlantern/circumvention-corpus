@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-lowe-great
+kind: detection
+summary: 99.88% of 1,607 tested Chinese recursive DNS servers returned tampered responses for censored domains. Tampered responses drew from a pool of only 8 IP addresses, compared to 441–454 distinct IPs returned by U.S. control servers for the same query set — with 366 censored domains sharing exactly those 8 IPs.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Any circumvention tool relying on standard DNS will receive false IPs; use DNS-over-HTTPS or DNS-over-TLS, or hardcode IP addresses, to bypass the DNS-layer censorship entirely.
+    - 'The centralized pool of 8 known bad IPs can be used as a detection oracle: a client receiving one of these IPs for a queried domain can confirm DNS tampering without external ground truth.'
+section: §6.1, Table 1
+extracted_by: claude-sonnet-4-6

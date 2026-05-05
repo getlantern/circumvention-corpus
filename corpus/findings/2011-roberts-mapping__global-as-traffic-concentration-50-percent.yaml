@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-roberts-mapping
+kind: evaluation
+summary: By 2009, the top 150 autonomous systems carried approximately 50% of all Internet traffic globally, up from roughly 30% in 2007. Akamai alone claimed approximately 20% of all web traffic, and the proposed Level 3 / Global Crossing merger would have covered over half the world's IP addresses.
+techniques:
+    - asn-blackholing
+    - ip-blocking
+defenses:
+    - domain-fronting
+    - meek
+    - amp-cache
+defense_implications:
+    - Domain fronting and CDN-based transports (meek, AMP cache) directly exploit this AS-level concentration — a handful of large CDN ASes are too economically important for most censors to block outright, making them durable fronting targets.
+    - Track AS-level consolidation events (mergers, acquisitions); each reduction in the number of major transit ASes shrinks the viable set of fronting providers and should trigger re-evaluation of transport diversity.
+section: §I
+extracted_by: claude-sonnet-4-6

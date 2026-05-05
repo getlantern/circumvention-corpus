@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-nasr-massbrowser
+kind: defense
+summary: MassBrowser proxies operate on NATed IP addresses shared with other users and services, meaning blocking them imposes collateral damage on unrelated parties. The proxy IP pool scales linearly with user count via client-to-client proxying, and IPs rotate as volunteers move between networks, making enumeration-and-block strategies progressively more costly for censors.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - bridges
+defense_implications:
+    - Prefer residential or NATed IPs for relay deployment to maximize collateral-damage cost of IP blocking; dedicated datacenter IPs can be enumerated and blocked with no collateral damage.
+    - Tie proxy pool growth to user growth (via client-to-client proxying) so that as adoption increases, the cost of complete enumeration rises proportionally.
+section: §III-E, §IV-A
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-smits-bridgespa
+kind: detection
+summary: 'Tor bridges that always accept incoming connections enable a three-phase ''bridge aliveness attack'': an adversary collects bridge descriptors at scale, correlates bridge uptime timestamps with pseudonymous post timestamps to narrow the candidate set (winnowing), then confirms identity via circuit-clogging and timing attacks. Because bridge descriptors remain valid indefinitely and the BridgeDB rate-limits only to one descriptor set per /24 prefix per week, an adversary with botnet or open-proxy access can hoard enough bridges for the winnowing phase to succeed.'
+techniques:
+    - active-probing
+    - ip-blocking
+    - flow-correlation
+defenses:
+    - bridges
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Bridge credentials must expire on a short cycle (days, not weeks) so hoarded descriptors cannot be used to build long-run uptime timelines.
+    - Bridge operators running the bridge on a machine they also browse from need an aliveness-hiding layer; simply being unlisted is insufficient.
+section: §1, §1.1
+extracted_by: claude-sonnet-4-6

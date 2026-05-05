@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-come
+kind: defense
+summary: The paper presents 11 purely server-side censorship evasion strategies requiring zero client-side software, successfully bypassing censorship in China, India, Iran, and Kazakhstan across DNS-over-TCP, FTP, HTTP, HTTPS, and SMTP. All strategies manipulate only TCP handshake packets (primarily the SYN+ACK) and were verified against 17 versions of 6 client operating systems (Windows XP–Server 2018, MacOS, iOS, Android, Ubuntu, CentOS) with unmodified clients.
+techniques:
+    - dpi
+    - rst-injection
+    - middlebox-interference
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - cn
+    - in
+    - ir
+    - kz
+defense_implications:
+    - Deploy server-side packet manipulation (e.g., via a Geneva-derived daemon) so censored users need no special software—eliminating bootstrapping friction and reaching users unaware of censorship.
+    - Server-side evasion sidesteps the legal and operational risk of distributing client-side anti-censorship software inside censoring regimes.
+section: §1, §5, Table 2
+extracted_by: claude-sonnet-4-6

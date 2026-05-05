@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-kathuria-bypassing
+kind: deployment
+summary: During the December 2010 Nobel Peace Prize ceremony blocking in China, of two Psiphon nodes brought online for the BBC English News site, one was blocked almost immediately while the other remained available throughout the weekend, serving 387 logins on the ceremony day with no direct promotional channel available. A non-BBC-branded live-stream page promoted via a bit.ly URL released one hour before the ceremony received 4,236 clicks, with approximately 50% from China, accounting for about one-third of total stream viewers.
+techniques:
+    - ip-blocking
+defenses:
+    - pluggable-transport
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Operating multiple simultaneous proxy nodes and delaying promotion of their URLs until just before use (e.g., one hour before a live event) reduces censor dwell time for discovery and blocking; at least one of two nodes survived the full event window.
+    - Non-branded hosting and URL shorteners provide a layer of obfuscation that slows IP/domain-based blocking; circumvention infrastructure should be hosted under domains with no association to the content provider.
+section: §3.3
+extracted_by: claude-sonnet-4-6

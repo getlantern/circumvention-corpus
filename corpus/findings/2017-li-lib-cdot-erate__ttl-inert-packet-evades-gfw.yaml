@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-lib-cdot-erate
+kind: evaluation
+summary: lib·erate's TTL-limited inert packet insertion—sending a decoy packet with TTL set to expire at the middlebox but carrying a misclassifying payload—successfully evades classification in a carrier-grade testbed DPI device, T-Mobile's Binge On, and the Great Firewall of China, but fails against Iran's censor and AT&T (Table 3). When bilateral server support is available, inserting a single dummy packet at flow start evades classification in all four deployments.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Insert a TTL-limited decoy packet carrying benign application-layer content before the identifying payload to exploit match-and-forget middleboxes that cannot distinguish packets expiring in-path from those reaching the server.
+    - Design proxy handshakes to send one innocuous leading packet that causes match-and-forget classifiers to mis-classify the flow before real protocol bytes appear; overhead is O(1) extra packets.
+section: §4.3, Table 3
+extracted_by: claude-sonnet-4-6

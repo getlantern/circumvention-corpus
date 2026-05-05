@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-nobori-vpn
+kind: defense
+summary: Collaborative spy detection aggregates VPN connection logs (complete, incomplete, and tiny calls) across all volunteer nodes to a central log analyzer, which identifies censor probe IPs by looking for clusters of incomplete or tiny calls from the same /24 block, then distributes a Spy List back to every server so probing packets are silently dropped before the handshake completes. A single server cannot distinguish a spy from a regular client in time; the cross-server aggregate makes pre-response spy identification feasible.
+techniques:
+    - active-probing
+defenses:
+    - meta-resistance
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Share connection anomaly telemetry (failed/tiny handshakes) across the relay fleet in near-real-time; a relay that drops a spy before responding prevents the censor from confirming the relay's existence, which is strictly better than blocking the spy only after discovery.
+    - Aggregate at /24 granularity rather than per-IP to handle censor probe farms that rotate source addresses within the same block — the threshold for promotion to the Spy List should be tuned per-country based on expected legitimate traffic density.
+section: §4.3
+extracted_by: claude-sonnet-4-6

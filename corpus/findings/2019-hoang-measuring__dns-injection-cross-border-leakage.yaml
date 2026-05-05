@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-hoang-measuring
+kind: detection
+summary: 'DNS injection from China''s GFW leaked into South Korean networks: queries sent from Korean ASes (AS38676, AS9848) to open resolvers returned the same falsified IP addresses observed inside China, because geographic proximity caused transit routing through Chinese infrastructure. This demonstrates that the GFW censors both egress and ingress traffic, producing cross-border poisoning as a side effect. Sporadic rather than consistent injection at these ASes confirmed the leakage hypothesis rather than intentional Korean blocking.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool bootstrap should not assume DNS poisoning is geographically bounded—validate DNS responses cryptographically (DNSSEC, DoH with certificate pinning) even from networks that are nominally outside censored jurisdictions.
+    - Measurement studies must account for cross-border DNS leakage when attributing blocking events to specific national censors.
+section: §5.1
+extracted_by: claude-sonnet-4-6

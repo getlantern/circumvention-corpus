@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-king-censorship
+kind: evaluation
+summary: The vast majority of censorship activity occurs within 24 hours of original posting, with some deletions occurring more than 5 days later. Across 11,382,221 posts from 1,382 Chinese social media sites collected in 2011, the average censorship rate is 13%, with rates of 16%, 17%, and 24% in low, medium, and high ex ante political sensitivity topic categories respectively.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - The 24-hour censorship execution window means time-critical collective action communication needs protection at the moment of transmission — most interdiction happens within the first day, so post-publication deletion is the dominant threat model.
+    - The narrow gap between low (16%) and high (24%) topic-sensitivity censorship rates confirms that pre-filtering by topic is a poor predictor of censor attention; event-driven volume spikes are the key censor trigger.
+section: Data / Collection; Figure 2
+extracted_by: claude-sonnet-4-6

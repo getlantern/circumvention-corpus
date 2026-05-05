@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wiley-dust
+kind: detection
+summary: 'Encrypted protocols such as SSL/TLS remain fully fingerprint-able through their unencrypted handshakes: DPI can apply static string matching, packet-length comparison, and timing profiling to the cleartext cipher-negotiation and key-exchange phase to identify and block the protocol even though the payload is encrypted.'
+techniques:
+    - dpi
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Any circumvention protocol that begins with a recognizable cleartext negotiation (even partial) is trivially blockable via DPI — the entire handshake must be encrypted or randomized from byte zero.
+    - Existing TLS-mimicking transports that preserve the ClientHello structure inherit this fingerprint surface and require additional handshake obfuscation.
+section: §1.1
+extracted_by: claude-sonnet-4-6

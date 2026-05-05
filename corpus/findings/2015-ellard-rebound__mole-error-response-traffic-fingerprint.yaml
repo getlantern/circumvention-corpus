@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ellard-rebound
+kind: detection
+summary: Rebound's mole protocol generates a characteristic traffic pattern — a steady stream of long HTTP GET requests followed by 404-style error responses — that may be identifiable via traffic analysis even though the channel is TLS-encrypted; the paper acknowledges this as an unmitigated vulnerability and notes that intermingling with ordinary requests reduces observability but further lowers effective throughput.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - decoy-routing
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - 'The error-response back-channel is the weakest point of Rebound-style protocols: replace intentionally erroneous GETs with a covert channel that produces traffic indistinguishable from normal browsing (e.g., real resource fetches whose response bodies carry steganographic payloads).'
+    - Any mole-style protocol that requires a constant chaff stream should randomise inter-chaff intervals and mix in genuine requests to defeat flow-level pattern classifiers.
+section: §VIII-B
+extracted_by: claude-sonnet-4-6

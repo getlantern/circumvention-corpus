@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-marczak-analysis
+kind: detection
+summary: 'Both GFW and GC injected packets share a distinctive implementation side-channel: the IP TTL field progressively increments on successive packets injected into the same connection, paired with an incrementing TCP window size. Using this compound fingerprint, the authors identified GC activity in 8 months of Lawrence Berkeley National Laboratory enterprise border traces with only a single false-positive source IP, and used per-hop TTL probing to localize both the GFW and GC to the same network link on China Telecom (hop 12–13, 144.232.12.211→202.97.33.37) and China Unicom (hop 17–18, 219.158.101.61→219.158.101.49).'
+techniques:
+    - packet-injection
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Implement incrementing-TTL + incrementing-window-size detection in circumvention clients to passively identify when GFW/GC injection is occurring on the user's path, enabling automatic failover to a more resistant transport.
+    - The TTL side-channel is an easily patched implementation artifact — detection logic should also handle injection variants where TTL is randomized or fixed, and should not rely solely on this fingerprint for long-term evasion detection.
+section: §3.1, §4, §6
+extracted_by: claude-sonnet-4-6

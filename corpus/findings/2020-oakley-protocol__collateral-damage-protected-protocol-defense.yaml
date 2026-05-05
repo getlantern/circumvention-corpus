@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-oakley-protocol
+kind: defense
+summary: Protocol Proxy uses 'protected static protocols' — UDP-based protocols whose blocking causes severe collateral damage (e.g., Synchrophasor power-grid traffic, NTP) — as cover channels. Because any detection rule that fires on Protocol Proxy traffic also fires on legitimate PMU traffic, censors face a forced trade-off between blocking circumvention and disrupting critical infrastructure.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - format-transform
+    - mimicry
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Select cover protocols from a class where false-positive blocking causes documented real-world harm (critical infrastructure, financial settlement, healthcare telemetry); this raises the political cost of blocking above what most censors will accept.
+    - Pair cover-protocol selection with syntactic equivalence (observation-based FTE) so that the collateral-damage argument is not undermined by detectable malformations.
+section: §3, §5
+extracted_by: claude-sonnet-4-6

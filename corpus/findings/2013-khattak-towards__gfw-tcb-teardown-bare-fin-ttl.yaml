@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-khattak-towards
+kind: detection
+summary: A TTL-limited bare FIN packet (without ACK) is sufficient to induce GFW to tear down its connection state for a live TCP session (TCP6b), because GFW accepts FIN packets that violate RFC 793's requirement for the ACK flag. After induced state teardown, subsequent packets carrying banned keywords on the same connection produce no RST, confirming the monitor has lost track of the flow.
+techniques:
+    - dpi
+    - rst-injection
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Send a TTL-limited bare FIN (TTL high enough to reach GFW, low enough to die before the server) immediately before transmitting censored content to force GFW state teardown with no impact on the real TCP session.
+    - 'TTL manipulation is a general primitive: any packet that GFW processes but the receiver drops can be used to inject false connection-lifecycle signals; circumvention tools should treat this as a reusable building block.'
+section: §5, Table 1 (TCP6b)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hobbs-sudden
+kind: evaluation
+summary: Blocked Chinese-language Wikipedia pages received approximately 160,000 more views on September 29, 2014 (the day Instagram was blocked) than in the preceding week, covering politically sensitive topics — Tiananmen Square, mainland leaders, and the PRC blocked-sites list — that long-term VPN users would not be browsing for the first time. By November 1, Chinese-language Twitter accounts had accumulated 33,750 more followers than pre-block trend projections.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that surface high-quality, previously inaccessible information (curated blocked-Wikipedia articles, blocked news feeds) during onboarding can accelerate the politicization and retention of gateway-effect users.
+    - The 33,750 excess follower accumulation and Wikipedia spike confirm that usage of newly unblocked content is durable, not a one-day curiosity — retention infrastructure should be designed for sustained new-user cohorts, not just acquisition.
+section: 4. Politicization / Figure 4 / Figure 5
+extracted_by: claude-sonnet-4-6

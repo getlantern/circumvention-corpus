@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-mcpherson-covertcast
+kind: evaluation
+summary: A KL-divergence classifier trained to distinguish CovertCast streams from real YouTube streams achieved only 33–45% true positive rate on packet-size distributions and 36–41% on inter-packet timing distributions — below random guessing — while maintaining 86–98% true negative rates. Overall classifier accuracy was approximately 65–68%, driven entirely by the high true negative rate rather than genuine detection capability.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Tunneling circumvention traffic through a genuine CDN-delivered video protocol defeats traffic-analysis classifiers that rely on packet-size and timing distributions, because the platform's native flow characteristics overwhelm any circumvention-induced signal.
+    - 'Prefer hide-within over protocol mimicry: using real CDN infrastructure ensures that any classifier trained on the legitimate protocol''s traffic profile fails to isolate the circumvention subset.'
+section: §7.5, Table 1
+extracted_by: claude-sonnet-4-6

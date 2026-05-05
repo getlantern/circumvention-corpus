@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-aase-whiskey
+kind: detection
+summary: Weibo's post-censorship system initially checks only for literal keyword strings, but after a user posts a literal blacklisted keyword the server switches to regex/wildcard matching for that user's subsequent posts — catching obfuscations like 'Fa-ccc-lun' that were not blocked before the trigger event. This per-user escalation of pattern matching means keyword obfuscation provides only one-shot protection.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Character-insertion and homoglyph obfuscation of sensitive keywords provide only transient evasion on platforms that track per-user trigger state; once a literal match fires, expanded regex matching is applied to the account.
+    - End-to-end encryption applied before content reaches the platform is the only reliable defense against adaptive, stateful keyword filtering.
+section: §3
+extracted_by: claude-sonnet-4-6

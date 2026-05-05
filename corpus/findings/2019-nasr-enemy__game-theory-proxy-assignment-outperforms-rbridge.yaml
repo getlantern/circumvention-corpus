@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-nasr-enemy
+kind: defense
+summary: A proxy assignment algorithm derived from the Gale-Shapley college admissions game, using multi-feature utility functions across five client metrics (proxy utilization capped at T, new-proxy request rate, blocked-proxy usage, known-blocked count, client distance) achieves superior connected-client ratios and lower wait times compared to state-of-the-art rBridge in all tested ecosystem configurations (Static, Slow, Alive, Popular), without requiring knowledge of individual client types at assignment time.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+defense_implications:
+    - Replace single-feature reputation systems (e.g., rBridge's proxy-uptime-only score) with multi-dimensional behavioral scoring; the five-feature utility function in equation 7 provides measurably better resilience against optimized adversaries at the same proxy capacity (40 clients/proxy, k=3 proxies per client).
+    - 'Model proxy assignment as a two-sided matching problem: the deferred acceptance algorithm provides provably stable, client-optimal assignments and can be run entirely server-side with no cooperation from clients or proxies.'
+section: §IV, §VII
+extracted_by: claude-sonnet-4-6

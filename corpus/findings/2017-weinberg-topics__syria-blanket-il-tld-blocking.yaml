@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-weinberg-topics
+kind: detection
+summary: Syria's 2015 blocklist contained a disproportionately large share of software-related sites because censors applied indiscriminate TLD-based blocking of all .il (Israeli) domain names regardless of content, demonstrating that non-topic-based criteria (country-code TLD, ASN) can sweep in entirely unrelated infrastructure and are detectable only through anomaly spot-checks rather than content analysis.
+techniques:
+    - ip-blocking
+censors:
+    - sy
+defense_implications:
+    - Avoid hosting circumvention infrastructure on TLDs or ASNs that are politically adversarial to the target country — blanket TLD blocks require no per-URL analysis and can be deployed instantly.
+    - When diagnosing an unexpected block of a proxy server, check non-content signals (TLD, hosting ASN, co-hosted neighbors) before assuming protocol-level DPI detection was the cause.
+section: §7.1
+extracted_by: claude-sonnet-4-6

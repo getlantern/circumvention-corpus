@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-can
+kind: evaluation
+summary: Spam-cloaked censorship measurements were correctly classified as spam by Proofpoint (the authors' university spam filter), validating surveillance evasion; separately, MX queries sent from a PlanetLab node in China confirmed that the GFW injected bad A DNS responses for both A-record and MX-record lookups for twitter.com and youtube.com, validating measurement accuracy.
+techniques:
+    - dns-poisoning
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Measurements or probes cloaked as spam traffic (MX lookup → SMTP connect) can simultaneously evade surveillance signature databases and accurately detect DNS-layer censorship; censorship circumvention health-check systems could adopt the same cover pattern.
+    - 'MX-record lookups are a viable indirect channel for detecting IP-layer blocking: the multi-step resolution (MX → A → TCP connect) provides three independent censorship signal points while resembling normal mail infrastructure behavior.'
+section: §3.2.3
+extracted_by: claude-sonnet-4-6

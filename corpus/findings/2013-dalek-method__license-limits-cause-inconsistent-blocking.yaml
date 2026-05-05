@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dalek-method
+kind: evaluation
+summary: 'In YemenNet (AS 12486), URL filtering was observed to be intermittently offline: proxy URLs accessible in one test run were blocked in others and vice versa. A prior ONI measurement found a Yemeni ISP running Websense whose filtering ceased entirely when concurrent user count exceeded the product''s license capacity. This inconsistency required larger URL test sets and repeated measurement runs to establish blocking with high confidence.'
+techniques:
+    - keyword-filtering
+    - measurement-platform
+defense_implications:
+    - License-constrained URL filtering creates intermittent windows of accessibility; circumvention tools can exploit high-traffic periods or attempt to saturate concurrent connection limits on known filtering appliances
+    - Measurement campaigns in low-income or under-resourced filtering regimes should use large URL sets and repeated runs—single-pass tests undercount blocking due to license and capacity effects
+section: §4.4
+extracted_by: claude-sonnet-4-6

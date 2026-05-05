@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hounsel-automatically
+kind: evaluation
+summary: 'Multi-word Chinese phrases as search seeds discover qualitatively different censored sites than individual English words: the phrase ''Chinese human rights violation'' surfaces Chinese activist homepages and culture-specific outlets, while individual constituent words return only well-known Western media. TF-IDF scoring against a Chinese corpus ranks culturally rare phrases (e.g., ''自由亚洲电台'' / Radio Free Asia) as high-signal seeds and discards common filler phrases.'
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Tools that auto-categorize blocked content for client-side route selection should use multilingual NLP with native-language corpora—English-keyword matching alone misses the majority of Chinese-language censored domains.
+    - Blocklist pipelines targeting China must incorporate Chinese n-gram extraction with TF-IDF to capture censored domains that English-only approaches structurally cannot discover.
+section: §3.1–3.2
+extracted_by: claude-sonnet-4-6

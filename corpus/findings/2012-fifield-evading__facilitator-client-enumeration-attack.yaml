@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-fifield-evading
+kind: detection
+summary: Because browser-based proxies can only initiate outbound connections, flash proxies connect to censored clients rather than the reverse, requiring the facilitator to maintain a registry of client IP addresses; a censor can impersonate a legitimate flash proxy to query the facilitator and enumerate the IP addresses of circumvention users.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Any push-model architecture where the server must know client IPs makes the facilitator a high-value surveillance target — apply per-source-IP registration rate limits and require proof-of-work or authentication tokens before returning client assignments.
+    - Split the facilitator into separate write-only (client registration) and read-only (proxy assignment) roles so a queried or compromised component leaks only one direction of the mapping.
+section: §5.1
+extracted_by: claude-sonnet-4-6

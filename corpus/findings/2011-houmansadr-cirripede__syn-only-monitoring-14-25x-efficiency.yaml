@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-houmansadr-cirripede
+kind: evaluation
+summary: Using two CAIDA traces from March 2011, the byte volume of TCP SYN packets across all ports was only 4–7% that of port-443 traffic. Cirripede's registration design inspects only SYN packet headers rather than full HTTPS payloads, reducing the traffic an ISP must process by 14–25× compared to Telex/Decoy routing architectures that must reconstruct all port-443 TCP sessions.
+techniques:
+    - dpi
+defenses:
+    - decoy-routing
+defense_implications:
+    - Prefer SYN-header covert channels (e.g., TCP ISN steganography) over payload-embedded signals for ISP-deployed circumvention infrastructure — the inspection cost is an order of magnitude lower.
+    - Architectures that separate the registration plane (SYN-only) from the data plane (deflected flows) allow commodity hardware to scale registration independently of throughput.
+section: §7.2
+extracted_by: claude-sonnet-4-6

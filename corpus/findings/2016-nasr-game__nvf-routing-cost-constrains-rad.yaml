@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-nasr-game
+kind: detection
+summary: Optimal RAD by a QoS-cautious wealthy Chinese censor (profile T1, F/ρ₀ = 5×10^6) forces 10.8% of routes onto non-valley-free (NVF) paths and 1.2% onto less-preferred routes, while still leaving 16.3% of routes traversing decoy ASes—zero routes become unreachable at this budget. The NVF and less-preferred-route fractions rise and then fall as decoy budget increases, as further RAD routing gains diminish past a crossover point.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Monitor BGP route changes for NVF-path adoption as an early warning signal that a censor has begun deploying RAD—this is observable from inside the circumvention network without requiring vantage points inside the censor's AS.
+    - Design decoy AS sets that maximize the fraction of censor routes requiring NVF paths if RAD is applied, since the monetary cost of NVF routing deters even well-funded censors from sustaining RAD at scale.
+section: §6.4 / Figure 1
+extracted_by: claude-sonnet-4-6

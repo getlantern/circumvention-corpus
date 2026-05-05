@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-thomas-adapting
+kind: detection
+summary: An unknown attacker leveraged 25,860 fraudulent Twitter accounts to send 440,793 tweets targeting 20 election-related hashtags, peaking at 1,846 tweets per minute, in an attempt to dilute political conversations following Russia's December 2011 parliamentary election. The accounts were drawn from a pool of approximately 975,283 fraudulent accounts identified by the researchers, 80% of which remained dormant with zero friends, followers, or tweets.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - ru
+defense_implications:
+    - Social media platforms used for political organizing face message-dilution attacks as a censorship vector entirely distinct from IP blocking — circumvention tools should protect access to multiple communication channels, not just blocked URLs.
+    - Dormant account pools held in reserve (80% of ~1M accounts) indicate attackers can scale rapidly; platform defenses must detect sudden account-activation bursts, not just ongoing spam patterns.
+section: §1, §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-manfredi-multiflow
+kind: detection
+summary: If an adversary replays captured client handshake traffic to a decoy host under adversary control, and the decoy router attempts to resume the client's session on that host, the adversary can infer that a decoy router is present on the path to the original decoy host. The paper identifies this as a residual probing vulnerability when the client does not encrypt the destination server to which resumption should be directed.
+techniques:
+    - active-probing
+defenses:
+    - decoy-routing
+defense_implications:
+    - Encrypt the target resumption server identity within the covert channel before the decoy router attempts resumption, preventing an adversary-controlled decoy host from inferring decoy router presence.
+    - Rate-limit or restrict resumption attempts to known-safe destination servers to reduce exposure from adversary-replay probes.
+section: §3.1
+extracted_by: claude-sonnet-4-6

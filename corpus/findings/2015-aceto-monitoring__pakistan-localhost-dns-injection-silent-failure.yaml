@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-aceto-monitoring
+kind: evaluation
+summary: Pakistan Telecom Company Ltd. implemented DNS injection by returning 127.0.0.1 (localhost) for blocked domains, so TCP connections and HTTP requests appeared to succeed ("Content available" near 100%) while no legitimate content was served. Only 11.7% of DNS resolutions yielded a plausible IP address, yet the symptom is a silent local service response rather than an explicit blockpage, misleading users and confusing automated detection tools that rely on TCP reachability.
+techniques:
+    - dns-poisoning
+censors:
+    - pk
+defense_implications:
+    - TCP reachability and HTTP response-code alone are unreliable censorship signals when censors return loopback or bogon addresses; circumvention tools should validate DNS responses against RFC-6890 reserved ranges (127.0.0.0/8, 0.0.0.0/8, etc.) as a first-pass injection indicator.
+    - Silent localhost-injection increases user confusion and delays circumvention adoption — tools should surface a clear 'censored' diagnosis even when the connection nominally succeeds, to drive users to activate bypass mode.
+section: §3.1
+extracted_by: claude-sonnet-4-6

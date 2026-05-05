@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-singh-characterizing
+kind: evaluation
+summary: Conservative exit policies (Reduced-Reduced, which additionally blocks SSH, Telnet, and IRC ports beyond the default) have no statistically significant correlation with IP blacklisting rates or abuse complaint volume. Web-traffic accounts for 98.88% of all connections on Reduced-Reduced exits, confirming that ports 80/443 are the primary abuse vector and that port-restriction does not meaningfully reduce exposure.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Port-level exit policy restrictions are ineffective at protecting relay reputation — circumvention infrastructure designers should not rely on policy tuning to improve relay longevity or reduce blacklisting.
+    - Structural changes — such as bridge-only architectures, IP rotation, or unlisted infrastructure — are necessary to reduce blacklisting risk, since web-only policies still expose the channels most used for abuse.
+section: §5.5
+extracted_by: claude-sonnet-4-6

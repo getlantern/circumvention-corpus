@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wiley-dust
+kind: defense
+summary: 'Dust eliminates the in-band key-exchange fingerprint surface via an out-of-band half-handshake: the server''s public key, IP, port, and a single-use secret are bundled into a PBKDF-encrypted invite packet transmitted out-of-band; only the decryption password (not the server IP) appears in plaintext, defeating the email/IM IP-address blocking attacks documented against prior systems.'
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - dust
+    - randomization
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Separating server-address distribution from in-band connection establishment prevents censors from discovering proxy IPs by monitoring bootstrap channels — the IP must be encrypted in the invite and only the short password sent separately.
+    - Single-use id/secret pairs per invite prevent replay and ensure each intro packet is unique, removing any static token a censor could match across connections.
+section: §3, §3.1
+extracted_by: claude-sonnet-4-6

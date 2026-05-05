@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-mclachlan-risks
+kind: detection
+summary: A circuit-clogging attack against bridge operators—using median-normalized latency correlations—achieved an AUC of 0.884 and an equal error rate of 0.2 when distinguishing the victim bridge from innocent bridges in PlanetLab experiments with 180 victim and 180 disjoint runs. With 10 repeated clogging experiments and a majority-vote threshold, the false positive (and false negative) rate drops below 0.033, confirming a bridge operator's identity with high confidence given a candidate set of ≤4.4 bridges from the winnowing stage.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Circuit-clogging is highly effective against bridges specifically because the operator's machine is also the relay being probed—proxy architectures that physically separate the user's traffic path from the relay function would eliminate this attack surface.
+    - Any bridge QoS scheme that gives priority to operator traffic while maximizing resource usage is vulnerable to clogging; only strict time-partition isolation between operator-originated and client-relayed circuit cells (not bandwidth or probabilistic separation) provably defeats the attack.
+section: §3.4
+extracted_by: claude-sonnet-4-6

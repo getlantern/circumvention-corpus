@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-poking
+kind: defense
+summary: 'Protozoa uses the economic and social indispensability of popular WebRTC conferencing services as a censorship deterrent: blocking all WebRTC traffic imposes prohibitive collateral damage on legitimate commerce and communication. This ''parasitism'' strategy means the circumvention tool inherits the blocking immunity of the carrier without requiring any protocol mimicry at the network level. Protozoa requires only one reachable WebRTC service to function, and Table 3 confirms at least five services remained unblocked in China during testing.'
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - webrtc-pluggable
+    - mimicry
+    - tunneling
+censors:
+    - cn
+    - ru
+    - in
+defense_implications:
+    - Select carriers whose blocking would cause measurable economic harm to the censoring state, exploiting the censor's rational reluctance to impose widespread collateral damage as a structural defense property.
+    - Avoid bespoke proxy infrastructure that can be fingerprinted and blocked in isolation; instead piggyback on multi-tenant platforms (CDN, video conferencing) where the censor cannot selectively block individual users.
+section: §3, §7.2
+extracted_by: claude-sonnet-4-6

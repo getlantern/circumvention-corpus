@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2005-perng-censorship
+kind: evaluation
+summary: Server-deniability schemes (Publius) and data-entanglement schemes (Tangler, Dagster) both achieve censorship susceptibility of 1 under the cooperative-server model. Publius fails because the Publius URL encodes the hosting servers and document identity in public, enabling direct query filtering. Tangler and Dagster fail because their limited-width entanglement graphs allow a censor to remove a document with collateral damage too small to prevent selective censorship — only a small number of blocks per document are entangled.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Deniability-based and entanglement-based defenses do not prevent selective filtering when document identifiers are public; hiding must occur at the query-to-document mapping layer (PIR-grade), not merely at the storage layer.
+    - If using document entanglement as a censorship deterrent, ensure the entanglement graph is dense enough that censoring any single document causes collateral damage visible to a large fraction of users — sparse entanglement provides no formal protection under this model.
+section: §4.3–4.4
+extracted_by: claude-sonnet-4-6

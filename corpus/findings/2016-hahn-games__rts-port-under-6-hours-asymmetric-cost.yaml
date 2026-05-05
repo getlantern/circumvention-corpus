@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-hahn-games
+kind: defense
+summary: A single undergraduate ported Castle to two closed-source commercial RTS games (each with >8.5 million copies sold, from different studios) in under 6 hours per game using a ~500-LOC Python/AutoHotkey codebase; 17 of the Top 20 best-selling RTS games share the unit-command structure Castle requires, and 11 have community-decoded replay formats, enabling rapid adaptation to new titles.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Design covert-channel frameworks around genre-level abstractions (common commands, replay logs) rather than game-specific internals so that blocking one title triggers a cheap pivot to another—exploiting the asymmetry where porting costs hours but censor signature development costs weeks.
+    - Target cover protocols with existing community tooling (decoders, automation APIs) to minimize reverse-engineering overhead and amortize per-game costs across all users of that studio's titles.
+section: §7, Table 1
+extracted_by: claude-sonnet-4-6

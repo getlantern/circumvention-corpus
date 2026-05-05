@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-king-reverse-engineering
+kind: detection
+summary: The automated keyword-filtering tier is acknowledged to be largely ineffective at text classification due to well-known poor performance of keyword-matching approaches; the government compensates by deploying tens of thousands of human censors who manually review posts held by automated filters. The automated system affects large numbers of posts on fully two-thirds of Chinese social media sites surveyed.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - First-pass automated filters are brittle and bypassable with minor lexical variation (homophones, image text), but this does not defeat subsequent human review — circumvention tools must enable private channels that bypass platform submission entirely.
+    - Two-thirds platform-side automated coverage means platform-agnostic encrypted messaging reaches users even on platforms without activated automated filtering, reducing dependence on any single platform's policy.
+section: Participant Observation / Research Design
+extracted_by: claude-sonnet-4-6

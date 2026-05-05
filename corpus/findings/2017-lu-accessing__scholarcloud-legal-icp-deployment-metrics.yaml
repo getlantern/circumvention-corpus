@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lu-accessing
+kind: deployment
+summary: 'ScholarCloud was launched in January 2016 and by late 2017 served over 2,000 registered users with 700 daily active users. It operates on two commodity VM instances at a daily operational cost of 2.20 USD. Legal operation inside China was achieved by registering the service as an ICP with the TCA (China ICP Reg. #15063437) and restricting the proxy whitelist to verifiably legal but incidentally-blocked domains — a strategy that places the service outside the GFW''s aggressive technical blocking while also satisfying regulatory scrutiny from MPS/MSS.'
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - For circumvention services targeting specific legal-but-blocked content (e.g., academic resources), pursuing formal ICP registration and restricting the whitelist to those domains may be more sustainable than pure evasion — the narrow scope reduces the regulatory surface while the legalization provides long-term stability.
+    - A split domestic/remote proxy architecture with a PAC-file distribution mechanism eliminates client-side software installation entirely, dramatically lowering the barrier to adoption for non-technical user populations.
+section: §1, §3
+extracted_by: claude-sonnet-4-6

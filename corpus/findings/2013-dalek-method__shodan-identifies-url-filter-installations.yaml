@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dalek-method
+kind: evaluation
+summary: URL filtering appliances are frequently misconfigured to be externally visible on the global Internet, enabling passive identification via Shodan keyword searches on product-specific HTTP headers and management console paths (e.g., 'cfru=' for Blue Coat, '8080/webadmin/' for Netsweeper). This technique discovered previously unknown installations in Finland, Sweden, Philippines, Thailand, Taiwan, Argentina, and Chile, as well as large U.S. ISPs including AT&T, Verizon, Bell South, Comcast, and Sprint.
+techniques:
+    - measurement-platform
+    - dpi
+defense_implications:
+    - Commercial URL filtering infrastructure can be globally enumerated via passive Shodan-style scans; circumvention operators should scan for their own hosting providers' co-presence with known filtering appliances to assess collateral blocking risk
+    - Remove or randomize any product-identifying HTTP headers, management console paths, or error pages from circumvention infrastructure to prevent analogous enumeration of proxy deployments
+section: §3, Figure 1
+extracted_by: claude-sonnet-4-6

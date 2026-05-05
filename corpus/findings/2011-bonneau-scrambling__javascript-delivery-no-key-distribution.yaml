@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-bonneau-scrambling
+kind: defense
+summary: Transmitting the de-scrambling algorithm S⁻¹ as in-page JavaScript alongside AJAX-fetched scrambled content eliminates the need for special client software installation or trusted public-key distribution, removing the primary bootstrapping vulnerability that cryptographic censorship-resistance schemes (including Tor) share — a vulnerability exploited when Iran blocked Tor by filtering its Diffie-Hellman parameter bit sequence.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - randomization
+defense_implications:
+    - Consider delivering transport obfuscation logic as runtime-downloadable code (e.g., WASM modules fetched over HTTPS from a CDN) rather than compiled binaries; this removes the client bootstrap problem at the cost of trusting the initial delivery channel.
+    - Avoid hardcoding recognizable protocol constants (DH parameters, magic bytes) in the compiled client binary; these become trivial DPI signatures.
+section: §1, §3
+extracted_by: claude-sonnet-4-6

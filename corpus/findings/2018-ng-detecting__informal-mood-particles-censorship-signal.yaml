@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-ng-detecting
+kind: detection
+summary: Information Gain feature selection from 408 candidates identified informal language markers (informal, nonflu, swear), Chinese modal and general particles signaling mood and relational framing, and physical-feeling words used metaphorically as the top predictors of censored Weibo content — all with statistically significant differences between censored and uncensored classes.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Users seeking to survive Weibo platform censorship should shift toward formal, literal, objective prose — censored posts are disproportionately subjective, mood-marked, and informal.
+    - A content-rewriting assist feature should target register shift (subjective→objective) and reduction of mood/relational particles rather than simple synonym substitution.
+section: §5, §6
+extracted_by: claude-sonnet-4-6

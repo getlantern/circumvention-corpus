@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ensafi-analyzing
+kind: evaluation
+summary: The hybrid idle scan technique converts approximately 1% of the total IPv4 address space into passive measurement vantage points without requiring control of either the censored client or the destination server, enabling full bipartite connectivity measurements across 161 geographically stratified Chinese clients and 176 servers over 27 days. After data pruning for quality, 36% of raw measurements were usable; ARMA modeling was sufficient (over Hidden Markov Models) because only level-shift detection was needed.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention researchers can use hybrid idle scans for large-scale reachability audits of relay infrastructure from within censored networks without needing in-country volunteers or proxies.
+    - The technique's sensitivity to SYN/ACK directionality makes it well-suited for confirming whether a newly deployed relay IP/port pair is being blocked inbound before committing it to a bridge distribution system.
+section: §2.3, §3.2.1, §4
+extracted_by: claude-sonnet-4-6

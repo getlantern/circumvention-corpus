@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zarras-leveraging
+kind: detection
+summary: 'A single-protocol circumvention system creates a detectable anomaly: when the system is active, the traffic pattern on that protocol diverges from the same user''s baseline behavior, which anomaly-based detectors can classify. Users who also legitimately use the tunneled service in daily life produce two distinct signatures — one with and one without the circumvention layer — further compounding detectability.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention frameworks must profile and adapt to the individual user's baseline protocol-usage pattern rather than relying on generic population averages to evade anomaly detection
+    - Multi-protocol rotation reduces per-protocol exposure time, shortening any single protocol's anomalous usage window below the classifier's detection threshold
+section: §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-shklovski-online
+kind: policy
+summary: 'Forum and blog platform operators in the censored country were systematically coerced into serving as first-line censorship enforcers: they monitored user comments, warned users that Internet anonymity did not exist, gave users chances to self-remove offending posts, and ultimately handed user identifying information to government agencies when users did not comply. Larger forums hired full-time moderators operating 24 hours a day to manage this compliance workload.'
+techniques:
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Circumvention infrastructure should minimize the identifying information held by platform operators, since operator coercion is a reliable censor tactic—zero-knowledge or end-to-end encrypted designs remove the operator as a viable coercion point
+    - Avoid architectures in which a single bridge or relay operator accumulates a deanonymizing record of user activity; distribute trust across multiple operators or use cryptographic separation between relay and identity
+section: §Forum owner and platform provider strategies
+extracted_by: claude-sonnet-4-6

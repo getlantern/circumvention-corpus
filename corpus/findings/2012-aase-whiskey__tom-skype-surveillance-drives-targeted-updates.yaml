@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-aase-whiskey
+kind: evaluation
+summary: TOM-Skype's client-downloaded keyword blacklist was updated with current-event-specific terms (protest locations, individual names like Bo Xilai) while SinaUC's lists were not updated with current events and appeared more targeted at spam removal. This correlation between surveillance capability and more timely, politically specific keyword updates suggests censors prioritize maintaining current blacklists on clients that also perform message surveillance.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Chinese chat clients that download keyword lists to the device and perform local surveillance represent a qualitatively higher threat model than server-side-only filtering; circumvention tool design must treat on-device keyword detection as a distinct attack surface.
+    - Non-surveillance platforms that lack client-side logging may receive slower or less targeted keyword updates, providing a temporary window before event-specific terms are added — but this cannot be relied upon as a durable evasion strategy.
+section: §4, §5
+extracted_by: claude-sonnet-4-6

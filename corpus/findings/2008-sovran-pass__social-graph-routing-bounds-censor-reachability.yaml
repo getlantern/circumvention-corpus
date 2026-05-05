@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2008-sovran-pass
+kind: defense
+summary: 'Kaleidoscope bounds censor knowledge by routing proxy advertisements over symmetric random routes of length r=5 on a social trust graph: if the censor controls f subverted trust links, they can learn of at most r×f = 5f users or proxies regardless of how many Sybil identities they generate. Symmetric routing ensures the set a node learns of and the set that learns of a node are identical, closing the asymmetric information-leakage channel.'
+techniques:
+    - active-probing
+defenses:
+    - bridges
+    - meta-resistance
+defense_implications:
+    - Bound proxy advertisement fan-out (e.g., r=5 hops) over a trust-anchored graph so a censor's Sybil attacks yield only O(r×f) proxy discoveries rather than full enumeration.
+    - Enforce symmetric routing so a compromised node's inbound and outbound knowledge sets are equal, preventing extra vantage points from asymmetric probing.
+section: §3, §3.2
+extracted_by: claude-sonnet-4-6

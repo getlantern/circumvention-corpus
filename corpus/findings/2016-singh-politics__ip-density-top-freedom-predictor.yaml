@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-singh-politics
+kind: evaluation
+summary: IP density (number of IP addresses per person) is the single most predictive feature of a country's Freedom of Press Index. A normalized IP density value of ≥0.167 reliably predicts high freedom of expression, while normalized maximum BGP policy-compliant path length ≥0.643 reliably predicts low freedom.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Use IP density and BGP path length as automated risk signals when selecting proxy deployment regions; low IP density combined with long BGP paths flags high-censorship environments requiring stronger obfuscation.
+    - Passive AS-topology data can pre-screen countries for circumvention viability without requiring active in-country vantage points.
+section: §4, Figure 2
+extracted_by: claude-sonnet-4-6

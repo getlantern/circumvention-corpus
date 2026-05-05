@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2008-sovran-pass
+kind: evaluation
+summary: On a crawled Orkut subgraph of 42,474 users (≈90% Brazilian nodes treated as the censored domain, 15% of external nodes as proxies = 1.5% overall), the median node reaches 7 proxies — higher than the synthetic graph due to greater average degree (5.59 vs. 4.65) and lower clustering. Even when subverted trust links reach half the total proxy count, more than 94% of users can still access at least one proxy unknown to the censor.
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Real social graphs with higher average degree and lower clustering outperform synthetic model predictions; measure actual graph topology before setting proxy-density targets for a production deployment.
+    - The 94%-resilience threshold at 50% link subversion implies a censor must compromise an implausibly large fraction of trust relationships to disable the system, validating trust-anchored distribution as a robust baseline.
+section: §3.2
+extracted_by: claude-sonnet-4-6

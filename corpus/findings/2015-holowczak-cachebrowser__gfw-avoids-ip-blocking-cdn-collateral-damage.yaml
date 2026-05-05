@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-holowczak-cachebrowser
+kind: detection
+summary: The GFW universally uses DNS poisoning rather than IP blocking to censor CDN-hosted content. Across all tested CDN providers (Akamai, CloudFlare, CloudFront, EdgeCast, Fastly, SoftLayer), no CDN edge server IPs were IP-filtered, because a single provider like Akamai hosts content on 170,000 shared edge servers—blocking any IP would collaterally block hundreds of thousands of unrelated publishers.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - CDN-hosted circumvention infrastructure does not need to rotate IP addresses—the GFW will not IP-block shared CDN edge servers due to collateral damage, so a static list of known edge server IPs is a stable out-of-band bootstrap channel.
+    - Publishing circumvention content on any major shared CDN with HTTPS forces the censor to choose between poisoning the entire CDN domain (with massive collateral damage) or accepting the content remains accessible.
+section: §3.2, §3.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-dunna-analyzing
+kind: detection
+summary: The authors attracted 934 unique scanner IPs over 44 hours, all geolocated to China, with TTL values clustered at 48–50 and MSS of 1400 (with a secondary cluster at 1368 from IP 111.202.242.93). 908 IPs conducted exactly one scan and 26 conducted two; no IP scanned more than twice, indicating deliberate distribution to resist IP-based blacklisting of scanners.
+techniques:
+    - active-probing
+censors:
+    - cn
+defense_implications:
+    - Scanner detection rules based on a single frequent IP will fail; fingerprint by TCP metadata (MSS, window scaling, TTL) rather than source IP.
+    - The near-uniform one-scan-per-IP policy means any allowlist of known-safe IPs must whitelist the bridge's own test client, not scanner IPs.
+section: §4.3
+extracted_by: claude-sonnet-4-6

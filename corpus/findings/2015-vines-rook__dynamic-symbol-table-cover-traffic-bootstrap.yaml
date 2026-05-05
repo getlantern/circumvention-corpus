@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-vines-rook
+kind: defense
+summary: Rook constructs per-field symbol tables by observing 600 packets (~60 seconds) of real gameplay at session start, then restricts substituted values to only those previously observed with frequency within two orders of magnitude of the median. This ensures altered packets never contain field values that are absent or anomalously rare in legitimate traffic, defeating value-anomaly and out-of-range DPI filters.
+techniques:
+    - dpi
+    - random-payload-detect
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Any steganographic transport embedding data in application-layer fields should bootstrap a per-field frequency model from live cover traffic before transmitting — static symbol tables sourced offline risk including values the current server version no longer emits.
+    - The symbol-table construction window (here ~60 s / 600 packets) creates a detectable 'silent' startup phase; designers should consider whether this bootstrapping delay is acceptable or whether a pre-distributed prior can replace it.
+section: §2.6
+extracted_by: claude-sonnet-4-6

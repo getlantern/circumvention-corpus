@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-mcpherson-covertcast
+kind: defense
+summary: 'CovertCast''s broadcast model decouples server workload from client count: one server can serve unlimited simultaneous clients without per-connection overhead, unlike hide-within systems such as FreeWave where server costs grow linearly with users. This architecture also defeats Sybil-based DoS attacks, because flooding the server with fake client requests does not increase server load — the server never processes individual client connections.'
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Design censorship circumvention systems around a broadcast or publish-subscribe model (e.g., CDN streams, S3 buckets) so that server costs do not scale with adversarial client counts, eliminating the Sybil-DoS attack surface.
+    - Use a live-streaming or multicast distribution channel rather than a point-to-point proxy so that adding circumvention users costs only marginal bandwidth on the streaming platform rather than additional server capacity.
+section: §2, §7.2
+extracted_by: claude-sonnet-4-6

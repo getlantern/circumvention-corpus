@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wachs-censorship-resistant
+kind: defense
+summary: GNS encrypts all DHT queries and responses using a zone-private-key-derived symmetric key (h = x·l mod n; query = H(hG)) such that a passive DHT observer can only mount a confirmation attack — requiring simultaneous knowledge of both the zone's public key and the specific label. Without both values, an adversary observing DHT traffic cannot determine the label, zone, or record data; even fully participating malicious DHT nodes see only opaque signed blobs unlinkable to their originating query.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - meta-resistance
+    - randomization
+defense_implications:
+    - Encrypt all proxy-directory lookups with keys derived from both the directory entry's public key and the queried label so that a network observer learns nothing from observed lookup traffic alone.
+    - Design directory or bridge-distribution systems so that confirmation of a specific entry requires the adversary to already know which entry to confirm — passive bulk collection yields no actionable intelligence.
+section: §4
+extracted_by: claude-sonnet-4-6

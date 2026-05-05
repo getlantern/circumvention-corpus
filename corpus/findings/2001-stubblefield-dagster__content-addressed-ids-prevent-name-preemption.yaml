@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-stubblefield-dagster
+kind: defense
+summary: Dagster identifies every block by the cryptographic hash of its contents (block ID), making it infeasible for an adversary to pre-empt a name with bogus data — an attack that directly affects Publius, where an attacker who possesses a target document can insert garbage under the same name that the legitimate document would have occupied. Content-addressing also makes the system robust to the naming ambiguity observed in Freenet (where a single document was posted under three distinct capitalizations).
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use content-addressed identifiers (hash-of-content) rather than publisher-chosen or description-derived names; any naming scheme an adversary can predict in advance is exploitable for pre-emption squatting.
+    - Derive retrieval locators from hashes of actual block contents so that a tampered block is immediately detectable by the client without a separate PKI.
+section: §4.3, §5.2
+extracted_by: claude-sonnet-4-6

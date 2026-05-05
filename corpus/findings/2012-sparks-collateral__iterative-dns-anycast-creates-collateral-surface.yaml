@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-sparks-collateral
+kind: detection
+summary: 'DNS injection collateral damage arises from three structural properties of DNS: iterative resolution (full queries sent to root and TLD authorities), anycast routing (two resolvers may reach different physical servers via different paths), and dynamic routing through censored transit ASes. A single domain lookup may generate many queries at multiple levels, any of which can be intercepted by a censored transit AS even when both the originating resolver and the authoritative server are outside the censored network.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention bootstrap DNS must treat the entire iterative resolution chain as potentially compromised — not just the direct resolver-to-authority path.
+    - Tools relying on out-of-bailiwick glue records (e.g., ns1.example.net for example.com) are particularly exposed since they trigger additional query chains to different TLD authorities.
+section: §3
+extracted_by: claude-sonnet-4-6

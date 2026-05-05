@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dalek-method
+kind: detection
+summary: In every ISP where URL filtering was empirically confirmed, the 'proxy anonymizer' category was actively blocked. Netsweeper blocked 6/6 submitted proxy domains in YemenNet (AS 12486), 5/6 in Du UAE (AS 15802), and 6/6 in Ooredoo Qatar (AS 42298); McAfee SmartFilter blocked 5/5 anonymizer-category submissions in Etisalat UAE (AS 5384). Blue Coat in UAE and Qatar did not confirm—Etisalat appears to use SmartFilter for URL filtering atop a Blue Coat proxy appliance for traffic management.
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - ae
+defense_implications:
+    - URL-category-based blocking of 'proxy anonymizer' domains is universal across confirmed commercial filter deployments; tools must not register under recognizable proxy hosting patterns or easily categorized service descriptions
+    - Deploy circumvention infrastructure under cover domains that match allowed categories (news, CDN, cloud services) rather than self-describing proxy services
+section: §4.3–4.5, Table 3
+extracted_by: claude-sonnet-4-6

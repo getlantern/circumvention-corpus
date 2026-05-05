@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-wang-seeing
+kind: detection
+summary: 'CART decision-tree classifiers trained on entropy-based and packet-header features detect all five Tor pluggable transports (obfsproxy3/4, FTE, meek-amazon, meek-google) with average PR-AUC=0.987, TPR=0.986, and FPR=0.003 on synthetic traces. On 14 million real campus flows the highest per-obfuscator FPR is 0.65%, and meek-google yields only 842 false positives across all three datasets. However, cross-environment portability is poor: classifiers trained on an Ubuntu/campus setup and tested on a Windows/home network achieve true-positive rates as low as 52% with false-positive rates reaching 12%.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+defenses:
+    - meek
+    - obfs4
+    - format-transform
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - ML-based classifiers degrade sharply across OS and network environments, so circumvention tools that deliberately vary their traffic profile (packet-count distribution, ACK timing) between client platforms can exploit this portability gap to avoid detection.
+    - Meek's low-payload-density pattern (≥96% of meek flows have fewer than 18 non-zero-byte packets in the first 30) is a distinctive feature; meek-like transports should introduce artificial data packets or pipeline multiple requests to normalize this ratio against SSL/TLS baselines.
+section: §6.1, Tables 8–9
+extracted_by: claude-sonnet-4-6

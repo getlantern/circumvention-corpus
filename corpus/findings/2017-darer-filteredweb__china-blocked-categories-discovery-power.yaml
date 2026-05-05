@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-darer-filteredweb
+kind: evaluation
+summary: High-power seed domains including uyghuramerican.org, dw.com, hrw.org, and eastturkistaninfo.com each produced TF-IDF descriptive tags that led to discovery of more filtered URLs from other domains than the total number of URLs crawled from those seeds themselves. Content-category analysis of the 1,355 poisoned domains showed filtering-avoidance tools, news, educational content, and human-rights sites among the most heavily targeted categories.
+techniques:
+    - dns-poisoning
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Proxy infrastructure should avoid domains categorized as filtering-avoidance, news, or human-rights organizations — these categories act as high-discovery-power seeds in GFW blocking sweeps that can trigger recursive detection and blocking of associated infrastructure.
+    - Prefer generic business or technical domains as proxy cover, since they exhibit lower discovery-power in censorship sweeps and are less likely to trigger cascading blocks of nearby infrastructure.
+section: §V-B, §V-D, Fig. 2, Fig. 7
+extracted_by: claude-sonnet-4-6

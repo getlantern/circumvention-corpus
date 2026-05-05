@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-holowczak-cachebrowser
+kind: defense
+summary: CacheBrowser bypasses GFW DNS poisoning by directly fetching CDN content from known edge server IPs, using a low-bandwidth out-of-band bootstrapper to seed its edge-server database. The SWEET email-based bootstrapper achieves median 5.4-second resolution latency with 95% of queries answered within 10 seconds across 100 runs—acceptable because CDN provider migrations occur only every few months.
+techniques:
+    - dns-poisoning
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - A CDN-bypass tool requires only a minimal, latency-tolerant bootstrap channel (email, steganography, any low-bandwidth covert channel) to seed its initial edge-server database; all subsequent browsing is direct CDN traffic with no covert channel in the hot path.
+    - The bootstrapper's low bandwidth and infrequent use (once per CDN migration, roughly every few months) means even heavily throttled or monitored covert channels are sufficient—CDN-bypass bootstrapping is far less demanding than proxy-based systems where the proxy must carry all traffic.
+section: §4, §5.4
+extracted_by: claude-sonnet-4-6

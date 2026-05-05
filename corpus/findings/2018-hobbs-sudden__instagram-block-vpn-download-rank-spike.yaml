@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hobbs-sudden
+kind: evaluation
+summary: China's September 29, 2014 Instagram block caused VPN Express to jump from rank 1,229 to rank 6 among all iPhone app downloads in China in a single day, and four of the top ten free productivity apps that day were VPNs (VPN Express, GreenVPN, VPNArtifact, VPN in Touch). The prior day, no VPN appeared in the top 10.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - 'Censorship events are high-acquisition moments: circumvention tools should pre-position App Store presence and ensure infrastructure can absorb sudden 100x traffic spikes triggered by a blocking event.'
+    - Rank velocity (not absolute rank) signals acquisition surges; monitor app-store charts in target countries for early warning of censorship events that create onboarding opportunities.
+section: 2. Effects of the Instagram block on VPN acquisition
+extracted_by: claude-sonnet-4-6

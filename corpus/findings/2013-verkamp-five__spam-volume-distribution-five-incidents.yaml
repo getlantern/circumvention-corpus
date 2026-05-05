@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-verkamp-five
+kind: evaluation
+summary: Across five political spam incidents, spam constituted 62–73% of all tweets in the Russia, China'12, and Mexico incidents, while Syria had only 6% spam. In the China'12 incident, 1,700 spam accounts (14% of all accounts) generated 600,000 spam tweets (73% of total), with 10 individual accounts each producing over 5,000 tweets before shutdown; in Mexico, 50 accounts sustained 1,000 spam tweets per day throughout the incident.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+    - ru
+    - sy
+defense_implications:
+    - High per-account volume (>5,000 tweets) is a more reliable spam signal than account count alone — rate-limit enforcement targeting prolific accounts can be more effective than broad account detection.
+    - 'Detection systems must be tuned per-incident: Russia required individual-tweet detection (many accounts, few tweets each), while China''12 required per-account volume detection (few accounts, many tweets each).'
+section: §2, Table 2
+extracted_by: claude-sonnet-4-6

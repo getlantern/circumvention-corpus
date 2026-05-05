@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-seltzer-infrastructures
+kind: policy
+summary: 'Censorship operating at the infrastructure layer (hosting, DNS, ISPs) rather than the content layer produces opacity: blocklists must be kept secret lest they become menus of blocked content, accuracy cannot be examined, and harms are divided from those with incentive or expertise to oppose them. The consistent pattern in anti-censorship responses is to distribute, decentralize, encrypt, and obfuscate — making circumvention traffic indistinguishable from permitted use.'
+techniques:
+    - keyword-filtering
+    - dns-poisoning
+defenses:
+    - meta-resistance
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - 'Design circumvention traffic to be indistinguishable from permitted traffic: the goal is not merely to bypass a known blocklist but to prevent the censor from constructing an accurate one in the first place.'
+    - Pursue transparency and legal/policy challenges alongside technical countermeasures — infrastructure-level censorship is politically vulnerable to overreach arguments precisely because its secret blocklists cannot withstand public scrutiny.
+section: §2.1
+extracted_by: claude-sonnet-4-6

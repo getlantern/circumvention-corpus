@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-nasr-game
+kind: defense
+summary: 'In the autonomous (non-centrally-funded) deployment model, the decoy service fee γ (ratio of decoy revenue to transit revenue per MB) is the primary lever for censorship resistance: for China with profile T1, γ = 5 leaves 9.6% of routes usable for circumvention after optimal RAD, compared to 16.3% under the centrally-funded model at budget ratio F/ρ₀ = 5×10^6. Higher fees compensate ASes for RAD-induced transit revenue loss and sustain participation, but the autonomous model delivers roughly half the censorship resistance of a centrally-funded deployment at comparable incentive levels.'
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Set decoy service fees at ≥5× the AS's transit rate per MB to attract meaningful participation under RAD risk in an autonomous deployment model.
+    - Centralized funding (Tor-style) achieves roughly 1.7× better censorship resistance than market-driven autonomous deployment against China-class censors; pro-freedom funders should prefer centralized models when maximizing coverage is the goal.
+section: §6.5 / Figure 5
+extracted_by: claude-sonnet-4-6

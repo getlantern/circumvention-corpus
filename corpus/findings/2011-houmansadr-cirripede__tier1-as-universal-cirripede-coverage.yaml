@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-houmansadr-cirripede
+kind: deployment
+summary: Simulations on the CAIDA AS-level topology (January 2011 snapshot) show that deploying Cirripede deflecting routers at just 1 tier-1 AS enables 97% of Internet clients to use the system, and 2 participating tier-1 ASes achieve 100% client reachability. When clients probe only the Alexa top-30 most popular sites as overt destinations, 2 tier-1 ISPs still yield 100% reachability.
+techniques:
+    - ip-blocking
+defenses:
+    - decoy-routing
+    - tunneling
+defense_implications:
+    - Concentrate deflecting-router deployments at tier-1 ASes rather than distributing across many ASes — two well-placed ISP partnerships provide universal coverage more efficiently than hundreds of smaller ones.
+    - Use popular top-ranked sites as overt destinations so that the client discovery step requires minimal probing (fewer than 2 probes on average when DRs are at tier-1 ASes).
+section: §6.3, Figure 5b
+extracted_by: claude-sonnet-4-6

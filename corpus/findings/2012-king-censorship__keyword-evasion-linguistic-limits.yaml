@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-king-censorship
+kind: policy
+summary: Keyword blocking has limited effect because users evade it through homophones (e.g., 'river crab' substituting for 'harmonious society'), homographs, analogies, metaphors, and satire; the Chinese character-based writing system provides particular affordances for this evasion. Chinese social media is distributed across approximately 1,382 sites following a power-law distribution, with blog.sina alone accounting for 59% of posts, creating highly variable enforcement across the long tail of local sites.
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Linguistic steganography (homophones, metaphors, code words) is viable against automated keyword filters but not against the manual review layer — tool designers should not rely on content obfuscation alone and should prioritize transport-layer circumvention.
+    - The fragmented Chinese social media landscape creates enforcement inconsistency; tools that support communication through smaller, locally-governed platforms may face lower interdiction rates than those routing through major national platforms with dedicated censor teams.
+section: Data / Types of Censorship
+extracted_by: claude-sonnet-4-6

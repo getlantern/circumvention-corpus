@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wachs-censorship-resistant
+kind: evaluation
+summary: Blockchain-based naming systems such as Namecoin are insufficient under a strong adversary model where a nation-state can muster more computational resources than all other participants combined, allowing it to produce alternative valid chain histories. This vulnerability is most acute during system bootstrapping and in censored regions where the user base is small, precisely the conditions under which a censorship-resistant naming layer is most needed.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Do not use proof-of-work blockchains as the sole naming or directory layer for circumvention infrastructure deployed in countries with nation-state adversaries; computational assumptions that hold globally may fail locally where state actors dominate hashrate.
+    - Prefer cryptographic naming schemes whose security rests on public-key hardness (not hashrate competition) so that the adversary's computational advantage does not translate into control over name mappings.
+section: §6
+extracted_by: claude-sonnet-4-6

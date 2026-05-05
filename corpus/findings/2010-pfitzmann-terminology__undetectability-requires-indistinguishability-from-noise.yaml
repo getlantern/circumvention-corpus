@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-pfitzmann-terminology
+kind: defense
+summary: Undetectability of a message requires that it be indistinguishable from 'random noise' — an attacker cannot sufficiently distinguish whether the message exists or not. This is distinct from anonymity, which protects only the relationship between an IOI and a subject, not the IOI's existence itself. Undetectability is possible only for subjects not involved in the IOI; senders and recipients cannot achieve it against each other.
+techniques:
+    - random-payload-detect
+    - fully-encrypted-detect
+defenses:
+    - randomization
+    - steganography
+defense_implications:
+    - Circumvention traffic must be statistically indistinguishable from background noise or a plausible cover protocol — high entropy alone is detectable if it stands out from normal flows; design for undetectability, not merely anonymity.
+    - Achieving undetectability requires making message existence invisible, not just hiding sender/recipient identity; this demands dummy traffic or steganographic cover channels rather than encryption alone.
+section: §6
+extracted_by: claude-sonnet-4-6

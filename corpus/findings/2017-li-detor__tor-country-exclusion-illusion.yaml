@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-detor
+kind: evaluation
+summary: 'Tor''s built-in country-exclusion feature provides only the illusion of control: among circuits configured to exclude the US, only 12% could be identified as definitively avoiding US territory. The remaining 88% of ''trusted'' circuits fail to deliver a proof of avoidance, meaning standard Tor policy and provable security diverge sharply.'
+techniques:
+    - flow-correlation
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Do not rely on Tor's ExcludeNodes/ExcludeExitNodes directives as a security guarantee — they filter relay selection, not the AS-level routing paths between relays.
+    - Any circumvention tool claiming geographic avoidance must independently verify path properties (e.g., via RTT proofs), not just filter relay metadata.
+section: §1, §6.2.1
+extracted_by: claude-sonnet-4-6

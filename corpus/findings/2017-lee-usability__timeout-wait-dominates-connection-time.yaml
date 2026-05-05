@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-lee-usability
+kind: evaluation
+summary: Participants spent 64–78% of their total connection time on the progress/waiting screen (not in the configuration UI), and the simulated censorship environment was the dominant predictor of connection time (Kruskal–Wallis χ² = 80.5, df = 2, p < 10⁻¹⁵). In E3, each failed bridge attempt added several minutes of timeout before the user could retry, compounding the overall latency.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Connection timeout duration is a first-class UX parameter for censorship circumvention tools — aggressively short timeouts (or parallel probing of multiple bridges) directly reduce total time-to-connect under censorship.
+    - Show per-component connection status (which hop is failing) on the progress screen so users can abort a doomed attempt early rather than waiting for a full timeout cycle.
+section: §7.3.3, Table 4
+extracted_by: claude-sonnet-4-6

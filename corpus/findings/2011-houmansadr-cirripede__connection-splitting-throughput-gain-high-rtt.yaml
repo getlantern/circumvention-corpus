@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-houmansadr-cirripede
+kind: evaluation
+summary: In an emulation testbed with 200 ms effective client-server RTT, Cirripede added no more than a few seconds to time-to-first-byte, attributable primarily to two extra TLS round-trips and the SOCKS request-response. For large file downloads, Cirripede's TCP connection splitting (two lower-RTT hops instead of one high-RTT hop) produced faster total transfer times than the non-Cirripede baseline, confirmed with a control non-Cirripede SOCKS proxy.
+defenses:
+    - decoy-routing
+    - tunneling
+defense_implications:
+    - ISP-deployed connection-splitting proxies impose sub-second latency overhead in practice; connection-splitting is a net throughput win on high-RTT intercontinental paths and should be exploited in protocol design.
+    - Benchmark Cirripede-style designs against split-TCP baselines, not end-to-end baselines, to isolate proxy overhead from RTT reduction gains.
+section: §6.2, Figure 3
+extracted_by: claude-sonnet-4-6

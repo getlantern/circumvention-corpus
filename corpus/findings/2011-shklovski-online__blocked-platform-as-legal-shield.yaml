@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-shklovski-online
+kind: defense
+summary: 'Some politically active bloggers in the studied country deliberately continued publishing on officially court-blocked platforms, reasoning that official blockage created a legal defense against persecution: ''if they say you wrote this on your blog, I will say all of these blogs are blocked according to this court decision—they don''t exist and they are officially inaccessible to citizens.'' This co-option of censor infrastructure as a shield was treated as a serious protective strategy.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Consider hosting circumvention infrastructure on domains or platforms that the censor has already officially and publicly blocked, creating a documented gap between what the censor claims to block and what it actually monitors
+    - Tool designers should be aware that official blocklist status can paradoxically reduce prosecution risk for some user populations and factor this into bridge selection strategies
+section: §Blocked sites as a form of protection
+extracted_by: claude-sonnet-4-6

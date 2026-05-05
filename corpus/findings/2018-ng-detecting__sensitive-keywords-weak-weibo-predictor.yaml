@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-ng-detecting
+kind: detection
+summary: A 598-term sensitive-keyword blacklist (sourced from Wikipedia and China Digital Times) achieved only 53% classification accuracy on Weibo censorship — below the 66% achieved by punctuation features alone — and appeared in only 31 of 152 uncensored posts versus 60 of 192 censored posts, confirming keywords are not the primary driver of platform censorship decisions.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Do not model platform censorship risk using published keyword blacklists alone; they capture at most a weak secondary signal and will miss the majority of removal decisions.
+    - Homophone or synonym substitution for known sensitive terms addresses only the weakest feature; stylistic rewriting toward formal, objective register provides stronger evasion.
+section: §4.2, §6, Table 1
+extracted_by: claude-sonnet-4-6

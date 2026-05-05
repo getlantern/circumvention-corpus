@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2002-serjantov-anonymizing
+kind: defense
+summary: The paper proposes a forwarder/storer role split in which forwarders hold only an anonymous return-address pointer to the storer, and deliberately forget the storer's identity upon receiving a publication acknowledgment. Because forwarders neither hold content nor retain storer addresses post-publication, coercing a forwarder after publication yields no actionable information about where shares are held.
+defenses:
+    - meta-resistance
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Introduce an indirection layer between user-visible relay nodes and data-holding nodes; relays that store only transient pointers — never content — present a much weaker coercion target.
+    - Make pointer deletion at forwarders a hard protocol invariant enforced immediately on successful acknowledgment, not a best-effort cleanup, since delayed deletion restores the coercion surface.
+section: §2–§3
+extracted_by: claude-sonnet-4-6

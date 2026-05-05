@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-elahi-framework
+kind: defense
+summary: Throttling—capping total CRS traffic at Fab and withholding surplus—strictly dominates dumping surplus traffic onto a sacrificial protocol that will subsequently be blocked. Table 2 shows that at CTP = Fab·1.05 the circumventor's relative utility drops to 0.88 of the Fab baseline when dumping, while throttling preserves all open protocols; under a censor flooding attack dumping additionally loses protocol n entirely, making throttling the dominant strategy in both attack and no-attack conditions.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - CRS implementations should enforce a hard throughput ceiling (throttle) rather than shedding excess load over a sacrificial channel; dumping provides no throughput advantage over throttling and permanently sacrifices a usable protocol.
+    - Build CTP control as a rate-limiter at CRS ingress, not a burst-and-dump pattern—the sacrificial protocol retained by throttling has measurable residual value under a censor flooding attack.
+section: §5.1.3, Table 2
+extracted_by: claude-sonnet-4-6

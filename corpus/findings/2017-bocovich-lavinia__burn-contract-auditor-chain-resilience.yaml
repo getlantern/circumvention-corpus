@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-bocovich-lavinia
+kind: defense
+summary: The burn contract mechanism defends against deliberate auditor-chain termination attacks, in which a malicious actor poses as an auditor and refuses to post her secret, preventing all subsequent auditors from performing their audits. If the previous auditor fails, the current auditor can burn both her predecessor's payment and her own, receive a small fraction of those funds as incentive, and forward the chain secret to the next auditor — preventing a single compromised link from collapsing the entire revenue stream for a document.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any sequential audit or relay chain in a censorship-resistant system must include a burn or skip mechanism so that a single unresponsive link cannot permanently terminate availability guarantees for a document.
+    - Calibrate burn incentive payments to be profitable relative to complete inaction but never more profitable than completing a legitimate audit, to avoid perverse incentives.
+section: §4.3
+extracted_by: claude-sonnet-4-6

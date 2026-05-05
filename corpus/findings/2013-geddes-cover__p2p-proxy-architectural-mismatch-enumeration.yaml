@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-geddes-cover
+kind: detection
+summary: SkypeMorph and FreeWave both overlay a client-proxy communication model onto a peer-to-peer VoIP network; because Skype clients attempt direct peer contact before falling back to supernodes, initiating a call to a FreeWave proxy reveals its IP address directly to the caller, and proxy nodes accumulate user-to-bridge ratios that reached 8–12× in Syria/Iran and up to 120:1 in China (Figure 8), producing concentration signatures uncharacteristic of normal P2P call distributions. These architectural mismatches allow enumeration and fingerprinting attacks independent of traffic-content analysis.
+techniques:
+    - active-probing
+    - traffic-shape
+defenses:
+    - mimicry
+    - bridges
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - Circumvention systems using a P2P cover protocol must not act as fixed long-lived endpoints; proxies should rotate identities or use the P2P network's own indirection (e.g., relay through real peers) so that calling a proxy ID never directly reveals its IP address.
+    - The many-clients-to-one-proxy pattern is statistically distinguishable from real P2P usage; circumvention designs should distribute load across many proxy identities per server or use decentralized architectures that match the cover protocol's actual fan-out ratios.
+section: §5, Figure 8
+extracted_by: claude-sonnet-4-6

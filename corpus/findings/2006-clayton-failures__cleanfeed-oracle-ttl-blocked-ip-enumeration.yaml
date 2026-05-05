@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-failures
+kind: defense
+summary: A hybrid two-stage blocking system (IP-redirect first stage, URL-proxy second stage) can be exploited as an oracle to enumerate blocked IP addresses by sending TCP packets with a TTL sufficient to reach the first-stage redirector but insufficient to reach the destination. Non-redirected IPs return ICMP TTL-expired from an intermediate router, while redirected IPs return a SYN/ACK from the web proxy impersonating the destination. A live scan of a /24 subnet confirmed 17 redirected IP addresses, yielding 91 associated hostnames across 9 of those IPs.
+techniques:
+    - ip-blocking
+    - middlebox-interference
+defenses:
+    - tunneling
+defense_implications:
+    - Any blocking architecture that treats different traffic differently (redirect vs. pass-through) creates a detectable side-channel; ensure traffic toward blocked and non-blocked destinations is indistinguishable at the client-observable level.
+    - Treat the IP blocklist itself as a sensitive secret — a scannable blocklist leaks the censor's full knowledge to adversaries who can enumerate it passively.
+section: §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-facade
+kind: evaluation
+summary: Facade encodes 78.04 bits per HTTP GET request using search-query terms, compared to Infranet's 3 bits per URL — a ~26× improvement — while maintaining comparable statistical deniability. StegoTorus encodes 12,000 bits per URL but offers no statistical deniability against traffic-pattern analysis.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - mimicry
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Prefer covert channels that exploit high-entropy web service fields (search queries, POST bodies) over link-click schemes; search terms yield ~26× more upstream capacity than Infranet-style range mapping at equivalent deniability.
+    - Benchmark covert-channel designs against both bits/URL and statistical deniability; throughput gains that eliminate deniability (as in StegoTorus) are not safe tradeoffs against strong adversaries.
+section: §5.2, Table 1
+extracted_by: claude-sonnet-4-6

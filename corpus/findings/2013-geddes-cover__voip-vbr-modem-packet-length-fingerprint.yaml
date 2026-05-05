@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-geddes-cover
+kind: detection
+summary: FreeWave's modem generates audio whose packet-length distribution has dramatically lower variance than human speech, even when transmitted through Skype's variable-bit-rate encoder; Figure 9 shows that English and Portuguese speech samples produce high-variance packet-length sequences while modem audio produces a narrow, nearly constant distribution, providing a reliable passive classifier for modem-over-VoIP traffic. This content mismatch persists even with perfect emulation of the VoIP protocol framing.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Mimicking a cover protocol's packet framing is insufficient; the payload content must produce the same statistical fingerprint (packet-size distribution, entropy, inter-arrival variance) as legitimate cover-protocol payloads — for VoIP covers this means the audio codec output, not just headers.
+    - Systems that inject arbitrary data into a VBR-encoded media stream should apply traffic shaping to match observed natural speech length distributions before transmitting, or should use a CBR codec cover where payload entropy is less discriminative.
+section: §6, Figure 9
+extracted_by: claude-sonnet-4-6

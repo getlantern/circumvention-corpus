@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-ruffing-identity-based
+kind: defense
+summary: 'Key distribution is the primary bootstrapping weakness of steganography-based censorship-resistance systems: a censor can simply block stego-key distribution. Identity-based steganographic tagging (IBST) eliminates this attack surface by requiring only a single master public key, which can be bundled with the client software — no key distribution inside the censored area is necessary.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - steganography
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Bundle a single IBST master public key with the client binary rather than distributing per-proxy or per-session keys; this removes the censor's ability to attack the key-distribution channel.
+    - Design covert rendezvous schemes so that no cryptographic material needs to flow from outside the censored zone to the censored client after initial software installation.
+section: §1 Introduction / §4
+extracted_by: claude-sonnet-4-6

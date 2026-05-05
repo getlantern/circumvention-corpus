@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chai-importance
+kind: evaluation
+summary: Monitoring ESNI-related censorship across 14 geographic regions — including Mainland China, Iran, UAE, South Korea, and 10 others — found no blocking of ESNI traffic or interference with ESNIKey retrieval via DNS TXT records as of mid-2019, contradicting a widely circulated report claiming South Korea had already blocked ESNI. Additionally, the GFW's residual censorship window after a triggered RST was measured at 60 seconds (down from the previously reported 90 seconds).
+techniques:
+    - sni-blocking
+    - rst-injection
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - ir
+    - ae
+defense_implications:
+    - The absence of ESNI blocking in 2019 (including in China and Iran) provided a narrow deployment window; circumvention infrastructure should be staged to maximize ESNI adoption before censors determine the false-positive cost of blocking it is acceptable.
+    - The shortened GFW residual censorship window (60 s vs. 90 s) must be accounted for in connection retry and port-rotation logic to avoid triggering residual blocks during reconnection attempts.
+section: §4.4, §6
+extracted_by: claude-sonnet-4-6

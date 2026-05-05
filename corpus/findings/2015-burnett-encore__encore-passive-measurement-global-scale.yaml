@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-burnett-encore
+kind: evaluation
+summary: Encore collected 141,626 measurements from 88,260 distinct IPs in 170 countries over seven months (May 2014–January 2015) using as few as 17 volunteer webmaster deployments, demonstrating that passive cross-origin measurement can achieve broader geographic vantage-point coverage than custom-software deployments without recruiting individual end-users.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+    - ir
+    - pk
+defense_implications:
+    - Lightweight reachability probes embedded in third-party web pages can monitor blocking across geographies in real time; circumvention tool operators should consider partnering with webmasters to embed passive probes rather than maintaining dedicated vantage-point infrastructure.
+    - Origin-site diversity is critical—relying on too few host sites lets a censor block the entire measurement (or circumvention) infrastructure with zero collateral damage to legitimate traffic.
+section: §7
+extracted_by: claude-sonnet-4-6

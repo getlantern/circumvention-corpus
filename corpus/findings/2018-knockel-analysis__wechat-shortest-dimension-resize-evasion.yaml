@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-knockel-analysis
+kind: detection
+summary: WeChat normalizes uploaded images by their shortest dimension before blacklist comparison. Adding blank space equal to 50–200% of the longest dimension caused 4/5 wide images and 3/5 tall images to evade filtering; adding space along the shortest dimension never evaded filtering, consistent with a shortest-dimension resize hypothesis.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Extend an image's canvas along its longest dimension with blank borders to cause the original content to occupy a smaller region than the blacklisted reference after normalization, breaking the similarity match.
+    - Determining which dimension a target filter normalizes on (width, height, largest, or smallest) via systematic stretching tests unlocks the correct axis for canvas-padding evasion.
+section: §3.2.4
+extracted_by: claude-sonnet-4-6

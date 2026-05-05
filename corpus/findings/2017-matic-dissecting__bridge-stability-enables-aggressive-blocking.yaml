@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-matic-dissecting
+kind: evaluation
+summary: 'Bridges that carry clients are highly stable: their median lifetime is 116 days (~4 months) and 84% never change IP address, with 90% having at most one IP change. This means current censor policies that remove bridge IP blocks every 25 hours are far more conservative than necessary — an adversary could sustain blocks for months without significant collateral damage.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Design bridge infrastructure to support faster IP rotation for high-value bridges, so the censor's window for effective blocking is reduced from months to days.
+    - Introduce automated bridge replacement triggers when a bridge is detected as blocked, rather than relying on bridge operators to notice and act.
+section: §V-B, Figure 3
+extracted_by: claude-sonnet-4-6

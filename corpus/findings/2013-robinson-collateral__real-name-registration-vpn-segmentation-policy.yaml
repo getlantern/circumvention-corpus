@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-robinson-collateral
+kind: policy
+summary: China's 2012 real-name registration law for consumer-facing online services (including VPNs) is designed to enable censors to segment circumvention-related consumer VPN traffic from business VPN traffic — permitting selective blocking of consumer VPNs while leaving corporate VPNs operational. The GFW had already demonstrated protocol-level VPN blocking capability; registration provides the identifying information needed to apply that capability selectively rather than as a blunt instrument.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools structurally indistinguishable from corporate VPN traffic face lower near-term block risk in China; consider mimicking enterprise VPN protocol signatures and infrastructure deployment patterns.
+    - Regulatory mechanisms such as licensing and real-name registration can substitute for or augment technical blocking — threat models must account for legal and policy attack vectors, not only DPI-based detection.
+section: §1 Introduction, §3 Collateral Freedom Matters
+extracted_by: claude-sonnet-4-6

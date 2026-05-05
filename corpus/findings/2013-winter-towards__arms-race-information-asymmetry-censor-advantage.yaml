@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-towards
+kind: evaluation
+summary: 'The censorship arms race is highly asymmetric: circumvention tool developers such as Tor operate entirely in public (code, designs, and data), while censorship systems like the GFW are black boxes. This structural imbalance means censors systematically learn more from defenders than vice versa, motivating volunteer-based in-country measurement to reduce the defender''s information deficit.'
+techniques:
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Volunteer-based in-country measurement tools that safely exfiltrate censorship observations are a structural necessity to reduce the defender's information deficit; circumvention projects should invest in lightweight, privacy-preserving censorship telemetry.
+    - 'Operational security for measurement volunteers must be a first-class design constraint: data collection should minimize identifying information, use randomized probe ordering, and avoid creating forensic artifacts on the user''s device.'
+section: §1, §3
+extracted_by: claude-sonnet-4-6

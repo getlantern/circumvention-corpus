@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-shklovski-online
+kind: policy
+summary: 'Blocking in the studied country was erratic and inconsistent: some geographic areas accessed the Internet through channels outside the main government-controlled pipeline and experienced no blocking, while other areas experienced sudden unexplained block-and-unblock cycles (e.g., a video sharing site and a microblogging site were blocked for 2-3 days in 2010 and then unblocked without explanation). Users frequently could not distinguish between deliberate blocking and ordinary technical outages, and this ambiguity itself amplified self-censorship among users who had not been directly targeted.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should provide clear, user-facing diagnostic output distinguishing censor-induced blocking from ordinary connectivity failure, reducing the ambient fear that inflates self-censorship beyond actual block rates
+    - The erratic, inconsistent nature of blocking suggests censors may tolerate significant false-negative rates; tools that achieve even partial availability may deliver outsized behavioral value to users
+section: §Blocking as an Abstract Concept / National Internet space
+extracted_by: claude-sonnet-4-6

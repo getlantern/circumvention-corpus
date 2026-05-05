@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-pfitzmann-terminology
+kind: defense
+summary: 'Global anonymity is maximized when the anonymity set is large and behavior is uniformly distributed: ''global anonymity is maximal iff all subjects within the anonymity set are equally likely.'' Strong global anonymity does not protect individual ''likely suspects'' — even in a strong-anonymity system, one user with distinctive behavior may have weak individual anonymity. Strong or even maximal global anonymity does not imply strong anonymity of each particular subject.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+defense_implications:
+    - Maximizing the user population of a circumvention system directly improves protection; cryptographic strength alone is insufficient if the anonymity set is small or behavior is non-uniform.
+    - Uniform traffic-generation patterns across the user population reduce the ability of statistical classifiers to fingerprint individuals; users with distinctive traffic volumes or timing remain exposed even in large anonymity sets.
+section: §3
+extracted_by: claude-sonnet-4-6

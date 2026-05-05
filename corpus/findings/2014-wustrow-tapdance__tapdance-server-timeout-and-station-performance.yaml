@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wustrow-tapdance
+kind: evaluation
+summary: Scanning a 1% sample of the IPv4 address space and the Alexa top-1-million domains, the authors found that over half of all TLS hosts will leave an incomplete HTTP request connection open for at least 60 seconds before sending data or closing the connection; many had timeouts exceeding 5 minutes. The 16-core TapDance station prototype processes over 12,000 tag verifications per second per core, with approximately 90% of CPU time consumed by a single ECC point multiplication on Curve25519. The station adds a median latency of 270 milliseconds to page downloads versus direct connections, and a single station instance can be overwhelmed by approximately 1.2 Gbps of TLS application-layer traffic.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - tapdance
+censors:
+    - generic
+defense_implications:
+    - Limit per-connection upload from client to station to the server's TCP receive window (~16 KB) and cap connection duration below the server's application-layer timeout to prevent the true decoy server from sending observable anomalous packets; use a connection-ID mechanism to seamlessly reconnect.
+    - Plan station capacity around 1.2 Gbps per 16-core node as a DoS ceiling; use flow-based hardware load balancing (e.g., PF_RING cluster hashing) to scale linearly across multiple station instances.
+section: §7.3, §8, Figure 5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-wachs-censorship-resistant
+kind: defense
+summary: GNS uses a proof-of-work-gated network flood for key revocation, requiring an adversary to block flood traffic on every path between the revocation origin and all peers to suppress it. This is substantially more robust than X.509 certificate revocation lists, which an adversary can render ineffective by simply blocking access to CRL servers — a weakness severe enough that browser vendors must bundle revocation lists inside software updates.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - bridges
+defense_implications:
+    - Design circumvention key revocation out-of-band via flooding or gossip protocols rather than centralized CRL endpoints; CRL blocking is trivially easy for a censor and silently renders revocations invisible to clients.
+    - Rate-limit revocation floods with a modest proof-of-work requirement to prevent the revocation channel itself from being weaponized as a denial-of-service vector against the circumvention network.
+section: §A.5
+extracted_by: claude-sonnet-4-6

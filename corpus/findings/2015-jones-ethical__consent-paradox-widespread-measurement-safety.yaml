@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-ethical
+kind: policy
+summary: 'Requiring consent from device owners for co-opted censorship measurements reduces coverage and continuity, and may paradoxically increase danger: soliciting consent signals intent to participants and draws attention, whereas the prevalence of malware and third-party trackers provides plausible deniability for unwitting device owners. The authors note that more widespread co-opted measurements collectively provide greater individual protection by normalizing unexplained outbound traffic.'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention systems that embed passive measurement capabilities should weigh whether opt-in consent increases participant risk relative to transparent-but-silent participation, particularly in high-repression environments.
+    - Measurement traffic should be designed to blend with the ambient noise of tracker and CDN requests so it is not distinguishable as a deliberate circumvention or measurement act.
+section: §2 Measurements from Co-Opted Devices
+extracted_by: claude-sonnet-4-6

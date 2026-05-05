@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2005-perng-censorship
+kind: defense
+summary: Theorem 3 demonstrates that having the server digitally sign its response together with the verbatim client query is sufficient to achieve CR when built atop any secure PIR protocol. This construction (sys+S) eliminates query modification as an attack vector, reducing the censor's viable strategies to query-dropping only — an advantage bounded above by the underlying PIR adversary's advantage, proving that the censor must shut down the entire service to achieve selective filtering.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Add server-signed query echo to any PIR-based censorship-resistant service: the server includes the client''s query in its signed response so that query tampering by a middleman is immediately detectable at the client.'
+    - Architect the system so query-dropping is the censor's only remaining option; a censor reduced to dropping must shut down the service entirely to achieve selective censorship, which is the strongest achievable resistance property.
+section: §7
+extracted_by: claude-sonnet-4-6

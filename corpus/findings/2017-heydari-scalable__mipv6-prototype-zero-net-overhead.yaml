@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-heydari-scalable
+kind: evaluation
+summary: A proof-of-concept Linux prototype using UMIP (open-source MIPv6) with three routers and five commodity machines (2.4GHz Intel Core 2 Duo, 4GB RAM) demonstrated correct CoA rotation every 10 seconds. Signaling overhead was reduced to one-third of standard MIPv6 by eliminating return routability messages; per-packet transmission overhead was 24 bytes (IPsec ESP), identical to the baseline secure-channel cost, yielding zero net overhead attributable to the MTD mechanism.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Server-side MIPv6 MTD is deployable on commodity hardware without protocol modifications or ISP cooperation, making it a realistic server-operator-controlled addition to existing circumvention stacks.
+    - The 10,000 simultaneous CoA binding capacity demonstrated on non-server hardware establishes a practical lower bound; operators should budget CoA count based on expected censor infiltration rate (swarming ratio), not just connectivity count.
+section: §IV-E
+extracted_by: claude-sonnet-4-6

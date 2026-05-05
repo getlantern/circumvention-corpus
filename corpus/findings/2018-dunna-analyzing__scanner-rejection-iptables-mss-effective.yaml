@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-dunna-analyzing
+kind: defense
+summary: Configuring iptables to drop incoming Tor packets whose TCP MSS equals 1400 (the value observed on GFW scanners) prevented bridge IPs from being added to the blocklist across the entire 44-hour experiment. This technique requires changes only on the relay, unlike pluggable transports that require both client and server upgrades.
+techniques:
+    - active-probing
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Implement scanner rejection natively in Tor's bridge code using MSS-based filtering so operators get protection without deploying separate iptables rules.
+    - Combine scanner rejection with a confidential bridge distribution mechanism (MOAT, email, etc.); if scanner probes never confirm the Tor service, the IP stays off the blacklist indefinitely.
+section: §5.2
+extracted_by: claude-sonnet-4-6

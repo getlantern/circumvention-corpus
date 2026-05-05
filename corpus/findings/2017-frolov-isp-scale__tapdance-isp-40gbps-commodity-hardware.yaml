@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-frolov-isp-scale
+kind: deployment
+summary: TapDance was deployed on four ISP uplinks (two 40 Gbps, two 10 Gbps) using commodity 1U servers running a Rust/PF_RING zero-copy implementation; CPU load remained below 25% while handling a peak of ~14,000 new TLS connections per second across 34 cores, with cumulative mirrored traffic peaking at 55 Gbps across all stations.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Refraction networking at 40 Gbps line rate is achievable on commodity hardware with zero-copy packet processing (PF_RING in zero-copy mode); specialized ASICs are not required for ISP-scale deployment.
+    - 'Key PF_RING configuration: spread flows by IP pair rather than full 4-tuple so a client''s changing source port does not scatter a multi-flow session across station processes.'
+section: §3.1, §4.1, Figure 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-matic-dissecting
+kind: defense
+summary: 77% of public bridges offer only vanilla Tor, which is trivially detectable via TLS certificate pattern matching. An additional 15% offer Pluggable Transports with conflicting security properties (e.g., obfs4 + obfs3 + obfs2 co-deployed on the same bridge), allowing a censor to confirm and block the bridge via the weakest PT and thereby disable all stronger PTs on the same IP — including active-probing-resistant transports like obfs4 and ScrambleSuit.
+techniques:
+    - tls-fingerprint
+    - active-probing
+    - dpi
+defenses:
+    - obfs4
+    - scramblesuit
+    - pluggable-transport
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Never co-deploy PTs with differing security levels (e.g., active-probing-resistant obfs4 alongside probe-vulnerable obfs3) on the same bridge IP — the weakest PT becomes an attack vector that eliminates all stronger PTs.
+    - 'Enforce a PT security tier policy in bridge deployment tooling: a bridge should only offer transports within the same security class, and deprecated transports (obfs2, vanilla Tor) should be disabled by default.'
+section: §V-C, Table I
+extracted_by: claude-sonnet-4-6

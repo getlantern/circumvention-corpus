@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-wang-censorspoofer
+kind: deployment
+summary: The MIT ANA Spoofer project shows that over 400 ASes (22%) and 88.7 million IP addresses (15.7%) permit outbound IP address spoofing, constraining where CensorSpoofer proxy nodes can be deployed. ASes applying ingress/egress filtering make IP-spoofing-based downstream channels infeasible from those locations.
+techniques:
+    - ip-blocking
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Pre-screen candidate spoofer hosts using the MIT ANA Spoofer tool before deployment; only ~22% of ASes permit the outbound IP spoofing that this architecture requires.
+    - Plan for a small, curated pool of spoofer exit ASes rather than open volunteer deployment, as the majority of the address space cannot launch spoofed packets.
+section: §4.2
+extracted_by: claude-sonnet-4-6

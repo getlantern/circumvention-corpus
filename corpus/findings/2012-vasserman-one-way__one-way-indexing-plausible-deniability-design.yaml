@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-vasserman-one-way
+kind: defense
+summary: One-way indexing separates a published file into encrypted content blocks (indexed by hash1(block)), a content manifest (indexed by hash2(keyword)), and a key manifest (indexed by hash3(keyword)), so a storer holding all content chunks cannot recover the plaintext or keywords without inverting a cryptographic one-way function. Using distinct hash functions for each manifest type also minimizes the probability that a single node stores both manifests, preventing correlation.
+techniques:
+    - keyword-filtering
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Partition file content, metadata, and decryption keys under separate cryptographic hash namespaces so honest intermediate storers have plausible deniability — no single stored component reveals plaintext or search terms.
+    - Use three independent hash functions (one per component type) when assigning DHT storage IDs to minimize the probability that any one node can correlate all components needed for decryption.
+section: §3.1
+extracted_by: claude-sonnet-4-6

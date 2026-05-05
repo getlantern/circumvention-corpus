@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-frolov-isp-scale
+kind: evaluation
+summary: 'The trial explicitly obtained no evidence about TapDance''s resistance to adversarial censor countermeasures: its scale and duration were judged small enough that censors likely did not observe it, leaving theoretical censorship-resistance claims unvalidated against active blocking responses.'
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Future refraction deployments should instrument decoy-host reachability from inside censored regions to detect selective IP-blocking of active decoy hosts in near-real time.
+    - Plan the rotation reserve (withheld decoy hosts) as an operational countermeasure to IP-blocking before deployment reaches a scale likely to attract censor attention.
+section: §2, §6
+extracted_by: claude-sonnet-4-6

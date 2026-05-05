@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-burnett-chipping
+kind: defense
+summary: The paper demonstrates that no single steganographic algorithm can provide both availability and deniability, since almost all production algorithms have been broken and steganography alone does not hide the identities of communicating parties. Collage addresses this by treating the embedding algorithm as a swappable component in a layered architecture—vector layer, message layer, application layer—so that compromise of the embedding scheme does not compromise the system, and stronger algorithms (e.g., digital watermarking) can be substituted as they mature.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - steganography
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Never rely on a single steganographic primitive for end-to-end security; architect the covert channel so the embedding algorithm is replaceable and the system's security properties derive from the layered combination of erasure coding, key distribution, and task diversity.
+    - 'Prefer digital watermarking over pure steganography for availability: watermarked content is difficult to remove without destroying or blocking large volumes of legitimate UGC, raising the censor''s cost of suppression.'
+section: §4.1, §2
+extracted_by: claude-sonnet-4-6

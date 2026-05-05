@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-shklovski-online
+kind: policy
+summary: 'Users lacking technical circumvention skills bypassed blocking via social relays: technically savvy friends or contacts in unblocked regions copied blocked content into email or reposted it on social network profiles, allowing censored information to reach users who had no direct access to proxies or anonymizers. This informal bypass required no circumvention software on the recipient''s end.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should include low-barrier sharing or relay features (e.g., content mirroring, one-click repost) so technically unsophisticated users can benefit from the circumvention work of a single connected peer
+    - 'Design for the relay use-case: a single unblocked node should be able to efficiently redistribute content to a social cluster behind the firewall without requiring each recipient to run circumvention software'
+section: §Reliance on social ties
+extracted_by: claude-sonnet-4-6

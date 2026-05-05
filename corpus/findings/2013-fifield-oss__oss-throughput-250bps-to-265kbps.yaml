@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-fifield-oss
+kind: evaluation
+summary: OSS throughput varies from 250 B/s (vURL/HTTP-302) to 265 KB/s (PDFmyURL/JavaScript-onload). High-rate OSSes—Dr.Web at 20 KB/s, GoMo at 22–175 KB/s, PDFmyURL at 160–265 KB/s—support bulk bidirectional transfer; low-rate OSSes (AdSense 500 B/s, vURL 250 B/s) are suited only for rendezvous. Concurrent streams scale linearly (2× aggregate throughput) for all tested OSSes except AdSense, which rate-limits per source IP.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+    - pluggable-transport
+defense_implications:
+    - Target high-rate OSSes (PDFmyURL, Dr.Web, GoMo) for bulk transport and reserve low-rate ones as fallback rendezvous channels only.
+    - Implement concurrent multi-stream initiation to multiply effective throughput, with per-OSS logic to avoid AdSense-style per-IP rate limits.
+section: §5.2, Table 5
+extracted_by: claude-sonnet-4-6

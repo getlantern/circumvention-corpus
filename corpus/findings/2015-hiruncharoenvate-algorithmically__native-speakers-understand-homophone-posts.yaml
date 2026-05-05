@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-hiruncharoenvate-algorithmically
+kind: evaluation
+summary: Native Chinese-speaking Amazon Mechanical Turk workers understood the content of 605 out of 608 homophone-transformed posts (99.51%), with only 2.85% of all impressions (52/1,824) reporting difficulty; workers unable to identify transformed keywords were significantly more likely to report confusion (p<0.001 for original keywords, p=0.03 for transformed keywords).
+techniques:
+    - keyword-filtering
+defenses:
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Linguistic-obfuscation circumvention is viable for native-speaker audiences without degrading comprehension, making it suitable as an end-user tool rather than just a researcher technique.
+    - Comprehension depends on topic familiarity, not keyword length or count — tool UX should surface topic context alongside transformed text to support users unfamiliar with the original event.
+section: Experiment 2 / Results — Table 2
+extracted_by: claude-sonnet-4-6

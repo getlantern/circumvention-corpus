@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-handley-network
+kind: detection
+summary: 'An attacker can conduct stealth port scans against a victim without revealing their own IP by exploiting a ''patsy'' host whose OS uses a globally incrementing IP Identifier: the attacker observes ID increments of 2 (rather than 1) in the patsy''s traffic when the victim sends a RST to the patsy in response to a spoofed SYN, revealing open ports. Choosing a different patsy for each port makes the scan very hard to detect.'
+techniques:
+    - dpi
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention proxy servers using predictable global IP IDs can be enumerated covertly by censors without generating active-probe traffic — randomize or isolate per-connection IP ID generation on all proxy infrastructure.
+    - CDN-fronted proxies may still be fingerprintable via IP ID covert channels if the CDN's edge nodes use predictable IDs; verify that CDN egress scrambles IP IDs before relying on fronting for anonymity.
+section: §5.1
+extracted_by: claude-sonnet-4-6

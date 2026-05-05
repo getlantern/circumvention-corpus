@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-fifield-evading
+kind: deployment
+summary: Flash proxies successfully relayed Tor traffic from within China in December 2011, but the test relied on a simple HTTP-based rendezvous blockable by IP address; the authors identify rendezvous — getting just a few bytes (the client's IP address) out of the censored region — as the bottleneck that determines whether the entire proxy system remains operational.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - Invest in multiple parallel rendezvous channels (cloud storage APIs, steganographic HTTP cookie embedding, social platforms) before scaling proxy capacity — a fast proxy pool is useless if the rendezvous step is blocked.
+    - Prefer rendezvous targets whose blocking would cause large collateral damage to legitimate commerce (e.g., major cloud storage providers like S3) to raise the political cost of blocking for the censor.
+section: §4.4, §6
+extracted_by: claude-sonnet-4-6

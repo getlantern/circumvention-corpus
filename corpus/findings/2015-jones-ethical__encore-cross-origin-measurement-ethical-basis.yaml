@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-ethical
+kind: evaluation
+summary: The Encore technique uses cross-origin HTTP requests to induce a visiting user's browser to silently fetch a censorship target URL, enabling passive measurement of web filtering for sites including Facebook, YouTube, and Twitter. The ethical argument for deployment rests on the observation that nearly all major websites already embed content from these platforms, so the additional traffic is indistinguishable from normal browsing behavior.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Censorship measurement probes embedded in widely-distributed web content should target only destinations already present as third-party resources on popular sites, to minimize distinguishable measurement footprint.
+    - Circumvention tools seeking passive measurement coverage can leverage the ubiquity of CDN and social-media embedded content as cover traffic normalization, since blocking such traffic would constitute significant collateral damage for censors.
+section: §3 Questions and Considerations
+extracted_by: claude-sonnet-4-6

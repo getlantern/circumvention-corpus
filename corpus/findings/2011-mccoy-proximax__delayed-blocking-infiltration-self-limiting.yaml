@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-mccoy-proximax
+kind: detection
+summary: 'A sophisticated censor can infiltrate a proxy distribution system, accumulate large numbers of proxy addresses and channel identities, and delay mass-blocking for weeks or months to maximize information before acting. The paper argues this is self-limiting: delayed blocking extends proxy lifetimes (benefiting system yield), and the infiltrating account''s subtree reputation score degrades sharply the moment it begins blocking proxies, triggering exclusion from future proxy assignments.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Build reputation systems that detect sudden correlated blocking events from a single distributor subtree and immediately revoke that subtree's access to remaining proxy pools.
+    - Segment proxy pools by independent distributor subtrees so a delayed mass-blocking event by one infiltrated account cannot simultaneously expose proxies assigned through unrelated subtrees.
+section: §4
+extracted_by: claude-sonnet-4-6

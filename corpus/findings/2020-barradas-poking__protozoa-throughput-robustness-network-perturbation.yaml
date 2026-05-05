@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-poking
+kind: evaluation
+summary: 'Protozoa''s covert channel throughput degrades gracefully under bandwidth constraints but remains usable for common applications: average throughput is 975 Kbps at 1500 Kbps cap, 460 Kbps at 750 Kbps, and 91 Kbps at 250 Kbps. Under 2% and 5% packet loss the channel sustains 1130 Kbps and 360 Kbps, respectively, while 10% loss (near WebRTC tear-down threshold) still yields 160 Kbps without breaking the connection. Traffic analysis resistance is preserved across all these conditions, with AUC peaking at 0.65.'
+techniques:
+    - throttling
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - WebRTC's built-in congestion control and adaptive bitrate provide automatic graceful degradation under throttling attacks, making it a resilient transport substrate for covert channels without requiring custom QoS logic.
+    - Evaluate covert channel tools under both bandwidth caps and packet-loss injection, not just baseline conditions, as censors may throttle rather than block to minimize blowback while degrading circumvention.
+section: §6.3, Figures 9–10
+extracted_by: claude-sonnet-4-6

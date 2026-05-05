@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-nisar-case
+kind: evaluation
+summary: Direct circumvention via HTTPS/domain-fronting from Pakistan achieved an average throughput of ≈1.5 Mbps, whereas static proxies located in the US, Europe, and Asia yielded less than 0.9 Mbps in most cases. Page load times for the YouTube homepage (≈360 KB) were significantly lower under the direct method, and a TCP slow-start model predicts throughput could reach ≈2 Mbps if the flow completed within slow start.
+techniques:
+    - ip-blocking
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - pk
+defense_implications:
+    - Prefer geographically proximate circumvention nodes over distant relay servers when the local ISP's filtering can be bypassed directly (e.g., HTTPS or domain-fronting) — round-trip latency dominates for sub-1 MB page loads.
+    - Profile available circumvention paths dynamically and rank by measured throughput/latency rather than using a static relay list.
+section: §3.2 / Figure 1 / Table 2
+extracted_by: claude-sonnet-4-6

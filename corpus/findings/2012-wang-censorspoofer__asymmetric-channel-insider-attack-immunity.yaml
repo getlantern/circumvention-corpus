@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-wang-censorspoofer
+kind: defense
+summary: 'CensorSpoofer decouples the upstream channel (URLs hidden via steganography in IM/Email) from the downstream channel (web content injected into spoofed UDP/VoIP flows), so the proxy''s real IP is never revealed to any user. This asymmetric architecture provides perfect insider-attack resistance: even if all users are compromised, they can only learn cover dummy-host IPs, not the spoofer''s address.'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Separate proxy-discovery (low-bandwidth, steganographic) from proxy-data channels so the proxy IP is never distributed to users, eliminating the insider-attack surface entirely.
+    - Use connectionless UDP-based application mimicry (VoIP, video conferencing) for the downstream channel; TCP is unsuitable because sequence-number synchronization lets an in-path censor verify packet provenance.
+section: §4
+extracted_by: claude-sonnet-4-6

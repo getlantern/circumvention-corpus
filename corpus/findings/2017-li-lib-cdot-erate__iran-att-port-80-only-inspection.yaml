@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-li-lib-cdot-erate
+kind: detection
+summary: Iran's censor and AT&T's Stream Saver restrict DPI inspection strictly to port 80; traffic on any other TCP port escapes classification entirely. Iran additionally inspects the full flow (not just initial packets), unlike T-Mobile and the testbed device which only inspect the first few packets, making packet-count-based evasion insufficient against Iran on port 80.
+techniques:
+    - dpi
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - Configuring proxy listeners on non-80 ports is sufficient to bypass Iran's DPI-based application classifier without any protocol obfuscation—though this may be countered by port-range blocking, so pair with IP diversity.
+    - 'Probe whether a censor''s classifier is packet-count-limited or full-flow before choosing an evasion strategy: if full-flow (as documented for Iran on port 80), port migration or payload-level obfuscation is required rather than mere segment splitting.'
+section: §1 (key findings), §6.3
+extracted_by: claude-sonnet-4-6

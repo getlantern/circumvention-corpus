@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-seltzer-infrastructures
+kind: policy
+summary: 'DNS infrastructure is a primary chokepoint target: U.S. DHS seized domain names of sites including rojadirecta.org — found non-infringing under Spanish law — without Congressional authority. The proposed PROTECT-IP Act (2011) would have authorized DNS injection against ''non-domestic'' domains. Developers countered with a browser plug-in distributing alternate domains outside U.S. jurisdiction; Mozilla refused a DHS demand to remove it.'
+techniques:
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Build alternate discovery mechanisms (DHT, out-of-band address distribution, hard-coded fallbacks) so that DNS seizure of primary domains does not sever user access.
+    - Distribute infrastructure across multiple jurisdictions so that single-country legal action cannot simultaneously disable all access paths.
+section: §1.4.1
+extracted_by: claude-sonnet-4-6

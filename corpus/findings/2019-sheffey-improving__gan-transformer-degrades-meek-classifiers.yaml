@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-sheffey-improving
+kind: evaluation
+summary: A GAN-based adversarial transformer applied to Meek traffic signatures increases mean classifier FPR from 0.183 to 0.834 and decreases mean area under the precision-recall curve (PR-AUC) from 0.990 to 0.414 across naive neural network, informed neural network, and CART decision tree classifiers evaluated on three geographically distinct datasets (residential, university, AWS).
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - meek
+censors:
+    - generic
+defense_implications:
+    - Adversarial ML-derived traffic distributions can be computed offline and then implemented in a real-time traffic shaper (chaff insertion, packet delay) to substantially degrade classifier-based Meek detection without redesigning the protocol.
+    - Evaluate circumvention tools against both naive and adaptive ('informed') classifiers — gains against naive classifiers will be significantly eroded if the censor retrains on observed adversarial samples.
+section: §5 Results, Tables 1–2
+extracted_by: claude-sonnet-4-6

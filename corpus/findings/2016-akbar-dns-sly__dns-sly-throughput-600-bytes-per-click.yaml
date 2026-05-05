@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-akbar-dns-sly
+kind: evaluation
+summary: DNS-sly achieves downstream throughput of up to 600 bytes of hidden data per web page click, with a median of ~100 bytes/click using a global IP map and ~75 bytes/click using a local IP map (a 25% difference despite vastly different IP set sizes). A 4 KB file transfer completes in 30 clicks with the global profile map and 64 clicks with the local map.
+defenses:
+    - dns-tunneling
+    - steganography
+defense_implications:
+    - DNS covert channels can deliver usable bandwidth (~100 bytes/click median) for low-rate circumvention such as proxying text-reduced pages without triggering volume-based anomaly detectors.
+    - Prefer global IP dictionaries over local ones for ~25% higher throughput when deployment permits, as the number of A records per response dominates capacity more than total pool size.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-barradas-deltashaper
+kind: evaluation
+summary: 'FreeWave, the VoIP-based predecessor, was vulnerable to passive traffic analysis because its covert Skype streams exhibited packet-size distributions different from legitimate calls, enabling detection with high probability. DeltaShaper''s video-based approach with EMD-constrained encoding addresses this specific failure mode, but at a severe throughput cost: FreeWave achieves 18.75 Kbps vs DeltaShaper''s 2.56–3.12 Kbps goodput. Competing systems benchmark: CovertCast ~168 Kbps (no unobservability constraints), Castle 3.48 Kbps, SkypeLine 0.064 Kbps, Rook 0.024–0.04 Kbps.'
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+    - mimicry
+defense_implications:
+    - The throughput tax for packet-level unobservability in compressed-video steganography is roughly 6–7x versus an unobservable-indifferent baseline (FreeWave 18.75 Kbps vs DeltaShaper 2.56 Kbps) — use this as a design budget when deciding whether a cover-channel approach is worth the latency/throughput penalty for a given use case.
+    - Higher-throughput video steganography (CovertCast ~168 Kbps) is achievable when the cover channel is a live-streaming platform with diverse content, since traffic diversity makes per-stream fingerprinting harder; dedicated two-party video calls are a weaker cover because the censor can build tight reference distributions.
+section: §6.3, §2
+extracted_by: claude-sonnet-4-6

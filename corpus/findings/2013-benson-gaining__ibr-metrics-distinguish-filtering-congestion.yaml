@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-benson-gaining
+kind: evaluation
+summary: 'IBR-derived metrics γ (average SYN retransmits per flow) and η (inter-packet time between retransmits) can distinguish packet-loss-induced outages from packet-filtering censorship: during Libya''s 2011 packet-filtering phase γC remained near pre-censorship values despite reduced source counts, whereas BGP route leaks caused measurable γ decreases and η increases. This difference exists because filtering reduces the host population but preserves per-flow OS retransmit behavior, while congestion causes routers to drop individual packets mid-flow.'
+techniques:
+    - measurement-platform
+    - ip-blocking
+    - bgp-hijack
+censors:
+    - generic
+defense_implications:
+    - Circumvention infrastructure operators can use passive darknet γ/η signals to determine whether a connectivity loss reflects active packet filtering vs. upstream BGP-level disruption, enabling faster and more targeted incident response.
+    - If per-flow retransmit counts remain stable while source counts drop, assume subnet-level filtering rather than congestion — route traffic through unaffected prefixes rather than retrying the same path.
+section: §IV-C, §IV-D
+extracted_by: claude-sonnet-4-6

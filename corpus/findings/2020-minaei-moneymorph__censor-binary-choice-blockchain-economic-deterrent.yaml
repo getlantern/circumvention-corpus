@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-minaei-moneymorph
+kind: defense
+summary: 'MoneyMorph''s threat model exploits the economic cost of blocking entire cryptocurrency networks: the censor is left with a binary choice — ban the full blockchain (incurring economic harm to the censored region) or allow all transactions including covert bootstrapping traffic. This assumption is grounded in the censor''s observed tolerance of Bitcoin despite known circumvention use.'
+techniques:
+    - ip-blocking
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Anchor rendezvous channels in high-market-cap networks (Bitcoin at $136B, Ethereum at $16B as of Nov 2019) to maximize the economic deterrent against wholesale blocking — the censor's cost of denial rises proportionally.
+    - 'Treat the censor''s inability to selectively block individual steganographic transactions as a design invariant: any encoding that is computationally indistinguishable from legitimate traffic shifts the blocking burden to network-level bans with collateral damage.'
+section: §2.2, §3
+extracted_by: claude-sonnet-4-6

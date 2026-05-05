@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-chen-tweeting
+kind: evaluation
+summary: Morph adoption in censored topics begins within hours of censorship being imposed, and in some topics users adopt morphs preemptively before censorship is applied, demonstrating rapid community-level awareness of keyword filtering. Temporal analysis of the Lushan and Taxi topics (Figures 19–20) shows morph usage rising sharply in parallel with or ahead of censor action.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that rely on static censored-word lists will lag the censor; support real-time community crowdsourcing of new morphs so the substitution layer adapts within the same hours-long window as organic user behavior.
+    - Consider automated morph-suggestion features that trigger when users type high-risk keywords, providing sub-hour update latency without requiring manual tool updates.
+section: §6, Figures 19–20
+extracted_by: claude-sonnet-4-6

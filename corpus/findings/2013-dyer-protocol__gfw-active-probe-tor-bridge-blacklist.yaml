@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-dyer-protocol
+kind: detection
+summary: 'Default Tor connections to a private bridge inside China were detected by the Great Firewall via active probing: an initial connection succeeded, followed by a probe from a Chinese IP address approximately 15 minutes later that performed a TLS handshake and then blacklisted the (IP, port) combination. Subsequent connection attempts resulted in a successful SYN followed by spoofed TCP RSTs terminating both the client and bridge connections.'
+techniques:
+    - active-probing
+    - rst-injection
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Bridges must not respond to unauthenticated probe handshakes in any way that confirms they are Tor nodes; the probe-response behavior is the signal the GFW uses to blacklist the (IP, port) tuple.
+    - Encapsulating Tor traffic in FTE (port 80, HTTP format) bypassed this probing path entirely in the authors' tests, suggesting protocol misclassification disrupts the active-probing decision pipeline before blacklisting is triggered.
+section: §6
+extracted_by: claude-sonnet-4-6

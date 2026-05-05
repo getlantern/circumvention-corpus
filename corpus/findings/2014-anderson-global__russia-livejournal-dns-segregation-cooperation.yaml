@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anderson-global
+kind: detection
+summary: LiveJournal cooperated with Russian authorities (Roskomnadzor) to segregate censored content by altering DNS A records for blacklisted blogs to a special host (208.93.0.190) that came online between February 10–17, 2014. Only 5 of 1,462 LiveJournal subdomains in Alexa's Top 1 million resolved to this address, all of which had been publicly declared in violation of Russian media law.
+techniques:
+    - dns-poisoning
+censors:
+    - ru
+defense_implications:
+    - Do not route circumvention traffic through shared hosting platforms in high-censorship environments; platform-level DNS cooperation with censors enables selective, low-collateral-damage content blocking that is difficult to detect or circumvent at the network layer.
+    - 'Treat any shared CDN or hosting provider as a potential choke point: a censor with a cooperative relationship can segregate specific users or domains without disrupting the broader platform.'
+section: §4.2
+extracted_by: claude-sonnet-4-6

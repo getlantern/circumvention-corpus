@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-knockel-measuring
+kind: detection
+summary: Forensic analysis of keyword list formatting artifacts — C-style escapes appearing in XML files, XML entities appearing in non-XML files, and double-backslash encoding traceable to a 2004 leaked QQ keyword list — provides evidence that developers copy and circulate keyword lists across companies through informal channels including old web applications and bulletin boards. This keyword propagation mechanism explains partial overlap between unrelated companies' lists without implying a central authority.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Keyword blacklists in Chinese apps partially derive from decade-old leaked lists that circulate informally; circumvention tools can monitor known leaked keyword corpora (e.g., the 2004 QQ list) as a baseline predictor of what new apps will filter
+    - The informal propagation of keyword lists introduces encoding artifacts that can be used to fingerprint list provenance — useful for attributing filtering behavior to specific list lineages when analyzing new Chinese apps
+section: §5.1
+extracted_by: claude-sonnet-4-6

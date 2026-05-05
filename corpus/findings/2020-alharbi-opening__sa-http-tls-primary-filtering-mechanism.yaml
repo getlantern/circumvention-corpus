@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-alharbi-opening
+kind: detection
+summary: Internet filtering in Saudi Arabia is implemented primarily as HTTP URL-keyword filtering augmented by TLS-level (SNI) filtering for HTTPS connections; DNS and IP-level failures were minimal and consistent with transient network issues rather than deliberate blocking. In 2019, 82.2% of Adult, 7.6% of Shopping, and 6.2% of Games websites returned HTTP 403; TLS filtering of Shopping sites decreased from 9.6% to 6.6% between 2018 and 2020.
+techniques:
+    - keyword-filtering
+    - sni-blocking
+defenses:
+    - ech-esni
+    - domain-fronting
+    - trojan
+    - tunneling
+censors:
+    - sa
+defense_implications:
+    - Tunneling traffic inside a fully-encrypted or TLS-mimicking transport (Trojan, REALITY, meek) bypasses HTTP URL-keyword inspection and forces the censor to rely solely on TLS SNI matching.
+    - Deploying ECH or domain-fronting dissolves the remaining TLS-based filtering layer, since the censor cannot inspect SNI without those — and SA does not appear to fall back to IP-level blocks for HTTPS.
+section: §3.1
+extracted_by: claude-sonnet-4-6

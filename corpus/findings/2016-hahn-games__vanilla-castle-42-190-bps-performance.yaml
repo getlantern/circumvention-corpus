@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-hahn-games
+kind: evaluation
+summary: Vanilla Castle achieves 42–190 bytes/second (average) and transfers a 10 KB file in 52–238 seconds depending on the game (0-A.D. / Aeons / Conquerors); game-specific exploitation of per-unit click logging in Aeons raised throughput to ~3 KB/s. These rates are sufficient for asynchronous text-based communication (tweets, email, news articles) and bootstrapping Tor bridge IP distribution.
+defenses:
+    - steganography
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Prioritize game-specific analysis of replay/log granularity early in the porting process—single-unit click logging (as in Aeons) can unlock O(log₂ n) bits per click vs. O(log₂ C(n,k)) for group selection, yielding a >20× throughput improvement.
+    - For bootstrapping use cases (bridge IPs, key distribution), 42 B/s suffices; size payloads accordingly and pair with parallel multi-player sessions (up to 7 simultaneous proxies per game instance) for higher-bandwidth needs.
+section: §8, Table 2, §8.3
+extracted_by: claude-sonnet-4-6

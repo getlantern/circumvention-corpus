@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-birtel-slitheen
+kind: evaluation
+summary: 'Slitheen++''s relay station introduces minimal overt forwarding overhead: 95% of setups saw downstream per-packet delays between 1 ms and a maximum of 4 ms, with on average only 0.0029% of downstream packets affected (peak 0.006% in any single scenario). Upstream delays were similarly low except for a single outlier near 60 ms caused by thread contention during crawling-induced relay load spikes.'
+techniques:
+    - traffic-shape
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Per-packet relay latency is not the binding constraint for decoy routing stealth; covert scheduling and overt behavior simulation contribute far more to detectable timing shifts than raw forwarding overhead.
+    - Multi-threaded relay designs can introduce upstream latency spikes under burst load; a PISA-based line-rate implementation would eliminate this residual timing artifact and remove a detectable outlier signal.
+section: §5 (Table 1)
+extracted_by: claude-sonnet-4-6

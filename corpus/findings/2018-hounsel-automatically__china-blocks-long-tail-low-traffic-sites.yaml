@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-hounsel-automatically
+kind: detection
+summary: 'China actively censors websites far outside the popular-traffic tier: many discovered censored domains appear in the tail of the Alexa Top 1,000,000, and some are absent from Alexa entirely. This demonstrates the GFW pursues content-classified hosts regardless of traffic rank, not only high-visibility platforms.'
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention infrastructure (bridges, front domains, CDN nodes) gains no safety from being low-traffic or obscure; operators must assume content-classified hosts will be blocked independent of traffic volume.
+    - Any domain publicly associated with sensitive content categories should be treated as eventually blocked, requiring operators to pre-provision fallback or rotation infrastructure.
+section: §5.2, Figure 3
+extracted_by: claude-sonnet-4-6

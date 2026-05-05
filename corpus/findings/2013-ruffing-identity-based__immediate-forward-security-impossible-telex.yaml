@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-ruffing-identity-based
+kind: defense
+summary: The paper proves that immediate forward security is impossible for Telex-like decoy-routing systems. The Telex station must decide whether to treat a connection as a Telex request after the first client message, using only received messages and its long-term key — an eavesdropper who stores all network traffic can replay the station's entire view once it compromises the station's long-term key, retroactively decrypting all sessions.
+techniques:
+    - flow-correlation
+defenses:
+    - decoy-routing
+    - telex
+censors:
+    - generic
+defense_implications:
+    - Accept that decoy-routing systems (Telex, TapDance, Conjure) are structurally limited to eventual rather than immediate forward security; design key-rotation schedules and key-erasure policies accordingly.
+    - Size key material for decoy-routing systems to fit in narrow covert channels (target a few hundred bytes for the master public key) so that key rotation can happen via steganographic side channels even when direct distribution is blocked.
+section: Appendix B
+extracted_by: claude-sonnet-4-6

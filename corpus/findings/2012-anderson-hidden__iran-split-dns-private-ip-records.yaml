@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-anderson-hidden
+kind: detection
+summary: Several Iranian domains maintain DNS A records pointing to RFC1918 private addresses that resolve only when queried against Iranian nameservers (IRNIC); the same query to Google's public DNS (8.8.8.8) returns REFUSED. Domains including realm.blizz.ir (→ 10.175.27.120), isftak.ir, and geeges.co.ir exhibit this split-DNS pattern as of September 2012.
+techniques:
+    - dns-poisoning
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools that enforce encrypted DNS (DoH/DoT) to public resolvers will silently fail to resolve Iran-internal .ir domains — consider a fallback path for .ir queries via domestic resolvers for users who need both domestic and foreign access.
+    - The split-DNS pattern is a precursor to a full split-horizon regime; monitor for Iran expanding this to actively return NXDOMAIN or RFC1918 addresses for .ir domains at the network level rather than only at the authoritative nameserver.
+section: §5.2, §6
+extracted_by: claude-sonnet-4-6

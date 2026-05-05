@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-ensafi-detecting
+kind: evaluation
+summary: Approximately 10% of China's IP addresses respond to IPID probes, and 13% of those exhibit globally incrementing IPIDs, meaning roughly 1% of China's total IP address space can serve as passive measurement vantage points with no cooperation from host owners. In contrast, Tor bridge blocking from Chinese clients was observed in 58.91% of server-to-client cases versus 0% for non-China Asia-Pacific clients.
+techniques:
+    - measurement-platform
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - The ~1% usable vantage point density is sufficient for geographically diverse, topologically representative censorship measurement across China, enabling empirical validation of whether new bridge addresses are blocked before distributing them to users.
+    - The stark contrast between CN bridge blocking (58.91%) and Asia-CN (0%) confirms GFW filtering is implemented at the China network boundary, so IP addresses routed only inside China are not subject to the same blocks.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

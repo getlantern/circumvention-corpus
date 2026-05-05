@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-zhou-sweet
+kind: defense
+summary: When using a foreign encrypted email provider (AlienMail), the censor observes only an encrypted connection to the foreign mail server (e.g., Gmail's servers in the U.S.); it cannot see the recipient address or the SWEET server's IP, making spam-filtering-style blocking of the SWEET endpoint entirely infeasible. This anonymity is provided by the mail provider's own TLS, requiring no additional obfuscation from the client.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Route circumvention registrations and data through large foreign encrypted providers so that censor-visible metadata is limited to a connection to a major CDN or mail provider, not the proxy endpoint.
+    - Design the system so that blocking the circumvention infrastructure requires blocking the entire third-party provider, raising the political and economic cost to the censor.
+section: §1, §3
+extracted_by: claude-sonnet-4-6

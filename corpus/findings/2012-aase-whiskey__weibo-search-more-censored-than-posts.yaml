@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-aase-whiskey
+kind: detection
+summary: 'Weibo''s search censorship is more aggressive than its post censorship: searching for a keyword returned no results in cases where posting the same keyword was not blocked. The authors hypothesize this asymmetry reflects resource constraints — post censorship requires processing longer, more varied content at high volume, while search censorship is cheaper to apply broadly.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Avoid using keyword-search behavior as a proxy for what a platform censors; search and post censorship can operate with entirely different thresholds and coverage.
+    - When designing censorship-resistant messaging, treat the search path as a higher-risk exposure vector than post submission, since censors may allocate disproportionate resources there.
+section: §3, §5
+extracted_by: claude-sonnet-4-6

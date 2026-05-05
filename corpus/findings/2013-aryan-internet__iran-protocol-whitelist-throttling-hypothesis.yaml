@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-aryan-internet
+kind: detection
+summary: SSH transfers utilized only 15% of available bandwidth versus 85–89% for HTTP/HTTPS. When SSH was obfuscated by XORing payloads with a constant key (hiding the plaintext handshake), throughput dropped to near-zero during all trials. Applying the same obfuscation to HTTP transfers produced the same near-zero result, supporting the hypothesis that Iran whitelists known-approved protocols rather than blacklisting specific ones, which would preemptively block any unrecognized or randomized transport including Tor's obfsproxy.
+techniques:
+    - traffic-shape
+    - throttling
+    - random-payload-detect
+censors:
+    - ir
+defense_implications:
+    - A protocol whitelist model means that entropy-based obfuscation alone is insufficient — transports must convincingly mimic an allowlisted protocol (HTTP, TLS, QUIC) rather than just randomizing traffic.
+    - Designers should test candidate transports against the whitelist hypothesis by measuring whether fully opaque, non-mimicking byte streams are throttled independently of any specific protocol signature.
+section: §4.4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-houmansadr-no
+kind: evaluation
+summary: Under the RAD attack a large fraction of China's routes to Internet destinations shift to non-valley-free (NVF) paths, which impose direct monetary costs because ASes must pay for traffic they would normally earn revenue transiting. Among valley-free paths that survive, 6%–21% switch to less-preferred (more expensive) routes, 20%–43% become longer, and average path length increases by 1.12×–1.40× depending on placement strategy.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Decoy placement strategies that maximize NVF reliance (high-customer-cone or sorted placements) impose the largest monetary burden on censor ISPs and are the most durable deterrent.
+    - Topology-only analyses of decoy routing that ignore AS business relationships will systematically underestimate the true cost of route-around attacks; always use AS-relationship-aware simulations.
+section: §VII-B, §VII-C
+extracted_by: claude-sonnet-4-6

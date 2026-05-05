@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wang-rbridge
+kind: evaluation
+summary: rBridge tolerates up to ~30% malicious users with acceptable bridge protection, but fails at f≥50%; with f=5% under aggressive blocking, over 95% of users are never bridge-starved and ~50% of bridges are never blocked, while conservative blocking (corrupt users waiting 225 days before acting) causes ~10% of users to be thirsty 15% of the time because delayed blockers accumulate enough credits to inject additional malicious invitees.
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Cap the total credits a user can earn from any single bridge (parameter T1) to bound the damage from conservative blockers who hold bridges alive to farm invitation rights before executing a mass block.
+    - Monitor the blocked-to-recruited bridge ratio as a real-time signal of adversarial penetration; dynamically raise invitation-credit thresholds if the ratio degrades past the ~30% tolerance band.
+section: §4.3.2
+extracted_by: claude-sonnet-4-6

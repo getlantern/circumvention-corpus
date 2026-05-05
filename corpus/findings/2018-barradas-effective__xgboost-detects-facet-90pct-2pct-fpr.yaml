@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-barradas-effective
+kind: detection
+summary: Decision tree classifiers (XGBoost) can flag 90% of Facet multimedia-tunneling traffic while erroneously flagging only 2% of legitimate Skype connections (FPR=2%). Against DeltaShaper at its most conservative configuration (h160×120, 4×4, 6, 1i), XGBoost achieves AUC=0.85, demonstrating that existing unobservability claims for all three systems (Facet, CovertCast, DeltaShaper) were flawed.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Packet-length distribution is the primary feature exploited by XGBoost; steganographic transports must actively shape or randomize packet-length histograms, not just overlay content on top of a legitimate stream.
+    - Evaluating unobservability solely with similarity-based classifiers (χ², KL) dramatically underestimates censor capability — any new multimedia-tunneling scheme must be stress-tested against decision-tree ensembles before deployment.
+section: §4, Table 3
+extracted_by: claude-sonnet-4-6

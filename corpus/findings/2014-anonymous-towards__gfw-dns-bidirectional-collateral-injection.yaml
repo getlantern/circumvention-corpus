@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anonymous-towards
+kind: detection
+summary: The GFW does not distinguish DNS query traffic directionality, injecting forged replies for both inbound and outbound queries on monitored links. This causes collateral censorship of DNS resolvers outside China when they contact authoritative nameservers located in or whose paths transit China, even for non-Chinese clients.
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention DNS infrastructure — including authoritative nameservers for decoy or fronting domains — should be hosted on paths that do not transit Chinese border ASes, to avoid triggering GFW injection for non-Chinese users.
+    - Anycast DNS deployments should verify that China-adjacent PoPs do not attract queries whose return paths cross GFW-monitored links, since the GFW ignores traffic directionality.
+section: §2
+extracted_by: claude-sonnet-4-6

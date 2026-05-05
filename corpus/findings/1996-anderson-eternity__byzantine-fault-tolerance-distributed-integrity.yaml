@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 1996-anderson-eternity
+kind: defense
+summary: Using Byzantine-fault-tolerant protocols (specifically Rampart), seven replicas suffice to resist a conspiracy of any two malicious administrators or the accidental destruction of four systems with guaranteed complete recovery. Signing all files with a system key further ensures that a full recovery is possible as long as a single valid copy and an uncompromised public key survive.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - A circumvention network's configuration or key material (bridge lists, signing keys) should be replicated with Byzantine fault tolerance so that a small number of compromised or coerced operators cannot corrupt or destroy the authoritative state.
+    - Cryptographic signing of distributed configuration data allows recovery from partial node compromise without trusting any single operator, reducing the blast radius of a targeted sysadmin coercion.
+section: §4.6
+extracted_by: claude-sonnet-4-6

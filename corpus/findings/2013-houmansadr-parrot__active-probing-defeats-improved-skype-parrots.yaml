@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-houmansadr-parrot
+kind: detection
+summary: Hypothetical fixed parrot systems (SkypeMorph+ and StegoTorus+) that correct all passive detection failures remain unambiguously detectable via active and proactive attacks (Table II). Supernode cache flushing and TCP control channel manipulation — e.g., sending RST causes genuine Skype to drop the call immediately while parrots produce no reaction — distinguish them from genuine Skype because the parrot cannot actually execute Skype protocol logic.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - mimicry
+    - pluggable-transport
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Even exhaustive fixes to a mimicry transport leave it vulnerable to active probing; the censor need only find one discrepancy in how the parrot handles a probe message directed at the underlying service.
+    - The only path to active-probe resistance for Skype-mimicking transports is to run genuine Skype and embed covert traffic in its encrypted payload, not to synthesize protocol behavior from scratch.
+section: §VII-B, §VII-C, Table II
+extracted_by: claude-sonnet-4-6

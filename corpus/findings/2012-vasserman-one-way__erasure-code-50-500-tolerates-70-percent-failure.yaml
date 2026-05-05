@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-vasserman-one-way
+kind: evaluation
+summary: 'Simulation over erasure code parameters uniformly sampled from m∈[1,5] and n∈[5,500] shows that a 50-of-500 code is the best trade-off between overhead and robustness: it requires nearly 10× storage overhead to support 2^60 variable-size chunks and allows the network to tolerate more than 70% node failure before data is lost. Replication combined with erasure coding yields better durability than either strategy alone.'
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use a 50-of-500 erasure code (≈10× storage overhead) as a baseline for DHT-based censorship-resistant storage to achieve robustness against simultaneous adversarial blocking and organic node churn up to 70% failure.
+    - Always pair erasure coding with replication across non-local DHT neighborhoods; neither alone achieves comparable durability against targeted node removal.
+section: §4, Figure 2
+extracted_by: claude-sonnet-4-6

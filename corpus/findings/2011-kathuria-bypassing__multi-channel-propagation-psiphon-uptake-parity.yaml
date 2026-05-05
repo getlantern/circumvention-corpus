@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-kathuria-bypassing
+kind: deployment
+summary: BBC Chinese's multi-channel Psiphon promotion — radio broadcasts three times daily with additional trails, daily email newsletters, and ad hoc tweets — allowed its service to reach page-view parity with BBC Persian's established Psiphon deployment within eight weeks of launch in September 2010. Separately, a third-party BBC Persian iPhone app using full-text RSS feeds received over 50% of its downloads from inside China, demonstrating that syndicated full-text content distributed across multiple third-party sites and apps is difficult for censors to enumerate and block.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+defenses:
+    - pluggable-transport
+    - tunneling
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Circumvention tool distribution should use heterogeneous propagation channels (broadcast, email, social media) simultaneously; the BBC Chinese case shows parity with a longer-running service can be achieved in under two months with sustained multi-channel outreach.
+    - Publishing full-text content feeds via RSS and enabling third-party aggregation apps disperses content across many URLs and IP addresses, making comprehensive censorship significantly harder than blocking a single origin domain.
+section: §3.2, §4.3
+extracted_by: claude-sonnet-4-6

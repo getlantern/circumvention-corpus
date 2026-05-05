@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-aase-whiskey
+kind: evaluation
+summary: A snapshot from 6 April 2012 shows TOM-Skype had 1,130 censorship keywords and SinaUC had 1,490, with only 21 words in common — all high-frequency stock keywords (e.g., 'falun', 'Epoch Times'). This near-total divergence indicates each company independently compiled its own blacklist rather than distributing from a centralized government source.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - When evading platform-side keyword filters in China, assume each service maintains a largely independent and idiosyncratic blacklist; evasion techniques validated on one platform cannot be generalized.
+    - 'The decentralized, company-compiled nature of Chinese chat blacklists creates exploitable gaps: terms suppressed on one platform may pass unfiltered on another, especially for less-monitored current-event keywords.'
+section: §4
+extracted_by: claude-sonnet-4-6

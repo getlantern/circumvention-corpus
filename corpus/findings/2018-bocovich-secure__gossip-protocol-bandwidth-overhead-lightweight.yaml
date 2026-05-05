@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-bocovich-secure
+kind: evaluation
+summary: An asymmetric gossip protocol adds only 1.0055× bandwidth overhead for n=5 downstream stations — approximately 11 Mb/s extra on a typical 2 Gb/s OC48 link. Upstream gossip stations require no in-line blocking and impose zero additional load on overt sites, making them substantially lighter than heavyweight symmetric relay stations that must check every TLS connection for steganographic tags.
+defenses:
+    - decoy-routing
+defense_implications:
+    - Tiered deployment with lightweight upstream taps and fewer heavyweight downstream stations dramatically lowers the barrier for ISP participation — pitch cautious ISPs on upstream-only roles with no inline blocking hardware requirement.
+    - Restrict expensive in-line blocking hardware to downstream relay stations only, where coverage impact per station is highest.
+section: §3.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2004-danezis-economics
+kind: defense
+summary: 'Under the paper''s economic model, the aggregate censorship-resistance defense budget is always at least as large in a discretionary P2P network (nodes serve content they choose) as in a random-distribution network: for every node i, td ≥ ts, so the total cost imposed on the censor satisfies Σtd ≥ Σts. Equality holds only when all nodes share identical preferences (ri = rs); in all other cases discretionary distribution is strictly harder to censor.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design circumvention networks so that relays and servers voluntarily carry traffic they have a stake in (e.g., users from their own country or language community) rather than assigning load randomly; this maximizes per-node resistance incentives.
+    - Avoid forcing nodes to carry content they find objectionable or irrelevant — heterogeneous preference alignment is what produces the aggregate defense surplus.
+section: §5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-schuchard-routing
+kind: detection
+summary: Under the Cirripede 'random ASes' deployment scenario — where 0.4%–1.0% of ASes deploy decoy routers — routing-capable wardens need only disconnect themselves from 0.85%–3.04% of the Internet to obtain clean (decoy-free) paths to all remaining destinations. Even at 10% Internet-wide deployment, wardens are cut off from only 7%–9% of non-participating ASes on average.
+techniques:
+    - bgp-hijack
+    - ip-blocking
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - 'Decoy routing availability guarantees based on random or Tier-1 AS deployment are insufficient: a warden simply steers BGP policy to prefer clean paths, so effective containment requires covering all paths simultaneously — a deployment cost that appears infeasible at Internet scale.'
+    - Protocol designers relying on refraction/decoy routing must model the warden as an active BGP adversary, not a passive observer, and should evaluate 'all-paths covered' metrics rather than 'at least one path covered'.
+section: §4.2, Figure 2
+extracted_by: claude-sonnet-4-6

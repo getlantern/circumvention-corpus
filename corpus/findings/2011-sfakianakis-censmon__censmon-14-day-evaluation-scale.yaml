@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-sfakianakis-censmon
+kind: evaluation
+summary: Over a 14-day evaluation in April 2011, CensMon tested 4,950 unique URLs from 2,500 domains across 174 agents in 33 countries, detecting 951 unique URLs from 193 domains as filtered. Manual verification of all 193 flagged domains found only 3 false positives, demonstrating high precision for an automated distributed monitor.
+techniques:
+    - measurement-platform
+    - ip-blocking
+    - dns-poisoning
+    - keyword-filtering
+censors:
+    - cn
+    - tr
+defense_implications:
+    - Multi-vantage-point automated measurement can distinguish censorship from transient network failures with high precision at scale — a more reliable signal than crowd-sourced user reports.
+    - Circumvention tool health-check systems should incorporate multi-agent corroboration rather than single-endpoint reachability probes to avoid false alarms.
+section: §4.2
+extracted_by: claude-sonnet-4-6

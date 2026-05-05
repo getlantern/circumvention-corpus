@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-marczak-analysis
+kind: policy
+summary: Analysis of GreatFire.org's server logs (16.6M requests, 13K unique source IPs, March 18–19 2015) showed 67% of DDoS attack traffic originated from Taiwan and Hong Kong, while mainland China accounted for only 18 requests — confirming the GC weaponizes foreign browsers by intercepting traffic at China's network border, not domestic ones. The dominant attack vector (38% of requests) was pos.baidu.com (Baidu's ad network), meaning any user globally visiting a non-Baidu site that loads Baidu ad scripts became an unwitting DDoS participant without visiting any Chinese site directly.
+techniques:
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention services targeted by state actors should treat browser-distributed DDoS (geographically dispersed, browser User-Agent, low per-IP rate) as a distinct threat model from botnet DDoS — per-IP rate limiting and JS challenge pages are ineffective; CDN absorption and IP reputation scoring at the network layer are necessary.
+    - Circumvention project websites and CDN front domains should not load any third-party scripts from Chinese-hosted infrastructure (Baidu analytics, QQ social widgets, Alibaba CDN assets) — doing so creates a GC amplification path that turns the project's own visitors into attackers.
+section: §5, §7.1
+extracted_by: claude-sonnet-4-6

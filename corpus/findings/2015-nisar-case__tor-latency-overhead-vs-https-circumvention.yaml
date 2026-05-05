@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-nisar-case
+kind: evaluation
+summary: In experiments using 200 back-to-back fetches of the YouTube homepage (≈360 KB), HTTPS produced lower page load times than Tor in most cases because Tor circuits do not optimize for performance and often select longer paths. Tor's page load times varied widely as circuits changed approximately every 10 minutes, producing a heavy tail in the latency distribution.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - domain-fronting
+censors:
+    - pk
+defense_implications:
+    - When anonymity is not required, avoid onion-routing paths; latency-optimized direct or single-hop relay circumvention will deliver meaningfully better user experience.
+    - If Tor must be used, pre-select circuits by exit-relay latency and avoid circuit rotation during active browsing sessions to reduce tail latency.
+section: §3.2 / Figure 2a
+extracted_by: claude-sonnet-4-6

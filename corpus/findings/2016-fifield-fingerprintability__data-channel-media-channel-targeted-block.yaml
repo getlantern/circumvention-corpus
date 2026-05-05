@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-fingerprintability
+kind: detection
+summary: 'Snowflake exclusively uses WebRTC data channels (on-wire protocol: DTLS), whereas the majority of WebRTC applications use media channels (DTLS-SRTP or SRTP/SDES); a censor can therefore block Snowflake by filtering data-channel flows alone without blocking WebRTC media applications, incurring minimal collateral damage and reducing the overblocking deterrent.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Explore encoding circumvention data over media channels (e.g., modulating a binary stream into an acoustic or video signal as Freewave did over VoIP) to remove the DTLS-only data-channel distinguisher.
+    - Accept the added reliability-layer complexity of abusing media channels rather than leaving a cheap, low-collateral targeted-block vector open to censors.
+section: §6
+extracted_by: claude-sonnet-4-6

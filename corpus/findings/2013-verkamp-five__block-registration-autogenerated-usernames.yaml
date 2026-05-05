@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-verkamp-five
+kind: detection
+summary: In four of five incidents (all except Syria), spam accounts were registered in temporally clustered blocks while legitimate accounts were not; in Russia and Mexico, multiple distinct registration bursts were observed. Across all five incidents, spam account usernames were automatically generated, with China'12 and Mexico accounts following a {name}{name}{number} pattern padded to exactly 15 characters (Twitter's maximum), making algorithmic reverse-engineering feasible.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+    - ru
+    - sy
+defense_implications:
+    - Registration-time clustering and max-length algorithmically generated usernames are robust, cross-incident signals for identifying coordinated inauthentic accounts before they activate.
+    - Platforms defending against coordinated information operations should flag accounts whose usernames match generative patterns (fixed length, name+name+random suffix) at registration time rather than waiting for behavioral signals.
+section: §4.1, Table 6, Figure 4
+extracted_by: claude-sonnet-4-6

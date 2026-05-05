@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-kohls-skypeline
+kind: evaluation
+summary: Wireshark captures of Skype traffic with and without hidden information at inaudible SNR show no statistically significant differences in inter-arrival times (mean IAT 0.019 s in all conditions) and only a 2.6% difference in mean packet length (130.34 bytes unmodulated vs. 126.98 bytes at inaudible SNR), well within one standard deviation (SD ≈ 12–14 bytes) and insufficient for reliable content-mismatch detection.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - DSSS steganography applied at the pre-encoding audio layer avoids the architectural and channel mismatches that defeated SkypeMorph and FreeWave — no new protocol headers, packet-timing changes, or connectionless-to-reliable transport gaps are introduced, so flow-level DPI classifiers have no lever.
+    - When evaluating steganographic transports, measure packet-length standard deviation — not just mean — since the SD in normal VoIP traffic is large enough to absorb the small modulation-induced mean shift, making per-packet classifiers ineffective.
+section: §6.1, Table 4
+extracted_by: claude-sonnet-4-6

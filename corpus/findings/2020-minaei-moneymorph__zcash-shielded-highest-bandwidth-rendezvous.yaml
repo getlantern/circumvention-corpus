@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-minaei-moneymorph
+kind: evaluation
+summary: 'Zcash shielded transactions provide the highest per-transaction bandwidth of any tested cryptocurrency: 1148 bytes for the challenge covertext and 1168 bytes for the response, at a transaction fee of less than 0.01 USD. Bitcoin yields only 20/40 bytes at $0.34 fee and Ethereum only 20 bytes at $0.18 fee.'
+techniques:
+    - dpi
+defenses:
+    - steganography
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Use Zcash shielded transactions as the preferred rendezvous channel when bandwidth is the binding constraint — 1148 bytes fits a Tor bridge descriptor plus public key in a single transaction at negligible cost.
+    - Avoid Bitcoin as the primary rendezvous; its 20-byte challenge limit and $0.34 round-trip fee make it unsuitable for credential-bearing bootstrapping payloads without multi-transaction chaining.
+section: §5.5, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2002-serjantov-anonymizing
+kind: defense
+summary: Publius splits document keys into n shares where any k reconstruct the document, requiring a censor to coerce only n−k+1 servers to suppress it. Because all Publius server locations are discoverable by any reader, the paper argues this threshold is easily achievable, making location-secrecy of storers a necessary — not optional — property for censorship-resistant storage systems.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Threshold secret-sharing provides no coercion resistance when server addresses are public; storer-location anonymity must be treated as a first-class design requirement alongside content encryption.
+    - Combine Shamir-style secret sharing with anonymous addressing so that a censor who knows the threshold k cannot enumerate the n−k+1 servers needed to suppress a document.
+section: §1
+extracted_by: claude-sonnet-4-6

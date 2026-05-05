@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-anderson-dimming
+kind: detection
+summary: Iran's censors preferred throttling over outright shutdown because it is less conspicuous and draws less controversy. The paper notes that NDT-style bulk-transfer tests cannot detect targeted, DPI-based throttling of specific protocols (VPN, Tor, streaming), since those present different traffic signatures than generic TCP bulk transfers. Iran's filtering infrastructure (TCI/ITC, AS12880) runs deep packet inspection as an auxiliary layer on top of ISP-level controls.
+techniques:
+    - throttling
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools using DPI-resistant traffic randomization (e.g., obfs4, Shadowsocks with random padding) may avoid targeted protocol throttling even when broad bandwidth throttling is in effect.
+    - Passive NDT-style measurement is blind to selective throttling; instrumentation must include protocol-differentiated probes (separate HTTPS, QUIC, and obfuscated-tunnel throughput tests) to detect targeted suppression early.
+section: Abstract, §4.2, §6.1
+extracted_by: claude-sonnet-4-6

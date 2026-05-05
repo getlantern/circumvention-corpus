@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-khattak-towards
+kind: detection
+summary: 'GFW reassembles both IP fragments and TCP segments for HTTP connections, but its overlap-resolution policy diverges from receiver behavior in documented cases: it prefers the original IP fragment in all overlap configurations except when the challenger is simultaneously left-long and right-long (IP2), and prefers a later left-equal TCP segment over the original (TCP5). The paper tests all 18 possible fragment overlap cases and confirms that placing a banned keyword only in the fragment version GFW discards achieves evasion.'
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Fragment or segment payloads so that banned keywords appear only in the portion GFW discards per its documented overlap policy (left-long+right-long for IP; non-left-equal for TCP); the receiver reconstructs the benign version.
+    - 'Automating this with Geneva or fragroute is straightforward: the overlap policy is deterministic and the evasion is confirmed; treat it as a known-good technique subject to future GFW normalization upgrades.'
+section: §5, Table 1 (IP2, TCP5)
+extracted_by: claude-sonnet-4-6

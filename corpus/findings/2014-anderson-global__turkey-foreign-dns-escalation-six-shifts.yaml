@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anderson-global
+kind: detection
+summary: When Turkish users shifted to foreign DNS providers as a circumvention mechanism, Türk Telekom escalated by rerouting traffic destined for Google Public DNS (8.8.8.8 and 8.8.4.4) to a local DNS server serving false answers (Event E, March 28), causing a rapid drop in Tor and YouTube availability across all Atlas probes regardless of DNS configuration. At least 6 distinct shifts in filtering strategy were documented within a two-week period.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+    - bgp-hijack
+censors:
+    - tr
+defense_implications:
+    - Design circumvention bootstrapping to be resilient against both DNS poisoning of the client's configured resolver and BGP-level interception of well-known foreign DNS IPs; static IP fallbacks alone are insufficient if the censor hijacks routes.
+    - 'Monitor for multi-layer escalation: censors that start with DNS manipulation frequently add IP-level and routing-level blocks in rapid succession when circumvention gains traction.'
+section: §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-minaei-moneymorph
+kind: evaluation
+summary: Sibling transaction analysis across 45 million Bitcoin transactions (blocks 580,000–600,000, June–Oct 2019) shows 32% use the Pay2PKeyHash + Pay2ScriptHash combination MoneyMorph employs. In Monero, the two-input two-output structure matches 42% of all transactions. In Zcash, only 11–19% of transactions are shielded, giving it the lowest sibling rate despite the highest bandwidth.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Prefer Monero (42% sibling rate) over Zcash (11–19%) when resistance to traffic-shape classification is the primary constraint, accepting the bandwidth reduction from 1148 to 640 bytes.
+    - Monitor live blockchain transaction-type distributions and dynamically select the encoding format with the highest sibling fraction — the optimal choice shifts as network composition evolves.
+section: §5.1, §5.3, §5.5, Table 1
+extracted_by: claude-sonnet-4-6

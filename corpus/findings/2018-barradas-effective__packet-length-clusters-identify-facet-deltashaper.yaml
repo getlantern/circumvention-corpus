@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-barradas-effective
+kind: detection
+summary: 'Feature importance analysis of XGBoost models reveals that Facet covert channels are identifiable primarily through packets in the 115–195 byte range (dominated by Skype audio packets), while DeltaShaper is identifiable through two distinct packet-length clusters: 85–100 bytes and 1105–1205 bytes. XGBoost assigns non-zero importance to only ~58% of the 300 quantized packet-length bins for Facet and ~42% of 600 bins for DeltaShaper, indicating that leakage is concentrated in a narrow portion of the packet-size distribution.'
+techniques:
+    - ml-classifier
+    - dpi
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Multimedia-tunneling transports must explicitly pad, split, or randomize packets in the specific length ranges their carrier protocol naturally occupies (e.g., Skype audio at ~150 bytes) to eliminate the narrow feature clusters that decision-tree classifiers exploit.
+    - Designing data-modulation schemes that affect packet lengths uniformly across the full distribution — rather than concentrating modifications in one or two length bands — should substantially raise detection difficulty without requiring fundamental protocol changes.
+section: §4.4, Figure 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-wang-censorspoofer
+kind: detection
+summary: A censor can compare the predicted AS path from the claimed dummy host to the client against the actual observed ingress entry point of the spoofed downstream traffic; inconsistency reveals the dummy host as a cover. For clients in China Telecom (ASN 4134) and China Unicom (ASN 4837), 100% of 225 candidate dummy hosts passed AS-path consistency filtering; for clients in ASN 4538 only 18.2% (41/225) passed, sharply narrowing the usable pool for smaller ASes.
+techniques:
+    - ip-blocking
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Filter dummy-host candidates by AS-path consistency with the spoofer's traceroute reference path before use; account for significantly reduced pool sizes (as low as 18.2%) for clients in smaller Chinese ASes.
+    - Combine AS-path filtering with OS fingerprint matching (dummy-host OS should match the VoIP user-agent profile in the SIP INVITE) to close the multi-signal detection vector the paper describes in §6.2.
+section: §5.2.3, Table 2
+extracted_by: claude-sonnet-4-6

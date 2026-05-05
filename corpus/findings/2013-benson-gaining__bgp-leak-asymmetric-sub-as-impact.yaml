@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-benson-gaining
+kind: evaluation
+summary: In the August 2012 Bell-Dery BGP route leak, TTL analysis at per-prefix granularity revealed that two IP addresses within AS577 maintained constant TTLs and unaffected packet rates throughout the disruption, while 37 of 38 other active /16 prefixes experienced significant volume drops and TTL changes indicating rerouting through longer paths. This demonstrates that BGP route leaks can affect subnets within a single AS asymmetrically, and that TTL inspection can identify unaffected sub-AS paths.
+techniques:
+    - bgp-hijack
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Proxy infrastructure should be distributed across multiple /16 prefixes within a provider AS — a BGP-level disruption may spare certain prefixes, and clients that can enumerate prefix-level reachability can failover within the same provider without switching providers entirely.
+    - Monitoring per-prefix TTL stability alongside aggregate AS metrics provides finer-grained fault isolation; circumvention relay operators can use this to distinguish globally affected ASes from partially affected ones and maintain partial service.
+section: §IV-B
+extracted_by: claude-sonnet-4-6

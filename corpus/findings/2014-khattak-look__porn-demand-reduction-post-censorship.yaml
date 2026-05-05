@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-khattak-look
+kind: evaluation
+summary: Before censorship, porn traffic averaged 8.4–11.5% of HTTP bandwidth across residential and SOHO users respectively. Post-censorship, this fraction fell to ≈3.5–4.0% for residential and ≈2.0–3.7% for SOHO users. Even after accounting for traffic shifted to unblocked alternate porn domains and the contemporaneous SSL/VPN increase, porn traffic did not return to pre-block levels, suggesting censorship achieved partial demand suppression despite being bypassable via alternate DNS resolvers.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - pk
+defense_implications:
+    - Even bypassable DNS-only blocking measurably reduced demand, indicating that circumvention tools must be easy enough to use that adoption friction does not itself suppress usage of blocked content.
+    - The absence of an SSL surge for porn (unlike YouTube) suggests topic sensitivity raises the social cost of circumventing some blocks — tools should minimize metadata exposure and usage visibility to lower adoption barriers for sensitive content.
+section: §6.1, Table 7, Table 11
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-wang-seeing
+kind: defense
+summary: 'The paper demonstrates that ''having no fingerprint is itself a fingerprint'': randomizing obfuscators that emit uniformly random bytes from the first packet are detectable precisely because conventional protocols (TLS, SSH, HTTP) always begin with fixed plaintext headers. This structural distinction requires no deep payload parsing — the attack operates on only the first TCP packet — and achieves TPR=1.0 / FPR=0.002 against obfsproxy3/4 using commodity-implementable statistics.'
+techniques:
+    - random-payload-detect
+    - fully-encrypted-detect
+defenses:
+    - randomization
+    - obfs4
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Circumvention transports must not present a uniformly random first packet; they need a plausible plaintext header region (even if synthetic) that matches the entropy profile of a real cover protocol's handshake.
+    - Protocol designers should treat 'indistinguishable from random' as a detection signal, not a security property; unobservability requires mimicking the specific non-uniform byte distributions of legitimate protocols, not just avoiding known headers.
+section: §1, §5.1
+extracted_by: claude-sonnet-4-6

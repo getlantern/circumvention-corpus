@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-narayanan-no
+kind: policy
+summary: The paper identifies a structural conflict between Internet research's scalability imperative — where a project processing millions of devices is considered superior — and human-subjects ethics frameworks designed to minimize the number of people exposed to risk. Under U.S. law, Encore is compliant because it exploits known, intentional web functionality (the same-origin policy's cross-origin request mechanism) and provides an opt-out mechanism, but the authors note this compliance does not transfer to all jurisdictions where measurements occur.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that use web-standard mechanisms (cross-origin requests, ad delivery, CDN routing) inherit a stronger legal defense under U.S. computer-abuse law than tools that exploit security vulnerabilities — design for intentional protocol features, not bugs.
+    - Legal compliance in the researcher's home country does not cover participants in censored countries; any globally deployed measurement or circumvention system needs per-jurisdiction risk assessments for its most vulnerable user populations.
+section: Legal Compliance / Discussion
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ellard-rebound
+kind: defense
+summary: Rebound eliminates the stack-fingerprinting vulnerability present in Telex, Curveball, Cirripede, and TapDance by never forging packets addressed to the client; all data from the decoy router to the client travels through the real decoy host, so the TCP/IP stack fingerprint observed by a censor is always that of the genuine decoy.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Any decoy-routing or transparent-proxy design that spoofs source addresses must fully replicate the remote host's TCP stack behaviour (options, clock rate, window scaling) to avoid fingerprint-based detection.
+    - Routing all return traffic through the real decoy rather than spoofing is the only way to be immune to stack-fingerprint analysis without active stack emulation.
+section: §VIII-A1
+extracted_by: claude-sonnet-4-6

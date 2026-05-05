@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-stubblefield-dagster
+kind: defense
+summary: 'Dagster''s randomness predicate cannot distinguish legitimate random-looking blocks from adversarially generated filler, leaving the system vulnerable to storage-exhaustion denial-of-service: an attacker can submit arbitrarily many random blocks that pass the predicate, consuming server disk until legitimate publications are refused. The paper identifies anonymous digital cash (as proposed in the Eternity Service) or hash-cash proof-of-work as candidate mitigations but does not implement either.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Require proof-of-work (hash-cash) or anonymous micropayments for block submission to bound the rate at which an attacker can exhaust storage without linking submissions to identities.
+    - Enforce per-anonymous-session submission quotas as a simpler short-term measure; combine with server-side eviction policies (e.g., LRU for blocks with zero links) to prioritize storage for well-linked content.
+section: §7
+extracted_by: claude-sonnet-4-6

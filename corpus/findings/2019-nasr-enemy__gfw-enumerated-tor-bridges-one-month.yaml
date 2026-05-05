@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-nasr-enemy
+kind: detection
+summary: The Chinese GFW enumerated all Tor bridges within approximately one month by deploying censoring agents that impersonated regular users, demonstrating that CAPTCHA- and email-based proxy distribution mechanisms are ineffective against resourceful state-level censors who can create large numbers of accounts and use human-based CAPTCHA-solving platforms.
+techniques:
+    - active-probing
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Do not rely solely on CAPTCHA or email-based bridge distribution; a resourceful censor can automate both at scale and systematically exhaust the bridge pool.
+    - Multi-feature behavioral scoring (proxy utilization, request frequency, blocked-proxy ratio, client location) raises enumeration cost far more than identity-check-only approaches.
+section: §I, §II-B
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-jones-automated
+kind: evaluation
+summary: Applying automated block-page detection to the ONI dataset (49 countries, 2007–2012) reveals that Burma's (AS 18399) censorship mechanism shifted from DNS redirection to a transparent proxy returning a custom block page in mid-2009, then block pages largely disappeared after Burma's late-2011 political liberalization. Saudi Arabia (AS 25019) shows a similar transition with WireFilter replacing an unidentified prior tool in 2011, with two concurrent block-page templates suggesting multiple simultaneous filtering devices.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+    - packet-injection
+censors:
+    - mm
+    - sa
+defense_implications:
+    - Filtering infrastructure transitions (new vendors, new ASes going online) create temporary detection blind spots; circumvention tools should continuously re-probe blocking behavior rather than caching country-level block profiles.
+    - Multiple concurrent block-page templates within a single ASN indicate load-balanced or geographically distributed filtering infrastructure — a successful connection to one probe target does not guarantee a different target is unblocked.
+section: §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-ng-detecting
+kind: detection
+summary: Sentiment analysis features (Baidu and Boson tools) achieved only 57% accuracy individually; censored posts averaged 53.9% negative sentiment (General model) versus 49.3% for uncensored — a difference too small to be operationally useful — indicating that sentiment polarity does not reliably distinguish censorable content from permitted content on Weibo.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Negative-sentiment reduction is not an effective evasion strategy for Chinese platform censorship; the operative signal is mobilization potential and informality, not emotional valence.
+    - Circumvention guidance systems should not penalize negative or critical content per se, as the King et al. CAP finding (confirmed here linguistically) shows criticism alone does not predict removal.
+section: §4.3–4.5, §6, Table 1
+extracted_by: claude-sonnet-4-6

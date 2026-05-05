@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-verkamp-inferring
+kind: evaluation
+summary: South Korea operates DNS-based and router-based censorship simultaneously; sites blocked at the DNS resolver are a strict subset of those blocked at the router, verified by switching to an external DNS resolver and observing continued blocking at the router layer. Alternate DNS resolvers alone are therefore insufficient to circumvent South Korean censorship, in contrast to Malaysia, Russia, and Turkey where DNS-only bypass is adequate.
+techniques:
+    - dns-poisoning
+    - dpi
+defense_implications:
+    - Before deploying a DNS-only bypass for a target country, empirically verify router-level blocking is absent — layered censors require full-tunnel solutions rather than resolver substitution alone.
+    - Use a dual-probe test (DNS bypass alone vs. full tunnel) as a lightweight country-fingerprinting step to classify whether a censor operates at one or multiple layers, and route users accordingly.
+section: §4.1, §4.2
+extracted_by: claude-sonnet-4-6

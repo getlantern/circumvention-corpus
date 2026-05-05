@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-safaka-matryoshka
+kind: evaluation
+summary: Users required 4.0–5.8 minutes on average to enhance a stegotext into natural language across three experiments, inserting 4–8 extra words per sentence; this is comparable to the time required to write a short email. The random-word-selection baseline consistently required more time and inserted more words, confirming that n-gram-guided word choice meaningfully reduces human editing burden.
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - For operational deployment, a 5-minute encoding overhead is acceptable for one high-value message per day but not for bulk messaging; designers should restrict linguistic steganography to low-volume, high-sensitivity channels.
+    - Tuning the bin-population parameter p upward and the sub-sequence length k downward reduces user editing time; calibrate these against the covert-rate target to find the minimum-effort operating point for a given user population.
+section: §5
+extracted_by: claude-sonnet-4-6

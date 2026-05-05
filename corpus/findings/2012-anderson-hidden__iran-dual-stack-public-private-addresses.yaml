@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-anderson-hidden
+kind: deployment
+summary: 'Iran has deployed a ''dual-stack'' addressing pattern in which the same server receives both a globally routable public IP and an RFC1918 private address, enabling failover between global and domestic routing. DNS records document this for entities ranging from ISPs (acc4.pishgaman.net: 81.12.49.108 / 10.8.218.4) to government organizations (Vice Presidency for Management Development: 10.30.5.163 / 10.30.5.148) and private companies.'
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - When Iran disrupts international connectivity during crises, dual-stacked domestic services remain reachable via RFC1918 — circumvention tools should anticipate the scenario where users have domestic intranet access but cannot reach foreign circumvention infrastructure, and design rendezvous mechanisms that survive partial connectivity.
+    - The dual-stack pattern enables Iran to selectively sever international links while maintaining domestic service continuity, making targeted international disconnection a viable censor strategy with low domestic collateral damage — tools should not assume full internet blackouts as the primary threat model.
+section: §5, Appendix Fig. 8
+extracted_by: claude-sonnet-4-6

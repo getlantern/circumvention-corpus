@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-nasr-game
+kind: evaluation
+summary: 'Internet connectivity is the primary determinant of RAD attack strength across nation-state censors: China (573 ASes, 858 ring ASes) achieves a censorship metric of 0.277 under profile T1, while Syria (4 ASes, 5 ring ASes) achieves only 0.101 with the same decoy budget. Venezuela, despite fewer total ASes than Saudi Arabia (44 vs. 107), achieves a higher censorship metric (0.210 vs. 0.197) owing to its disproportionately large ring AS count (835 vs. 176), confirming that ring AS count predicts RAD capability better than raw AS count.'
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - sy
+    - sa
+    - ve
+defense_implications:
+    - Scale decoy deployment budgets to the target censor's ring AS count rather than total AS count—ring ASes are the chokepoints through which RAD is exercised.
+    - Against weakly-connected censors (Syria-class), even modest decoy budgets achieve high circumvention effectiveness; reserve larger deployments for densely-connected censors like China.
+section: §6.4 / Table 6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-mccoy-proximax
+kind: defense
+summary: Open proxy distribution registrations are vulnerable to adversary flooding with fictitious accounts that inflate yield scores via dummy connections. Proximax uses invitation-only registration with RICO-style subtree reputation scoring — a compromised sub-node taints the entire inviting user's subtree — and sub-linearly credits usage from closely clustered source IP prefixes to limit bot-driven inflation.
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Require invitation-only onboarding for proxy distributors and propagate blocking events up the invitation tree so that an adversary who mass-blocks proxies also degrades the reputation of their sponsor.
+    - Apply sub-linear usage credit for connections from the same /24 or /16 prefix to prevent controlled bot networks from fraudulently earning high-yield distributor status.
+section: §2.2, §4
+extracted_by: claude-sonnet-4-6

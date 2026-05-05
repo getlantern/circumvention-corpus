@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-jermyn-autosonda
+kind: detection
+summary: 'All 76 filters inspected only TCP traffic: sending the identical HTTP request over UDP bypassed censorship 100% of the time. Additionally, 17 of the 49 filters that censored requests to EC2 servers only inspected traffic on port 80 and passed through the same requests sent to port 9900 without modification. No filter triggered on URI query strings, so appending query parameters to any censored URL bypassed every tested filter.'
+techniques:
+    - dpi
+    - port-blocking
+    - keyword-filtering
+defenses:
+    - mimicry
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention transports that carry HTTP-like traffic over non-standard ports or non-TCP transports (e.g., QUIC/UDP) will evade a significant fraction of commercial web filters that only inspect TCP port 80.
+    - Appending a query string to any blocked URL is a trivially effective bypass against all tested blacklist-based filters — circumvention tools serving as transparent proxies should append dummy query parameters before forwarding requests.
+section: §4.1 Mechanism
+extracted_by: claude-sonnet-4-6

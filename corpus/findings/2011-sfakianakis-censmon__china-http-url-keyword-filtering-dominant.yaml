@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-sfakianakis-censmon
+kind: evaluation
+summary: Among all filtered URLs detected, HTTP filtering accounted for 48.5%, IP address blocking for 33.3%, and DNS manipulation for 18.2%. Of the domains blocked at the HTTP layer in China, 71% were blocked due to URL keyword filtering rather than HTML response content filtering.
+techniques:
+    - keyword-filtering
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - URL path obfuscation — CDN fronting, path encoding, or tunneling inside opaque HTTPS — is the highest-leverage countermeasure against China's dominant HTTP-layer blocking technique.
+    - 'Plain HTTP tunneling is deeply vulnerable: even if IP and DNS are clean, 71% of HTTP-level blocks in China target the URL string itself.'
+section: §4.2, Figure 2
+extracted_by: claude-sonnet-4-6

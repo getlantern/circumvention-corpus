@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-scott-satellite
+kind: evaluation
+summary: Satellite's single-node measurement methodology, probing 1/10th of 12 million discovered open DNS resolvers across 20,000 ASes and 169 countries, detected 4,819 instances of ISP-level DNS hijacking across 117 countries while measuring 10,000 domains with weekly precision from a single external vantage point.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools can use distributed open DNS resolver probing to cheaply audit which ISPs are actively hijacking resolution for proxy/CDN domains before deployment — no in-country vantage point needed.
+    - Weekly cadence measurement of DNS hijacking reveals policy-change windows; tools should monitor resolver behavior for target CDN IPs to detect when a fronting domain has been re-pointed to a block page.
+section: §1 Abstract, §2.2
+extracted_by: claude-sonnet-4-6

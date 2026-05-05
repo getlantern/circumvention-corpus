@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-moghaddam-skypemorph
+kind: evaluation
+summary: 'SkypeMorph''s packet size and inter-packet delay distributions are statistically indistinguishable from real Skype video calls: Kolmogorov-Smirnov tests on both the naïve traffic-shaping and enhanced Traffic Morphing outputs report p > 0.5, indicating no significant difference from the Skype target distribution. The original Tor traffic distribution, by contrast, is considerably different from Skype, validating the need for the morphing layer.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - mimicry
+    - randomization
+    - pluggable-transport
+defense_implications:
+    - Matching both packet-size AND inter-packet-delay distributions to a cover protocol is necessary for statistical indistinguishability; matching only one dimension (as original Traffic Morphing did) leaves the other as a detectable fingerprint.
+    - Use the Kolmogorov-Smirnov test as an evaluation gate during transport development to confirm distributional match before deployment.
+section: §7, Figure 6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-scott-satellite
+kind: evaluation
+summary: Satellite detected a spike in anomalous DNS resolutions across Iranian ISPs in the second half of 2015, correlating with Iranian authorities' public statements about beginning a 'second phase of filtering,' followed by additional newly inaccessible domains in the lead-up to the February 2016 elections — demonstrating longitudinal DNS measurement can detect and time censor policy escalations.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - Longitudinal DNS anomaly monitoring provides advance warning of censor escalation phases; circumvention tool operators should integrate Satellite-style weekly DNS snapshots into their threat-intelligence pipeline to pre-position alternative infrastructure before blocking events peak.
+    - Election-period filtering escalations in Iran follow a predictable political calendar — deployment plans for Iranian users should include contingency CDN or bridge rotation in the weeks before major political events.
+section: §4.4, Figure 12
+extracted_by: claude-sonnet-4-6

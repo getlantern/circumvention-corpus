@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-fifield-evading
+kind: detection
+summary: 'Flash proxy tunnels carry inherent network-level fingerprints that survive application-layer obfuscation: WebSocket connections begin with a plaintext HTTP upgrade handshake followed by structured binary framing, and Flash socket connections open with a crossdomain XML policy request — both are distinguishable from ordinary TCP by a DPI middlebox.'
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - pluggable-transport
+    - mimicry
+defense_implications:
+    - Any browser-socket transport must stack application obfuscation on top of — not instead of — the protocol-level handshake signatures; pairing with an obfsproxy-style pluggable transport is necessary for the WebSocket framing layer to be hidden.
+    - Blocking resistance depends on the censor being unwilling to block all WebSocket traffic due to collateral damage; monitor WebSocket adoption rates in target regions as an early-warning indicator of when this assumption breaks.
+section: §5.1
+extracted_by: claude-sonnet-4-6

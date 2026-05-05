@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-bocovich-secure
+kind: evaluation
+summary: A censor using latency analysis to classify decoy routing sessions achieves a maximum F-score that drops to nearly 0 when the base rate of decoy routing falls below 10^-4 (one in 10,000 connections). Even at higher adoption rates the F-score remains below 0.5 for most overt sites, making reliable detection infeasible without unacceptable false-positive rates on legitimate traffic.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - decoy-routing
+defense_implications:
+    - Keeping decoy routing sessions rare relative to total overt-site traffic (below 1 in 10,000 connections) provides inherent statistical protection against latency-based detection without any protocol changes.
+    - Avoid overt sites with anomalously low or variable latency (the paper flags google.com TCP RTTs and youtube.com TLS handshake times as outliers) when selecting overt destinations, as these give censors a stronger classification signal.
+section: §4.2
+extracted_by: claude-sonnet-4-6

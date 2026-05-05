@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chai-importance
+kind: evaluation
+summary: As of July 2019, approximately 10.93% of the Alexa top 1 million websites support ESNI (all via Cloudflare CDN, which enabled ESNI across all its platforms in September 2018), with 92.56% of Cloudflare-hosted sites using encrypted SNI over TLS 1.3. However, fewer than 0.01% of observed TLS ClientHello messages in the wild contained an ESNI extension, revealing a severe gap between server-side readiness and client-side adoption.
+techniques:
+    - sni-blocking
+    - tls-fingerprint
+defenses:
+    - ech-esni
+censors:
+    - cn
+defense_implications:
+    - ESNI's anti-censorship value scales with client adoption, not server support; circumvention tools should push for ESNI to be enabled by default in mainstream browsers and TLS libraries so that circumvention traffic is indistinguishable from ordinary ESNI traffic.
+    - Publicly promoting ESNI as a circumvention tool before broad client adoption risks triggering early censor blocking while the false-positive cost to censors is still low — deployment strategy should prioritize quiet, organic adoption first.
+section: §4.2, §5.1
+extracted_by: claude-sonnet-4-6

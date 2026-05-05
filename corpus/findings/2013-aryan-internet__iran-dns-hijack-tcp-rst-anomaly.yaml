@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-aryan-internet
+kind: detection
+summary: DNS queries for blocked domains were intercepted on-path and never reached the authoritative server; instead, the DNS server received 5 TCP RST packets spoofed from the client's address — despite the original queries being UDP, a likely misconfiguration. Three RST packets carried an identical random sequence number while two had a relative offset of 30 from the first three, the same distinctive 3+2 RST pattern observed in the HTTP blocking mechanism.
+techniques:
+    - dns-poisoning
+    - rst-injection
+censors:
+    - ir
+defense_implications:
+    - The shared 3+2 RST fingerprint across both HTTP and DNS blocking suggests a common censorship device; tools that detect this RST pattern can confirm they are under Iranian censorship and switch evasion modes accordingly.
+    - Sending TCP DNS queries (rather than UDP) was not censored in these experiments, suggesting that DNS-over-TCP or DNS-over-TLS may bypass DNS-level interception as a fallback.
+section: §4.3, Figure 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-verkamp-five
+kind: evaluation
+summary: Twitter's existing automated spam-filtering mechanisms caught only approximately 50% of politically motivated spam in the Russian parliamentary election incident, as reported by Thomas et al. (2012) and noted as the baseline for this study. Spammer behavior varied sufficiently across incidents (targeting strategy, URL usage, mention patterns, default-profile adoption) that supervised machine-learning classifiers trained on one incident are unlikely to generalize to others.
+techniques:
+    - ml-classifier
+    - keyword-filtering
+censors:
+    - cn
+    - ru
+    - sy
+defense_implications:
+    - Platform spam filters trained on commercial spam fail against politically motivated campaigns — incident-specific retraining or unsupervised anomaly detection is required.
+    - No single feature (URLs, mentions, retweets, default profiles) discriminates spam from non-spam across all incidents; only account-registration clustering and username generation patterns held universally.
+section: §1, §5
+extracted_by: claude-sonnet-4-6

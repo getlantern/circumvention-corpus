@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-singh-characterizing
+kind: evaluation
+summary: 'CloudFlare platform policy creates outsized blocking: 80% of CloudFlare-hosted websites discriminate against at least 60% of studied Tor exits, while Amazon- and Akamai-hosted sites show high policy diversity. Social networking and shopping sites are the most aggressive discriminators — 50% block over 60% of studied exits — while search engines are least aggressive, with 83% blocking fewer than 20% of exits.'
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - 'CDN-level blocking (especially CloudFlare) concentrates discrimination risk: a single provider policy affects large swaths of the web simultaneously — circumvention tools should avoid routing through CDN infrastructure that proactively blocks Tor-associated IPs.'
+    - Circumvention tools targeting authenticated social-networking or shopping use cases face the highest baseline discrimination and require dedicated bridge infrastructure rather than public exits to achieve acceptable reliability.
+section: §6.4
+extracted_by: claude-sonnet-4-6

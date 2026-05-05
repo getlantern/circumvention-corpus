@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-bocovich-slitheen
+kind: evaluation
+summary: Table 1 shows Slitheen is the first decoy routing system to simultaneously defend against latency analysis, website fingerprinting, and protocol fingerprinting attacks, while also resisting TCP replay and Crazy Ivan active attacks. This security is achieved at the cost of requiring symmetric flows and inline blocking—requirements previously considered prohibitive—which the authors argue are increasingly met by commercial DPI traffic-shaping appliances (e.g., Sandvine) already deployed by ISPs.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+    - active-probing
+defenses:
+    - decoy-routing
+    - telex
+    - tapdance
+defense_implications:
+    - 'The security-versus-deployability trade-off in decoy routing is not fixed: ISP-grade DPI boxes that already support inline flow modification and forced symmetry lower the deployment barrier for high-security, blocking-capable relay designs.'
+    - Designs that sacrifice latency/fingerprinting resistance to avoid inline blocking (e.g., TapDance) gain deployability at the cost of being trivially detectable by a censor with basic traffic analysis capability.
+section: §4.5, Table 1
+extracted_by: claude-sonnet-4-6

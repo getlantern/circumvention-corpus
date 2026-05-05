@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-javaid-online
+kind: evaluation
+summary: 'Relay-based circumvention severely degrades ad relevance: across Alexa top-500 uncensored sites, the overlap between ad sets fetched via Tor and the direct-path ground truth averaged only 28%, with near-zero overlap for sites serving geo-targeted ads. For blocked sites, only ~16% of ads shown via Tor were in the user''s language.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tor
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that route all traffic through a single relay impose an invisible economic cost on publishers (lost ad revenue); split-path designs that preserve direct-path ad requests reduce this externality and create deployment incentives.
+    - Measuring ad-relevance degradation is a practical proxy for detecting location-leakage in relay selection — use it as a canary when evaluating new relay infrastructure.
+section: §3.2, Table 3
+extracted_by: claude-sonnet-4-6

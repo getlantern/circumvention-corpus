@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-nasr-game
+kind: defense
+summary: Game-theoretic simulation shows that a QoS-cautious, wealthy Chinese censor (profile T1/T4) cannot reduce decoy-accessible routes below ~27% (censorship metric ≈ 0.277) via the RAD attack regardless of budget. An irrational censor can achieve a censorship metric of 1.000 but only by making 70.3% of all Internet routes unreachable to Chinese users—a collateral-damage threshold that constrains rational nation-state censors in practice.
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - Deploy sufficient decoy ASes to push any QoS-cautious censor above its collateral-damage tolerance; the game-theoretic floor (~27% usable routes for China) is an achievable target for decoy coverage.
+    - Model censors as QoS-cautious rather than irrational when sizing deployment budgets—the political cost of widespread unreachability is the primary practical limit on RAD.
+section: §6.4 / Table 5
+extracted_by: claude-sonnet-4-6

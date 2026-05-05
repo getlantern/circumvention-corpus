@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-bocovich-slitheen
+kind: detection
+summary: Schuchard et al. demonstrated that latency differences caused by a decoy routing proxy communicating with a distant covert destination are sufficient not only to detect the use of decoy routing but also to fingerprint which specific censored webpage the client accessed. All prior decoy routing systems (Telex, Cirripede, Curveball, TapDance, Rebound) remained vulnerable to this attack at time of publication.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Decoy routing stations must forward packets to the client immediately upon arrival from the overt site rather than waiting on covert-destination responses; any hold time at the station introduces detectable latency.
+    - Covert content must be pre-queued so that relay-side processing (decrypt, replace, re-encrypt) adds no observable delay to the packet stream reaching the censor.
+section: §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-poking
+kind: evaluation
+summary: Protozoa's encoded media tunneling achieves an AUC of 0.59 against a state-of-the-art ML traffic classifier using packet-size and inter-arrival-time features—near the 0.5 random-guessing baseline—compared to >99% detection rates for prior tools such as Facet and DeltaShaper. To block 80% of Protozoa flows (TPR=0.8), a censor would erroneously flag approximately 60% of legitimate WebRTC flows (FPR=0.6). This resistance holds across trace durations from 10–60 seconds (AUC range 0.56–0.61) and across RTT, bandwidth, and packet-loss variations.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - steganography
+censors:
+    - cn
+    - ru
+    - in
+defense_implications:
+    - Design covert channels that embed data after codec compression (not into raw pixels) to avoid distorting packet-size distributions that ML classifiers exploit.
+    - Maintain continuous dummy traffic ('chaff') during idle periods so the classifier cannot distinguish active from idle covert sessions.
+section: §6.2, Table 1, Figure 8
+extracted_by: claude-sonnet-4-6

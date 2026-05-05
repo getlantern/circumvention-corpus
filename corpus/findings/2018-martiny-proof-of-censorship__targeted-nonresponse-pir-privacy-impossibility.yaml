@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-martiny-proof-of-censorship
+kind: defense
+summary: 'A censoring server cannot selectively withhold PIR responses for a targeted file while honestly answering others: if a PPT algorithm A could distinguish targeted-file queries from all other queries, it would directly violate the query privacy of the underlying PIR scheme. The server''s only compliant evasion strategy is an indiscriminate shutdown — refusing all queries or all signatures — which is behaviorally distinguishable and does not produce a plausible-deniability defense.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'PIR-based accountability schemes force content providers into an all-or-nothing choice: either serve all files honestly or provably censor at least one, eliminating the selective-suppression attack that undermines naive periodic-audit approaches.'
+    - Any accountability system relying on challenge-response audits without query-privacy guarantees remains vulnerable to selective non-response; PIR is the load-bearing primitive that closes this gap.
+section: §4.3
+extracted_by: claude-sonnet-4-6

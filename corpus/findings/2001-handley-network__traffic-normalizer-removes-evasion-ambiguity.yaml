@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-handley-network
+kind: defense
+summary: A traffic normalizer placed inline ('bump in the wire') can eliminate over 70 IP/TCP packet-level ambiguities before a NIDS inspects traffic — including fragment reassembly, TTL restoration, DF flag clearing, IP option removal, and cryptographic IP ID scrambling — leaving the classifier with an unambiguous byte stream and removing the degrees of freedom an attacker needs to evade detection.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - meta-resistance
+defense_implications:
+    - Censors who deploy a normalizer upstream of their DPI box will strip fragmentation and TTL-based ambiguity tricks; circumvention tools must not depend on these ambiguities surviving the censor's inspection path.
+    - IP ID scrambling at the normalizer defeats topology-inference techniques that reveal proxy infrastructure; circumvention proxies should randomize per-connection IP IDs independently to prevent equivalent enumeration by adversaries.
+section: §3, Appendix A
+extracted_by: claude-sonnet-4-6

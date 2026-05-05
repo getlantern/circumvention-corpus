@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-ensafi-detecting
+kind: detection
+summary: The GFW blocks Tor primarily via stateless SYN/ACK dropping based on the server's source IP address and port (server-to-client direction, 73.04% of CN,Tor-dir cases). Two specific Tor directory authorities account for 98.8% of client-to-server (null-routed) blocks and 72.7% of error cases, indicating selective deeper blocking of specific IP addresses beyond the common return-path filter.
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Rotating server IP addresses or using IP addresses not yet in the GFW's null-route list exploits the asymmetry between the common stateless filter (easy to update) and the rarer null-route enforcement (applied to only a subset of IPs).
+    - The server-to-client direction of most blocking means that techniques hiding the server's true source IP—such as domain fronting or decoy routing—can defeat the most prevalent GFW Tor-blocking mechanism.
+section: §5
+extracted_by: claude-sonnet-4-6

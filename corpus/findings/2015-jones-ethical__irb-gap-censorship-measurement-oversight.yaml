@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-jones-ethical
+kind: policy
+summary: University IRBs are not equipped to evaluate censorship measurement research because it falls outside the formal definition of 'human subjects' research (which requires direct intervention with individuals to collect individualized data). Despite this, the work poses real and potentially serious risks to people, leaving a governance gap with no clear institutional oversight body.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool projects collecting measurement data should establish internal ethics review processes independent of university IRBs, since existing oversight structures do not cover this work.
+    - Projects should engage directly with the networking and security community norms rather than relying on IRB clearance as a proxy for ethical approval.
+section: §2 Measurements from Co-Opted Devices
+extracted_by: claude-sonnet-4-6

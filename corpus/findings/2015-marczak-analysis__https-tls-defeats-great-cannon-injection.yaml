@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-marczak-analysis
+kind: defense
+summary: 'TLS/HTTPS provides complete protection against GC-style content injection: the GC can only replace unencrypted HTTP responses and cannot inject into TLS-encrypted streams. GitHub''s universal TLS enforcement prevented the GC from selectively targeting GreatFire.org''s repositories despite sustained attack — China had previously attempted to block GitHub entirely but reversed the block within two days due to domestic programmer backlash, leaving TLS as the effective barrier.'
+techniques:
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention distribution infrastructure (download pages, bridge authority sites, update servers) must enforce HTTPS with HSTS preloading — any HTTP endpoint is a GC injection surface that could redirect users to malware or disable circumvention tools.
+    - 'Audit all third-party resources loaded on circumvention-related web properties: any HTTP-loaded ad, analytics, or static asset from a Chinese-hosted server (Baidu, Alibaba CDN, etc.) creates a GC injection vector that can weaponize visitors'' browsers against the service itself.'
+section: §6, §8, §9
+extracted_by: claude-sonnet-4-6

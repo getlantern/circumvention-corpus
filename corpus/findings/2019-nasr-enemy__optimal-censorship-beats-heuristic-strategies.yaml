@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-nasr-enemy
+kind: evaluation
+summary: A game-theoretic optimal censorship strategy — in which coordinated agents maximize a joint utility combining proxy discovery and blocking impact (equation 3, parameterized by ω) — is significantly stronger than both aggressive (immediate block) and conservative (timed-delay) heuristic strategies evaluated in prior work including rBridge; changing ω (surveillance vs. blocking preference) further modulates the damage a censor can inflict on any given distribution profile.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+defense_implications:
+    - Evaluate proxy distribution mechanisms against a coordinated, game-theoretic adversary rather than independent or heuristic censors; prior benchmarks against rBridge-style adversaries substantially underestimate real-world censor capability.
+    - Designs must be robust across both extremes of ω (blocker vs. surveillor) since a sophisticated censor will tune this preference based on operational goals.
+section: §VII-C
+extracted_by: claude-sonnet-4-6

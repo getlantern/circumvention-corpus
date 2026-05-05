@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-barradas-poking
+kind: evaluation
+summary: Protozoa successfully bypassed censorship in China, Russia, and India using whereby.com as a carrier. Despite several WebRTC services being blocked in China (appr.tc, discordapp.com, hangouts.google.com, messenger.com), at least seven alternatives remained reachable (aws.amazon.com/chime, coderpad.io, gotomeeting.com, slack.com, whereby.com, and others), ensuring carrier availability. Covert sessions over the alternative services coderpad.io and appr.tc achieved AUCs of 0.58 and 0.60, respectively, and average throughput of 1388–1420 Kbps.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - tunneling
+censors:
+    - cn
+    - ru
+    - in
+defense_implications:
+    - Design WebRTC-based tunnels to enumerate multiple fallback carrier applications so that selective blocking of individual services does not disable the circumvention channel.
+    - Prefer widely-deployed WebRTC services used for business (video conferencing, coding interviews) as carriers, since their economic importance creates a strong deterrent to wholesale blocking.
+section: §7.2, Table 3
+extracted_by: claude-sonnet-4-6

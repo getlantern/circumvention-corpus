@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-anonymous-towards
+kind: detection
+summary: A single GFW node employs approximately 360 distinct processes, load-balanced by source and destination IP address, which collectively inject censored DNS responses at an average rate of ~2,800 packets per second, ranging from 1,100 to 4,000 pps over a day.
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - The GFW's injection rate (up to 4,000 pps per node) makes racing injected DNS responses infeasible — defense must prevent the query from reaching GFW-monitored links rather than outrunning forged replies.
+    - 'IP-based load balancing exposes a structural side-channel: circumvention researchers can fingerprint individual GFW processes via IP TTL and IP ID patterns to map node topology without triggering active countermeasures.'
+section: §7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2009-backes-anonymity
+kind: evaluation
+summary: In the Clouds P2P protocol, a blocking attack against a specific topic requires adversaries to occupy at least 50% of the 200-peer region closest to the resource provider to be effective; below that threshold, query messages routed through multiple paths bypass the censorship. This 50% threshold holds regardless of the number of clouds κ created per peer.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Route query and answer messages through multiple independent paths to force censors to achieve majority control of a network region rather than blocking a single chokepoint.
+    - Decouple the number of redundancy paths from anonymity set size so each can be tuned independently without degrading the other property.
+section: §5.4
+extracted_by: claude-sonnet-4-6

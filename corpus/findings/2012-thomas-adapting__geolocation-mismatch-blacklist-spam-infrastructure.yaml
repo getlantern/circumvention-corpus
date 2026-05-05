@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-thomas-adapting
+kind: detection
+summary: 56% of logins tied to legitimate users discussing the Russian election originated from Russia, compared to only 1% of logins for the 25,860 spam accounts, with Japan accounting for 14% of spam logins. 39% of IP addresses used by the attackers appeared in the CBL blacklist for email spam and malware distribution, compared to 21% of IPs tied to legitimate users, confirming that the attack infrastructure was shared with conventional spam/malware operations.
+techniques:
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - Geographic origin mismatch between account logins and claimed user base is a high-signal anomaly indicator — circumvention proxies that relay account access traffic should be aware that geolocation divergence can expose shared infrastructure to blacklisting.
+    - Reusing the same IP pool for multiple attack types (commercial spam plus political censorship) creates cross-contamination risk — circumvention tools should avoid infrastructure overlap with known spam or malware hosting.
+section: §4.3
+extracted_by: claude-sonnet-4-6

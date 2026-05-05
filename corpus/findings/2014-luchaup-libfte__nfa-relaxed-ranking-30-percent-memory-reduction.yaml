@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-luchaup-libfte
+kind: defense
+summary: LibFTE's NFA-based 'relaxed ranking' sidesteps the PSPACE-hardness obstacle that previously made direct NFA ranking unworkable. Across 3,458 Snort IDS regular expressions in the network-monitor-circumvention setting, NFA-based ranking reduces client/server memory requirements by as much as 30% compared to DFA-based approaches.
+techniques:
+    - dpi
+defenses:
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - Prefer NFA-based FTE implementations over DFA-based ones when deploying format-transforming pluggable transports, especially on memory-constrained clients such as mobile devices.
+    - Use an automated configuration assistant (as in libfte) to select NFA vs. DFA ranking based on per-format memory thresholds rather than hard-coding DFA conversion.
+section: §1, §4.1
+extracted_by: claude-sonnet-4-6

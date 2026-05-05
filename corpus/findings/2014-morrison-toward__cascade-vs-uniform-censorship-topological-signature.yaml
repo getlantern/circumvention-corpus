@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-morrison-toward
+kind: evaluation
+summary: 'Cascade-based censorship (ICM model) and uniform random deletion produce measurably different topological signatures: cascade removal causes greater increases in network diameter and radius as the censorship fraction γ increases and a substantial increase in assortativity at mid-removal levels (γ=0.2–0.5), whereas uniform deletion shows slower, more gradual changes across these same metrics.'
+techniques:
+    - ml-classifier
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Censorship monitoring tools can distinguish targeted cascade suppression from broad indiscriminate deletion using topology alone, enabling finer-grained characterization of censor strategy without content access.
+    - Propagating content as independent posts rather than repost chains produces topological signatures closer to uniform-deletion networks, making cascade-targeting by censors structurally harder and censor-strategy inference less reliable.
+section: §4.1
+extracted_by: claude-sonnet-4-6

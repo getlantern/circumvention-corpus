@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wustrow-telex
+kind: defense
+summary: Telex prevents tag replay attacks by seeding the client's TLS key exchange randomness (e.g., the Diffie-Hellman exponent) with the shared secret ksh derived from the steganographic tag. The TLS Finished message must then be freshly encrypted with the newly negotiated master secret, implicitly proving knowledge of ksh. An adversary replaying a captured ClientHello nonce without knowing ksh cannot produce a valid Finished message, causing the server to terminate the connection.
+techniques:
+    - active-probing
+defenses:
+    - telex
+    - decoy-routing
+defense_implications:
+    - Proof-of-knowledge of the tag secret should be embedded in a mandatory handshake message (e.g., TLS Finished) rather than as a separate challenge, so replay detection adds no observable round-trip or timing asymmetry.
+    - Any decoy-routing scheme must bind the tag to the session's cryptographic material to prevent the censor from using replayed nonces as an active probe to confirm Telex usage.
+section: §6.2
+extracted_by: claude-sonnet-4-6

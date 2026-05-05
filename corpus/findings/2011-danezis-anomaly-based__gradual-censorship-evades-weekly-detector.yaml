@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-danezis-anomaly-based
+kind: detection
+summary: Graduated censorship — limiting the suppression rate to remain within the typical weekly variance band — evades the weekly-interval detector entirely. The paper acknowledges that detecting slow-ramp blocking requires extending the observation window beyond seven days.
+techniques:
+    - throttling
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Operate censorship detection at multiple time scales (weekly and multi-week) to catch both abrupt shutdowns and gradual access suppression.
+    - Alert thresholds calibrated solely to weekly periodicity are insufficient against censors who spread suppression gradually across multiple weeks.
+section: §6
+extracted_by: claude-sonnet-4-6

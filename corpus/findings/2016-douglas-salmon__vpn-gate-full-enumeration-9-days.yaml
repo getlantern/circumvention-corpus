@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-douglas-salmon
+kind: evaluation
+summary: A single harvesting script running for 9 days on one free Amazon EC2 instance verified 3,101 working VPN Gate servers by testing 44,039 IP addresses, demonstrating that VPN Gate's collective defense mechanism — which relies on detecting automated scanning patterns — can be fully bypassed by routing successive queries through previously verified VPN servers. This result implies that a censor could, with no collateral damage, essentially completely shut down VPN Gate by blocking all verified servers.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Do not publish a queryable list of proxy servers in large batches; enumeration via the service's own infrastructure is trivial to automate and cannot be reliably detected as non-human.
+    - Collective defense against scanning only works if the scanning vector itself cannot be proxied through the system under test — design distribution so servers are never handed to connections that could be reused for further enumeration.
+section: §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-shklovski-online
+kind: policy
+summary: 'A politically active blogger in an anonymized censored country explicitly avoided BlackBerry encryption stating: ''they can''t crack that encryption and they would just get suspicious. Cause they listen to me and listen to me and then suddenly I am encrypting and so that means I am really saying something they don''t want me to.'' This documents censor behavior where the mere use of strong encryption—independent of content—serves as a targeting signal.'
+techniques:
+    - dpi
+    - random-payload-detect
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools must produce traffic that is statistically indistinguishable from ambient plaintext or common TLS flows; a sudden shift to high-entropy or novel-protocol traffic by a known user is itself a detection surface
+    - Deploy always-on obfuscation rather than opt-in encryption, so there is no behavioral delta the censor can correlate with political activity
+section: §Blocked sites as a form of protection
+extracted_by: claude-sonnet-4-6

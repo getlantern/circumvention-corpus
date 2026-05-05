@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-duan-hold-on
+kind: evaluation
+summary: Over 11,700,000 DNS requests across 6 days at ICSI's border network and 15,200,000 DNS transactions in a 1.5-hour trace at UC Berkeley's border, secondary differing DNS replies were essentially absent in normal traffic, yielding effectively 0 false positives. Only two benign authority servers produced anomalous dual replies at Berkeley—one for the BBC returning two addresses within the same /24, one for businessinsider.com returning a SERVFAIL—neither of which would disrupt a Hold-On resolver.
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - 'Receiving two differing replies to the same DNS query is an extremely reliable attack signal: at institutional scale (tens of millions of transactions) the baseline false-positive rate is effectively zero, so resolvers can safely treat the anomaly as evidence of injection.'
+    - A Hold-On anomaly detector can be deployed as a transparent drop-in DNS forwarder with negligible risk of collateral blocking for legitimate users, even on high-volume networks.
+section: §IV.A
+extracted_by: claude-sonnet-4-6

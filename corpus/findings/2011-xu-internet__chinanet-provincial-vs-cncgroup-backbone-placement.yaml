@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-xu-internet
+kind: evaluation
+summary: 'The study located 495 router interfaces with attached IDS filtering devices across China, with CHINANET holding 79.4% and CNCGROUP 17.4%. The two ISPs use fundamentally different placement strategies: CHINANET distributes filtering across provincial networks (80% of its 21 served provinces operate their own filtering devices, Guangdong alone hosting 84 of 374 CHINANET interfaces), while 90% of CNCGROUP''s 82 filtering interfaces concentrate in its backbone.'
+techniques:
+    - dpi
+    - keyword-filtering
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Traffic transiting CNCGROUP faces a single centralized choke point; circuits routed through CHINANET provincial paths may encounter sparser, less uniformly deployed filtering — the four underserved provinces (Shaanxi, Gansu, Qinghai, Ningxia) account for only 2.5% of national IPs but may present lower filtering density.
+    - 'Circumvention server placement should factor in per-ISP filtering architecture: CNCGROUP backbone concentration means a single policy change can blanket all CNCGROUP-transiting flows, whereas disrupting CHINANET coverage requires coordinating across 16+ provincial nodes.'
+section: §4.4, Table 2, Table 3
+extracted_by: claude-sonnet-4-6

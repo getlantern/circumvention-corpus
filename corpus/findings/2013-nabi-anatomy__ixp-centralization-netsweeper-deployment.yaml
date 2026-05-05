@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-nabi-anatomy
+kind: evaluation
+summary: In April 2013 Pakistan transitioned from fragmented ISP-level HTTP 302 redirect blocking to centralized IXP-level fake HTTP 200 response injection (attributed to the Canadian firm Netsweeper), resulting in a uniform warning page across all test networks except one still transitioning ISP. Post-transition, 58.30% of the 307 test sites were blocked by DNS and 1.62% by fake HTTP 200 injection; IP and URL-keyword filtering remained at zero.
+techniques:
+    - packet-injection
+    - dns-poisoning
+censors:
+    - pk
+defense_implications:
+    - Centralized IXP-level filtering eliminates per-ISP inconsistency that circumvention tools previously exploited; assume uniform enforcement and design accordingly rather than relying on ISP-specific gaps.
+    - Fake HTTP 200 injection (rather than RST or 302 redirect) means clients may not detect blocking via error codes — circumvention clients should validate response content authenticity, not just HTTP status codes.
+section: §4.2
+extracted_by: claude-sonnet-4-6

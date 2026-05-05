@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-alharbi-opening
+kind: deployment
+summary: Filtering rules in Saudi Arabia were uniform across all three major ISPs (STC, Zain, Mobily) and six vantage points spanning four geographically distributed cities (Riyadh, Jeddah, Makkah, Al-Khobar), indicating a single centralized national filtering infrastructure rather than per-ISP implementation.
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - sa
+defense_implications:
+    - Centralized filtering means a single bypass technique works consistently across all ISPs and regions — operators can deploy uniform circumvention without ISP-specific adaptation.
+    - 'A centralized choke point is also a single architectural weakness: refraction-networking or decoy-routing designs that require blocking at the CDN/transit level are especially well-suited to this topology.'
+section: §3, §2.5
+extracted_by: claude-sonnet-4-6

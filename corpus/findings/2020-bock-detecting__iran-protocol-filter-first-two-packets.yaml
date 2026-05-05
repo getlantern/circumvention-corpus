@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-bock-detecting
+kind: detection
+summary: Iran's protocol filter monitors only the first two data-carrying packets of a TCP connection on ports 53, 80, and 443, permitting only DNS, HTTP, and HTTPS. Once tripped, it drops all subsequent client-side packets for 60 seconds, with the timer resetting on each TCP retransmit. The filter is unidirectional (client-inside-Iran only), cannot reassemble TCP segments, and does not verify checksums.
+techniques:
+    - dpi
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - Send a compliant fingerprint-matching packet as the first data-carrying packet; only the first two packets matter, so arbitrary protocol data can follow unimpeded.
+    - 'Server-side evasion is viable: the filter''s unidirectional nature means a server can manipulate the handshake to exhaust filter state before the client sends forbidden data.'
+section: §4.1
+extracted_by: claude-sonnet-4-6

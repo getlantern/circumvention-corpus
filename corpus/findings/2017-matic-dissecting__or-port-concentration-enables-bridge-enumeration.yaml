@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-matic-dissecting
+kind: detection
+summary: Four OR ports (443, 8443, 444, 9001) account for 82% of all active public bridge fingerprints as of April 2016, down from 95% in March 2013 but still concentrated. Scanning just three of these ports (443, 8443, 9001) is sufficient to deanonymize 71% of all active public bridges. Additionally, CollecTor's published per-bridge usage statistics allow a censor to rank bridges by client count per country and identify the highest-impact OR ports to scan next.
+techniques:
+    - ip-blocking
+    - measurement-platform
+defenses:
+    - bridges
+    - tor
+censors:
+    - cn
+    - ir
+    - sy
+defense_implications:
+    - Randomize OR port selection by default across a much wider range — the current de-facto concentration on 443/8443/9001 dramatically reduces the scan space a censor must cover to enumerate the majority of bridges.
+    - Audit and sanitize CollecTor's published per-bridge statistics (especially OR port and per-country client counts) to prevent adversaries from computing country-specific blocking priority rankings directly from public Tor data.
+section: §V-D, Figure 6, Table IV
+extracted_by: claude-sonnet-4-6

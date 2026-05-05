@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-roberts-mapping
+kind: deployment
+summary: Iran and Libya each have a single point of control (1 AS), making complete national internet shutdown achievable with a single administrative action. Egypt's 2011 shutdown left one AS (Noor Group, 4.9% of connected IPs) operational for four days, apparently due to its role serving the Egyptian stock exchange and other core financial institutions.
+techniques:
+    - asn-blackholing
+    - bgp-hijack
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - In single-PoC countries like Iran, any circumvention relay relying on domestic transit is trivially severable; all infrastructure must be foreign-hosted and reached via an international path that bypasses the single chokepoint.
+    - Financial-sector or CDN-adjacent ASes that survive partial shutdowns (analogous to Noor Group) may represent short-window transit channels during crackdowns — worth monitoring for bootstrap opportunities.
+section: §VI, Figure 7
+extracted_by: claude-sonnet-4-6

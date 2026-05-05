@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-barradas-effective
+kind: detection
+summary: 'Unsupervised and semi-supervised anomaly detection methods (OCSVM, Isolation Forest, shallow autoencoders) perform near-random when attempting to detect multimedia protocol tunneling: OCSVM achieves average AUC between 0.518–0.584 across all tested configurations, Isolation Forest between 0.519–0.557, and autoencoders reach a maximum AUC of 0.702 only under optimal hyperparameter search. The paper concludes that labeled training data is a hard requirement for effective covert-channel detection.'
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - 'The labeled-data bottleneck is the primary structural defense advantage for circumvention tool operators: if a new transport variant can be deployed and reach scale before a censor acquires sufficient labeled samples, it has a meaningful detection-resistance window.'
+    - Designing transports that make synthetic traffic generation difficult (e.g., requiring real user interaction, live content feeds, or unpredictable calibration sequences) raises the cost of building the labeled datasets censors need for supervised classifiers.
+section: §5, Table 5
+extracted_by: claude-sonnet-4-6

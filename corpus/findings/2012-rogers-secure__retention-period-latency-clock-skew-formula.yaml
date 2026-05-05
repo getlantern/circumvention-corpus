@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-rogers-secure
+kind: defense
+summary: 'BTP''s secret retention period for transport t is Rt + 2C + Lt, where Rt is the rotation period, C is the maximum clock-skew tolerance, and Lt is the maximum transport latency. With Rt = 2C + Lt only two temporary secrets need simultaneous storage. Concrete durations: TCP with automatic clocks (C=10s, Lt=60s) requires 2 minutes 40 seconds; TCP with manual clocks (C=1800s) requires 4 hours 2 minutes; mail with manual clocks (Lt=2 weeks) requires 4 weeks 4 hours.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - When designing key schedules for protocols that span multiple transport types (TCP, physical media, intermittent WiFi), compute per-transport retention windows rather than applying a single global TTL—high-latency transports can require weeks of key retention.
+    - A minimum rotation period of one minute is recommended regardless of transport latency to avoid excessive writes to persistent storage on low-powered devices.
+section: §5.3, §6.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-handley-network
+kind: evaluation
+summary: The user-level norm normalizer processes a realistic 100,000-packet trace (88% TCP) at approximately 101,000 pkts/sec (397 Mb/s) with all normalizations enabled on a $1,000 AMD Athlon 1.1 GHz PC, compared to a memory-copy-only baseline of 727,270 pkts/sec; the authors conclude a kernel implementation could sustain a bidirectional 100 Mbps access link with sufficient headroom to weather high-speed small-packet flooding attacks.
+techniques:
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Normalization overhead is roughly 4× slower than raw packet copy, meaning inline DPI hardening via normalization was feasible on commodity hardware at 100 Mbps as of 2001 — with modern ASICs and line rates, assume normalizer-strengthened DPI is deployable by any well-resourced censor.
+    - Circumvention strategies that depend on normalizers being too expensive to operate at line rate are not viable; protocol-ambiguity evasion must be assumed resolved before the censor's traffic classifier inspects a flow.
+section: §7.2
+extracted_by: claude-sonnet-4-6

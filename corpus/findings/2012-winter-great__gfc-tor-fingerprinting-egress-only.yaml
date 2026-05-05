@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-winter-great
+kind: detection
+summary: Tor DPI fingerprinting by the GFC is applied exclusively to egress traffic (from inside China to the outside world). Simulated Tor connections between domestic Chinese nodes and between external nodes connecting inward to a Chinese VPS attracted zero active scans across multiple experimental runs, indicating the detection infrastructure is positioned on the border for outbound flows only.
+techniques:
+    - dpi
+    - tls-fingerprint
+defenses:
+    - tor
+censors:
+    - cn
+defense_implications:
+    - Circumvention servers operated inside China (e.g., for domestic staging or testing) would not trigger the same active-probing pipeline; however, this offers no practical protection for censored users who must route outbound.
+    - Directional asymmetry suggests that server-initiated (reverse) connections or in-country relay hops could theoretically evade the border DPI, but such approaches face significant operational risks and are only useful in narrow topologies.
+section: §4.4
+extracted_by: claude-sonnet-4-6

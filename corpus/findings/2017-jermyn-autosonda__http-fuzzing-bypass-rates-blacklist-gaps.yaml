@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-jermyn-autosonda
+kind: evaluation
+summary: 'HTTP GET fuzzing via subtle token modifications bypassed large fractions of filters: removing the `\r\n` before the Host header bypassed 36–38 of 44 Host-header filters; embedding the censored URL in the middle of a long hostname string bypassed 33–35 filters; placing the URL in an after-Host field with a non-empty Host bypassed 29–36 filters. Blacklist coverage was also weak: no filter blocked all 100 of the Alexa top adult sites, and some blocked as few as 31.'
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - HTTP-layer circumvention tools should canonicalize or mutate delimiters around the Host header (e.g., replacing `\r\n` with `\n`, inserting extra spaces) to exploit rigid regex matching in the majority of commercial filters.
+    - Rotating the domain extension (.com → .org), embedding the blocked domain as a subdomain prefix in a long arbitrary hostname, or placing the URL in a non-Host field are all low-effort transformations that bypass the majority of tested commercial web filters.
+section: §4.1 / Appendix A
+extracted_by: claude-sonnet-4-6

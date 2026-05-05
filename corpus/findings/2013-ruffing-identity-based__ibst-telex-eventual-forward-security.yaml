@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-ruffing-identity-based
+kind: defense
+summary: Replacing Telex's original stego-tagging with the IBST scheme and using time periods as identities achieves eventual forward security with arbitrarily short rotation intervals. The key material a client needs after a master-key rotation is only the new master public key — 'a few hundred bytes' — small enough to fit in covert channels such as steganographic images, avoiding the original Telex design's problem of large bundled key sets expiring before a client updates its software.
+defenses:
+    - decoy-routing
+    - telex
+    - steganography
+    - rotating-spki
+censors:
+    - generic
+defense_implications:
+    - Design decoy-routing key rotation so the entire update payload is a single short public key (hundreds of bytes), enabling distribution through ultra-low-bandwidth covert channels (image steganography, DNS, etc.).
+    - Use IBE time-period identities for forward security in any circumvention protocol where clients hold long-lived software; this avoids the shipped-public-key-expiry failure mode without requiring live key-exchange infrastructure inside the censored zone.
+section: §4.2 Application to Telex
+extracted_by: claude-sonnet-4-6

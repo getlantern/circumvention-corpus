@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-burnett-chipping
+kind: evaluation
+summary: Production steganography tools achieve encoding rates of 0.01–0.05 (fraction of cover-medium bytes available for hidden data), yielding 20–100× increases in storage, traffic, and transfer time relative to the raw message. A 23 KB one-day news summary requires approximately 9 JPEG photos (~3 KB data per photo plus encoding overhead) and takes under 1 minute to retrieve over a fast connection; over an unreliable broadband wireless link the same message was received in under 5 minutes with sender time under 1 minute.
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Steganographic circumvention is viable for small payloads (articles, email) but impractical for video or large files at current encoding efficiencies; prioritize low-bandwidth use cases or invest in higher-efficiency embedding.
+    - Traffic overhead from task execution (hundreds of KB per task) dominates message overhead at high blocking rates; reduce task overhead by pre-fetching cover vectors in background rather than on demand.
+section: §5, Figure 5
+extracted_by: claude-sonnet-4-6

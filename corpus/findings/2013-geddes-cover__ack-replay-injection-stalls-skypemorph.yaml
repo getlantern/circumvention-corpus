@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-geddes-cover
+kind: detection
+summary: 'Injecting a single replayed ACK packet every 100 ms into a SkypeMorph session is sufficient to permanently stall data transfer: the server continuously resets its sequence counter back to the replayed position and never advances, while legitimate VoIP call traffic is completely unaffected. The attack requires the censor to induce only a small amount of server-to-client packet loss to prevent the legitimate ACK counter from overtaking the injected value, as shown in Figure 5b.'
+techniques:
+    - packet-injection
+defenses:
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - ACK packets in a cover-channel transport must be authenticated (e.g., MAC'd) so injected replays are rejected; unauthenticated sequence-number signals are trivially exploitable by an in-path injector.
+    - Transports that emulate VoIP outside the actual VoIP stack lose the cover protocol's built-in replay-protection; embedding data inside a real, authenticated VoIP session is necessary to inherit those guarantees.
+section: §4.3.3, Figure 5
+extracted_by: claude-sonnet-4-6

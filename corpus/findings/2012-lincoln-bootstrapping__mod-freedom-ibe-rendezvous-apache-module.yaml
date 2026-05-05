@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-lincoln-bootstrapping
+kind: defense
+summary: The mod_freedom Apache module hooks into the HTTP 404 ErrorDocument handler and steganographically embeds encrypted NET payloads in image responses to valid RP requests, while returning normal content to all other clients. Using Identity-Based Encryption (IBE, Boneh-Franklin) keyed on the server's hostname eliminates any need for out-of-band public-key distribution and allows deployment on thousands of volunteer webservers without mutual trust.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - steganography
+    - bridges
+    - meta-resistance
+defense_implications:
+    - Piggyback bridge-address distribution onto high-traffic legitimate web servers using IBE so blocking the rendezvous channel requires collateral damage to widely-used sites.
+    - Separate rendezvous-server operator trust from bridge-address knowledge — adversarial rendezvous servers can harvest only their daily NET allotment and must still pay the full CAPTCHA+proof-of-work cost to decode it.
+section: §3.1
+extracted_by: claude-sonnet-4-6

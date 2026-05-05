@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-brubaker-cloudtransport
+kind: defense
+summary: CloudTransport achieves 'entanglement' by using the exact same cloud-client libraries, protocols, and network servers as legitimate cloud storage applications, making it immune to protocol-discrepancy detection that defeated imitation systems like SkypeMorph. Iranian censors blocked Tor by exploiting differences in Diffie-Hellman moduli between genuine SSL and Tor's SSL and the expiration dates of Tor's SSL certificates; CloudTransport has no such discrepancies because it is not an imitation. Simple line-speed tests based on tell-tale differences in protocol headers or public keys cannot be used to recognize CloudTransport.
+techniques:
+    - dpi
+    - tls-fingerprint
+defenses:
+    - tunneling
+defense_implications:
+    - Use a real, unmodified cloud storage SDK rather than any reimplementation — any hand-rolled protocol clone introduces discrepancies that line-speed DPI can detect, as demonstrated against SkypeMorph and Tor.
+    - 'Prefer ''hide-within'' architectures over protocol mimicry: actually running the permitted protocol rather than imitating it eliminates an entire class of fingerprinting and active-probing attacks.'
+section: §4.1
+extracted_by: claude-sonnet-4-6

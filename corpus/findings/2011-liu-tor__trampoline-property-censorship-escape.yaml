@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-liu-tor
+kind: defense
+summary: The design guarantees that as long as an end host can reach any non-censoring ISP, it can trampoline to any service; the anonymity properties make it difficult for ISPs to selectively block flows without cutting off the end host from the outside world entirely. Wikileaks-like services require only one willing authority for name resolution, not universal cooperation.
+defenses:
+    - meta-resistance
+    - tor
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Design systems so a single cooperative relay or authority is sufficient for service reachability—resilience should degrade gracefully, not require universal non-censorship
+    - Ensure name-to-address mappings are distributed across independently operated authorities so blocking one authority does not take down service discovery
+section: §7.1
+extracted_by: claude-sonnet-4-6

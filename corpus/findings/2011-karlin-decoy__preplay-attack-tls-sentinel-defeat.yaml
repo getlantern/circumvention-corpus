@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-karlin-decoy
+kind: detection
+summary: 'A preplay attack defeats the TLS-sentinel covert channel: the adversary intercepts each ClientHello, immediately sends a copy to the decoy destination before the client''s copy arrives, causing the sentinel to be consumed and poisoned. The client can never establish a decoy routing session while ordinary TLS to the decoy destination continues to work normally, giving the adversary both blocking capability and forensic confirmation that decoy routing was attempted. The paper notes this vulnerability is specific to the TLS sentinel and that alternatives such as port-knocking sentinels may not share it.'
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Avoid covert channels that can be neutralized by a man-in-the-middle who merely forwards a copy of the trigger packet; prefer signals whose validity cannot be consumed by the adversary without breaking ordinary traffic.
+    - Design sentinel schemes (e.g., asymmetric-crypto challenges as in Telex/Conjure) where the adversary cannot generate a valid probe response even after capturing the sentinel.
+section: §4.1
+extracted_by: claude-sonnet-4-6

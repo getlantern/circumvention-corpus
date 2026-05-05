@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-knockel-three
+kind: detection
+summary: The TOM-Skype censorship keyfile was substantially updated on 4/22/2011—possibly correlated with US-China human rights talks on 4/27–4/28/2011—and contained exact phrases lifted verbatim from 2011 Jasmine Revolution protest coordination documents, including specific intersection meeting points such as 'McDonald's in front of Chunxi Road in Chengdu'. This demonstrates real-time, operationally targeted keyword blacklisting within days of new coordination material appearing.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Censors update keyword blacklists within days of new protest coordination materials appearing; any circumvention strategy relying on fixed vocabulary obfuscation or paraphrase evasion has an operational window measured in days, not weeks.
+    - Exact-phrase targeting of coordination documents means splitting phrases with punctuation or substituting synonyms provides only temporary evasion; network-layer circumvention that is agnostic to message content is more durable than application-layer vocabulary strategies.
+section: §3
+extracted_by: claude-sonnet-4-6

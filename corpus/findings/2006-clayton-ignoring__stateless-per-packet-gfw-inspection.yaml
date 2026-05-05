@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-ignoring
+kind: detection
+summary: 'The GFW performs no stateful TCP stream reassembly, inspecting one packet at a time: splitting the blocked keyword ''?falun'' across two TCP segments is sufficient to evade detection entirely. Cross-device state is also absent — triggering a block on one border AS (e.g., AS9929) had no effect on traffic transiting a different Chinese border AS.'
+techniques:
+    - dpi
+    - keyword-filtering
+    - middlebox-interference
+censors:
+    - cn
+defense_implications:
+    - Control-plane handshakes in circumvention protocols should span multiple TCP segments so any keyword-like bytes never appear in a single inspectable packet — this evasion is free if the transport already segments its greeting.
+    - Multi-homing or route diversity across different Chinese border ASes resets triggered block state and provides independent evasion paths.
+section: §4.1
+extracted_by: claude-sonnet-4-6

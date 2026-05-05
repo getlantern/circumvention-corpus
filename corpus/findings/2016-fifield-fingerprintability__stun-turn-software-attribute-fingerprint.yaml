@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-fifield-fingerprintability
+kind: detection
+summary: STUN and TURN packets carry a SOFTWARE attribute that explicitly names the server implementation (e.g., 'Citrix-3.2.5.1 Marshal West' for OpenTokRTC), and the choice of STUN servers, forced-TURN usage, and STUN message-type sequence (Binding-only vs. Allocate+CreatePermission vs. send-indication) differ across applications, providing a passive censor with reliable application-level fingerprints orthogonal to the DTLS layer.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Strip or randomize the STUN SOFTWARE attribute in Snowflake's ICE agent to prevent server-side identification; scrub all implementation-identifying strings from STUN/TURN attributes.
+    - Match the STUN server selection and message-type sequence of a high-traffic application such as Facebook Messenger to blend Snowflake's ICE negotiation into a plausible cover profile.
+section: §2, §4.1–§4.5
+extracted_by: claude-sonnet-4-6

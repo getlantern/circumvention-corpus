@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-houmansadr-no
+kind: evaluation
+summary: 'The RAD attack requires converting a large number of Chinese edge ASes into transit ASes: placing decoys in 2% of global ASes (random-no-ring-1, China-World scenario) forces 59 edge ASes to become transit ASes, nearly doubling China''s 30 existing transit ASes. One Chinese transit AS must carry approximately 122× its normal load; the abstract reports a peak of 2,800× in a more aggressive scenario, a threshold the paper considers operationally infeasible.'
+techniques:
+    - bgp-hijack
+defenses:
+    - decoy-routing
+censors:
+    - cn
+defense_implications:
+    - 'Infrastructure conversion cost is a hard ceiling on the RAD attack: target decoy placement percentages that force the censor to convert beyond its organizational and equipment capacity.'
+    - Track the ratio of transit-to-edge ASes in censoring countries as a structural proxy for the feasibility of route-around attacks against any future decoy network.
+section: §VII-D
+extracted_by: claude-sonnet-4-6

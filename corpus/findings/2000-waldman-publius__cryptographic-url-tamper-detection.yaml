@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2000-waldman-publius
+kind: defense
+summary: Publius cryptographically binds the URL to both the document content and the key shares via name_i = wrap(H(M · share_i)). Any unauthorized modification to the stored encrypted file, a share, or the URL itself causes the tamper check to fail, preventing silent content substitution by a malicious server.
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Tie every content retrieval to a cryptographic commitment derived from both the payload and the keying material, not just a content hash, so that a server cannot swap content without the client detecting it.
+    - Surface tamper failures explicitly to users rather than silently falling back; a failed check on all n·C(n,k) combinations should be an unambiguous signal that censorship or corruption has occurred.
+section: §3.2, §3.3
+extracted_by: claude-sonnet-4-6

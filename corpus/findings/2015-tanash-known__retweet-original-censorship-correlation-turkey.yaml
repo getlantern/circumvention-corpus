@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-tanash-known
+kind: detection
+summary: Among withheld retweets in the Turkish dataset, 92% of the corresponding original tweets were also withheld, while 4% survived uncensored and 4% belonged to fully-withheld accounts; this asymmetry suggests the Turkish government's censorship targeting mechanism operates with some degree of systematic (possibly hashtag- or keyword-based) sweep rather than purely manual per-tweet review.
+techniques:
+    - keyword-filtering
+censors:
+    - tr
+defense_implications:
+    - Censors using keyword or hashtag sweeps will collaterally capture retweets at high rates (92%) — circumvention tools should warn users that retweeting censored content carries nearly the same risk as the original post.
+    - The residual 8% uncensored originals suggest either human discretion or classifier error in the censor's pipeline — a signal that censor coverage is not 100% and targeted amplification of borderline content may sometimes survive.
+section: §5.2 (Phase III)
+extracted_by: claude-sonnet-4-6

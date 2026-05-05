@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-ensafi-detecting
+kind: evaluation
+summary: Over 5 days of measurement, 73.04% of connections from Chinese clients to Tor directory servers were blocked server-to-client (stateless SYN/ACK dropping), 16.73% were blocked client-to-server (null routing), and only 0.63% were unblocked. Of all censored Tor directory server connections measured across all regions, 98% originated from Chinese clients.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - With 99.37% of Chinese clients blocked from Tor directory servers, any Tor-based circumvention tool targeting China must rely entirely on unlisted bridges rather than public directory infrastructure.
+    - The 0.63% unblocked rate confirms the GFW is not perfectly consistent; tools can exploit transient filter gaps or route diversity to establish initial connections.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

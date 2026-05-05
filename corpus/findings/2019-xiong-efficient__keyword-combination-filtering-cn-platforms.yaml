@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-xiong-efficient
+kind: detection
+summary: WeChat, Alibaba Wangwang, Zhihu, and Sina Weibo all implement keyword combination filtering — messages are blocked only when every component of a blacklisted combination appears simultaneously, regardless of order. This allows censors to target sensitive contexts (e.g., 习近平 + 三连任 [Xi Jinping + three consecutive terms]) without filtering neutral mentions of individual terms.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that relay user content (e.g., mirrors, paraphrase services) must account for multi-term combination triggers, not just single-keyword blocklists — splitting or paraphrasing one component of a sensitive combination may be sufficient to bypass filtering.
+    - When building corpus measurement pipelines for Chinese platforms, treat each platform's keyword ruleset as independent; the paper found little consistency across services.
+section: §3
+extracted_by: claude-sonnet-4-6

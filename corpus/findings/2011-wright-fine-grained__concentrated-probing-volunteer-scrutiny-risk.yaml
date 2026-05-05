@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-wright-fine-grained
+kind: policy
+summary: Censorship mapping tools that detect filtering by probing blocked content create concentrated access patterns that are qualitatively different from normal user behavior, potentially exposing volunteers to scrutiny even in countries where individual access to filtered content would not ordinarily trigger enforcement action. The paper identifies this as a fundamental ethical tension intrinsic to any filtering measurement methodology.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Distribute probing traffic across time and content categories to avoid concentrated anomalous access patterns that could flag volunteer participants to automated monitoring systems.
+    - Informed consent frameworks for measurement volunteers must specifically address the risk of concentrated probing behavior, not just the legal status of accessing filtered content.
+section: §5
+extracted_by: claude-sonnet-4-6

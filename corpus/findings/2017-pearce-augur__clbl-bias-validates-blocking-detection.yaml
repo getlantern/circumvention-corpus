@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-pearce-augur
+kind: evaluation
+summary: Validation against the Citizen Lab Block List (CLBL) showed that for 99% of reflectors, more than 56.7% of detected inbound-blocked sites were CLBL-listed (vs. 56.7% CLBL composition of the input dataset); 95% of reflectors showed the same directional bias for outbound filtering, confirming the method detects real censorship rather than measurement noise.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - The CLBL-bias sanity check — verifying that detected blocks skew toward known-censored categories — is a repeatable validation technique circumvention teams can apply to any large-scale reachability measurement to distinguish adversarial blocking from transient network error.
+    - When a newly deployed proxy IP shows blocking bias toward CLBL anonymity-tool categories, operators should treat it as likely targeted blocking rather than coincidental failure and trigger IP rotation or obfuscation escalation.
+section: §VI-A, Figure 5
+extracted_by: claude-sonnet-4-6

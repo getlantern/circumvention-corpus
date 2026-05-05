@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-niaki-iclab
+kind: evaluation
+summary: 'ICLab''s longitudinal monitoring detected censorship shifts coinciding with political events weeks before press coverage: Turkey''s filtering rate rose from roughly 3% to 5% in late April 2017 — with blocked content shifting from pornography to news and political sites — ahead of a June 2017 constitutional referendum. India''s censorship dropped from roughly 2% to 0.8% following a net neutrality announcement in late 2017, then partially recovered to roughly 1.5% after mid-2018 regulations clarified that illegal-content filtering would continue. Within the same country, different blocking techniques were applied to different content categories simultaneously (e.g., Turkey used DNS manipulation for illegal/streaming URLs but block pages for pornography and news).'
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - measurement-platform
+censors:
+    - tr
+    - in
+defense_implications:
+    - Censors can rapidly shift both the scope and technique of blocking in response to political events; circumvention operators must maintain continuous multi-technique reachability monitoring rather than point-in-time assessments and should treat a spike in news/political-site blocking as an early signal of broader infrastructure tightening.
+    - Because different content categories are blocked with different techniques simultaneously within one country, a transport that defeats DNS manipulation may still be blocked via RST injection for the same destination; tools must defend against all active techniques in parallel rather than assuming one bypass is sufficient.
+section: §V-C, Table III
+extracted_by: claude-sonnet-4-6

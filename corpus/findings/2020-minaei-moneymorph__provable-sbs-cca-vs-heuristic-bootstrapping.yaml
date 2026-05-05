@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-minaei-moneymorph
+kind: defense
+summary: MoneyMorph provides provable chosen-covertext attack security (SBS-CCA) for proxy bootstrapping, unlike prior email or social-media rendezvous approaches which offer only heuristic security. Under SBS-CCA, the censor's advantage in distinguishing a covertext-bearing transaction from a random transaction in the same space is negligible.
+techniques:
+    - dpi
+defenses:
+    - steganography
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Replace email- and social-media-based bridge distribution with a formally secure steganographic rendezvous to eliminate the heuristic-only security assumption that has historically enabled targeted bridge enumeration.
+    - Adopt the NIKE + HKDF construction from MoneyMorph (Diffie-Hellman shared key, then HKDF-derived per-session keys) so that even passive observation of the complete blockchain ledger yields no advantage to the censor in identifying bootstrapping transactions.
+section: §2.3, §4.2
+extracted_by: claude-sonnet-4-6

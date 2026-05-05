@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gosain-devil-s
+kind: evaluation
+summary: The 30 key ASes computed from globally popular sites also intercept over 90% of paths to country-specific popular sites in nine censorious nations (China, Venezuela, Russia, Syria, Bahrain, Pakistan, Saudi Arabia, Egypt, Iran), covering 93.3% of paths to the top-50 country-specific sites. The same key AS set remained stable across repeated experiments conducted four months apart, suggesting durability over time.
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - ir
+    - ru
+    - sy
+    - ve
+    - sa
+    - pk
+defense_implications:
+    - A single universal set of ~30 ASes serves as an effective DR backbone for all known censorious nations simultaneously, eliminating the need for country-specific AS computation as required by prior work.
+    - The temporal stability of the key AS set (verified over 4 months) suggests that DR infrastructure based on these ASes would not require frequent reconfiguration in response to routine Internet topology drift.
+section: §6.1–6.2, Figure 8
+extracted_by: claude-sonnet-4-6

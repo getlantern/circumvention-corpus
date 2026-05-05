@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-bocovich-lavinia
+kind: defense
+summary: 'The Lavinia audit protocol is designed so that auditors are cryptographically indistinguishable from ordinary readers: an auditor cannot reveal her status to a server without forfeiting her own payment, and servers are therefore forced to serve content in response to every request. Any reader may additionally claim to be an auditor, and servers cannot verify such claims, further preventing selective serving.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - In censorship-resistant storage systems, audit mechanisms must be designed so servers cannot distinguish between auditors and users — otherwise servers can profitably refuse ordinary users while satisfying only audits.
+    - Use cryptographic commitment schemes (key-wrapping chains) that tie payment redemption to actual file retrieval, making it impossible to claim payment without serving content.
+section: §4.1, §4.4, §6
+extracted_by: claude-sonnet-4-6

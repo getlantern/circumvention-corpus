@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2006-clayton-failures
+kind: detection
+summary: The CleanFeed first stage populates its IP blocklist by automatically resolving hostnames from the IWF database via DNS. Content providers can serve false DNS results pointing to high-traffic third-party IP addresses (e.g., Google cache servers at 66.102.9.104), causing the first stage to redirect legitimate traffic through the proxy. Automated IP-update processes cannot reliably distinguish a genuine IP migration from a spoofed DNS result, and this can cause legitimate sites to be blocked collaterally.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - Blocking systems that auto-resolve hostnames to populate IP blocklists must apply sanity checks (ASN membership, reverse-lookup consistency, manual review thresholds) before adding new IPs to resist DNS poisoning attacks.
+    - Circumvention infrastructure operators can serve benign decoy content to known crawler source IPs to avoid triggering URL-level blocklisting while serving real content to clients.
+section: §4.3
+extracted_by: claude-sonnet-4-6

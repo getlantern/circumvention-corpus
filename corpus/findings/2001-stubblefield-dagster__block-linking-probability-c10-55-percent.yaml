@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2001-stubblefield-dagster
+kind: evaluation
+summary: 'The paper derives a closed-form expression for the expected number of later blocks that link to the n-th block: with c=10 cross-links per block, there is a 55% probability that the 10^7th block in the system will have been linked by at least one subsequent legitimate block after 10^5 additional blocks are added. This quantifies the minimum corpus activity required before a publisher can safely announce a document and have plausible censor-resistance.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Tune cross-link degree c and delay the document announcement step until the empirical linking threshold is met; with c=10 and a corpus of 10^7 blocks, plan for ~10^5 new block arrivals before disclosure.
+    - A publisher can self-publish benign 'cover' blocks that link to the sensitive block, accelerating the linking threshold without waiting for organic corpus growth.
+section: §5.5
+extracted_by: claude-sonnet-4-6

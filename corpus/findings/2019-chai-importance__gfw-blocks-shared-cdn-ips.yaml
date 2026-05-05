@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chai-importance
+kind: detection
+summary: The paper identifies 47 Cloudflare IP addresses that are already blocked by the GFW despite being shared by at least 85 websites, contradicting the prior assumption that censors avoid blocking shared CDN IPs due to collateral damage. This suggests censors will accept significant collateral damage to block CDN-hosted content when the set of co-hosted non-forbidden pages is deemed manageable.
+techniques:
+    - ip-blocking
+defenses:
+    - ech-esni
+    - domain-fronting
+censors:
+    - cn
+defense_implications:
+    - Designs that rely on CDN shared-IP collateral damage as a deterrent against blocking (e.g., classic domain fronting logic) should not be considered reliable — the GFW has demonstrated willingness to block shared CDN IPs.
+    - When selecting CDN infrastructure for circumvention, prefer CDN IP ranges hosting very high volumes of mainstream traffic; smaller or more specialized CDN IP pools are more likely to be blocked without unacceptable collateral damage.
+section: §4.3
+extracted_by: claude-sonnet-4-6

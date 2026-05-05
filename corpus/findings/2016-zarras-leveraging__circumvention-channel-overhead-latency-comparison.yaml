@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2016-zarras-leveraging
+kind: evaluation
+summary: 'Measured data overhead when loading web pages across four circumvention channels over DSL: instant messaging (Skype text) added 39% overhead, email added 107%, file sharing (Dropbox) added 272%, and VoIP audio modulation added an 84× overhead. Latency was lowest for instant messaging; VoIP latency was dominated by its limited 1200-baud audio encoding bandwidth.'
+defenses:
+    - tunneling
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - For high-bandwidth circumvention paths, text-channel tunneling (IM, email) is orders of magnitude more efficient than audio-modulated VoIP encoding
+    - VoIP audio modulation at 1200 baud is viable only for low-volume payloads such as microblog posts or text-only mobile pages; do not rely on it as a primary channel
+section: §5.1, Figure 2
+extracted_by: claude-sonnet-4-6

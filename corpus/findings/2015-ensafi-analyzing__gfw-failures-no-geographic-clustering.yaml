@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2015-ensafi-analyzing
+kind: evaluation
+summary: GFW filtering failures — cases where blocked Tor traffic passed through — showed no conspicuous geographic patterns across China. The maximum observed Pearson correlation coefficient between neighboring clients' failure counts was 0.26 (near-zero), and failure cases were geographically distributed in proportion to Internet penetration, not clustered by province or ISP region.
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Geographic routing tricks (e.g., routing traffic through specific Chinese provinces expecting a weaker enforcement zone) are unlikely to yield reliable circumvention gains — failures are uniformly distributed.
+    - Circumvention infrastructure should be deployed broadly rather than targeting specific regional entry points into China.
+section: §4.2, Figure 6, Figure 8
+extracted_by: claude-sonnet-4-6

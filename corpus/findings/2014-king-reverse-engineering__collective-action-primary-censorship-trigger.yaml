@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-king-reverse-engineering
+kind: detection
+summary: 'Chinese censorship does not primarily target criticism of the state or its leaders — vitriol against top officials is routinely published. The decisive variable is collective action potential: posts that organize, incite, or reference crowd formation outside the Internet are censored regardless of whether they are pro- or anti-government, a distinction the authors formally establish and experimentally test for the first time.'
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should treat coordination content (event logistics, mobilization calls) as the highest-risk payload class under GFW-adjacent platform censorship — not merely politically critical speech.
+    - End-to-end encryption matters most for collective-action content, since the platform censorship layer can suppress it before it reaches any network transport layer.
+section: Results
+extracted_by: claude-sonnet-4-6

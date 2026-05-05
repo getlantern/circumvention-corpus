@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2019-chen-impact
+kind: evaluation
+summary: When given a free 18-month subscription to a premium VPN (retail value US$25/month), only 55% of treated Chinese university students activated the tool, and less than 5% of active users regularly browsed blocked foreign news websites. By contrast, 86% activated a placebo free Youku (Netflix-equivalent) account within a week, isolating low demand—not friction—as the barrier.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - 'Circumvention tools cannot rely on ''if you build it, they will come'': onboarding must actively surface the value of uncensored content, not just remove the technical barrier.'
+    - Demand-generation features (curated feeds, news digests, alerts on censored events) may drive adoption more than further reducing friction or price.
+section: §III.A, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-gebhart-internet
+kind: evaluation
+summary: 'Social media—primarily Facebook—was the dominant venue for direct, experienced threats: 9 of 15 respondents who had content blocked reported being censored on Facebook, and respondents observed that government censorship was shifting away from website blocking toward social media surveillance precisely because social media platforms are ''hard to block.'' Respondents lacked any effective technical defenses against peer reporting, group-administrator censorship, and intermediary liability; they relied instead on social management strategies such as abbreviating references to royalty, running ''trial posts,'' and self-censoring likes and shares.'
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that deliver access to blocked URLs do not protect users from the highest-risk activity—content creation and social sharing—so anti-censorship work must extend to ephemeral messaging, plausible-deniability posting, and intermediary-liability-aware platform design.
+    - Social media platforms operating in high-repression environments should build in deniability features (disappearing posts, retroactive privacy narrowing) as first-class design requirements, not afterthoughts.
+section: §5.2.4, §5.3.1, §6.1.1
+extracted_by: claude-sonnet-4-6

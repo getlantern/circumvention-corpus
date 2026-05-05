@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-durumeric-zmap
+kind: detection
+summary: High-speed Internet-wide scanning enables a censor or attacker to locate every publicly reachable host vulnerable to a newly disclosed flaw within hours of disclosure; in a concrete example, 3.4 million UPnP-vulnerable devices were identified in under 2 hours — faster than network operators could apply patches — with a 150-SLOC probe module written in approximately 4 hours.
+techniques:
+    - active-probing
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Publicly disclosed vulnerabilities in proxy software can be mass-exploited by censors within hours; build automated update mechanisms and version-negotiation flags so vulnerable nodes can be quarantined before a censor-side scan completes.
+    - Design proxy infrastructure with short-lived, rotating endpoints so that even a complete enumeration of vulnerable hosts becomes stale before it can be actioned at scale.
+section: §4.3
+extracted_by: claude-sonnet-4-6

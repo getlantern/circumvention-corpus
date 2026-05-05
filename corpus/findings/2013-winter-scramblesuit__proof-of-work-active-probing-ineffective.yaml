@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-scramblesuit
+kind: evaluation
+summary: Client proof-of-work puzzles are ineffective as an active-probing defense because a state-level censor with parallel hardware can solve multiple puzzles simultaneously, one per CPU core. The authors estimate that the Tor bridge churn rate (rate of new bridge IP addresses) is too low to raise a well-equipped censor's workload beyond practical limits without simultaneously making the scheme impractical for legitimate clients — the same balancing problem as PoW for spam.
+techniques:
+    - active-probing
+defenses:
+    - scramblesuit
+    - bridges
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Do not rely on client PoW puzzles as the primary gate against active probing; shared secrets or asymmetric cryptographic challenges that require server-side state are necessary to exclude probes that have no legitimate credential.
+    - 'Bridge churn rate is the binding constraint on any rate-limiting defense: if new bridge IPs arrive slower than a censor can probe them, exhaustion-based defenses fail regardless of per-probe cost.'
+section: §4.1.1
+extracted_by: claude-sonnet-4-6

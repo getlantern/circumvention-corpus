@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-duan-hold-on
+kind: evaluation
+summary: 'In approximately 100,000 DNS queries over 9 days from within a censored network, injected packets were reliably distinguishable: legitimate IP TTLs were stable at either 44 or 42, while injected TTL values ranged across [0–255], and injected packets arrived well before legitimate replies because the injector co-resided within the same ISP while the recursive resolver was in another country. With a TTL threshold of ±1 and an RTT threshold of 0.5× expected RTT, the Hold-On prototype achieved 0% false positive rate and 0% false negative rate.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - 'Implement IP TTL validation alongside RTT timing checks in DNS resolvers: periodically sample the expected TTL from a trusted external resolver using non-sensitive names, and reject any reply whose TTL deviates by more than ±1 or whose RTT is less than 0.5× expected.'
+    - Refresh expected TTL/RTT baselines every ~5 minutes during normal operation to track route changes, while using a minimum-RTT estimate (excluding the first uncached query) to avoid inflation from recursive resolution time.
+section: §IV.B, Table I
+extracted_by: claude-sonnet-4-6

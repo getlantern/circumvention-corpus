@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2017-singh-characterizing
+kind: evaluation
+summary: Real Tor users browsing the Alexa Top 1M websites via deployed exit relays experience failed HTTP requests at rates of 15.8–33.4% and failed HTTPS handshakes at rates of 35.0–49.6%, representing severe service degradation compared to non-Tor browsing (Table 8).
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - HTTPS handshake failure rates of 35–50% for Tor exit users are high enough that circumvention tools built on Tor exits must implement multi-relay fallback and distinguish network errors from deliberate blocking to avoid poor user experience.
+    - The magnitude of baseline failure means user-facing metrics for Tor-based tools must track per-site discrimination, not just aggregate availability, to surface the actual blocking surface.
+section: §7, Table 8
+extracted_by: claude-sonnet-4-6

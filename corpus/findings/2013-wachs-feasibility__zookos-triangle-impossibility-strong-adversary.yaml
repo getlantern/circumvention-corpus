@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-wachs-feasibility
+kind: policy
+summary: In an adversary model where the censor may hold more computational power than all honest nodes combined, a squatting attack lets the adversary enumerate and pre-register every memorable name, formally proving it is impossible to simultaneously achieve memorable, secure, and global names in a single name system (Zooko's triangle).
+techniques:
+    - dns-poisoning
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Accept that any censorship-resistant name system must explicitly sacrifice one of memorability, security against powerful adversaries, or global uniqueness — build the trade-off into the protocol rather than hoping to satisfy all three.
+    - Use pseudo-TLDs to allow multiple name systems with different property trade-offs to coexist under a single resolver, rather than seeking a single unified solution.
+section: §3
+extracted_by: claude-sonnet-4-6

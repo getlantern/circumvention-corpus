@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2018-dunna-analyzing
+kind: detection
+summary: By 2018 the GFW shifted from blocking Tor bridges by (IP, port) tuples to blocking the entire IP address. A blocked bridge remains inaccessible for exactly 12 hours; the block renews to 12 hours if any additional Tor connection attempt is made during that window, after which the GFW re-scans and removes the IP from the blacklist if Tor is no longer running.
+techniques:
+    - dpi
+    - active-probing
+    - ip-blocking
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Bridge operators should stop the Tor service entirely and wait the full 12-hour cooldown before resuming — partial operation during the block resets the timer.
+    - Hosting Tor bridges on cloud IPs shared with legitimate web services creates collateral damage; IP-level blocking will silently take down co-located services.
+section: §4.2
+extracted_by: claude-sonnet-4-6

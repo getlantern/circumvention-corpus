@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-winter-towards
+kind: evaluation
+summary: Iran deployed a new Tor-blocking strategy in February 2013 that caused direct Tor user counts to collapse from over 50,000 to near zero within weeks, as recorded by Tor Project metrics.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - active-probing
+censors:
+    - ir
+defense_implications:
+    - A blocking event that drops 50,000+ users to near zero in weeks demonstrates that Iran's censor can rapidly deploy and scale new detection signatures — circumvention tools must have a fast update and rotation path to survive such events.
+    - The speed of Iran's 2013 block suggests near-instantaneous deployment of new signatures; transport designers should build in same-day countermeasure rollout capability rather than relying on slow release cycles.
+section: Figure 1, §1
+extracted_by: claude-sonnet-4-6

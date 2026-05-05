@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2007-crandall-conceptdoppler
+kind: evaluation
+summary: Latent semantic analysis applied to the Chinese-language Wikipedia (942,033 terms across 94,863 documents, k=600 rank reduction) discovered 122 previously unknown GFC-filtered keywords starting from only 12 seed concepts; each list of 2,500 candidate terms required 1.2–6.7 hours to probe, with an average of 3.5 hours.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention servers can use LSA-based corpus analysis over a living news corpus to maintain a near-real-time keyword blacklist, enabling proactive server-side evasion before clients encounter blocks.
+    - 'The efficiency gain from LSA is prerequisite for tracking a dynamic blacklist: exhaustive per-word probing of a natural-language vocabulary is computationally and network-invasively infeasible at scale.'
+section: §4.3
+extracted_by: claude-sonnet-4-6

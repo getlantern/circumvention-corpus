@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-chaabane-censorship
+kind: detection
+summary: Port 9001 (Tor) ranked third among all blocked ports in Syria, behind only ports 80 and 443. Proxy SG-48 was responsible for a disproportionate share of Tor censorship — blocking Tor traffic for multiple consecutive days — while other proxies in the same deployment did not, indicating per-proxy policy specialization or traffic steering of suspected circumvention flows to dedicated blocking infrastructure.
+techniques:
+    - port-blocking
+    - dpi
+defenses:
+    - tor
+    - bridges
+censors:
+    - sy
+defense_implications:
+    - Running Tor bridges on non-standard ports only partially mitigates port-based blocking; traffic steering to specialized blocking proxies (as seen on SG-48) suggests the censor can route suspicious flows independently of port.
+    - Bridges and pluggable transports should blend into ports 80/443 traffic, as those dominate both allowed and censored traffic and offer the largest cover population.
+section: §4 (Ports), §5.2
+extracted_by: claude-sonnet-4-6

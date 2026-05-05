@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2011-sfakianakis-censmon
+kind: evaluation
+summary: The single Chinese PlanetLab node reported 176 censored domains — more than all other 173 agents combined. Turkey (6 domains), Jordan (5), and Hungary (1) were the only other countries with any detected filtering. 86% of agent nodes across 33 countries reported zero filtering events.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+    - tr
+defense_implications:
+    - Measurement infrastructure yields diminishing returns from broad global coverage; the marginal value of additional vantage points is concentrated inside China and a handful of secondary censoring countries.
+    - Country-specific blocking profiles are so divergent that per-censor configuration tuning is warranted rather than a single global circumvention policy.
+section: §4.2, Table 2
+extracted_by: claude-sonnet-4-6

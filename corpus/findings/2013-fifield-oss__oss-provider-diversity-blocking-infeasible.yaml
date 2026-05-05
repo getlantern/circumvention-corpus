@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-fifield-oss
+kind: defense
+summary: Online scanning services span security scanners, ad networks (Google AdSense), web diagnostics, and link shorteners—categories economically important enough that blocking them wholesale causes severe collateral damage. The paper identifies five broad OSS categories with dozens of providers, and notes that translation services, photo printers, RSS aggregators, and image hosts are additional unexplored candidates, making exhaustive enumeration by a censor infeasible.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Build OSS-based transports around a diverse, dynamically-discovered provider list rather than a fixed set—clients should be able to use any conforming OSS without prior server-side registration.
+    - Prioritize economically significant OSS providers (ad networks, security scanners) as relay channels; their collateral-damage cost to the censor raises the blocking bar substantially.
+section: §2, §3, §9
+extracted_by: claude-sonnet-4-6
