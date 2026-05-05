@@ -609,7 +609,7 @@ const layoutTmpl = `<!doctype html>
       <span class="brand-name">circumvention<span class="brand-dot">·</span>corpus</span>
     </a>
     <div class="search-wrap">
-      <input id="search" type="search" placeholder="search 393 papers…" autocomplete="off" spellcheck="false">
+      <input id="search" type="search" placeholder="search {{.PaperCount}} papers…" autocomplete="off" spellcheck="false">
       <kbd class="search-kbd">/</kbd>
       <div id="search-results" hidden></div>
     </div>

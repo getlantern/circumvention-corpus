@@ -360,6 +360,9 @@ func (s *site) writeFile(rel string, name string, data any) error {
 		if _, present := m["AssetVersion"]; !present {
 			m["AssetVersion"] = s.assetVersion
 		}
+		if _, present := m["PaperCount"]; !present {
+			m["PaperCount"] = len(s.papers)
+		}
 	}
 	dir := filepath.Join(s.out, rel)
 	if err := os.MkdirAll(dir, 0o755); err != nil {
