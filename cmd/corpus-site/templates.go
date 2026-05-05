@@ -1425,15 +1425,19 @@ nav a.external { color: var(--ink-mute); }
 }
 .ambient-layer > div { position: absolute; }
 .ambient-svg { display: block; width: 100%; height: auto; }
+/* Counteract any inner-element opacity attrs in the SVGs — let the
+ * container opacity do all the dimming. Otherwise compound opacity
+ * (0.5 inside × 0.07 outside) would drop motifs below visibility. */
+.ambient-svg text, .ambient-svg [opacity] { opacity: 1 !important; }
 
 /* Scrolling hex stream: clipped tall column on the left side. Inner
  * SVG translates upward by 50% (since rows are doubled inside). */
 .ambient-stream {
-  top: 0; left: -2.5rem;
+  top: 0; left: -1rem;
   width: 30rem;
   height: 100%;
   overflow: hidden;
-  opacity: 0.055;
+  opacity: 0.16;
   transform: rotate(-0.4deg);
   transform-origin: top left;
 }
@@ -1446,23 +1450,20 @@ nav a.external { color: var(--ink-mute); }
 /* Breathing motifs: opacity oscillates so the artifacts fade in and
  * out gently. Different durations + delays so they feel independent. */
 .ambient-pkt {
-  top: 6rem; right: -2rem;
+  top: 5rem; right: 1rem;
   width: 26rem;
-  opacity: 0.06;
   transform: rotate(0.5deg);
   animation: breathe 11s ease-in-out infinite;
 }
 .ambient-seq {
-  bottom: 4rem; right: -1rem;
+  bottom: 3rem; right: 1rem;
   width: 22rem;
-  opacity: 0.06;
   transform: rotate(-0.3deg);
   animation: breathe 14s ease-in-out -5s infinite;
 }
 .ambient-dns {
-  top: 50%; right: 8rem;
+  top: 50%; right: 30%;
   width: 18rem;
-  opacity: 0.05;
   transform: translateY(-50%) rotate(0.2deg);
   animation: breathe 17s ease-in-out -8s infinite;
 }
@@ -1472,18 +1473,19 @@ nav a.external { color: var(--ink-mute); }
   to   { transform: translateY(-50%); }
 }
 @keyframes breathe {
-  0%, 100% { opacity: 0.025; }
-  50%      { opacity: 0.085; }
+  0%, 100% { opacity: 0.08; }
+  50%      { opacity: 0.22; }
 }
 
-/* Hide ambient layer on narrow viewports — it'd just clutter on phones. */
-@media (max-width: 78rem) {
+/* Hide ambient layer on narrow viewports — it'd just clutter on phones.
+ * 60rem ≈ 960px lets all tablets and laptops show the layer. */
+@media (max-width: 60rem) {
   .ambient-layer { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ambient-stream svg { animation: none; }
-  .ambient-pkt, .ambient-seq, .ambient-dns { animation: none; opacity: 0.05; }
+  .ambient-pkt, .ambient-seq, .ambient-dns { animation: none; opacity: 0.13; }
 }
 
 .eyebrow {
