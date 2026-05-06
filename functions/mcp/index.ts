@@ -324,15 +324,14 @@ interface SynthesizeArgs {
 function synthesize(args: SynthesizeArgs): unknown {
   const limit = Math.max(1, Math.min(100, args.limit ?? 30));
   const tokens = tokenize(args.question || "");
-  const matched: Array<
-    Finding & {
-      paper_title: string;
-      paper_authors?: string[];
-      paper_year: number;
-      paper_venue?: string;
-      paper_url?: string;
-    }
-  > = [];
+  type MatchedFinding = Finding & {
+    paper_title: string;
+    paper_authors?: string[];
+    paper_year: number;
+    paper_venue?: string;
+    paper_url?: string;
+  };
+  const pool: { f: MatchedFinding; score: number }[] = [];
   const matchedPaperIDs = new Set<string>();
 
   for (const f of CORPUS.findings) {
@@ -353,6 +352,14 @@ function synthesize(args: SynthesizeArgs): unknown {
       ];
       if (!anyOverlap(args.defenses, f.defenses) && !anyOverlap(args.defenses, paperDef)) continue;
     }
+    // Score = number of question content-tokens hitting this finding's
+    // haystack. Ranked-OR (highest score first, drop zero-score) is far
+    // more forgiving than strict AND for natural-language questions —
+    // "How does TLS record fragmentation evade SNI censorship" rarely
+    // has all six content tokens in one finding's text but is clearly
+    // satisfied by Niere et al's TLS-record-fragmentation finding (which
+    // would score 4-5 on those tokens).
+    let score = 0;
     if (tokens.length > 0) {
       const hay = [
         f.summary || "",
@@ -361,28 +368,31 @@ function synthesize(args: SynthesizeArgs): unknown {
         p.title,
         p.abstract || "",
       ].join(" ").toLowerCase();
-      let allHit = true;
       for (const t of tokens) {
-        if (!hay.includes(t)) { allHit = false; break; }
+        if (hay.includes(t)) score++;
       }
-      if (!allHit) continue;
+      if (score === 0) continue;
     }
-    matched.push({
-      ...f,
-      paper_title: p.title,
-      paper_authors: p.authors,
-      paper_year: p.year,
-      paper_venue: p.venue,
-      paper_url: p.url,
+    pool.push({
+      f: {
+        ...f,
+        paper_title: p.title,
+        paper_authors: p.authors,
+        paper_year: p.year,
+        paper_venue: p.venue,
+        paper_url: p.url,
+      },
+      score,
     });
     matchedPaperIDs.add(f.paper);
   }
 
-  matched.sort((a, b) => {
-    if (a.paper_year !== b.paper_year) return b.paper_year - a.paper_year;
-    return (a.id || "").localeCompare(b.id || "");
+  pool.sort((a, b) => {
+    if (a.score !== b.score) return b.score - a.score;
+    if (a.f.paper_year !== b.f.paper_year) return b.f.paper_year - a.f.paper_year;
+    return (a.f.id || "").localeCompare(b.f.id || "");
   });
-  const truncated = matched.slice(0, limit);
+  const truncated = pool.slice(0, limit).map((sc) => sc.f);
   const truncatedPaperIDs = new Set(truncated.map((f) => f.paper));
 
   const byTechnique: Record<string, string[]> = {};

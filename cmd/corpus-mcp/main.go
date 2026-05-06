@@ -443,8 +443,11 @@ func (s *store) synthesize(question string, censors, techniques, defenses []stri
 	q := strings.ToLower(strings.TrimSpace(question))
 	tokens := tokenize(q)
 
-	var matched []synthesisFinding
-	matchedFindingIDs := map[string]bool{}
+	type scored struct {
+		f     synthesisFinding
+		score int
+	}
+	var pool []scored
 	matchedPaperIDs := map[string]bool{}
 	for _, f := range s.findings {
 		p, ok := s.byID[f.Paper]
@@ -463,6 +466,14 @@ func (s *store) synthesize(question string, censors, techniques, defenses []stri
 				continue
 			}
 		}
+		// Score = number of question content-tokens that hit this finding's
+		// haystack. Switching from strict AND ("every token must hit") to
+		// ranked OR-with-floor ("at least one token hits, sort by hit count")
+		// is what makes natural-language questions actually return things —
+		// otherwise queries like "how does TLS record fragmentation evade SNI
+		// censorship" require all six tokens in a single finding's text,
+		// which is unrealistic.
+		score := 0
 		if len(tokens) > 0 {
 			hay := strings.ToLower(strings.Join([]string{
 				f.Summary,
@@ -471,38 +482,47 @@ func (s *store) synthesize(question string, censors, techniques, defenses []stri
 				p.Title,
 				p.Abstract,
 			}, " "))
-			ok := true
 			for _, t := range tokens {
-				if !strings.Contains(hay, t) {
-					ok = false
-					break
+				if strings.Contains(hay, t) {
+					score++
 				}
 			}
-			if !ok {
+			if score == 0 {
 				continue
 			}
 		}
-		matched = append(matched, synthesisFinding{
-			Finding:      f,
-			PaperTitle:   p.Title,
-			PaperAuthors: p.Authors,
-			PaperYear:    p.Year,
-			PaperVenue:   p.Venue,
-			PaperURL:     p.URL,
+		pool = append(pool, scored{
+			f: synthesisFinding{
+				Finding:      f,
+				PaperTitle:   p.Title,
+				PaperAuthors: p.Authors,
+				PaperYear:    p.Year,
+				PaperVenue:   p.Venue,
+				PaperURL:     p.URL,
+			},
+			score: score,
 		})
-		matchedFindingIDs[f.ID] = true
 		matchedPaperIDs[f.Paper] = true
 	}
 
-	// Recency-biased: most recent first, then alphabetical for stability.
-	sort.SliceStable(matched, func(i, j int) bool {
-		if matched[i].PaperYear != matched[j].PaperYear {
-			return matched[i].PaperYear > matched[j].PaperYear
+	// Sort: highest score first, then most recent year, then id for
+	// determinism. With no question tokens, score is 0 across the board
+	// and we fall through to recency-only — the same behavior as before.
+	sort.SliceStable(pool, func(i, j int) bool {
+		if pool[i].score != pool[j].score {
+			return pool[i].score > pool[j].score
 		}
-		return matched[i].ID < matched[j].ID
+		if pool[i].f.PaperYear != pool[j].f.PaperYear {
+			return pool[i].f.PaperYear > pool[j].f.PaperYear
+		}
+		return pool[i].f.ID < pool[j].f.ID
 	})
-	if len(matched) > limit {
-		matched = matched[:limit]
+	if len(pool) > limit {
+		pool = pool[:limit]
+	}
+	matched := make([]synthesisFinding, len(pool))
+	for i, sc := range pool {
+		matched[i] = sc.f
 	}
 	// Recompute matched-paper set from the truncated slice so the
 	// counts match the findings actually returned.
