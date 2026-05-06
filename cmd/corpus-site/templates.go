@@ -694,7 +694,7 @@ const indexBody = `
   <div class="hero-text">
     <p class="eyebrow">circumvention research · structured · LLM-callable</p>
     <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
-    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a> &mdash; including work from <span class="researchers">Roya Ensafi, Amir Houmansadr, Eric Wustrow, Dave Levin, Nick Feamster, Nguyen Phong Hoang, David Fifield, J. Alex Halderman, Niklas Niere</span>, and many others. An MCP server exposes the whole thing to any AI assistant &mdash; or ask the corpus directly.</p>
+    <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a> &mdash; including work from <span class="researchers"><a href="https://ensa.fi/" rel="external">Roya Ensafi</a>, <a href="https://people.cs.umass.edu/~amir/" rel="external">Amir Houmansadr</a>, <a href="https://ericw.us/" rel="external">Eric Wustrow</a>, <a href="https://www.cs.umd.edu/~dml/" rel="external">Dave Levin</a>, <a href="https://people.cs.uchicago.edu/~feamster/" rel="external">Nick Feamster</a>, <a href="https://nphoang.com/" rel="external">Nguyen Phong Hoang</a>, <a href="https://www.bamsoftware.com/david/" rel="external">David Fifield</a>, <a href="https://jhalderm.com/" rel="external">J. Alex Halderman</a>, <a href="https://www.jonsnowwhite.de/" rel="external">Niklas Niere</a></span>, and many others. An MCP server exposes the whole thing to any AI assistant &mdash; or ask the corpus directly.</p>
   </div>
   <form class="hero-ask" action="/ask/" method="get" autocomplete="off">
     <label for="hero-ask-q" class="eyebrow">ASK · {{.FindingsCount}} extracted findings, cited by Claude</label>
@@ -1760,6 +1760,19 @@ em { font-style: italic; }
    * tag list. Color slightly darker than the surrounding ink-2. */
   font-style: italic;
   color: var(--ink);
+}
+.lede .researchers a {
+  /* Researchers link to their personal pages but should not look
+   * like a wall of accented prose in the hero. Inherit the italic
+   * ink color, just hint underline on hover. */
+  color: inherit;
+  border-bottom: 1px solid var(--rule-fade);
+  padding-bottom: 0;
+  transition: border-color 0.12s, color 0.12s;
+}
+.lede .researchers a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 code {
