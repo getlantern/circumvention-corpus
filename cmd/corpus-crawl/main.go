@@ -2206,7 +2206,20 @@ func askHandlerSSE(w http.ResponseWriter, r *http.Request, q string, req askRequ
 		if data == nil {
 			payload = "{}"
 		} else if raw, ok := data.(json.RawMessage); ok {
-			payload = string(raw)
+			// Re-compact: the synthesize MCP returns indented JSON, and
+			// SSE `data:` payloads can't contain raw newlines (they'd be
+			// interpreted as new fields, not part of the value). Round-
+			// tripping through Marshal strips the indentation.
+			var v any
+			if err := json.Unmarshal(raw, &v); err == nil {
+				if b, err := json.Marshal(v); err == nil {
+					payload = string(b)
+				} else {
+					payload = string(raw)
+				}
+			} else {
+				payload = string(raw)
+			}
 		} else if s, ok := data.(string); ok {
 			payload = s
 		} else {
