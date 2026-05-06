@@ -1,5 +1,40 @@
 [
   {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0003.php",
+    "title": "PriVA-C: Defending Voice Assistants from Fingerprinting Attacks",
+    "source": "popets",
+    "reason": "Voice assistant fingerprinting defense is a privacy/IoT security topic, not censorship circumvention or censor capabilities.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/u1s1/",
+    "title": "2026 U1S1机场评测：IPLC专线、不限设备、晚高峰不降速的性价比之选 | 二毛",
+    "source": "ermao",
+    "reason": "Commercial VPN service review and pricing comparison, not a research paper studying censorship mechanisms, censor capabilities, or circumvention protocol design.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/z747kgjd/",
+    "title": "Shadowrocket(小火箭)新手使用教程2026：下载安装、节点订阅与配置指南(含免费美区ID) | 二毛",
+    "source": "ermao",
+    "reason": "End-user tutorial for configuring Shadowrocket; no research, measurement, analysis, or scholarly contribution to censorship-circumvention literature.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/clashmi/",
+    "title": "iOS Clash Mi 使用教程（2026最新版）：下载安装、订阅导入与常见问题 | 二毛",
+    "source": "ermao",
+    "reason": "This is a Chinese-language blog tutorial for end-users on configuring a VPN/proxy client (Clash Mi), not a research paper, measurement study, protocol evaluation, or policy document.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/freeappleid/",
+    "title": "2026最新免费美区Apple ID共享账号 | Shadowrocket/小火箭下载 | iOS美区账号每日更新 | 二毛",
+    "source": "ermao",
+    "reason": "Consumer how-to guide for obtaining shared Apple IDs to download VPN apps; does not research, measure, or evaluate censorship techniques, censor capabilities, or circumvention protocols.",
+    "rejected_at": "2026-05-06"
+  },
+  {
     "key": "arxiv:2604.24542",
     "title": "Layerwise Convergence Fingerprints for Runtime Misbehavior Detection in Large Language Models",
     "source": "arxiv",
