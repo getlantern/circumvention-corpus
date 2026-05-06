@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-harrity-get
+kind: evaluation
+summary: China's Great Firewall runs three independent DNS censorship injectors in parallel; elevating the DNS qdcount field to 2 (despite only one query being present, violating RFC 1035) evades all three injectors simultaneously with 100% success rate across 1,000 trials — but only Cloudflare (1.1.1.1) among eight tested open resolvers responds to such queries. DNS compression paired with an elevated qdcount also achieves 100% evasion of all three injectors but is supported only by Cloudflare and Google (8.8.8.8).
+techniques:
+    - dns-poisoning
+defenses:
+    - dns-tunneling
+censors:
+    - cn
+defense_implications:
+    - For DNS-layer circumvention against the GFW, route queries specifically through Cloudflare (1.1.1.1) or Google (8.8.8.8) when using qdcount-elevation or DNS-compression strategies — other resolvers silently drop the queries, making the evasion self-defeating.
+    - Build DNS evasion strategies around injector-specific field sensitivities (qdcount vs. ancount vs. nscount target different injector subsets) to enable selective or combined injector defeat depending on which blocklist the target domain appears on.
+section: §6, Table 3
+extracted_by: claude-sonnet-4-6

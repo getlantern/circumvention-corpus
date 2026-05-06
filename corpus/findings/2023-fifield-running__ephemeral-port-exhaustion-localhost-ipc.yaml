@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-running
+kind: deployment
+summary: Localhost TCP connections between the pluggable transport, load balancer, and Tor processes exhaust the ephemeral port space because source and destination IP addresses are both 127.0.0.1, leaving only port numbers to distinguish sockets. The mitigation uses distinct addresses across the full 127.0.0.0/8 loopback range combined with a custom orport-srcaddr option that assigns random source addresses from 127.0.1.0/24, expanding available socket four-tuples by a factor of 256.
+defenses:
+    - pluggable-transport
+    - bridges
+defense_implications:
+    - High-traffic PT bridge deployments must allocate distinct loopback subnets (e.g., 127.0.1.0/24, 127.0.2.0/24) for each IPC hop and implement randomized source-address selection to avoid ephemeral port exhaustion at scale.
+    - Future PT IPC designs should prefer Unix domain sockets or the in-process PT API over localhost TCP to eliminate the ephemeral port constraint entirely.
+section: §4
+extracted_by: claude-sonnet-4-6

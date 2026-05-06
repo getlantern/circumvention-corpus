@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wails-proteus
+kind: evaluation
+summary: Marionette, the prior programmable protocol system, executes user-specified plugin code in a generic Python runtime, making proxies and clients vulnerable to a malicious or buggy protocol distributor and creating a single point of failure in distributed networks like Tor. Marionette also lacks support for multiple simultaneous protocols and version upgrades, limiting its ability to respond to changing censorship rules across heterogeneous client populations.
+defenses:
+    - marionette
+    - meta-resistance
+    - format-transform
+defense_implications:
+    - Programmable transport runtimes must sandbox protocol execution with fixed memory limits and a restricted system-call surface — accepting arbitrary code execution on proxy nodes is an unacceptable operational risk for any distributed circumvention network.
+    - 'Multi-version protocol support is a first-class requirement, not an afterthought: operators need to serve clients at different upgrade states simultaneously, and frameworks that require lockstep upgrades create fragile deployment windows.'
+section: §4
+extracted_by: claude-sonnet-4-6

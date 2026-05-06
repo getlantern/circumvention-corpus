@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-ramesh-vpnalyzer
+kind: evaluation
+summary: VPNalyzer is the first study to measure DNS leaks during tunnel failure, discovering that 8 VPN providers — including TunnelBear and Private Internet Access — allow DNS queries to bypass their kill switch or firewall rules, exposing users' ISP IP addresses and queried domain names to their ISP and DNS resolvers outside the tunnel.
+techniques:
+    - measurement-platform
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Cache all VPN server hostnames to IP addresses at bootstrap time (as WireGuard does) so reconnection attempts never require live DNS queries that escape the tunnel during failure.
+    - Block all outbound DNS without exception during tunnel failure; implement reconnection using hardcoded IPs rather than allowing any DNS query to bypass firewall rules.
+section: §VI-B
+extracted_by: claude-sonnet-4-6

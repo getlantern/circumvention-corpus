@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-katira-censorwatch
+kind: evaluation
+summary: HTTP-based blocking is the dominant censorship technique across Indian ISPs, observed in 64 of 71 measured ASes. However, the authors note it is largely ineffective because over 90% of web connections now use HTTPS, meaning ISPs cannot inspect the HOST header for the vast majority of traffic — making HTTP blocking easily bypassed by any HTTPS client.
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - in
+defense_implications:
+    - Circumvention tools serving Indian users can rely on standard HTTPS transport as a baseline evasion layer; HTTP-only ISP filters are already bypassed by default browser behavior.
+    - Focus hardening effort on SNI and DNS layers — not HTTP — since those are the techniques used by the large ISPs that account for most of India's internet users.
+section: §5.1
+extracted_by: claude-sonnet-4-6

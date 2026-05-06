@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-sharma-dolphin
+kind: deployment
+summary: Documented Internet shutdown events grew from 75 in 2016 to 213 in 2019 across 33 countries, with individual shutdowns lasting from hours to 472 days (Chad). These shutdowns completely sever IP connectivity, rendering all existing circumvention tools (Tor, VPNs, Shadowsocks, etc.) non-functional since they require at least partial Internet access to operate.
+techniques:
+    - asn-blackholing
+    - ip-blocking
+censors:
+    - mm
+    - in
+    - generic
+defense_implications:
+    - Treat complete Internet shutdown as a distinct threat model requiring an out-of-band physical channel (cellular voice, SMS, satellite, mesh radio) rather than assuming any IP reachability.
+    - Build pre-shutdown bootstrapping (key exchange, peer discovery, phone-number or frequency sharing) into tool design, since users cannot complete setup after connectivity is severed.
+section: §1–2
+extracted_by: claude-sonnet-4-6

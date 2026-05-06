@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tran-crowdsourcing
+kind: defense
+summary: 'Browsers cannot independently set the HTTP Host header or TLS SNI field, blocking the standard censorship-trigger methods used in Geneva training. The paper proposes two workarounds: (1) keyword-based HTTP censorship triggers using forbidden strings in URL parameters, limited to censors that employ keyword filtering; and (2) registering domains whose strings contain a censored substring to exploit censor overblocking via overbroad regular expressions (e.g., registering a domain matching torproject.org''s regex to also catch mentorproject.org).'
+techniques:
+    - keyword-filtering
+    - sni-blocking
+    - dpi
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Test whether a target censor uses regex-based domain blocking; if so, overblocking domains are a reliable, no-SNI-control mechanism for triggering and studying censor behavior from browser clients.
+    - Keyword-based trigger coverage is fundamentally limited — build fallback infrastructure for ASNs where keyword filtering is absent and overblocking domains cannot be registered.
+section: §3 Design — Triggering Censorship
+extracted_by: claude-sonnet-4-6

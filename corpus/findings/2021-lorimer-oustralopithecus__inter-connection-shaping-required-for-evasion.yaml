@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-lorimer-oustralopithecus
+kind: defense
+summary: Traffic replacement systems that only shape individual HTTPS flows remain vulnerable to censors monitoring inter-connection patterns over time. Waterfall's OUS (reloading the same page every second), Slitheen's OUS (naïve PhantomJS with no crawling), and Slitheen++'s OUS all produced non-human connection patterns detectable at the session level even when per-flow content is well-concealed. OUStral addresses this by shaping the distribution and sequencing of connections across an entire browsing session.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - mimicry
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Evaluate circumvention systems for session-level inter-connection statistics — site diversity, connection frequency, number of concurrent flows, time-between-requests distribution — not only per-flow payload features.
+    - Use a full browser (not a custom HTTP client) to drive overt traffic so that HTTP resource dependency graphs, conditional-GET cache validation, and parallel connection counts naturally replicate real browsing sessions without additional engineering.
+section: §1, §2.2, §3, §6
+extracted_by: claude-sonnet-4-6

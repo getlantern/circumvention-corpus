@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-kaptchuk-meteor
+kind: detection
+summary: Current randomized-payload circumvention tools (obfs4/ScrambleSuit, SkypeMorph, VoIP-tunneling) rely on censors 'defaulting open' — treating unidentified traffic as innocuous. If censors instead block all traffic not explicitly recognizable as meaningful plaintext, these tools fail entirely. The paper notes anecdotal evidence this is already occurring, including blocking of some TLS 1.3 connections.
+techniques:
+    - random-payload-detect
+    - fully-encrypted-detect
+    - dpi
+defenses:
+    - obfs4
+    - scramblesuit
+    - steganography
+censors:
+    - cn
+defense_implications:
+    - Design transports that produce output statistically indistinguishable from a known-allowed plaintext distribution (e.g., natural language text), not merely from pseudorandom data
+    - Avoid any transport whose security model assumes the censor will allow traffic it cannot classify — this assumption may already be false in CN and IR
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

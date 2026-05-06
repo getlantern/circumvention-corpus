@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-amich-deresistor
+kind: defense
+summary: Interleaving a single normal benign flow (jump size J=1) after each detected probe prevents the TRW likelihood ratio from converging to the IP-block threshold across all 11 simulated censors and all three real-world censors tested; setting J>1 risks triggering a history-aware TRW reset that can paradoxically accelerate IP-level detection.
+techniques:
+    - ml-classifier
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Tools that probe censors from a fixed IP should intersperse legitimate traffic after each anomalous probe — a minimal one-flow interleave is sufficient to reset sequential detectors without triggering history-penalized resets.
+    - Automated traffic generation tools (e.g., Harpoon) are themselves fingerprint risks when used against real-world censors; real user browsing traffic is the preferred cover for the normal-traffic injection phase.
+section: §5.2, §6.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-master-worldwide
+kind: detection
+summary: Protocol fingerprinting — including DPI-based identification of VPNs, circumvention tools, and E2EE messengers — was active in only 6% of countries during the measurement period (13% all-time), but all confirmed instances came from focused individual studies, not from mass measurement platforms like OONI or Censored Planet. The authors flag encrypted traffic analysis (ETA) tools and next-generation firewalls (NGFWs) capable of blocking Signal or Tor Browser as an emerging threat to freedom of expression.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - dpi
+defenses:
+    - mimicry
+    - randomization
+    - obfs4
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Protocol fingerprinting is underdetected by mass measurement infrastructure — assume real-world prevalence is higher than 6% and design transports to resist flow-level statistical classifiers, not just payload inspection.
+    - Prioritize mimicry of allowed protocols (TLS to a real HTTPS site, QUIC, etc.) over randomization alone, since NGFWs with ETA capabilities are increasingly targeting high-entropy flows.
+section: §4.3
+extracted_by: claude-sonnet-4-6

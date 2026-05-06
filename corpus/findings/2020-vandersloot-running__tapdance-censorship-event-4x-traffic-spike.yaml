@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-vandersloot-running
+kind: evaluation
+summary: During a major censorship event in April 2019, new censor techniques blocked many Psiphon transports while TapDance remained accessible, causing a 4× increase in the fraction of TapDance-enabled clients' traffic and daily users peaking above 25,000—with no measurable degradation in connection success rate or per-session throughput under the increased load.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tapdance
+    - decoy-routing
+defense_implications:
+    - Provision refraction/decoy-routing infrastructure for at least 4× normal peak load so it can absorb sudden spikes when a censor simultaneously blocks other transports.
+    - Instrument multi-transport usage share in real time; a rapid spike in refraction share is an early warning signal that the censor has deployed new blocking capabilities against lighter-weight transports.
+section: §4.5
+extracted_by: claude-sonnet-4-6

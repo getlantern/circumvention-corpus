@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-advancing
+kind: detection
+summary: Censored Planet measurements of psiphon.ca in AS6697 (Belarus) around the August 2020 Internet shutdown showed that Psiphon was initially blocked via connection timeouts during the shutdown itself, and then—several weeks after the shutdown ended—the censorship mechanism shifted to TCP RST injection. Outcome-typed measurement data made this two-phase mechanism change immediately visible without re-collecting any raw data.
+techniques:
+    - rst-injection
+    - sni-blocking
+censors:
+    - by
+defense_implications:
+    - Circumvention protocols must be robust to both drop-based (timeout) and RST-based blocking simultaneously, since censors demonstrably switch between mechanisms over time and the same endpoint may face different interference depending on when and where it is probed.
+    - Instrumentation in circumvention clients should record and report the specific failure mode (timeout vs. RST vs. TLS error) rather than a generic 'unreachable', enabling faster detection of censor technique shifts and better-targeted protocol adaptations.
+section: §4.3
+extracted_by: claude-sonnet-4-6

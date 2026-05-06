@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-tls-attacker
+kind: evaluation
+summary: TLS-Attacker's Workflow Traces and Modifiable Variables mechanisms allow testers to specify arbitrary protocol flows and apply field-level modifications — including adding, removing, or overwriting individual TLS message fields — without breaking the internal TLS state machine. This makes it the standard instrument for probing how DPI systems and active-probing detectors respond to non-standard or mutated TLS handshakes.
+techniques:
+    - tls-fingerprint
+    - active-probing
+    - dpi
+defenses:
+    - mimicry
+    - meta-resistance
+defense_implications:
+    - Use TLS-Attacker to fuzz each field of the ClientHello (cipher-suite ordering, extensions, GREASE values) against a censor-controlled endpoint to map which deviations from a 'normal' fingerprint trigger blocking.
+    - Script TLS-Attacker to simulate active-probing probe sequences (e.g., unexpected HelloRequest, out-of-order Finished) to verify that a circumvention server correctly handles or rejects the probe without leaking its proxy nature.
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

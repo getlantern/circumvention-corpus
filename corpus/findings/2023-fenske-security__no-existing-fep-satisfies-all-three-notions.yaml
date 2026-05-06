@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fenske-security
+kind: defense
+summary: No existing fully encrypted protocol — including Obfs4, Shadowsocks, VMess, and Obfuscated OpenSSH — simultaneously satisfies passive indistinguishability (FEP-CPFA), active-manipulation resistance (FEP-CCFA), and output-length shaping. The paper presents a novel stream-based construction that provably satisfies all three using AEAD-authenticated length blocks, an output buffer supporting arbitrary fragmentation, and a padding mechanism allowing the sender to emit exactly p output bytes on demand.
+techniques:
+    - fully-encrypted-detect
+    - traffic-shape
+    - active-probing
+defenses:
+    - obfs4
+    - shadowsocks
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'When building or auditing a fully encrypted transport, verify all three properties independently: passive byte-indistinguishability, silent-drop behavior under forged ciphertexts, and the ability to emit an arbitrary output byte count without leaking a minimum-length floor.'
+    - Adopt authenticated length blocks + output buffer + padding-to-target-length as the baseline construction pattern for new FEP designs rather than bolting obfuscation onto existing AEAD stream formats.
+section: §2–3
+extracted_by: claude-sonnet-4-6

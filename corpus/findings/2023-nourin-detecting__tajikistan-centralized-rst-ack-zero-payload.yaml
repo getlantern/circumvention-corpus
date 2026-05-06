@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-nourin-detecting
+kind: detection
+summary: Tajikistan routes virtually all national egress and ingress traffic through a single state-run AS (AS51346, Tojiktelecom) under a 2016 national decree, creating a centralized chokepoint. The censor injects RST+ACK packets with a unique 22-byte all-zero payload, censors on all ports, and requires two PSH+ACK packets containing the censored content before injecting — possibly modeling typical multi-resource HTTP browsing behavior.
+techniques:
+    - rst-injection
+    - packet-injection
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Centralized single-AS chokepoints with unique injected-packet payloads (22 zero bytes) are reliably detectable as censor injections; tools can verify whether a connection has been interfered with by inspecting response packet payloads rather than relying solely on connection outcome.
+    - The two-PSH+ACK triggering requirement suggests the censor performs stateful reassembly across multiple segments; circumvention strategies that fragment or reorder application data across packets may reduce triggering probability.
+section: §3
+extracted_by: claude-sonnet-4-6

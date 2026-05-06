@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-arora-detor-onion
+kind: evaluation
+summary: Computing a never-once avoidance proof for a 6-hop onion-service circuit takes an average of 64.85 seconds — incurred once at connection setup — because the system must collect round-trip timing measurements across all six relays before running the geographic proof; SGX execution overhead is nominal, and the paper notes that lower-RTT circuits (more likely to be DeTorOS-compliant) reduce subsequent data-transfer latency.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - A ~65-second one-time circuit-setup penalty is acceptable for high-security onion services (e.g., whistleblower platforms) but not interactive applications; scope deployment to use cases where connection establishment already incurs significant delay.
+    - Pre-computing avoidance proofs speculatively (before the user requests a connection) can amortize the 65-second cost; build a background circuit-builder that maintains a pool of pre-verified compliant circuits.
+section: §5.3
+extracted_by: claude-sonnet-4-6

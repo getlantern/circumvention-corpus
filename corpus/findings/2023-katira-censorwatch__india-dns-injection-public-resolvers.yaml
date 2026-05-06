@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-katira-censorwatch
+kind: detection
+summary: Only 10 of 64 measured Indian ASes conduct DNS-based blocking, but Atria Convergence Technologies (AS24309) was found performing DNS injection attacks against public DNS resolvers including Cloudflare, Google, and Quad9 — affecting 8.45% of the roughly 3 million DNS measurements collected using those resolvers. DNS blocking is otherwise concentrated in two large providers (AS24309 with 125,154 confirmed blocks and National Internet Backbone / BSNL with 92,653 confirmed blocks).
+techniques:
+    - dns-poisoning
+censors:
+    - in
+defense_implications:
+    - Switching to DNS-over-HTTPS (DoH) or DNS-over-TLS (DoT) is insufficient if the ISP intercepts and injects responses for public resolver IPs — proxy clients should use application-layer encrypted DNS that is indistinguishable from normal HTTPS.
+    - Hardcode bootstrap IPs for circumvention infrastructure rather than relying on in-network DNS, since DNS injection in India targets even Cloudflare 1.1.1.1 and Google 8.8.8.8.
+section: §5.1, Table 3
+extracted_by: claude-sonnet-4-6

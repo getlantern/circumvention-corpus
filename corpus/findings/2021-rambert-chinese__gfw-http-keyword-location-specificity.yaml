@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rambert-chinese
+kind: detection
+summary: 'The GFW only inspects two locations within an HTTP request for censored keywords: the path component of the request line and the Host header, in UTF-8 and GB 18030 encodings (with %-decoding applied). Cookie headers, custom headers (e.g., X-Tension), and POST body fields are not monitored. Even in monitored positions, only approximately 75% of requests containing censored keywords actually trigger a TCP RST disconnection.'
+techniques:
+    - keyword-filtering
+    - dpi
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Place any sensitive signaling data in HTTP POST body or custom headers rather than the URL path or Host header to avoid GFW keyword detection in HTTP contexts.
+    - The ~25% non-detection rate means keyword filtering is not a reliable blocker, but do not rely on this inconsistency for circumvention — use encryption instead.
+section: §4.4
+extracted_by: claude-sonnet-4-6

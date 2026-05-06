@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-harrity-get
+kind: evaluation
+summary: 'India''s Airtel HTTP censor fails to reassemble TCP segments: padding any HTTP request to at least 1,449 bytes causes the IP+TCP overhead (52 bytes) to push the total past the Ethernet MTU of 1,500 bytes, forcing segmentation that the censor cannot handle and achieving 100% evasion. Kazakhstan requires the segmentation boundary to fall precisely between the Host header name and value (with two trailing spaces), rather than anywhere in the request.'
+techniques:
+    - dpi
+    - keyword-filtering
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - in
+    - kz
+defense_implications:
+    - For India deployments, implement a padding strategy that ensures every HTTP request exceeds 1,449 bytes (e.g., inject a dummy header with sufficient value length) — this is RFC-compliant, universally accepted by servers, and reliably defeats Airtel's DPI at minimal cost.
+    - For Kazakhstan, the segmentation boundary must be placed precisely at the Host header name-value separator with two trailing spaces — generic padding anywhere is insufficient; the circumvention proxy must control where in the byte stream the MTU boundary falls.
+section: §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-xue-openvpn
+kind: evaluation
+summary: A two-phase passive-filter-plus-active-probing framework deployed at a 1-million-user ISP identified 85.90% of vanilla OpenVPN flows (1,718/2,000) and 72.67% of obfuscated flows (1,468/2,020), with an upper-bound false positive rate of 0.0039% across over 10 million flows — three orders of magnitude lower than prior ML-based approaches (1.4–5.5%). The system processed 15 TB and 2 billion flows per day on a single commodity server.
+techniques:
+    - dpi
+    - active-probing
+    - traffic-shape
+defenses:
+    - obfs4
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Obfuscation layers must add genuine random padding to packet sizes, not just encrypt payloads; without padding, threshold-based ACK fingerprinting reliably identifies the underlying OpenVPN protocol regardless of tunnel wrapper.
+    - VPN providers must separate obfuscated bridge servers from vanilla OpenVPN servers at the network-address-space level (/29 or larger), not just by port; co-location enables 'guilty by association' identification via subnet scanning.
+section: §9, Table 3
+extracted_by: claude-sonnet-4-6

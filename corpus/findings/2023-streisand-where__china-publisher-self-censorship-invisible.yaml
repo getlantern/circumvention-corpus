@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-streisand-where
+kind: policy
+summary: In China, it is typically the publisher (not the government) who self-censors translated books to avoid punishment including harsh scrutiny of future publications, book confiscation, and suspension of publishing rights. Authors are often unaware their translations were altered until well after publication. This self-censorship dynamic produces more restrictive outcomes than direct government censorship because publishers err on the side of caution without clear rules.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Content-layer censorship operates independently of network-layer blocking — circumvention tools that restore network access do not address publication-level erasures, so anti-censorship ecosystems need complementary transparency tools targeting the content supply chain.
+    - Publisher self-censorship is deliberately invisible (no notice to readers or authors), making automated detection infrastructure more valuable than manual spot-checks.
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

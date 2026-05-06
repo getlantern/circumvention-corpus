@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-feng-study
+kind: evaluation
+summary: Domestic Chinese search engines (e.g., Baidu) return no valid results for direct VPN or '翻墙' (climb the wall) queries, but 16 of 18 GFW ladders mentioned by participants remained discoverable via Chinese jargon and homonyms (e.g., '蕃蔷' as a homonym for 'climbing the wall'). Word-of-mouth through college friends, gaming forums (Baidu Tieba), and QQ group chats were primary alternative distribution channels.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool distribution should use homonym-based, jargon, or phonetic keywords in SEO and in-app copy to remain discoverable under search-engine censorship without using flagged terms.
+    - Invest in peer-referral and out-of-band distribution (university chat groups, gaming forums, friend networks) as primary acquisition channels that are resilient to search-engine blocking.
+section: §8.1
+extracted_by: claude-sonnet-4-6

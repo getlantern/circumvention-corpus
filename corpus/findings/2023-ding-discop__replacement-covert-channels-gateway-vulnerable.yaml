@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ding-discop
+kind: detection
+summary: Replacement-based covert channels that substitute genuine media streams with ciphertext (Protozoa replacing WebRTC video, Balboa replacing audio) are immediately detectable when the censor controls or has plaintext access to the protocol gateway — for example, a WebRTC relay that decrypts and validates incoming media. Censors can also systematically suppress these channels by selectively degrading or blocking encrypted traffic for which they have no decryption trapdoor.
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - steganography
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Do not rely on ciphertext-substitution into real-time media streams if the censor controls or co-opts relay infrastructure (TURN servers, CDN nodes) capable of inspecting plaintext — use generative steganography whose cover object is statistically indistinguishable even in cleartext.
+    - Design covert channels to degrade gracefully when the censor selectively throttles or blocks encrypted media; generative steganography embedded in ordinary plaintext traffic (blog posts, forum replies) has stronger availability guarantees than encrypted-stream hijacking.
+section: §I
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-self-censorship
+kind: policy
+summary: Hong Kong Twitter users are 33% more likely than a random control sample to have protected their accounts, and over 247% more likely to have deleted past Tweets, after enactment of the June 2020 national security law (NSL). These differences are statistically significant at p ≤ 1.74e-48 for all account-protection and Tweet-deletion metrics.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should offer retroactive traffic minimization — users under legal threat delete past activity, so tools should avoid logging or caching any user-identifiable session data that could later be subpoenaed or seized.
+    - 'Onboarding UX should address the threat model of retroactive prosecution: users need plausible deniability about past tool usage, not just present-tense traffic obfuscation.'
+section: §4.1 / Table 2
+extracted_by: claude-sonnet-4-6

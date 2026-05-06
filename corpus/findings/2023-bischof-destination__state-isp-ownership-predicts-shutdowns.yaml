@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-bischof-destination
+kind: policy
+summary: Countries where state-owned providers originate more than 50% of domestic address space show significantly higher shutdown prevalence; this state-ownership factor predicts shutdowns but shows no discernible difference for spontaneous outages. Countries with shutdowns have a median V-Dem liberal democracy score of 0.151 (maximum 0.481), compared to 0.279 for countries with spontaneous outages and 0.465 for countries with neither.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Use state-ISP-ownership data (CAIDA prefix-to-AS mappings combined with state-owned AS lists) and V-Dem democracy scores as pre-deployment risk signals to prioritize bridge and infrastructure placement in high-risk countries.
+    - In state-controlled address-space environments, assume a single national operator can execute a total shutdown; design for multi-path diversity across non-state-owned ASes or out-of-band channels (satellite, cellular from non-state carrier).
+section: §5.1.1, Figures 8–9
+extracted_by: claude-sonnet-4-6

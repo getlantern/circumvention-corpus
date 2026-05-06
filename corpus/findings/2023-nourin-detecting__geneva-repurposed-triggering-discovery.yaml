@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-nourin-detecting
+kind: evaluation
+summary: Geneva — originally designed to evolve censorship-evasion packet sequences — was repurposed by inverting its fitness function to discover censorship-triggering packet sequences instead. Training against non-responsive IP addresses allows Geneva to attribute all responses to middleboxes, enabling fully automated discovery of triggering strategies without any endpoint cooperation.
+techniques:
+    - measurement-platform
+    - packet-injection
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - The same genetic-search framework used for evasion can characterize unknown censor behavior; integrate automated triggering discovery into measurement pipelines before deploying new circumvention protocols to a new country.
+    - Censor response packets (RST fingerprints, payload patterns) surfaced by Geneva training provide reliable signatures for detecting which middlebox is active, informing protocol-specific evasion choices.
+section: §2
+extracted_by: claude-sonnet-4-6

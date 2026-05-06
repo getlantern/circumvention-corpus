@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-niere-poster
+kind: defense
+summary: 'TLS record fragmentation successfully circumvents the GFW in all tested configurations: splitting the ClientHello across multiple TLS records — whether the split falls before or after the SNI extension — bypasses GFW SNI-based blocking in every case (Table 1). TCP fragmentation after the SNI extension fails, but any TLS-layer fragmentation succeeds.'
+techniques:
+    - sni-blocking
+    - dpi
+defenses:
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - Fragment the TLS ClientHello at the TLS record layer so the SNI extension spans multiple records; this defeats the GFW's single-record SNI matcher without requiring TCP-layer manipulation or root privileges.
+    - Combine TLS record fragmentation with TCP fragmentation for defense-in-depth — both layers working together maintain circumvention while adding redundancy against either class of hardening.
+section: §3, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-xue-use
+kind: detection
+summary: PushProxy's high-frequency downstream channel generates over 100 push notifications to load a typical webpage, contrasting sharply with the daily average of 46 push notifications received by a smartphone. This statistical anomaly makes PushProxy flows identifiable by simple rule-based filters without requiring sophisticated traffic analysis.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - tunneling
+defense_implications:
+    - Push-notification-based proxies must implement notification-rate shaping and request batching to keep per-app message frequency within normal usage distributions; unthrottled browsing (100+ notifications/page) is trivially fingerprintable.
+    - Combine push notification tunneling with content prefetching or predictive loading to reduce the per-page notification count and blur the statistical signature.
+section: §6.2
+extracted_by: claude-sonnet-4-6

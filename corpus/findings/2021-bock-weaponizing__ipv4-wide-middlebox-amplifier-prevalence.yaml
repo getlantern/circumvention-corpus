@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-weaponizing
+kind: evaluation
+summary: 'Internet-wide IPv4 scanning found 386,187 IP addresses yielding amplification factors ≥ 100× via TCP middlebox reflection, with 82.9% of responses from the top 1 million IPs confirmed as originating from on-path middleboxes rather than endpoints. Nation-state censorship infrastructure dominates: China''s GFW alone accounts for approximately 154 million responding IP addresses sharing a 3× RST+ACK (54 bytes each) fingerprint.'
+techniques:
+    - middlebox-interference
+    - rst-injection
+    - packet-injection
+    - measurement-platform
+censors:
+    - cn
+    - ir
+    - sa
+    - ru
+defense_implications:
+    - The scale of nation-state middlebox deployments means any IP route through a censored country is likely to encounter injecting middleboxes; circumvention protocol designs should treat in-path injection as the default, not an edge case
+    - Country-specific TCP response fingerprints (e.g., GFW's 3× RST+ACK at 54 bytes) enable passive, one-shot censor-path detection from outside the censored country — circumvention tools can map censor-present routes before establishing proxy connections
+section: §5.3, §5.5, Table 4
+extracted_by: claude-sonnet-4-6

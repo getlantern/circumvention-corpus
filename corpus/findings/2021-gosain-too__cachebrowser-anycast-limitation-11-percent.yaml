@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-gosain-too
+kind: evaluation
+summary: CacheBrowser and CDNReaper require clients to contact foreign CDN front-end IPs directly, but this only works for DNS-based CDNs; anycast CDNs use the same IP globally, so bypassing local DNS still routes the client to a local front-end. Only approximately 11% of Alexa top-1k websites use DNS-based CDNs across the five tested countries, and for potentially blocked sites (Citizen Lab lists), CacheBrowser can access only ~18% of 2,769 blocked URLs in Brazil.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - CacheBrowser-style circumvention only covers DNS-based CDN content (~11% of popular sites); for the majority of content on anycast CDNs (~36–57% of popular sites), a fundamentally different mechanism is needed since the IP address itself routes to an in-country front-end regardless of how it is obtained.
+    - Before using any CDN-hosted domain as a circumvention vehicle, classify its CDN type (anycast vs. DNS-based) programmatically; build this classification step into tool provisioning pipelines.
+section: §5.2, Table 1, Fig. 14
+extracted_by: claude-sonnet-4-6

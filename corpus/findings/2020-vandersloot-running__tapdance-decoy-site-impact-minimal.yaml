@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-vandersloot-running
+kind: evaluation
+summary: Over 115 days of operation with 1,500–2,000 active decoys, the busiest decoy site averaged only 13.24 concurrent connections and 12.32 MB of traffic per day; only 2 of roughly 3,000 candidate decoy sites opted out via robots.txt over 18 months, and none reported operational problems, confirming that decoy websites are not meaningfully burdened at this deployment scale.
+defenses:
+    - tapdance
+    - decoy-routing
+defense_implications:
+    - Implement a robots.txt opt-out mechanism from day one of any Refraction deployment; it resolves a key ISP partner objection at negligible operational cost and has near-zero uptake in practice.
+    - Maintain a pool of at least 1,500 active decoys and automate daily discovery with multi-stage filtering (TCP window ≥15 KB, timeout ≥30 s, compatible TLS cipher) to keep per-site load negligible and absorb attrition without client-visible disruption.
+section: §4.3, Table 1
+extracted_by: claude-sonnet-4-6

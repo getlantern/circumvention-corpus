@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-network
+kind: evaluation
+summary: OONI data shows anomaly rates in Russia's top five ASes (including Rostelecom AS12389, Vimpelcom AS8402) rose from roughly 7–11% in January and early February 2022 to 12–21% in mid-March 2022, with social-media and news domains such as Facebook, Twitter, Instagram, and BBC going from available to near-completely blocked after the invasion.
+techniques:
+    - dpi
+    - rst-injection
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - ru
+defense_implications:
+    - Rapid censorship escalation tied to political events demands that circumvention tools maintain pre-positioned infrastructure so users can fall back instantly without a new bootstrap phase.
+    - Decentralized blocking across many ASes means a single unblocked IP or domain cannot serve as a reliable entry point; tool designers must distribute bootstrap addresses across many providers.
+section: §4.1
+extracted_by: claude-sonnet-4-6

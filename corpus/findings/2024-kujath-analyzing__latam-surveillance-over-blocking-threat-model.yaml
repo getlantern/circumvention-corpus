@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kujath-analyzing
+kind: evaluation
+summary: 'In Latin America, censorship predominantly takes the form of targeted surveillance coupled with physical threats rather than network-level blocking. Mexico had documented Pegasus infections on journalists and activists between 2019–2022, at least 25 private spyware vendors sold surveillance tools to Mexican federal and state police, and at least 119 journalists have been killed in Mexico since 2000. Dynamic analysis of 8 widely-used LATAM apps (combined 100M+ downloads) found security failures across all three assessed categories: cleartext traffic, undisclosed PII exfiltration to third parties, and unvetted external code update mechanisms.'
+techniques:
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools targeting LATAM should prioritize device-level threat models — co-installed government or telco apps with silent update capabilities — rather than focusing exclusively on network-level blocking, since the dominant adversary capability in the region is endpoint surveillance.
+    - Operational security guidance bundled with circumvention tools should explicitly address PII-leaking government and telco apps already present on users' devices, as these create surveillance channels that survive any network-layer protection.
+section: §1, §2, §8
+extracted_by: claude-sonnet-4-6

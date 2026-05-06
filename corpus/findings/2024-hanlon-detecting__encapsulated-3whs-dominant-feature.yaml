@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-hanlon-detecting
+kind: detection
+summary: The encapsulated TCP three-way handshake (3WHS) is detected in 80.59% of VPN flows but only 0.33% of plain UDP flows, making it—on its own—a near-practical VPN detector with 0.33% FPR; its presence is required by the classifier regardless of the compliance-rate threshold t.
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Any TCP-over-UDP tunnel must either suppress or corrupt the encapsulated 3WHS pattern (via multiplexing, random packet insertion, or timing jitter) to defeat this feature.
+    - Protocols that coalesce multiple TCP streams inside one UDP tunnel (e.g., HTTP/2 or QUIC multiplexing as the inner protocol) naturally disrupt the 3WHS signal.
+section: §4.2 Feature Importance
+extracted_by: claude-sonnet-4-6

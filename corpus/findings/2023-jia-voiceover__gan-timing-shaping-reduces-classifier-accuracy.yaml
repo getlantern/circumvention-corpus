@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-jia-voiceover
+kind: defense
+summary: Voiceover's DCGAN, trained on ~400 hours of two-person telephone conversations, generates conversation timing templates that constrain when the tunnel transmits audio. This reduces ML classifier performance from auROC 0.981/aucPR 0.959 (unshaped baseline) to auROC 0.682/aucPR 0.482, and the improvement holds at 500-packet windows (auROC 0.68/aucPR 0.50), suggesting robustness to memory-limited adversaries.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - mimicry
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Generative models (GANs) trained on real traffic distributions can close the timing-based content mismatch gap in multimedia tunnels; include silence modeling in any VoIP-tunneled circumvention design.
+    - Evaluate tunnel detectability with AutoML classifiers at multiple packet-window sizes to stress-test resistance against memory-limited real-time censors, not just fixed-model baselines.
+section: §3, §4.2, Table 2
+extracted_by: claude-sonnet-4-6

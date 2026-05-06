@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-master-worldwide
+kind: detection
+summary: Residual censorship — where a censor detects an objectionable connection via one method and then blocks all traffic between the same 3-tuple (client IP + server IP + port) or 4-tuple (client IP + port + server IP + port) for a short duration — was documented in China, Iran, and Kazakhstan. This means a single detected circumvention attempt can trigger temporary IP-level blocking of the entire endpoint regardless of protocol.
+techniques:
+    - ip-blocking
+    - dpi
+    - active-probing
+defenses:
+    - bridges
+    - rotating-spki
+censors:
+    - cn
+    - ir
+    - kz
+defense_implications:
+    - Circumvention servers should rotate endpoints (IP + port combinations) or use large pools of addresses so that residual 3-tuple/4-tuple bans do not permanently strand users on a single detected server.
+    - Avoid reusing the same IP:port pair across both the initial handshake and ongoing session data — a detection event on one flow should not be able to kill an unrelated session to the same endpoint.
+section: §4.3
+extracted_by: claude-sonnet-4-6

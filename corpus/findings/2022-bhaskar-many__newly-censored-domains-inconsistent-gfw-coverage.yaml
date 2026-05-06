@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-bhaskar-many
+kind: evaluation
+summary: In a 75-domain, 492-destination experiment, domains that showed small-scale routing-induced censorship changes — where some (source IP, source port) combinations bypassed censorship while others did not — were exclusively domains first censored within the last 2 years, indicating inconsistent GFW censorship-node configuration during rollout.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Newly blocked domains are more likely to have inconsistent GFW coverage across routing paths; prioritize source-parameter sweeps immediately after a domain is reported newly blocked.
+    - 'Track GFW blocking events with timestamps: routing-induced bypasses are most exploitable in the 0–24-month window following initial censorship of a domain, while configuration propagates.'
+section: §5.4
+extracted_by: claude-sonnet-4-6

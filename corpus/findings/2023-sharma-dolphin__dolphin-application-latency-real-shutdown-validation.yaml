@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-sharma-dolphin
+kind: evaluation
+summary: A 280-character tweet via Dolphin takes under 1 minute end-to-end; a 500-character email takes approximately 2.7 minutes (∼1 minute for ECDH secure-channel setup plus ∼1.7 minutes for data transmission). Performance was confirmed during a real Internet shutdown in Delhi, India, where a 300-character email transferred reliably in about 1 minute.
+defenses:
+    - pluggable-transport
+censors:
+    - in
+defense_implications:
+    - Cellular-voice tunneling is viable for delay-tolerant applications (email, news snippets, short social posts) during complete Internet shutdowns where no IP-layer path exists.
+    - Pre-configure session keys before a shutdown event to reduce the ~1-minute secure-channel setup cost; this is the dominant latency component for short messages.
+section: §5.2, §5.4, Figs. 8–10
+extracted_by: claude-sonnet-4-6

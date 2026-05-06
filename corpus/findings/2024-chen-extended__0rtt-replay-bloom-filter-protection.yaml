@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-chen-extended
+kind: defense
+summary: Because Oscur0 starts with 0-RTT data lacking a full handshake, the station-side connection establishment is vulnerable to replay attacks. Oscur0 mitigates this by including a random 10-byte nonce in the encrypted application data of the first packet; the station checks each arriving nonce against a bloom filter of recently-seen IDs and drops duplicate connections, preventing replay without requiring a full round-trip handshake.
+techniques:
+    - active-probing
+defenses:
+    - decoy-routing
+    - conjure
+censors:
+    - generic
+defense_implications:
+    - Any 0-RTT or registration-free design must include a server-side replay cache (bloom filter or similar) keyed on a per-packet nonce to prevent censors or adversaries from replaying captured first packets to probe or fingerprint the station.
+    - Size the bloom filter conservatively for the expected connection rate and rotate it on a time window aligned to the nonce timestamp field, balancing replay protection against memory overhead.
+section: §3 Design
+extracted_by: claude-sonnet-4-6

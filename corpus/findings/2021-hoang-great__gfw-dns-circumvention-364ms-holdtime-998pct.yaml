@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hoang-great
+kind: defense
+summary: A circumvention strategy of holding DNS responses and filtering those matching the known forged-IP pool achieves 99.8% accuracy, correctly classifying 1,005,444,476 of 1,007,002,451 poisoned resolutions. From inside China, 99% of forged responses arrive within 364ms before the legitimate response, establishing 364ms as the recommended hold-on duration; from outside China, 11% of forged responses arrive after the legitimate one, making the IP-blocklist check necessary to avoid misclassifying genuine responses as poisoned.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Implement a ~364ms hold-on window when resolving suspected censored domains from inside China and accept only responses that arrive after that delay or pass a forged-IP blocklist check — accepting the first-arriving response will be poisoned 99.9% of the time.
+    - Outside China, 11% of forged responses arrive after the legitimate one, so a timing-only strategy fails — the IP-blocklist check is essential to avoid flagging the legitimate response as fake when it arrives first.
+section: §7.1, §7.2, Figure 11
+extracted_by: claude-sonnet-4-6

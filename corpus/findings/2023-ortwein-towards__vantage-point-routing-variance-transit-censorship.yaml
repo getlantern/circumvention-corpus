@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ortwein-towards
+kind: evaluation
+summary: 'The study''s three vantage points (US university, AWS Sydney, AWS Tokyo) produce substantially different transit censorship observations: the US vantage point detects blockpages in all 8 affected countries, while Sydney and Tokyo detect transit censorship only in Kazakhstan and Ukraine. This variance is attributed to routing path differences across vantage points, confirming that transit censorship coverage is highly path-dependent.'
+techniques:
+    - dpi
+    - packet-injection
+    - measurement-platform
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools cannot rely on a single geographic vantage point to characterize Russian transit censorship risk; relay health checks and routing decisions must incorporate multi-vantage-point probing to capture path-dependent blocking.
+    - 'Path diversity is a viable defense: routing traffic through ASes and geographic paths that avoid Russian transit hubs reduces transit censorship exposure, and this can be validated empirically with the ZMap-based scanning methodology described.'
+section: §5 Preliminary Results
+extracted_by: claude-sonnet-4-6

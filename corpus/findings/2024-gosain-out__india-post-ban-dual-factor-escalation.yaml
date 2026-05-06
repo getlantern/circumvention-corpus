@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gosain-out
+kind: evaluation
+summary: 'After India imposed a permanent ban in January 2021, seven of the eight previously SIM-only-blocked apps escalated to dual-factor filtering: they continued extracting carrier_region=IN from the SIM card while simultaneously adding IP geo-blocking. Accessing these apps now requires both a VPN (for source IP masking) and SIM removal or carrier_region parameter suppression; MICO Chat remained the sole app using only SIM-based blocking.'
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - in
+defense_implications:
+    - 'Treat censorship mechanisms as adversarially adaptive: a circumvention technique that worked before a permanent ban may be layered over after escalation — design for multi-factor bypass from the start rather than patching retroactively.'
+    - Monitor for the addition of new identifying parameters (op_region, carrier_region, etc.) in app traffic after censorship policy changes; static bypass solutions will regress as app publishers add filtering layers.
+section: §4.3 (Permanent ban subsection), Table 2
+extracted_by: claude-sonnet-4-6

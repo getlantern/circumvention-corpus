@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-harrity-get
+kind: evaluation
+summary: Extending Geneva's genetic algorithm to the application layer automatically discovered 77 unique HTTP evasion strategies and 9 DNS evasion strategies against censors in China, India, and Kazakhstan — all requiring only unprivileged usermode modifications with no TCP/IP header access. Against India's Airtel censor, 56 of the 77 strategies succeeded; 29 worked against Kazakhstan; 22 evaded China's keyword-based HTTP censorship and 27 evaded its Host-header censorship.
+techniques:
+    - dpi
+    - keyword-filtering
+    - rst-injection
+    - dns-poisoning
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Application-layer fuzzing (extending Geneva) can rapidly surface evasion strategies that work without root privileges, making them directly usable in mobile apps and user-level proxies like Tor — prioritize app-layer strategy search before escalating to packet-header manipulation.
+    - Strategies should be re-trained per destination server type and version (Apache 2.4.6 vs 2.4.43, Nginx 1.13.4 vs 1.19.0 behave differently) because evasion success is highly server-dependent — bundle per-server strategy sets rather than assuming universal portability.
+section: §5.1, §6
+extracted_by: claude-sonnet-4-6

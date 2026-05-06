@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-wang-symtcp
+kind: detection
+summary: Snort interprets the TCP urgent pointer as the offset to the last byte of urgent data and discards all payload bytes before that offset, while Linux consumes only 1 urgent byte and leaves the remaining payload intact. Injecting a packet with the URG flag and the urgent-pointer offset pointing to an insignificant padding byte allows the full sensitive payload to reach the server while Snort strips it — a novel evasion strategy not previously reported.
+techniques:
+    - dpi
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Set the URG flag with the urgent-pointer offset targeting a dummy leading byte; DPI engines following Snort's interpretation will discard the bytes before that offset (stripping any detectable signature prefix) while the receiver reconstructs the complete payload.
+    - Urgent-pointer semantics are deliberately ambiguous in RFC 793 and are misimplemented across major OSes; this ambiguity provides a stable, protocol-compliant evasion primitive that does not alter packet entropy or timing.
+section: §VIII.E
+extracted_by: claude-sonnet-4-6

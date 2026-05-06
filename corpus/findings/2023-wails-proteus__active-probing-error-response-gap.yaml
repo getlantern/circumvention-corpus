@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wails-proteus
+kind: defense
+summary: 'Proteus does not yet implement normalized or randomized error responses, and the authors explicitly flag this as a known gap: without configurable error handling, the protocol may be identifiable by an active prober who can distinguish the proxy''s error behavior from that of the legitimate service being mimicked.'
+techniques:
+    - active-probing
+defenses:
+    - meta-resistance
+defense_implications:
+    - Include configurable error-response normalization in any programmable transport framework — returning recognizable error codes or connection-reset patterns under probe conditions leaks protocol identity even if the handshake otherwise mimics a legitimate service.
+    - Test active-probing resistance explicitly by sending malformed or unexpected messages and verifying that the proxy's response is indistinguishable from the mimicked service's response before deploying a new protocol specification.
+section: §5
+extracted_by: claude-sonnet-4-6

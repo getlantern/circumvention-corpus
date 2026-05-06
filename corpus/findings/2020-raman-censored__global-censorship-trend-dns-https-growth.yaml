@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-censored
+kind: evaluation
+summary: 'Mann-Kendall trend analysis at 99% significance on 20 months of data found increasing censorship activity in more than 100 countries, driven primarily by DNS and HTTPS blocking methods, and identified 11 website categories facing rising censorship including human rights content, news media, and provocative attire. Countries such as Norway (ranked #1 in press freedom) showed aggressive DNS blocking across 25 ASes targeting more than 50 domains in at least 6 categories including hrw.org.'
+techniques:
+    - measurement-platform
+    - dns-poisoning
+    - sni-blocking
+censors:
+    - generic
+defense_implications:
+    - Treat DNS and HTTPS/SNI-layer blocking as the fastest-growing threat vectors when prioritizing transport design; the data show these two methods account for the dominant share of new censorship deployments across more than 100 countries.
+    - Do not limit proxy infrastructure planning to countries explicitly labeled 'Not Free'; significant and growing censorship infrastructure now exists in nominally free countries, requiring broader geographic distribution of bridge/relay endpoints.
+section: §7.2, §7.1.2
+extracted_by: claude-sonnet-4-6

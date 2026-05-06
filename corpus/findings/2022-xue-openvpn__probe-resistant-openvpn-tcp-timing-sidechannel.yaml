@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-xue-openvpn
+kind: detection
+summary: 'Even with tls-auth/tls-crypt HMAC protection making OpenVPN servers nominally ''probe-resistant'' (silent to unauthenticated clients), the framework fingerprints servers via TCP-level timing side channels: a complete 16-byte client-reset probe triggers an immediate connection drop (HMAC validation fails after full packet reassembly), while a 15-byte truncated probe causes the server to stall awaiting the final byte until a server-specific handshake timeout expires. Over 97% of non-OpenVPN endpoints have RST thresholds below 500 or above 4,000 bytes, versus OpenVPN''s characteristic 1,550–1,660 bytes derived from default MTU configurations.'
+techniques:
+    - dpi
+    - active-probing
+defenses:
+    - obfs4
+censors:
+    - generic
+    - cn
+defense_implications:
+    - Probe-resistance that silently drops unauthenticated connections is insufficient; the asymmetric timing between full-packet HMAC rejection and truncated-packet reassembly timeout leaks server identity. Proxies should respond with randomized synthetic data or inject a random delay (as obfs4 does) rather than an immediate silent close.
+    - OpenVPN deployments should randomize their MTU-derived buffer sizes to obscure the characteristic RST threshold window (1,550–1,660 bytes) that distinguishes OpenVPN servers from the vast majority of non-VPN endpoints.
+section: §6.3
+extracted_by: claude-sonnet-4-6

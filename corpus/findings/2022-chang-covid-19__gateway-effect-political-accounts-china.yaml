@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-chang-covid-19
+kind: evaluation
+summary: 'Once mainland China users circumvented the Great Firewall during COVID-19, they disproportionately followed politically sensitive accounts: international news agencies at 1.31x the expected rate, Chinese citizen journalists at 1.42x, and political activists at 1.23x — all relative to Hong Kong users as a control — while state media accounts saw only a 1.06x increase and entertainment accounts a 0.85x decrease, confirming a selective gateway to censored political content.'
+techniques:
+    - ip-blocking
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Users who initially circumvent for a specific crisis-related purpose will immediately explore broadly censored political content — circumvention tools should be architected to handle diverse traffic patterns, not just narrow use-case flows.
+    - The persistence of new followers 1 year post-crisis implies that crisis-acquired circumvention habits are sticky; retention design (reliable reconnection, bookmark sync) converts crisis users into sustained users.
+section: Crisis Provided a Gateway to Censored Political Information / Types of Twitter accounts
+extracted_by: claude-sonnet-4-6

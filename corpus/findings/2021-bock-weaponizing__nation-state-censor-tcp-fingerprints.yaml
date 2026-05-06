@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-weaponizing
+kind: detection
+summary: 'Nation-state censors produce characteristic TCP response fingerprints: China''s GFW sends 3× RST+ACK (54 bytes each) from ~170 million IPs; Iran''s infrastructure sends 402–405-byte FIN+PSH+ACK plus 54-byte RST+PSH+ACK from 8.6 million IPs (75.7% of responsive Iranian addresses); Saudi Arabia sends a 97-byte PSH+ACK plus 2× 1,354-byte PSH+ACKs at 18.9× amplification from 400,000+ IPs. Most nation-state censors produce less than 4× amplification due to compact block pages.'
+techniques:
+    - rst-injection
+    - packet-injection
+    - middlebox-interference
+censors:
+    - cn
+    - ir
+    - sa
+    - ru
+defense_implications:
+    - These per-country TCP fingerprints can distinguish censor-injected responses from legitimate server responses — circumvention tools can use this to detect when a connection is being censored mid-path rather than rejected at the endpoint
+    - The GFW's dual-system architecture (RST+ACK vs RST sourced from different co-located subsystems depending on keyword and packet sequence) suggests that circumvention strategies can exploit keyword-list inconsistencies between these subsystems
+section: §5.5, Table 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-singh-india
+kind: evaluation
+summary: 'Indian ISPs use heterogeneous and overlapping censorship mechanisms with no single technique common across all providers: DNS tampering (ACT, Airtel, BSNL, MTNL), HTTP header filtering (all six ISPs), and SNI inspection (Jio only). Individual ISPs such as ACT simultaneously apply DNS-only blocking to 233 sites, HTTP-only to 1,873 sites, and both to 1,615 sites.'
+techniques:
+    - dns-poisoning
+    - keyword-filtering
+    - sni-blocking
+censors:
+    - in
+defense_implications:
+    - A circumvention transport that defeats only one blocking layer (e.g., DoH for DNS) remains vulnerable to the ISP's HTTP or SNI filtering on the same destination — all three layers must be addressed simultaneously.
+    - 'Use a fully tunneled proxy architecture rather than protocol-specific patches: routing all traffic through an encrypted tunnel eliminates exposure to DNS, HTTP-header, and SNI inspection in a single step.'
+section: §5.1, Table 2
+extracted_by: claude-sonnet-4-6

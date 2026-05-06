@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-measuring
+kind: evaluation
+summary: Anonymization and circumvention tools (VPNs, Tor, etc.) are among the three most commonly blocked content categories across all commercial filters surveyed, alongside pornography and gambling. This holds across diverse products including Fortinet, Cisco, and government-deployed firewalls in Iran, Saudi Arabia, and Bahrain.
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - tor
+    - pluggable-transport
+    - shadowsocks
+censors:
+    - ir
+    - sa
+    - cn
+    - ru
+defense_implications:
+    - 'Circumvention tools must not self-identify: any protocol that advertises itself as a VPN or Tor endpoint via domain name, HTTP host header, or TLS SNI will be systematically blocked by deployed commercial filters — traffic must blend with allowed categories.'
+    - Blocking of anonymization categories is built into commercial filter subscription blacklists (not just manually curated), meaning new circumvention endpoints get caught by category classification, not only by IP reputation — domain fronting via CDNs or unclassified IP space is preferable to dedicated proxy infrastructure.
+section: §V-A-1, Fig. 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-wei-domain
+kind: evaluation
+summary: In 200-request latency experiments, all five CDN providers used for domain shadowing yielded lower round-trip times than directly fetching from the origin server; Azure, Fastly, and StackPath showed median delays less than half those of direct visits. User-configured VPS HTTP proxies — including a powerful AWS t3a.2xlarge instance (8 vCPU, 32 GB RAM) — still underperformed CDN-based domain shadowing.
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - CDN-based circumvention (domain shadowing) offers both a latency advantage over VPS proxies and cost parity (~$0.04–0.28/GB), making it a user-experience improvement rather than purely a security trade-off.
+    - 'Prefer dedicated CDN providers (Fastly, StackPath) over cloud-platform CDNs (Google Cloud CDN, AWS CloudFront) for domain shadowing deployments: dedicated CDNs showed lower and more consistent latency in experiments, and have simpler configuration flows.'
+section: §5.4, Figure 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-xue-openvpn
+kind: detection
+summary: 34 of 41 obfuscated OpenVPN configurations and 18 of 20 UDP configurations were co-located with vanilla TCP OpenVPN servers within the same /29 subnet; probing the /29 subnet of a suspected obfuscated or UDP endpoint revealed nearby vanilla TCP servers, enabling confirmation by 'guilt by association' even when the obfuscated endpoint itself resisted direct fingerprinting. Some providers additionally share infrastructure across different VPN brands, further compounding exposure.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Obfuscated VPN bridge servers must be hosted on entirely separate network address blocks — ideally separate ASNs — from vanilla VPN infrastructure; sharing a /29 or /24 with known OpenVPN endpoints allows adversaries to identify obfuscated services through subnet-level probing without ever directly fingerprinting the obfuscated traffic.
+    - 'Treat bridge infrastructure as a one-way secret: once a bridge IP''s subnet is linked to a known VPN provider, assume the entire /29 is compromised and rotate to a fresh, isolated address block.'
+section: §7.5, §9.1
+extracted_by: claude-sonnet-4-6

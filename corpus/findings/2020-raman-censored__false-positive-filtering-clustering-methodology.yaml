@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-censored
+kind: evaluation
+summary: Of 21.8 billion raw measurements, approximately 7% (1.5 billion) were initially flagged as blocked; iterative HTML clustering and DBSCAN image clustering then removed ~500 million false positives, leaving ~1 billion confirmed blocked measurements. The clustering process formed 457 new response clusters, of which 308 were confirmed blockpages and 149 were false positives, with Cloudflare bot-checks being a notable source of false positives in HTTPS measurements.
+techniques:
+    - measurement-platform
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - When instrumenting circumvention infrastructure for blocking detection, apply multi-step response clustering before acting on blocked-connection signals; raw block flags overcount real censorship by roughly 33% in large-scale deployments.
+    - Treat CDN-side bot checks (Cloudflare, Akamai) as a distinct failure class separate from censor-induced resets, or false positives will inflate apparent blocking rates for HTTPS-based transports.
+section: §5.1.3, §5.1.4
+extracted_by: claude-sonnet-4-6

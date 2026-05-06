@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-bhaskar-many
+kind: evaluation
+summary: The lowest 3 bits of the source IP nearly double the number of destinations experiencing censorship measurement changes, consistent with routers XOR-ing low-order bits of source and destination IPs for load-balancing decisions. Varying source IPs produced a mean of 89 routing nodes and 134 distinct paths, versus 55 nodes and 110 paths when varying only source ports.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - When selecting source IPs for circumvention probes or relay addresses, ensure diversity across all 8 values of the lowest 3 bits to maximize path diversity and surface censor-bypassing routes.
+    - Model GFW reachability as a function of (src_ip & 0x7) XOR (dst_ip & 0x7); sweeping just 8 source IP low-bit combinations may be sufficient to find a censor-free routing path.
+section: §5.3
+extracted_by: claude-sonnet-4-6

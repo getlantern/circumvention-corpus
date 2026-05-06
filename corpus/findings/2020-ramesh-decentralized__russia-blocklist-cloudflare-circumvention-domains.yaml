@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ramesh-decentralized
+kind: deployment
+summary: Of 44,797 CDN-served domains on the April 2019 Roskomnadzor blocklist, 99.6% (44,615) were hosted on Cloudflare—attributable to Cloudflare's free tier with minimal vetting enabling rapid mirror-domain creation by blocked operators; the blocklist also contained 1,769 responsive circumvention-related domains, confirming that circumvention infrastructure is an active and documented blocklist target.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - ru
+defense_implications:
+    - Circumvention tool domains and mirrors hosted on Cloudflare are high-priority, easily discovered blocklist targets; operators must maintain rapid domain rotation and should not treat Cloudflare hosting as protective cover.
+    - CDN-based domain fronting through Cloudflare is strategically fragile in Russia, as Cloudflare IPs already appear heavily on the blocklist and collateral blocking of CDN space is a documented Russian tactic.
+section: §V-B, Table III–IV
+extracted_by: claude-sonnet-4-6

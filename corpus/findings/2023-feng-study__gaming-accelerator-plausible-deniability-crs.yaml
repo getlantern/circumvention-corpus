@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-feng-study
+kind: defense
+summary: 17 of 35 interview participants used game accelerators or GFW ladders interchangeably to connect to international gaming platforms; several popular VPNs bundle game acceleration, and open-source accelerators (e.g., Steam++, rebranded as Watt Toolkit) provide partial GFW-evasion covering GitHub, Google Authenticator, Pixiv, Discord, and Twitch. The paper recommends CRSes market as gaming accelerators to provide plausible deniability, while capping active accounts or rebranding periodically to avoid attracting censor attention as popularity grows.
+techniques:
+    - ip-blocking
+defenses:
+    - mimicry
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Build genuine gaming-latency-reduction functionality into circumvention tools so that users can truthfully claim the tool is a game booster if their device is inspected, not merely cosmetically rebrand.
+    - Implement user-count caps or staged rollouts and plan for periodic rebranding before a tool's popularity crosses the threshold that triggers active censor enumeration.
+section: §9.2, §9.3
+extracted_by: claude-sonnet-4-6

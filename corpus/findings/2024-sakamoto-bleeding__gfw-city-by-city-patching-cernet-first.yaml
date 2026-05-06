@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-sakamoto-bleeding
+kind: deployment
+summary: 'The GFW patched the out-of-bounds read vulnerability city by city in October–November 2023, updating from least to most international traffic: CERNET/Beijing before October 26, Guangzhou on October 30, and Shanghai in two distinct phases on October 31 and November 1, with all updates occurring around 11 a.m. CST. Shanghai, which terminates the most international submarine cables, was updated last and in two steps to minimize side effects.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - The GFW's city-by-city, ISP-by-ISP update cadence (confirmed through live leak-rate monitoring) means new blocking rules or patched injectors roll out with observable geographic and provider-specific gaps — circumvention tools can monitor GFW behavior differentially across entry ISPs to detect partial deployment windows.
+    - CERNET appears to serve as the GFW's experimental update target due to its limited international bandwidth — behavior changes observed on CERNET may predict broader GFW changes 3–7 days before they reach major ISPs.
+section: §4.5 Maintenance and Update
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-sharma-siegebreaker
+kind: detection
+summary: 'SiegeBreaker explicitly acknowledges two unresolved attack vectors: (1) latency-based traffic analysis attacks (forced-asymmetry / RAD-style), which the system does not mitigate, and (2) website fingerprinting attacks against the proxied traffic, for which no defense is implemented. Additionally, the email-based control channel is vulnerable to a censor who can delay or block emails to the controller''s address, disrupting rule installation before the client''s SYN packet arrives.'
+techniques:
+    - traffic-shape
+    - website-fingerprint
+    - dpi
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any DR design that does not pad or reshape proxied traffic remains vulnerable to website fingerprinting; integrating padding oracles or HTTPOS-style traffic shaping at the secret proxy layer is needed before deployment in high-adversary environments.
+    - Out-of-band control channels (email, SMS, IM) introduce a timing dependency that a network-level adversary can exploit by selectively delaying control messages; DR designs should architect for control-channel unavailability by caching pre-registered sessions or supporting a fallback in-band registration path.
+section: §3, §4.1, §4.3
+extracted_by: claude-sonnet-4-6

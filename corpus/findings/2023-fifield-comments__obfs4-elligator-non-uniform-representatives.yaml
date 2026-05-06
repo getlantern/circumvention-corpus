@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-comments
+kind: detection
+summary: 'Three independent implementation flaws in obfs4proxy''s Elligator encoding made obfs4 public-key representatives passively distinguishable from uniform random bytes: (1) non-canonical square roots allowed a square-then-root test matching 100% of obfs4 outputs but only ~50% of random strings; (2) bit 255 was always zero; (3) only large prime-order subgroup points were encoded. A classifier exploiting these achieves 100% sensitivity (obfs4 never falsely marked as random) at less-than-100% specificity. All three were fixed in obfs4proxy-0.0.12 (December 2021) and 0.0.14 (September 2022).'
+techniques:
+    - fully-encrypted-detect
+    - traffic-shape
+defenses:
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Elligator implementations must randomize high-order bits beyond the formal 254-bit definition (bits 254–255 when encoding to 32 bytes) and must use canonical square roots; these are silent API-boundary omissions that produce statistical distinguishers without causing interoperability failures.
+    - Circumvention protocols using public-key cryptography should ship test vectors that verify representatives are statistically uniform over large samples, since implementation errors in this area produce no crashes and no handshake failures.
+section: §3
+extracted_by: claude-sonnet-4-6

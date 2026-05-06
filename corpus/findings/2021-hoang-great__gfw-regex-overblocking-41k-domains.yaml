@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hoang-great
+kind: detection
+summary: The GFW uses substring-matching regular expressions rather than exact domain matching, causing 41K of 311K censored domains to be overblocked — unrelated domains that happen to contain a censored domain string. The three base domains causing the most overblocking (919.com, jetos.com, 33a.com) collectively caused 15K unrelated domains to be inadvertently censored.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Domain names chosen for circumvention infrastructure should be audited against the GFW base domain list to avoid substring collisions that cause automatic blocking.
+    - Even newly registered domains with innocuous content can be collaterally censored if they textually contain a blocked keyword — operators should screen candidate domains before deployment.
+section: §4.1
+extracted_by: claude-sonnet-4-6

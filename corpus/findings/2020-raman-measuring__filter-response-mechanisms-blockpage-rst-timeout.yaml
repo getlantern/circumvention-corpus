@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-measuring
+kind: evaluation
+summary: In HTTP tests, more than 50% of filter responses that indicated censorship contained an injected HTML blockpage; the remainder used TCP RST injection or connection timeout. In HTTPS measurements, canonical template matching had a failure rate of only 1.9%, and 95% of Hyperquack measurements completed within 3.5 hours across ~45,000 vantage points.
+techniques:
+    - dpi
+    - rst-injection
+    - sni-blocking
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Over half of deployed commercial filters respond to HTTP/HTTPS keyword matches with injected HTML — a circumvention transport that completes a valid TLS handshake and never sends an HTTP Host header or SNI matching a blocked domain will evade the most common filter response path.
+    - TCP RST injection is the secondary blocking mechanism after blockpages — transports should implement RST-resilience (ignore RST after data is in flight, or use QUIC/UDP-based transports) as a complementary defense.
+section: §III-A, §IV
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-chasing
+kind: detection
+summary: ShadowTLS's TLS ClientHello fingerprint (JA3 hash ebaa863800590426) was not observed in the TLSFingerprint.io dataset collected from a university network tap, making the client fingerprint unique to the tool and trivially blockable by censors maintaining a TLS fingerprint blocklist.
+techniques:
+    - tls-fingerprint
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Any new circumvention tool must mimic a high-prevalence TLS fingerprint from day one — use uTLS or equivalent to clone a browser's exact ClientHello cipher-suite ordering and extensions before deployment.
+    - Validate new fingerprints against a live fingerprint corpus (e.g., TLSFingerprint.io) before release; a fingerprint absent from that corpus is a blocking signal regardless of other mimicry properties.
+section: §3.2
+extracted_by: claude-sonnet-4-6

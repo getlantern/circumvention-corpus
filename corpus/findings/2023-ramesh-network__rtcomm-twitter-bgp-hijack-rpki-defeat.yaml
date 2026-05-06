@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-network
+kind: detection
+summary: On March 28, 2022, Russian ISP RTComm (AS8342) hijacked Twitter's IPv4 prefix 104.244.42.0/24 for approximately 45 minutes (12:05–12:50 UTC) and announced it to the global Internet as a blocking measure. The hijack was blunted because Twitter had preemptively registered RPKI route origin authorizations (ROAs) for its prefixes, causing RPKI-validating ASes worldwide to reject the hijacked route.
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+censors:
+    - ru
+defense_implications:
+    - Circumvention infrastructure operators should publish RPKI ROAs for all critical IP prefixes; BGP hijack-based censorship is effectively defeated by RPKI-validating upstream providers.
+    - Operators should monitor BGP route announcements for their prefixes in real time (e.g., via IODA or RouteViews) so that hijacks are detected within minutes and users can be redirected to alternate entry points.
+section: §4.3
+extracted_by: claude-sonnet-4-6

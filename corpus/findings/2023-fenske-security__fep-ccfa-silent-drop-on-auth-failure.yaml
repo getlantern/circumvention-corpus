@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fenske-security
+kind: defense
+summary: Achieving active security (FEP-CCFA) requires that on any AEAD decryption failure a fully encrypted protocol silently return the empty string and keep the channel open indefinitely, never emitting a channel-closure signal. Any observable behavioral difference — including connection termination timing — leaks information about ciphertext-boundary locations to an active adversary.
+techniques:
+    - active-probing
+    - fully-encrypted-detect
+defenses:
+    - obfs4
+    - shadowsocks
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Replace all close-on-error connection teardowns with silent infinite-drop behavior; connection closure on decryption failure is a distinguishing oracle even when the ciphertext itself is indistinguishable from random.
+    - Authenticate every byte that carries framing information (length fields, record delimiters, padding counts) so that forged or modified framing triggers the silent-drop path rather than a distinguishable error response.
+section: §2.3
+extracted_by: claude-sonnet-4-6

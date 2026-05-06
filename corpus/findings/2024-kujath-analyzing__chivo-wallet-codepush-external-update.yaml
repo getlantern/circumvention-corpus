@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kujath-analyzing
+kind: deployment
+summary: The Chivo Wallet app — the official El Salvador government Bitcoin wallet with 1M+ downloads — uses Microsoft CodePush to check 'codepush.appcenter.ms' for JavaScript/HTML/CSS updates each time it opens, bypassing Google Play Store review entirely. This allows the government of El Salvador to push arbitrary behavioral changes to all users' devices without any app store vetting or user notification.
+censors:
+    - generic
+defense_implications:
+    - Circumvention apps must never use DCL/CodePush-style update mechanisms; all code changes should go through a verifiable, reproducible-build release channel so auditors can detect tampering between versions.
+    - Tool designers distributing in regions where co-installed government apps use out-of-band update channels should warn users that those apps may be silently updated to surveil or interfere with circumvention tool operation.
+section: §7.3, Table 4
+extracted_by: claude-sonnet-4-6

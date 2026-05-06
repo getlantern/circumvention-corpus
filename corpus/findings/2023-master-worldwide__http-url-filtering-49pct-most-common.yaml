@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-master-worldwide
+kind: evaluation
+summary: HTTP/URL/keyword filtering was the most prevalent censorship method both during the measurement period (49% of countries) and historically (69%), despite 82% global HTTPS adoption. The authors attribute this persistence to censors lacking technical sophistication to upgrade, and to uneven HTTPS adoption leaving older methods effective in underserved regions.
+techniques:
+    - keyword-filtering
+    - dpi
+defenses:
+    - tunneling
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Even baseline TLS tunneling provides significant relief against the modal censor; circumvention tools should ensure TLS wrapping is on by default for all traffic, not just sensitive destinations.
+    - Do not assume full-HTTPS penetration in target user populations — design fallback paths that function even where plaintext HTTP is common, since censors in those regions may rely on content inspection.
+section: §4.2, Table 2
+extracted_by: claude-sonnet-4-6

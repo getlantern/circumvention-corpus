@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-wang-symtcp
+kind: detection
+summary: The GFW's dominant exploitable discrepancy is accepting data packets whose TCP sequence number is ≤ the initial sequence number (ISN), while Linux rejects such packets as out-of-window. This single 'SEQ ≤ ISN' strategy accounts for the majority of the 3,152 successful evasion-packet cases against the GFW out of 4,587 total successful evasions.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Prepend an evasion packet with SEQ ≤ ISN before the sensitive payload; the GFW's TCP reassembly de-synchronizes and the subsequent data packet passes inspection while the server ignores the throwaway segment — no application-layer obfuscation required.
+    - 'This discrepancy is at the TCP reassembly layer, making it protocol-agnostic: it works regardless of whether the overlying protocol is HTTP, TLS, or a custom circumvention protocol.'
+section: §VIII.C
+extracted_by: claude-sonnet-4-6

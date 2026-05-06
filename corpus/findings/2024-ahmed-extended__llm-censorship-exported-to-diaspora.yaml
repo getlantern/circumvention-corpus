@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ahmed-extended
+kind: policy
+summary: Because LLMs such as ChatGPT (over 100 million weekly active users) reflect CCP information-control requirements when prompted in Simplified Chinese, they effectively export Chinese domestic censorship to diaspora communities and non-China-based Chinese speakers worldwide — extending the reach of information manipulation beyond any jurisdiction where Chinese censorship law applies.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools providing access to AI assistants should document and warn users that the underlying LLM's training data origin affects the political neutrality of responses, not just whether the network path is unblocked.
+    - Consider supplementing LLM responses on censored topics with retrieval from uncensored corpora (e.g., Wikipedia) to counteract training-data-level censorship.
+section: §1 / §3.2
+extracted_by: claude-sonnet-4-6

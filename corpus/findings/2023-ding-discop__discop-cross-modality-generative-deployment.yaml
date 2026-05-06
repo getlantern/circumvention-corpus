@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ding-discop
+kind: defense
+summary: Discop's core algorithm is modality-agnostic and deploys unchanged across text generation (GPT-2, DistilGPT-2, Transformer-XL), image completion (Image GPT), and text-to-speech (Tacotron + WaveRNN), requiring only that both parties share the generative model, PRNG, and seed. The same zero-KLD security proof applies across all modalities.
+defenses:
+    - steganography
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Implement generative steganography as a modality-agnostic layer above any explicit autoregressive model so the circumvention tool can rotate cover media (text posts, synthetic images, TTS audio) in response to selective blocking without redesigning the covert-channel protocol.
+    - Distributing cover-medium selection across multiple generative modalities (text, image, speech) forces the censor to block all autoregressive AI output at once, imposing prohibitive collateral damage on legitimate traffic.
+section: §IV
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-global
+kind: detection
+summary: Manual analysis of 700+ unique packet groupings from possibly tampered connections yielded 19 high-confidence tampering signatures — up from 6 in prior work — covering 86.9% of all possibly tampered connections. Post-SYN signatures account for 43.2% of possibly tampered connections (99.5% matching a known signature), post-ACK for 16.1% (98.7%), and post-first-data-packet (PSH+ACK) for 5.3% (97.9%), with 19 signatures described as flag-sequence patterns of the form ⟨X→Y⟩ in Table 1.
+techniques:
+    - rst-injection
+    - packet-injection
+    - dpi
+defense_implications:
+    - Circumvention traffic that avoids triggering RST injection (e.g., QUIC/UDP-based transports that have no TCP RST semantics, or TLS-mimicking transports that don't carry cleartext SNI in ClientHello) sidesteps the dominant detection signal entirely.
+    - Post-PSH signatures fire on the first data packet containing a TLS ClientHello SNI or HTTP Host header; designs that use Encrypted ClientHello (ECH) or domain fronting eliminate the cleartext trigger, forcing the censor to rely on less reliable IP or timing signals.
+section: §4.1, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fenske-security
+kind: detection
+summary: Obfs4's data-transport phase encrypts per-record length fields with an unauthenticated stream cipher. An active adversary can overwrite this field to force a predictable TCP connection termination at a calculable byte offset; the authors experimentally confirmed that Tor-over-Obfs4 connections can be reliably distinguished from other FEPs because client initiation messages have consistent lengths.
+techniques:
+    - active-probing
+    - fully-encrypted-detect
+defenses:
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Authenticate all framing metadata (length fields, padding indicators) with the same AEAD used for payload — any unauthenticated framing field is an active-distinguisher oracle.
+    - On AEAD decryption failure, silently discard bytes and hold the connection open indefinitely rather than closing; a predictable closure leaks ciphertext boundary information to active adversaries.
+section: §2.3
+extracted_by: claude-sonnet-4-6

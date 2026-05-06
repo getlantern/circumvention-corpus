@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-m-ller-turning
+kind: detection
+summary: 'China''s Great Firewall showed anomalous inconsistency: 13 test vectors produced mixed outcomes—TCP RST injection on some executions and a clean server response on others—with circumvention rates between 10% and 35% across 100 executions per vector. The authors attribute this to heterogeneous GFW infrastructure components applying different HTTP parsing logic, a departure from the GFW''s usual consistency.'
+techniques:
+    - dpi
+    - rst-injection
+    - keyword-filtering
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools targeting China should not assume uniform GFW behavior across all network paths; retry logic or multi-path probing is warranted since the same vector may work ~10–35% of the time even when it is not universally effective.
+    - CL*/TE vectors with trailing line-feed injections (\0a) in the Content-Length value are the primary candidates that achieved partial GFW bypass and should be prioritized in further fuzzing against China.
+section: §5.2
+extracted_by: claude-sonnet-4-6

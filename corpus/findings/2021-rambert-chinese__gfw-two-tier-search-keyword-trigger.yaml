@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rambert-chinese
+kind: detection
+summary: 'The GFW maintains two HTTP keyword sublists: 15 terms censored unconditionally, and approximately 60–63 additional terms censored only when the English word "search" also appears in the request URL. No other English word among the 10,000 most common, no Chinese search synonym (搜索, 查找, 关键词), and no common URL parameter abbreviation ("q", "kw", "s") replicates this expanded-censorship trigger.'
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Avoid using the string "search" in proxy URL paths to prevent triggering the expanded keyword blocklist — rename search endpoints to semantically neutral paths.
+    - Circumvention traffic that must pass through HTTP cleartext should use non-triggering URL path names to reduce the surface area of keyword matching.
+section: §4.1, §4.2.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-amich-deresistor
+kind: detection
+summary: Geneva packet-manipulation probing traffic exhibits distinctive features — corrupt data-offset fields, smaller packet sizes, overlapping TCP segments, TTL variance, and non-zero SYN packets — that allow simple ML classifiers (Decision Trees, Random Forests, Logistic Regression, SVM) to detect it with AUC > 0.99. A subsequent TRW-based IP-level detector can then block the source IP with high confidence after inspecting only 2 Geneva probing flows.
+techniques:
+    - ml-classifier
+    - dpi
+    - traffic-shape
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Packet-manipulation strategy generators must minimize deviations in TCP header fields (data-offset, checksum, TTL, SYN options) from baseline benign traffic to avoid flow-level ML fingerprinting during the censor-probing phase.
+    - Any tool that probes a censor repeatedly from the same IP is at risk of sequential-hypothesis-test IP blocking after as few as 2 anomalous flows — probing infrastructure should rotate source IPs or distribute probes across nodes.
+section: §4.1–§4.2
+extracted_by: claude-sonnet-4-6

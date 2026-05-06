@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rambert-chinese
+kind: detection
+summary: The GFW enforces SNI-based blocking on every TCP port (not just 443), triggering TCP RST injection and a penalty box for known-censored hostnames (e.g., facebook.com, zh.wikipedia.org) in the TLS ClientHello. The SNI blocklist is separate from the HTTP keyword blocklist — keyword-derived subdomains in the SNI did not trigger censorship. No evidence was found for indiscriminate HTTPS decryption or certificate substitution.
+techniques:
+    - sni-blocking
+    - rst-injection
+    - dpi
+defenses:
+    - ech-esni
+    - domain-fronting
+censors:
+    - cn
+defense_implications:
+    - The SNI field remains the primary HTTPS attack surface for the GFW — deploy Encrypted ClientHello (ECH) or domain fronting to hide the true destination hostname from in-path inspection.
+    - Since the SNI blocklist contains only explicitly sanctioned hostnames (not keyword subdomains), circumvention proxies on uncensored domain names are not at risk from SNI keyword matching alone.
+section: §4.6
+extracted_by: claude-sonnet-4-6

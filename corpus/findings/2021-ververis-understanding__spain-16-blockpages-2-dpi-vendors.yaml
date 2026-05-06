@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-ververis-understanding
+kind: evaluation
+summary: Analyzing over 3 million OONI network measurements (2016–2020) from 17 ASes covering 98.45% of broadband and 90.94% of mobile subscribers in Spain, the study detected 16 unique blockpages, 2 DPI vendors (Fortinet/Fortigate in Telefonica; Allot in Vodafone), and 78 blocked websites across copyright, political, civil-rights, and referendum categories.
+techniques:
+    - dpi
+    - dns-poisoning
+    - packet-injection
+    - sni-blocking
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Blockpage fingerprinting (simhash on HTML body) is an effective enumeration method for censored domains — circumvention tools should test domains discovered via this technique, not just explicit blocklists.
+    - When multiple DPI vendors are confirmed across major ISPs in a country, tools should test evasion against each vendor's known inspection characteristics rather than assuming a homogeneous middlebox environment.
+section: §3, §4
+extracted_by: claude-sonnet-4-6

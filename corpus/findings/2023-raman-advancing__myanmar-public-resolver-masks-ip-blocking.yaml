@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-advancing
+kind: evaluation
+summary: Previous work reported that Myanmar ISPs selectively applied DNS blocking versus TCP/IP blocking, but analysis of the underlying data revealed they applied both concurrently. The apparent difference arose because some OONI volunteers bypassed DNS tampering by using public DNS resolvers (Cloudflare, Google Public DNS) and subsequently experienced IP-level blocking instead, making measurements appear selective when they were not.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - mm
+defense_implications:
+    - Circumvention tools operating in environments with both DNS and IP blocking must not assume a single blocking layer is in use; test against both system resolvers and known-clean resolvers to surface the full blocking stack.
+    - Measurement infrastructure embedded in circumvention clients should record which DNS resolver was used per measurement to correctly attribute blocking type and avoid mischaracterizing the censor's methods.
+section: §3.1
+extracted_by: claude-sonnet-4-6

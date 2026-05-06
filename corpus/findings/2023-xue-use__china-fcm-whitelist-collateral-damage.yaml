@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-xue-use
+kind: deployment
+summary: After blocking all *.google.com subdomains on September 22, 2022, China's censor lifted the block specifically for FCM endpoints on October 1 while leaving other Google services (Docs, Groups, Sites) blocked through at least February 2023. This selective whitelist exception — made after only days of blocking — indicates the censor judged the collateral damage to apps relying on FCM to be unacceptable.
+techniques:
+    - ip-blocking
+    - sni-blocking
+censors:
+    - cn
+defense_implications:
+    - Design circumvention transports around services with demonstrated collateral-damage immunity (e.g., FCM, APNS) rather than generic cloud infra; evidence that censors explicitly whitelist them provides a durable blocking-resistance argument.
+    - Track censor whitelist behavior longitudinally — a service that survived one blocking event with a whitelist exception is empirically more resilient than one with no tested history.
+section: §5.1, Figure 5
+extracted_by: claude-sonnet-4-6

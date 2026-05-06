@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-moon-pryde
+kind: detection
+summary: 'Stateful firewalls used as censorship middleboxes exhibit counter-intuitive implementation behaviors: FW-3 forwards ACK packets before a TCP handshake is initiated, and FW-1 actively spoofs RST packets in response to unsolicited traffic to thwart evasion attempts. These vendor-specific quirks create or close evasion opportunities that are invisible to rule-verification tools and not predictable from policy documentation alone.'
+techniques:
+    - middlebox-interference
+    - rst-injection
+censors:
+    - generic
+defense_implications:
+    - Fingerprint the specific firewall vendor and version deployed by a censor before designing an evasion strategy — pre-handshake ACK forwarding or RST-spoofing behavior varies dramatically across implementations and invalidates generic assumptions.
+    - Probe for RST-injection behavior early in protocol negotiation; a censor that actively spoofs RSTs will neutralize many evasion sequences that rely on out-of-order or pre-handshake packets.
+section: §1 Introduction, Findings 3–4
+extracted_by: claude-sonnet-4-6

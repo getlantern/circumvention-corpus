@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gao-extended
+kind: evaluation
+summary: CenDTect (Tsai et al., NDSS 2024) uses decision trees and a novel clustering method on Censored Planet plus OONI data to identify blocking policies and provide interpretable insights at local and country levels. A separate approach (Duncan & Chen, 2023) applies sequence-to-sequence models and CNN image classification — treating network reachability data as grayscale images — to distinguish censored from uncensored content.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Treating network reachability snapshots as 2-D images for CNN classification is a concrete data-representation technique circumvention researchers can borrow to detect ISP-level blocking patterns without per-rule engineering.
+    - Decision-tree-based blocking-policy detectors (CenDTect style) offer interpretable per-country breakdowns that can inform where and how to deploy circumvention infrastructure.
+section: §2 Related Works
+extracted_by: claude-sonnet-4-6

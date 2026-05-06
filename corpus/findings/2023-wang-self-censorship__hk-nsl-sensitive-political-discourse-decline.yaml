@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-self-censorship
+kind: policy
+summary: After the NSL entered into force in July 2020, the proportion of Hong Kong Tweets containing NSL-sensitive political keywords declined steadily and never returned to prior levels. By contrast, the control group's equivalent keyword usage rebounded (e.g., surging around the August 2021 Taliban takeover and March 2022 Ukraine invasion), indicating the Hong Kong decline is attributable to legal chilling rather than global topic cycles.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Chilling effects from speech law suppress demand for circumvention tools precisely when censorship is most acute; tool designers should not interpret declining usage as reduced need — it may reflect user fear of the tool itself.
+    - Building trust signals into the tool (warrant canaries, transparency reports, no-log architecture) can counteract the self-suppression dynamic where users avoid circumvention tools out of fear of prosecution.
+section: §4.2 / Figure 2a
+extracted_by: claude-sonnet-4-6

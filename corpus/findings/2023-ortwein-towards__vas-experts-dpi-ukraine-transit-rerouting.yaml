@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ortwein-towards
+kind: deployment
+summary: 'AS60299 (Mezhdugorodnyaya Mezhdunarodnaya Telefonnaya Stanciya Ltd) and AS201776 (Miranda-Media Ltd) deploy commercial DPI technology manufactured by Russian company VAS Experts to perform transit censorship. Ukraine is subject to transit censorship by the most Russian ASes (at least 5: AS3216, AS25227, AS35816, AS47203, AS201776), likely due to post-2022 re-routing of Ukrainian Internet traffic through Russian telecommunications infrastructure.'
+techniques:
+    - dpi
+    - packet-injection
+censors:
+    - ru
+defense_implications:
+    - Shared commercial DPI hardware (VAS Experts) across multiple Russian transit ASes means a single evasion technique effective against one AS may generalize to others; prioritize testing evasion against VAS Experts DPI specifically.
+    - Proxy infrastructure serving Ukrainian users should be designed with the assumption that some egress paths will traverse Russian ASes equipped with DPI; use fully encrypted or mimicry-based transports to avoid triggering blockpage injection.
+section: §5 Preliminary Results
+extracted_by: claude-sonnet-4-6

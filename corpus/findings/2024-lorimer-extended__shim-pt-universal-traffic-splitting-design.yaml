@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-lorimer-extended
+kind: defense
+summary: The authors propose a 'shim' pluggable transport that splits client traffic across N PT connections using unmodified existing PT bridges as proxies and a gateway bridge that correlates streams back into a Tor circuit via the Turbo Tunnel reliability pattern. This architecture enables all existing and future PTs to benefit from traffic splitting without modifying each PT's client or server code individually.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - ip-blocking
+defenses:
+    - pluggable-transport
+    - tor
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Implement traffic splitting as a transport-layer shim rather than per-PT: a single shim that handles splitting/correlation allows all downstream PTs to gain the defense without bespoke changes.'
+    - Use Turbo Tunnel–style end-to-end reliability above the splitting layer so packet reordering across heterogeneous paths does not break the session.
+section: §3
+extracted_by: claude-sonnet-4-6

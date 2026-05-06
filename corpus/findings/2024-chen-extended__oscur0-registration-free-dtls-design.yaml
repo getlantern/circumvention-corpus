@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-chen-extended
+kind: defense
+summary: Oscur0 eliminates Conjure's separate registration phase by steganographically encoding ECDH public key, phantom IP, and transport parameters into the encrypted application data of the first UDP (DTLS 1.2 with Connection ID) packet sent to the phantom IP, using Elligator encoding to make the public key indistinguishable from random bytes. This removes several round trips — registration, TCP handshake, and application handshake — compared to standard Conjure, and means censors cannot block the scheme by blocking registration alone.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - decoy-routing
+    - conjure
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Use UDP-based 0-RTT transports (DTLS with CID or QUIC) to embed all session parameters in the first packet, making registration-channel blocking irrelevant and cutting connection latency by multiple round trips.
+    - Apply Elligator encoding to public keys prepended to ciphertext so the full first packet appears as uniform random bytes, avoiding public-key fingerprinting by DPI.
+section: §3 Design
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-streisand-where
+kind: detection
+summary: The paper proposes detecting translation censorship by back-translating the Chinese text to English via Google Translate, embedding each paragraph with distiluse-base-multilingual-cased-v1, and solving a linear-sum-assignment bipartite matching weighted by negated cosine similarity. Paragraphs below a similarity threshold are flagged as cut; matched paragraphs are recursively compared at sentence level to detect alterations.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Multilingual sentence embeddings plus bipartite alignment can automate censorship audits of translated works at low cost, enabling scalable corpus-wide monitoring of Chinese editions of foreign books.
+    - The one-to-many sentence mapping limitation (one source sentence split into two translated sentences) requires a heuristic merge-and-rescore step to avoid false positives — incorporate this before deploying in production pipelines.
+section: §2 Methodology
+extracted_by: claude-sonnet-4-6

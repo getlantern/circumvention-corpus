@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-chasing
+kind: evaluation
+summary: Combining all three active probing attacks in an Internet-wide scan of 30 million HTTPS servers identified approximately 15,000 hosts (0.05%) behaving like ShadowTLS relays; of these only 6,000 presented TLS certificates for Alexa Top 1000 domains. The scan successfully discovered all four researcher-operated ShadowTLS relays planted as ground truth.
+techniques:
+    - active-probing
+    - measurement-platform
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - A censor can enumerate the near-complete population of ShadowTLS deployments at Internet scale with a handful of TCP connections per host — protocol mimicry designs must assume adversarial Internet-wide scanning as a baseline threat model.
+    - Choosing mask domains within the Alexa Top 1000 provides weak cover if only 6K of 15K suspected relays present matching certificates; certificate legitimacy alone is insufficient to defeat combined behavioral fingerprinting.
+section: §3.2, Table 2
+extracted_by: claude-sonnet-4-6

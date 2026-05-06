@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-gosain-too
+kind: evaluation
+summary: Conjure's initial registration step requires the client to connect to an overt website hosted outside the censor's jurisdiction before deriving the unused IP address for actual decoy routing, but CDN traffic localization means this bootstrap connection frequently terminates at a local front-end and never crosses the border. The paper finds that for India's Alexa top-100 sites, only 23 websites had any parallel (leaf) HTTP connections terminating outside the country, with a median of just 3 such external leaf connections per site.
+techniques:
+    - measurement-platform
+defenses:
+    - conjure
+    - decoy-routing
+censors:
+    - in
+    - generic
+defense_implications:
+    - Conjure and Slitheen-style schemes must pre-verify that their overt bootstrap domains have confirmed out-of-country hosting; anycast and in-country CDN domains should be excluded from the overt-site pool via active geolocation, not passive DB lookups.
+    - Explore using parallel embedded-URL connections (leaf HTTP requests within popular page loads) as supplementary cross-border signaling channels for decoy routing, since some fraction of embedded asset URLs terminate at foreign servers even when the main page does not.
+section: §5.2, §6.2
+extracted_by: claude-sonnet-4-6

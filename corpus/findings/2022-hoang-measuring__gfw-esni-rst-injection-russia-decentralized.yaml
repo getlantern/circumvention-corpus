@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-hoang-measuring
+kind: detection
+summary: China's GFW blocks all ESNI traffic via RST packet injection following a TLS ClientHello with an encrypted SNI field, confirmed since July 2020. Russia blocks ESNI in a decentralized, ISP-level fashion across at least three identified ASes (AS28890, AS52207, AS41754), each injecting RST packets independently.
+techniques:
+    - esni-eh-blocking
+    - rst-injection
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - ru
+defense_implications:
+    - RST-based ESNI blocking is already deployed at scale in China and Russia; any ECH-based circumvention must pair encrypted ClientHello with a strategy that survives RST injection (e.g., tunneling inside an already-established TLS session or using a decoy-routing scheme).
+    - Decentralized ISP-level ESNI blocking in Russia means circumvention tools cannot rely on a single national blocklist; per-ISP probing is required to characterize actual blocking coverage.
+section: §4.2
+extracted_by: claude-sonnet-4-6

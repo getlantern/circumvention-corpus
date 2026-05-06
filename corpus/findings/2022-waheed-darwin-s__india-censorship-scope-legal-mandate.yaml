@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-waheed-darwin-s
+kind: policy
+summary: India's censorship apparatus, while less aggressive than China's, legally mandates ISP-level blocking capability and has deployed it regularly. Of 6,012 URLs in ICLab's India test list observed since 2016, only 677 (11.3%) were ever overtly censored (block-page redirect); the majority of anomalies were covert (connection disruption mimicking network faults) and excluded from analysis due to ambiguity. Censorship topics include not only political dissent but copyright enforcement, indicating infrastructure originally deployed for political control is routinely repurposed.
+techniques:
+    - measurement-platform
+    - keyword-filtering
+censors:
+    - in
+defense_implications:
+    - Covert censorship (RST injection, timeouts) is the dominant mode in India and is underrepresented in block-page-based datasets; circumvention tools should not rely solely on block-page detection for coverage decisions.
+    - India's dual-use censorship infrastructure (political + copyright) means circumvention deployments may face legally-motivated blocking of non-political content—tool designers should not assume only activist-adjacent domains are at risk.
+section: §2, §3.1
+extracted_by: claude-sonnet-4-6

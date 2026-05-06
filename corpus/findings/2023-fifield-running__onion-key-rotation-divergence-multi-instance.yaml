@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-running
+kind: deployment
+summary: Multiple Tor instances initialized with copied identity keys will independently rotate their medium-term onion keys on a 28-day schedule, causing clients with cached older keys to fail circuit construction. The fix is blocking Tor's onion key rotation by pre-creating directories at the filesystem rename targets (secret_onion_key.old, secret_onion_key_ntor.old), which now effectively makes onion keys long-term secrets requiring the same protection as identity keys.
+defenses:
+    - pluggable-transport
+    - bridges
+defense_implications:
+    - Any multi-instance bridge deployment that replicates identity keys must also enforce key-rotation synchronization or disable rotation; mismatched onion keys silently break reconnecting clients without obvious error.
+    - 'Track onion key divergence as a monitoring concern: Tor logs rotation errors when blocked, providing an observable signal that the workaround is active.'
+section: §3.2
+extracted_by: claude-sonnet-4-6

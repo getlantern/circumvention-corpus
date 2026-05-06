@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-sharma-camoufler
+kind: defense
+summary: 'Camoufler''s blocking-resistance relies on collateral-damage economics: IM platforms had ~2.5 billion active users as of January 2019 (projected >3 billion by 2022) and are embedded in essential business and commercial operations (airline e-tickets, professional collaboration tools). Blocking all IM to disrupt Camoufler would require the censor to harm its own economy; the threat model requires only that the censor permits at least one IM platform, in which case Camoufler remains operational.'
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Design circumvention systems around cover channels (major IM platforms, CDNs, cloud storage) whose blocking would impose measurable economic or social costs on the censor, rather than channels (dedicated proxy IPs, niche services) the censor can block without collateral damage.
+    - Implement Camoufler-style multi-platform support (5+ IM apps) so a partial block of individual platforms does not eliminate the circumvention path.
+section: §3.1, §7
+extracted_by: claude-sonnet-4-6

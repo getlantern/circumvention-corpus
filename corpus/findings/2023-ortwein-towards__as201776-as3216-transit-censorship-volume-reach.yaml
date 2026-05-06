@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ortwein-towards
+kind: evaluation
+summary: AS201776 (Miranda-Media Ltd) is responsible for the largest volume of Russian transit censorship by destination IP count, affecting approximately 16,000 IP addresses in Ukraine from US and Sydney vantage points. AS3216 (PJSC Vimpelcom) has the widest geographic reach—delivering blockpages for traffic destined to 8 countries—but impacts no more than 1,000 IP addresses per country from any single vantage point.
+techniques:
+    - dpi
+    - packet-injection
+censors:
+    - ru
+defense_implications:
+    - AS201776 and AS3216 are the highest-priority Russian transit ASes to avoid or monitor; relay selection logic should flag routes through these ASes as elevated-risk for censorship interference.
+    - Wide geographic reach at low per-country IP count (AS3216) versus narrow geographic reach at high IP count (AS201776) suggests different censorship policy scopes; both patterns require active monitoring rather than blocklist-only mitigations.
+section: §5 Preliminary Results / Table 1
+extracted_by: claude-sonnet-4-6

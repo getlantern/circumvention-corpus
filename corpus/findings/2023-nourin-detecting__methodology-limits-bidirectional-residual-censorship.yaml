@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-nourin-detecting
+kind: evaluation
+summary: 'The endpoint-free methodology fails when bidirectional censorship is absent or when residual censorship is pervasive: experiments in Burundi, Equatorial Guinea, Myanmar, and Kyrgyzstan could not confirm bidirectional censorship, rendering automated triggering-and-measurement inapplicable. Residual censorship causes false positives by making innocuous domains appear blocked following a censored query.'
+techniques:
+    - measurement-platform
+    - rst-injection
+censors:
+    - mm
+defense_implications:
+    - Before deploying circumvention infrastructure in an under-studied country, run bidirectional-censorship probes (send censored vs. uncensored domains to the same server and compare responses) to determine whether the censor architecture is even detectable externally.
+    - 'Residual censorship duration and scope are critical deployment parameters: tools operating in high-residual-censorship networks must account for collateral blocking of non-targeted traffic originating from the same client IP.'
+section: §3
+extracted_by: claude-sonnet-4-6

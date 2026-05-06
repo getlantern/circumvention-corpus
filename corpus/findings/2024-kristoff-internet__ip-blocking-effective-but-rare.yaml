@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kristoff-internet
+kind: evaluation
+summary: IP-level access control was the most complete and effective sanctions enforcement mechanism—applied at or near the content destination—but was also the least commonly deployed approach. The paper attributes its rarity to the over-blocking risk when multiple services share a single IP address; one observed instance involved DDoS-mitigation providers performing IP-based enforcement that did not appear in DNS measurements.
+techniques:
+    - ip-blocking
+defense_implications:
+    - Co-hosting circumvention infrastructure on shared IPs or behind CDNs with high-value co-tenants raises the collateral damage cost of IP-level blocking and deters its use by enforcers.
+    - When an adversary escalates from DNS-only to IP-level enforcement, rotating IPs or fronting behind CDN shared infrastructure significantly raises the cost of sustained blocking and is the primary mitigation.
+section: §5.4
+extracted_by: claude-sonnet-4-6

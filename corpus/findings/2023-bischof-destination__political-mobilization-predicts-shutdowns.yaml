@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-bischof-destination
+kind: policy
+summary: Using merged IODA and KIO data across 155 countries (Jan 2018–Aug 2021), elections increase the daily probability of an Internet shutdown by a factor of 16, coups by a factor of roughly 300, and protests by a factor of 9. These political mobilization events do not increase the probability of spontaneous outages, providing a discriminating signal between intentional and unintentional disruptions.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Pre-position additional circumvention capacity in high-risk countries in advance of scheduled elections, announced protests, or unstable political situations.
+    - Build automated alerting that correlates IODA/shutdown-monitoring signals with political-event calendars to trigger pre-emptive user notification and bridge distribution.
+section: §5.2, Table 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tulloch-lox
+kind: evaluation
+summary: In a Rust implementation evaluated over 10,000 runs with 3,600 bridges (1,800 open-entry single-bridge buckets and 600 hot-spare three-bridge buckets), Lox's trust promotion protocol incurs the highest latency at 364.2 ms response time and 378 kB response size due to the encrypted migration hashtable, but this operation occurs only once per user. All other protocols complete in under 16 ms with request sizes under 3.4 kB.
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Pre-compute and cache per-day migration hashtables server-side rather than regenerating per request — trust promotion is a one-time cost, but check-blockage spikes coincide with real-world censorship events when server load is highest.
+    - Provision for burst capacity on check-blockage endpoints, as a strategic censor can trigger mass blockages during elections or crises to saturate the migration bandwidth and deny access to users who need it most.
+section: Table 4, §5.2
+extracted_by: claude-sonnet-4-6

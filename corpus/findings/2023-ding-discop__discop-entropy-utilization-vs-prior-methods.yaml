@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ding-discop
+kind: evaluation
+summary: Discop with Huffman-tree recursion achieves entropy utilization of 0.92–0.94 (bits embedded ÷ entropy available) and an embedding capacity of 3.48–5.29 bits/token across nucleus-sampling parameters p=0.80–0.98 with GPT-2, matching or exceeding ADG (0.78–0.84 utilization, 3.07–4.89 bits/token) while maintaining exactly zero KL divergence. Per-bit embedding time is 2.17E-03 to 5.52E-03 seconds, comparable to ADG.
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Use Discop's Huffman-tree recursion layer to close the gap between minimum-entropy and full-entropy embedding rates — without it, the base construction achieves only 38–48% entropy utilization, making bandwidth-efficient covert channels impractical.
+    - 'Tune nucleus-sampling parameter p ≥ 0.92 when deploying generative steganography: higher entropy budgets yield proportionally higher embedding rates with no security cost, reaching ~0.94 utilization at p=0.92–0.98.'
+section: §V, Table II
+extracted_by: claude-sonnet-4-6

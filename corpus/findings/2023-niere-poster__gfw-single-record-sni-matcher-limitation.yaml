@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-niere-poster
+kind: detection
+summary: 'The GFW''s SNI inspection is a stateless single-record parser: it cannot detect the SNI extension when the ClientHello is split across multiple TLS records, even when all records are contained within the same TCP segment. In contrast, the GFW does detect SNI when it appears fully within the first TCP segment despite TCP fragmentation, indicating the reassembly gap is specific to the TLS record layer.'
+techniques:
+    - sni-blocking
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Target the TLS record layer specifically — not just the TCP segment boundary — since GFW's SNI matcher does not maintain cross-record reassembly state even within a single TCP packet.
+    - Treat TLS record fragmentation as complementary to TCP segmentation; GFW hardening against one class does not imply hardening against the other.
+section: §3
+extracted_by: claude-sonnet-4-6

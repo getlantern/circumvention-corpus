@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-ramesh-vpnalyzer
+kind: evaluation
+summary: 'Among 80 tested VPN providers, 26 leaked user traffic during tunnel failure: 18 exhibited a missing or broken kill switch leaking all traffic types, and 8 additional providers leaked only DNS traffic. In a case study of 39 top providers with all security settings explicitly enabled (''custom secure mode''), 10 still leaked traffic, with 6 leaking even with the ''kill switch'' feature activated.'
+techniques:
+    - measurement-platform
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - 'Treat tunnel failure as an adversarial event during testing: induce failure by actively dropping packets to the VPN server and verify no traffic reaches the ISP — graceful disconnects are insufficient.'
+    - When writing firewall rules to implement a kill switch, add custom rules on top of existing rules rather than resetting them, to prevent overriding the VPN application's own kill switch logic and producing false-negative test results.
+section: §VI-B, §VI-H
+extracted_by: claude-sonnet-4-6

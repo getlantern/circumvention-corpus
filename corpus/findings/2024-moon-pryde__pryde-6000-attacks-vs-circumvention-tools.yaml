@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-moon-pryde
+kind: evaluation
+summary: Pryde generates more than 6,000 successful and unique evasion attacks against 4 popular stateful firewalls, which is 2–3 orders of magnitude higher than censorship circumvention algorithms (e.g., Geneva) and black-box fuzzing. The gap arises because circumvention tools only uncover shallow evasion sequences and cannot systematically explore the full attack-state space.
+techniques:
+    - middlebox-interference
+    - dpi
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Do not rely on genetic-algorithm circumvention tools (Geneva-style) as a complete audit of what packet sequences evade a censor's stateful infrastructure — they miss the overwhelming majority of exploitable states.
+    - Use model-guided black-box inference (Pryde-style) to enumerate firewall-specific evasion sequences before assuming a given path through a censor is truly blocked.
+section: §1 Introduction, Finding 1
+extracted_by: claude-sonnet-4-6

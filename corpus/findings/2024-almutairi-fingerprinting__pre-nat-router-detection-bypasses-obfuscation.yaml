@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-almutairi-fingerprinting
+kind: detection
+summary: The threat model requires no DPI and was fully implemented as a Linux kernel module on a NETGEAR R6120 with only a 580 MHz processor, 16 MB ROM, and 64 MB RAM, adding negligible overhead. Unlike ML-based or DPI-based VPN classifiers, the statistical model operates pre-NAT on per-device private IP flows, making it immune to obfuscation techniques that alter packet payloads or disguise protocol handshakes.
+techniques:
+    - traffic-shape
+defenses:
+    - mimicry
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Payload obfuscation (obfs4, Shadowsocks, pluggable transports) provides zero protection against this detector — circumvention tools must address the IP-destination distribution pattern, not just the packet content.
+    - ISP-provisioned home routers represent a previously unconsidered deployment surface for censor-supplied firmware; circumvention tool threat models should account for adversarial infrastructure at the LAN gateway, not only on-path middleboxes.
+section: §I, §IV
+extracted_by: claude-sonnet-4-6

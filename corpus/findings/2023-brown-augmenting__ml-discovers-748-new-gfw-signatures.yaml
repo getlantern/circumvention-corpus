@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-brown-augmenting
+kind: evaluation
+summary: By mapping ML-predicted censored probes back to their DNS response IPs, the authors discovered 748 forged IP addresses used by China's GFW as DNS blocking signatures that OONI's heuristics missed; supervised and unsupervised models also identified several ISP-specific injected IPs absent from even GFWatch's comprehensive signature list, demonstrating that static signature lists substantially undercount active GFW DNS censorship.
+techniques:
+    - dns-poisoning
+    - ml-classifier
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Any circumvention tool or measurement platform relying on a static list of known GFW fake IPs will miss hundreds of active blocking entries; dynamic ML-based signature discovery should supplement or replace static lists.
+    - ISP-heterogeneous fake IPs mean a domain may be blocked differently across Chinese ASes; probe from multiple vantage points before concluding a domain is censored network-wide.
+section: §4.2, Table 4
+extracted_by: claude-sonnet-4-6

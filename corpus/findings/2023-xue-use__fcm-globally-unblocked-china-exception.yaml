@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-xue-use
+kind: evaluation
+summary: Over 7 months of Hyperquack measurements across 5,555,298 probes targeting 1,632 unique ASes, only a small number of ASes actively interfered with HTTPS connections to FCM endpoints. The majority of blocking incidents occurred in China during September 22–30, 2022, coinciding with the Party's National Congress, when nearly all measurements failed with TCP reset.
+techniques:
+    - sni-blocking
+    - rst-injection
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Service tunneling through push notification providers (FCM/APNS) offers near-global reachability, making it a viable fallback transport for regions where direct proxy connections are blocked.
+    - Monitor politically-sensitive calendar events in target countries (elections, party congresses) and pre-provision alternative transports, since push notification channels may experience short-window blocking during these periods.
+section: §5.1, Figure 4
+extracted_by: claude-sonnet-4-6

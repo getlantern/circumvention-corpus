@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-master-worldwide
+kind: evaluation
+summary: TLS-based filtering (SNI blocking) was active in 41% of 70 surveyed countries during the June 2020–May 2021 measurement period and 44% historically, driven by the 82% global HTTPS adoption rate (Mozilla telemetry, Oct 2021). China took the unprecedented step of blocking ESNI traffic entirely, and the authors note that widespread ECH deployment could render this entire censorship category obsolete.
+techniques:
+    - sni-blocking
+    - dpi
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Prioritize ECH support in TLS-based circumvention tools — the censor community is heavily invested in SNI inspection and ECH is the only structural fix that eliminates the attack surface rather than working around it.
+    - 'Do not rely on ESNI as a live defense: China already blocks it and Firefox has abandoned it; treat ECH readiness as the near-term design target.'
+section: §4.2, Table 2
+extracted_by: claude-sonnet-4-6

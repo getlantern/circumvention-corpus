@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-basso-measuring
+kind: detection
+summary: In AS197207 (Iran), Google's DoT endpoint 8.8.4.4:853 is blocked 100% of the time while 8.8.8.8:853 is always accessible, regardless of SNI value. TLSv1.3 handshake analysis (hiding server certificates) confirmed no SNI correlation, establishing that Google's DoT blocking depends solely on the destination IP endpoint.
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Protocols relying on well-known DoT/DoH IPs (e.g., 8.8.4.4, Cloudflare ranges) as a transport must rotate or avoid those specific IPs in Iran — the block is IP-keyed, not protocol-keyed, so SNI camouflage provides no benefit.
+    - Endpoint-based blocking means fresh IPs or domain-fronted DoH (where the blocking signal is the IP, not the SNI) are the appropriate evasion strategy in this context.
+section: §V-I, Table X
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-bhaskar-many
+kind: evaluation
+summary: 'Across 10,000 destination IPs in China, 37% showed some change in censorship behavior depending on source IP and source port, spanning 56% of measured ASes. The dominant form of variation (95% of cases) was all-or-nothing: a given (source IP, source port) pair either experienced no censorship or ''expected'' censorship, with no intermediate states.'
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Systematically probe source IP/port combinations before establishing a circumvention session — in 37% of Chinese vantage points, some combinations bypass the GFW DNS censor entirely.
+    - The all-or-nothing nature means a single working (source IP, source port) pair may fully circumvent DNS censorship; build probe-and-select logic into client session establishment.
+section: §5.2
+extracted_by: claude-sonnet-4-6

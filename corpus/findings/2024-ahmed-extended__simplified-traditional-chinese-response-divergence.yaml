@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ahmed-extended
+kind: evaluation
+summary: Exploratory testing of GPT-3.5 Turbo showed significant response divergence between Simplified and Traditional Chinese prompts on politically sensitive topics. Simplified responses glossed over or omitted details on Tiananmen Square casualties, Uyghur genocide allegations, Taiwan's sovereignty status, and Xi Jinping's human rights record; Traditional Chinese responses described these topics in substantially more critical and detailed terms.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - When building LLM-assisted circumvention or information-access tools, prompt in Traditional Chinese rather than Simplified Chinese to obtain less censorship-biased responses about politically sensitive topics.
+    - Treat language-of-prompt as a proxy for training data provenance — Simplified Chinese responses may reflect CCP information-control requirements regardless of where the end user is located.
+section: §3.2 / Table 2
+extracted_by: claude-sonnet-4-6

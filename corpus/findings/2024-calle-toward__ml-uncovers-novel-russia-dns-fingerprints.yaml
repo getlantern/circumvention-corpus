@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-calle-toward
+kind: detection
+summary: Majority-vote ML inference (OCSVM + IF) over OONI data uncovered at least 5 previously undocumented DNS injection IPs active in Russia (e.g., 195.19.90.226, 95.167.13.51, 61.95.167.13.50, 188.19.132.154, 144.85.142.29.248) absent from OONI's existing blocking-fingerprints database, along with novel fingerprints in Italy, Czech Republic, and the UK. Records with fewer than 50 instances were excluded as a conservative false-positive filter.
+techniques:
+    - dns-poisoning
+    - ml-classifier
+    - measurement-platform
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools relying on OONI's rule-based DNS fingerprint lists are under-counting active censorship; integrate ML-augmented fingerprint discovery to catch injectors not yet in curated lists
+    - New Russian injection IPs identified here should be added to DNS-over-HTTPS fallback resolver bypass lists and used to validate that DoH/DoT configurations actually evade known injection infrastructure
+section: §4.3, Table 5
+extracted_by: claude-sonnet-4-6

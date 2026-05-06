@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-singh-india
+kind: evaluation
+summary: 'All detected HTTP censorship events in BSNL and MTNL are attributable to infrastructure shared with or operated by Airtel and ACT, demonstrating that upstream ISP filtering creates collateral censorship visible to downstream networks. Isolated cross-ISP leakage was also observed: Vodafone''s censorship notice appeared in 2 Jio tests, and Airtel''s appeared in 2 Vodafone tests.'
+techniques:
+    - keyword-filtering
+    - rst-injection
+    - packet-injection
+censors:
+    - in
+defense_implications:
+    - Circumvention infrastructure placed inside BSNL or MTNL networks may encounter blocking rules injected by upstream providers (Airtel, ACT); validate reachability independently rather than assuming the nominal ISP's blocking profile applies end-to-end.
+    - Cross-ISP censorship notice leakage means blockpage fingerprinting cannot reliably attribute which ISP is responsible — tools that adapt behavior based on ISP identity should confirm identity via network probes rather than blockpage content alone.
+section: §5.1.3
+extracted_by: claude-sonnet-4-6

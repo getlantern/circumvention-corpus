@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-brown-augmenting
+kind: evaluation
+summary: Unsupervised one-class SVM models trained only on clean (uncensored) records detect GFW DNS censorship with 99.1% TPR at 17.4% FPR on Satellite data; over half of apparent false negatives are truly uncensored probes where the GFW transiently failed to inject a forged response, confirming that GFW DNS injection is not perfectly consistent at the individual probe level.
+techniques:
+    - dns-poisoning
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Because GFW DNS injection fails intermittently, a single successful resolution of a nominally blocked domain is unreliable; circumvention tools should aggregate multiple probe results over time before concluding a domain is accessible.
+    - Unsupervised anomaly models require no labeled censorship data and are viable for detecting DNS censorship in new or poorly-studied regimes where GFWatch-style ground truth is unavailable.
+section: §4.1, Table 3
+extracted_by: claude-sonnet-4-6

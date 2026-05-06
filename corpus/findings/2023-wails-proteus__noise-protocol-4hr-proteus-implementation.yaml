@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wails-proteus
+kind: evaluation
+summary: A complete Noise NK handshake protocol — including Curve25519 ECDH key exchange with server authentication, HMAC-based key chaining, and ChaCha20-Poly1305 AEAD-encrypted data phase — was expressible in Proteus in less than 4 hours, demonstrating that a safety-bounded DSL with built-in crypto primitives and declarative message-format definitions is sufficient to prototype complex cryptographic transport protocols rapidly.
+defenses:
+    - meta-resistance
+    - shadowsocks
+defense_implications:
+    - A well-designed protocol-specification language with a built-in crypto standard library and declarative message-format definitions can compress a new circumvention protocol from specification to working prototype in hours, dramatically shortening the arms-race response cycle.
+    - Invest in reusable, standardized protocol-specification tooling rather than ad-hoc per-protocol implementations — the marginal cost of expressing a new evasion protocol drops to a small patch when message formatting and crypto primitives are pre-built.
+section: §3.3
+extracted_by: claude-sonnet-4-6

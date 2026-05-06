@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-xue-openvpn
+kind: detection
+summary: 'OpenVPN''s unencrypted opcode header byte is exploited to fingerprint vanilla and XOR-obfuscated flows: the XOR patch specification excludes the first buffer byte (the opcode) from reversal, so opcodes are always XOR-ed with the same key byte and map deterministically to fixed ciphertext values. All 4 of the top-5 VPN providers that offer obfuscated services use XOR-based obfuscation, and all were flagged by opcode fingerprinting over 90% of the time.'
+techniques:
+    - dpi
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - XOR-based OpenVPN obfuscation (including the common XOR patch) must be treated as broken; any viable obfuscation layer must fully re-randomize the opcode byte rather than relying on Vigenère-style substitution that maps fixed plaintexts to fixed ciphertexts.
+    - Obfuscation designs should uniformly re-encrypt the entire packet (e.g., obfs4 or VMess-style with random padding) rather than applying a weak positional cipher that preserves statistical structure in unencrypted header fields.
+section: §6.1, §9.1
+extracted_by: claude-sonnet-4-6

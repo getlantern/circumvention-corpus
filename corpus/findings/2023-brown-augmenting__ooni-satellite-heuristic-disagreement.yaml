@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-brown-augmenting
+kind: evaluation
+summary: 'OONI and Satellite (Censored Planet) agree on roughly 75% of tested Chinese domains as uncensored, but DNS anomaly agreement is poor: each platform flags fewer than 0.5% of domains as anomalous in any given biweekly window, and the two platforms frequently disagree on which domains are censored because China''s GFW uses dynamic fake-IP injection that defeats static rule-based heuristics.'
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool routing logic that relies on a single measurement platform's blocking labels will mis-classify domains; cross-validate OONI, Satellite, and GFWatch before marking a domain as definitively censored.
+    - Dynamic GFW fake-IP churn means hardcoded IP blocklists have very poor coverage; ASN-level matching of DNS responses is more stable than IP-level comparisons.
+section: §2.2, Figure 1
+extracted_by: claude-sonnet-4-6

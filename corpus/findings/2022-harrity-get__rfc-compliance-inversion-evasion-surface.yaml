@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-harrity-get
+kind: detection
+summary: 'A central finding of the paper is that RFC-compliance in the censor creates evasion opportunities: the more faithfully a censor parses HTTP/DNS per the RFC, the more RFC-permitted variants it will pass that servers also accept, yielding more viable evasion strategies. In contrast, India''s Airtel censor was the most brittle (56/77 strategies bypassed it) precisely because it failed on many legitimate RFC variants; China''s more sophisticated parser left fewer openings.'
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Target RFC-defined flexibility zones (optional whitespace, case-insensitivity of header names, multiple whitespace delimiters in request lines) as a first-pass evasion layer — these are guaranteed to be accepted by compliant servers while consistently confusing DPI parsers that implement a strict subset of the RFC.
+    - When a censor upgrades to closer RFC compliance, expect existing strategies to fail and re-run automated discovery — compliance upgrades close some gaps but open new ones in adjacent parsing paths.
+section: §5.1, §7
+extracted_by: claude-sonnet-4-6

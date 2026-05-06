@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-calle-toward
+kind: evaluation
+summary: 'XGBoost achieves a False Positive Rate of 0.0005, True Positive Rate of 0.9403, and overall accuracy of 0.9991 on OONI global DNS measurement data (2.5% stratified sample), vastly outperforming unsupervised alternatives: Isolation Forest achieves FPR 0.1321 / ACC 0.8699, and One-Class SVM degrades to FPR 0.9711 / ACC 0.0598, making OCSVM effectively unusable for this task.'
+techniques:
+    - dns-poisoning
+    - ml-classifier
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Deploy XGBoost-class supervised classifiers over OONI-style measurement pipelines for reliable DNS tampering detection; unsupervised models alone produce unacceptably high false positive rates in production
+    - Stratified random sampling at 2.5% of global OONI data is sufficient — no need for full-dataset training — enabling lightweight, continuously-updated detection pipelines
+section: §4.1, Table 3
+extracted_by: claude-sonnet-4-6

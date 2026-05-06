@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-global
+kind: evaluation
+summary: Sampling 1-in-10,000 TCP connections at Cloudflare's 285+ PoPs (serving ~17–20% of the Internet's websites, handling 45M HTTP requests/second at average load) over two weeks in January 2023 revealed that 25.7% of all sampled connections were 'possibly tampered.' The passive technique requires no vantage points inside censored networks, covering cellular, enterprise, and low-penetration-country networks that active measurement cannot reach.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Censorship measurement tools should treat CDN-based passive telemetry as a complement to active probing — the passive method captures what users are actively experiencing rather than what could be blocked, providing ground truth for evaluating whether circumvention is actually helping real users.
+    - Protocol designers should assume that any connection to a major CDN endpoint (Cloudflare, Akamai, Fastly) may be passively monitored for anomalous packet sequences; flows that terminate with characteristic RST bursts are visible even without active probing.
+section: §3.2, Abstract
+extracted_by: claude-sonnet-4-6

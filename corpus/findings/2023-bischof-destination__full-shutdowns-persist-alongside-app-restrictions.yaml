@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-bischof-destination
+kind: policy
+summary: Across all years of the KIO dataset (2016–2021), a large majority of events involved full-network shutdowns and their count grew significantly from 2016 to 2019 with no significant decline observed through 2021. Censors are also increasingly employing app-specific bans and throttling alongside full shutdowns, with all three restriction categories non-mutually exclusive and rising over the period.
+techniques:
+    - measurement-platform
+    - throttling
+censors:
+    - generic
+defense_implications:
+    - Design circumvention tools to handle a full spectrum of disruption — from complete blackout to app-specific blocking to bandwidth throttling — since governments increasingly combine all three tactics within a single shutdown event.
+    - Do not assume that surviving a full shutdown means returning to unrestricted access; post-shutdown environments often retain residual app-level or throttling restrictions requiring continued circumvention capability.
+section: §3.2, Figure 2
+extracted_by: claude-sonnet-4-6

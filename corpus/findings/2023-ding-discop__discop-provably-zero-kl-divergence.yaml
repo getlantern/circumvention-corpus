@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ding-discop
+kind: defense
+summary: Discop achieves provably perfect steganographic security (DKL(Pc‖Ps) = 0) by constructing multiple 'distribution copies' of a generative model's predicted distribution and using the copy index to encode the secret message. Because all copies share identical token probabilities, the stego distribution is exactly equal to the cover distribution and no steganalyzer can perform better than random guessing.
+techniques:
+    - fully-encrypted-detect
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Build covert channels on top of explicit generative models (LLMs, autoregressive image/speech models) using distribution-copy steganography rather than payload replacement or distribution-modifying arithmetic coding — this provides information-theoretic undetectability rather than empirical hardness.
+    - The only shared secret required is a PRNG seed and an agreed generative model checkpoint; no per-channel or per-session protocol negotiation is needed beyond the symmetric key.
+section: §III
+extracted_by: claude-sonnet-4-6

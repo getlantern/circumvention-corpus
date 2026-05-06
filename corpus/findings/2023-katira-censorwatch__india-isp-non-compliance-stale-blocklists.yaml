@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-katira-censorwatch
+kind: policy
+summary: CensorWatch found that 2,370 of 3,745 websites covered by a 2018 temporary court injunction (which was withdrawn in early 2019) remained blocked by at least one Indian ISP, indicating ISPs do not routinely update blocklists to implement unblocking orders. Additionally, three ASes (Hathway AS17488, YOU Broadband AS18207, RailTel AS24186) continued to block avaaz.org despite an explicit government unblocking order issued on 18 January 2019.
+techniques:
+    - ip-blocking
+censors:
+    - in
+defense_implications:
+    - Circumvention tools targeting India should not assume that domains reported as unblocked in official orders are actually accessible — stale blocklists mean operator-reported unblocking is an unreliable signal for infrastructure decisions.
+    - Long-lived domain assets used for censorship circumvention may accumulate blocklist entries across Indian ISPs that persist indefinitely, favoring domain rotation strategies over stable long-term domains.
+section: §6.1, §6.2
+extracted_by: claude-sonnet-4-6

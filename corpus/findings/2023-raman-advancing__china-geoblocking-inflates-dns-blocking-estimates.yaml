@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-advancing
+kind: evaluation
+summary: In Censored Planet DNS measurements of 75 .gov and .mil domains on April 11, 2021, only 36.06% of measurements from China resolved correctly. Of the failures, 19.06% returned SERVFAIL codes caused by US-based nameservers geoblocking Chinese recursive resolvers—server-side access control, not GFW censorship—causing prior studies that did not account for geoblocking to systematically over-estimate DNS blocking in China.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - When estimating blocking rates to calibrate circumvention infrastructure deployment, filter out server-side geoblocking responses (SERVFAIL from origin nameservers) to avoid over-provisioning resources for apparent blocks that are actually access-control policies at the destination.
+    - Proxy selection logic should distinguish between DNS failures caused by the censor versus those caused by the destination server's own geofencing, since only the former requires circumvention.
+section: §3.3.2
+extracted_by: claude-sonnet-4-6

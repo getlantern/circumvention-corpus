@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-censored
+kind: evaluation
+summary: Censored Planet collected 21.8 billion measurements over 20 months from more than 95,000 vantage points in 221 countries, covering 66–173 more countries than OONI and ICLab, with a median of 8 ASes per country versus OONI's 4 and ICLab's 1. In March 2020, it achieved coverage of 9,014 ASes compared to OONI's 1,915. Censored Planet and OONI together covered all 21 countries rated 'Not Free' by Freedom House, while ICLab reached only 4.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - 'Query Censored Planet''s public dataset as an early-warning layer: its 9,014-AS coverage means new blocking events show up days before they appear in sparser volunteer-based feeds, enabling faster proxy infrastructure pivots.'
+    - Prioritize vantage-point diversity by country and AS rather than raw endpoint count; a single-AS measurement can miss intra-country blocking heterogeneity that affects whether users on specific ISPs can reach a circumvention server.
+section: §6.1, §6.2
+extracted_by: claude-sonnet-4-6

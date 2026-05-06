@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-sharma-siegebreaker
+kind: evaluation
+summary: 'Prior decoy routing deployments suffered severe throughput degradation: the TapDance ISP pilot reported average client throughput of only ~5 KB/s, making it unsuitable for most web content; other DR prototypes restricted evaluation to files under 1 MB in controlled lab settings, with some reporting over 30 seconds to load home pages under 1.5 MB in size.'
+defenses:
+    - tapdance
+    - telex
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - DR systems must be benchmarked on realistic workloads (1 GB files, 500 concurrent clients, multi-Gbps cross-traffic) before deployment claims can be trusted — lab-only evaluation with small files systematically hides the bottleneck that killed TapDance's ISP pilot.
+    - Commodity-server-based DR architectures cannot match traffic at line rates while simultaneously performing per-flow cryptographic matching; hardware-assisted forwarding (e.g., SDN switches) is needed for ISP-scale throughput.
+section: §3, §2.3
+extracted_by: claude-sonnet-4-6

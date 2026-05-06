@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-streisand-where
+kind: defense
+summary: 'The paper argues that an effective counter to translation censorship is to actively trigger the Streisand effect: publishing detected censored content side-by-side with the original on a public website causes the censored text to reach a broader audience — including people who would not have read the censored version — and makes the censorship itself backfire. Censors deliberately avoid publicizing removals precisely to prevent this outcome.'
+techniques:
+    - keyword-filtering
+defenses:
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool designers should consider public disclosure interfaces (diff views, highlighted deletions) as first-class features — transparency that exposes censorship is itself a form of counter-censorship that amplifies reach beyond users who would actively seek out blocked content.
+    - Hosting transparency infrastructure on domains outside the censor's jurisdiction is critical, since censors will attempt to suppress the transparency tool itself (as evidenced by the book-censorship topic being cut from the case study).
+section: §1 Introduction / §5 Conclusion
+extracted_by: claude-sonnet-4-6

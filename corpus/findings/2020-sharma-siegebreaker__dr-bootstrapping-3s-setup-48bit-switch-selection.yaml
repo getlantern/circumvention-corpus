@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-sharma-siegebreaker
+kind: evaluation
+summary: SiegeBreaker's session bootstrapping (from initial email to installed SP redirection rule) averaged 3–4 seconds across 100 trials, with the dominant delay attributed to email handling (SMTP connection, Selenium composition) rather than network latency; this setup cost is not included in the download-time benchmarks. The auxiliary ping-based switch-selection signal encodes 48 bits across three ICMP header fields (IP-ID, ping sequence number, ping identifier), requiring ~281 trillion spoofed ping packets per client–OD pair to brute-force.
+techniques:
+    - dpi
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - A 3–4 second connection setup delay is acceptable for bulk downloads but is prohibitive for interactive browsing; DR systems using out-of-band pre-registration should cache or pipeline registration to hide this latency from the user-visible page-load path.
+    - Covert signaling fields embedded in standard protocol headers (ICMP, TCP ISN, TLS ClientRandom) must be chosen to be statistically indistinguishable from OS-generated values; randomizing non-signal fields and introducing jitter between the covert signal and the subsequent DR connection reduces fingerprint detectability.
+section: §4.4, §5.2
+extracted_by: claude-sonnet-4-6

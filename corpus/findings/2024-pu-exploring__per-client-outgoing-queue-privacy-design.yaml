@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-pu-exploring
+kind: defense
+summary: A single shared bidirectional SQS queue was rejected for Snowflake rendezvous because SQS provides no mechanism to direct messages to a specific consumer — all polling clients would receive all other clients' messages, creating a privacy violation. The adopted design uses one shared incoming queue (broker-read-only) plus per-client temporary outgoing queues identified by randomly generated 64-bit IDs, with the broker periodically deleting queues idle for more than a configurable number of minutes.
+defenses:
+    - webrtc-pluggable
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - When using a shared cloud messaging service as a signaling channel, issue per-session ephemeral channels (queues, topics, or rooms) rather than a single shared channel to prevent clients from observing each other's session metadata.
+    - Design broker-side cleanup of ephemeral resources (queues, tokens) with an idle-timeout rather than explicit teardown to handle failed rendezvous attempts without client cooperation.
+section: §3.1
+extracted_by: claude-sonnet-4-6

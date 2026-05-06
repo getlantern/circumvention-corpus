@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-wang-symtcp
+kind: detection
+summary: 'Snort contains two novel TCP Timestamp discrepancies versus Linux: it omits RFC 7323-mandated timestamp validation on RST packets in SYN_RECV state, and its PAWS TSval acceptance window is ''off by two'' — a TSval of 0 or 0xffffffff following a packet with TSval 0x80000000 is accepted by Linux but rejected by Snort, enabling insertion-based evasion by crafting packets that fall in the divergent range.'
+techniques:
+    - dpi
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Use TSval values near the 0x80000000 wrap boundary in handshake packets to force a server-accepts/Snort-rejects discrepancy; this insertion technique survives patching of the well-known RST/FIN out-of-window evasions and touches only the TCP Timestamp option.
+    - Because PAWS validation differs subtly across DPI vendors, circumvention transports should test timestamp-carrying packets at wrap-around boundaries as a standard evasion probe during deployment.
+section: §VIII.E
+extracted_by: claude-sonnet-4-6

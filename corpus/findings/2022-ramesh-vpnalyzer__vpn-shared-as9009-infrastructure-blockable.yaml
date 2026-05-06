@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-ramesh-vpnalyzer
+kind: evaluation
+summary: 27 of 80 tested VPN providers had servers within a single AS (AS 9009, M247 Ltd), and VPNalyzer identified 14 providers sharing 4 specific IP blocks within that AS; 2 additional providers shared an IP block in AS 60068 (Datacamp). Such infrastructure concentration enables censors to block multiple VPN products simultaneously with a single IP-range or AS-level rule.
+techniques:
+    - ip-blocking
+    - asn-blackholing
+defenses:
+    - tunneling
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Avoid hosting proxy or VPN endpoints in ASes already associated with commercial VPN/proxy hosting (e.g., AS 9009 M247, AS 60068 Datacamp) — these are the first enumerated and bulk-blocked by censors.
+    - Distribute server infrastructure across diverse, non-VPN-associated residential or cloud ASes to increase the per-endpoint cost of blocking.
+section: §VI-D
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rosen-balboa
+kind: evaluation
+summary: 'A random-forest classifier trained on TCP statistics distinguishes Balboa-enabled traffic from baseline with 66–84% accuracy at zero network latency (key features: average TCP window advertisement and data transmit time), but accuracy falls to near-random (50–57%) once realistic latency is introduced (≥5 ms mean). Adding four additional innocent clients to the classification task further reduces accuracy—e.g., VLC at zero latency drops from 84% to 66%.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Bound worst-case rewrite delay to under ~100 µs; Balboa's average sender-side delay of 89–122 µs is only detectable under idealized zero-latency lab conditions and becomes indistinguishable from network noise at ≥5 ms.
+    - Evaluate detectability in multi-client traffic mixes, not single-client benchmarks; censor classifier accuracy drops substantially when the target flow competes with innocent traffic.
+section: §6.3, Table 2, Table 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ramesh-decentralized
+kind: evaluation
+summary: 'Quack (which probes censorship on port 7/echo servers) detected substantially less blocking than Satellite (DNS-based): approximately 50% of Quack vantage points observed no blocking and ~90% observed only minor blocking, whereas Satellite observed major interference at most vantage points; the authors attribute this gap to Russian ISPs applying filtering predominantly on ports 80 and 443, leaving non-standard ports largely unfiltered.'
+techniques:
+    - port-blocking
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - ru
+defense_implications:
+    - Operating circumvention servers on non-standard ports may bypass a significant fraction of Russian ISP-level filtering that targets only ports 80 and 443.
+    - Protocol evaluations must probe across a range of ports, not just 80/443, since port-selective filtering creates exploitable coverage gaps that measurement studies using only standard-port probes will miss.
+section: §VI-B-3
+extracted_by: claude-sonnet-4-6

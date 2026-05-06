@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-kaptchuk-meteor
+kind: evaluation
+summary: 'Variable-length sampling (Adaptation 2) achieves a provably secure but impractical encoding: a 16-byte plaintext encoded with GPT-2 requires 502–2994 tokens, produces 2.3–13.6 KiB of stegotext (149×–870× overhead), and takes 42–765 seconds even with GPU acceleration, depending on security parameter k=16–128.'
+techniques:
+    - random-payload-detect
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Classical universal steganography constructions are not deployment-viable for natural language channels at any practical security parameter — a channel-adapted design like Meteor is necessary
+    - Stegotext overhead grows superlinearly with security parameter, so choosing k must balance security against bandwidth and latency budgets
+section: §4 / Table 1
+extracted_by: claude-sonnet-4-6

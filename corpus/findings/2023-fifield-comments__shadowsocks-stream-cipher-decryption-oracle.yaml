@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-comments
+kind: detection
+summary: 'Shadowsocks ''stream cipher'' methods lacked integrity protection on ciphertexts, enabling a decryption oracle: an attacker who can guess as few as 4 bytes of plaintext prefix (5 bytes without controlling a /24) can replay a recorded session with a modified 7-byte target header, causing the server to send the decryption of the entire recorded stream to an attacker-controlled host. This provides an efficient active test for identifying Shadowsocks servers; once identified, a censor can block by IP address.'
+techniques:
+    - active-probing
+defenses:
+    - shadowsocks
+censors:
+    - generic
+defense_implications:
+    - All proxy protocol headers — including the target specification — must use authenticated encryption (AEAD); unauthenticated symmetric encryption enables replay and oracle attacks even without key recovery.
+    - 'Server behavior on malformed input must not leak distinguishing information: silent drop after a fixed timeout is safer than differentially closing connections based on parse success or failure.'
+section: §2
+extracted_by: claude-sonnet-4-6

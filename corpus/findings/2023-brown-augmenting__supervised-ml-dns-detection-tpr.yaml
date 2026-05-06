@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-brown-augmenting
+kind: evaluation
+summary: XGBoost supervised models trained on DNS probe features achieve TPRs of 100% (Satellite) and 99.8% (OONI) at FPRs of 0.0% and 0.2% respectively when using platform-native anomaly labels; cross-source training with GFWatch labels applied to the same records yields 99.4% TPR for Satellite and 86.7% TPR for OONI, with SHAP analysis confirming that ASN and organization name of the returned DNS response IPs are the dominant predictive signal.
+techniques:
+    - dns-poisoning
+    - ml-classifier
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - ASN and organization name of DNS response IPs are more robust detection features than raw IPs; circumvention tool DNS-censorship detectors should resolve returned IPs to their ASN for classification.
+    - Training on independent label sources (GFWatch labels applied to Satellite records) yields high-confidence true positives that can anchor circumvention routing decisions without ground-truth censorship data.
+section: §4.1, Table 2
+extracted_by: claude-sonnet-4-6

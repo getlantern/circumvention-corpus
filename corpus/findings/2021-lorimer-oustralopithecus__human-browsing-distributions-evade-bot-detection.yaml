@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-lorimer-oustralopithecus
+kind: defense
+summary: OUStralopithecus (OUStral), a Selenium-based OUS implementing empirically-derived human browsing distributions — Weibull dwell times (λ=30s, k=0.75), Von der Weth action probabilities (45.1% internal-link clicks, 33% new-URL navigations), and Dubroy tab-switching rates — generated 471 requests with all Cloudflare Bot Management scores above the recommended blocking threshold of 30, while Slitheen and Waterfall consistently scored 1. Because Cloudflare has full HTTP-layer visibility (unavailable to a passive network censor), the paper argues a censor observing only encrypted traffic would be even less able to flag OUStral.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - mimicry
+    - steganography
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Ground OUS dwell-time and action-selection distributions in published HCI studies rather than fixed intervals; matching the statistical shape of real human browsing (Weibull distribution) defeats ML classifiers trained on user data far more robustly than simple random delays.
+    - Run OUS instances on end-user personal machines rather than cloud or datacenter hosts; Imperva data shows Amazon was the most common bot-originating ISP in 2020, so cloud-hosted OUS traffic is immediately suspect regardless of behavioral mimicry quality.
+section: §3.1, §5.2.1, Figure 6
+extracted_by: claude-sonnet-4-6

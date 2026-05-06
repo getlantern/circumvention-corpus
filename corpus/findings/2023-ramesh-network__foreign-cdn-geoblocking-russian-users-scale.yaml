@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-network
+kind: evaluation
+summary: 'Of the Tranco top-10K domains, 286 (3.26%) returned geoblocking signatures for all Russian vantage points in May 2022, with CDN-mediated blocking dominant: 87 domains via Cloudflare and 57 via Akamai. DNS-level geoblocking alone affected 68 domains, and 29 domains implemented both DNS and TCP geoblocking simultaneously, rendering public-resolver circumvention of DNS blocks ineffective for those targets.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - generic
+    - ru
+defense_implications:
+    - When a domain implements geoblocking at both DNS and TCP layers, switching to an alternative resolver does not restore access; tools must relay or tunnel at the transport layer as well.
+    - CDN-delivered geoblocking (Cloudflare, Akamai) affects large swaths of content simultaneously; circumvention tools should route through non-CDN or CDN-exempt paths and not assume CDN-hosted fronting targets remain stable during geopolitical crises.
+section: §5.1
+extracted_by: claude-sonnet-4-6

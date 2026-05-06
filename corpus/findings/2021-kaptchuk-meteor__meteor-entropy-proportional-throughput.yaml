@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-kaptchuk-meteor
+kind: defense
+summary: Meteor encodes bits by embedding a PRG-masked random value into the token-sampling randomness of a generative model, recovering bits proportional to the shared prefix length of the sampled interval. Expected throughput per sampling event is asymptotically within 1/2 of the Shannon entropy of the channel (proven in Appendix A), so Meteor automatically adapts to high entropy variability without explicit signaling or padding.
+techniques:
+    - random-payload-detect
+    - ml-classifier
+defenses:
+    - steganography
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use Meteor's XOR-masking-with-PRG approach rather than direct ciphertext embedding to prevent a censor who shares the model from extracting message bits
+    - Asymptotic throughput tied to instantaneous entropy means no fixed framing overhead — implement encoding rate as a continuous function of the model's output distribution, not a fixed bits-per-token constant
+section: §5 Meteor / §5.2
+extracted_by: claude-sonnet-4-6

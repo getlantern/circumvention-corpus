@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-hoang-measuring
+kind: evaluation
+summary: Using DoH plus ESNI, DNEye successfully unblocked 130/230 (56%) of DNS-filtered domains in China and 53/56 (95%) in Russia, but 0/49 (0%) in Iran. The primary failure mode in China (84 domains) and Iran (47 domains) was SNI-based filtering at the TLS layer for domains that do not support ESNI, which remains visible in the ClientHello.
+techniques:
+    - dns-poisoning
+    - sni-blocking
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - DNS encryption (DoH/DoT) alone is insufficient against censors that additionally deploy SNI-based filtering; circumvention tools must address both layers simultaneously or the net gain is near zero for heavily censored regions like Iran.
+    - Targeting only the DNS layer while ignoring TLS-layer SNI exposure will leave the majority of high-value blocked domains unreachable in Iran and approximately 44% unreachable in China.
+section: §4.3, Table 3
+extracted_by: claude-sonnet-4-6

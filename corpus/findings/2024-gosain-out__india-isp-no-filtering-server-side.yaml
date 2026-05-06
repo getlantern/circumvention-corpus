@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gosain-out
+kind: evaluation
+summary: Across four major Indian ISPs (Reliance Jio, Airtel, Vodafone-Idea, and ACT) cumulatively serving more than 95% of Indian clients, the authors found zero network-level interference with 220 banned Chinese apps. DNS resolved to legitimate addresses, TCP and TLS handshakes completed successfully with actual app servers, and responses were served directly by app publishers — not by ISP middleboxes.
+techniques:
+    - ip-blocking
+censors:
+    - in
+defense_implications:
+    - ISP-layer circumvention tools (SNI bypass, DNS-over-HTTPS, TCP obfuscation) are entirely ineffective against server-side geo-blocking — tool designers must treat app-level filtering as a distinct threat model requiring different mitigations.
+    - Measurement platforms that probe only ISP-layer blocking will produce false-negatives for server-enforced censorship; add application-layer probing to detection methodology.
+section: §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-vandersloot-running
+kind: evaluation
+summary: Approximately 50% of TapDance client connection attempts failed to pass through any station due to routing variability at the ISP, producing an average of about one failed decoy per successful connection and time-to-first-byte exceeding five seconds in typical cases, even though median session RTT remained under one second.
+defenses:
+    - tapdance
+    - decoy-routing
+defense_implications:
+    - Invest in BGP-aware or empirical decoy selection so clients preferentially choose decoys whose traffic reliably traverses a station; halving the ~50% routing miss rate would directly halve connection setup time.
+    - Implement aggressive per-decoy failure timeouts with rapid retry to bound the latency cost of routing misses; time-to-first-byte, not steady-state RTT, is the primary user-experience bottleneck in TapDance-style deployments.
+section: §4.4, §5.4
+extracted_by: claude-sonnet-4-6

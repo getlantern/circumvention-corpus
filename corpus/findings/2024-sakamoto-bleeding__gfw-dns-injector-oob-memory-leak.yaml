@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-sakamoto-bleeding
+kind: deployment
+summary: 'The GFW''s DNS packet injector (Injector 3, identified by TTL mirroring and zero IP ID) contained an out-of-bounds read vulnerability: due to missing label-length and null-terminator validation, malformed DNS requests caused the injector to copy adjacent stack memory into forged responses. Over three days in October 2023, researchers collected over 1 TB of data containing over 13 billion leaks, ~87.43% with non-duplicate content, including live Internet traffic transiting China''s backbone and stack frames of the GFW''s packet-handling processes.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - The GFW's DNS injector responds to malformed DNS queries containing blocked domains regardless of type/class fields — circumvention tools relying on DNS must account for this aggressive, format-tolerant matching behavior.
+    - The injector operates only on UDP port 53 (using RST injection for TCP DNS) — using DNS-over-TCP or DNS-over-HTTPS eliminates this injection vector entirely.
+section: §3 Vulnerability
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-self-censorship
+kind: policy
+summary: Of inaccessible Tweets from 2019, those containing NSL-sensitive political keywords are disproportionately deleted or protected by both Hong Kong users (36.38% inaccessibility) and Taipei users (34.89%), compared to New York City (29.45%) and Tokyo (30.80%). This suggests that NSL legal exposure — which extends extraterritorially under Article 38 — may be chilling speech even among users outside Hong Kong who transit or have ties to mainland China.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - 'Circumvention tool threat models must account for extraterritorial legal reach: users in Taiwan, diaspora communities, and transit countries face legal risk, not just users behind the firewall.'
+    - Anonymous publishing and ephemeral messaging features are high-value for users in extraterritorial-risk profiles; tool designers should treat jurisdictional exposure as a first-class threat alongside technical detection.
+section: §4.1 / Table 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gao-extended
+kind: evaluation
+summary: The proposed LLM-based censorship detection system plans to use ICLab as the primary dataset for its semantic richness across all network-stack levels, then cross-reference with OONI and Censored Planet to reduce false negatives. The paper explicitly notes ICLab lacks the scale and geographic coverage of OONI/Censored Planet but offers richer per-measurement context suited to LLM feature learning.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Multi-platform cross-referencing (ICLab + OONI + Censored Planet) is the recommended validation strategy for LLM-based censorship detection to prevent platform-specific blind spots from producing false negatives.
+    - Circumvention tool designers building automated blocking-detection pipelines should weight ICLab-style deep per-connection metadata over high-coverage-but-shallow platforms when training classifiers, and use the latter only for geographic breadth validation.
+section: §4 Proposed Future Works
+extracted_by: claude-sonnet-4-6

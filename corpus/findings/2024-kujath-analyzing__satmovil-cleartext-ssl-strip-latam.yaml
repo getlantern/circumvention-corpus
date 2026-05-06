@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kujath-analyzing
+kind: evaluation
+summary: The SAT Móvil app (Mexico's official tax service, 1M+ downloads) consistently fetches its 'Chat' page over cleartext HTTP, exposing citizen ID numbers (CURP, RFC), passwords, and tax documents to any in-path attacker. None of the four major Latin American telco apps (MiTelcel, MiTigo, MiClaro, MiMovistar) implement HSTS on SMS-delivered external links, making all of them uniformly vulnerable to SSL strip downgrade attacks.
+techniques:
+    - dpi
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools acting as VPN/proxy must transparently upgrade all HTTP to HTTPS or alert users when cleartext traffic leaks outside the tunnel — high-download government apps in high-risk regions routinely skip TLS enforcement.
+    - Any circumvention infrastructure that delivers bootstrap or bridge links via SMS (e.g., Tor's bridges@torproject.org) should treat all SMS-delivered URLs as potentially downgraded by in-path telco infrastructure and require out-of-band integrity verification.
+section: §7.2, Table 3
+extracted_by: claude-sonnet-4-6

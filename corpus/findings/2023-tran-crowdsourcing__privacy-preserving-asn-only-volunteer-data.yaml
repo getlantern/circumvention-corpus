@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tran-crowdsourcing
+kind: defense
+summary: The system is designed to protect crowdsourced volunteer privacy by storing only AS-level granularity alongside randomized short-lived client identifiers, explicitly discarding source IP addresses and any browser-identifying information. AS-level resolution is sufficient for server-side evasion because strategies are evolved per-censor-ASN rather than per-user.
+techniques:
+    - measurement-platform
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - When building any distributed censorship measurement or evasion training system, collect only the coarsest identifier needed (ASN, not IP) and enforce short TTLs on temporary client tokens to limit exposure if the server is compromised.
+    - Tie training pool membership to ASN identity, not IP, so strategy evolution remains valid across the full ISP even when individual user sessions rotate.
+section: §3 Design — Protecting Users
+extracted_by: claude-sonnet-4-6

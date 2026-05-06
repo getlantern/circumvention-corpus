@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-moon-pryde
+kind: evaluation
+summary: 'Evasion attacks generated against one firewall-deployment combination do not transfer well to other settings: a deployment-agnostic approach (used by censorship circumvention tools) fails to generate effective attacks across diverse victim stacks and attacker capabilities. Pryde''s deployment-aware, modular workflow finds successful attacks across configurations with and without insider threats, and against multiple attacker success criteria (data delivery vs. victim ACK vs. attacker receipt of ACK).'
+techniques:
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must be validated against the specific firewall + OS-stack combination a target censor deploys — strategies that work against one ISP's infrastructure may fail at another using a different vendor even with identical blocking rules.
+    - Model the full deployment topology (including weakly-trusted internal hosts that can spoof packets) when reasoning about censor evasion; insider-threat-style packet injection paths exist in segmented networks and are missed by client-only evasion tools.
+section: §1 Introduction (Finding 7), §3.2
+extracted_by: claude-sonnet-4-6

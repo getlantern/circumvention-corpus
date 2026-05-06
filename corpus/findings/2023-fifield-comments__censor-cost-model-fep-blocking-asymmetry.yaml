@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-comments
+kind: evaluation
+summary: 'Censors optimize for utility under asymmetric misclassification costs rather than raw accuracy: false positives (blocking legitimate traffic) carry economic and political costs that make censors conservative about deploying classifiers with high false-positive rates. Multi-flow stateful classifiers — such as the obfs4 Elligator probabilistic distinguisher, which requires correlating observations across multiple connections — are operationally more expensive than single-packet or connection-initiation classifiers, which the author suggests explains why probabilistic multi-flow distinguishers have not been exploited in practice even when theoretically available.'
+techniques:
+    - ml-classifier
+    - fully-encrypted-detect
+    - traffic-shape
+defenses:
+    - randomization
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols can tolerate modest statistical non-uniformity if exploitation requires expensive multi-flow correlation; prioritize resisting cheap single-packet or handshake-initiation classifiers over achieving perfect per-packet randomness.
+    - Designs that blend into traffic the censor values highly (CDN, major cloud services) gain structural protection from the censor's false-positive cost asymmetry, independent of how well the traffic resembles random bytes.
+section: §5
+extracted_by: claude-sonnet-4-6

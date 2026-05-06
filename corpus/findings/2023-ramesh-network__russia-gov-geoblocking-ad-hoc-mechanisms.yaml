@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-network
+kind: deployment
+summary: 136 Russian government domains (25.09% of 542 accessible ones) blocked access to all tested countries outside Russia, and a further 112 (20.66%) were accessible only from Russian and Kazakhstani vantage points. Geoblocking was implemented via heterogeneous, uncoordinated mechanisms—DNS timeouts, TCP timeouts, HTTP 403 Forbidden responses, and explicit blockpages—across different domains, indicating an ad hoc emergency response with no central policy.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - packet-injection
+censors:
+    - ru
+defense_implications:
+    - Because Russia's geoblocking used multiple incompatible mechanisms across domains, a circumvention tool that probes and adapts at DNS, TCP, and HTTP layers simultaneously will have better coverage than one targeting a single layer.
+    - 'Inconsistent enforcement is exploitable: tools can probe for non-blocked subdomains or IP prefixes within a geoblocked government namespace as potential covert signaling or domain-fronting candidates.'
+section: §4.2
+extracted_by: claude-sonnet-4-6

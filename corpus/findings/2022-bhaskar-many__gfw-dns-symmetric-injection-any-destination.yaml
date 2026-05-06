@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-bhaskar-many
+kind: detection
+summary: Chinese DNS censorship operates symmetrically — injecting forged responses for both inbound and outbound DNS packets regardless of whether any real service exists at the destination IP. This means any DNS response received for a probe sent to a closed-port IP inside China is unambiguously a censorship injection, not a legitimate resolver reply.
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools testing GFW DNS reachability can target inactive IPs (no open ports) inside Chinese subnets, ensuring every DNS response observed is a censor artifact rather than a legitimate resolver, enabling clean path-level censorship attribution.
+    - The symmetric injection property lets a circumvention client determine whether its current network path traverses a GFW DNS injection node by querying a known-censored domain toward any Chinese IP — no open resolver needed.
+section: §3.1
+extracted_by: claude-sonnet-4-6

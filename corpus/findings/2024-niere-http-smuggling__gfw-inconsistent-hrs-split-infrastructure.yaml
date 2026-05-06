@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-http-smuggling
+kind: detection
+summary: 'China''s GFW exhibited unusually inconsistent HTTP censorship behavior: 13 of the evaluated HRS test vectors circumvented the GFW in some executions but not others, with per-vector success rates between 10% and 35% across 100 executions per domain. The authors attribute this to two distinct parts of GFW infrastructure employing different HTTP censorship mechanisms, a departure from the GFW''s typical consistency.'
+techniques:
+    - dpi
+    - rst-injection
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - The GFW's split infrastructure means that HRS vectors with partial success rates (~10–35%) may still be worth deploying if combined with retry logic — a single TCP RST does not guarantee all GFW nodes will block the connection.
+    - None of the test vectors accepted by the latest Apache 2.4.57 or Nginx 1.25.2 circumvented the GFW, so HRS-based circumvention against China currently requires targeting servers running older or Nginx-derivative implementations.
+section: §5.2 (China paragraph), §5 intro
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-singh-india
+kind: evaluation
+summary: A proposed HTTP censorship detection algorithm combining status-code comparison, response-length Z-score, HTML TF-vector cosine similarity, and redirect-hostname matching achieves F1 scores of 0.83 (censored) and 0.77 (uncensored), outperforming OONI (0.80 / 0.70), length-difference methods (0.70 / 0.66), and HTML-similarity methods (0.52 / 0.34) on a manually annotated set of 3,000 responses across six Indian ISPs.
+techniques:
+    - measurement-platform
+    - keyword-filtering
+    - rst-injection
+    - packet-injection
+censors:
+    - in
+defense_implications:
+    - Measurement infrastructure used to validate whether a circumvention proxy is being blocked should use multi-signal HTTP comparison (status code + redirect hostname + TF-vector body similarity) rather than relying on content-length alone, which produces unacceptable false-negative rates.
+    - Active-probe canary requests from outside the censored network should use control responses collected from multiple geographic vantage points (not Tor exits) to avoid site-side Tor blacklisting distorting the baseline.
+section: §4.3, Table 1
+extracted_by: claude-sonnet-4-6

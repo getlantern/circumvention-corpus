@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-basso-measuring
+kind: detection
+summary: MCI (AS197207, Iran) intercepts cleartext DNS and returns the bogon address 10.10.34.36 for dns.adguard.com A queries regardless of which upstream resolver is used (system, 8.8.8.8, or 9.9.9.9), and intercepted queries never reached a researcher-controlled DNS-over-UDP server. This bogon falls in the same /24 documented in prior Iranian censorship research. Additionally, SNI blocking for dns.adguard.com was confirmed independently on both port 853 (DoT) and port 443 (DoH).
+techniques:
+    - dns-poisoning
+    - sni-blocking
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools must supply pre-resolved IP addresses for DoT/DoH bootstrap rather than relying on getaddrinfo, as DNS interception will redirect domain lookups to bogon addresses before TLS ever starts.
+    - Using the service domain as the SNI in Iran triggers a second layer of blocking even after bypassing DNS injection; tools should either avoid the service's public hostname as SNI or use ECH.
+section: §V-D
+extracted_by: claude-sonnet-4-6

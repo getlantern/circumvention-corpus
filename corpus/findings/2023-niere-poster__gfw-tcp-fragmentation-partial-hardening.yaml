@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-niere-poster
+kind: detection
+summary: TCP fragmentation before the SNI extension circumvents the GFW, but TCP fragmentation placing the SNI in the first TCP segment does not. The paper notes the GFW is showing 'the first signs of successfully handling TCP fragmentation,' indicating active hardening of TCP-layer circumvention that makes TLS-layer techniques increasingly necessary.
+techniques:
+    - sni-blocking
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Do not rely solely on TCP-layer fragmentation for SNI evasion given active GFW hardening; adopt TLS record fragmentation which works regardless of where the split falls relative to the SNI extension.
+    - When TCP fragmentation is used, verify the split occurs before the SNI extension bytes begin — fragmenting after the SNI appears in the first segment provides no protection.
+section: §3, Table 1
+extracted_by: claude-sonnet-4-6

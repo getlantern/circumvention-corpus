@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-weaponizing
+kind: evaluation
+summary: 'Routing loops within censoring infrastructure create effectively infinite TCP amplification: 53,041 of the top 1 million responding IP addresses showed routing loop behavior spanning 2,763 /24 prefixes. Two Russian ISP censorship systems with infinite routing loops continuously sent amplified traffic for approximately 6 days after a single 2-packet trigger sequence, and 6 GFW IP addresses in China sent data indefinitely.'
+techniques:
+    - middlebox-interference
+    - packet-injection
+censors:
+    - ru
+    - cn
+defense_implications:
+    - Circumvention proxy infrastructure should avoid subnets known to contain routing loops — a single probe can trigger sustained bandwidth exhaustion from censoring middleboxes on those paths, making the proxy appear to be under DDoS
+    - Response-presence alone is an unreliable signal for proxy liveness checks in routing-loop-affected regions; fingerprint-based middlebox detection (matching injected block page content) is more reliable than binary response/no-response
+section: §5.6, §6
+extracted_by: claude-sonnet-4-6

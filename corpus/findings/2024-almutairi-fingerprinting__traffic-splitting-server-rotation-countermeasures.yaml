@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-almutairi-fingerprinting
+kind: defense
+summary: 'The authors propose two countermeasures: (1) widespread adoption of traffic splitting so not all user traffic is routed through a single VPN tunnel, neutralizing the single-destination session signature; and (2) VPN servers should rotate at random intervals so that no prolonged session to one IP accumulates enough packets to trigger the threshold T.'
+techniques:
+    - traffic-shape
+    - ip-blocking
+defenses:
+    - tunneling
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Implement automatic server rotation with random intervals (not fixed keepalive periods) as a first-class feature, not just a failover mechanism — this directly defeats session-accumulation detectors.
+    - Design VPN clients to route a small fraction of traffic (e.g., DNS, NTP, OS telemetry) outside the tunnel to legitimate destinations, fragmenting the destination-IP distribution seen at the home router.
+section: §VI
+extracted_by: claude-sonnet-4-6

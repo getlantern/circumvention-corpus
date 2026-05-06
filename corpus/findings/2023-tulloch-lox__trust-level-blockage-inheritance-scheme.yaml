@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tulloch-lox
+kind: defense
+summary: Lox's trust level scheme (L=0 through L=4, requiring 30, 14, 28, 56, and 84 days respectively per level before upgrading, per Table 2) with blockage inheritance — invited users inherit their inviter's blockage count d — prevents a censor from resetting their reputation through self-invitation after causing blocking events, while users with d ≥ 4 become ineligible to migrate, capping the damage a persistent infiltrator can do.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Encode trust age as a credential attribute rather than a server-side record so the bridge authority cannot link credential presentations to specific users while still enforcing minimum wait periods for trust upgrade.
+    - Propagate blockage counts across invitation chains so that a censor who has caused blocking events cannot launder their history through self-invitation with a fresh account, asymmetrically disadvantaging censors without penalizing honest users with clean inviters.
+section: §4.2.1, §2.4.2, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ruo-lost
+kind: evaluation
+summary: Alibaba and Bing Translate scan only the user's input text for censorship triggers, not the translation output, while Baidu and Tencent apply the same censorship rules to both input and output. Youdao censors input and output using different rule sets. Because Chinese-language censorship rules dominate all services' blocklists, users translating from a non-Chinese language into Chinese using Alibaba or Bing experience materially less censorship than users of the other services.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - When circumvention onboarding flows must pass through a translation service, select Alibaba or Bing (input-only scanning) for Chinese-output paths to reduce silent omission of non-Chinese source text.
+    - Architect multilingual content delivery so the censor-visible layer is the destination language, not the source; input-only scanners cannot censor what they never read.
+section: §7 Effect of Translator Output / Table 6
+extracted_by: claude-sonnet-4-6

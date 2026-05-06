@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-master-worldwide
+kind: evaluation
+summary: 'IP and port blocking dropped from 30% of countries historically to only 9% during the study period (six countries), with the decline attributed to difficulty maintaining ephemeral blocklists, CDN collateral damage, and IPv6 expansion. Iran is a significant exception: it has implemented port allowlisting — permitting only ports 80, 443, and 53 — on multiple occasions, blocking all other ports entirely.'
+techniques:
+    - ip-blocking
+    - port-blocking
+defenses:
+    - tunneling
+censors:
+    - ir
+    - generic
+defense_implications:
+    - Design circumvention infrastructure to operate exclusively on ports 80, 443, and 53 — Iran-style allowlisting makes non-standard ports a deployment liability, especially during crackdowns.
+    - CDN-based infrastructure (domain fronting, meek-style transports) gains collateral-damage protection as a side effect of the censor's own reluctance to block CDN IP ranges — this structural asymmetry should be exploited.
+section: §4.3, Table 2
+extracted_by: claude-sonnet-4-6

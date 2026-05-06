@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-amich-deresistor
+kind: evaluation
+summary: DeResistor-generated evasion strategies achieve an overall success rate of up to 98.61% against GFW (across vantage points in Qingdao, Shanghai, and Beijing) for the best strategy, and 100% in both India (Bangalore) and Kazakhstan (Oral) for the top-performing strategy, while standalone Geneva strategies tested in the same environment achieve comparable or slightly lower rates on some censors but are blocked at the IP level before training completes.
+techniques:
+    - rst-injection
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - geneva
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Strategy-as-a-Service or P2P strategy-sharing deployments can leverage centrally trained DeResistor strategies to avoid exposing end-user IPs to the censor-probing phase entirely.
+    - GFW residual censorship (~90-second IP:port pair block after a censored URL triggers RST injection) requires rotating destination ports between probes to achieve reliable success-rate measurement.
+section: §6.3, Table 2
+extracted_by: claude-sonnet-4-6

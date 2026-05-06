@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-lorimer-extended
+kind: evaluation
+summary: Initial attempts to split Snowflake traffic naively across multiple WebRTC proxies produced either no improvement in performance or a net negative effect. The authors attribute this to the wide variance in proxy network stability and bandwidth and flag it as an open problem requiring more advanced splitting algorithms.
+defenses:
+    - webrtc-pluggable
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - 'Do not assume uniform-random or round-robin splitting is safe for WebRTC-based transports: implement adaptive scheduling that accounts for per-proxy bandwidth and latency before splitting live traffic.'
+    - Instrument proxy quality before committing traffic splits; a weighted-random scheduler informed by real-time probe measurements is preferable to static splitting ratios.
+section: Appendix A
+extracted_by: claude-sonnet-4-6

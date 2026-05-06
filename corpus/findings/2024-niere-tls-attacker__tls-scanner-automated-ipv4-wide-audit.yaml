@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-tls-attacker
+kind: evaluation
+summary: TLS-Scanner, a subproject of the TLS-Attacker suite, automates handshake probes across deployed TLS hosts and has been used in published IPv4-wide scanning studies. It surfaces supported protocol versions, enabled extensions, and known vulnerabilities, providing a ready-made audit tool for circumvention infrastructure operators.
+techniques:
+    - tls-fingerprint
+    - measurement-platform
+defenses:
+    - meta-resistance
+defense_implications:
+    - Run TLS-Scanner against circumvention proxy endpoints before deployment to detect TLS configuration anomalies (unusual extension sets, legacy version support, weak cipher suites) that censors could use as stable fingerprint signals.
+    - Integrate TLS-Scanner into CI/CD pipelines for circumvention infrastructure so that any library upgrade that alters the ClientHello fingerprint is caught before it reaches production.
+section: §2 Impact (Academic Perspective)
+extracted_by: claude-sonnet-4-6

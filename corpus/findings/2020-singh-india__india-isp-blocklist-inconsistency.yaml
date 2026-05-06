@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-singh-india
+kind: evaluation
+summary: Across six ISPs covering 98.82% of Indian internet subscribers, only 1,115 out of 4,033 tested blocked websites (27.64%) are blocked by all six ISPs simultaneously. ACT blocks 3,721 websites while Airtel blocks only 1,892, and 215 websites are blocked by exactly one ISP with no apparent legal basis.
+techniques:
+    - measurement-platform
+censors:
+    - in
+defense_implications:
+    - India's decentralized, ISP-discretionary blocking regime means per-ISP reachability testing is essential before failing over to a circumvention proxy — a site unreachable on one ISP may be directly accessible on another.
+    - Circumvention tools should implement ISP detection and route users on over-blocking ISPs (e.g., ACT) more aggressively to proxies than users on under-blocking ISPs (e.g., Airtel).
+section: §5.2, Table 3
+extracted_by: claude-sonnet-4-6

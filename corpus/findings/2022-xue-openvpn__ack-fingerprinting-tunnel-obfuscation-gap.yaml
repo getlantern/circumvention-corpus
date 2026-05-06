@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-xue-openvpn
+kind: detection
+summary: OpenVPN's application-layer P_ACK packets — uniform in size and concentrated only in the handshake phase — provide a timing and count fingerprint detectable via threshold comparison over 10-packet bins. Tunnel-based obfuscation wrappers (Stunnel, SSH, obfs2/3, Shadowsocks) that do not add random padding preserve the 1:1 packet correspondence with the underlying OpenVPN stream, leaving 16 of 20 tested tunnel-based obfuscated configurations vulnerable to ACK fingerprinting.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - obfs4
+    - randomization
+    - tunneling
+    - shadowsocks
+censors:
+    - generic
+defense_implications:
+    - Tunneling wrappers used as OpenVPN obfuscation (Stunnel, SSH, plain Shadowsocks) must inject random-length padding packets to break the packet-count and size correlation between the inner OpenVPN stream and the outer tunnel; absent this, ACK fingerprinting succeeds regardless of payload encryption.
+    - obfs4 and VMess are the only tested tunnel-based obfuscators that add genuine random padding and successfully evade ACK fingerprinting; these should serve as the minimum baseline for any new obfuscation design.
+section: §6.2, §9.1
+extracted_by: claude-sonnet-4-6

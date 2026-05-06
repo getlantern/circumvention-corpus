@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fenske-security
+kind: detection
+summary: Shadowsocks transmits a fixed-size AEAD-encrypted length field followed by the AEAD-encrypted payload with no support for reducing ciphertext size via fragmentation, while Obfs4 permits input-side padding but not output fragmentation. These designs impose distinct minimum output message lengths, allowing a passive adversary to distinguish between them — and identify short-message sessions — based solely on the minimum observed message length.
+techniques:
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - shadowsocks
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - 'Implement output-side length shaping (not just input-side padding): the protocol must be able to emit an arbitrary byte count p on demand, including splitting a single ciphertext record across multiple network messages.'
+    - Ensure no minimum message length exists that is distinct from other FEPs; a distinctive floor value is a passive fingerprint even without payload content analysis.
+section: §2.4
+extracted_by: claude-sonnet-4-6

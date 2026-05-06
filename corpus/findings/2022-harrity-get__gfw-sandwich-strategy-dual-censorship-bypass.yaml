@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-harrity-get
+kind: defense
+summary: 'China''s GFW keyword-based and Host-header HTTP censorship can be simultaneously defeated by a ''sandwich'' strategy: a header with a name ≥64 bytes must appear before the Host header, the Host header value must start ≥1,281 bytes from the start of the headers, and the final header must be ≥129 bytes total — and the Host header must not be first or last. A 64+ byte header name alone is sufficient to defeat Host-header censorship because it prevents the GFW from reading further headers.'
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - HTTP proxies targeting the GFW should prepend a dummy header with a ≥64-byte name before the Host header as a minimal, zero-cost defense against Host-based censorship — this single modification is sufficient for header censorship and is accepted by all tested Apache and Nginx versions.
+    - For combined keyword + Host-header evasion in China, implement the full sandwich constraints (64+ byte first header name, 1,281+ byte offset to Host value, 129+ byte last header, Host not first or last) as a single composable request transformer in the proxy layer.
+section: §5.2
+extracted_by: claude-sonnet-4-6

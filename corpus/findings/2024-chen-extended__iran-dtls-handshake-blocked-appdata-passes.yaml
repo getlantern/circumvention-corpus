@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-chen-extended
+kind: evaluation
+summary: Testing from a VPS in Iran showed that standard DTLS handshakes are blocked at that vantage point, but Oscur0 avoids this blocking by transmitting only Application Data packets (with Connection ID extension per RFC 9146) after the initial one-shot setup packet, never completing a visible DTLS handshake. A proof-of-concept was implemented in approximately 600 lines of Go using the pion/dtls library.
+techniques:
+    - dpi
+    - tls-fingerprint
+defenses:
+    - decoy-routing
+    - conjure
+censors:
+    - ir
+defense_implications:
+    - Avoid completing recognizable protocol handshakes; for DTLS, use the Connection ID extension to carry all subsequent traffic as Application Data, bypassing filters that match on the standard DTLS handshake sequence.
+    - Test transport fingerprinting against Iran specifically — DTLS ClientHello patterns are actively blocked there, but CID-extended Application Data frames currently pass.
+section: §3 Design / Implementation
+extracted_by: claude-sonnet-4-6

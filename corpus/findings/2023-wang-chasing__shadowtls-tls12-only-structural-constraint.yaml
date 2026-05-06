@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-chasing
+kind: detection
+summary: ShadowTLS is structurally limited to TLS 1.2 because in TLS 1.3 the Finished message is sent as encrypted Application Data (record type 0x17), preventing the relay from detecting handshake completion without decrypting the session. This forces ShadowTLS to advertise TLS 1.2, which is an increasingly anomalous fingerprint as TLS 1.3 adoption grows.
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Designs that forward a TLS handshake to a mask site must solve the 'handshake-complete' signal without downgrading to TLS 1.2; one approach is embedding the signal steganographically in the client's first Application Data record rather than relying on plaintext handshake messages.
+    - Offering only TLS 1.2 is itself a detectable fingerprint as censors can passively flag connections that do not upgrade to TLS 1.3 with popular CDN/HTTPS endpoints.
+section: §2.2
+extracted_by: claude-sonnet-4-6

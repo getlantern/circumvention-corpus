@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-nourin-detecting
+kind: detection
+summary: In Brunei, censorship is confined to AS10094, which serves approximately 70% of the country's Internet users. The censor injects RST packets bearing a distinctive fingerprint — the censored query's IP ID field — in response to HTTP requests containing censored Host headers, and censors on all ports without residual censorship. A SYN followed immediately by a PSH+ACK with a censored payload is sufficient to trigger blocking without a completed TCP handshake.
+techniques:
+    - rst-injection
+    - packet-injection
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - The IP ID fingerprinting behavior exposes the injected RST as middlebox-originated; circumvention tools can use IP ID anomalies to distinguish censor injections from legitimate RSTs during connection probing.
+    - Port-agnostic censorship rules out port-hopping as an evasion strategy in this environment; focus evasion at the payload/protocol-mimicry layer instead.
+section: §3
+extracted_by: claude-sonnet-4-6

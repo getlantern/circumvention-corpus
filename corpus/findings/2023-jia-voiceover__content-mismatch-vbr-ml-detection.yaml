@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-jia-voiceover
+kind: detection
+summary: Variable bitrate encoding (e.g., the OPUS codec's 6–510 kbps range) in VoIP protocols leaks content properties through packet timing, enabling ML classifiers to distinguish protocol tunnels from real conversations. An audio tunnel without timing shaping was identifiable with auROC 0.981 and aucPR 0.959 by an AutoGluon-Tabular classifier examining 1000-packet flow windows.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Audio-based protocol tunnels must shape the timing of transmissions—not just packet sizes—to avoid leaking content-type information through variable-bitrate codec behavior.
+    - Any multimedia tunnel that transmits data continuously with no silence periods is trivially detectable; silence modeling is a required design element, not an optimization.
+section: §2, §4.2
+extracted_by: claude-sonnet-4-6

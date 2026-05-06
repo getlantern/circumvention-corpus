@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-waheed-darwin-s
+kind: evaluation
+summary: Dynamic LDA applied to ICLab longitudinal data for India (2016–2020) successfully identified 14 distinct censored topic clusters—including religious conflict, piracy, educational fraud, and political dissent—from 677 overtly-censored URLs out of 6,012 tested (11.3% overtly censored at least once). The model required monthly time-slice granularity; daily and weekly granularities produced unstable results due to wild swings in document counts.
+techniques:
+    - measurement-platform
+    - keyword-filtering
+censors:
+    - in
+defense_implications:
+    - Circumvention tools targeting India should prioritize coverage of religious-conflict, political-dissent, and piracy-adjacent domains, which dominate the observed censored topic space.
+    - Monthly rather than daily granularity is sufficient for tracking Indian censorship evolution; over-engineering real-time blocklist updates may not be warranted.
+section: §3.1, Table 1
+extracted_by: claude-sonnet-4-6

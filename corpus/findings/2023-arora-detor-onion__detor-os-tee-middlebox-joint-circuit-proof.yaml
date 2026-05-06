@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-arora-detor-onion
+kind: defense
+summary: 'DeTorOS enables provable geographic avoidance for Tor onion services by running a TEE-backed Bento function as a trusted middlebox: both the client and the onion service upload their respective 3-hop circuit halves to this enclave, which computes the never-once or never-twice avoidance proof without revealing either party''s circuit to the other.'
+techniques:
+    - flow-correlation
+    - website-fingerprint
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - For onion services needing verifiable jurisdiction avoidance, deploy a TEE-backed shared-computation relay (Bento-style) so split circuit knowledge can be aggregated without anonymity loss.
+    - Programmable middleboxes with remote attestation can serve as a privacy-preserving aggregation point for multi-party routing proofs — a pattern reusable beyond Tor for any split-knowledge circuit design.
+section: §3
+extracted_by: claude-sonnet-4-6

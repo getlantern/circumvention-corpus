@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-almutairi-fingerprinting
+kind: evaluation
+summary: Testing 9 popular VPN providers (ProtonVPN, Hide.me, Turbo VPN, Kaspersky VPN, Hotspot Shield, Secure VPN, Fast VPN Pro, VPN Super, VPN Gate), 7 were successfully detected. KasperskyVPN evaded detection because it exchanged keepalive packets with a secondary server exactly every 300 seconds, matching the chosen WINDOW, causing the session counter to reset. Hotspot Shield evaded because of previously documented traffic leakage where not all traffic is tunneled.
+techniques:
+    - traffic-shape
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Periodic keepalive probes to a secondary server (or deliberate session-breaking traffic to a benign IP) at intervals shorter than the censor's detection window can systematically defeat session-accumulation detectors.
+    - Traffic leakage — where some flows bypass the VPN tunnel — is typically considered a privacy bug but incidentally defeats this detector; intentional split-tunnel design achieves the same effect without the security downside.
+section: §IV-D, Table II
+extracted_by: claude-sonnet-4-6
