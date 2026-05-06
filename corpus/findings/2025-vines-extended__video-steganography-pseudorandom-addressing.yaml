@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vines-extended
+kind: defense
+summary: A concrete UP channel implementation uses keyed steganographic encoding embedded in videos posted to a public hosting service (e.g., flickr.com), addressed via a time-epoch pseudorandom tag generator drawn from publicly known trending-topic lists. Clients query the top-n videos matching the current epoch tag and attempt decryption; real-world video size variability supports data transmissions from a few kilobytes (configuration updates) to megabytes (software updates).
+techniques:
+    - ip-blocking
+defenses:
+    - steganography
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Use time-windowed pseudorandom addressing (epoch + trending-topic seed) so neither the sender nor the censor can preemptively identify or block the specific carrier content before the upload window; the relevant video set changes each epoch.
+    - Choose carrier platforms (video, audio, images, ML-model hubs) that serve free user-generated content at scale — this provides the addressing index and distribution infrastructure at zero marginal cost to the circumvention operator.
+section: §2
+extracted_by: claude-sonnet-4-6

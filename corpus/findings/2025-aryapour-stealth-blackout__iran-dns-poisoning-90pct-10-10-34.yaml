@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-aryapour-stealth-blackout
+kind: detection
+summary: Over 90% of tested censored domains returned private IP addresses in the 10.10.34.0/24 range (chiefly 10.10.34.34) via injected DNS replies during the June 2025 shutdown, with poisoned response TTLs often very low—consistent with inline DPI injection rather than a recursive DNS lookup. A small set of domains including Google and state-approved services were whitelisted and resolved correctly.
+techniques:
+    - dns-poisoning
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Circumvention clients in Iran must use a DNS transport that bypasses the poisoned resolver (DoH over an allowed CDN, or hardcoded IP-based bootstrap) since >90% of blocked-domain DNS queries will be poisoned before reaching a real resolver.
+    - Whitelisting of Google's DNS resolution means circumvention systems that piggyback on Google infrastructure (e.g., domain fronting via Google CDN) may have a DNS-layer advantage over other providers in this threat model.
+section: §4.1
+extracted_by: claude-sonnet-4-6

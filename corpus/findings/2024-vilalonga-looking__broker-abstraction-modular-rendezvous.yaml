@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-vilalonga-looking
+kind: defense
+summary: 'Separating the Broker role (a server that holds and manages bridge information) from both the rendezvous channel and the censorship evasion system enables modular protocol design: the rendezvous carrier can be swapped independently of the proxy system. The authors identify broker authentication and multi-broker load distribution as open problems not addressed in the current prototype.'
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design circumvention systems with a dedicated broker abstraction layer so that rendezvous channels (Pub/Sub, SQS, push notifications, email) can be swapped without modifying the proxy or client transport logic.
+    - Prioritize broker authentication and multi-broker federation before production deployment; a single un-authenticated broker is a single point of compromise that could allow censors to obtain and block all distributed bridge addresses.
+section: §3.1, §5
+extracted_by: claude-sonnet-4-6

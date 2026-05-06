@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-umesh-improved
+kind: evaluation
+summary: An AS+IXP multigraph fusing CAIDA traceroutes (13.6M paths), 256M BGP updates from RouteViews/RIPE RIS, and IXP membership data yields 87,157 AS vertices, 1,588 IXP vertices, and 510,810 edges — an order of magnitude richer than BGP-only baselines. Hidden private peering links and IXP fabric connections invisible to BGP alone materially affect coverage estimates for refraction networking proxy placement.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Proxy placement decisions based on BGP-only topology will systematically undercount available transit ASes; incorporate traceroute and IXP membership data to avoid mis-ranking candidate deployment sites.
+    - IXPs with many member ASes (e.g., DE-CIX Frankfurt) can serve as high-leverage single deployment points that intercept paths from multiple member ASes simultaneously.
+section: §1, §4.5
+extracted_by: claude-sonnet-4-6

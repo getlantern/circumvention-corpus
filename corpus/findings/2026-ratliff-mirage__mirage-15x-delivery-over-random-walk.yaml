@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ratliff-mirage
+kind: evaluation
+summary: MIRAGE delivers 15× more messages than random-walk protocols and significantly outperforms probabilistic flooding in delivery rate. On the pedestrian YJMob100K dataset at p=0.6, MIRAGE achieved a delivery rate of 36.9%, compared to 9.1% for probabilistic flooding (4.1×) and 3.2% for handoff (11.5×). MIRAGE incurs substantially lower network load than maximal flooding (86.9% delivery) while maintaining better delivery rates than all non-flooding baselines.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - District-based gossip parameters derived from population-level mobility (rather than individual profiles) can achieve near-PPBR delivery rates without the privacy cost — the global mobility graph provides the routing signal without exposing individual patterns.
+    - For mesh-based circumvention deployments, tuning the privacy parameter p closer to 0.6 rather than 0.5 yields 4× better delivery rates; the privacy-utility tradeoff is non-linear and the sweet spot is around ε ≈ 0.8–1.0.
+section: §VII-B
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-xue-discriminative
+kind: defense
+summary: 'The paper evaluates two short-term mitigations—TCP delayed ACK on the proxy server and connection multiplexing—but finds both are limited: delayed ACK produces atypical ACK timing that may itself be fingerprintable, and multiplexing only adds entropy without eliminating the RTTdiff signal. Critically, obfs4 and ScrambleSuit''s delay-based timing obfuscation are described as ''fundamentally limited'' because they manipulate inter-arrival times without eliminating the underlying transport/application-layer session misalignment. The paper concludes no existing obfuscation scheme provides a principled defense against timing-based proxy fingerprinting.'
+techniques:
+    - traffic-shape
+defenses:
+    - obfs4
+    - scramblesuit
+    - shadowsocks
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Padding-only and IAT-jitter approaches (obfs4, ScrambleSuit) do not defend against RTTdiff; a principled defense requires either eliminating the proxy's forwarding latency contribution (e.g., via decoy routing or network-layer tunneling that hides the transport session split) or injecting dummy application-layer round trips that mask the real ARTT.
+    - Multiplexing N logical streams into one TCP flow is the most promising near-term mitigation as it dilutes RTTdiff signal—prioritize multiplexing-by-default in proxy designs over payload randomization, while investigating whether multiplexed connection fingerprints introduce new detection surfaces.
+section: §VII, §I
+extracted_by: claude-sonnet-4-6

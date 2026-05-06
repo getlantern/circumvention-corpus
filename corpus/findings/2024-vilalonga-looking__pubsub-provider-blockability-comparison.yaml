@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-vilalonga-looking
+kind: deployment
+summary: Google Cloud Pub/Sub is blocked entirely in China, limiting the system's applicability in the highest-censorship environment. Azure Pub/Sub is a structurally weaker candidate for rendezvous channels because each created resource receives a unique per-resource domain, enabling censors to block it with minimal collateral damage compared to blocking a shared Google or AWS endpoint.
+techniques:
+    - ip-blocking
+    - sni-blocking
+defenses:
+    - tunneling
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - When selecting cloud Pub/Sub carrier, prefer providers that route all traffic through a single shared global domain (e.g., pubsub.googleapis.com) rather than per-resource domains, as per-resource domains reduce censor collateral damage and make targeted blocking trivial.
+    - Treat China as out-of-scope for Google-Cloud-based rendezvous and maintain separate carrier options (e.g., AWS SNS, alternative cloud providers) for GFW-affected users.
+section: §4.1
+extracted_by: claude-sonnet-4-6

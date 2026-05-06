@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lipphardt-1-800-censorship
+kind: evaluation
+summary: 'Russian transit censorship propagates to ASNs outside Russia: ASN 216071 (Netherlands) shows 38 top-10k URLs with 59% confirmed blockpage rate, ASN 6939 (Sweden) shows 4 URLs at 75%, and ASN 3214 (Germany) shows 4 URLs at 75%, all attributable to peering with Russian ASNs known to employ transit censorship.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - ru
+defense_implications:
+    - Route circumvention infrastructure through ASNs that do not peer with Russian transit carriers; audit upstream peering relationships when selecting proxy hosts in Europe or Central Asia.
+    - Treat confirmed blockpage signals from European or Asian ASNs peered with Russian infrastructure as potential transit-censorship artifacts requiring rerouting rather than simple local ISP blocks.
+section: §4.2, Table 2
+extracted_by: claude-sonnet-4-6

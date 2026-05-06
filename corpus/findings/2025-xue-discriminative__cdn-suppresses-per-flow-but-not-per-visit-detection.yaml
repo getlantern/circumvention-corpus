@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-xue-discriminative
+kind: detection
+summary: Per-flow RTTdiff detection rates are only ~20% because the majority of proxy flows connect to CDN-cached content (Cloudflare, Google, Fastly) that sits within 5ms of the proxy, suppressing the discrepancy. However, aggregating across flows per website visit yields detection rates exceeding 70%—and from the abstract, approximately 80% of top-5K domains generate at least one detectable flow—with half of those detections made within the first 60 packets. This means an adversary can reliably expose client and proxy IPs after just a few website visits.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - shadowsocks
+    - vless
+    - vmess
+    - trojan
+censors:
+    - generic
+defense_implications:
+    - Co-locate proxy egress with major CDN PoPs or route proxy-to-server connections through CDN infrastructure to minimize RTTdiff; geographically distributed single-exit proxies far from popular servers are maximally exposed.
+    - Implement intelligent routing rules so that traffic destined for locally-served content (e.g., regional sites, government, finance) exits from a geographically appropriate proxy rather than a single centralized server, directly reducing RTTdiff for those flows.
+section: §VI-C-2, Table II
+extracted_by: claude-sonnet-4-6

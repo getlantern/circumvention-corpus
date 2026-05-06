@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-extended
+kind: defense
+summary: The framework is designed for adoption into existing censorship-resistant systems in the same manner as uTLS — as a drop-in Go library requiring minimal code changes. Primary integration targets are Tor pluggable transports and WireGuard-based VPNs that currently lack built-in traffic obfuscation. Predefined hand-crafted schedules are provided alongside GAN-generated ones to enable developer stress-testing without model inference.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - pluggable-transport
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Structure the shaper as a Go library with a clean interface so Tor PT developers, Shadowsocks forks, and VPN tools can adopt it without major refactoring.
+    - Ship a set of deterministic predefined schedules (constant-rate, server-paced, ping-with-background) so CI pipelines can regression-test shaping behavior without running a GAN.
+section: §2.3
+extracted_by: claude-sonnet-4-6

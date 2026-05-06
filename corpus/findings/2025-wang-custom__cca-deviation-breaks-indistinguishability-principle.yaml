@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wang-custom
+kind: detection
+summary: 'Custom CCAs that deviate from standard TCP/QUIC congestion response fundamentally contradict the core circumvention principle of traffic indistinguishability: by failing to back off under congestion signals, they produce traffic patterns that diverge from the vast majority of Internet flows that censors value, eliminating the collateral-damage protection that makes circumvention tools hard to block wholesale.'
+techniques:
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - mimicry
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Frame performance optimization as a constraint-satisfaction problem: any optimization is only valid if the resulting traffic remains within the behavioral envelope of mainstream implementations (browser QUIC, OS TCP stack).'
+    - Establish a congestion-compliance test suite as part of circumvention tool CI — compare CCA sending-rate ratios against the Mathis equation baseline before merging performance changes.
+section: §1, §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-niere-dpyproxy-dns
+kind: evaluation
+summary: 'Iran''s DNS censorship is largely ineffective against encrypted DNS: DoQ is not censored at all (with or without SNI present), DoH3 works for all tested Cloudflare and NextDNS resolvers, and most DoT/DoH resolvers work when the SNI extension is omitted. Iran''s censorship of unencrypted DNS is in-path (queries never reach the real resolver), which means the GFW-style ''last response'' technique fails entirely in Iran because the client''s original query is dropped before reaching its destination.'
+techniques:
+    - dns-poisoning
+    - sni-blocking
+defenses:
+    - ech-esni
+censors:
+    - ir
+defense_implications:
+    - Deploying encrypted DNS (DoQ or DoT/DoH with SNI omitted) as the default for Iranian users is sufficient to bypass DNS censorship with no special server-side infrastructure — all 47 tested encrypted DNS resolvers support certificate validation without SNI.
+    - Configure DNS clients to omit the SNI extension in TLS handshakes with DNS servers; this single change converts most censored encrypted-DNS connections in Iran into working ones.
+section: §6.2.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-extended
+kind: defense
+summary: The proposed framework operates as a transparent shim between application and network layers, enforcing a configurable schedule over packet size, timing, and burst patterns. The shaping logic is transport-agnostic — applicable across TCP, UDP, QUIC, and TLS — and activates only after the underlying protocol handshake completes, making it reusable across heterogeneous circumvention stacks.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design shaping components to operate post-handshake so the same shaper protects Shadowsocks, WireGuard, or a QUIC transport without protocol-specific changes.
+    - Adopt a library/shim architecture analogous to uTLS so individual circumvention tools integrate early-session shaping without reimplementing it.
+section: §2.1
+extracted_by: claude-sonnet-4-6

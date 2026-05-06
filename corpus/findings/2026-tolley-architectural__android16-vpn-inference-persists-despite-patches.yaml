@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-architectural
+kind: evaluation
+summary: Re-testing in 2025 on a Pixel 10 Pro XL running Android 16 with October 2025 security updates confirmed that blind in/on-path VPN inference attacks remain fully viable despite CVE-2019-9461, CVE-2019-14899, and CVE-2024-49734 having been formally closed. All three core attack primitives—VPN-assigned internal IP discovery, active connection inference, and TCP reset injection via sequence/acknowledgment window scanning—succeeded across OpenVPN, WireGuard, and NordLynx.
+techniques:
+    - traffic-shape
+    - rst-injection
+    - active-probing
+censors:
+    - generic
+defense_implications:
+    - VPN and tunnel-based tools cannot rely on OS-level or vendor patches to neutralize metadata inference; designers must explicitly suppress response differentials that leak internal IP assignment and connection state.
+    - Sequence/acknowledgment window probing resistance requires stateful injection filtering at the tunnel boundary, not just payload encryption—treat spoofed-packet injection as a first-class threat model component.
+section: §5.1–5.3
+extracted_by: claude-sonnet-4-6

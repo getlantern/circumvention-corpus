@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-characterizing
+kind: evaluation
+summary: 'Input blocking in Chinese LLM services (DeepSeek, Qwen, Kimi, Doubao) is overwhelmingly consistent: all four services persistently block the exact same queries across all 5 measurement samples in both Simplified and Traditional Chinese. Output blocking is far less consistent, with only 29 out of 349 output-blocked queries blocked across all 5 samples. Baidu-Chat is exceptional: it performs almost no input blocking but instead relies heavily on post-search and output blocking (78.6% of blocks are output-phase).'
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Input-phase keyword filters are static and deterministic — circumvention tools can fingerprint and pre-classify queries against known blocklists before sending them to Chinese LLM services.
+    - Output-phase filters are stochastic; repeated queries to the same service will sometimes succeed, making retry-with-perturbation a viable evasion strategy.
+section: §VI-B
+extracted_by: claude-sonnet-4-6

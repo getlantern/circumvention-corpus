@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-position
+kind: detection
+summary: A machine-checked EasyCrypt proof demonstrates that a conjunctive SNI + traffic-profile adversary achieves a true positive rate of 1.0 against meek, with a false positive rate bounded by Pr[Game0(MeekEnc).main()=true] ≤ (1/10000) × (1/1000) ≈ 10⁻⁷, under the assumption that meek traffic follows a normal distribution centered at 512 bytes and background traffic a Poisson-like distribution centered at 1024 bytes. The proof is fully machine-checked in EasyCrypt.
+techniques:
+    - sni-blocking
+    - traffic-shape
+defenses:
+    - meek
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - Avoid any pluggable transport whose packet-size distribution is statistically separable from background traffic — even if SNI is hidden, the size profile alone can anchor a conjunctive classifier with near-zero false positives.
+    - Domain-fronting schemes like meek must couple front-domain rotation with active traffic shaping (padding, fragmentation) to break the normal-distribution fingerprint; SNI privacy alone is insufficient.
+section: §4.2
+extracted_by: claude-sonnet-4-6

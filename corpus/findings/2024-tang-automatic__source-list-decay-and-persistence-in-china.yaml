@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-tang-automatic
+kind: evaluation
+summary: Only 36.66% of the 139,957 source list URLs (51,313) survived sanitization as live, meaningful pages, with 18,911 URLs removed for lack of content and many more for dead links — underscoring how rapidly manually curated probe lists decay. In Beijing and Shanghai, over 20% of known domains were consistently inaccessible, versus fewer than 4.5% at all other vantage points, and over 68% of known domains remained blocked, suggesting censored topics stay sensitive even as URLs go stale.
+techniques:
+    - measurement-platform
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that rely on static block lists for routing or domain-fronting decisions should treat those lists as perishable; automated freshness checks and continuous regeneration are necessary to maintain coverage.
+    - Domains blocked in China tend to remain blocked long-term even as the underlying content changes; this persistence means historical censorship signals remain predictive and useful for training classifiers or seeding new probe lists.
+section: §3.1, §5.2
+extracted_by: claude-sonnet-4-6

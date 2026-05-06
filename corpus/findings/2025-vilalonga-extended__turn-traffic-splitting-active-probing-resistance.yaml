@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vilalonga-extended
+kind: defense
+summary: Traffic splitting across N TURN proxies (1 ≤ N ≤ M) is hypothesized to resist active probing because each TURN server responds to probing requests identically to a regular TURN server, providing no distinguishing signal. Additionally, proxy ephemerality combined with splitting allows on-the-fly migration to new proxies when existing ones are blocked, maintaining connectivity even under partial blocking.
+techniques:
+    - active-probing
+    - ip-blocking
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - bridges
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Design the client to connect through multiple TURN proxies simultaneously so that blocking a subset does not interrupt service — require M > N headroom in the proxy pool.
+    - Ensure the TURN proxy tier returns stock TURN protocol responses to unsolicited probes rather than custom error codes, making active probing indistinguishable from probing any regular TURN endpoint.
+section: §3.3 Censorship Evasion
+extracted_by: claude-sonnet-4-6

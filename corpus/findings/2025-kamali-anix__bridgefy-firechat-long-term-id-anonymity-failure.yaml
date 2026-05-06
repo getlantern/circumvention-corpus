@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-kamali-anix
+kind: evaluation
+summary: Bridgefy included both sender and receiver long-term identifiers on every message; Albrecht et al. found this unsafe and the deployed security upgrades proved insufficient, leaving Bridgefy unable to provide anonymity. Firechat similarly transmits long-term public user IDs with every message, uniquely identifying accounts to every recipient in the mesh.
+techniques:
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Long-lived static identifiers embedded in broadcast message headers are a categorical anonymity failure in mesh settings; any production-grade mesh circumvention app must generate per-message ephemeral sender tokens rather than reusing account-level keys.
+    - Security patches that preserve long-term identifier structures are unlikely to achieve anonymity; identity management must be redesigned from the data model up, not bolted on after deployment.
+section: §2.2
+extracted_by: claude-sonnet-4-6

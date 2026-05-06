@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-wails-precisely
+kind: detection
+summary: Combining a CNN flow classifier with host-based temporal accumulation eliminates all false positive classifications after observing at most 38 flows per host while maintaining perfect recall for all obfs4 and obfs⋆ bridges. The scheme requires only 14 bits of state per (IP, port) pair; tracking 4×10⁹ destination services requires no more than 50 GiB of storage, feasible on commodity hardware.
+techniques:
+    - ml-classifier
+    - ip-blocking
+defenses:
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Any circumvention protocol that reuses a fixed (IP, port) proxy endpoint will be identified with zero false positives after ~38 flows regardless of per-flow obfuscation quality; proxy IP:port pairs must be rotated before that flow count accumulates.
+    - Adopt ephemeral proxy infrastructure (e.g., Snowflake-style volunteer proxies) or WATER/WASM per-session server randomization so no single (IP, port) pair ever receives enough flows to cross the confidence threshold.
+section: §VI-A–B, Algorithm 1, Table VI
+extracted_by: claude-sonnet-4-6

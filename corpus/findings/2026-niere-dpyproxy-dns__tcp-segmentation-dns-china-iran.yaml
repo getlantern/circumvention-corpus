@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-niere-dpyproxy-dns
+kind: defense
+summary: 'TCP segmentation — splitting DNS-over-TCP messages into 20-byte fragments — successfully circumvented DNS censorship for 40 of 41 tested resolvers in China. In Iran, TCP segmentation is inconsistently effective: it succeeds in some scan runs and fails entirely in others, suggesting the Iranian censor can reassemble TCP fragments when processing capacity permits.'
+techniques:
+    - dpi
+    - dns-poisoning
+defenses:
+    - geneva
+censors:
+    - cn
+    - ir
+defense_implications:
+    - TCP segmentation should be a standard mode in any DNS resolver targeting Chinese users — it is reliable, standard-compliant, and requires no server-side changes.
+    - In Iran, TCP segmentation alone is insufficient as a primary defense; pair it with encrypted DNS (DoQ or DoT without SNI) since Iran's fragmentation reassembly is load-dependent and unreliable as a sole mechanism.
+section: §6.2.1, §6.2.2
+extracted_by: claude-sonnet-4-6

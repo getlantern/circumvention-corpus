@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-niere-dpyproxy-dns
+kind: defense
+summary: The GFW operates as an on-path censor that injects forged DNS responses faster than the real resolver but cannot suppress the legitimate response from also arriving. Waiting approximately 3 seconds and accepting the last-received UDP response circumvented GFW DNS injection for 40 of 41 tested public resolvers in China; the single exception (Cloudflare 1.1.1.1) was IP-blocked via packet dropping rather than injection racing.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - DNS resolvers operating inside China can use a 'last-response wins' strategy (wait ~3s, discard early injected responses) as a lightweight, server-independent circumvention for on-path DNS injection — no special protocol support required.
+    - 'Maintain a fallback list of resolvers: GFW may IP-block specific high-profile resolvers outright, so a working solution needs resolver rotation alongside the last-response technique.'
+section: §6.2.1
+extracted_by: claude-sonnet-4-6

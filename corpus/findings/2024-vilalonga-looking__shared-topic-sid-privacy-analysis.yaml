@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-vilalonga-looking
+kind: defense
+summary: The system uses a shared Pub/Sub topic for all users, where session IDs (SIDs) are visible to all subscribers on the broker topic. The paper argues this does not compromise user anonymity because SIDs are randomly generated per-session by client-side software with no link to user identity, and all subsequent bridge-info payloads are encrypted under a session-specific symmetric key exchanged via asymmetric encryption.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - bridges
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Rendezvous protocols can safely use shared broadcast channels if ephemeral random session identifiers are used and all sensitive payloads are encrypted before publication; secrecy of the channel itself is not required for operational security.
+    - Encrypting broker acknowledgment messages (e.g., HAS_BRIDGE) would eliminate the remaining metadata leakage about when a bridge assignment occurs, which the paper flags as a known gap.
+section: §3.2
+extracted_by: claude-sonnet-4-6

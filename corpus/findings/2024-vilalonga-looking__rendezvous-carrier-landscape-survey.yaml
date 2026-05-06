@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-vilalonga-looking
+kind: defense
+summary: 'The paper surveys the rendezvous channel design space and identifies at least six prior carrier approaches: domain fronting via CDNs, AMP cache proxying, Amazon SQS queues, push notification services, email tunneling (Mailet, SWEET), and cryptocurrency covert channels (MoneyMorph). Pub/Sub adds bidirectional real-time messaging with broad IoT/enterprise adoption as a new carrier class not previously evaluated for circumvention rendezvous.'
+techniques:
+    - ip-blocking
+    - sni-blocking
+defenses:
+    - domain-fronting
+    - amp-cache
+    - tunneling
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Maintain a portfolio of rendezvous carrier types (CDN, messaging queue, push notification, email, Pub/Sub) so that censors blocking one carrier do not eliminate all bootstrapping paths simultaneously.
+    - IoT-linked services like Pub/Sub benefit from high collateral-damage protection in regions where smart-home and industrial IoT deployments are significant; this protection is regime-dependent and should be evaluated per target country.
+section: §2.2
+extracted_by: claude-sonnet-4-6

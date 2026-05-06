@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-architectural
+kind: evaluation
+summary: Six widely deployed VPN and circumvention tools—OpenVPN, WireGuard/NordLynx, NordWhisper, Orbot (Tor on Android), Lantern, and Psiphon—all failed to block internal IP inference, connection-state detection, and TCP reset injection under identical adversarial conditions on fully patched Android 16. Application-layer obfuscation in Lantern and Psiphon did not prevent TCP-layer disruption; Orbot's VPN-style encapsulation of Tor traffic was bypassed via the same tunnel-level side channels.
+techniques:
+    - traffic-shape
+    - rst-injection
+    - active-probing
+defenses:
+    - tor
+    - pluggable-transport
+    - shadowsocks
+censors:
+    - generic
+defense_implications:
+    - Application-layer obfuscation (payload encryption, traffic shaping) is insufficient if the underlying tunnel architecture exposes response differentials to spoofed packets; circumvention tools must address OS-level tunnel semantics.
+    - Tools like Orbot that wrap Tor in a VPN interface inherit VPN-level metadata exposure; consider kernel-bypass or userspace network stacks to decouple from the vulnerable OS tunnel behavior.
+section: §5.2, §5.4–5.5
+extracted_by: claude-sonnet-4-6

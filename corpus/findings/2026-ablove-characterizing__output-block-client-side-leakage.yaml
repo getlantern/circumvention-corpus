@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-characterizing
+kind: evaluation
+summary: All five Chinese LLM services transmit partial or complete responses to the client machine even when output blocking is triggered, representing a major information leak. For DeepSeek and Qwen, truncated blocked responses are on average close in token length to full successful responses. For Baidu-Chat, the complete response is transmitted to the client but only partially rendered in the browser UI, with only a word or two visible on screen.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools intercepting Chinese LLM SSE streams should parse and surface transmitted-but-not-rendered response chunks — no active filter evasion is required to recover near-complete blocked content.
+    - Client-side proxy tools sitting between the browser and Chinese LLM servers can reconstruct censored responses from the raw event stream before UI-level suppression is applied.
+section: §VI-C
+extracted_by: claude-sonnet-4-6

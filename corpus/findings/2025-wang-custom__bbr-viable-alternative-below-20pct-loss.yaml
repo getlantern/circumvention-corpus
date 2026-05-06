@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wang-custom
+kind: defense
+summary: BBR, a rate-based CCA already available in the Linux kernel, comes close to Hysteria's throughput performance when packet loss is below 20% — the typical range for cross-border Chinese links (5–15%, peak up to 50% per prior studies). Above 20% loss, Hysteria and Brutal maintain a significant throughput advantage over BBR, but the paper finds no compelling justification for custom CCAs given the marginal gains in that regime versus the fingerprinting cost.
+techniques:
+    - traffic-shape
+defenses:
+    - hysteria2
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - For cross-border proxy deployments targeting China, ship BBR as the default CCA rather than Hysteria's custom algorithm; it is unblockable-by-design and performs within acceptable bounds below 20% loss.
+    - Document clearly for users that configuring Hysteria's download-bandwidth option above actual link capacity is counterproductive — it maximizes the fingerprint without improving throughput.
+section: §4.2, §6
+extracted_by: claude-sonnet-4-6

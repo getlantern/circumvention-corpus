@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-extended
+kind: detection
+summary: Censorship classifiers and traffic analysis attacks consistently exploit the initial seconds of a proxy connection, where packet-size, inter-arrival-time, and burst features are maximally discriminative. Cited work demonstrates that website fingerprinting classifiers trained solely on the first few seconds of Tor traffic achieve high accuracy, and real-world GFW detection of fully-encrypted protocols also targets early-connection bytes.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+    - ml-classifier
+    - dpi
+    - fully-encrypted-detect
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Prioritize obfuscating traffic features in the first 10–30 seconds of any proxy connection; per-session full shaping is costly, but early-window shaping captures most of the classifier's signal.
+    - Test circumvention tools specifically against classifiers trained on early-session windows, not just full-session traffic traces.
+section: §1
+extracted_by: claude-sonnet-4-6

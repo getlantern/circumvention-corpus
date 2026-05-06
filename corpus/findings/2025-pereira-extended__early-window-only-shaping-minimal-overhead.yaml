@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-extended
+kind: defense
+summary: The framework confines active traffic shaping to the first N seconds of a connection (N is a user-defined parameter, e.g., N=10), after which normal unmodified traffic resumes. The authors hypothesize that this design keeps per-session throughput and latency overhead negligible, since the shaping window is a small fraction of total connection time; N can be extended to the full session if the censor is believed capable of classifying beyond early traffic.
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Expose N as an operator-tunable parameter so high-risk deployments (e.g., Iran during shutdown events) can extend shaping to the full session without a code change.
+    - Measure per-session latency and throughput impact across a range of N values before shipping; the low-overhead claim is an unvalidated hypothesis in this extended abstract.
+section: §2.3, §3
+extracted_by: claude-sonnet-4-6

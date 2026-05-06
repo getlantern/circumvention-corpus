@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-zhang-toothless
+kind: deployment
+summary: A county-level CAO in east China (District T, ~500,000 residents) operated with only 7 formal employees yet was tasked with monitoring more than 60 social media platforms, detecting unwanted voices in text, image, video, and audio formats, and submitting hourly reports to upper-level offices — a workload the authors characterize as a 'mission impossible' for a county-level office.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Local censorship capacity is severely resource-constrained at the county level; circumvention tools and content that spreads faster than hourly monitoring cycles are less likely to be caught before going viral.
+    - The bottleneck is human review, not technical capability — distribution channels that saturate local monitoring bandwidth before coordinated takedown can occur have a structural advantage.
+section: '§The case: the CAO in District T'
+extracted_by: claude-sonnet-4-6

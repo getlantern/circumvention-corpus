@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wilson-extended
+kind: defense
+summary: Shaperd's adaptive blocking-detection mode can integrate with external blockage-detection tools (e.g., Troll Patrol) to detect when a constraint set is no longer effective and automatically switch to an alternate constraint set, changing packet patterns to restore connectivity without user intervention.
+techniques:
+    - active-probing
+    - fully-encrypted-detect
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Build automated constraint-switching into traffic shapers so that when a pattern is detected and blocked, the tool can self-heal by rotating to a new traffic profile — reducing the window of outage for end users.
+    - 'Pair shaping layers with censorship-detection infrastructure to create a feedback loop: detection triggers constraint rotation rather than requiring manual operator intervention.'
+section: Appendix A
+extracted_by: claude-sonnet-4-6

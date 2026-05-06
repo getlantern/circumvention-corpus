@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-aryapour-stealth-blackout
+kind: detection
+summary: TLS connections to blocked services (instagram.com, telegram.org) were terminated by TCP RST immediately after the client's ClientHello, before any certificate exchange, confirming SNI-based DPI that reads the plaintext SNI extension and aborts the handshake. HTTP filtering additionally matched Host headers and URL keywords case-sensitively, with injected HTTP 403 pages or TCP RST responses, and case-change evasions were sometimes effective.
+techniques:
+    - sni-blocking
+    - dpi
+    - rst-injection
+    - keyword-filtering
+censors:
+    - ir
+defense_implications:
+    - Encrypted ClientHello (ECH/ESNI) directly defeats the SNI-based RST injection described here; circumvention tools should negotiate ECH where supported, or use HTTPS-tunneling approaches that never expose the true SNI to the censor's DPI.
+    - The documented case-sensitivity in HTTP keyword filtering suggests Geneva-style packet manipulation (header-case transforms) can still evade some filtering rules, though this should be treated as a fragile bypass rather than a durable defense.
+section: §4.2, §4.3
+extracted_by: claude-sonnet-4-6

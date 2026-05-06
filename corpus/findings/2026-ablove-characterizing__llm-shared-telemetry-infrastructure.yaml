@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-characterizing
+kind: deployment
+summary: DeepSeek, Kimi, and Doubao all transmit analytics logs to the same Autonomous System (AS24429, Zhejiang Taobao Network Co., Ltd., a ByteDance/Volcengine subsidiary), with one monitoring endpoint IP directly overlapping between DeepSeek and Doubao. Additionally, all four non-Qwen services maintain connections with servers physically located in China throughout the chat session, transmitting user IDs, session IDs, viewport data, language preferences, and in Baidu-Chat's case, the full query text via URL-encoded CAPTCHA requests.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Any circumvention tool routing traffic through Chinese LLM APIs must warn users that query content and session metadata are transmitted to Chinese-state-linked ASes regardless of the user's geographic location.
+    - Traffic analysis of Chinese LLM sessions should account for the persistent WebSocket telemetry channels (distinct from the SSE response stream) that leak conversation metadata — these channels cannot be blocked without breaking session functionality.
+section: §VI-D
+extracted_by: claude-sonnet-4-6

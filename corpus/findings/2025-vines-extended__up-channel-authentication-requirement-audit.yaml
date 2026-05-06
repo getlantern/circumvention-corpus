@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vines-extended
+kind: defense
+summary: Among surveyed channels, Skyhook, PushRSS, SQS, AMPCache, and Meek satisfy all three UP channel properties (unidirectional, no client auth, higher bandwidth); CloudTransport and Raven do not because they require authenticated user accounts; Tor's email- and Telegram-based bridge distribution also fails the no-auth requirement. The analysis was prompted in part by the 2022 GFW entropy-based blocking event, which required software updates to be pushed to users before fully-encrypted protocols could resume functioning.
+techniques:
+    - fully-encrypted-detect
+defenses:
+    - meek
+    - amp-cache
+    - bridges
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Audit existing rendezvous/bridge-distribution channels against the UP three-property checklist; any channel that requires user account creation or authentication introduces linkability risk and user-side friction that the UP model eliminates.
+    - Plan for software-update delivery as a distinct, first-class requirement when designing circumvention infrastructure — the 2022 GFW fully-encrypted-traffic blocking event demonstrated that inability to push updates rapidly strands users even when working proxies exist.
+section: §3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zohaib-extended
+kind: evaluation
+summary: Systematic measurement platforms (OONI, Censored Planet, Cloudflare Radar, NetBlocks) have inherent blind spots due to geographic coverage and protocol-specific test constraints; critical censorship discoveries — including GFW fully-encrypted protocol blocking and regional Chinese censorship — were first surfaced by user reports on forums and GitHub issue pages of circumvention tools, not by automated measurement infrastructure.
+techniques:
+    - measurement-platform
+    - fully-encrypted-detect
+censors:
+    - cn
+defense_implications:
+    - Maintain and actively monitor public GitHub issue trackers for circumvention tools as an early-warning channel; blocking events often appear there days before measurement platforms detect them.
+    - Design tools to crowdsource anomaly reports from users (e.g., in-app telemetry or forum hooks) to complement network-measurement pipelines for localized or short-lived blocks.
+section: §1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vilalonga-extended
+kind: defense
+summary: Snowflake's sustained operation in heavily censored regions demonstrates that WebRTC must remain accessible to users, which in turn requires that TURN servers remain unblocked to support NAT traversal for peer-to-peer WebRTC connections. This transitive unblockability makes TURN service providers viable rendezvous channels for the Bridge Distribution Problem.
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - webrtc-pluggable
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Use TURN providers as rendezvous channels to distribute proxy information, exploiting the censor's incentive to keep WebRTC accessible for legitimate use.
+    - Design bridge-discovery flows that route through TURN endpoints so that blocking the rendezvous channel requires blocking all WebRTC — raising the political and economic cost for censors.
+section: §3.2 Bridge Distribution Problem
+extracted_by: claude-sonnet-4-6

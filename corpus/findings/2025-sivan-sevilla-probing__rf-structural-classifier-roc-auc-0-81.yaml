@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sivan-sevilla-probing
+kind: evaluation
+summary: A Random Forest classifier trained solely on structural features of third-party request trees achieves ROC AUC of 0.81 and 72% balanced accuracy across 4,660 news domains with ≥50 daily observations. Performance degrades to ROC AUC 0.78 and 0.68 for domains requiring ≥100 and ≥150 daily observations respectively, driven by reduced training-set size rather than feature quality.
+techniques:
+    - ml-classifier
+defense_implications:
+    - Third-party request structure alone is a strong signal for site classification; circumvention infrastructure operators should expect similar structural fingerprinting to be applied to proxy or mirror sites.
+    - Model performance is highly sensitive to training-set breadth—classifiers built on small domain samples degrade substantially, suggesting that actively expanding the diversity of circumvention infrastructure reduces classifier confidence.
+section: §5.1, Table 3
+extracted_by: claude-sonnet-4-6

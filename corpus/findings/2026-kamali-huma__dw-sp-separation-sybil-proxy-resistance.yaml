@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kamali-huma
+kind: defense
+summary: Huma separates proxy duties between untrusted Decoy Websites (DWs), which relay encrypted messages and serve content, and trusted Shade Proxies (SPs) outside the censored region, which decrypt requests and contact covert destinations. Even if a DW is compromised, the censor learns only whether a specific UID can access the system — no destination, no content, and no client network-layer information. SP assignment is centrally managed by the Huma Authority, preventing DW-SP collusion.
+defenses:
+    - tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Decouple the entry point (which must be volunteer-operated and potentially untrusted) from the proxy that accesses blocked content — encrypt user requests with a key known only to the trusted backend before they traverse the volunteer node.
+    - Centralize proxy-to-entry-point assignment in a trusted authority rather than letting operators self-select pairings; operator-chosen pairings enable collusion attacks that expose user destinations.
+section: §III-A, §IV-C
+extracted_by: claude-sonnet-4-6

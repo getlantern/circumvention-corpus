@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-tang-automatic
+kind: evaluation
+summary: The automated probe list generation system discovered 45.79 potentially blocked domains per 1,000 domains crawled, compared to 4.11 for FilteredWeb — over 10× higher efficacy. It uncovered 1,490 potentially blocked domains in crawls of just 71,960 URLs, versus 1,255 blocked domains found by Hounsel et al. in crawls of 1,000,000 URLs, with 1,473 of the 1,490 domains not overlapping with prior work.
+techniques:
+    - measurement-platform
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Automated topic-expansion using search engines and trend data can seed probe lists far more efficiently than manual curation; circumvention tool operators should integrate similar pipelines to stay ahead of newly blocked domains.
+    - Measuring against multiple independent blocking signals (DNS anomaly, TCP/IP anomaly, OONI probe) before flagging a domain reduces false positives and provides higher-confidence block lists for routing decisions.
+section: §5.5
+extracted_by: claude-sonnet-4-6

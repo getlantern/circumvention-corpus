@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-position
+kind: defense
+summary: 'The paper proposes modeling HCS undetectability as a simulation-based cryptographic distinguishability problem: if traces produced by the real-world HCS channel are computationally indistinguishable from ideal-world application-channel traces (T_HCS ∼ T_simulator), the HCS achieves provable security against any adversary — passive or active. The simulation paradigm is parametric in adversary capability, meaning a single proof covers the full spectrum from passive SNI monitoring to active DPI.'
+techniques:
+    - dpi
+    - traffic-shape
+    - active-probing
+defenses:
+    - meta-resistance
+defense_implications:
+    - Frame new protocol designs as indistinguishability games from the outset — define the ideal-world application trace explicitly so that security proofs can be machine-checked rather than argued informally via empirical classifier benchmarks.
+    - Use EasyCrypt or equivalent proof assistants to derive concrete detection-probability bounds before deployment; this converts the cat-and-mouse iteration cycle into a one-time proof obligation.
+section: §1, §2
+extracted_by: claude-sonnet-4-6

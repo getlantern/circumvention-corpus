@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ratliff-mirage
+kind: defense
+summary: 'Embedding explicit TTL values in mesh-routed messages leaks proximity information — a recipient can infer that a high-TTL message originator was recently nearby. MIRAGE mitigates this with memoryless TTLs: carriers independently discard messages with probability q per epoch, implementing a branching process with replication factor R ≤ nmax·(1−q). Setting q > 1 − 1/nmax ensures sub-critical message extinction with expected lifetime ≈ −ln(nmax)/ln(R) epochs.'
+techniques:
+    - traffic-shape
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Any protocol that embeds hop-count or TTL metadata in forwarded messages allows passive observers to reconstruct proximity graphs and infer originator identity — use memoryless expiry mechanisms (probabilistic drop per epoch) instead of decrementing counters.
+    - Tune (nmax, q) jointly to bound both message lifetime and network load; the analytic relationship E[Xj] ≤ nmax·Rʲ allows operators to derive these parameters directly from target delivery window and bandwidth budget.
+section: §VI-C
+extracted_by: claude-sonnet-4-6

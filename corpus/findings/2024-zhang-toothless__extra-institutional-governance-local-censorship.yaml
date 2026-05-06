@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-zhang-toothless
+kind: policy
+summary: China's local censorship operates through 'extra-institutional governance' (EIG) — practices that transgress the official identity and authorized means of the CAO system, including outsourced private surveillance, unpaid personnel secondment, and mass reporting via personal accounts — which upper-level offices tolerate but do not formally authorize, preserving plausible deniability when practices are ethically or legally questionable. The paper documents these as widespread implicit norms across China, not isolated to District T.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Legal or policy challenges targeting the formal CAO apparatus will not reach the EIG practices that do most operational censorship work; advocacy and technical countermeasures should target the informal private-sector SaaS layer, not just official agencies.
+    - The decentralized, informal nature of local EIG produces heterogeneous enforcement capability across counties — circumvention tools should model variable rather than uniform national censorship capacity, with rural areas having even weaker enforcement than the mid-tier county studied here.
+section: §Discussion and Conclusion
+extracted_by: claude-sonnet-4-6

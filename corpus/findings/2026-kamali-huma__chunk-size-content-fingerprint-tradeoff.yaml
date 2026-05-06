@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kamali-huma
+kind: evaluation
+summary: Without chunk-based padding, an XGBoost classifier identifies the target website from covert data-chunk sizes with 91% accuracy (Tranco top-100). Chunking at 2 MB reduces accuracy to 12% at a 21.3% bandwidth overhead, while 16 MB chunks reduce accuracy to near random guessing at a 480.3% overhead. Chunks as small as 64 KB already reduce accuracy to 64%, demonstrating a monotonic fingerprinting–overhead tradeoff.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tunneling
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Pad and chunk SP-to-DW payloads at a configurable size (2 MB is a practical sweet spot: 12% fingerprinting accuracy for 21.3% overhead); expose this as a tunable parameter so operators can trade bandwidth for protection based on their threat model.'
+    - Never transmit variable-length covert payloads without fixed-size padding — even modest chunk sizes provide substantial fingerprinting resistance, so any padding is strictly better than none.
+section: §V-C, Figure 4
+extracted_by: claude-sonnet-4-6

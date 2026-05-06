@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sivan-sevilla-probing
+kind: detection
+summary: 'The five most important predictive features are: (1) average children per non-leaf tree node, (2) 7-day rolling average of maximum tree breadth, (3) 7-day rolling average of average breadth, (4) average children per parent, and (5) 7-day rolling average of third-party requests. Temporal stability features (rolling means and daily deltas) rank ahead of most static snapshot features, indicating that behavioral consistency over time is more discriminative than point-in-time structure.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Temporal consistency of third-party structure over rolling 7-day windows is more discriminative than any single-day snapshot; circumvention infrastructure that changes its apparent resource structure erratically is more detectable than infrastructure with stable, realistic-looking request patterns.
+    - Designing proxy or mirror sites with stable, realistic third-party call trees—rather than minimal or randomly varying ones—reduces classification confidence in ML-based content-legitimacy detectors.
+section: §5.1, Figure 4
+extracted_by: claude-sonnet-4-6

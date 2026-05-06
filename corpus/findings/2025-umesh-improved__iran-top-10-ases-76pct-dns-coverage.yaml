@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-umesh-improved
+kind: evaluation
+summary: For Iran, a greedy cumulative-coverage analysis over 22,799 resolver-to-uncensored-AS paths shows that the top 5 ASes cover 59% and the top 10 ASes cover 76.6% of all DNS resolution paths. AS3257 (GTT Communications) and AS174 (Cogent Communications) each appear in approximately 15.7% of paths and contribute nearly all their usage as unique (non-overlapping) paths.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - decoy-routing
+    - tapdance
+    - telex
+censors:
+    - ir
+defense_implications:
+    - Recruiting just 10 transit ASes can intercept over 75% of Iranian censored-user DNS paths; prioritize GTT (AS3257) and Cogent (AS174) as the highest-unique-path contributors.
+    - Measure unique path contribution alongside raw usage when selecting RN sites — AS12389 (Rostelecom) covers 2,350 paths but 37% overlap with more central ASes, making it a lower-priority recruit.
+section: §5.2, Figure 3–4
+extracted_by: claude-sonnet-4-6

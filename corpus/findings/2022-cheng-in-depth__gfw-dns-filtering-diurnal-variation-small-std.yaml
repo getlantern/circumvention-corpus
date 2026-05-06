@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-cheng-in-depth
+kind: evaluation
+summary: 'GFW DNS filtering effectiveness shows diurnal variation: correct response rates are lowest in the early morning hours (before 6:00 a.m.) and rise throughout the day, suggesting filtering devices fail to process all DNS queries during peak traffic periods. However, the overall variance across time is small — maximum standard deviation of 0.03 — indicating the filtering mechanism is broadly stable over the 40-day measurement window.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that rely on DNS-based bootstrapping may have marginally higher success rates during high-traffic periods when GFW filtering devices are overloaded, but the gain is small (<3% std dev) and not a reliable bypass strategy.
+    - Monitoring-based adaptive retry (retrying DNS resolution during predicted peak hours) is unlikely to yield significant improvement and should not be prioritized over structural bypasses like encrypted DNS.
+section: §4.3, Figure 11
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lipphardt-1-800-censorship
+kind: evaluation
+summary: 'DNS censorship leaks geographically: Russia''s neighbors show materially elevated censorship rates despite low independent censorship of their own — Lithuania 21.73%, Norway 12.04%, Finland 12.03% — compared to Russia itself at 43.59%, consistent with DNS queries from those countries transiting Russian infrastructure and being hit by Russian DNS injection.'
+techniques:
+    - dns-poisoning
+censors:
+    - ru
+defense_implications:
+    - For users in Russia-adjacent countries, treat DNS resolution failures as potentially caused by transit injection, not just local ISP blocking; deploy encrypted DNS (DoH/DoT) to prevent exposure on transit hops.
+    - When deploying circumvention relays in Eastern European countries, verify DNS resolution paths do not traverse Russian-operated ASNs before assuming a clean network path.
+section: §4.1, Table 1
+extracted_by: claude-sonnet-4-6

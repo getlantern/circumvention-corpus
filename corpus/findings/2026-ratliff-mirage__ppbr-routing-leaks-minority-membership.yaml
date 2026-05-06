@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ratliff-mirage
+kind: detection
+summary: 'The PPBR (probabilistic profile-based routing) protocol leaks user community membership through observable routing decisions: in a controlled experiment with 800 majority and 200 minority users, a statistical disclosure attack achieved a true positive rate of 100% and false positive rate of 0% when identifying minority users. Even under a conservative PPBR configuration (top 1/3 fraction acceptance), the attack achieved 100% TPR and only 0.4% FPR.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Any mobility-aware routing protocol that makes accept/forward decisions based on private location profiles leaks those profiles through observable forwarding behavior — routing decisions must be differentially private, not just the underlying data.
+    - Protocols that use silent acceptance (PPBR-style) without plausible deniability should be considered broken against adversaries who can observe subsequent message broadcasts.
+section: §V
+extracted_by: claude-sonnet-4-6

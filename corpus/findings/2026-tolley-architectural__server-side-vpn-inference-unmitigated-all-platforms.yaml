@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-architectural
+kind: detection
+summary: The server-side variant of the blind VPN inference attack—where an in/on-path adversary exploits predictable NAT assignment and tunnel routing semantics to inject spoofed packets indistinguishable from legitimate encrypted traffic—has remained unacknowledged and unmitigated across all tested platforms since its concurrent disclosure in 2019. Unlike the client-side variant, which received partial fixes from Google (CVE-2019-9461, CVE-2024-49734) and Apple (iOS 17.2.1), no vendor has proposed a viable remediation or claimed ownership of the server-side attack surface.
+techniques:
+    - traffic-shape
+    - rst-injection
+    - middlebox-interference
+censors:
+    - generic
+defense_implications:
+    - 'Server deployments must treat NAT predictability as an attack surface: randomize ephemeral port allocation and tunnel response behavior to eliminate the deterministic probing signals that enable server-side inference.'
+    - Circumvention infrastructure operators cannot rely on client-side OS patches; server-side injection resistance must be engineered explicitly into the proxy or relay design rather than inherited from the underlying OS.
+section: §2.1, §3.1, §3.4
+extracted_by: claude-sonnet-4-6

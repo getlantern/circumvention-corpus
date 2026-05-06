@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-aryapour-stealth-blackout
+kind: detection
+summary: 'Iran''s June 2025 shutdown enforced a strict national protocol whitelist: only DNS (UDP/53), HTTP (port 80), and HTTPS (port 443) traffic from Iranian networks to external servers was forwarded; all other protocols—including OpenVPN (UDP/1194), SSH (port 22), and arbitrary TCP/UDP ports—were silently dropped without response by DPI at the border.'
+techniques:
+    - dpi
+    - port-blocking
+    - fully-encrypted-detect
+censors:
+    - ir
+defense_implications:
+    - Circumvention traffic must be encapsulated exclusively within HTTPS (port 443); any transport that opens a distinct port or uses non-HTTP(S) framing will be silently dropped at the Iranian border gateway.
+    - Pluggable transports like meek or obfs4-over-TLS must not rely on any protocol other than DNS/HTTP/HTTPS; QUIC/HTTP3 and custom-port transports will fail in this environment.
+section: §4.4
+extracted_by: claude-sonnet-4-6

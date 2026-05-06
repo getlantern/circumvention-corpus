@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-aryapour-stealth-blackout
+kind: deployment
+summary: TTL-based path analysis showed that all censorship actions (DNS poisoning, HTTP injection, TLS resets) in the June 2025 shutdown occurred at the same network hop across all tested ISPs, indicating a single centralized national border gateway—likely TCI AS gateways—rather than per-ISP enforcement. Global BGP announcements were kept intact throughout, making the shutdown invisible to routing monitors while domestic connectivity collapsed.
+techniques:
+    - dpi
+    - dns-poisoning
+    - rst-injection
+censors:
+    - ir
+defense_implications:
+    - Because all enforcement is at a single chokepoint, any circumvention path that bypasses the Iranian border (e.g., Starlink, satellite out-of-band links) fully escapes the censorship stack—tool designers should prioritize out-of-band bootstrap channels for users in such environments.
+    - BGP-presence-based outage detection cannot detect this 'stealth blackout' model; monitoring tools must include in-country active probes with application-layer measurements to reliably detect this class of shutdown.
+section: §4.5
+extracted_by: claude-sonnet-4-6

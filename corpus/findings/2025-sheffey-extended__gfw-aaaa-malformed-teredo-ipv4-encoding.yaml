@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sheffey-extended
+kind: evaluation
+summary: 'GFW DNS AAAA responses for censored domains return 622 IPv6 addresses: 30 from Facebook''s 2a03:2880::/32 network (all sharing interface identifier face:b00c:0:25de), and 592 malformed Teredo addresses in the 2001::/32 range that directly hex-encode entries from the IPv4 pool in the lower 32 bits rather than following RFC 4380 Teredo structure. The Teredo addresses'' server IPv4 (0.0.0.0) and port (0) fields are nonsensical.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Measurement tools and circumvention clients that infer censor behavior from AAAA responses must account for the GFW's non-standard Teredo encoding; parsing these as valid IPv6 addresses will silently derive wrong destination IPs.
+    - The one-to-one mapping between the IPv4 and Teredo IPv6 pools enables researchers to cross-validate injector datasets across A and AAAA record collection, improving completeness of GFW IP pool enumeration.
+section: §2.1, Appendix A
+extracted_by: claude-sonnet-4-6

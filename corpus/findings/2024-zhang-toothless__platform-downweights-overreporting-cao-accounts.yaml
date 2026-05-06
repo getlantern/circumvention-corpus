@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-zhang-toothless
+kind: detection
+summary: Chinese social media platforms detect and downweigh accounts that over-use the reporting function, reducing their future report credibility. The CAO's counter-response was to recruit 'fresh accounts' from visitors, borrow civilian accounts from seconded staff, and store credentials in an unencrypted Excel file circulated via WeChat — indicating the censor relies on high account turnover rather than persistent infrastructure to maintain reporting effectiveness.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Platform-side abuse detection creates a measurable adversarial dynamic that slows coordinated censorship; circumvention tool distribution via social media may survive longer if posts are less keyword-detectable and thus harder to fast-coordinate against.
+    - Censor account pools are transient and sourced from civilian-looking accounts; automated detection of coordinated inauthentic reporting bursts is technically feasible and could expose censorship campaigns to platform trust-and-safety teams in near-real-time.
+section: '§Coping strategy 2: organized mass reporting'
+extracted_by: claude-sonnet-4-6

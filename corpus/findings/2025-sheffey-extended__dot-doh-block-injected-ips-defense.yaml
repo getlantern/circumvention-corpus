@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sheffey-extended
+kind: defense
+summary: The authors recommend that users encrypt DNS queries (DoT or DoH) to prevent the GFW's on-path injectors from intercepting and poisoning them, and additionally block all outgoing traffic to the known pool of GFW-injected IP addresses to avoid silently connecting to potentially surveillance-oriented infrastructure.
+techniques:
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool bootstrapping flows that rely on plaintext DNS for initial server discovery are vulnerable to GFW injection even before the tunnel is established; move all bootstrapping resolution to DoH/DoT or embed server addresses directly.
+    - Maintain and distribute a regularly-updated blocklist of the GFW's injected IP pool so clients can drop connections to these addresses before any application data is transmitted.
+section: §4
+extracted_by: claude-sonnet-4-6

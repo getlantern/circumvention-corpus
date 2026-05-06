@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-zhang-toothless
+kind: evaluation
+summary: The District T CAO's 'Cavalry Team' of approximately 100 members used coordinated mass reporting — timing reports within 5–10 minutes of a post appearing, using different IP addresses and devices, and submitting long complaints invoking phrases like 'threatening social stability' — to achieve a documented weekly takedown success rate of 95.01% (286 of 301 targeted posts removed).
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Coordinated mass reporting with IP and device diversity can bypass platform anti-abuse filters and trigger automated takedowns without human review; circumvention infrastructure publicized on Chinese social media should assume it faces organized reporting campaigns, not just individual complaints.
+    - Takedown does not require a valid policy violation — volume and coordination within a narrow time window are sufficient; distribution methods must not depend on content surviving on Chinese social media platforms beyond the initial posting window.
+section: '§Coping strategy 2: organized mass reporting'
+extracted_by: claude-sonnet-4-6

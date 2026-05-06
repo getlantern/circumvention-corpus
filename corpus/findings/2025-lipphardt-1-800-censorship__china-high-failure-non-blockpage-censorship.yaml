@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lipphardt-1-800-censorship
+kind: evaluation
+summary: In China, multiple URLs show 100% failure rates across 3–7 ASNs with near-zero confirmed blockpage rates (e.g., hkleaks.ru, blockdx.co, libgen.space each at 100% failure, avg_confirmed ≈ 0), indicating that China increasingly uses non-blockpage mechanisms — connection drops, TCP anomalies — that evade blockpage-based detection while achieving complete access denial.
+techniques:
+    - dpi
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Blockpage-confirmation-only metrics substantially undercount Chinese censorship; circumvention tool designers should treat sustained high anomaly or failure rates (≥90%) as operationally equivalent to confirmed blocking when evaluating proxy reachability.
+    - Before deploying a proxy domain or IP in China, check OONI for 100%-failure-rate signatures; such endpoints are effectively blocked even without a formal blockpage and will fail users silently.
+section: §4.4, Table 4
+extracted_by: claude-sonnet-4-6

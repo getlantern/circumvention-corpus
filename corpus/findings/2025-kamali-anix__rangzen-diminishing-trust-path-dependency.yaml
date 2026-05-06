@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-kamali-anix
+kind: evaluation
+summary: 'Rangzen''s transitive trust scheme suffers from two structural defects: diminishing trust (each relay hop multiplicatively reduces a message''s trust score, degrading trustworthy messages from distant authors) and path dependency (the same message accrues different trust scores depending on which route it traveled, making scores incomparable across recipients). These defects prevent any user from gauging network-wide endorsement of a message.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Trust or ranking systems for mesh broadcast must decouple a message's score from its propagation path; votes or endorsements should be accumulated as a set keyed by vote hash rather than multiplied along the relay chain.
+    - Allowing the same message to arrive via multiple paths and merging vote sets at each receiver (as Anix does with string sets) provides a path-independent score and enables messages from outside a user's immediate contact circle to surface legitimately.
+section: §2.3
+extracted_by: claude-sonnet-4-6

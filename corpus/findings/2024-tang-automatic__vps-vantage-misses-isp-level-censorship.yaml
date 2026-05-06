@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-tang-automatic
+kind: detection
+summary: VPS-based vantage points in Singapore and India detected censorship patterns similar to 'free' locations, failing to observe blocking known to be enforced by local ISPs following government directives. This occurred because ISP-level censorship is implemented per-carrier rather than centrally, and the VPS provider's ISP did not enforce those blocks — confirmed by re-testing from a residential IP that did observe the expected blocks.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - in
+defense_implications:
+    - Censorship measurement from data-center IPs systematically under-detects ISP-level filtering; circumvention tools should validate reachability of their own infrastructure from residential endpoints, not just VPS nodes, in decentralized censorship environments.
+    - Centralized national censorship (e.g., GFW) is more consistently detectable from any vantage point, while decentralized ISP-level censorship requires per-carrier testing — a critical design consideration for tools that rely on vantage-point data to make routing decisions.
+section: §6.2
+extracted_by: claude-sonnet-4-6

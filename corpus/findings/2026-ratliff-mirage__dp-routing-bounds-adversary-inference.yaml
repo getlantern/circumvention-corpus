@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ratliff-mirage
+kind: defense
+summary: 'MIRAGE''s differentially private routing function provably bounds adversary inference: for a routing protocol satisfying ε-DP with ε = ln(4), any hypothesis test achieving a true positive rate of 80% necessarily incurs a false positive rate of at least 20%. The TPR-to-FPR ratio is bounded by e^ε for any ε-DP routing function, providing a formal privacy guarantee against routing-level statistical disclosure attacks.'
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Use local differential privacy (randomized response over mobility graph edges) to provide plausible deniability for routing decisions — this is the mechanism that converts a perfectly-leaking protocol into one with bounded inference.
+    - Parameterize privacy budget ε explicitly so operators can tune the TPR/FPR bound that adversaries can achieve; publishing ε alongside a system gives users an auditable privacy guarantee.
+section: §V–VI
+extracted_by: claude-sonnet-4-6

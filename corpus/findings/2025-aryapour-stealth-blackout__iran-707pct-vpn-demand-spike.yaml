@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-aryapour-stealth-blackout
+kind: evaluation
+summary: VPN search demand in Iran spiked approximately 707% during the June 2025 stealth blackout, as measured by Top10VPN analytics, making it one of the highest-documented circumvention-demand spikes associated with a single shutdown event. Despite this demand, many VPN connections failed because the protocol whitelist eliminated non-HTTPS tunneling methods and HTTP-level filters could detect known VPN signatures on port 443.
+techniques:
+    - dpi
+    - port-blocking
+    - traffic-shape
+censors:
+    - ir
+defense_implications:
+    - Even HTTPS-wrapped VPN traffic on port 443 was subject to DPI signature detection; circumvention tools must apply deep obfuscation (pluggable transports, traffic randomization) even when masquerading as HTTPS, not merely using port 443.
+    - The 707% demand spike confirms the need for scalable bridge infrastructure that can absorb sudden large user surges during shutdown events without degraded performance.
+section: §1, §5
+extracted_by: claude-sonnet-4-6

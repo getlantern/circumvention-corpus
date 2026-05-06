@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wilson-extended
+kind: detection
+summary: Packet timings are a distinct detection vector for circumvention tools beyond payload content and packet lengths, as demonstrated by Wails et al. 2024. Prior FEP-specific shaping work (Fenske et al.) addressed packet lengths but explicitly left timing shaping for future work, leaving a known gap in detection resistance.
+techniques:
+    - traffic-shape
+    - fully-encrypted-detect
+censors:
+    - generic
+defense_implications:
+    - Packet-length normalization alone is insufficient; circumvention tools must also control inter-packet timing distributions to resist traffic-shape classifiers.
+    - Prioritize integrating timing constraints (min/max delay, jitter bounds, fixed inter-packet intervals) into any traffic-shaping layer added to existing FEPs.
+section: §1
+extracted_by: claude-sonnet-4-6

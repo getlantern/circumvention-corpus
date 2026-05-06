@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-wails-precisely
+kind: detection
+summary: CNN-based deep learning reduces obfs4 false positive rate by an order of magnitude versus the best decision tree (FPR 2.9×10⁻³ vs. 3×10⁻²) while maintaining 100% recall, and achieves near-perfect Snowflake data-flow detection (Precλ=1k = 0.95, Fλ=1k = 0.97). However, at realistic base rates λ > 10⁶ all CNN classifiers still yield near-zero precision, leaving per-flow deep learning alone insufficient for nation-state-scale deployment.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - obfs4
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Snowflake WebRTC data flows are unusually long compared to background UDP traffic, making them highly detectable by flow-duration features; proxy flows should match background session-length distributions to avoid this fingerprint.
+    - Per-flow CNN classifiers are not a practical blocking threat at realistic base rates in isolation, so protocol designs need not defeat per-flow deep learning but must defeat the temporal host-accumulation layer built on top of it.
+section: §V-C, Table IV, Figure 5
+extracted_by: claude-sonnet-4-6

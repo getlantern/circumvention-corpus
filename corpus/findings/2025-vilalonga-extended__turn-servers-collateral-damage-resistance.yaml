@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vilalonga-extended
+kind: defense
+summary: TURN servers used by major applications such as Facebook Messenger for media relay are hypothesized to be less likely blocked in censored regions due to collateral damage to legitimate WebRTC traffic. Providers like Cloudflare, Metered Video, and ExpressTURN supply geographically distributed TURN infrastructure that can be used without any special configuration by a censorship evasion system.
+techniques:
+    - dpi
+    - active-probing
+    - ip-blocking
+defenses:
+    - webrtc-pluggable
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Leverage TURN servers from major commercial providers (Cloudflare Calls, Metered, xirsys) as relay infrastructure — their blocking would cause widespread WebRTC collateral damage that censors are incentivized to avoid.
+    - Prefer out-of-the-box TURN endpoints over self-hosted ones to maximize the pool of usable relays and reduce distinguishability from legitimate usage.
+section: §1 Introduction & Background
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vilalonga-extended
+kind: defense
+summary: 'The proposed system adopts the turbo tunnel architecture to provide a reliability layer over lossy TURN relay paths and to allow traffic reassembly at a single bridge across multiple TURN proxies. Three encapsulation modes are specified: direct application data inside TURN messages, DTLS datagrams via WebRTC data channels, and video frames inside WebRTC media streams — the latter two mimicking the encapsulation strategies of existing WebRTC circumvention systems such as Snowflake and TorKameleon.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Implement WebRTC media-stream encapsulation as the default mode so that TURN traffic is indistinguishable from real video-call traffic rather than generic tunneled data.
+    - Use turbo tunnel's reliability framing to decouple transport-layer reliability from the underlying TURN/UDP path, enabling multi-path splitting without application-visible packet loss.
+section: §2 System Design
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zohaib-extended
+kind: deployment
+summary: CensorAlert aggregates censorship signals from heterogeneous open sources — including OONI, Cloudflare Radar, NetBlocks, GitHub Issues of circumvention tools (Hysteria, Xray), Net4People BBS, NTC Party forum, Mastodon, X, Telegram channels, and arXiv — normalizing each item into a common schema preserving timestamp, source, raw data, and provenance with a link to the original content.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Circumvention tool maintainers should treat their public GitHub issues and changelogs as a de facto censorship telemetry feed; CensorAlert (and similar platforms) will ingest these automatically.
+    - Build public-facing incident documentation into tool infrastructure so aggregation platforms can automatically ingest structured blocking reports.
+section: §2 (Data Sources)
+extracted_by: claude-sonnet-4-6

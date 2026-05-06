@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sivan-sevilla-probing
+kind: evaluation
+summary: 152 of 5,478 crawled domains (approximately 2.8%) deployed active bot-detection measures—captcha delivery or perimeter protection—that blocked automated OpenWPM crawling entirely. The authors note this disproportionately excludes untrustworthy sites, biasing the training dataset toward well-resourced trustworthy outlets and limiting recall on the untrustworthy class.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Anti-crawling mechanisms (CAPTCHA, perimeter detection) create systematic blind spots in structural measurement pipelines; circumvention infrastructure that deploys similar bot-deterrence may evade passive structural fingerprinting even if the underlying request tree would be discriminative.
+    - Measurement studies that exclude bot-resistant domains should be treated as lower bounds on classifier performance against adversarially-hardened targets.
+section: §4 Limitations
+extracted_by: claude-sonnet-4-6

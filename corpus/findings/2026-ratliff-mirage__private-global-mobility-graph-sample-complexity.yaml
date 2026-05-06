@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ratliff-mirage
+kind: defense
+summary: MIRAGE constructs a global mobility graph using locally differentially private per-user submissions, requiring only O(ln(|M|/β) / (α²ε²)) users to achieve per-edge accuracy α with probability 1−β. For a 100-district map with ε=0.05 and α=0.5, fewer than 1 million users suffice for top-2 district reporting; for top-3 districts the requirement drops to under 200K users.
+defenses:
+    - meta-resistance
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - A centralized curator collecting differentially private mobility profiles during a setup phase need not be trusted — the local DP guarantees hold even against a malicious curator, enabling hybrid architectures that bootstrap over traditional Internet before pivoting to fully decentralized mesh operation.
+    - Circumvention systems that want population-level routing intelligence without individual exposure should size their opt-in user pool to at least 200K–1M depending on desired accuracy, using these sample-complexity bounds as deployment thresholds.
+section: §VI-B
+extracted_by: claude-sonnet-4-6

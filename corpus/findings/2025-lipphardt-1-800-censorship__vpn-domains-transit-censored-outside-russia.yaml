@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lipphardt-1-800-censorship
+kind: evaluation
+summary: Among the most commonly transit-censored popular URLs (top-10k rank, ≥90% confirmed blockpage rate from Russian transit ASNs, not blocked elsewhere in those countries), turbovpn.com appears alongside Russian opposition news and social-media pages, demonstrating that Russia's VPN-blocking lists propagate into foreign transit ASNs.
+techniques:
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - Circumvention tool domains on Russia's blocklist risk interception for users outside Russia if traffic transits Russian-peered ASNs; use domain fronting or CDN distribution to avoid direct domain exposure on the wire.
+    - Monitor OONI blockpage detections of circumvention tool domains from non-Russian vantage points as an early-warning signal that transit censorship is carrying Russia's blocklist to third-country networks.
+section: Table 5, §4.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wilson-extended
+kind: detection
+summary: 'The GFW detects fully encrypted protocols using ad-hoc rules including the percentage of printable ASCII characters per packet (threshold: over 50%) and the observation that FEP entropy is considerably higher than normal encrypted TLS traffic. These rules are subject to frequent changes, making rigid FEP designs unable to adapt.'
+techniques:
+    - fully-encrypted-detect
+    - dpi
+    - traffic-shape
+censors:
+    - cn
+defense_implications:
+    - Design FEPs or their wrappers to dynamically match printable-ASCII ratios and entropy profiles of legitimate TLS traffic, not just randomize payloads.
+    - Build rule-updating mechanisms into circumvention tools (analogous to how bridge distribution works) so detection-evading constraints can be pushed to clients without requiring software updates.
+section: §1
+extracted_by: claude-sonnet-4-6
