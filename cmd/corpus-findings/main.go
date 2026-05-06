@@ -328,6 +328,26 @@ func downloadPDF(ctx context.Context, url, path string) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
 	}
+	// Try direct net/http first — fastest path, works for ~50% of
+	// publishers. On any error or non-PDF response, fall through to
+	// `wick fetch --format raw`, which uses Chrome's network stack
+	// with a residential IP and full TLS fingerprint. wick clears the
+	// 403s from ACM/IEEE/SSRN datacenter-IP gates and the bot walls
+	// that serve HTML to non-browser User-Agents.
+	if err := downloadPDFDirect(ctx, url, path); err == nil && isPDF(path) {
+		return nil
+	}
+	if err := downloadPDFViaWick(ctx, url, path); err != nil {
+		return err
+	}
+	if !isPDF(path) {
+		os.Remove(path)
+		return fmt.Errorf("response was not a PDF (no %%PDF- header)")
+	}
+	return nil
+}
+
+func downloadPDFDirect(ctx context.Context, url, path string) error {
 	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
 	defer cancel()
 	req, err := http.NewRequestWithContext(cctx, "GET", url, nil)
@@ -356,6 +376,72 @@ func downloadPDF(ctx context.Context, url, path string) error {
 	}
 	out.Close()
 	return os.Rename(tmp, path)
+}
+
+// downloadPDFViaWick shells out to `wick fetch --format raw <url>` and
+// streams the binary response into `path`. Requires wick >= 0.10.2
+// (older versions don't have --format raw).
+func downloadPDFViaWick(ctx context.Context, url, path string) error {
+	bin := locateWick()
+	if bin == "" {
+		return fmt.Errorf("wick binary not found in $PATH or /opt/homebrew/bin")
+	}
+	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+	defer cancel()
+	tmp := path + ".part"
+	out, err := os.Create(tmp)
+	if err != nil {
+		return err
+	}
+	cmd := exec.CommandContext(cctx, bin, "fetch", "--format", "raw", url)
+	cmd.Stdout = out
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil {
+		out.Close()
+		os.Remove(tmp)
+		return fmt.Errorf("wick: %w (stderr: %s)", err, truncate(stderr.String(), 200))
+	}
+	out.Close()
+	// Cap to pdfMaxBytes after the fact so wick's stream isn't aborted
+	// mid-flight (--format raw doesn't support a byte limit). If the
+	// server returned a paywalled HTML page, isPDF will catch it next.
+	if fi, err := os.Stat(tmp); err == nil && fi.Size() > pdfMaxBytes {
+		os.Remove(tmp)
+		return fmt.Errorf("response too large: %d bytes (cap %d)", fi.Size(), pdfMaxBytes)
+	}
+	return os.Rename(tmp, path)
+}
+
+func locateWick() string {
+	for _, p := range []string{
+		"/opt/homebrew/bin/wick",
+		"/usr/local/bin/wick",
+		os.ExpandEnv("$HOME/.local/bin/wick"),
+	} {
+		if _, err := os.Stat(p); err == nil {
+			return p
+		}
+	}
+	if path, err := exec.LookPath("wick"); err == nil {
+		return path
+	}
+	return ""
+}
+
+// isPDF returns true if the file at path begins with the %PDF- magic
+// header. Catches the common pdftotext failure where a publisher
+// (SSRN, sci-hub, paywalled IEEE) returned an HTML landing page
+// instead of the actual PDF.
+func isPDF(path string) bool {
+	f, err := os.Open(path)
+	if err != nil {
+		return false
+	}
+	defer f.Close()
+	buf := make([]byte, 5)
+	n, _ := f.Read(buf)
+	return n == 5 && string(buf) == "%PDF-"
 }
 
 func pdfToText(ctx context.Context, pdfPath, txtPath string) error {
