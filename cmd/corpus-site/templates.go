@@ -702,9 +702,40 @@ const indexBody = `
       <input id="hero-ask-q" name="q" type="text" placeholder="e.g. How did Iran's June 2025 internet shutdown work?" maxlength="500" required>
       <button type="submit" class="btn primary">Ask →</button>
     </div>
-    <p class="hero-ask-help muted"><kbd>Tab</kbd> or <kbd>→</kbd> to use the example. Or <a href="/use/">install the MCP server</a> to query from your editor.</p>
+    <p class="hero-ask-help muted"><kbd>Tab</kbd> or <kbd>→</kbd> to use the example.</p>
   </form>
+
+  <aside class="hero-mcp">
+    <div class="hero-mcp-text">
+      <p class="hero-mcp-eyebrow">OR · INSTALL THE MCP SERVER</p>
+      <p class="hero-mcp-title">Query the corpus from your editor.</p>
+      <p class="hero-mcp-blurb">One line wires <code>search_papers</code>, <code>get_paper</code>, <code>find_related</code>, and <code>synthesize</code> into Claude Code, Cursor, or any MCP-aware client &mdash; with the full corpus as the underlying retrieval.</p>
+    </div>
+    <div class="hero-mcp-cta">
+      <a class="btn primary" href="/use/">Install MCP server →</a>
+      <code class="hero-mcp-cmd" title="Click to copy">claude mcp add --transport http -s user circumvention-corpus https://corpus.lantern.io/mcp</code>
+    </div>
+  </aside>
   <script>
+  // Click-to-copy on the MCP install command in the hero card.
+  (function(){
+    const cmd = document.querySelector('.hero-mcp-cmd');
+    if (!cmd) return;
+    cmd.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(cmd.textContent.trim());
+        const orig = cmd.textContent;
+        cmd.textContent = '✓ copied';
+        cmd.classList.add('copied');
+        setTimeout(() => {
+          cmd.textContent = orig;
+          cmd.classList.remove('copied');
+        }, 1400);
+      } catch (e) {
+        // Clipboard API can fail in non-secure contexts; ignore silently.
+      }
+    });
+  })();
   window.__askExamples = {{exampleQuestionsJS .ExampleQuestions}};
   (function(){
     const form = document.querySelector('.hero-ask');
@@ -2159,6 +2190,95 @@ nav a.external { color: var(--ink-mute); }
   font-size: 0.96rem;
 }
 .hero-ask-help { margin: 0.3rem 0 0; font-size: 0.86rem; }
+
+/* ────────────────── HERO-MCP — secondary CTA card ──────────────────
+ * The "ask the corpus" textfield is the primary entry point. The MCP
+ * server is the killer secondary path — researchers running Claude
+ * Code or Cursor can install once and have synthesize / search /
+ * find_related on tap forever. This card sits right below the ask
+ * field so visitors who pause after submitting their first question
+ * see the install option without scrolling. Visually a sibling card
+ * to the form, not a competing button. */
+.hero-mcp {
+  max-width: 44rem;
+  margin: 1.5rem 0 0;
+  padding: 1.1rem 1.25rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(180deg, var(--paper) 0%, var(--accent-soft) 220%);
+  border-radius: 1px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+.hero-mcp-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem; letter-spacing: 0.04em;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+.hero-mcp-title {
+  font-family: "Newsreader", serif;
+  font-size: 1.18rem; font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+  line-height: 1.25;
+}
+.hero-mcp-blurb {
+  margin: 0;
+  font-family: "Newsreader", serif;
+  font-size: 0.96rem; line-height: 1.45;
+  color: var(--ink-2);
+}
+.hero-mcp-blurb code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.84em;
+  background: var(--code-bg);
+  padding: 0.05em 0.35em; border-radius: 1px;
+}
+.hero-mcp-cta {
+  display: flex; flex-direction: column;
+  gap: 0.55rem;
+  align-items: stretch;
+  min-width: 0;
+}
+.hero-mcp-cta .btn {
+  white-space: nowrap;
+  text-align: center;
+}
+.hero-mcp-cmd {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--ink-mute);
+  background: var(--paper);
+  border: 1px dashed var(--rule);
+  border-radius: 1px;
+  padding: 0.35rem 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 18rem;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+}
+.hero-mcp-cmd:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.hero-mcp-cmd.copied {
+  color: var(--moss);
+  border-color: var(--moss);
+}
+
+@media (max-width: 35rem) {
+  .hero-mcp {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .hero-mcp-cta { align-items: stretch; }
+  .hero-mcp-cmd { max-width: none; font-size: 0.65rem; }
+}
 .hero-ask-help kbd {
   font-family: "JetBrains Mono", monospace; font-size: 0.78rem;
   padding: 0.05rem 0.35rem;
