@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-chasing
+kind: detection
+summary: 'ShadowTLS relays are detectable via three active probing techniques exploiting behavioral discrepancies from the mask sites they mimic: (1) responding to plaintext HTTP on port 443 with FIN-ACK rather than an error (only 17% of TLS servers share this behavior), (2) silently ignoring non-TLS record data post-handshake rather than sending a fatal alert (only 0.14% of 30M hosts behaved this way), and (3) silently ignoring corrupted TLS Application Data records rather than sending a bad_record_mac alert (only 0.12% of hosts silent).'
+techniques:
+    - active-probing
+    - tls-fingerprint
+    - dpi
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Any TLS-handshake-forwarding proxy must make post-handshake behavior indistinguishable from the mask site — specifically, all censor-sent data must be forwarded to the mask site rather than silently dropped.
+    - Silent discard of unrecognized data is a reliable fingerprint; proxies must instead surface the mask site's real error responses to any unauthenticated probe.
+section: §3.2
+extracted_by: claude-sonnet-4-6

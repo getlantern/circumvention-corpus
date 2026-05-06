@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-censored
+kind: evaluation
+summary: Censored Planet achieves 93% /24 vantage-point continuity and 99.01% AS continuity between weekly scans, versus ICLab's 64% and OONI's 36% AS continuity. Applying bitmap-based anomaly detection on the resulting longitudinal time series detected 15 prominent censorship events over 20 months, two-thirds of which had not been previously reported, while OONI data showed no corresponding increase for most newly discovered events due to sparse volunteer measurements.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Build or integrate with a continuous longitudinal measurement backend rather than periodic snapshots; the paper shows that volunteer-based data (36% AS continuity) misses most censorship onset events that a weekly automated scan catches.
+    - Use anomaly detection on your own telemetry (e.g., connection failure rates by country-AS pair) as a real-time blocking signal, modeled on the bitmap-distance method that surfaces 99%-significant step-changes in the time series.
+section: §5.3, §6.1, §7.1
+extracted_by: claude-sonnet-4-6

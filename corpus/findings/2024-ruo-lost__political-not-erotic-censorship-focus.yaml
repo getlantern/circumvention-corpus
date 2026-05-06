@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ruo-lost
+kind: detection
+summary: Among 286 randomly sampled censorship rules across all five services, only one rule targeted erotic content, while the vast majority targeted political dissidents, CCP leaders, Tiananmen Square, Falun Gong, and government criticism. The paper interprets this near-total absence of pornography censorship as evidence that the censors did not anticipate their rules being audited, or are no longer interested in concealing the overtly political agenda of Chinese information control.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Political and religious terminology — not technical or sexually explicit vocabulary — is the primary censorship trigger in translation pipelines; circumvention tool UX copy and educational materials using such terms will be silently dropped.
+    - Circumvention infrastructure names, protest terminology, or activist phrasing embedded in default app strings or error messages risk triggering translation censorship when surfaced to Chinese users — audit all user-facing strings against known CCP-sensitive categories.
+section: §6.2 Content Analysis / §6.2.6 Eroticism
+extracted_by: claude-sonnet-4-6

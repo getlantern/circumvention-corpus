@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-comments
+kind: detection
+summary: 'VMess''s encrypted command block used a non-keyed hash over variable-length fields in a MAC-then-encrypt construction where the receiver cannot locate the hash without first parsing the protected data, enabling an active distinguishing attack: by replaying an authentic request 16 times with the padding-length field P set to 0000–1111, an attacker observes that a VMess server reads exactly P+N+4 bytes before disconnecting, with max and min byte counts differing by exactly 15 with every intermediate value present. V2Ray mitigated this in v4.23.4 by disconnecting after a timeout rather than after receiving a full command block.'
+techniques:
+    - active-probing
+defenses:
+    - vmess
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Proxy protocol command blocks must use keyed MACs (not unkeyed hashes) over all fields, structured so that integrity verification does not require parsing variable-length data the MAC is meant to protect — MAC-then-encrypt with variable-length fields is fundamentally broken.
+    - Servers must disconnect after a fixed timeout rather than after receiving a protocol-specified byte count, eliminating the byte-count side-channel that makes active distinguishing attacks possible.
+section: §4
+extracted_by: claude-sonnet-4-6

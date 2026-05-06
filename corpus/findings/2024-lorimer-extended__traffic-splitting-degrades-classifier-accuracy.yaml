@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-lorimer-extended
+kind: defense
+summary: When a user splits traffic across N paths, a censor observing a single path sees only a partial trace, substantially reducing the accuracy of classifiers trained on complete network traces. Prior Tor traffic-splitting work (TrafficSliver, CoMPS, multipath Tor studies) has validated this defense against website fingerprinting outside the PT context.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - pluggable-transport
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Design PT deployments so that each observable path carries an incomplete fingerprint: even if each path''s PT is individually identifiable, the split makes destination-level WF classification unreliable.'
+    - Prefer splitting algorithms (weighted random, consistent splitting) over naive round-robin when proxy bandwidth is heterogeneous, as trace balance affects how degraded each partial view is.
+section: §1, §4.2
+extracted_by: claude-sonnet-4-6

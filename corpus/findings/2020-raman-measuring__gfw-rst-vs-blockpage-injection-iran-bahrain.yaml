@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-measuring
+kind: detection
+summary: The Great Firewall of China does not inject blockpages — it resets connections via TCP RST injection — making it invisible to blockpage-based detection systems. In contrast, the Iran firewall accounted for 97.1% of disruptions observed in Iranian vantage points, and the Bahrain and Saudi Arabia firewalls caused 71.2% and 80.2% of disruptions respectively, all using application-layer blockpage injection.
+techniques:
+    - rst-injection
+    - dpi
+    - packet-injection
+censors:
+    - cn
+    - ir
+    - sa
+defense_implications:
+    - Against GFW (CN), connection-reset evasion (e.g., Geneva-derived TCP manipulation, or transport-layer obfuscation) is load-bearing; blockpage-injection evasion is irrelevant.
+    - Against IR/SA/BH, the filter is application-layer (HTTP/HTTPS) and injects HTML responses — mimicry transports that avoid triggering HTTP-layer keyword matches are more effective than pure entropy obfuscation.
+section: §V-A-2
+extracted_by: claude-sonnet-4-6

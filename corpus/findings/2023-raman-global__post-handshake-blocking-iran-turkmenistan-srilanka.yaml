@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-global
+kind: detection
+summary: Post-handshake tampering signatures (⟨SYN;ACK→RST⟩ and ⟨SYN;ACK→RST+ACK⟩) constitute 34.4% of tampered connections from Iranian networks, but over 70% from Sri Lanka networks and over 81% from Turkmenistan networks, suggesting that censors in the latter two countries disproportionately block at the IP/TCP-handshake level before any application-layer content is visible — consistent with IP-list-based blocking rather than SNI-based DPI.
+techniques:
+    - rst-injection
+    - ip-blocking
+censors:
+    - ir
+    - tm
+defense_implications:
+    - In high-IP-blocking environments (Turkmenistan-style), domain-fronting or CDN-based transports do not help if the CDN's IP range is itself blocked; decoy routing or refraction networking that uses widely-allowed IP prefixes is a better fit.
+    - 'Fingerprinting censors by their post-handshake vs. post-PSH signature distribution lets circumvention tools adaptively select transport: SNI-hiding techniques are sufficient where post-PSH signatures dominate, but IP-diverse strategies are needed where post-SYN/post-ACK signatures dominate.'
+section: §4.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-pu-exploring
+kind: defense
+summary: Amazon SQS routes client traffic through a single fixed HTTPS endpoint (https://sqs.us-east-1.amazonaws.com), making it infeasible for a censor to distinguish circumvention-bound SQS traffic from legitimate AWS service traffic; blocking this signaling channel would require blocking all Amazon SQS, imposing significant collateral damage on businesses and developers.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - tunneling
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Select cloud signaling channels whose blocking requires censors to sacrifice commercially valuable third-party services — the higher the economic collateral damage, the more durable the channel.
+    - Route client-to-broker signaling through a single, fixed, TLS-encrypted endpoint of a major cloud provider rather than a custom domain to eliminate both SNI and IP distinguishability.
+section: §2.2
+extracted_by: claude-sonnet-4-6

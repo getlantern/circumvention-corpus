@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-global
+kind: evaluation
+summary: Passive measurement of real user connections demonstrates that published active-measurement test lists (Citizen Lab, Herdict, GreatFire, Berkman Klein, and top-K lists) miss a considerable fraction of domains that are actively being tampered with, as confirmed in §5.5. Because passive measurement is driven by real user requests rather than an a priori domain list, it can discover blocked domains that were never included in any test list and has no dependency on volunteers providing ground truth.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Circumvention infrastructure that uses domains absent from public test lists may gain a temporary detection gap, but passive CDN telemetry will still surface them once real users attempt connections — operators should assume any widely-used domain will eventually be discovered and blocked.
+    - Test list maintainers should ingest passive CDN tampering feeds (e.g., Cloudflare Radar) to close coverage gaps, reducing the lag between a domain being blocked and the circumvention community becoming aware.
+section: §5.5, §2.2
+extracted_by: claude-sonnet-4-6

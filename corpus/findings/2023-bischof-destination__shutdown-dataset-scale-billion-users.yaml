@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-bischof-destination
+kind: evaluation
+summary: The merged KIO-IODA dataset (Jan 2018–Aug 2021) documents 219 national-scale Internet shutdowns across 35 countries and 714 spontaneous outages across 150 countries; the 35 shutdown-affected countries collectively represent more than 1 billion estimated Internet users. Myanmar (53 IODA events), Syria (52), and Iraq (38) are the most frequently affected countries in the shutdown dataset.
+techniques:
+    - measurement-platform
+censors:
+    - mm
+    - sy
+    - ir
+    - generic
+defense_implications:
+    - Circumvention deployment should explicitly target the ~35 countries responsible for all documented national shutdowns; concentration in Myanmar, Syria, Iraq, and Iran warrants dedicated in-country infrastructure and localized user-support pipelines.
+    - Scale planning for circumvention tools must account for simultaneous demand spikes across multiple countries, given that the affected population exceeds 1 billion users and political crises often cluster regionally.
+section: §4, Table 2
+extracted_by: claude-sonnet-4-6

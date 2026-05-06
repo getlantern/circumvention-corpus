@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-hoang-measuring
+kind: evaluation
+summary: Only 1.5–2.25% of domains from TLD zone files have a valid ESNI key, with 15.4K of the top 100K and 143.3K of the top 1M popular domains supporting ESNI. All ESNI-supported domains are hosted by Cloudflare, making ESNI-enabled connections trivially distinguishable from the vast majority of TLS traffic and a low-collateral-damage blocking target for censors.
+techniques:
+    - esni-eh-blocking
+    - sni-blocking
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - ru
+defense_implications:
+    - ECH/ESNI is only effective as a circumvention technique at scale — circumvention tools should co-host with or route through major CDNs (Cloudflare) that already carry large volumes of ESNI traffic to avoid statistical distinguishability.
+    - Until ECH adoption reaches a critical mass of popular domains, tools relying solely on ESNI-based SNI hiding will be trivially blockable with minimal collateral damage to the censor.
+section: §4.2
+extracted_by: claude-sonnet-4-6

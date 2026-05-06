@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-wei-domain
+kind: evaluation
+summary: Google Cloud CDN and Amazon CloudFront disabled domain fronting by 2021 by enforcing SNI/Host header consistency, causing Tor Meek, Psiphon, Lantern, and Signal to halt or migrate their domain-fronting deployments. Domain shadowing avoids this failure mode entirely because it does not rely on the SNI/Host mismatch that CDNs were able to patch with a simple header equality check.
+techniques:
+    - sni-blocking
+defenses:
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - Do not build new infrastructure on domain fronting as a primary technique — the SNI/Host mismatch loophole has been closed by major CDNs; migrate to domain shadowing, REALITY, or ECH-based approaches that exploit legitimate protocol features.
+    - When evaluating CDN-fronting options, verify that the target CDN still permits SNI/Host mismatch before deployment, as provider policies can change under censor pressure.
+section: §2.3
+extracted_by: claude-sonnet-4-6

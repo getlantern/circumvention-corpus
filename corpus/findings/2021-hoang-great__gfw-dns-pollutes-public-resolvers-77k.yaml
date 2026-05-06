@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hoang-great
+kind: evaluation
+summary: 'The GFW''s bidirectional DNS filtering — which poisons DNS queries regardless of whether they originate inside or outside China — has polluted the caches of major public DNS resolvers worldwide: Google (74,715 censored domains), Cloudflare (71,560), OpenNIC (65,567), and OpenDNS (63,295), with 77K censored domains found polluted in total. This is compounded by the fact that 38% of base censored domains (53K) have at least one authoritative name server inside China, ensuring systematic external pollution for those domains.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools must not treat popular public resolvers (8.8.8.8, 1.1.1.1) as trusted for censored or China-hosted domains — those resolvers are themselves polluted and will return forged IPs.
+    - Query authoritative name servers directly or enforce DNS-over-HTTPS/TLS with DNSSEC validation to prevent inadvertent use of poisoned records from globally-polluted resolver caches.
+section: §6.1, §6.2, Table 2
+extracted_by: claude-sonnet-4-6

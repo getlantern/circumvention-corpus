@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-arora-detor-onion
+kind: defense
+summary: 'DeTorOS''s security relies on the honest-but-curious model: if the onion service refuses to participate or lies about its circuit, the client receives no avoidance guarantee. The paper explicitly flags this as an open limitation and notes it cannot be closed without either requiring a TEE on the onion service side or fundamental protocol changes.'
+techniques:
+    - active-probing
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any provable-avoidance scheme that depends on voluntary counterparty cooperation must be paired with a trust-signaling mechanism (e.g., onion service advertises DeTorOS support in its descriptor) so clients can self-select to services that will participate.
+    - For threat models where the onion service itself may be adversarial or coerced, TEE-based remote attestation on the service side is the only known path to closing the cooperative honesty assumption — treat non-TEE deployments as best-effort rather than provable.
+section: §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tran-crowdsourcing
+kind: evaluation
+summary: All existing automated server-side strategy discovery tools — Geneva, Alembic, and SymTCP — require researcher control of a client during training, even when the discovered strategies are deployed exclusively server-side. This dependency makes it infeasible to train against censors in networks where researchers cannot place a controlled machine.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - The training bottleneck is geographic access to censored networks, not computation — crowdsourcing clients from willing in-country users is the key leverage point for expanding strategy discovery coverage.
+    - 'Treat discovery and deployment as separable phases: once discovered in one ASN, server-side strategies may generalize to other ASNs with similar censor implementations.'
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

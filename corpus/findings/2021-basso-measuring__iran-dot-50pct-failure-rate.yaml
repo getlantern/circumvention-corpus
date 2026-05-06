@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-basso-measuring
+kind: evaluation
+summary: In AS197207 (Iran, MCI), approximately 50% of DoT endpoints failed consistently — the only case across all tested ASN/protocol combinations where failure exceeded 20%. In Kazakhstan (AS48716) and China (AS45090), more than 80% of DoT and DoH endpoints were always reachable.
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - tls-fingerprint
+censors:
+    - ir
+    - kz
+    - cn
+defense_implications:
+    - DoT (port 853) is a high-risk transport for Iranian users; circumvention tools routing DNS through DoT should treat MCI as a hostile network and fall back automatically.
+    - Failure rate alone is insufficient to characterize blocking — tool designers should instrument failure mode (connect vs. TLS handshake vs. post-handshake timeout) to distinguish IP blocking from SNI-based blocking.
+section: §V-F, Table VII
+extracted_by: claude-sonnet-4-6

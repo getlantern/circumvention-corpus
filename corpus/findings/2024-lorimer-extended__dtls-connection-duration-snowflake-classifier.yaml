@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-lorimer-extended
+kind: detection
+summary: Censors employing deep learning can use DTLS connection duration as a precise identifier to classify and block Snowflake traffic. The paper proposes switching PT connections after a variable time limit as a countermeasure to prevent duration-based classification.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Randomize DTLS/WebRTC session lifetimes with a variable timeout rather than fixed keepalives to disrupt duration-based deep-learning classifiers.
+    - Proactively migrate connections before reaching any predictable duration threshold, treating connection age as a fingerprintable feature on par with packet sizes.
+section: §4.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-your
+kind: defense
+summary: Switching source IP via VPN, Tor, or HTTP proxy is the primary victim-side mitigation because residual censorship is tuple-keyed; however, if the proxy entry node's path also crosses the censor, the attacker can redirect the attack at the proxy itself. On the censor side, null-routing middleboxes could eliminate the vulnerability by validating TCP sequence/acknowledgment numbers before dropping traffic, or by replacing null routing with an explicit block-page response.
+techniques:
+    - ip-blocking
+    - rst-injection
+defenses:
+    - tor
+    - tunneling
+    - bridges
+censors:
+    - cn
+    - ir
+    - kz
+defense_implications:
+    - Proxy ingress nodes should be selected or deployed so their network path does not cross the target censor's border; geographically diverse entry points force the attacker to independently trigger residual censorship at each ingress, multiplying attack cost.
+    - Circumvention clients should silently rotate proxies on first blocking detection rather than surfacing an error; rapid rotation stays ahead of an attacker who must re-trigger the 4-tuple block for every new source IP or port the client adopts.
+section: §VII
+extracted_by: claude-sonnet-4-6

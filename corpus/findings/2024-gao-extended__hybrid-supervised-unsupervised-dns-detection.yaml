@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gao-extended
+kind: evaluation
+summary: Brown et al. (2023) combined supervised ML models trained on expert-labeled data with unsupervised models establishing a baseline of 'normal' behavior to detect DNS-based censorship from Satellite and OONI datasets, achieving high true-positive rates for both known and new DNS censorship instances. The hybrid supervised/unsupervised approach is proposed as a template for the LLM-based system.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - A hybrid supervised + unsupervised architecture for DNS censorship detection — labeled known-censorship events for supervised training, unlabeled traffic for anomaly baselines — provides a practical blueprint for production censorship-alerting systems.
+    - DNS blocking detectors should cross-reference Satellite and OONI datasets to validate findings and reduce false positives when classifying new censorship events.
+section: §2 Related Works
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-hanlon-detecting
+kind: defense
+summary: Random padding alone raises the classifier FPR only slightly (0.11% to 0.15%), and connection multiplexing alone raises it to 0.53%; however, combining both defenses raises FPR to 2.57%, making the detector impractical for a real-world censor and yielding TPR of 93.40%.
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+    - obfs4
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Implement both random padding (drawing packet sizes from a distribution similar to obfs4) AND connection multiplexing together—either defense alone is insufficient to defeat the heuristic.
+    - Randomizing port per-packet (à la GoHop) in addition to padding and multiplexing further fragments flow-level analysis and should be evaluated as a layered defense.
+section: §4.2 Robustness of 3WHS / Table 3
+extracted_by: claude-sonnet-4-6

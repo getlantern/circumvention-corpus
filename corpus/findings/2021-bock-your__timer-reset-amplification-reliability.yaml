@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-your
+kind: evaluation
+summary: Iran and Kazakhstan reset the residual censorship timer whenever the censor observes any matching packet from the victim, so TCP retransmissions from the victim's own stack inadvertently extend the blocking window far beyond the nominal 120–180s. China's HTTP residual censorship has only ~50% per-request reliability from some vantage points due to heterogeneous GFW middlebox load-balancing, but reliability plateaus near 100% after 7 repeated censorship triggers sent ahead of time.
+techniques:
+    - ip-blocking
+    - middlebox-interference
+    - rst-injection
+censors:
+    - cn
+    - ir
+    - kz
+defense_implications:
+    - 'Circumvention clients should implement immediate back-off (not exponential retry) on detecting a residual-censorship event: continued retransmissions on Iran/Kazakhstan reset the timer and turn the victim''s own stack into an attack amplifier.'
+    - Detect the residual-censorship condition within 1–2 SYN timeouts and rotate to a new tuple before the TCP stack accumulates retransmissions; detecting early prevents self-reinforcement of the block.
+section: §IV (timer reset), §IV (reliability), Fig. 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-pu-exploring
+kind: deployment
+summary: The SQS rendezvous method was deployed in Snowflake v2.9.0 / Tor Browser 13.0.10 (February 2024) and as of 2024-06-22 had served over 14,808 client connections from over 20 countries including Iran, China, the United States, and Russia, while remaining within the AWS Free Tier limit of 1 million requests per month and incurring no monetary cost.
+defenses:
+    - webrtc-pluggable
+    - bridges
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Cloud messaging queues can provide low-cost or free-tier signaling at meaningful scale (tens of thousands of connections per quarter) without dedicated infrastructure.
+    - Track per-country rendezvous method usage in production to identify which channels remain unblocked in specific censorship environments and prioritize accordingly.
+section: §4
+extracted_by: claude-sonnet-4-6

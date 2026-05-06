@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-wei-domain
+kind: defense
+summary: Domain shadowing makes all three traffic indicators — connecting URL, SNI, and Host header — appear to belong to an allowed shadow domain while fetching content from a blocked back-end domain via CDN. Unlike domain fronting, it exploits a legitimate CDN feature (arbitrary back-end binding) rather than a SNI/Host mismatch quirk, so CDNs cannot disable it by enforcing header consistency without breaking legitimate use cases such as third-party service outsourcing via CNAME. The technique was demonstrated successfully accessing www.facebook.com from a heavily censored country.
+techniques:
+    - sni-blocking
+    - dpi
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Prefer CDN back-end binding (domain shadowing) over SNI/Host header manipulation (domain fronting) — it uses a legitimate CDN API that providers cannot revoke without business damage, unlike domain fronting which Google and AWS disabled by 2021.
+    - 'Implement the DfDs++ variant: claim an unclaimed or non-existent domain as the CDN front-end so the shadow domain never appears in public DNS and cannot be enumerated or blocked by the censor.'
+section: §3.3, §6.2
+extracted_by: claude-sonnet-4-6

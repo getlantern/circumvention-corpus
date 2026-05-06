@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-feng-study
+kind: evaluation
+summary: In a survey of 2,415 young Chinese online gamers, 73.9% (1,786) were affected by addiction prevention systems (APS) while minors, and 37.7% (674) of those successfully evaded the APS. 15 of 35 interview participants also actively evaded the GFW at interview time (verified by Twitter live-post retrieval), supporting the hypothesis that mandatory APS evasion for trivial gaming activities normalizes and desensitizes minors to GFW circumvention.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Gaming communities in China represent a large pre-primed user base for circumvention tools — distribution via gaming channels reaches users who already have hands-on evasion experience and lower risk aversion.
+    - Tools that serve both APS evasion (accessing international gaming platforms) and GFW circumvention in one package benefit from strong organic adoption; the dual use case is a feature, not a liability.
+section: §5, §9.2
+extracted_by: claude-sonnet-4-6

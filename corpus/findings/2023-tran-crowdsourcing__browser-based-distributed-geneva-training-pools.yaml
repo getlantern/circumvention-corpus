@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tran-crowdsourcing
+kind: defense
+summary: The proposed crowdsourced system runs multiple isolated Geneva training pools on a controlled server — one pool per censorship system (initially China and Iran) — and instructs volunteer browsers via JavaScript to send forbidden requests to isolated ports, with no download or software installation required from the user. The server monitors per-strategy success or failure to drive genetic evolution entirely from the server side.
+techniques:
+    - keyword-filtering
+    - dpi
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Architect Geneva deployments with per-ASN strategy pools rather than a single global pool, since censor behavior varies across ISPs and countries.
+    - JavaScript-only browser participation lowers the recruitment barrier enough to reach censored users in countries where sideloading tools is itself risky.
+section: §3 Design
+extracted_by: claude-sonnet-4-6

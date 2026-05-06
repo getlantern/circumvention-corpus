@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-chen-extended
+kind: detection
+summary: 'Prior circumvention transports that tunneled over VoIP or voice-conferencing software were identifiable to censors by their TCP retransmission fingerprint: real VoIP applications do not retransmit dropped packets in the same way, making the covert channel''s reliability mechanisms a distinguishing artifact. DTLS and QUIC avoid this because they natively support both fault-tolerant and sequential delivery modes without external indicators of which mode is active.'
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - decoy-routing
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - When mimicking VoIP or real-time media protocols, suppress or mask reliability-layer retransmission behavior — any retransmit pattern inconsistent with the cover protocol is a detectable fingerprint.
+    - Prefer native UDP transports (DTLS, QUIC) over TCP tunnels wrapped in VoIP framing, as they can match the fault-tolerance profile of the cover protocol without leaking retransmission artifacts.
+section: §2 The Case for UDP
+extracted_by: claude-sonnet-4-6

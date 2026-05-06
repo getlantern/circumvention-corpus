@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-arora-detor-onion
+kind: evaluation
+summary: 'Tor''s built-in country-exclusion mechanism is unreliable: circuits configured to exclude US Tor nodes only actually bypassed the US 12% of the time, motivating provably-avoidant circuit construction.'
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Do not rely on Tor's native ExcludeNodes/ExcludeExitNodes for geographic avoidance guarantees — treat any exclusion as a best-effort hint, not a provable bound.
+    - Tools requiring jurisdiction avoidance must implement out-of-band proof mechanisms (speed-of-light alibi proofs or equivalent) rather than trusting the Tor path-selection algorithm.
+section: §1
+extracted_by: claude-sonnet-4-6

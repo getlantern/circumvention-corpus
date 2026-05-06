@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-hoang-measuring
+kind: evaluation
+summary: DNS manipulation is widespread across China (305 domains via local resolvers, 300 via public resolvers) and Russia (251 local, 205 public), but simply switching to a public DNS resolver already evades local-resolver-only filtering for many domains, reducing apparent censorship at the public-resolver layer. On-path filtering systems that poison queries to public resolvers represent a harder threat class requiring encrypted DNS.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Circumvention tools should route DNS through encrypted resolvers hosted on non-standard ports and IPs not associated with known public resolvers, since major public DoTH resolvers are actively blocked in China and monitored in Russia.
+    - Measurement infrastructure distinguishing on-path poisoning (multiple simultaneous responses) from local-resolver tampering (single forged response) enables more accurate circumvention routing decisions — tools should implement analogous detection.
+section: §4.1, Table 2
+extracted_by: claude-sonnet-4-6

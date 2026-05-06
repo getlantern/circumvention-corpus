@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-sharma-camoufler
+kind: evaluation
+summary: 'Large-file transfers via Camoufler (using Telegram as the IM channel) show modest overhead compared to direct wget: a 10 MB file takes 13.6s vs. 7.9s direct, 50 MB takes 52.1s vs. 35s, and 100 MB takes 93.3s vs. 68s. The overhead stems from the server downloading the complete file before forwarding it, but performance still substantially exceeds prior tunneling systems such as SWEET (email-based) and CovertCast (video-based), which the authors describe as incurring >10s even for small webpage loads.'
+techniques:
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - For bulk-content circumvention, server-side pre-download followed by compressed attachment transfer outperforms real-time streaming over low-bitrate cover channels (VoIP, video encoders) — designers should prefer high-capacity file-transfer features of IM (attachments) over real-time message streams for large payloads.
+    - Quantify overhead ratios (here ~1.4–1.7×) relative to direct download when selecting a cover channel; channels that impose >5–10× overhead are likely to be abandoned by users in favor of no circumvention at all.
+section: §4, Table 1
+extracted_by: claude-sonnet-4-6

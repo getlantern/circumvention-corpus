@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-arora-detor-onion
+kind: evaluation
+summary: Never-twice provable avoidance succeeds for 72.4% of sampled source-destination pairs on 6-hop onion-service circuits, compared to approximately 98% on the original 3-hop DeTor circuits; the degradation arises because the additional hops increase round-trip time, making it harder to rule out forbidden-region traversal via speed-of-light bounds.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Provable avoidance success rates degrade substantially as circuit length grows — designers adding extra hops for anonymity (e.g., onion services) should budget for a ~25-point drop in never-twice coverage and consider compensating with relay selection biased toward low-latency, geographically clustered paths.
+    - Sampling one million circuits per source-destination pair is sufficient to find at least one compliant circuit for most pairs; build retry/circuit-rotation logic so clients automatically attempt alternative paths when the first circuit fails the avoidance proof.
+section: §5.2
+extracted_by: claude-sonnet-4-6

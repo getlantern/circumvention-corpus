@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gosain-out
+kind: defense
+summary: For Tier 2 apps (IP geo-blocking only), using a VPN with a foreign endpoint was sufficient to restore access. For Tier 1 apps (SIM + IP geo-blocking), the authors confirmed that (1) removing the Indian SIM card and accessing via WiFi, or (2) intercepting HTTP traffic with a MITM proxy to suppress or rewrite the carrier_region=IN parameter, fully bypassed server-side censorship. The authors note that Indian users primarily rely on mobile Internet, making SIM removal impractical as a user-facing solution.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - in
+defense_implications:
+    - Build Android-layer API interception into circumvention tools to neutralize TelephonyManager-based country detection without requiring SIM removal — this is the highest-impact usability improvement for Indian users.
+    - Because VPN providers operating in India are legally required to log user data, consider architectures that separate IP masking from identity — e.g., onion-routed or decoy-routing infrastructure — rather than relying on single-hop commercial VPNs.
+section: §4.3, §5
+extracted_by: claude-sonnet-4-6

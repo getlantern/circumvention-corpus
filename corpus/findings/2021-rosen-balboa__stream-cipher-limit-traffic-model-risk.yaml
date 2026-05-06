@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rosen-balboa
+kind: detection
+summary: Balboa currently supports only TLS 1.2 stream cipher suites, covering approximately 81% of TLS connections; an active censor can force non-stream cipher suite negotiation, causing Balboa to silently enter pass-through mode—a potential denial-of-service vector. Separately, if the server's traffic model deviates from the local baseline (e.g., the same audio file streamed repeatedly), a sufficiently powerful censor can detect the anomaly independently of whether Balboa is running.
+techniques:
+    - active-probing
+    - traffic-shape
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Extend covert channel support to AEAD non-stream cipher suites (AES-GCM, ChaCha20-Poly1305 in TLS 1.3) to eliminate the cipher-suite constraint that enables a forced pass-through denial-of-service attack.
+    - Choose traffic models whose statistical distribution matches legitimate traffic on the deployment network path; repetitive or atypical cover content creates a detectable anomaly that is independent of the circumvention mechanism itself.
+section: §5, §2.5.1
+extracted_by: claude-sonnet-4-6

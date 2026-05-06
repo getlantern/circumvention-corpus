@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-ververis-understanding
+kind: defense
+summary: DPI blocking by Spanish ISPs (Fortinet/Telefonica) was circumvented by inserting a tab escape character (\t) into HTTP GET request headers, or by delaying HTTP GET transmission — the same techniques reported to have bypassed DPI blocking of Catalan referendum sites in 2017. Both techniques exploited the DPI's shallow, stateless inspection of the opening HTTP request.
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Shallow HTTP-header manipulation (whitespace insertion, transmission delays) remains an effective first-pass evasion against commodity Fortinet-class DPI; circumvention tools should apply these transforms before attempting more costly tunneling.
+    - The continued effectiveness of 2017-era HTTP evasion through 2020 suggests blocking infrastructure is rarely upgraded once deployed — document vendor-specific quirks and test them longitudinally.
+section: §3.9
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-network
+kind: evaluation
+summary: Following the invasion, Psiphon user counts and VPN usage in Russia increased many-fold and correlated with specific censorship events, while multiple access paths to Tor (direct connections, bridges, pluggable transports) were progressively blocked. Despite this surge, circumvention tools reached only a small fraction of all Russian Internet users, indicating that aggressive multi-vector blocking and lack of user awareness left most people unable to access censored resources.
+techniques:
+    - ip-blocking
+    - dpi
+    - active-probing
+defenses:
+    - tor
+    - bridges
+    - tunneling
+censors:
+    - ru
+defense_implications:
+    - Rapid adoption spikes during political crises require circumvention services to provision elastic capacity in advance; infrastructure deployed only after blocking events will be overwhelmed before it can scale.
+    - Simultaneous blocking of direct Tor, public bridges, and pluggable transports requires diverse redundant bootstrap channels spread across providers that are individually expensive to block, rather than relying on a single distribution or access method.
+section: §6
+extracted_by: claude-sonnet-4-6

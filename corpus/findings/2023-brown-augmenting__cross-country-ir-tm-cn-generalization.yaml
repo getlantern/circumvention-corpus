@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-brown-augmenting
+kind: detection
+summary: 'DNS censorship complexity varies sharply by country: Iran injects static forged IPs exclusively from 10.0.0.0/8 and Turkmenistan uses only 127.0.0.1, making detection trivial, while China''s constant fake-IP churn across ASes demands dynamic ML approaches; models trained without country-specific ASN features still perform well, enabling transfer to countries where GFWatch-equivalent infrastructure does not exist.'
+techniques:
+    - dns-poisoning
+    - ml-classifier
+censors:
+    - cn
+    - ir
+    - tm
+defense_implications:
+    - For Iran and Turkmenistan, IP-range checks (10.0.0.0/8 and 127.0.0.1 respectively) are sufficient to confirm DNS censorship as a fast-path rule, avoiding ML overhead in circumvention tool probe logic.
+    - For countries with unknown censorship infrastructure, transfer learning from China-trained models provides a viable baseline DNS-censorship detector without requiring local ground-truth labels.
+section: §5
+extracted_by: claude-sonnet-4-6

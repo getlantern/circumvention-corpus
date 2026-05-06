@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-streisand-where
+kind: evaluation
+summary: 'A case study on Chapter 5 of Chinese Literature: A Very Short Introduction (Knight) found 7 censored topics, 5 removed paragraphs, 31 removed sentences, and 2 removed/altered words in the Chinese translation. Censored topics included 2000 Nobel laureate Gao Xingjian, the Tiananmen Square Massacre, Mao Zedong, the Cultural Revolution, the Great Leap Forward, the plasma economy scandal in Henan, and a discussion of book censorship itself.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Censors systematically remove meta-commentary about censorship itself (the book-censorship topic was cut), indicating that transparency tooling must be hosted outside Chinese-censored infrastructure to remain accessible.
+    - The breadth of censored topics (historical atrocities, Nobel prize coverage, economic scandals) confirms that content-layer censorship targets politically sensitive narrative rather than just keywords, requiring semantic rather than lexical detection.
+section: §3 Case Study / Table 1
+extracted_by: claude-sonnet-4-6

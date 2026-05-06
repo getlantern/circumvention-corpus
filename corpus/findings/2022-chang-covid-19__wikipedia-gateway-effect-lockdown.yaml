@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-chang-covid-19
+kind: evaluation
+summary: Chinese-language Wikipedia views grew from 12.8 million per day in December 2019 to 13.9 million during the Wuhan lockdown (24 January–13 March) and peaked at 14.7 million per day from mid-February through April 2020; the crisis disproportionately increased views of pages selectively blocked by the Great Firewall prior to 2015, of historical Chinese leaders since Mao, and of current officials — categories expected only under a gateway effect — and these elevated levels persisted through May 2020.
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that provide access to reference/encyclopedia content (not just social media) are high-value; Wikipedia-equivalent content is among the first things newly circumventing users seek.
+    - HTTPS-based blocking of entire domains (GFW blocked all Chinese Wikipedia after its HTTPS migration) pushes users toward VPNs rather than targeted page-level tools — full-tunnel solutions reach wider audiences in such environments.
+section: Crisis Provided a Gateway to Censored Political Information / Fig. 3 and Fig. 7
+extracted_by: claude-sonnet-4-6

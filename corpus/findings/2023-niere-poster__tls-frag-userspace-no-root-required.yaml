@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-niere-poster
+kind: defense
+summary: TLS record fragmentation is implementable entirely in userspace at the application layer and requires no elevated privileges, unlike TCP segmentation which requires raw socket access. The authors' DPYProxy tool demonstrates a MITM approach that wraps TLS messages into smaller records before transmission without breaking the TLS handshake, since TLS records are unprotected during the handshake phase.
+techniques:
+    - sni-blocking
+defenses:
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - Integrate TLS record fragmentation into any TLS-using transport (REALITY, VMess, domain-fronting clients) at the application layer — no kernel privileges or platform-specific packet injection APIs are required, enabling deployment in sandboxed or mobile environments.
+    - Implement ClientHello fragmentation by wrapping existing TLS libraries to split the handshake message across sub-16KB records before the first bytes are sent on the wire.
+section: §2, §5
+extracted_by: claude-sonnet-4-6

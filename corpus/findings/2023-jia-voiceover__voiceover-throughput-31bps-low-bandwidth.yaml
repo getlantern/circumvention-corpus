@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-jia-voiceover
+kind: evaluation
+summary: Voiceover achieves 31.16 bytes/s goodput with default parameters—roughly half the 62.32 bytes/s of the unshaped baseline—because GAN-imposed silence periods reduce transmission time. Skype's OPUS codec bounds the theoretical ceiling at 750–63,750 bytes/s, so all multimedia tunnels over this path are constrained to low-bandwidth use cases; the authors explicitly position Voiceover as an out-of-band channel for sharing secret keys rather than a general-purpose data path.
+defenses:
+    - randomization
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Audio-based VoIP tunnels are unsuitable as primary data channels due to sub-100-bytes/s goodput; design them specifically for out-of-band key exchange or bootstrapping, not general traffic.
+    - Dropping frame redundancy from 2× to 1× doubles goodput (from 31.16 to 62.32 bytes/s) at the cost of reliability; this is the highest-leverage parameter when application-layer retransmission is available.
+section: §4.5, Table 3
+extracted_by: claude-sonnet-4-6

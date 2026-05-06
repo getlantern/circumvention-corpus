@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ortwein-towards
+kind: evaluation
+summary: The authors' blockpage-based methodology cannot detect transit censorship implemented via TCP RST injection or packet drops, because distinguishing these from transient network errors requires identifying their location on the routing path. As a result, the 8-country, 6-AS finding is explicitly characterized as a lower bound on the true extent of Russian transit censorship.
+techniques:
+    - rst-injection
+    - ip-blocking
+    - measurement-platform
+censors:
+    - ru
+defense_implications:
+    - RST injection and silent drops by Russian transit ASes—undetected by blockpage-only measurements—may affect a larger set of IP ranges and countries than currently documented; circumvention protocol designers should not treat the 8-country finding as a ceiling when selecting relay paths.
+    - Future relay routing audits should supplement blockpage scanning with RST/drop detection (e.g., using TTL-limited probes and path tomography) to obtain a complete picture of which Russian transit paths impose censorship risk.
+section: §4.1 Gathering Blockpages / §6 Conclusion
+extracted_by: claude-sonnet-4-6

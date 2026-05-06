@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-almutairi-fingerprinting
+kind: detection
+summary: A passive, router-level VPN fingerprinting technique exploits the design convention that all user traffic is tunneled to a single VPN server IP. By counting packets per device-to-IP session at the home router and flagging sessions where PACKETS_COUNT exceeds threshold T=500 within WINDOW=300 seconds, the method achieved a 100% detection rate for all VPN implementations that route all traffic through one server, with zero false positives across uncontrolled 4-day experiments.
+techniques:
+    - traffic-shape
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Split-tunnel or multi-server VPN architectures that distribute traffic across multiple destination IPs will defeat this detector entirely — clients should be assigned rotating egress IPs or use anycast addressing so no single IP accumulates a dominant packet count.
+    - Randomly vary VPN keepalive or secondary-server ping intervals below any plausible WINDOW parameter (e.g., < 60 s) to break the session-accumulation assumption.
+section: §III–IV
+extracted_by: claude-sonnet-4-6

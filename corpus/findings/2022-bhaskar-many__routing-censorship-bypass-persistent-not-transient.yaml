@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-bhaskar-many
+kind: evaluation
+summary: 'Routing-induced censorship variation is persistent across time: packet retries do not resolve observed differences, and manual re-measurement days later yielded identical censorship outcomes for the same (source IP, source port, destination IP) tuples across 12 iterative experiment rounds, ruling out transient packet loss or short-term routing fluctuations.'
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - A source-parameter combination that bypasses GFW DNS censorship is stable over days — circumvention tools can cache working (src IP, src port) configurations and reuse them without re-probing every session.
+    - Do not interpret persistent no-response to a known-censored domain as packet loss; under fixed source parameters it reliably indicates a censor-free routing path.
+section: §4.5, §5.2
+extracted_by: claude-sonnet-4-6

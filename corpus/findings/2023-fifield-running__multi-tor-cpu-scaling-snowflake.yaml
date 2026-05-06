@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-running
+kind: deployment
+summary: A single Tor process is limited to one CPU core, creating a performance ceiling that manifests at approximately 6,000 simultaneous users and 10 MB/s of Tor bandwidth. The solution is running multiple Tor processes (starting with 4, scaling to 12) sharing the same long-term identity keys, mediated by an HAProxy load balancer, which enabled a Snowflake bridge to scale from 2,000 to ~100,000 simultaneous users between December 2021 and February 2023.
+defenses:
+    - pluggable-transport
+    - bridges
+    - webrtc-pluggable
+defense_implications:
+    - Centralized pluggable-transport bridges (meek, Snowflake) must plan for vertical CPU scaling via multi-process Tor with shared identity keys rather than relying on a single Tor instance.
+    - Deploy an HAProxy (or equivalent) load balancer in front of parallel Tor instances with round-robin balancing; no backend affinity is required since instances share the same bridge fingerprint.
+section: §3
+extracted_by: claude-sonnet-4-6

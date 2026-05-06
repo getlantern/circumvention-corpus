@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-vandersloot-running
+kind: deployment
+summary: Total hardware cost for four detector stations plus a central proxy was approximately $30,000 USD, with estimated annual operating costs of ~$13,000 for co-location and ~$24,000 for a 2 Gbps upstream connection, plus ~40% FTE of an ISP network engineer—costs that are structurally higher than endpoint-based circumvention due to mandatory network-operator co-location requirements.
+defenses:
+    - decoy-routing
+    - tapdance
+defense_implications:
+    - Budget ~40% FTE of a network engineer as a non-negotiable operational line item; underestimating ISP-side engineering effort creates fragility regardless of hardware investment.
+    - A constellation of mid-sized ISP partners (~$30K hardware + ~$37K/year each) is more cost-effective and institutionally feasible than pursuing Tier-1 scale installations, and can still meet peak demand for tens of thousands of users.
+section: §5.2
+extracted_by: claude-sonnet-4-6

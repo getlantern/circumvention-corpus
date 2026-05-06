@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-sakamoto-bleeding
+kind: deployment
+summary: Analysis of leaked stack frames confirmed the GFW's packet injector processes run on x86-64 Linux with ASLR and PIE enabled but without stack canaries, implying that buffer overflow vulnerabilities in the GFW may lack effective mitigation. Each injector process was inferred to use exactly four packet-handling threads, identified by up to four unique stack-address groups per return address (each group spanning within the 8 MB default Linux stack size).
+techniques:
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - The absence of stack canaries in the GFW's x86-64 Linux processes is an architectural weakness — researchers and circumvention tool designers should monitor for future memory-corruption exploits against GFW injectors that could be leveraged to probe or disrupt blocking.
+    - The fixed thread count (4 per injector process) combined with load-balancing by source/destination IP means connection behavior is consistent per IP pair — circumvention tools that rotate source IPs can exploit predictable load-balancing to probe different injector instances.
+section: §4.4 Process Characteristics
+extracted_by: claude-sonnet-4-6

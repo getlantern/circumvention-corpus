@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-lorimer-oustralopithecus
+kind: evaluation
+summary: 'Across tunnelling systems that apply traffic shaping against ML adversaries, a clear throughput cost emerges: Slitheen + OUStral with WebM replacement achieves up to 2.2 Mbps with 4.7x overhead; Protozoa (WebRTC, end-to-end) achieves up to 1.4 Mbps; DeltaShaper (VoIP) achieves only 7 kbps at 2x overhead. By contrast, Conjure (no traffic shaping) reaches 100 Mbps. Additionally, end-to-middle decoy-routing deployments incur a throughput penalty from packet-boundary parsing at the relay station that end-to-end systems (Protozoa, DeltaShaper) avoid.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+    - decoy-routing
+    - conjure
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Traffic shaping against sophisticated ML classifiers imposes a large throughput penalty relative to unshaded relay systems (≤2 Mbps vs. 100 Mbps for Conjure); only apply full traffic shaping when the threat model specifically includes ML-capable adversaries.
+    - End-to-end deployment (hooks inside browser/WebRTC) eliminates relay-station packet-boundary parsing overhead and yields more consistent throughput than in-path decoy-routing architectures; factor this into architecture selection when throughput is critical.
+section: §5.3.2, Table 2
+extracted_by: claude-sonnet-4-6

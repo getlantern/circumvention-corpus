@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-chang-covid-19
+kind: evaluation
+summary: In countries with no Great Firewall-equivalent censorship (Germany, Italy) and in less-censored authoritarian states (Iran — Persian Wikipedia; Russia — Russian Wikipedia) that experienced comparable COVID-19 outbreaks, no analogous spillover to politically sensitive content was observed; Wikipedia engagement in those countries increased generally but did not show disproportionate access to historically censored topics, confirming the gateway effect is specific to high-censorship environments.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - 'Circumvention tool designers should not extrapolate usage behavior from democracies: in high-censorship environments, users exhibit qualitatively different content-seeking patterns, requiring tools optimized for broad exploratory access rather than targeted unblocking.'
+    - The absence of the gateway effect in Iran and Russia (where censorship exists but Wikipedia was not fully blocked at the time) suggests that breadth and duration of censorship amplifies spillover demand — tools operating in CN face the most severe pent-up demand during crises.
+section: Comparison with Other Countries Affected by the Crisis / Table 1
+extracted_by: claude-sonnet-4-6

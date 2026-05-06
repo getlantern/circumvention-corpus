@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gosain-out
+kind: detection
+summary: Seven of the 220 banned apps (Tier 1, including TikTok, Likee, Kwai, UC Browser, FaceU, Hago, and V-Fly) used the Android TelephonyManager.getSimCountryISO() API to read the primary SIM's country code and embed a carrier_region=IN parameter in HTTP requests, enabling server-side identification and blocking of Indian users regardless of source IP or VPN state. A dual-SIM phone with an Indian SIM in the secondary slot only (primary empty or non-Indian) bypassed the check.
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - in
+defense_implications:
+    - Circumvention apps targeting India must intercept or suppress carrier_region and similar TelephonyManager-derived parameters at the HTTP layer — VPN tunneling alone is insufficient for Tier 1 apps.
+    - Consider building a companion shim that intercepts Android TelephonyManager API calls and returns a neutral or foreign country code, or routes app traffic through a proxy that strips these parameters on the fly.
+section: §4.3
+extracted_by: claude-sonnet-4-6

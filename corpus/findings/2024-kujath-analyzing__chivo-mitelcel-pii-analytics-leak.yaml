@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kujath-analyzing
+kind: evaluation
+summary: Chivo Wallet posts logs of every in-app event to NewRelic ('log-api.newrelic.com'), including keystrokes — DUI national ID numbers, phone numbers, and passwords — without privacy-policy disclosure. Separately, MiTelcel (76% Mexican mobile market share, 10M+ downloads) leaks users' phone numbers and emails to five distinct third-party servers via the HTTP 'referer' field on every 'Experiencias' tab click.
+techniques:
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools must audit all bundled third-party SDKs (analytics, crash reporting, engagement) for PII exfiltration — even apps from sovereign governments and dominant telcos routinely leak credentials to external analytics services.
+    - For at-risk users, VPN/proxy tools should flag or intercept analytics endpoints that receive keystroke or form-field events, since these covert PII channels persist even when all other traffic is tunneled.
+section: §7.1, §7.3, Table 2, Table 4
+extracted_by: claude-sonnet-4-6

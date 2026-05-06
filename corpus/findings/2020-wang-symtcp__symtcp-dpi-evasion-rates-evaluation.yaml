@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-wang-symtcp
+kind: evaluation
+summary: SymTCP generated 56,787 candidate insertion/evasion packets in approximately one hour using concolic execution over Linux's TCP stack. Evaluating a sampled set of 10,000 test cases against real DPI systems yielded 6,082 evasions against Zeek, 652 against Snort, and 4,587 against the Great Firewall of China — discovering 14 novel evasion strategies beyond those found by prior manual approaches.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Automated symbolic-execution-based discrepancy discovery produces a far larger and more diverse evasion packet library than manual analysis; circumvention transports that operate at the TCP layer should draw from such a generated corpus rather than relying on a fixed set of hand-crafted sequences.
+    - With ~46% of test cases evading the GFW, TCP-layer insertion/evasion is a viable transport-layer primitive that requires no changes to the application-layer payload or obfuscation scheme.
+section: §VIII.C
+extracted_by: claude-sonnet-4-6

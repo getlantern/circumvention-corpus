@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-chasing
+kind: defense
+summary: The root vulnerability in ShadowTLS is that the relay cannot authenticate post-handshake data from the real mask site, causing it to silently absorb censor probes. The fix — deployed in ShadowTLS v0.2.3 — has the client re-derive the Application Data encryption key from the server random and the client-relay shared secret; unrecognized records (lacking the shared secret) are transparently forwarded to the mask site, so all censor-visible responses come from the real mask server.
+techniques:
+    - active-probing
+defenses:
+    - mimicry
+    - reverse-tls
+censors:
+    - cn
+defense_implications:
+    - 'Design TLS-forwarding proxies so the relay cannot be distinguished from the mask site by any unauthenticated party: all unrecognized traffic must be forwarded verbatim to the mask, making active probing indistinguishable from legitimate browsing.'
+    - Embed a steganographic client-relay authenticator inside a standard TLS record field (e.g., derived from server_random) rather than introducing a new protocol layer, so the authenticator itself is not a fingerprint.
+section: §4
+extracted_by: claude-sonnet-4-6

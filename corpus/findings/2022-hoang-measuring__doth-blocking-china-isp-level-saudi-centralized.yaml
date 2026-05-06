@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-hoang-measuring
+kind: detection
+summary: DNEye detected DoTH (DoT and DoH) blocking across the largest number of ASes in China, with interference against Cloudflare, Quad9, AdGuard, and CleanBrowsing resolvers emerging in early March 2021. Blocking patterns varied per-AS rather than following a centralized GFW DNS-level policy, indicating individual ISP implementation. Saudi Arabia, by contrast, showed coordinated SNI-based blocking of the same DoH resolvers across different ASes, indicating centralized policy.
+techniques:
+    - rst-injection
+    - sni-blocking
+    - ip-blocking
+defenses:
+    - ech-esni
+censors:
+    - cn
+    - sa
+    - ir
+defense_implications:
+    - Circumvention deployments using public DoH resolvers (Cloudflare 1.1.1.1, Google 8.8.8.8, Quad9) as their DNS backend will face blocking in China and Saudi Arabia; tools should fall back to private DoH resolvers running on non-standard ports hosted outside censored networks.
+    - Hardcoded resolver IPs without DoH are susceptible to IP-level blocking; tools should support multiple resolver fallbacks and probe resolver availability at runtime.
+section: §4.2, Table 5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-hanlon-detecting
+kind: evaluation
+summary: ML-based VPN classifiers report FPRs of 1.4–5.5%, all exceeding the GFW's estimated practical threshold of 0.6%, while the simple RFC-heuristic approach achieves 0.11%; this indicates that real-world censors are more likely to adopt lightweight heuristic detectors than opaque ML pipelines.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool designers should threat-model against simple threshold-based heuristics derived from protocol specs, not just against trained classifiers—the simpler attacks are more deployment-realistic.
+    - Evaluating a new transport against heuristic detectors (packet-size bounds, timing quantiles, handshake patterns) should be a standard pre-deployment check alongside ML-classifier evasion.
+section: §4.2 Overall Classifier Results
+extracted_by: claude-sonnet-4-6

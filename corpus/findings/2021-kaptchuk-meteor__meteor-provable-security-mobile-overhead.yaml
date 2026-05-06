@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-kaptchuk-meteor
+kind: defense
+summary: 'Meteor is proven secure against chosen-hiddentext attacks: any PPT adversary distinguishing Meteor output from honest model output can be reduced to breaking the underlying PRG. The scheme produces stegotext provably indistinguishable from the generative model''s own output distribution, and requires only a shared public model — not a secret channel — making the model analogous to a common random string. On GPU the encoding overhead is ~1× model-load time; on CPU ~4.6×; on mobile ~49.5×.'
+techniques:
+    - random-payload-detect
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Deploy Meteor or Meteor-like constructions (RRRSS + PRG masking) when the threat model includes a censor who blocks all high-entropy or pseudorandom-looking traffic, since security holds even if the censor has the same generative model
+    - Mobile performance (49.5× overhead) is a binding constraint for deployment — prioritize GPU or server-side encoding, or use hybrid steganography where only a symmetric key is encoded via Meteor and bulk data uses a lighter cipher
+section: §5.2 / §6 / Table 2
+extracted_by: claude-sonnet-4-6

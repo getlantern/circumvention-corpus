@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rambert-chinese
+kind: evaluation
+summary: Only 8% of keywords censored by Chinese chat clients (WeChat, Sina Weibo — ~63,200 total terms) are also censored by GFW packet inspection, demonstrating independently maintained blocklists. The GFW's packet-inspection chat-derived blocklist contains up to 1,221 distinct censored keywords for outbound traffic; just 68 keyword components account for all censored terms from Beijing, with 「六四」(June Fourth) alone responsible for more than half.
+techniques:
+    - keyword-filtering
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - The GFW's packet-layer blocklist is far smaller than application-layer chat blocklists — circumvention tools operating at the network layer face a much narrower keyword surface than in-app censorship, but the most sensitive terms (Tiananmen, Falun Gong, circumvention tools) are consistently present.
+    - Keyword-avoiding traffic shaping is not a practical defense given active list churn (median ~270 additions and ~400 removals per week); encryption of HTTP payloads remains the only robust approach.
+section: §4.2, §4.2.2, §4.3
+extracted_by: claude-sonnet-4-6

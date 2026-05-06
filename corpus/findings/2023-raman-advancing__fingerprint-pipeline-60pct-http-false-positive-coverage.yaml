@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-advancing
+kind: evaluation
+summary: The Censored Planet data analysis pipeline matched more than 60.89% of all HTTP-response data across four years of measurements to either a known blockpage fingerprint or a confirmed non-censorship fingerprint. Over 60 million individual measurements were specifically classified as expected Akamai CDN behavior—responses that previous work had routinely misclassified as censorship because Akamai's edge configuration returns connection timeouts or HTTP 301 redirects when the test domain and vantage-point server are both Akamai-hosted.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that measure reachability to determine which proxies to use must maintain and update a fingerprint database of CDN-induced false-positive response patterns (Akamai, Cloudflare, GoDaddy) to avoid incorrectly routing traffic around a 'block' that is actually a CDN configuration artifact.
+    - Open-sourcing and crowd-sourcing blockpage fingerprint databases—as this pipeline does—allows circumvention communities to pool detection signal and improve accuracy faster than any single team can manage alone.
+section: §4.2
+extracted_by: claude-sonnet-4-6

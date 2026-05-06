@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ahmed-extended
+kind: evaluation
+summary: Of 326 websites known to adhere to CCP censorship laws — including Chinese government sites and state media — 325 were found indexed in the Common Crawl dataset commonly used to train major LLMs including GPT-3. Only the official government site of Macao (www.gov.mo) was absent, indicating that LLM training corpora are broadly contaminated with CCP-censored content.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Do not treat LLMs trained on Common Crawl as neutral information sources for politically sensitive topics in censored regions — their training data is structurally contaminated with state-censored content.
+    - If deploying AI-assisted content or Q&A features for users in censored regions, audit model outputs against known censorship topic categories before relying on them.
+section: §3.1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-m-ller-turning
+kind: detection
+summary: Russia's censor (at the Moscow/ASN-50867 vantage point) inspects only the first HTTP packet of the first TCP segment per TCP stream and never analyzes subsequent HTTP requests—whether in the same TCP packet or a later one. This caused all 2,015 accepted test vectors to successfully evade censorship, and the bypass is achievable with standard-compliant HTTP (e.g., whitespace or case variations in header names, which HTTP/1.1 explicitly permits).
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - geneva
+censors:
+    - ru
+defense_implications:
+    - Design HTTP-layer proxies to bundle the censored request as a second smuggled request inside a benign-Host first request sent within the same TCP segment—Russia's censor will clear on the first request and never inspect the second.
+    - Implement standard-compliant header mutations (tab/space injection, mixed case) as a lightweight, no-privilege bypass layer for Russian HTTP censorship before falling back to heavier obfuscation.
+section: §5.2 / §5.3
+extracted_by: claude-sonnet-4-6

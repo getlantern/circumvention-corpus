@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-http-smuggling
+kind: detection
+summary: 'The Russian censor at the tested Moscow vantage point (ASN 50867, China Unicom-equivalent private ISP) inspects only the first HTTP packet of the first TCP segment in a TCP stream and never blocks a second HTTP request, whether coalesced in the same TCP packet or sent in a subsequent one. All 2,015 web-server-accepted test vectors evaded Russian censorship, including standard-compliant whitespace-injection vectors (e.g., ''Content-Length\x20: <len>\x20'').'
+techniques:
+    - dpi
+    - keyword-filtering
+    - packet-injection
+censors:
+    - ru
+defense_implications:
+    - Coalescing multiple HTTP requests into a single TCP segment is a standard-compliant evasion against Russia's censor — no header invalidation needed, making this robust against future server-side HRS patches.
+    - Russia's stateful assumption that the Host header does not change within a TCP connection can be exploited by sending a benign first request followed by a censored second request in the same TCP stream.
+section: §5.2 (Russia paragraph)
+extracted_by: claude-sonnet-4-6

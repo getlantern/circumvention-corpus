@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-comments
+kind: evaluation
+summary: Despite fully encrypted protocols existing since obfs2 in 2012, the first documented evidence of the GFW passively detecting them purely by randomness appeared only in 2021 — approximately a decade later — and was limited to certain foreign IP address ranges and a subsampled fraction of traffic. Meanwhile, the GFW had been discovering obfs2/obfs3 servers via active probing as early as 2013, indicating censors found active-probing-based address discovery cheaper and more reliable than passive statistical classifiers for this protocol family.
+techniques:
+    - fully-encrypted-detect
+    - active-probing
+    - random-payload-detect
+defenses:
+    - obfs4
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - 'Active-probing resistance is empirically more urgent than perfect statistical indistinguishability from random bytes: the GFW used active probing against obfs2/3 within a year, but took a decade to deploy passive randomness-based classifiers.'
+    - Fully encrypted protocols without active-probing resistance (e.g., Shadowsocks without a replay filter) are vulnerable on a much shorter timescale than those with active-probing resistance, regardless of per-packet byte statistics.
+section: §5
+extracted_by: claude-sonnet-4-6

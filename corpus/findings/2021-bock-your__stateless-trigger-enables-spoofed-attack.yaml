@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-your
+kind: detection
+summary: 'All tested censors (China, Iran, Kazakhstan) can be triggered statelessly—without completing a TCP 3-way handshake—using a SYN with decremented sequence number followed by a PSH+ACK containing the forbidden payload. This stateless triggering enables fully off-path, source-spoofed attacks: an adversary with packet-spoofing capability can residually censor a victim pair they have no on-path access to.'
+techniques:
+    - rst-injection
+    - ip-blocking
+    - middlebox-interference
+censors:
+    - cn
+    - ir
+    - kz
+defense_implications:
+    - Circumvention proxies that rely on IP-keyed reputation are vulnerable to stateless spoofed triggering; consider challenge-response or sequence-number validation at proxy entry to detect spoofed trigger attempts.
+    - Monitor for the 'all SYNs dropped to a fixed 4-tuple' pattern as an early signal of active weaponization; surface it to clients so they rotate endpoints rather than retrying on the poisoned tuple.
+section: §IV, §V.A
+extracted_by: claude-sonnet-4-6

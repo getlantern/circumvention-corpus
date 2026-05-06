@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ding-discop
+kind: evaluation
+summary: 'All prior provably-secure steganography methods introduce measurable distribution distortion: ADG achieves Max KLD of 4.54E-02 to 6.76E-02 bits/token, and Meteor with its heuristic sorting reaches Max KLD up to 9.01E+00 bits/token (Table II, GPT-2, p=0.80). These non-zero KL divergences give any statistical steganalyzer a non-negligible distinguishing advantage, violating the security definition even when average divergence appears small.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Reject arithmetic-coding and balanced-grouping steganography methods (ADG, Meteor, basic AC) for censor-resistant covert channels — their per-token distribution modifications are measurable and provide a statistical attack surface even when cumulative averages are low.
+    - 'Require zero Max KLD, not just low Ave KLD, as the security criterion for any steganographic transport: single-token spikes (Meteor: 9.01 bits/token) are individually exploitable by a per-token hypothesis test.'
+section: §V, Table II
+extracted_by: claude-sonnet-4-6

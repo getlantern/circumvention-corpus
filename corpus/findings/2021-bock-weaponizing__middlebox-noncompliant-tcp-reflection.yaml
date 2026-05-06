@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-weaponizing
+kind: detection
+summary: Censoring middleboxes respond to non-compliant TCP sequences because they must handle asymmetric routing and cannot rely on observing both sides of a connection. The hSYN; PSH+ACKi sequence elicited responses from 69.6% of 184 tested censoring middleboxes with a maximum amplification of 7,455×, while a lone PSH+ACK with no prior handshake elicited responses from 33.2% of middleboxes.
+techniques:
+    - middlebox-interference
+    - dpi
+    - packet-injection
+censors:
+    - generic
+defense_implications:
+    - Circumvention proxies should not respond to non-compliant TCP probe sequences with identifiable injected content — this behavior fingerprints censoring infrastructure on the path and can be detected by off-path adversaries
+    - Protocol designers should treat raw PSH or PSH+ACK-without-handshake as a possible active probe vector; proxies should silently drop or RST-comply with such sequences rather than emitting protocol-specific responses
+section: §2, §3.3
+extracted_by: claude-sonnet-4-6

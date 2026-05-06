@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-http-smuggling
+kind: defense
+summary: HTTP request smuggling (HRS) vectors that exploit CL/TE header parsing divergence between a censor-as-middlebox and a destination web server can circumvent HTTP censorship in China, Iran, and Russia. Of 4,488 test vectors derived from prior HRS research, 2,015 (44.9%) were accepted by at least one web server; CL*/TE vectors achieved a 99.0% web-server acceptance rate while TE/CL* vectors achieved 0%.
+techniques:
+    - dpi
+    - keyword-filtering
+    - middlebox-interference
+defenses:
+    - meta-resistance
+    - geneva
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Proxy implementations can prepend a harmless first HTTP request containing a CL header that scopes out the censored request, exploiting parser divergence between the censor and the server — no kernel-level TCP manipulation required.
+    - Prioritize CL*/TE vector types (99% web-server acceptance) over TE/CL* (0%); pair with live-server compatibility checks before deploying against a specific censor.
+section: §3, §5.1, Table 1
+extracted_by: claude-sonnet-4-6

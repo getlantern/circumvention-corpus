@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-hanlon-detecting
+kind: detection
+summary: A protocol-agnostic classifier that identifies RFC-mandated TCP behaviors (three-way handshake, 500ms ACK, 2×RMSS acknowledgement) leaking through UDP-based VPN tunnels achieves a false positive rate of 0.11–0.29% on real campus traffic, an order of magnitude lower than ML-based VPN detection techniques (FPR 1.4–5.5%) and on par with the GFW's estimated heuristic FPR of 0.6%.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - randomization
+    - tunneling
+censors:
+    - generic
+    - cn
+defense_implications:
+    - VPN and proxy protocols must treat encapsulated transport-layer behavior (handshake packet sizes, ACK timing, segment pacing) as an observable fingerprint surface, not just payload entropy.
+    - Designing tunnels that multiplex multiple flows or use QUIC/UDP-native semantics rather than TCP-over-UDP eliminates the 3WHS and ACK timing signals entirely.
+section: §3–§4.2
+extracted_by: claude-sonnet-4-6

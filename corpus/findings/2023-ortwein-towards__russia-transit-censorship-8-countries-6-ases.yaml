@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ortwein-towards
+kind: evaluation
+summary: Scanning the IP address spaces of 18 countries surrounding Russia, the authors identify Russian transit censorship affecting at least 8 countries (Afghanistan, Azerbaijan, Kyrgyzstan, Kazakhstan, Lithuania, South Korea, Tajikistan, and Ukraine), attributable to at least 6 Russian ASes. Only 2 of these 8 countries (Kyrgyzstan and Kazakhstan) had been reported in prior work, and the collateral damage is characterized as a lower bound due to the study's blockpage-only methodology.
+techniques:
+    - dpi
+    - packet-injection
+    - measurement-platform
+censors:
+    - ru
+defense_implications:
+    - Circumvention infrastructure routing through or near Russia—even for traffic not destined there—must account for blockpage injection on transit paths; avoid or monitor Russian transit ASes (especially AS3216, AS25227, AS35816, AS47203, AS60299, AS201776) when selecting relay routing.
+    - Because the study captures only blockpage-based interference (not RST or drop-based), the true scope of Russian transit censorship is larger than reported; design proxy routing to treat Russian transit paths as adversarial regardless of destination country.
+section: §5 Preliminary Results
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-pu-exploring
+kind: defense
+summary: Reusing the same 64-bit client ID across rendezvous attempts caused approximately 3-minute delays in failure scenarios because the SQS queue deletion API can take up to 60 seconds to complete, forcing subsequent attempts to wait for the previous outgoing queue's deletion before a new queue with the same ID can be created. The fix generates a fresh random 64-bit client ID per attempt, eliminating the dependency on prior-attempt cleanup.
+defenses:
+    - webrtc-pluggable
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Never reuse session identifiers across retry attempts in signaling protocols that provision per-session cloud resources; generate a new random ID on each attempt to decouple retries from the asynchronous cleanup lifecycle of prior resources.
+    - When designing rendezvous retry logic around cloud APIs with eventual-consistency deletion semantics, budget for deletion propagation delays (up to 60 s for SQS) and design retries to avoid depending on prior-session resource state.
+section: §4.2
+extracted_by: claude-sonnet-4-6

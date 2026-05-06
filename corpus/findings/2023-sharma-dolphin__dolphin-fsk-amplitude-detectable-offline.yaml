@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-sharma-dolphin
+kind: detection
+summary: 'FSK-encoded Dolphin audio is distinguishable from normal human speech via offline amplitude analysis: Dolphin''s mean signal amplitude is 0.4 (std 224) versus 205 (std 1590) for natural speech — approximately an order of magnitude lower — enabling classification by a telecom operator who records calls. The paper also notes that standard CRC checksums appearing periodically every chunk provide a unique detectable signature if the adversary attempts to decode the audio.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Superimpose FSK-encoded data onto a live human-speech audio track to match natural amplitude and frequency distributions, defeating amplitude-based offline classifiers.
+    - Mask periodic integrity-check values (e.g., XOR CRC bytes with KDF-derived pseudorandom bytes) to remove the fixed-interval checksum signature that would otherwise fingerprint the protocol to an offline analyzer.
+section: §6.5, Figs. 11–12
+extracted_by: claude-sonnet-4-6

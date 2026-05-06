@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-feng-study
+kind: detection
+summary: 'The GFW engages in a continuous IP-blocking race against VPN services: participants reported that when one VPN goes down, others fail simultaneously, and banned services recover ''after a while,'' suggesting coordinated blocking waves followed by IP rotation. Major foreign providers (ExpressVPN, NordVPN) now have no mainland China server nodes, rendering them ineffective for Chinese users.'
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention infrastructure must support rapid, automated IP rotation across large address pools to survive coordinated blocking sweeps; single-datacenter deployments are routinely enumerated and blocked.
+    - Do not rely on brand-name VPN providers with fixed, well-known server ranges; prefer dynamically provisioned residential or cloud IPs that are harder to enumerate en masse.
+section: §8.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ramesh-decentralized
+kind: evaluation
+summary: Despite Russia's decentralized ISP ecosystem, 9 of 14 residential probes observed more than 90% of 98,098 tested blocklist domains blocked, and all 14 probes observed at least 49% blocked—demonstrating that coordinated nationwide censorship without centralized choke-points is achievable through legal mandates and commodity equipment alone.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - keyword-filtering
+    - dpi
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools targeting Russia cannot rely on partial ISP non-compliance; assume near-complete blocking at the residential level and design for the worst-case ISP.
+    - 'Tool discovery must account for per-ISP variation: a tool effective for one user may not work for a neighbor on a different ISP, requiring diverse server infrastructure and multiple discovery channels.'
+section: §VI-B
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-sharma-camoufler
+kind: evaluation
+summary: 'Traffic analysis comparing Camoufler clients (fetching blocked websites) to regular IM clients (exchanging multimedia) shows indistinguishable packet-exchange rates and packet-size distributions: a 1.3 MB document download via Camoufler peaked at >700 packets/s, matching the >800 packets/s spike from a 1.5 MB video download by a regular IM client. Packet sizes cluster identically in two bins (<100 bytes for ACKs; >1,200 bytes for data) regardless of whether the underlying content is a web page or a video.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Embedding circumvention traffic inside an IM channel that already carries >50% multimedia content by volume provides natural statistical cover; a tool designer should choose cover channels with high and varied native throughput to prevent censors from profiling unusual burst signatures.
+    - When packet-size distributions between the covert channel's natural use case and the circumvention use case diverge (e.g., websites vs. images), add padding to equalize size distributions rather than relying solely on content-size similarity.
+section: §5.1
+extracted_by: claude-sonnet-4-6

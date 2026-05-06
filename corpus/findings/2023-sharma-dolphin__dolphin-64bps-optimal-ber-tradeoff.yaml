@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-sharma-dolphin
+kind: evaluation
+summary: At 64 bps FSK encoding over cellular voice, Dolphin achieves a bit error rate below 2% across all tested data sizes (100–5000 bytes), cellular providers, and geographic distances up to ~3600 miles. Rates of 128 bps and above cause BER to jump to 5–22%, making transmission too unreliable for practical use.
+defenses:
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Design cellular-voice shutdown-resistance systems to operate at ≤64 bps FSK to stay below the ~2% BER threshold; higher rates cause excessive retransmissions that eliminate any latency benefit.
+    - Minimize protocol overhead aggressively — Dolphin uses 1-bit ACKs per chunk vs. the 320-bit minimum TCP ACK — since every overhead byte costs seconds at these rates.
+section: §5.1, Table 1
+extracted_by: claude-sonnet-4-6

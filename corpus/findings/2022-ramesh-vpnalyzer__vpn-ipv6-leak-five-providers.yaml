@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-ramesh-vpnalyzer
+kind: evaluation
+summary: Only 11 of 80 tested VPN providers supported IPv6 connectivity; 5 providers — Astrill VPN, Norton Secure VPN, Turbo VPN, SurfEasy VPN, and a university VPN — failed to block IPv6 traffic when the VPN tunnel did not support it, silently leaking all IPv6 data directly to the user's ISP even when IPv4 was fully tunneled.
+techniques:
+    - measurement-platform
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Explicitly block or null-route IPv6 at the OS firewall level when the VPN tunnel does not carry IPv6 traffic; failing to handle IPv6 leaks data silently and is undetectable to the user.
+    - 'Include IPv6 leak verification in integration tests: after tunnel establishment, confirm that IPv6 packets cannot reach an external IPv6 endpoint outside the tunnel.'
+section: §VI-A
+extracted_by: claude-sonnet-4-6

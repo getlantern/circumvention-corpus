@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-kaptchuk-meteor
+kind: evaluation
+summary: 'Classical public-key steganography (Algorithm 1 from [54]) has a 100% failure rate when encoding a 16-byte message using GPT-2, because GPT-2''s per-token entropy drops near zero frequently and standard rejection sampling cannot find an acceptable token. Entropy bounding reduces failure to 0–10% but introduces detectable statistical bias: selected tokens come from a visibly different probability distribution than baseline samples.'
+techniques:
+    - random-payload-detect
+    - ml-classifier
+defenses:
+    - steganography
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - Do not use entropy-bounding or static rejection sampling against real language models — the resulting token-probability bias is detectable by a passive adversary with access to the same model
+    - Any transport using generative-model steganography must handle variable entropy natively, not by skipping low-entropy events
+section: §4 Adapting Classical Steganographic Schemes / Figure 2b
+extracted_by: claude-sonnet-4-6

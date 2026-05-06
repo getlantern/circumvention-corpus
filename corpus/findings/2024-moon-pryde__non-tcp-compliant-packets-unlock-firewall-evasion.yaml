@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-moon-pryde
+kind: detection
+summary: TCP-compliant packet alphabets are insufficient for modeling stateful firewall evasion. Including non-TCP-compliant traffic — specifically flipped-direction SYNs, out-of-window seq/ack numbers, and packets that form a parallel TCP connection in the reverse direction — is what unlocks discovery of deep attack paths. Prior model-inference work (Alembic) that restricted itself to compliant sequences produced models incapable of generating any of the 6,000+ attacks Pryde found.
+techniques:
+    - middlebox-interference
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Sending TCP packets with flipped directions or out-of-window sequence numbers can punch holes in censor stateful firewalls; circumvention protocols should test whether their handshake setup packets inadvertently exploit or are blocked by these censor states.
+    - Any threat model of censor blocking behavior that assumes TCP compliance will miss large classes of exploitable middlebox states — treat non-compliant sequences as first-class evasion primitives.
+section: §4.1–§4.2
+extracted_by: claude-sonnet-4-6

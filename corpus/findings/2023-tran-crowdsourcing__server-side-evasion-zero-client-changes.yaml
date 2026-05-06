@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-tran-crowdsourcing
+kind: defense
+summary: 'Server-side censorship evasion strategies require zero client-side changes: clients bypass censorship without installing software or even being aware of the evasion, and this approach has been adopted in production tools including Psiphon''s packetman. The packet manipulations exploit weaknesses in how censors track or tear down TCP connections, occurring entirely at the server during the three-way handshake.'
+techniques:
+    - dpi
+    - rst-injection
+    - middlebox-interference
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Deploy server-side Geneva-discovered strategies to protect all clients on a network segment simultaneously, with no client software update required — maximizing reach in high-risk deployments.
+    - Prioritize server-side evasion as a complementary layer on top of existing pluggable transports, since it imposes zero friction on end-users.
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

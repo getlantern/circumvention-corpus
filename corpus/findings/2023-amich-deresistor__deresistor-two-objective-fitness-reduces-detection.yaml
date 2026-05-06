@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-amich-deresistor
+kind: defense
+summary: DeResistor's two-objective fitness function (balancing evasion success and detection probability) reduces flow-level detection rates from 96.27% → 45.06% against China's GFW, 99.50% → 34.93% against India, and 99.50% → 49.22% against Kazakhstan over 5 training generations, while in all cases preventing TRW from reaching an IP-block decision that would terminate training.
+techniques:
+    - ml-classifier
+defenses:
+    - geneva
+    - meta-resistance
+censors:
+    - cn
+    - in
+    - kz
+defense_implications:
+    - Incorporate a detection-probability penalty term into the fitness function of any genetic or search-based evasion strategy generator so that the search explicitly trades off evasion success against feature-level distinguishability.
+    - Even a modest detection-resilience weight (a=0.5, b=0.5) is sufficient to drive detectable features toward normal-traffic distributions without sacrificing evasion effectiveness.
+section: §5.1, §6.2, Table 1
+extracted_by: claude-sonnet-4-6

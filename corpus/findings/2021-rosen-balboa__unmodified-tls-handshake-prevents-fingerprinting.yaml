@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rosen-balboa
+kind: defense
+summary: By extracting TLS session keys through library debugging hooks (SSLKEYLOGFILE for GnuTLS/NSS/Rustls; an injected SSL_new() callback for OpenSSL) rather than reimplementing the TLS handshake, Balboa leaves the ClientHello entirely untouched. This prevents the class of fingerprinting attacks documented by Frolov and Wustrow that identified meek and similar tools via observable differences in cipher-suite ordering and TLS extension patterns, while remaining compatible with OpenSSL, GnuTLS, NSS, and Rustls without requiring application source-code modifications.
+techniques:
+    - tls-fingerprint
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Prefer TLS key-extraction hooks over any form of TLS reimplementation; modifying the ClientHello creates a persistent fingerprint that is independent of how carefully the rest of the traffic is mimicked.
+    - Binding to an unmodified TLS library binary means the circumvention tool automatically inherits updated cipher suite and extension patterns each time the underlying application upgrades.
+section: §2.4, §7
+extracted_by: claude-sonnet-4-6

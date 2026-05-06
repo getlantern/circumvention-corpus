@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-ververis-understanding
+kind: policy
+summary: Spain's blocking infrastructure, initially mandated for copyright and gambling enforcement, was repurposed to block 24 unique Catalan referendum URLs during October 2017, including the IPFS gateway and two GitHub Pages domains. GitHub Pages was blocked only via DNS manipulation (pointing to 127.0.0.1) rather than HTTP blocking specifically to avoid collateral blocking of all of GitHub.
+techniques:
+    - dns-poisoning
+    - dpi
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Politically motivated censors will exploit pre-existing commercial DPI infrastructure on short timescales — circumvention deployments should monitor for sudden spikes in referendum/protest-adjacent domain blocking as an early warning signal.
+    - DNS-only blocking of shared-infrastructure domains (GitHub Pages, IPFS gateways) is a deliberate collateral-minimization strategy; hosting censored content on such platforms buys partial protection but not immunity.
+section: §3.1.1, §3.3, §4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-fifield-running
+kind: deployment
+summary: 'Operating system defaults create two additional scaling ceilings beyond CPU: (1) the default file descriptor limit is insufficient above ~64,000 simultaneous connections, requiring LimitNOFILE=1048576 (1 million) in the systemd service; and (2) Linux''s conntrack default of 262,144 tracked connections was approached during peak hours for the Snowflake bridge, necessitating doubling the table to 524,288 via sysctl net.netfilter.nf_conntrack_max.'
+defenses:
+    - pluggable-transport
+    - bridges
+    - webrtc-pluggable
+defense_implications:
+    - PT bridge systemd service files must explicitly set LimitNOFILE=1048576 and configure net.netfilter.nf_conntrack_max≥524288 before a bridge reaches tens of thousands of concurrent users.
+    - Monitor conntrack utilization alongside CPU and bandwidth as an early warning of connection-drop events that would otherwise appear as unexplained client failures.
+section: §4
+extracted_by: claude-sonnet-4-6

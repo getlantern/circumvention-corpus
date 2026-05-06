@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-streisand-where
+kind: detection
+summary: ChatGPT correctly identified missing sentences in a partially censored translation and correctly judged a complete translation as complete in a control condition, demonstrating that LLMs are a viable complementary detection method. The paper notes that having multiple independent detection approaches (NLP alignment, bitext mining, LLM-based reasoning) improves overall robustness by enabling cross-validation.
+techniques:
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - LLM-based censorship detection can be integrated into automated audit pipelines as a high-recall second-pass over candidates flagged by embedding-based alignment, reducing false negatives without requiring human review for every document.
+    - Ensemble detection (combining NLP alignment with LLM reasoning) is more robust than any single method and should be the architecture target for production translation-censorship monitoring tools.
+section: §4 Discussion / Appendix C
+extracted_by: claude-sonnet-4-6

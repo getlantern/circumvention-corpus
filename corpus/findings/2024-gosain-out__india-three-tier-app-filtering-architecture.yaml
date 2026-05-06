@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gosain-out
+kind: evaluation
+summary: 'India''s app-filtering architecture is three-tiered: 136/220 apps (Tier 3) are inaccessible only via official app stores and trivially accessible after sideloading; 23 apps (Tier 2) additionally enforce IP geo-blocking; and 7 apps (Tier 1) combine IP geo-blocking with SIM-based locale detection. One outlier, ChessRush, restricted content at CDN edge servers serving Indian users, requiring both a foreign source IP and a foreign CDN edge server (via foreign DNS resolver) to bypass.'
+techniques:
+    - ip-blocking
+censors:
+    - in
+defense_implications:
+    - 'Circumvention tools must operate at multiple layers simultaneously for Tier 1 apps: IP masking (VPN/proxy) plus SIM-parameter suppression; a single-layer tool leaves users partially blocked.'
+    - CDN-edge-level blocking (as in ChessRush) is defeated only by routing through resolvers in uncensored regions — ensure VPN DNS leak protection routes DNS queries through foreign resolvers, not the user's local ISP.
+section: §4 (Summary), §4.3
+extracted_by: claude-sonnet-4-6

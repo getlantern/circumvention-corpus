@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-gosain-too
+kind: evaluation
+summary: Domain fronting is undermined when CDN front-ends are located within the censor's jurisdiction because the censor can coerce the CDN provider to disable domain fronting on those front-ends. Russia coerced Google, Amazon, and Microsoft to halt Telegram's use of domain fronting; the paper's measurements confirm that CDN front-ends for popular services (YouTube, Facebook, Instagram) are hosted within all five tested countries.
+techniques:
+    - ip-blocking
+defenses:
+    - domain-fronting
+    - meek
+censors:
+    - ru
+defense_implications:
+    - Do not rely solely on mainstream CDNs (Google, Amazon, Cloudflare) for domain fronting — their in-country front-ends make them susceptible to legal coercion; prefer CDN providers with no in-country presence or with a demonstrated track record of resisting government pressure.
+    - Design domain-fronting transports with rapid CDN-provider rotation so that coercion against one provider does not permanently break the circumvention path for users in that country.
+section: §5.2
+extracted_by: claude-sonnet-4-6

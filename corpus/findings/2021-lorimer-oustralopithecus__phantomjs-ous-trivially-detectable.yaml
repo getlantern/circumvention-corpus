@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-lorimer-oustralopithecus
+kind: detection
+summary: Prior overt user simulators (OUS) using PhantomJS — including Slitheen, Waterfall, and Slitheen++ — received Cloudflare Bot Management scores of 1 (certainly bot-generated) and would be blocked by any operator following Cloudflare's recommended cut-off of 30. Slitheen++ improved marginally by adding user-agent randomization and brief inter-request pauses, but all PhantomJS-based OUS implementations were trivially detectable as bots.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - mimicry
+    - steganography
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Retire any OUS built on PhantomJS (development ceased 2018); switch to actively maintained browser automation (Selenium + current-release Firefox/Chrome) to avoid trivial fingerprinting of the automation framework itself.
+    - Inter-connection behavior (dwell time, navigation depth, tab switching) is evaluated by bot detectors at least as heavily as per-flow packet features — adding only a brief pause between requests is insufficient to evade ML-based classifiers.
+section: §5.2.1, Figure 6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-singh-india
+kind: evaluation
+summary: Jio, India's largest ISP serving 49.7% of internet users, employs SNI inspection to block 2,951 out of 3,340 websites it censors — the first documented use of SNI-based blocking in India. No other of the six tested ISPs uses this technique.
+techniques:
+    - sni-blocking
+    - dpi
+censors:
+    - in
+defense_implications:
+    - Deploy Encrypted ClientHello (ECH) or ESNI to hide the SNI field from Jio's DPI infrastructure, which cannot block what it cannot read.
+    - 'Implement ISP-aware protocol selection: transports that expose a cleartext hostname (standard TLS SNI) will fail specifically on Jio while succeeding on other Indian ISPs using only DNS or HTTP filtering.'
+section: §5.1.4
+extracted_by: claude-sonnet-4-6

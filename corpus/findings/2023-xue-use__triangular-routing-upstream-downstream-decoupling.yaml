@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-xue-use
+kind: defense
+summary: 'PushProxy decouples upstream (XOR-obfuscated UDP) from downstream (FCM push notifications), implementing triangular routing that prevents per-flow traffic analysis: a network adversary with limited visibility cannot correlate upload and download flows since they use different transport protocols and paths. Median TTFB was 572ms versus 492ms (Shadowsocks) and 508ms (OpenVPN), while performance remained stable during Chinese peak hours (20:00–02:00 GMT+8) when Shadowsocks download times increased from 3s to over 100s.'
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Asymmetric proxy architectures that route upstream and downstream over independent, heterogeneous transports force adversaries to correlate across protocol and path boundaries, substantially raising the cost of traffic analysis even without per-flow obfuscation.
+    - Route downstream through providers whose CDN endpoints resolve to domestic IPs in the censored region (FCM did for the China VPS used in testing) to avoid the transnational congestion bottleneck that degrades symmetric proxies during peak hours.
+section: §4, §5.2, Figure 7–8
+extracted_by: claude-sonnet-4-6

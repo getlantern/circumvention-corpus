@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-bischof-destination
+kind: evaluation
+summary: Over 55% of government-ordered shutdowns last a multiple of 30 minutes (vs. 15% of spontaneous outages), and 45% last precisely 4.5, 5.5, 8, or 10 hours (vs. <1% of spontaneous outages). The median recurrence interval between successive shutdown events within the same country is 1 day versus 39 days for spontaneous outages, with 67.7% of shutdowns falling exactly on 1-, 2-, 3-, or 4-day intervals versus 0.17% of outages.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Embed shutdown-vs-outage classification logic into circumvention tools using temporal fingerprints (duration multiples of 30 min, ≤4-day recurrence) to distinguish government action from infrastructure failure and adjust retry/fallback behavior accordingly.
+    - Design tools to maintain persistent state or rapid reconnect logic for short-cycle shutdowns (median 1-day recurrence) rather than treating a single outage event as terminal.
+section: §5.3, Figures 10–11
+extracted_by: claude-sonnet-4-6

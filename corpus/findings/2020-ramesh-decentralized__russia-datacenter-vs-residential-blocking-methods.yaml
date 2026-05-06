@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ramesh-decentralized
+kind: evaluation
+summary: Data center VPSes predominantly experienced TCP connection timeouts and resets—with the highest-blocking VPS censoring 96.8% of tested domains—while residential ISPs were substantially more likely to inject explicit blockpages citing Roskomnadzor's registry, confirming that blocking mechanism varies significantly by network tier even when blocking rates are similar.
+techniques:
+    - rst-injection
+    - ip-blocking
+    - packet-injection
+    - keyword-filtering
+censors:
+    - ru
+defense_implications:
+    - Testing circumvention tools exclusively from data center vantage points underrepresents the blockpage-injection behavior dominant at residential ISPs; residential-tier testing is required for realistic protocol evaluation.
+    - Blockpage injection provides a user-visible censorship signal that circumvention clients can detect programmatically to trigger automatic failover to an alternative transport.
+section: §VI-B
+extracted_by: claude-sonnet-4-6

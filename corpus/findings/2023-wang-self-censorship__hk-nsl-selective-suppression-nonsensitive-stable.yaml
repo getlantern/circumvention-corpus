@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-self-censorship
+kind: policy
+summary: While Hong Kong users sharply reduced discussion of NSL-sensitive political topics after July 2020, their rate of Tweeting about non-sensitive topics (travel, food, art, media) remained stable and mirrored control-group trends. This targeted suppression — rather than a general withdrawal from Twitter — confirms the NSL produced specific self-censorship of covered speech rather than platform abandonment.
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Users at legal risk continue using mainstream platforms for innocuous content while self-censoring sensitive speech; circumvention tools should be designed to blend into normal platform usage patterns rather than requiring users to switch platforms entirely.
+    - Differential suppression of topic categories is a measurable signal that can be used to evaluate the chilling effect of new laws in real time, giving circumvention tool operators early warning to increase capacity before demand collapses due to fear.
+section: §4.2 / Figure 2b
+extracted_by: claude-sonnet-4-6

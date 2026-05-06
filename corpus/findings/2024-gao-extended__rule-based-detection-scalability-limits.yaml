@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gao-extended
+kind: evaluation
+summary: Rule-based censorship detection systems rely on predefined regular expressions designed by human experts and fail to adapt to evolving censor techniques, leading to false negatives and poor scalability as data volume grows. In contrast, learning-based models are described as thriving on large data volumes and offering contextual understanding that rule-based systems lack.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Measurement platforms (OONI, ICLab, Censored Planet) should invest in ML-augmented pipelines rather than purely rule-based fingerprinting to reduce false-negative rates as censors evolve.
+    - Circumvention tool operators monitoring for their own blocking should adopt adaptive anomaly detectors rather than static signatures to keep pace with changing censor behavior.
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

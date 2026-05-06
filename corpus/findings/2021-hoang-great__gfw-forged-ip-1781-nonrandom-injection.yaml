@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hoang-great
+kind: detection
+summary: 'GFWatch discovered 1,781 unique forged IPv4 addresses used in GFW DNS poisoning, yet injection is non-random: only 600 (33.6%) account for 99% of all censored responses, with the remainder in a long tail responsible for just 1%. The forged IPv4 pool is dominated by addresses belonging to Facebook (783 IPs, 44%), WZ Communications (277, 15.6%), Twitter (200, 11.2%), and Dropbox (180, 10.1%); all forged IPv6 responses use the bogus Teredo prefix 2001::/32.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - A continuously-maintained forged-IP blocklist covering the core ~600 high-frequency addresses will catch over 99% of GFW DNS poisoning — static or stale lists miss the unpredictably fluctuating long tail.
+    - Forged IPv6 responses are trivially detectable by filtering any answer in the Teredo subnet 2001::/32; implement this as a cheap first-pass filter before the IPv4 IP-list check.
+section: §5.1, §5.2, Figure 8
+extracted_by: claude-sonnet-4-6

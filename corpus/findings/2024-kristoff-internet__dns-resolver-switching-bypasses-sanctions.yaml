@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kristoff-internet
+kind: evaluation
+summary: 'Alternative DNS resolvers trivially circumvent EU sanctions enforcement: third-party providers such as Google Public DNS and Cloudflare DNS implement no sanctions filtering regardless of user location, meaning any user who can switch their resolver can bypass most enforced blocks. The paper concludes that ''as long as a user can utilize an alternative DNS resolver, they would be able to bypass most sanctions enforcement.'''
+techniques:
+    - dns-poisoning
+defense_implications:
+    - Circumvention tools operating under DNS-blocking regimes (not DPI-based) should default to encrypted resolver alternatives rather than the ISP resolver; this single change defeats the dominant enforcement mechanism.
+    - Where DPI is absent, resolver selection is more impactful than transport obfuscation—prioritize it accordingly in threat-model-driven design decisions.
+section: §5.4
+extracted_by: claude-sonnet-4-6

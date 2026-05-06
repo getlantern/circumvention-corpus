@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kristoff-internet
+kind: evaluation
+summary: 'DNS-based blocking was the dominant EU sanctions enforcement mechanism: 87% of the 125 OONI vantage points implementing blocks chose DNS, and RIPE Atlas measurements found 50% of blocking ISPs return DNS error responses. Coverage dropped with each new sanctions package—45% of vantage points blocked first-round domains versus only 17% for fourth-round additions.'
+techniques:
+    - dns-poisoning
+    - measurement-platform
+defense_implications:
+    - DNS-based enforcement is the modal regime for state-level content blocking even outside authoritarian contexts; circumvention tools must treat ISP-provided DNS as an untrusted, censorable layer by default.
+    - Encrypted alternative DNS resolution (DoH/DoT to third-party resolvers) is sufficient to bypass the dominant blocking modality and should be a baseline, not an option.
+section: §4.1, §4.2
+extracted_by: claude-sonnet-4-6

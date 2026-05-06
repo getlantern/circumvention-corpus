@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-sakamoto-bleeding
+kind: evaluation
+summary: The GFW DNS injector vulnerability enabled reflective amplification attacks with a baseline factor of 4.04× (46-byte payload → 186-byte response). Combined with routing loops — approximately 1,000 destination IP addresses in China were found to loop packets across the GFW more than 30 times, with 159 persisting after two days and a maximum of 119 loop iterations per query — the effective amplification factor reached 481.17×, sufficient to generate 100 Gbps of attack traffic from just over 200 Mbps of source traffic.
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - National censorship infrastructure located at high-capacity IXPs with lax format validation can be weaponized as DDoS amplifiers — circumvention infrastructure operators should monitor for reflection attacks originating from GFW-adjacent IP ranges (China Telecom/Unicom/Mobile backbone) as a potential disruption vector against proxy servers.
+    - The GFW's source IP diversity (traffic appears from China backbone IPs) makes inbound source-address validation ineffective at blocking these reflections — circumvention server hosting should not rely solely on IP blocklists for DDoS mitigation.
+section: §5.2 Reflective Amplification Attack
+extracted_by: claude-sonnet-4-6

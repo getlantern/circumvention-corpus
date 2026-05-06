@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rambert-chinese
+kind: detection
+summary: After a censored connection, 50–75% of subsequent connections from the same client IP to the same server IP and port are blocked for 90 seconds even without censored keywords ("penalty box"). The penalty box is strictly scoped to the (client IP, server IP, server port) triple — other ports at the same server IP or other server IPs are unaffected. The GFW monitors HTTP keyword traffic on every TCP port, not just port 80.
+techniques:
+    - keyword-filtering
+    - rst-injection
+    - port-blocking
+censors:
+    - cn
+defense_implications:
+    - 'Design proxy infrastructure so that each endpoint IP+port pair is disposable: after a penalty box event, clients should automatically rotate to a fresh (IP, port) pair to restore connectivity within seconds rather than waiting 90 seconds.'
+    - Hosting proxies on non-standard ports does not evade GFW keyword filtering — port diversity alone is insufficient; payload obfuscation or encryption is required.
+section: §4.4, §4.5
+extracted_by: claude-sonnet-4-6

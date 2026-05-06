@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-http-smuggling
+kind: detection
+summary: 'Iran''s censor injects an HTTP block page consistently but contains an implementation bug: it fails to parse the TE header when a CL header with an invalid (non-integer) value is present, causing it to pass subsequent traffic. 254 of the evaluated test vectors circumvented Iran''s censor; the ''Wrapping'' CL*/TE strategy (e.g., ''Content-Length: <len>\u00FF\x0aX: X'') was especially effective, exploiting this graceful-degradation fault.'
+techniques:
+    - dpi
+    - packet-injection
+    - keyword-filtering
+censors:
+    - ir
+defense_implications:
+    - Wrapping the CL header value with unparseable bytes (e.g., extended ASCII or injected headers) reliably disables Iran's TE-header parsing, allowing the smuggled censored request to pass — a stable circumvention primitive tied to a documented implementation bug.
+    - Iran's censor requires both CL and TE headers to trigger the bug; omitting the TE header causes the invalid CL to be silently ignored and the second request blocked, so both headers must be present.
+section: §5.3 (Wrapping strategy, Iran discussion)
+extracted_by: claude-sonnet-4-6

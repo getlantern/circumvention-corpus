@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-calle-toward
+kind: detection
+summary: For the Isolation Forest model, resolver ASN (SHAP importance 0.237) and probe ASN (0.220) are the two most predictive features for DNS tampering, reflecting that censorship is topologically concentrated at specific network vantage points. For XGBoost, headers_match dominates (0.317), followed by asn_control_match (0.177), indicating that supervised models rely more on cross-layer consistency signals. DNS tampering represents only 0.5–0.8% of all OONI measurements across 2022–2023 (Figure 2), creating severe class imbalance in any training set.
+techniques:
+    - dns-poisoning
+    - ml-classifier
+    - measurement-platform
+defenses:
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - 'Resolver selection is not neutral: vantage-point ASN is the strongest predictor of whether a resolver will return tampered responses, so circumvention tools should prefer resolvers in ASNs with clean measurement histories'
+    - Headers and status-code consistency across control/test pairs are strong supervised signals; circumvention tools using custom DNS resolvers should validate cross-layer consistency (HTTP response headers, title) not just IP-level agreement to detect sophisticated injectors
+section: §4.1, Table 4, Figure 2
+extracted_by: claude-sonnet-4-6

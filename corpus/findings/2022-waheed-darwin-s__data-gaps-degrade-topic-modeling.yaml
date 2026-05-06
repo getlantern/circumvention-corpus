@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-waheed-darwin-s
+kind: evaluation
+summary: 'Data gaps severely degrade D-LDA accuracy: erasing every other month reduced the corpus from 4,577 to 1,919 documents and caused the model to lose detection of ''Religion-motivated killing,'' ''Religious websites,'' ''Muslim Violence,'' and ''Homicide'' topics entirely. Erasing one in three months (1,479 documents) caused further topic loss, and even removing one random month altered topic evolution trajectories. For 25% of pages, the gap between Wayback Machine snapshots and ICLab observations exceeds one year.'
+techniques:
+    - measurement-platform
+censors:
+    - in
+defense_implications:
+    - Circumvention tool designers relying on external censorship measurement feeds (ICLab, OONI, Censored Planet) should account for coverage gaps—blocklists derived from sparse measurement data will systematically miss topic clusters requiring consistent longitudinal coverage.
+    - Deploying redundant measurement vantage points inside censored countries is the paper's explicit recommendation to ensure data continuity for accurate topic detection.
+section: §3.3, Figures 4–5, Tables 2–3
+extracted_by: claude-sonnet-4-6

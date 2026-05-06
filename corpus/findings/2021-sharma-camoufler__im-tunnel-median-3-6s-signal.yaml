@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-sharma-camoufler
+kind: defense
+summary: Camoufler tunnels censored web traffic through real Instant Messaging applications (Signal, Telegram, WhatsApp, Slack, Skype), achieving a median page-load time of 3.6s (average 4.1s) over Signal and 2.3s median (average 2.7s) over Telegram for Alexa top-1,000 sites — compared to 120s for CovertCast loading BBC News and only 2.56 Kbps throughput for DeltaShaper. Over 90% of TTFB trials across 10 popular sites completed under 2s, with 50% under 1s.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Use real IM platform APIs as the actual transport layer rather than mimicking IM traffic — authentic protocol behavior defeats both DPI and traffic-shape classifiers more reliably than mimicry, which is fragile against feature-complete protocol fingerprinting.
+    - Prioritize cover channels with sub-1s native message latency (IM) and file-attachment support over VoIP or email tunnels, which impose multi-second or multi-minute delays that degrade QoS below usability thresholds.
+section: §4
+extracted_by: claude-sonnet-4-6

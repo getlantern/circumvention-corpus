@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-global
+kind: detection
+summary: Censoring middleboxes predominantly use RST injection rather than in-path packet dropping because injecting forged RST/RST+ACK packets does not require the middlebox to sit in the data path — off-path copies of packets suffice. The GFW specifically injects both RST and RST+ACK packets simultaneously after an offending PSH, a known idiosyncratic signature, while Iran's censor uses post-handshake RST injection (⟨SYN;ACK→RST⟩) and packet drops at the same stage.
+techniques:
+    - rst-injection
+    - dpi
+    - sni-blocking
+censors:
+    - cn
+    - ir
+defense_implications:
+    - UDP-based transports (QUIC, Hysteria 2, WireGuard variants) are immune to TCP RST injection by construction; where latency permits, this is one of the strongest structural evasions available.
+    - For TCP-based transports, using TLS with ECH eliminates the plaintext SNI that triggers most Post-PSH RST signatures; without a cleartext trigger the censor falls back to IP blocking or active probing.
+section: §2.1, §4.1
+extracted_by: claude-sonnet-4-6

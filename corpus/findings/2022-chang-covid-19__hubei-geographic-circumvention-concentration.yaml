@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-chang-covid-19
+kind: evaluation
+summary: 'Circumvention activity varied strongly by geographic proximity to the crisis: Hubei province, the epicenter, saw Twitter volume double relative to pre-lockdown baseline and sustain that doubling 30 days after the crisis, while mobility decreases from Baidu location data correlated with Twitter user increases across provinces — but two weeks after lockdown, the elevated Twitter usage could no longer be explained by mobility restrictions or New Year seasonality, indicating crisis-induced circumvention becomes self-sustaining.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Deploy additional proxy capacity regionally near crisis epicenters — geographically targeted demand spikes can double usage in affected areas while other regions see smaller increases, making regional load balancing more effective than uniform scaling.
+    - Circumvention habits formed during crises persist even after the precipitating event ends; this argues for long-lived proxy infrastructure rather than ephemeral surge capacity that is decommissioned post-crisis.
+section: Increases in Circumvention Occurred throughout China / Fig. 4
+extracted_by: claude-sonnet-4-6

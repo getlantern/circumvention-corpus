@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-sharma-siegebreaker
+kind: defense
+summary: 'SiegeBreaker achieves near-native TCP performance in Internet experiments: average download time for Alexa top-500 home pages via SB was 1.8 s versus 1.7 s for direct wget, across 500 concurrent client instances; bulk downloads of 1 GB files over a shared 1 Gbps link showed SB and native TCP sharing bandwidth almost equally, and throughput remained stable under 15 Gbps of cross-traffic or 50,000 parallel flows on the SDN switch.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Distributing DR work across three loosely-coupled components — an SDN controller (request identification), a programmable switch (line-rate forwarding), and a secret proxy (session proxying) — is sufficient to reach near-native TCP performance at ISP scale without a dedicated router OS.
+    - SDN switches with large flow-table capacity (HP10500 supports 1,152,000 OpenFlow entries, 3.8 Tbps aggregate) can serve as production DR infrastructure without impeding non-DR traffic.
+section: §5.1, §5.2
+extracted_by: claude-sonnet-4-6

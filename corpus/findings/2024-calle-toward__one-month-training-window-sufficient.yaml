@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-calle-toward
+kind: evaluation
+summary: XGBoost trained on a single month of OONI data achieves near-optimal performance; expanding the training window to 24 months produces deviations of only 0–5 percentage points for FNR, 0.07 PP for FPR, and 0.10 PP for accuracy — suggesting that larger windows introduce noise and overfitting rather than improving detection. Isolation Forest performance degrades more sharply, with accuracy dropping ~5 PP as training data grows beyond 6 months.
+techniques:
+    - dns-poisoning
+    - ml-classifier
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - ML-based DNS censorship detectors can be retrained monthly on a rolling one-month window, keeping models current with evolving censor tactics without accumulating stale signal
+    - Avoid long training windows for anomaly-detection models in censorship contexts; a short, recent window outperforms a longer historical one due to censor behavioral drift
+section: §4.2, Figure 3
+extracted_by: claude-sonnet-4-6

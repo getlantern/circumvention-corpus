@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-waheed-darwin-s
+kind: evaluation
+summary: 'D-LDA detected event-driven shifts in Indian censorship without prior knowledge: the word ''violence'' disappeared from the ''Riots in India'' topic cluster between months 6 and 14 of the measurement period, and ''killing'' did not appear until month 16, consistent with the absence of actual riots during that window. Similarly, the ''Danish cartoonist'' topic shifted from cartoon-focused discourse to broader Islamic-rights framing (''freedom,'' ''speech'') approximately 18 months in.'
+techniques:
+    - measurement-platform
+    - keyword-filtering
+censors:
+    - in
+defense_implications:
+    - Censorship blocklists are event-reactive, not static; circumvention tools should implement dynamic blocklist refresh rather than shipping a fixed list at release time.
+    - Tracking word-association drift in topic models over longitudinal measurement data can surface newly-censored domains before they appear in manual URL lists.
+section: §3.2, Figure 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-sharma-camoufler
+kind: defense
+summary: Camoufler defeats active probing of its server endpoints by keeping server IM IDs private (shared only out-of-band with trusted clients) and configuring the server to respond only to those trusted IDs. An adversary systematically probing IM IDs to find Camoufler servers would receive no response from the server, making enumeration futile. When E2M-encrypted IM providers could collude with a censor, an additional application-layer key exchange (DH with RSA-wrapped ephemeral key, AES-256, PFS via key deletion) prevents the provider from revealing plaintext even under coercion.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Distribute circumvention server identifiers (IM IDs, bridge addresses) exclusively through trusted out-of-band channels and configure servers to silently ignore or reject unauthenticated probe connections, eliminating the active-probing enumeration attack surface.
+    - Layer application-level end-to-end encryption with PFS on top of any cover channel that uses E2M (provider-visible) encryption, so censor–provider collusion cannot expose plaintext or destination URLs.
+section: §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-nourin-detecting
+kind: evaluation
+summary: Censoring middleboxes' TCP non-compliance — specifically, their willingness to censor bidirectionally without completing the three-way handshake — enables external vantage points outside a censoring country to trigger and measure censorship without any local endpoint participation. The approach requires only a confirmed censored domain per AS, evidence of bidirectional censorship, and minimal residual censorship.
+techniques:
+    - middlebox-interference
+    - rst-injection
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools can probe for censor presence from external infrastructure rather than relying on in-country volunteers, enabling longitudinal monitoring of lightly-studied networks.
+    - 'Residual censorship mechanisms are a meaningful signal: their presence or absence constrains which measurement strategies are viable and can be used to fingerprint censor architectures.'
+section: §2
+extracted_by: claude-sonnet-4-6

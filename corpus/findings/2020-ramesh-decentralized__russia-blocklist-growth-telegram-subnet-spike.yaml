@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ramesh-decentralized
+kind: evaluation
+summary: Seven years of Roskomnadzor blocklist history (Nov 2012–April 2019) show the list grew to 132,798 unique domains and 324,695 unique IPs, with a dramatic spike in 2018 when Russia blocked Telegram by adding subnets covering approximately 16 million IP addresses—producing major collateral damage to co-hosted Google and Amazon services and illustrating that subnet-level blocking is the blunt instrument of last resort for CDN-hosted targets.
+techniques:
+    - ip-blocking
+    - asn-blackholing
+censors:
+    - ru
+defense_implications:
+    - Shared CDN or cloud IP space provides no protection against subnet-level enforcement actions; circumvention services should maintain geographically and topologically diverse IP inventory outside major cloud ASes to survive collateral blocklisting.
+    - Continuous monitoring of the Roskomnadzor blocklist (e.g., via the public Zapret repository) enables circumvention operators to detect and pre-rotate infrastructure before enforcement reaches their addresses.
+section: §VI-A, §II-B
+extracted_by: claude-sonnet-4-6

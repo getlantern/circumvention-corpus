@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-wang-symtcp
+kind: defense
+summary: SymTCP uses selective symbolic execution over Linux's TCP implementation (S2E + KLEE) to enumerate all packet sequences reaching 47 binary-level accept or drop points from LISTEN to ESTABLISHED, then conducts differential testing against a blackbox DPI to confirm discrepancies; the open-sourced system requires no DPI source access and covers 37 of 47 drop points within the operationally relevant handshake window.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - meta-resistance
+    - geneva
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Run SymTCP against any new DPI deployment as a black-box regression test — it will surface which previously effective evasion strategies have been patched and generate novel candidates without reverse-engineering the DPI.
+    - Because coverage is OS-specific (Linux server assumed), deploying circumvention servers on Linux maximises the exploitable discrepancy surface; discrepancies narrow when censor and server implement identical TCP state machines.
+section: §IV, §VIII.A–B
+extracted_by: claude-sonnet-4-6

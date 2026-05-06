@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-your
+kind: evaluation
+summary: 'A low-bandwidth attacker can sustain indefinite availability attacks by periodically re-triggering residual censorship: China''s 3-tuple HTTP system requires only 4 spoofed packets every 3 minutes. For 4-tuple systems requiring full source-port coverage (65,535 ports), Kazakhstan needs 1,093 packets/sec (~634 kbps HTTP) and Iran needs 729 packets/sec (~422 kbps HTTP)—achievable with commodity hardware. Iran achieved 100% attack success against all 17 geographically disparate victim vantage points tested.'
+techniques:
+    - ip-blocking
+    - rst-injection
+censors:
+    - cn
+    - ir
+    - kz
+defense_implications:
+    - Aggressive ephemeral port randomization raises attacker cost linearly with port space covered; protocols that multiplex many streams over a single long-lived connection (e.g., QUIC or muxed TLS) concentrate risk on a single 4-tuple and should be avoided for censored users.
+    - Circumvention infrastructure should prefer ingress nodes whose network path does not converge with the victim's path before the censor, since path-convergence before the censor is the primary determinant of attack success.
+section: §V.B, §VI
+extracted_by: claude-sonnet-4-6

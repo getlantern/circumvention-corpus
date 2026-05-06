@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-m-ller-turning
+kind: detection
+summary: 'Iran''s censor contains an implementation bug: when the Content-Length header carries an invalid (non-integer) value and a Transfer-Encoding header is also present, the censor gracefully skips the invalid CL value and attempts to parse subsequent traffic, but fails to correctly interpret the TE header—causing it to pass the smuggled (censored) request. This bug enabled 254 of 2,015 evaluated test vectors to bypass Iranian censorship, all using the CL*/TE or CL/TE* vector types.'
+techniques:
+    - dpi
+    - packet-injection
+    - keyword-filtering
+defenses:
+    - geneva
+censors:
+    - ir
+defense_implications:
+    - Proxies targeting Iran should wrap the censored request as the TE-parsed body of an outer request bearing an intentionally malformed Content-Length value (e.g., wrapped with extra bytes or a double-colon); this triggers the censor's graceful-degradation bug.
+    - The Iran bypass requires both a malformed CL header and a valid TE header to coexist—implement and test both fields together, not independently.
+section: §5.2 / §5.3
+extracted_by: claude-sonnet-4-6

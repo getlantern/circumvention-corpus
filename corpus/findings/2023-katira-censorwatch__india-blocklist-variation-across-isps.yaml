@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-katira-censorwatch
+kind: evaluation
+summary: Across 7,336 websites analyzed comparatively across 71 ASes, blocklist sizes ranged from roughly 3,000 to 7,000 websites per AS, with differences between ISPs as large as 2,000 websites out of ~8,000 analyzed. Within single ASes, further blocklist variation was observed, suggesting misconfiguration or non-uniform middlebox deployment. Only 6,787 of 7,336 sites were blocked by at least one AS.
+techniques:
+    - measurement-platform
+censors:
+    - in
+defense_implications:
+    - India's decentralized, inconsistent blocklist implementation means circumvention tool designers cannot assume uniform blocking — a proxy endpoint blocked on Airtel may be reachable on Jio, making ISP-specific fallback routing a viable strategy.
+    - The large variance in blocking coverage across smaller ISPs suggests that using infrastructure hosted in IP space not on the largest ISPs' blocklists may provide reliable access without active circumvention.
+section: §5.2, Appendix A
+extracted_by: claude-sonnet-4-6

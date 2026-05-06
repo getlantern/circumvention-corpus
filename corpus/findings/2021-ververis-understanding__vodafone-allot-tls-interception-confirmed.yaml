@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-ververis-understanding
+kind: detection
+summary: 'Vodafone (AS12357, AS12430, AS6739) deployed Allot-based TLS interception to block womenonweb.org: the system resolver returned a legitimate IP (67.213.76.19), but connecting to it triggered a forged certificate signed by Allot; disabling TLS certificate validation fetched the Vodafone blockpage, confirming a man-in-the-middle box rather than a redirect. OONI''s standard Web Connectivity test recorded only a generic ssl_error:certificate verify failed and missed this entirely.'
+techniques:
+    - dpi
+    - middlebox-interference
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Circumvention probes must collect the raw server certificate on TLS failure — a ssl_error without certificate capture cannot distinguish TLS interception from genuine server misconfiguration.
+    - Tools that rely solely on DNS or IP-level checks will silently fail against Allot-style inline TLS interception; full handshake inspection (certificate issuer, key) must be part of reachability testing.
+section: §3.7, §3.8.3
+extracted_by: claude-sonnet-4-6

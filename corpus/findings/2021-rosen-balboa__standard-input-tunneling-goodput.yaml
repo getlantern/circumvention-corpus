@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-rosen-balboa
+kind: defense
+summary: Balboa runs unmodified application binaries on standard inputs, intercepting TLS via dynamic library injection (LD_PRELOAD / DYLD_INSERT_LIBRARIES) to replace plaintext with covert data while preserving all TLS record lengths and non-timing characteristics. This yields goodput of 145 kbps for audio streaming and up to 8 Mbps for web browsing, versus 2.56 kbps for DeltaShaper and 19 kbps for Freewave, both of which run real applications on non-standard inputs.
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Run genuine application binaries rather than reimplementing protocols; even faithful reimplementations produce statistically distinguishable traffic distributions because the real-world distribution is effectively unknowable.
+    - Pre-share a traffic model (audio playlist, shared asset directory) between client and server so cover data bytes never need to be retransmitted—those bytes become free covert payload capacity.
+section: §1.1, Table 1
+extracted_by: claude-sonnet-4-6

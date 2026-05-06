@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-almutairi-fingerprinting
+kind: detection
+summary: 'IoT devices pose the primary false-positive risk: many IoT devices (printers, smart bulbs, cameras, vacuum cleaners) maintain very few sessions with a small number of fixed cloud IPs — behaviorally similar to a VPN client. In the CIC IoT 2022 dataset, only 2 devices were misclassified (a Google Nest Cam connecting to nexusapi-us1.dropcam.com and a device using Alibaba cloud) out of the full dataset with WINDOW=300 s and T=500 packets.'
+techniques:
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - VPN clients that mimic IoT traffic patterns — infrequent sessions, low packet counts, or periodic bursts to diverse IPs — can lower their session-accumulation signature below detection thresholds.
+    - Designs that interleave circumvention traffic with periodic direct connections to benign CDN or cloud endpoints (not through the tunnel) will reduce the per-session packet count the detector sees.
+section: §IV-B, §IV-C
+extracted_by: claude-sonnet-4-6

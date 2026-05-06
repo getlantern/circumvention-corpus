@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-lorimer-extended
+kind: defense
+summary: Because traffic splitting is not ubiquitous network behavior, split PT traffic may appear anomalous to a censor, allowing them to distinguish normal PT use from split PT use even without classifying the underlying protocol. The authors flag this as a key open risk to be evaluated empirically and note that splitting across multiple bridges or multiple PT types may simultaneously raise and lower different detection signals.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - pluggable-transport
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - 'Evaluate split-traffic flows against anomaly-detection baselines (not just WF classifiers) before deploying: the split pattern itself may be a stronger signal than the per-path protocol fingerprint.'
+    - Consider cover-traffic normalization or mimicking multi-path TCP behaviors present in legitimate CDN traffic to reduce the anomaly signal introduced by splitting.
+section: §4.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wails-proteus
+kind: detection
+summary: 'The GFW detects Shadowsocks by flagging apparently high-entropy connections that are not TLS or HTTP, but this detection is brittle: connections are explicitly allowed if the first 6 bytes of the first packet of a flow are all printable ASCII characters (range 0x20–0x7E). Adding a 6-byte alphanumeric preamble to the Shadowsocks message definition is sufficient to bypass this heuristic and requires only a short patch to the protocol specification file.'
+techniques:
+    - random-payload-detect
+    - fully-encrypted-detect
+    - dpi
+defenses:
+    - shadowsocks
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Prepend a fixed 6-byte printable-ASCII preamble to fully-encrypted protocol messages to defeat the GFW's first-packet entropy check; this is a one-field addition to a message format definition and imposes negligible overhead.
+    - GFW's printable-bytes heuristic is a shallow, flow-level check — any protocol that passes ASCII printability in the first 6 bytes of the first packet avoids this detection path entirely, making it a low-cost evasion primitive.
+section: §3.2
+extracted_by: claude-sonnet-4-6

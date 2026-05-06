@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-jia-voiceover
+kind: evaluation
+summary: Skype for Web normalizes packet sizes such that Voiceover transmissions and genuine audio conversations produce nearly identical packet size CDFs across Ubuntu 18.04 and Windows 10, across all tested modulation parameters (carrier frequency, sampling frequency, baud rate, frame length). This makes the Skype-based tunnel inherently immune to packet-size fingerprinting without requiring explicit size shaping.
+techniques:
+    - traffic-shape
+defenses:
+    - mimicry
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Routing traffic through an actual VoIP application instance (rather than mimicking its traffic statistics) provides inherent packet-size normalization; prefer application-layer tunnels over statistical mimicry when the cover protocol normalizes sizes.
+    - Cross-OS packet size CDF comparison is a practical validation step to confirm a multimedia tunnel's size distribution matches legitimate traffic before deployment.
+section: §4.4
+extracted_by: claude-sonnet-4-6

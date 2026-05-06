@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-chen-extended
+kind: detection
+summary: 'Registration-dependent Refraction Networking schemes such as Conjure create multiple single points of failure: censors can block registration channels independently of phantom connections. Domain fronting, a primary registration channel, has been progressively banned by major CDNs — Microsoft Azure in 2021 and Fastly in early 2024 — reducing its viability as a covert registration mechanism.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - decoy-routing
+    - conjure
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - Do not rely on a single out-of-band registration channel; any registration step is an independently-blockable attack surface that can neutralize the circumvention scheme without touching the phantom connection.
+    - Prefer registration-free designs or distribute registration across multiple channels (DNS, DHT) to eliminate single-point-of-failure exposure.
+section: §1 Introduction
+extracted_by: claude-sonnet-4-6

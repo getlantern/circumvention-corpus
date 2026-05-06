@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-ramesh-vpnalyzer
+kind: evaluation
+summary: 29 of 80 VPN providers — including paid services — configure clients to resolve DNS through third-party public resolvers (Google Public DNS, Cloudflare, OpenDNS, Quad9) rather than provider-operated infrastructure. Three self-hosted solutions (Algo, Streisand, Outline) hardcode public DNS with no easy override, causing connection failures in regions where those services are blocked.
+techniques:
+    - ip-blocking
+    - measurement-platform
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Operate a DNS resolver over the VPN tunnel itself; hard-coding third-party public DNS (8.8.8.8, 1.1.1.1) exposes query metadata to a third party and silently fails in countries that block those services.
+    - Ship DNS configuration as a user-overrideable setting so operators in restrictive environments can substitute locally reachable resolvers without modifying binaries.
+section: §VI (Fig. 5)
+extracted_by: claude-sonnet-4-6

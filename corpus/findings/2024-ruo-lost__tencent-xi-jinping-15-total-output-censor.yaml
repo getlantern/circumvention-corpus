@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ruo-lost
+kind: detection
+summary: On Tencent Translate, 15 distinct representations of Xi Jinping's name — including romanizations (xijinping, XiJinping, XIJINPING, xIDaDa, xidada), character variants (习近平, 习大大, 习主席, 习书记, 习总书记, 近平习, 反习大大), and a romanized reversed form (JinpingXi, jinpingxi) — each triggered censorship of the translator's entire output rather than just the offending sentence. Between 4–5% of Tencent's discovered rules were inconsistently enforced, which the paper attributes to load-balanced servers implementing different rule sets or rapid rule churn.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Any circumvention tool that references its own product name or blocked-site categories in UI strings should test all encodings and capitalizations, not just the canonical form — censors target leet-speak, homoglyphs, reversed strings, and romanizations equally.
+    - 'Inconsistent per-server enforcement (4–5% rule gap across Tencent load-balanced fleet) creates a reliability hole that can be exploited: if a censored domain name reaches users intermittently, retry logic alone won''t help — the inconsistency is censor-side, not network-side.'
+section: §6.3 Censorship Behavior / Table 5
+extracted_by: claude-sonnet-4-6

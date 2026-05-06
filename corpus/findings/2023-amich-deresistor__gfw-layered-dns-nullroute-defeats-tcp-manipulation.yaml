@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-amich-deresistor
+kind: detection
+summary: 'GFW employs layered blocking for high-value targets: DNS poisoning for domains like google.com and wikipedia.org combined with null-routing of their hosting IPs, meaning packet-manipulation tools that operate at the TCP/HTTP layer (e.g., Geneva, DeResistor) cannot generate or test evasion strategies because no response is received to the initial SYN — the blocking occurs below the layer those tools target.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Packet-manipulation circumvention tools must solve the DNS layer separately (e.g., out-of-band IP resolution) before TCP-layer evasion strategies can even be attempted against dual-layer (DNS + null-route) targets.
+    - Circumvention tool designers should classify target domains by blocking method (DNS-only, RST-only, or layered) and route them through appropriate evasion paths rather than applying a single technique uniformly.
+section: §6.1
+extracted_by: claude-sonnet-4-6

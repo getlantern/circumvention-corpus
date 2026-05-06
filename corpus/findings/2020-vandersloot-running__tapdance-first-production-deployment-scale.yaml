@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-vandersloot-running
+kind: deployment
+summary: The first production Refraction Networking deployment used four TapDance stations at Merit Network observing 140 Gbps aggregate capacity and served up to 33,000 unique users per month across 559,000 Psiphon installations, proxying up to 500 Mbps of circumvention traffic during the first year of continuous operation.
+defenses:
+    - tapdance
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - Integrate refraction transport as a modular fallback within a multi-protocol client so users switch to it automatically when other transports fail, without any user-facing configuration change.
+    - Prioritize partnerships with regional access ISPs over Tier-1 carriers; mid-sized operators like Merit can serve tens of thousands of users at a fraction of the institutional complexity.
+section: §1, §3, §4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ahmed-extended
+kind: evaluation
+summary: The paper proposes a black-box methodology for detecting censorship bias in LLMs by comparing responses to identical prompts in Simplified vs. Traditional Chinese — scripts for the same spoken language — controlling for translation quality while exploiting that Simplified Chinese training data is disproportionately sourced from mainland China's censored internet. Each prompt is repeated ten times and scored for similarity to censored text using an XLM-RoBERTa classifier fine-tuned on Baidu Baike (censored) vs. Chinese Wikipedia (uncensored) with scores from 0 to 1.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Script-variant comparison (Simplified vs. Traditional Chinese) is a lightweight, black-box auditing technique that circumvention tool developers can apply to any deployed LLM to detect and quantify training-data censorship bias without requiring model internals.
+    - Use Baidu Baike vs. Chinese Wikipedia as a ready-made labeled dataset for training censorship-similarity classifiers in Chinese-language LLM evaluation pipelines.
+section: §2 / §2.4
+extracted_by: claude-sonnet-4-6

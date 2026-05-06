@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-jia-voiceover
+kind: detection
+summary: 'Protocol mimicry that replicates only statistical or syntactic traffic properties is insufficient for unobservability: Houmansadr et al. (2013) showed SkypeMorph was trivially detectable by the absence of Skype control channels, missing login-server communication, and failure to replicate implementation-specific bugs present in real Skype—demonstrating that full behavioral replication, not just traffic shaping, is required to withstand scrutiny.'
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Route circumvention traffic through actual instances of the target application rather than reimplementing its traffic patterns from scratch, to avoid behavioral fingerprinting at the control-plane and metadata layers.
+    - When auditing a mimicry-based transport, explicitly test for control-plane mismatches (login servers, keepalives, error behavior, known bugs) in addition to payload and timing statistics.
+section: §2
+extracted_by: claude-sonnet-4-6

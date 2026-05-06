@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-wei-domain
+kind: evaluation
+summary: 'Of 6 major CDNs surveyed (Google Cloud CDN, AWS CloudFront, Azure CDN, Fastly, Cloudflare, StackPath), 5 support full API automation of the three steps required for domain shadowing: setting the front-end, setting the back-end, and rewriting the Host header. Cloudflare restricts Host header rewriting to enterprise-tier accounts only, making it unsuitable without paid upgrade. All six CDNs allow arbitrary back-end domain binding by design, and all back-end DNS CNAMEs can be indirected to evade any CDN-side blocklist of popular domains.'
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Automate shadow-domain provisioning via CDN APIs (Fastly, AWS, Azure, and StackPath all expose complete REST APIs) so bindings can be created on-demand per user or rotated per session, reducing per-domain censorship surface.
+    - Avoid Cloudflare as the primary CDN for domain shadowing — Host rewriting is gated behind enterprise pricing; use Fastly or StackPath which permit it on free or low-cost tiers.
+section: §5.2, Table 1
+extracted_by: claude-sonnet-4-6

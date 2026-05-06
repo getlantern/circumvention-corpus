@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-gao-extended
+kind: evaluation
+summary: The daily volume of network reachability data collected by censorship monitoring platforms such as ICLab, OONI, and Censored Planet surpasses the 16 GB Books Corpus and English Wikipedia that BERT was trained on. This scale mismatch motivates applying LLMs — which thrive on large unlabeled corpora — to censorship measurement data rather than hand-labeling for rule-based systems.
+techniques:
+    - measurement-platform
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - The sheer volume of censorship measurement data means that unsupervised or self-supervised LLM pre-training on raw network logs may be feasible and could surface novel blocking patterns without manual labeling.
+    - Circumvention researchers should treat platform data (OONI, ICLab) as an LLM pre-training corpus and explore tokenization schemes for packet fields, DNS responses, and timing data.
+section: §2 Related Works
+extracted_by: claude-sonnet-4-6

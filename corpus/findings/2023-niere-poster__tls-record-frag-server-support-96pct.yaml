@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-niere-poster
+kind: evaluation
+summary: 96.21% of CitizenLab-tracked censored domains (1,092 of 1,135 scanned) and 92.36% of Tranco Top 1M domains (766,909 of 830,357 scanned) already support TLS record fragmentation, with support exceeding 90% across all Tranco rank ranges. This broad server-side compatibility makes TLS record fragmentation deployable without any server-side changes.
+techniques:
+    - sni-blocking
+censors:
+    - cn
+defense_implications:
+    - Deploy TLS record fragmentation as a default-on circumvention feature in client-side tools — no server coordination is needed since over 92% of popular TLS servers handle fragmented records.
+    - Prioritize implementing fragmentation in the TLS client library or proxy shim rather than requiring server operators to opt in.
+section: §4, Table 2
+extracted_by: claude-sonnet-4-6

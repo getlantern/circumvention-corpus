@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-ververis-understanding
+kind: evaluation
+summary: The authors developed 'Aladdin,' a 10-step OONI-based measurement experiment that isolates SNI-based blocking (step 1), Host-header blocking (step 2), DNS injection (step 3), system-resolver vs. DoH discrepancy (steps 4–5), TLS interception (steps 6–8), and TLSv1.3-specific SNI dependency (step 10); this methodology exposed Vodafone's Allot TLS interception that OONI's Web Connectivity test had recorded only as a generic certificate error.
+techniques:
+    - measurement-platform
+    - sni-blocking
+    - middlebox-interference
+    - dns-poisoning
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - 'Integrate Aladdin-style step decomposition into probe tooling: separate SNI-blocking from Host-header blocking from TLS interception — conflating these into a single ''anomaly'' flag masks the censor''s actual technique and prevents targeted evasion.'
+    - Forcing TLSv1.3 in step 10 (where the server certificate is encrypted) definitively attributes blocking to the ClientHello SNI in cleartext; circumvention tools using ECH/ESNI should use this test to confirm SNI-dependency before assuming other causes.
+section: §3.8
+extracted_by: claude-sonnet-4-6

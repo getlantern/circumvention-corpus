@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-niere-tls-attacker
+kind: evaluation
+summary: TLS-Attacker implements more than 330 cipher suites, including uncommon GOST and SM cipher suites specified by the Russian and Chinese authorities, covering SSL 3.0 through TLS 1.3 as well as DTLS 1.0 and DTLS 1.2. This breadth lets researchers test whether authority-mandated or jurisdiction-specific cipher suite selections alter TLS fingerprint classification by censors in those countries.
+techniques:
+    - tls-fingerprint
+censors:
+    - cn
+    - ru
+defense_implications:
+    - Test whether advertising GOST or SM cipher suites in a ClientHello — suites the GFW or TSPU may treat as 'domestic' traffic — reduces active-probe or fingerprint-based blocking rates for circumvention proxies in CN or RU.
+    - Audit circumvention server TLS configurations against TLS-Attacker's full cipher-suite corpus to detect unintentionally narrow support that could fingerprint the proxy.
+section: §2 Development
+extracted_by: claude-sonnet-4-6

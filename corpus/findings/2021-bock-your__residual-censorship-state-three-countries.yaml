@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-bock-your
+kind: evaluation
+summary: 'Residual censorship—where a censor continues blocking all traffic on a 3- or 4-tuple after an initial censorship event—is active in China (HTTP: 90s 3-tuple RST injection; ESNI: 120–180s 3+4-tuple null routing), Iran (HTTP+SNI: 180s 4-tuple null routing, occasionally up to 5 minutes; protocol filter: 60s), and Kazakhstan (HTTP+SNI: 120s 4-tuple null routing). A December 2020 Quack scan found 3-tuple stateful disruption in 33 countries and null-routing censorship in 18, suggesting much broader applicability.'
+techniques:
+    - rst-injection
+    - ip-blocking
+    - middlebox-interference
+censors:
+    - cn
+    - ir
+    - kz
+defense_implications:
+    - Circumvention transports should use fresh source ports (or source IPs) after any blocking event, since residual censorship is tuple-keyed and a new tuple bypasses the residual state without needing to wait out the timer.
+    - Avoid repeated forbidden-keyword exposure on a single 4-tuple; a single trigger can silence the connection for up to 5 minutes, and repeated triggers raise reliability from ~50% to near-100%.
+section: §IV, Table I
+extracted_by: claude-sonnet-4-6

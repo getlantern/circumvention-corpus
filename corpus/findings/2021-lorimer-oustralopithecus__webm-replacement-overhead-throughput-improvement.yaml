@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-lorimer-oustralopithecus
+kind: evaluation
+summary: Extending Slitheen to replace WebM video/audio frames reduced mean overhead from ~20x (image-only Slitheen) to 4.7x (±1.6) over 100 ten-minute sessions, while raising throughput to a mean of 581.7 kbps in video-only mode (max 2023.3 kbps, min 78.2 kbps) and 721.6 kbps in background-video mode (max 1528 kbps). This compares favorably to DeltaShaper's 2x overhead at only 7 kbps and Protozoa's up to 1.4 Mbps, while preserving Slitheen's resistance to traffic-analysis attacks.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+    - decoy-routing
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - 'Target video/audio Simple Block elements (e.g., WebM element ID 0xa3) rather than images as the covert-channel leaf data in traffic-replacement systems: replacing video frames yields ~4x better overhead than image replacement while keeping the same traffic shape.'
+    - Video buffering causes highly bursty data availability (min 78 kbps vs. max 2023 kbps); design covert-channel consumers to tolerate this variance, and prefer livestream sources over pre-recorded video to reduce buffer-fill pauses that create detectable inter-request timing gaps.
+section: §5.2.2, §5.3, Table 2, Figures 7–9
+extracted_by: claude-sonnet-4-6

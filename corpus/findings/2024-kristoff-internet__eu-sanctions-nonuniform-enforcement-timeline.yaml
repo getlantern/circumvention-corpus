@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kristoff-internet
+kind: deployment
+summary: 'EU sanctions enforcement was deeply non-uniform across member states and over time: 77% of blocking autonomous systems enacted enforcement within 3 months of the initial sanctions, but adoption timelines, block-list coverage, and over/under-compliance patterns varied substantially by country and ISP. Austria blocked certain domains months after Germany despite advance specification; domains removed from the German list were eventually de-blocked with significant lag; the newly registered sputnikglobe.com was not widely blocked as of the study''s writing.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defense_implications:
+    - Federated, multi-jurisdiction blocking regimes are inherently inconsistent; circumvention tools can exploit jurisdictional and ISP-level gaps by routing through under-enforcing paths rather than treating a regime as uniformly enforced.
+    - 'Block lists change continuously: circumvention infrastructure should automate detection of newly blocked domains/IPs rather than assuming a static threat model, as enforcement lag is measurable and exploitable.'
+section: §4.2, Figure 1
+extracted_by: claude-sonnet-4-6

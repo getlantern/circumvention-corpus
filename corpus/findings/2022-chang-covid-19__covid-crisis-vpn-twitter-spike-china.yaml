@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-chang-covid-19
+kind: evaluation
+summary: The COVID-19 Wuhan lockdown caused geolocating Twitter users in China to increase 1.4-fold immediately, remaining 10% above pre-crisis baseline long-term; approximately 320,000 new Chinese users joined Twitter due to the crisis, and the available VPN application's ranking on the Chinese iPhone App Store jumped significantly around 23 January 2020 and maintained that elevated rank.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Design circumvention tools for sudden demand spikes — crisis events can 1.4x active user counts overnight, so capacity planning must account for non-linear growth rather than steady-state usage.
+    - First-time, non-technical users drive crisis-period growth; onboarding UX and auto-configuration matter more during crises than in normal operation.
+section: Crisis Increased Censorship Circumvention
+extracted_by: claude-sonnet-4-6

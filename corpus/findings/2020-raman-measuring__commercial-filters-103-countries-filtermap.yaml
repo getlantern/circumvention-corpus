@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-measuring
+kind: deployment
+summary: FilterMap identified 90 blockpage clusters from 90 vendors and actors across 103 countries using 374 million measurements from ~45,000 vantage points against 18,736 sensitive domains; 87 of these signatures were previously unknown. Commercial filters were detected in 36 out of 48 countries rated 'Not Free' or 'Partly Free' by Freedom House, with Fortinet alone present in at least 60 countries.
+techniques:
+    - dpi
+    - keyword-filtering
+    - packet-injection
+censors:
+    - cn
+    - ir
+    - ru
+    - sa
+    - in
+    - ae
+    - pk
+defense_implications:
+    - Commercial DPI vendors (Fortinet, Cisco, Palo Alto, Juniper, Barracuda) are now the dominant blocking infrastructure across repressive regimes — circumvention tools must assume DPI-capable in-path filtering rather than IP-list or DNS-only blocking.
+    - FilterMap's blockpage signatures are publicly available at censoredplanet.org/filtermap; protocol designers should use them to test that their traffic does not trigger the blockpage injection path for major commercial filter products.
+section: §V
+extracted_by: claude-sonnet-4-6

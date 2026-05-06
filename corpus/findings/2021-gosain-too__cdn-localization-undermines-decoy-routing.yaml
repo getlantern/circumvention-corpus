@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-gosain-too
+kind: evaluation
+summary: CDN infrastructure causes 61%–92% of country-specific Alexa top-1k websites to be hosted within the client's own country across India, Iran, Saudi Arabia, Brazil, and the US, as measured by the authors' R-CBG multilateration technique achieving >89% accuracy. This traffic localization means web requests to popular sites rarely cross national borders, undermining the foundational assumption of decoy routing, domain fronting, CacheBrowser, and CovertCast.
+techniques:
+    - measurement-platform
+defenses:
+    - decoy-routing
+    - domain-fronting
+censors:
+    - in
+    - ir
+    - sa
+    - generic
+defense_implications:
+    - Decoy routing implementations must not rely on Alexa-popular sites as overt destinations without verifying out-of-country hosting — 61–92% of those sites resolve to in-country CDN front-ends, so DR packets never cross the border to reach the decoy router.
+    - Actively pre-screen overt-site candidates using RTT-based geolocation (not IP geolocation DBs) to confirm they are hosted outside the censor's boundary before including them in the overt-site pool.
+section: §4.2, §5.2
+extracted_by: claude-sonnet-4-6

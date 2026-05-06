@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-hanlon-detecting
+kind: evaluation
+summary: Web browsing VPN traffic achieves only 32.35–42.44% TPR—far below SSH (99.43–99.56%) and file transfer (83.95–99.73%)—because DNS queries interleaved with TCP streams disrupt detection of the encapsulated 3WHS, confirming that connection multiplexing is a naturally occurring and effective evasion for web-browsing workloads.
+techniques:
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - VPN tunnels used for web traffic benefit organically from HTTP/2 or HTTP/3 multiplexing; circumvention tools should avoid single-stream TCP-over-UDP and prefer multiplexed inner protocols.
+    - Interleaving non-TCP flows (e.g., DNS, UDP datagrams) within the same VPN tunnel is an effective fingerprint-disruption strategy that requires no artificial padding.
+section: §4.2 Overall Classifier Results
+extracted_by: claude-sonnet-4-6

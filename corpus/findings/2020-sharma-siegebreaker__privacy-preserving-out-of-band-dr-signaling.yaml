@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-sharma-siegebreaker
+kind: defense
+summary: All prior decoy routing systems (Cirripede, Telex, TapDance, Slitheen, Waterfall) require the DR to inspect every traversing flow — either all TCP SYN packets or all TLS flows — to identify DR requests, creating a privacy breach for non-DR users and a computational bottleneck. SiegeBreaker eliminates this by using an out-of-band email pre-registration (encrypted to the controller's 2048-bit RSA public key) that pins the controller's inspection rule to a single client-IP/OD-IP/ISN triple, so only authenticated potential DR flows are ever redirected.
+techniques:
+    - dpi
+defenses:
+    - meta-resistance
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Separating the DR signaling channel (out-of-band, e.g., TLS-encrypted email) from the data channel allows a DR operator to scope per-flow cryptographic inspection to confirmed DR clients only, removing both the privacy risk to co-located users and the throughput cost of inspecting all flows.
+    - Any out-of-band pre-registration scheme must account for adversarial email delay or blocking; issuing per-client unique controller email IDs and adding controller acknowledgment emails are practical mitigations, at the cost of higher bootstrapping latency.
+section: §3, §4.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-gosain-too
+kind: evaluation
+summary: 'Anycast CDN architecture dominates popular web content delivery: in the US, 59% of Alexa top-1k websites use anycast CDNs vs. 19% DNS-based; in Saudi Arabia, 57% use anycast CDNs. IP geolocation databases such as Maxmind are severely inaccurate for anycast infrastructure — reporting only <15% of Saudi Alexa websites as in-country vs. 90% measured by RTT-based multilateration — causing prior research to incorrectly attribute "nation-state hegemony" over developing-country Internet traffic.'
+techniques:
+    - measurement-platform
+censors:
+    - in
+    - ir
+    - sa
+    - generic
+defense_implications:
+    - Never use passive IP geolocation databases (Maxmind, etc.) to assess whether circumvention tool traffic will cross national borders; these databases systematically mis-attribute anycast front-end IPs to the AS headquarters country rather than the actual serving location, producing errors exceeding 75 percentage points.
+    - Infrastructure assessments for decoy routing overt-site availability must use active RTT-based geolocation (or equivalent multilateration) to correctly classify anycast vs. DNS-based CDN hosting before drawing conclusions about cross-border reachability.
+section: §4.4, §6.3, Table 1
+extracted_by: claude-sonnet-4-6

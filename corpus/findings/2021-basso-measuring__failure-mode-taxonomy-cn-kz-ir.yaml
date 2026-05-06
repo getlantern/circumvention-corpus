@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-basso-measuring
+kind: evaluation
+summary: 'Dominant failure modes differ systematically by country: China (AS45090) shows connect timeouts in 75% of DoT failures (IP-level blocking); Kazakhstan (AS48716) shows post-TLS-handshake timeouts in 72% of DoT failures (likely ACK or segment discard after handshake); Iran (AS197207) shows TLS handshake timeouts in 80% of DoT failures. Packet capture analysis confirmed that timeouts during and after the TLS handshake correspond to unacknowledged TCP segments, not connection resets.'
+techniques:
+    - ip-blocking
+    - tls-fingerprint
+    - middlebox-interference
+censors:
+    - cn
+    - kz
+    - ir
+defense_implications:
+    - Circumvention tools should report failure phase (connect / TLS handshake / post-handshake) in telemetry — failure mode fingerprints the censor's mechanism and informs which layer (IP, SNI, or payload) to target in evasion.
+    - Post-handshake timeouts caused by unacknowledged TCP segments suggest middlebox segment dropping rather than RST injection; QUIC or DTLS-based transports may bypass this specific interception mechanism.
+section: §V-F, §V-G, Table VIII
+extracted_by: claude-sonnet-4-6

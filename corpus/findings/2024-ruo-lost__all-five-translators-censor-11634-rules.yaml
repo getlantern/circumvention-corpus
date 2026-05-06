@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ruo-lost
+kind: evaluation
+summary: Across five popular translation services available in China (Alibaba, Baidu, Tencent, Youdao, and Microsoft Bing), researchers discovered 11,634 unique censorship rules in total. Every service — including the American-operated Bing Translate — implemented automatic censorship that silently omits content, with only Alibaba displaying any notification ('Query csi check not pass') to the user.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Do not rely on mainstream online translation services (including Bing) to convey circumvention tool documentation, onboarding text, or researcher communications to users in China — all tested services censor without warning.
+    - Distribute sensitive instructions and bypass guides in pre-translated form via human translators or out-of-band channels; assume any in-band automated translation will silently omit politically sensitive content.
+section: §6 Results / Table 2
+extracted_by: claude-sonnet-4-6

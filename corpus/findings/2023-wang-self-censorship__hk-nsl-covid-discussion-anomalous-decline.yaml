@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wang-self-censorship
+kind: policy
+summary: 'Hong Kong Twitter discussion of COVID-19 continued declining after mid-2020 and did not resurge during Hong Kong''s large March 2022 COVID wave, unlike the control group whose COVID discussion tracked local transmission rates. The authors interpret this anomalous pattern as a generalized chilling effect: NSL legal risk suppressed even politically ambiguous health discussion that mainland China had censored but that may not clearly fall under the NSL.'
+techniques:
+    - keyword-filtering
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Overbroad speech laws create uncertainty that suppresses communication beyond their stated scope; circumvention tool designers should anticipate that users will self-censor ambiguous content and may under-report their actual threat model — threat-modeling interviews and anonymous telemetry are more reliable than self-report.
+    - Health and crisis communication is a collateral casualty of political censorship regimes; circumvention tools deployed in legal-chilling environments should be marketed and designed for general safety use (health, journalism, civil society) rather than political use only.
+section: §4.2 / Figure 2c
+extracted_by: claude-sonnet-4-6

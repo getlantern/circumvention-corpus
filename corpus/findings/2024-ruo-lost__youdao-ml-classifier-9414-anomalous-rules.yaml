@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-ruo-lost
+kind: evaluation
+summary: 'Evidence from Youdao Translate suggests it deploys a machine-learning or NLP-based classifier alongside keyword rules: measured rules included repeated components (e.g., 螺+螺+螺+螺+螺+螺+蟢+D+哒+大) and nonsensical multi-token sequences that no human rule author would write, yet which consistently triggered censorship. Youdao returned 9,414 unique rules from the general test set — the most of any service — while also producing the most structurally anomalous rule patterns.'
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Keyword-enumeration-based evasion (swapping characters, using homophones) may be insufficient against ML-based classifiers deployed alongside keyword filters — a protocol's evasion strategy must account for semantic classifiers that can match paraphrases.
+    - When testing whether a distribution channel (translation service, search engine, messaging app) is safe for circumvention communications, use semantic paraphrases and phonetic substitutions as probes — inconsistent blocking across these variants is a signal that an ML classifier is in the loop.
+section: §6 Results / §10 Future Work
+extracted_by: claude-sonnet-4-6

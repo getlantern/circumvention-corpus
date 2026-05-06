@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-raman-advancing
+kind: evaluation
+summary: During the Belarus Internet shutdown of August 9, 2020, Censored Planet Echo measurements showed an increase of two orders of magnitude in test measurements failing at the TCP connection stage on the first day of the shutdown, alongside an order of magnitude increase in failed control measurements on the same day. Without comparing test measurements against control measurements that are expected to succeed regardless of content, these failures are indistinguishable from targeted website-level censorship.
+techniques:
+    - measurement-platform
+censors:
+    - by
+defense_implications:
+    - Circumvention clients that embed reachability probing should always include a control probe to a neutral, unblocked endpoint alongside domain-specific probes; a simultaneous failure of both signals a shutdown or network outage rather than targeted blocking, and the client should fall back differently in each case.
+    - Automated blocking-event detection in circumvention infrastructure should check correlated failure rates across multiple unrelated destinations before triggering censor-evasion responses, to avoid false alarms during ISP outages.
+section: §4.2
+extracted_by: claude-sonnet-4-6

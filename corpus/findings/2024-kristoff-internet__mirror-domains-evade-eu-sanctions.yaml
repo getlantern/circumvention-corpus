@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kristoff-internet
+kind: evaluation
+summary: Mirror domains registered by sanctioned Russian outlets (e.g., rtde.site, rtde.xyz, rtde.live, rtde.tech) remained almost universally accessible across EU member states; Table 2 shows near-100% uncensored DNS responses for mirror domains in the vast majority of countries. The EU had no effective mechanism to police domain mirroring in real time, leaving it an unmitigated circumvention strategy throughout the study period.
+techniques:
+    - dns-poisoning
+defense_implications:
+    - Domain-name rotation and mirroring remain highly effective against blocking regimes that rely on static block lists without real-time domain-discovery enforcement—a property circumvention infrastructure should exploit by default.
+    - Design circumvention services to assume any fixed domain will eventually appear on a block list; build rapid domain rotation or domain-agnostic routing in from the start rather than retrofitting it.
+section: §5.2, Table 2
+extracted_by: claude-sonnet-4-6

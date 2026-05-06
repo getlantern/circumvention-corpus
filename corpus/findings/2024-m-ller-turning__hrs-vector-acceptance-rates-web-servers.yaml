@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-m-ller-turning
+kind: evaluation
+summary: Of 4,488 total HTTP Request Smuggling test vectors, 2,015 (44.9%) were accepted by at least one web server. CL*/TE vectors had a 99.0% acceptance rate (1,103/1,114); TE*/CL had 76.0% (859/1,130); CL/TE* had only 4.7% (53/1,130); and TE/CL* had 0%. Nginx 1.25.2 accepted 1,315 vectors while Apache 2.4.57 accepted only 11, reflecting HRS countermeasures added in Apache 2.4.25 and 2.4.52.
+techniques:
+    - dpi
+    - middlebox-interference
+defenses:
+    - geneva
+censors:
+    - generic
+defense_implications:
+    - Prioritize CL*/TE and TE*/CL vector types when building HRS-based circumvention layers; they achieve near-universal web-server compatibility and avoid the near-zero acceptance rates of CL/TE* and TE/CL* types.
+    - Test HRS vectors against live target servers before deployment—CDNs (Cloudflare, awselb) and Nginx-derivative stacks accept many vectors that latest Apache rejects, so censor-side viability depends critically on the destination server's parser.
+section: §5.1 / Table 1–4
+extracted_by: claude-sonnet-4-6

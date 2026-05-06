@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-measuring
+kind: deployment
+summary: 'Russia operates the most fragmented ISP-level filtering infrastructure in the dataset: FilterMap detected 41 distinct ISPs deploying blockpage-injecting filters, and 38 out of 49 filter clusters identified by Quack were deployed in Russian ISPs. All 41 Russian blockpages explicitly cited Federal Law as the reason for blocking.'
+techniques:
+    - dpi
+    - keyword-filtering
+censors:
+    - ru
+defense_implications:
+    - Russia's decentralized ISP model means censor capability and filter product vary across carriers — a circumvention transport that works on one Russian ISP may be blocked on another; test across multiple Russian AS paths, not just a single vantage point.
+    - Because VASExperts (a locally-manufactured Russian product) is being used to block social networks including LinkedIn, blocking of 'unusual' TLS destinations is likely a real policy — SNI-based or IP-list blocking should be assumed alongside DPI.
+section: §V-A-3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-basso-measuring
+kind: detection
+summary: In AS45090 (China), the Cloudflare CDN IP 104.16.248.249 succeeds 100% of the time with SNI 'cloudflare-dns.com' but triggers TLS handshake resets 93% of the time with SNI 'mozilla.cloudflare-dns.com'. Follow-up measurements using those same SNIs against unrelated HTTPS servers (example.org, hbl.fi) reproduced the same resets, confirming that the GFW performs SNI-keyed TLS blocking independent of the destination IP.
+techniques:
+    - sni-blocking
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - 'For DoH over CDN IPs in China, SNI selection is load-bearing: using a CDN''s public DoH hostname triggers blocks even when the underlying IP is otherwise permissible — tools must either use ECH or select an SNI not on the GFW''s blocklist.'
+    - SNI blocklist coverage in China is domain-specific rather than IP-based for CDN-hosted DoH; this creates a moving target requiring ongoing monitoring to identify which CDN subdomains are blocked.
+section: §V-E, Table VI
+extracted_by: claude-sonnet-4-6

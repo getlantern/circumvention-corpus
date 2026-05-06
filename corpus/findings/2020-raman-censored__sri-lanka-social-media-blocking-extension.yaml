@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-censored
+kind: evaluation
+summary: During the Sri Lanka social-media block following the April 21, 2019 bombings, Censored Planet measured HTTP(S) censorship jumping from 0.1% to 2% in one week and discovered 22 blocked domains versus the 7 reported by NetBlocks and AccessNow; 5 of those extra domains were only present in the Alexa top-sites list, not the Citizen Lab Global Test List. Blocking remained elevated through May 12, 2019, contradicting public reports that the ban was lifted by May 1st.
+techniques:
+    - measurement-platform
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Supplement curated block-lists (Citizen Lab CLTL) with popular-domain lists (Alexa/Tranco top sites) when selecting test domains; a significant fraction of newly blocked services appear only in popularity-ranked lists, not in human-rights-focused curated lists.
+    - Do not rely solely on government or news-media announcements to determine when a blocking event has ended; longitudinal measurement data can reveal that nominal 'unblocking' leaves elevated censorship for weeks afterward.
+section: §7.1.1
+extracted_by: claude-sonnet-4-6

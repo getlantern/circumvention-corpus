@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-wails-proteus
+kind: defense
+summary: Proteus supports simultaneous execution of multiple Protocol Specification Files (PSFs) on a single server, selecting the correct protocol version by running all candidates in parallel on a shared read buffer and eliminating candidates as they fail to parse client messages. This enables servers to support legacy clients while deploying new evasion protocols, and to serve clients in different censorship regimes with localized protocol variants, without requiring synchronous client/server upgrades.
+defenses:
+    - meta-resistance
+    - protocol-versioning
+defense_implications:
+    - Build server-side multi-PSF execution so protocol upgrades roll out without a synchronous client/server update window — this eliminates the 'flag day' upgrade problem that leaves censored users stranded during transitions.
+    - Use parallel parse-failure elimination for version detection rather than explicit version-negotiation fields to avoid leaking version metadata to a passive observer before the protocol is established.
+section: §2.4
+extracted_by: claude-sonnet-4-6

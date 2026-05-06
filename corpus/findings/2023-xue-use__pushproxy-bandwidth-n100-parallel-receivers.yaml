@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-xue-use
+kind: evaluation
+summary: 'PushProxy with N=100 parallel push receivers achieves a median 10 MB download time of 16.46s (~4.86 Mbps) without exceeding FCM''s 5,000 messages/hour per-deviceToken rate limit, compared to 2.70s for Shadowsocks and 9.68s for OpenVPN (UDP). This throughput significantly exceeds other service-tunneling systems: dnstt (1.5 Mbps) and CensorSpoofer (64 Kbps).'
+techniques:
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Push-notification-based transports must multiplex across N distinct deviceTokens in round-robin to stay under per-token rate limits while scaling bandwidth; N=100 yields usable browsing performance at ~4.86 Mbps.
+    - Service-tunneling designs should prefer providers with higher inherent bandwidth ceilings (FCM at 5,000 msg/hr × 4 KiB ≈ 40 kbps single-token, but parallelizable) over VoIP or DNS channels.
+section: §5.2, Figure 6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hoang-great
+kind: evaluation
+summary: GFWatch tested 534M distinct domains over 9 months (averaging 411M/day) and detected 311K censored domains, the largest such measurement in the literature. Of 138.7K base domains, only 1.3% appear in the top 100K most popular domains, confirming the GFW targets large numbers of obscure and unpopular domains far beyond well-known sites like Facebook or Twitter.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools cannot rely on protecting only well-known domains — the GFW's blocklist is vast and targets obscure domains, so tools should function generically rather than via allowlists.
+    - Censorship measurement must use continuously-refreshed TLD zone files rather than static top-N lists, which miss the majority of actually-censored domains.
+section: §4, Figure 3
+extracted_by: claude-sonnet-4-6

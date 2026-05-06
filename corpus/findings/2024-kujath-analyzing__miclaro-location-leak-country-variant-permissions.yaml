@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-kujath-analyzing
+kind: evaluation
+summary: MiClaro Colombia sends device latitude and longitude to multiple third-party servers without user disclosure, in violation of its own privacy policy. Among the four Movistar country variants, the Argentina app requests access to all phone-call-related permissions while the Uruguay app requests none — demonstrating that third-party SDK inclusion, background receivers, and dangerous permissions vary substantially by country version of the same ostensibly unified telco app.
+techniques:
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - 'Circumvention tool threat assessments must be country-variant-specific: telco apps with identical branding can carry dramatically different permission sets and data-exfiltration behaviors depending on the target country.'
+    - VPN/proxy tools should alert users when location-granting permissions are held by co-installed telco apps, since those apps may relay geolocation to ISP-adjacent servers outside the tunnel regardless of whether the circumvention tool is active.
+section: §7.1, Table 2
+extracted_by: claude-sonnet-4-6
