@@ -1321,6 +1321,67 @@ const askBody = `
         });
   }
 
+  // appendFinding renders one finding row into the bundle list. Used both
+  // when the bundle event arrives mid-flight and when re-populating from
+  // a JSON fallback response.
+  function appendFinding(f) {
+    const li = document.createElement('li');
+    li.className = 'finding-row';
+    const a = document.createElement('a');
+    a.className = 'finding-link';
+    a.href = '/findings/' + f.id + '/';
+    const sm = document.createElement('p');
+    sm.className = 'finding-summary';
+    sm.textContent = f.summary || '';
+    a.appendChild(sm);
+    const meta = document.createElement('p');
+    meta.className = 'finding-meta';
+    const pid = document.createElement('span');
+    pid.className = 'finding-paper mono';
+    pid.textContent = f.paper;
+    meta.appendChild(pid);
+    if (f.section) {
+      const sec = document.createElement('span');
+      sec.className = 'finding-section mono';
+      sec.textContent = f.section;
+      meta.appendChild(sec);
+    }
+    if (f.paper_year) {
+      const yr = document.createElement('span');
+      yr.className = 'finding-paper-year';
+      yr.textContent = f.paper_year;
+      meta.appendChild(yr);
+    }
+    a.appendChild(meta);
+    li.appendChild(a);
+    bundleList.appendChild(li);
+  }
+
+  // Steps shown in the status pill while the request is in flight.
+  // The pipeline is: submitted → searching corpus → bundle rendered →
+  // claude thinking → answer. Each event from the SSE stream pushes
+  // the status forward.
+  function renderSteps(active) {
+    const steps = [
+      ['submitted', 'submitted'],
+      ['searching', 'searching corpus'],
+      ['bundle',    'reviewing findings'],
+      ['claude',    'asking Claude'],
+    ];
+    const reached = {};
+    let activeReached = false;
+    for (const [k] of steps) {
+      reached[k] = !activeReached;
+      if (k === active) activeReached = true;
+    }
+    reached[active] = true;
+    return '<span class="ask-spinner" aria-hidden="true"></span>' +
+      '<ol class="ask-steps">' + steps.map(([k, label]) => {
+        const cls = (k === active) ? 'active' : (reached[k] ? 'done' : 'pending');
+        return '<li class="' + cls + '"><span class="dot"></span>' + label + '</li>';
+      }).join('') + '</ol>';
+  }
+
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const question = q.value.trim();
@@ -1328,65 +1389,97 @@ const askBody = `
 
     submit.disabled = true;
     result.hidden = true;
-    setStatus('Searching the corpus and asking Claude — this can take 10-30 seconds…', 'loading');
+    answer.innerHTML = '';
+    bundleList.innerHTML = '';
+    bundleCount.textContent = '0';
+    elapsed.textContent = '';
+
+    status.hidden = false;
+    status.className = 'ask-status loading';
+    status.innerHTML = renderSteps('submitted');
 
     // Update the URL so the question is shareable.
     const u = new URL(location.href);
     u.searchParams.set('q', question);
     history.replaceState(null, '', u);
 
+    let gotBundle = false;
+    let gotAnswer = false;
+
+    function handleEvent(name, data) {
+      if (name === 'started')   status.innerHTML = renderSteps('searching');
+      else if (name === 'searching') status.innerHTML = renderSteps('searching');
+      else if (name === 'bundle') {
+        const findings = (data && data.findings) || [];
+        bundleCount.textContent = findings.length;
+        for (const f of findings) appendFinding(f);
+        result.hidden = false;
+        gotBundle = true;
+        status.innerHTML = renderSteps('claude');
+      }
+      else if (name === 'claude-start') status.innerHTML = renderSteps('claude');
+      else if (name === 'answer') {
+        answer.innerHTML = renderAnswerMarkdown(data.answer || '(empty answer)');
+        elapsed.textContent = data.elapsed_ms || '';
+        result.hidden = false;
+        gotAnswer = true;
+        status.hidden = true;
+      }
+      else if (name === 'error') {
+        status.className = 'ask-status error';
+        status.innerHTML = (data && data.message)
+          ? 'Could not get an answer: ' + data.message
+          : 'Could not get an answer.';
+      }
+    }
+
     try {
       const r = await fetch('/api/ask', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream' },
         body: JSON.stringify({ question }),
       });
       if (!r.ok) {
         const err = await r.text().catch(() => '');
         throw new Error(r.status + ': ' + (err || r.statusText));
       }
-      const data = await r.json();
-      setStatus('', '');
-      answer.innerHTML = renderAnswerMarkdown(data.answer || '(empty answer)');
-      bundleList.innerHTML = '';
-      const findings = (data.bundle && data.bundle.findings) || [];
-      bundleCount.textContent = findings.length;
-      for (const f of findings) {
-        const li = document.createElement('li');
-        li.className = 'finding-row';
-        const a = document.createElement('a');
-        a.className = 'finding-link';
-        a.href = '/findings/' + f.id + '/';
-        const summary = document.createElement('p');
-        summary.className = 'finding-summary';
-        summary.textContent = f.summary || '';
-        a.appendChild(summary);
-        const meta = document.createElement('p');
-        meta.className = 'finding-meta';
-        const pid = document.createElement('span');
-        pid.className = 'finding-paper mono';
-        pid.textContent = f.paper;
-        meta.appendChild(pid);
-        if (f.section) {
-          const sec = document.createElement('span');
-          sec.className = 'finding-section mono';
-          sec.textContent = f.section;
-          meta.appendChild(sec);
-        }
-        if (f.paper_year) {
-          const yr = document.createElement('span');
-          yr.className = 'finding-paper-year';
-          yr.textContent = f.paper_year;
-          meta.appendChild(yr);
-        }
-        a.appendChild(meta);
-        li.appendChild(a);
-        bundleList.appendChild(li);
+      const ct = r.headers.get('Content-Type') || '';
+      if (ct.indexOf('text/event-stream') < 0) {
+        // Server didn't stream — fall back to single JSON response.
+        const data = await r.json();
+        handleEvent('bundle', data.bundle || {});
+        handleEvent('answer', data);
+        return;
       }
-      elapsed.textContent = data.elapsed_ms || '';
-      result.hidden = false;
+      // Parse Server-Sent Events from the body stream.
+      const reader = r.body.pipeThrough(new TextDecoderStream()).getReader();
+      let buf = '';
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += value;
+        let idx;
+        while ((idx = buf.indexOf('\n\n')) !== -1) {
+          const chunk = buf.slice(0, idx);
+          buf = buf.slice(idx + 2);
+          let evName = 'message';
+          let evData = '';
+          for (const line of chunk.split('\n')) {
+            if (line.startsWith('event:')) evName = line.slice(6).trim();
+            else if (line.startsWith('data:')) evData += (evData ? '\n' : '') + line.slice(5).trim();
+          }
+          let parsed = {};
+          try { parsed = evData ? JSON.parse(evData) : {}; } catch(e) { parsed = { _raw: evData }; }
+          handleEvent(evName, parsed);
+        }
+      }
+      if (!gotAnswer && !gotBundle) {
+        throw new Error('stream ended without bundle or answer');
+      }
     } catch (err) {
-      setStatus('Could not get an answer: ' + err.message + '. The retrieval pipeline may be temporarily offline; you can still browse /findings/ directly.', 'error');
+      status.hidden = false;
+      status.className = 'ask-status error';
+      status.textContent = 'Could not get an answer: ' + err.message + '. The retrieval pipeline may be temporarily offline; you can still browse /findings/ directly.';
     } finally {
       submit.disabled = false;
     }
@@ -2631,12 +2724,67 @@ svg.plotter { color: var(--ink-2); }
   border-left-color: var(--accent);
   color: var(--accent);
 }
-.ask-status.loading::before {
-  content: "⧗ "; opacity: 0.7;
-}
 .ask-status.error {
   border-left-color: var(--rust);
   color: var(--rust);
+}
+
+/* Pipeline progress: spinner + numbered steps. The spinner is a tiny
+ * plotter-style square that orbits a center anchor; the steps are a
+ * list of dots that go pending → active → done as events come in. */
+.ask-status.loading {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+}
+.ask-spinner {
+  flex: 0 0 auto; margin-top: 0.18rem;
+  width: 0.9rem; height: 0.9rem;
+  border: 1.5px solid var(--accent);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ask-spin 0.85s linear infinite;
+}
+@keyframes ask-spin {
+  to { transform: rotate(360deg); }
+}
+.ask-steps {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+}
+.ask-steps li {
+  display: inline-flex; align-items: center; gap: 0.42rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.01em;
+}
+.ask-steps li .dot {
+  width: 0.42rem; height: 0.42rem;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--rule);
+  display: inline-block;
+}
+.ask-steps li.done {
+  color: var(--ink-2);
+}
+.ask-steps li.done .dot {
+  background: var(--accent); border-color: var(--accent);
+}
+.ask-steps li.active {
+  color: var(--accent); font-weight: 500;
+}
+.ask-steps li.active .dot {
+  background: var(--accent); border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  animation: ask-step-pulse 1.2s ease-in-out infinite;
+}
+@keyframes ask-step-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--accent-soft); }
+  50%      { box-shadow: 0 0 0 5px var(--accent-soft); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ask-spinner { animation: none; border-right-color: var(--accent); opacity: 0.6; }
+  .ask-steps li.active .dot { animation: none; }
 }
 .ask-result { max-width: 44rem; }
 .ask-answer {

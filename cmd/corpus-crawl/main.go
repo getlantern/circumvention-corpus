@@ -2126,6 +2126,16 @@ func askHandler(w http.ResponseWriter, r *http.Request, authToken, corpusRoot st
 		req.Limit = 30
 	}
 
+	// Server-Sent Events when the client opts in. The web UI sets
+	// Accept: text/event-stream so it can render the bundle (300ms)
+	// and "Claude is thinking…" status before the LLM finishes
+	// (5–30s). Plain JSON path stays for any non-streaming client
+	// (curl, MCP integration, etc.).
+	if strings.Contains(r.Header.Get("Accept"), "text/event-stream") {
+		askHandlerSSE(w, r, q, req, corpusRoot)
+		return
+	}
+
 	ctx, cancel := context.WithTimeout(r.Context(), 120*time.Second)
 	defer cancel()
 	start := time.Now()
@@ -2162,6 +2172,90 @@ func askHandler(w http.ResponseWriter, r *http.Request, authToken, corpusRoot st
 		Question: q,
 		Answer:   strings.TrimSpace(answer),
 		Bundle:   bundle,
+		Elapsed:  time.Since(start).Round(time.Millisecond).String(),
+	})
+}
+
+// askHandlerSSE streams pipeline progress as Server-Sent Events so the
+// browser can render the bundle as soon as it's available (~300ms) and
+// show "Claude is thinking…" while the LLM call runs (5–30s). Events:
+//
+//   event: started      data: {question}
+//   event: searching    data: {}
+//   event: bundle       data: {<full synthesize bundle>}
+//   event: claude-start data: {n_findings}
+//   event: answer       data: {answer, elapsed_ms}
+//   event: error        data: {message}
+//
+// The browser reads via fetch() + ReadableStream; CF Pages Functions
+// pass the body through unbuffered as long as we don't call .text()
+// or .json() on the upstream response.
+func askHandlerSSE(w http.ResponseWriter, r *http.Request, q string, req askRequest, corpusRoot string) {
+	flusher, ok := w.(http.Flusher)
+	if !ok {
+		http.Error(w, "streaming unsupported", 500)
+		return
+	}
+	w.Header().Set("Content-Type", "text/event-stream")
+	w.Header().Set("Cache-Control", "no-cache, no-transform")
+	w.Header().Set("X-Accel-Buffering", "no") // disable nginx-style buffering on any intermediate proxy
+	w.Header().Set("Connection", "keep-alive")
+
+	send := func(event string, data any) {
+		var payload string
+		if data == nil {
+			payload = "{}"
+		} else if raw, ok := data.(json.RawMessage); ok {
+			payload = string(raw)
+		} else if s, ok := data.(string); ok {
+			payload = s
+		} else {
+			b, err := json.Marshal(data)
+			if err != nil {
+				payload = `{"_marshal_error":"` + err.Error() + `"}`
+			} else {
+				payload = string(b)
+			}
+		}
+		fmt.Fprintf(w, "event: %s\ndata: %s\n\n", event, payload)
+		flusher.Flush()
+	}
+
+	ctx, cancel := context.WithTimeout(r.Context(), 120*time.Second)
+	defer cancel()
+	start := time.Now()
+
+	send("started", map[string]string{"question": q})
+	send("searching", nil)
+
+	bundle, err := fetchSynthesizeBundle(ctx, req)
+	if err != nil {
+		log.Printf("/ask sse synthesize: %v", err)
+		send("error", map[string]string{"message": "synthesize backend unavailable: " + err.Error()})
+		return
+	}
+	send("bundle", json.RawMessage(bundle))
+
+	prompt, foundN := formatSynthesisPrompt(q, bundle)
+	if foundN == 0 {
+		send("answer", askResponse{
+			Question: q,
+			Answer:   "No findings in the corpus match this question yet. Try a broader phrasing, or browse /findings/ to see what's there.",
+			Elapsed:  time.Since(start).Round(time.Millisecond).String(),
+		})
+		return
+	}
+
+	send("claude-start", map[string]int{"n_findings": foundN})
+	answer, err := runClaudeAsk(ctx, corpusRoot, prompt)
+	if err != nil {
+		log.Printf("/ask sse claude: %v", err)
+		send("error", map[string]string{"message": "claude execution failed: " + err.Error()})
+		return
+	}
+	send("answer", askResponse{
+		Question: q,
+		Answer:   strings.TrimSpace(answer),
 		Elapsed:  time.Since(start).Round(time.Millisecond).String(),
 	})
 }

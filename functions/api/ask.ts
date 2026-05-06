@@ -92,6 +92,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     });
   }
   const tunnelURL = (env.CRAWL_TUNNEL_URL || DEFAULT_TUNNEL).replace(/\/+$/, "") + "/ask";
+  // Pass through the client's Accept header so SSE clients get streamed
+  // events. Browser /ask/ sends "text/event-stream"; curl/MCP get JSON.
+  const accept = ctx.request.headers.get("Accept") || "application/json";
   let upstream: Response;
   try {
     upstream = await fetch(tunnelURL, {
@@ -99,6 +102,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + env.CORPUS_CRAWL_TOKEN,
+        Accept: accept,
       },
       body: JSON.stringify(body),
     });
@@ -113,6 +117,21 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         headers: { "Content-Type": "application/json", ...corsHeaders() },
       },
     );
+  }
+  const upstreamCT = upstream.headers.get("Content-Type") || "application/json";
+  // Stream the body through unchanged for SSE responses; buffer-and-
+  // forward for JSON. Returning `upstream.body` directly lets CF Pages
+  // pipe events to the browser as the mini emits them.
+  if (upstreamCT.includes("text/event-stream")) {
+    return new Response(upstream.body, {
+      status: upstream.status,
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache, no-transform",
+        "X-Accel-Buffering": "no",
+        ...corsHeaders(),
+      },
+    });
   }
   const text = await upstream.text();
   return new Response(text, {
