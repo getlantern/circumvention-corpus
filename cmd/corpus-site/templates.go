@@ -1405,27 +1405,86 @@ const askBody = `
 
     let gotBundle = false;
     let gotAnswer = false;
+    let claudeStart = 0;
+    let claudeCycle = null;
+    let bundleFindings = [];
+
+    function startClaudePhase() {
+      claudeStart = Date.now();
+      const tickElapsed = () => {
+        const el = document.getElementById('ask-elapsed-live');
+        if (!el) return;
+        el.textContent = Math.floor((Date.now() - claudeStart) / 1000) + 's';
+      };
+      // Build the rich "Claude is reading…" view with a cycling finding card.
+      let idx = 0;
+      const renderClaudeStatus = () => {
+        const f = bundleFindings[idx % bundleFindings.length];
+        const safe = (s) => (s || '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+        const summary = f ? safe(f.summary || '').slice(0, 240) + (f.summary && f.summary.length > 240 ? '…' : '') : '';
+        status.innerHTML = renderSteps('claude') +
+          '<div class="ask-claude-detail">' +
+            '<p class="ask-hint">Claude is reading ' + bundleFindings.length + ' findings — typically 10–30 seconds. <span id="ask-elapsed-live" class="mono">0s</span> elapsed.</p>' +
+            (f ? '<div class="ask-now-reading">' +
+              '<p class="ask-now-reading-label"><span class="dot"></span> now reading</p>' +
+              '<a class="ask-now-reading-card" href="/findings/' + safe(f.id) + '/" target="_blank">' +
+                '<p class="finding-summary">' + summary + '</p>' +
+                '<p class="finding-meta">' +
+                  '<span class="finding-paper mono">' + safe(f.paper) + '</span>' +
+                  (f.section ? '<span class="finding-section mono">' + safe(f.section) + '</span>' : '') +
+                  (f.paper_year ? '<span class="finding-paper-year">' + f.paper_year + '</span>' : '') +
+                '</p>' +
+              '</a>' +
+            '</div>' : '') +
+          '</div>';
+      };
+      renderClaudeStatus();
+      claudeCycle = setInterval(() => {
+        idx++;
+        renderClaudeStatus();
+        tickElapsed();
+      }, 2500);
+      // Update the elapsed counter every second between cycles too.
+      claudeCycle._sec = setInterval(tickElapsed, 1000);
+    }
+    function stopClaudePhase() {
+      if (claudeCycle) {
+        clearInterval(claudeCycle);
+        if (claudeCycle._sec) clearInterval(claudeCycle._sec);
+        claudeCycle = null;
+      }
+    }
 
     function handleEvent(name, data) {
       if (name === 'started')   status.innerHTML = renderSteps('searching');
       else if (name === 'searching') status.innerHTML = renderSteps('searching');
       else if (name === 'bundle') {
         const findings = (data && data.findings) || [];
+        bundleFindings = findings;
         bundleCount.textContent = findings.length;
         for (const f of findings) appendFinding(f);
         result.hidden = false;
         gotBundle = true;
-        status.innerHTML = renderSteps('claude');
+        startClaudePhase();
       }
-      else if (name === 'claude-start') status.innerHTML = renderSteps('claude');
+      else if (name === 'claude-start') {
+        // Ensure phase is running even if bundle arrived without findings list.
+        if (!claudeCycle) startClaudePhase();
+      }
       else if (name === 'answer') {
+        stopClaudePhase();
         answer.innerHTML = renderAnswerMarkdown(data.answer || '(empty answer)');
         elapsed.textContent = data.elapsed_ms || '';
         result.hidden = false;
         gotAnswer = true;
+        // Also strip the loading class — its display:flex would beat
+        // [hidden] otherwise and the spinner would stay on screen.
         status.hidden = true;
+        status.className = 'ask-status';
+        status.innerHTML = '';
       }
       else if (name === 'error') {
+        stopClaudePhase();
         status.className = 'ask-status error';
         status.innerHTML = (data && data.message)
           ? 'Could not get an answer: ' + data.message
@@ -2785,6 +2844,77 @@ svg.plotter { color: var(--ink-2); }
 @media (prefers-reduced-motion: reduce) {
   .ask-spinner { animation: none; border-right-color: var(--accent); opacity: 0.6; }
   .ask-steps li.active .dot { animation: none; }
+}
+
+/* Claude-thinking detail: a cycling card showing the current finding
+ * Claude is reading. Keeps the user oriented on the actual content of
+ * the wait rather than just a spinner. */
+.ask-status.loading { flex-direction: column; align-items: stretch; }
+.ask-status.loading .ask-spinner { align-self: flex-start; }
+.ask-claude-detail { margin-top: 0.4rem; }
+.ask-hint {
+  margin: 0 0 0.6rem;
+  font-family: "Newsreader", serif;
+  font-size: 0.95rem; line-height: 1.4;
+  color: var(--ink-2);
+  font-style: italic;
+}
+.ask-hint .mono {
+  font-family: "JetBrains Mono", monospace;
+  font-style: normal;
+  color: var(--accent);
+}
+.ask-now-reading {
+  margin-top: 0.5rem;
+  border: 1px solid var(--rule-fade);
+  background: var(--paper);
+  padding: 0.7rem 0.85rem;
+  border-radius: 1px;
+  animation: ask-card-fade 0.4s ease-out;
+}
+@keyframes ask-card-fade {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ask-now-reading-label {
+  margin: 0 0 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.ask-now-reading-label .dot {
+  width: 0.36rem; height: 0.36rem;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ask-now-pulse 1.4s ease-in-out infinite;
+}
+@keyframes ask-now-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+.ask-now-reading-card {
+  display: block; color: var(--ink); border: none;
+  text-decoration: none;
+}
+.ask-now-reading-card:hover .finding-summary { color: var(--accent); }
+.ask-now-reading-card .finding-summary {
+  font-family: "Newsreader", serif;
+  font-size: 0.98rem; line-height: 1.4;
+  color: var(--ink); margin: 0;
+}
+.ask-now-reading-card .finding-meta {
+  margin: 0.4rem 0 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--ink-mute);
+  display: flex; flex-wrap: wrap; gap: 0.4rem 0.6rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ask-now-reading { animation: none; }
+  .ask-now-reading-label .dot { animation: none; }
 }
 .ask-result { max-width: 44rem; }
 .ask-answer {
