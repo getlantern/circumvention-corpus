@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zohaib-extended
+kind: deployment
+summary: CensorAlert's LLM agent scores each ingested item 0–5 on five independent dimensions — credibility, novelty, impact, timeliness, and verifiability — then computes a normalized significance score (0–10) from these components; items are processed every two hours using OpenAI GPT-5 Thinking (hosted on Azure) constrained to return structured JSON output.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Score dimensions (credibility, novelty, impact, timeliness, verifiability) are a practical rubric for triage; circumvention teams receiving user bug reports can adopt a similar lightweight scoring layer to prioritize incident response.
+    - Two-hour polling cadence is the current minimum latency from report to alert; for blocking events requiring faster response, direct monitoring of primary sources remains necessary.
+section: §2 (AI-based Scoring)
+extracted_by: claude-sonnet-4-6

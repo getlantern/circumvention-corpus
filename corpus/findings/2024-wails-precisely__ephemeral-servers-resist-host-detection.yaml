@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-wails-precisely
+kind: defense
+summary: The paper identifies that circumvention systems relying on long-lived, consistent proxy servers are fundamentally vulnerable to host-based temporal detection regardless of per-flow obfuscation quality, and recommends adversarial examples, ephemeral obfuscation servers, and programmable or polymorphic protocols as countermeasures. Snowflake's volunteer-browser proxy architecture—where proxies are ephemeral and addresses are not reused—is highlighted as inherently more resistant to host-based classification than static bridge designs like obfs4.
+techniques:
+    - ml-classifier
+    - active-probing
+defenses:
+    - webrtc-pluggable
+    - obfs4
+    - meta-resistance
+    - water-wasm
+censors:
+    - generic
+defense_implications:
+    - Design proxy pools so each (IP, port) pair handles fewer than ~30 flows before expiry, preventing the Hoeffding-bound confidence threshold from being reached and keeping host-level classifiers in the 'reject' state.
+    - Invest in programmable or polymorphic transport layers (Geneva, WATER/WASM, Marionette) that diversify traffic signatures at the host level across sessions, not just within individual flows.
+section: §I, §VI discussion, §VII
+extracted_by: claude-sonnet-4-6

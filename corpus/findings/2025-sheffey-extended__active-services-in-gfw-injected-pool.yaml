@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sheffey-extended
+kind: evaluation
+summary: 'Two of the 8 handshake-accepting injected IPv4 addresses host active services reachable both inside and outside China: 103.230.123.190 runs OpenSSH 8.2p1 on port 22, and 103.246.246.144 redirects 0.164% of all censored-domain requests to a website serving forbidden adult content.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients should never silently follow TCP connections to DNS-poisoned addresses; active confirmation of the intended server identity (e.g., pinned certificates) is required before transmitting any user data.
+section: §2.2.1
+extracted_by: claude-sonnet-4-6

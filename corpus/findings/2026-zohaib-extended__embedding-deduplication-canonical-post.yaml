@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zohaib-extended
+kind: deployment
+summary: CensorAlert generates text embeddings (OpenAI text-embedding-3-small) from each item's summary, title, and tags to cluster semantically similar reports within configurable time windows; near-duplicates such as reposts, copied headlines, and translations are collapsed into a single canonical post that preserves all original source URLs and metadata.
+techniques:
+    - measurement-platform
+defense_implications:
+    - Deduplication-by-embedding enables reliable incident tracking even when the same blocking event is reported redundantly across Telegram channels, forums, and GitHub; circumvention infrastructure monitoring pipelines should adopt a similar approach to avoid alert fatigue.
+    - Preserving all original source URLs under a canonical post creates an auditable evidence trail — a pattern worth replicating in tool-side incident logging.
+section: §2 (AI-based Scoring)
+extracted_by: claude-sonnet-4-6

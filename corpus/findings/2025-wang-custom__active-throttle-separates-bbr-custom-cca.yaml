@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wang-custom
+kind: detection
+summary: 'Active mid-connection bandwidth throttling (e.g., 100 Mbps → 50 Mbps) cleanly separates BBR from Hysteria and TCP-Brutal: BBR converges to the new rate within a few probing cycles, while Hysteria and Brutal interpret reduced bandwidth as increased packet loss and raise their sending rate further. This active probing technique resolves the BBR ambiguity that passive measurement alone cannot.'
+techniques:
+    - throttling
+    - traffic-shape
+defenses:
+    - hysteria2
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - A censor already deploying throttling as a censorship mechanism (Iran, Russia, China) can cheaply extend that infrastructure to fingerprint Hysteria/Brutal at near-zero cost — the detection is a byproduct of existing throttling equipment.
+    - Circumvention tools that operate over QUIC should expose a standard BBR mode and make it the default, since active throttling can still distinguish any CCA that does not reduce its send rate on detected bandwidth drops.
+section: §4.4
+extracted_by: claude-sonnet-4-6

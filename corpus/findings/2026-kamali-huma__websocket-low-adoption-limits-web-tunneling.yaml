@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kamali-huma
+kind: evaluation
+summary: WebSocket, required by HTTPT and WebTunnel to establish covert channels inside TLS connections, had an adoption rate as low as 6.3% of websites in 2021, sharply limiting the pool of volunteer websites that can act as proxies for these tools. By contrast, Huma's traffic replacement scheme embeds covert data in standard HTTP leaf objects (images, scripts, CSS), requiring only that the DW serve HTTP content — a near-universal property.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Design web-tunneling transports to embed covert data into HTTP response bodies or leaf objects rather than requiring WebSocket upgrades, maximizing the fraction of ordinary websites eligible to serve as proxies.
+    - Audit the real-world deployment share of any cover-protocol feature (WebSocket, HTTP/2 push, QUIC) before committing to it as a covert channel — low adoption constrains the volunteer pool and makes participating sites more fingerprintable by rarity.
+section: §II-C
+extracted_by: claude-sonnet-4-6

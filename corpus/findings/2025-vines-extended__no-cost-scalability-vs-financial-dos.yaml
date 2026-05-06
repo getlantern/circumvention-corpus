@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vines-extended
+kind: evaluation
+summary: 'UP channels based on free third-party content hosting (video, audio, images, ML models) provide no-cost scalability: steganographic videos once uploaded are free to distribute to arbitrarily many users, and the channel sustains adversarial financial denial-of-service attacks without incurring operator costs. This contrasts with meek, SQS, AMPCache, and Skyhook, which face financial DoS risk because adversaries can drive up hosting costs by using those channels as intended.'
+defenses:
+    - steganography
+    - meek
+    - amp-cache
+censors:
+    - generic
+defense_implications:
+    - For high-scale or adversarially stressed deployments, prefer carrier platforms whose business model is free bulk content hosting (video sharing, model hubs) over metered cloud services (SQS, CDN egress) that expose the operator to financial exhaustion attacks.
+    - Design update channels so the per-delivery marginal cost to the operator is zero; this removes the financial leverage an adversary gains by operating sybil clients that exhaust a metered budget.
+section: §4
+extracted_by: claude-sonnet-4-6

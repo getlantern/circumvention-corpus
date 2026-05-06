@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lipphardt-1-800-censorship
+kind: evaluation
+summary: Venezuela and Cuba exhibit average unblocked rates of 68.83% and 69.70% respectively across 461,114 and 5,501 OONI tests, placing roughly 31% and 30% of probes as blocked — censorship rates comparable to documented heavy-censor states — despite being routinely excluded from standard censoring-country lists.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - ve
+    - cu
+defense_implications:
+    - Circumvention tool infrastructure planning and user-targeting should treat Venezuela and Cuba as high-priority regions with censorship intensity on par with Iran or Russia, not as afterthoughts.
+    - Automated censorship monitoring pipelines should flag countries exceeding 25% blocking rates regardless of prior reputation, to catch under-resourced regions before circumvention tool capacity is deployed there.
+section: §4.3, Table 3
+extracted_by: claude-sonnet-4-6

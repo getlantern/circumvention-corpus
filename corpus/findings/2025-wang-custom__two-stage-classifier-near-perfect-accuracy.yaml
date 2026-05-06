@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wang-custom
+kind: evaluation
+summary: A two-stage threshold classifier evaluated on 10,080 synthetic flows across 1,260 network condition combinations (20 RTTs × 21 loss rates × 3 bandwidths) achieved 100% accuracy in Stage 1 separating loss-based from non-loss-based CCAs, and produced only 16 false positives from BBR flows in Stage 2, correctly flagging all 1,257 Hysteria and 1,257 Brutal flows as custom CCAs.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - hysteria2
+censors:
+    - generic
+defense_implications:
+    - Even a proof-of-concept, non-ML threshold classifier achieves near-perfect detection of Hysteria/Brutal; circumvention tool authors cannot rely on classifier complexity as a defense — the signal is too strong.
+    - Any new performance-oriented transport must be benchmarked against the Mathis equation baseline before deployment to verify it does not exceed loss-based throughput bounds in ways that are trivially measurable.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

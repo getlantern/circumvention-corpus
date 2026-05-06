@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-zhang-toothless
+kind: deployment
+summary: The District T CAO outsourced surveillance to a commercial SaaS platform ('Public Opinion Assistant') capable of scanning 180 million social media posts per day, processing 20 million posts per minute, and using supervised learning to classify 'negative voices' with performance comparable to human moderators. The platform generates ready-to-submit bureaucratic reports and maintains localized keyword lists that include euphemisms and homophones of censored terms as netizens update evasion strategies.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Private surveillance SaaS platforms are now standard infrastructure for county-level censors in China; circumvention-related content must evade simultaneous keyword matching and ML classifiers, not just static keyword lists.
+    - Keyword lists are actively maintained with homophones and euphemisms, meaning standard character-substitution evasion is already anticipated; structural or out-of-band communication channels are necessary to avoid detection.
+section: '§Coping strategy 1: outsourcing surveillance to private service providers'
+extracted_by: claude-sonnet-4-6

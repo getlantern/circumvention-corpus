@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-wails-precisely
+kind: detection
+summary: obfs4 and obfs⋆ produce characteristic wire patterns—bursts of roughly MTU-sized payloads followed by a randomly-sized chaff packet—that CNN classifiers detect purely from packet-size sequences without payload inspection. A trivial per-bridge entropy-biasing re-encoding (obfs⋆) completely defeats the hand-tuned decision tree (0% precision, 0% recall) but does not reduce CNN detectability, because the CNN generalizes across size-distribution variants.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - random-payload-detect
+defenses:
+    - obfs4
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Randomizing payload bytes is necessary but not sufficient; obfuscation protocols must also randomize packet sizes and inter-packet burst shapes to defeat CNN-based flow classifiers that operate on size sequences alone.
+    - Per-bridge packet-size diversity defeats protocol-specific hand-tuned classifiers but not generalizing deep learning models; polymorphic size/burst profiles that vary session-to-session are needed to reduce CNN confidence.
+section: §V-E, §IV-D-3, Figure 4
+extracted_by: claude-sonnet-4-6

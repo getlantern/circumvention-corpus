@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-rodriguez-revisiting
+kind: evaluation
+summary: Of the four Chinese browsers offering incognito mode (Baidu Searchbox, UC Browser, QQ Browser, Redmi/Mi), all four continue to leak PII and three continue to transmit full browsing activity including URLs; UC Browser specifically sends data during incognito sessions encrypted with hardcoded AES/CBC key "Ine34@32b#jeRs2h" and a zero initialization vector to crash-upload endpoints. Incognito mode in these browsers provides no protection against vendor-side or on-path surveillance and creates false privacy expectations for circumvention tool users.
+techniques:
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool documentation must explicitly state that Chinese browser incognito modes do not prevent browsing activity exfiltration; incognito is not a substitute for a privacy-respecting browser when used alongside a VPN.
+    - PWA-based circumvention or encrypted-chat tools accessed via Chinese browsers in incognito mode should warn users that page titles and URLs are still logged to vendor servers, and consider redirecting users to a recommended browser before presenting sensitive functionality.
+section: §4.2
+extracted_by: claude-sonnet-4-6

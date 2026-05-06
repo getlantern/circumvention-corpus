@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-umesh-improved
+kind: evaluation
+summary: 'Proxy placement requirements vary dramatically by country topology: Turkmenistan requires just 1 AS for 75% coverage, Oman requires 3, Afghanistan 5, Iran 10, and China 12. Turkmenistan''s extreme centralization means a single transit AS intercepts virtually all paths, whereas China''s fragmented routing fabric demands far more deployment sites to achieve equivalent coverage.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - decoy-routing
+censors:
+    - cn
+    - ir
+    - tm
+defense_implications:
+    - Circumvention system designers should obtain per-country AS-coverage profiles before scoping RN deployment — a one-size deployment set optimized for China will drastically over-provision for Turkmenistan and under-serve it simultaneously.
+    - Highly centralized regimes (Turkmenistan) offer a single chokepoint that is easy to instrument but also easy for the censor to pressure; plan for cooperative-AS fallbacks from the start.
+section: §5.4, Table 4, Figure 6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vilalonga-extended
+kind: defense
+summary: The system targets a threat model where the censor performs passive DPI to fingerprint and block the client-to-TURN-proxy channel, and also conducts active enumeration attacks to discover and block proxy endpoints. The paper explicitly notes that traffic splitting may introduce distinct fingerprints of its own that require empirical evaluation — acknowledging that multi-path approaches are not fingerprint-free.
+techniques:
+    - dpi
+    - active-probing
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+    - mimicry
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Empirically measure the traffic fingerprint of split-TURN flows against baseline WebRTC call captures before deployment — splitting may create characteristic inter-arrival patterns not present in single-path TURN usage.
+    - Conduct a survey of applications that use TURN to identify the realistic cover-traffic distribution, ensuring the encapsulated traffic matches real-world statistical norms rather than an idealized model.
+section: §3.1 Threat Model
+extracted_by: claude-sonnet-4-6

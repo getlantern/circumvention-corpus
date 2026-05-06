@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sivan-sevilla-probing
+kind: evaluation
+summary: Of 8,004 unique third-party domains identified across 3,410 crawled news sites, 997 appear exclusively on untrustworthy websites and 2,992 appear exclusively on trustworthy ones. Domains disproportionately associated with untrustworthy sites include Yandex, Zamanta, and PayPal; domains exclusive to trustworthy sites are predominantly small-to-medium advertising and analytics actors rather than major platform giants.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Specific third-party vendor associations (Yandex, PayPal for donations) serve as reliable indicators of untrustworthy content; circumvention tool operators should audit embedded third-party dependencies on user-facing pages to avoid triggering these signals.
+    - The presence of major CDN and analytics providers (Google, Amazon, Adobe) correlates with trustworthy classification; incorporating plausible CDN dependencies in circumvention infrastructure may reduce detection likelihood.
+section: §5.2
+extracted_by: claude-sonnet-4-6

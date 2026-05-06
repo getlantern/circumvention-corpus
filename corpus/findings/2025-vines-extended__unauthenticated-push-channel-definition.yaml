@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vines-extended
+kind: defense
+summary: 'The paper defines Unauthenticated Push (UP) channels as a distinct archetype from signaling/rendezvous channels, characterized by three properties: strictly unidirectional delivery, no client authentication or account association required, and higher bandwidth (kilobytes to megabytes) to support software updates rather than just minimal proxy-address exchanges. This design deliberately shifts operational-security burden onto senders to approach receiver anonymity.'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - steganography
+    - meta-resistance
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - 'When designing proxy-distribution or software-update channels, adopt a sender-bears-risk model: require no account signup or authentication from the censored user, so even if the sender''s account is banned or the content flagged, user traceability is minimized.'
+    - Distinguish between rendezvous (small, on-demand, bidirectional) and update (large, push, unidirectional) channels architecturally — serving both from the same channel design forces undesirable tradeoffs on bandwidth and anonymity.
+section: §1–§3
+extracted_by: claude-sonnet-4-6

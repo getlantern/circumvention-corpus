@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-vilalonga-looking
+kind: evaluation
+summary: 'Using Google Pub/Sub as a rendezvous channel adds 7.17 seconds of bootstrapping overhead vs. a 1.32-second direct baseline when establishing a TorKameleon WebRTC bridge connection (total: 8.49s vs. 1.32s). The dominant bottleneck is subscription creation time (5.23s), not the message exchange itself (3.26s), averaged across 10 samples with 113 ms cross-Atlantic latency.'
+techniques:
+    - traffic-shape
+defenses:
+    - bridges
+    - webrtc-pluggable
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Pre-warm Pub/Sub subscriptions at client startup rather than on-demand to amortize the 5.23s subscription creation penalty before a bridge is actually needed.
+    - 'Prefer shared-topic designs over per-user-topic designs: the alternative per-user-topic design requires ~10.81s per topic+subscription pair, roughly doubling overhead with no practical anonymity gain.'
+section: §4.2, Table 1
+extracted_by: claude-sonnet-4-6

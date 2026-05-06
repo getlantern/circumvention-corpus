@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kamali-huma
+kind: detection
+summary: Balboa's synchronous leaf-content replacement adds non-negligible timing differences that allow censors to identify its activity with up to ~90% accuracy over different network conditions. The timing anomaly arises because Balboa performs data substitution directly at each data exchange, delaying the server's response while covert data is prepared.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Avoid any inline content-replacement or proxy processing that adds measurable latency to the server's first response byte — the response must be issued immediately from a pre-built buffer to be indistinguishable from a cache hit.
+    - Decouple covert payload preparation from the request/response cycle entirely; pre-build replacement content asynchronously so serving latency matches benign baseline.
+section: §I (Introduction), §II-A
+extracted_by: claude-sonnet-4-6

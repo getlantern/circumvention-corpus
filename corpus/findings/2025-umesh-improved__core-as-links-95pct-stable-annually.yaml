@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-umesh-improved
+kind: evaluation
+summary: Longitudinal AS topology studies cited by the authors show that 95% of core-to-core AS links remain unchanged year-over-year and that large transit providers adjust their peering only gradually, with almost all churn occurring at the customer edge. This implies that high-usage transit ASes identified for RN proxy deployment are likely to retain their topological position for months to years, lending temporal robustness to placement recommendations derived from a single measurement snapshot.
+defenses:
+    - decoy-routing
+censors:
+    - generic
+defense_implications:
+    - RN proxy recruitment decisions based on a single quarterly measurement snapshot are likely to remain valid for 6–12 months; annual re-evaluation of coverage rankings is sufficient for stable transit ASes.
+    - Focus re-measurement effort on customer-edge ASes within censored regions, which churn more frequently, rather than on Tier-1/Tier-2 transit ASes whose positions are highly stable.
+section: §5.5
+extracted_by: claude-sonnet-4-6

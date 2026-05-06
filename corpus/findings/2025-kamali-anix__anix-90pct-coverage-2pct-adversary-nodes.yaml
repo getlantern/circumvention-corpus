@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-kamali-anix
+kind: evaluation
+summary: In a 600-node simulation on a 25×25 grid representing a city-wide blackout environment, Anix messages reached over 90% of users within 23 simulation steps (~23 hours) even when adversarial Sybil nodes composing 2% of the network refused to forward messages authored by legitimate users. The simulation modeled a 5-day blackout with 120 one-hour steps.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Epidemic mesh routing tolerates a meaningful fraction of adversary-controlled relay nodes before coverage degrades below operational thresholds; designers should target adversary ratios well above 2% in threat models to establish true safety margins.
+    - Message persistence time (ptm) and storage quotas are first-class protocol parameters that directly gate coverage under adversarial conditions; expose them as tunable knobs rather than hardcoding.
+section: Abstract; §5.2; §6
+extracted_by: claude-sonnet-4-6

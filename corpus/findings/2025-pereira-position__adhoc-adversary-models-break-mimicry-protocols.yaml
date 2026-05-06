@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-position
+kind: defense
+summary: Security arguments for existing circumvention systems are based on ad-hoc adversary models that are often incomplete or unrepresentative of real-world adversaries, leading to allegedly secure designs that fail against relatively straightforward attacks. Protocols that substitute or parasitize a cover application's encrypted traffic channel fail against application-aware adversaries who observe or induce violations of application-specific behavioral invariants — a weakness that pre-trained classifiers on custom traces fail to surface.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+defenses:
+    - mimicry
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Mimicry protocols must be validated against application-aware adversaries that can induce behavioral probes (e.g., stall, reorder, inject) to surface invariant violations, not just passive traffic classifiers.
+    - Security claims based solely on classifier accuracy on custom traffic traces should be treated as insufficient; formal distinguishability proofs against a parametric adversary are needed to bound real-world detectability.
+section: §1, §2
+extracted_by: claude-sonnet-4-6

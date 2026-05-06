@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sheffey-extended
+kind: evaluation
+summary: Of 1922 IPv4 addresses collected from GFW-injected DNS A responses to 5,000 queries for censored domains, 8 (0.4%) actually accepted TCP handshakes when probed from within China. The other 1914 addresses were either silent or unreachable.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Clients relying solely on DNS-level indicators to detect GFW interference may be silently connected to potentially hostile infrastructure; circumvention tools should validate the full TCP/TLS handshake rather than trusting DNS-level legitimacy.
+    - Block all outgoing connections to the documented GFW-injected IPv4 pool as a defense layer, since a small but non-zero fraction of those addresses complete real handshakes.
+section: §2.2
+extracted_by: claude-sonnet-4-6

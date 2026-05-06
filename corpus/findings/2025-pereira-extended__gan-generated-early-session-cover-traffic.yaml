@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-extended
+kind: defense
+summary: The framework's GAN-based schedule generator trains on short session windows (e.g., the first 10 seconds) of real browsing traffic from the Tranco Top 1000 sites, learning joint distributions of packet sizes, inter-arrival times, and burst patterns to produce realistic synthetic schedules. This repurposes GAN architectures previously used for traffic analysis (e.g., GANDaLF) as a defense-side cover-traffic generator.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Train generative models on traffic from locally-popular sites in the target censored country rather than global rankings, as browsing patterns differ and censors may be calibrated to regional baselines.
+    - Audit GAN-generated schedules for mode-collapse artifacts before deployment — a collapsed model could introduce a detectable synthetic fingerprint worse than the original protocol.
+section: §2.2
+extracted_by: claude-sonnet-4-6

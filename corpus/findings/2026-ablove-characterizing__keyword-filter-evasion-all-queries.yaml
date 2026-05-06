@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-characterizing
+kind: defense
+summary: Simple character-level perturbations (English) and homophone substitutions (Chinese), combined with LLM instruction-following prompts directing the model to use word substitutions in its output, successfully bypassed all input and output filters for all 41 input-blocked and 197 output-blocked queries across five major Chinese LLM services (Baidu-Chat, DeepSeek, Doubao, Kimi, Qwen). Every input-blocked query contained at least one keyword combination that alone triggered the filter, confirming keyword-matching rather than semantic classification.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Automated query rewriting with character-level noise (typos, homoglyphs, homophones) is sufficient to bypass all tested Chinese LLM input filters — circumvention tools should implement a lightweight perturbation layer before forwarding queries.
+    - Output filters can be evaded by injecting instruction-following prompts that ask the LLM to substitute sensitive terms in its responses; this is a viable defense for tools that pre-process user queries before sending to Chinese LLM APIs.
+section: §VII-D
+extracted_by: claude-sonnet-4-6

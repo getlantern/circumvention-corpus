@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-tang-automatic
+kind: detection
+summary: 'GFW verification tests confirmed over 90% of OONI-detected DNS anomalies as true blocks: 429/457 domains in Beijing and 422/461 in Shanghai. In total, 527 unique domains were confirmed censored via DNS, HTTP, and HTTPS filters; an additional 718 domains suspected blocked due to IP-address-level blocking of their hosting servers rather than domain-level entries.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - IP-based blocking of hosting infrastructure causes significant collateral damage; circumvention proxies should avoid co-hosting on IP ranges already blacklisted by the GFW and prefer residential or rotating IPs.
+    - DNS-level blocking remains the GFW's dominant mechanism (>90% confirmation rate); circumvention tools must implement encrypted DNS (DoH/DoT) or bypass DNS entirely to avoid this chokepoint.
+section: §5.6
+extracted_by: claude-sonnet-4-6

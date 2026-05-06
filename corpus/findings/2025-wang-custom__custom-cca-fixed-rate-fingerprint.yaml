@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wang-custom
+kind: detection
+summary: Hysteria and TCP-Brutal maintain fixed sending rates regardless of packet loss, causing them to transmit at rates several orders of magnitude higher than loss-based CCAs (TCP/QUIC Cubic) at a 5% packet loss rate on a 100 Mbps link with 60ms RTT. This non-compliance with standard congestion backoff is reliably detectable across RTTs from 15ms to 300ms and loss rates from 0.1% to 20%.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - hysteria2
+censors:
+    - cn
+defense_implications:
+    - Avoid custom congestion control that ignores packet loss signals; any CCA that does not back off under loss produces a flow-level fingerprint detectable with a simple threshold classifier.
+    - Use BBR (or another standards-compliant rate-based CCA already shipped in major OS kernels) instead of bespoke CCAs — it provides comparable throughput below 20% loss without the fingerprint.
+section: §4.1
+extracted_by: claude-sonnet-4-6

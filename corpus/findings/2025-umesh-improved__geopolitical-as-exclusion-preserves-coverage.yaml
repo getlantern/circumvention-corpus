@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-umesh-improved
+kind: deployment
+summary: When politically uncooperative ASes are excluded from the candidate pool — specifically Russia's AS12389 and Iranian transit ASes AS49100 and AS198154 — the framework recomputes cumulative coverage over remaining candidates and still identifies viable cooperative deployment sites for Iran. This demonstrates that geopolitical filtering can be incorporated into the placement optimization without losing coverage entirely.
+techniques:
+    - ip-blocking
+defenses:
+    - decoy-routing
+censors:
+    - ir
+defense_implications:
+    - Build AS exclusion lists into RN deployment tooling by default; any AS under Russian or censoring-country jurisdiction should be flagged as high-risk and excluded unless explicitly vetted.
+    - Pre-compute filtered coverage curves so operators can immediately see how many cooperative ASes remain and what coverage they achieve before committing to recruitment efforts.
+section: §5.3, Figure 5
+extracted_by: claude-sonnet-4-6

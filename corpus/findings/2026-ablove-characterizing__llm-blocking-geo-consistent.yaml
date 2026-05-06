@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-characterizing
+kind: evaluation
+summary: Cross-national experiments conducted from Singapore, South Korea, and Taiwan during February 19–24, 2025 found no variance in blocking implementations, event syntax, or server infrastructure across all five Chinese LLM services. Input blocking was enacted identically in all three international locations, and services connected to the exact same server IP addresses globally — Kimi and Baidu-Chat connected to identical IPs and DeepSeek to the same two addresses across all tested locations.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Geo-routing cannot be used to bypass Chinese LLM censorship — filter sets and server infrastructure are globally uniform, eliminating any geography-based circumvention path.
+    - The absence of location-differentiated deployments means a single evasion technique (e.g., query perturbation) developed against any vantage point is immediately applicable to all global deployments of the same service.
+section: §VIII-A
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kamali-huma
+kind: evaluation
+summary: Huma's deferred-reply / double-request receive (DRR) protocol reduces a traffic-fingerprinting XGBoost classifier's accuracy to at most 54% (near random guessing) across geographically distributed clients (San Francisco, Frankfurt, Bangalore). A Kolmogorov-Smirnov test on absolute page-load timing distributions yields D=0.03, p=0.98 for U.S. clients — substantially tighter than Waterfall of Liberty's D=0.11 at p=0.5 — confirming that Huma flows are statistically indistinguishable from benign HTTPS fetches.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tunneling
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Implement a deferred-response architecture where the server always replies immediately with a pre-staged response, relegating all covert processing to an asynchronous backend — this eliminates the timing signal that defeats synchronous replacement tools.
+    - Validate unobservability with both ML classifiers (accuracy near 50%) and KS tests on page-load timing distributions, as timing-distribution divergence can expose web-tunneling tools even when volumetric features pass.
+section: §V-D, Table II
+extracted_by: claude-sonnet-4-6

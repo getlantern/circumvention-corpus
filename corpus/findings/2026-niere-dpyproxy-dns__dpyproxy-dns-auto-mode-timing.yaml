@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-niere-dpyproxy-dns
+kind: evaluation
+summary: DPYProxy-DNS's automated probe-and-select mode identified a working DNS circumvention in an average of 13.78 seconds (median 12.90s) in China and 12.32 seconds (median 8.28s) in Iran across 100 runs each; best-case startup was 0.32s (China) and 0.47s (Iran) when the first-tried combination succeeded, while worst-case exceeded 30.72s in China and 58.16s in Iran due to the slow Last Response mode (3s fixed wait per attempt) being selected early in the randomized probe order.
+techniques:
+    - dns-poisoning
+    - sni-blocking
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Automated circumvention probe-and-select is viable for DNS (median under 13s one-time cost), fully amortizable by caching the working resolver–protocol combination to disk — subsequent startups skip the probe phase entirely.
+    - Exclude slow modes (e.g., 3s-wait Last Response) from the default probe order when the censor is known to be in-path rather than on-path (as in Iran); mode exclusion based on country heuristics can reduce worst-case startup time from 58s to under 15s.
+section: §6.3
+extracted_by: claude-sonnet-4-6

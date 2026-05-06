@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-cheng-in-depth
+kind: evaluation
+summary: Among 18,199 stable open DNS resolvers discovered in Shanghai's IPv4 space, 136 were completely immune to GFW DNS filtering and correctly resolved all 83 blocked domains. On average, each blocked domain had more than 436 open resolvers with ACR ≥ 0.5 capable of returning its correct IP address.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - A curated list of ~136 fully-immune open DNS resolvers in Shanghai could serve as a reliable bootstrapping mechanism for circumvention tools needing to resolve proxy server hostnames without filtering interference.
+    - Open resolver lists are highly dynamic (significant churn in the first week); any such list must be refreshed continuously to remain usable.
+section: §5.1, Figure 12–13
+extracted_by: claude-sonnet-4-6

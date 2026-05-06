@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-cheng-in-depth
+kind: evaluation
+summary: Queries from inside China to non-Chinese public DNS resolvers (Google 8.8.8.8, Cloudflare 1.1.1.1) that pass through GFW DNS filtering devices yield an Absolute Correct Rate (ACR) of less than 1% for blocked domain lookups, regardless of the client's region or ISP. Even a self-built US resolver (45.63.86.214) was affected by the national-level DNS filtering mechanism.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools must not rely on standard recursive DNS to non-Chinese resolvers for obtaining server IPs; any DNS path that transits GFW middleboxes will receive poisoned responses with near-certainty.
+    - Use encrypted DNS transports (DoH/DoT) or pre-resolve IPs out-of-band before deployment rather than resolving on the censored client at runtime.
+section: §4.1
+extracted_by: claude-sonnet-4-6

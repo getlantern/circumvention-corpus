@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-rodriguez-revisiting
+kind: detection
+summary: All six browsers grant dangerous Android permissions (READ_PHONE_STATE, INTERNET, ACCESS_NETWORK_STATE) to third-party SDKs; built-in phone browsers grant significantly more such permissions than app-store browsers. Baidu Mobile Tongji Analytics SDK—present in all six via Baidu as default search engine—collects IMEI, UUID, CUID, GAID, device MAC, and Bluetooth MAC, creating a persistent cross-app device fingerprint that identifies users across VPN sessions and survives IP changes.
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool developers building Android apps must audit which third-party SDKs are linked in the same APK or on the same device; Baidu, Tencent, and device-manufacturer SDKs with READ_PHONE_STATE access create persistent hardware identifiers that re-identify users regardless of VPN IP rotation.
+    - Assume that any device running Chinese built-in browsers already has its IMEI/GAID/MAC known to Baidu and Tencent servers; circumvention tools relying on device-identity-based anonymity or unlinkability properties should treat this as a broken assumption on such devices.
+section: §4.3
+extracted_by: claude-sonnet-4-6

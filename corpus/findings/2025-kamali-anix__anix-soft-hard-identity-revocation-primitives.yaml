@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-kamali-anix
+kind: defense
+summary: 'Anix provides two cryptographically distinct identity revocation primitives: soft revocation rotates a user''s identity key pair and re-notifies only the retained subset of trusted contacts via encrypted unicast, silently excluding the revoked party; hard revocation broadcasts a signed certificate containing the compromised public key components, instructing all contacts to reject both the revoked identity and any downstream identities produced through subsequent soft revocations.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention systems that rely on long-lived user identities for trust or authorization should implement at minimum a soft-revocation primitive so that a compromised or coerced node can silently migrate to a new identity without alerting adversary-controlled contacts.
+    - Hard revocation certificates should be pre-generated and stored offline (e.g., on a separate device) before a blackout, since broadcasting them requires only sending a small signed message over the mesh, not access to the Internet.
+section: §4.3
+extracted_by: claude-sonnet-4-6

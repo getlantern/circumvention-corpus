@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-rodriguez-revisiting
+kind: detection
+summary: All six Chinese browsers (Baidu Searchbox, UC Browser, QQ Browser, OPPO, Redmi/Mi, VIVO) transmit the full URL of every page visited—including HTTPS pages—along with page titles and search terms out-of-band to vendor servers, entirely bypassing VPN tunnel protection. In five of six cases this data is transmitted with no cryptography or weak cryptography (purely symmetric AES with hardcoded keys, or textbook RSA with a 128-bit modulus factorable in under 3 seconds), making it readable by any on-path actor between the VPN egress and the vendor's servers.
+techniques:
+    - dpi
+    - keyword-filtering
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - VPN and proxy clients targeting Chinese users must warn users that the browser itself exfiltrates full browsing activity out-of-band, defeating the tunnel; bundle or recommend a privacy-respecting browser (Firefox, Brave, Tor Browser) rather than assuming the tunnel alone provides browsing privacy.
+    - Circumvention tool threat models must account for browser-level telemetry as a parallel surveillance channel that operates independently of and immune to any traffic obfuscation applied at the transport layer.
+section: §4.1
+extracted_by: claude-sonnet-4-6

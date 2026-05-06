@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-cheng-in-depth
+kind: defense
+summary: The authors implement a system that identifies correct IP addresses of blocked domains inside a censored network by exploiting the predictable characteristics of forged IPs returned by GFW DNS filtering devices. The system achieves 100% accuracy in identifying valid IPs within a short time period, using 1.7 billion DNS records collected over 40 days across 86,876 resolvers.
+techniques:
+    - dns-poisoning
+defenses:
+    - dns-tunneling
+censors:
+    - cn
+defense_implications:
+    - Fingerprinting forged-IP patterns from known GFW-poisoned responses and filtering them out is a viable technique for building a correct-IP oracle inside China — applicable to circumvention tool bootstrapping that needs accurate proxy IP resolution.
+    - This approach requires a seed corpus of known-forged IPs; circumvention tool developers should maintain and share an up-to-date forged-IP blocklist derived from probing controlled domains.
+section: §6 (Abstract, §1 Introduction)
+extracted_by: claude-sonnet-4-6

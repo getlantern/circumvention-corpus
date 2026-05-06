@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-niere-dpyproxy-dns
+kind: detection
+summary: All major browsers (Firefox, Chromium) issue an unencrypted DNS-over-UDP query to resolve their configured DoH resolver's domain before initiating any encrypted DNS session. In Iran, nearly all tested DoH resolver domains are directly censored at the DNS layer (returning block-page IPs), which renders browser-native encrypted DNS ineffective regardless of whether the underlying encrypted protocol would otherwise succeed. Additionally, browsers always include the SNI extension in TLS handshakes with DNS resolvers even though no tested resolver requires it.
+techniques:
+    - dns-poisoning
+    - sni-blocking
+censors:
+    - ir
+    - cn
+defense_implications:
+    - Circumvention tools that include a DNS component must pre-resolve and hardcode the IP of their DNS resolver, bypassing the bootstrap unencrypted query that censors intercept; relying on the OS or browser DNS stack is insufficient in censored environments.
+    - Browser vendors should default to specifying DNS resolver IPs rather than hostnames, and suppress SNI in encrypted DNS TLS handshakes — both changes eliminate the two main censor observation points during DoH bootstrapping without any compatibility regression.
+section: §7
+extracted_by: claude-sonnet-4-6

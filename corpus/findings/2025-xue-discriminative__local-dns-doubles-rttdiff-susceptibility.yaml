@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-xue-discriminative
+kind: detection
+summary: Proxy users who resolve DNS locally (at the client) are approximately twice as susceptible to RTTdiff fingerprinting compared to users who resolve DNS at the proxy, across all tested client/proxy location combinations. Local DNS returns IPs optimally reachable from the client's region, which may be geographically distant from the proxy, increasing the proxy-to-server path distance and thus the RTTdiff discrepancy.
+techniques:
+    - traffic-shape
+    - dns-poisoning
+defenses:
+    - shadowsocks
+    - vmess
+    - vless
+censors:
+    - generic
+defense_implications:
+    - Always default to remote DNS resolution at the proxy server (not the client) and expose this as the recommended configuration in user-facing proxy tools; the performance cost is minimal compared to the detection risk of local resolution.
+    - Document local DNS resolution as a high-risk configuration in proxy client software and consider disabling or warning against it in censored-region deployments.
+section: §VI-C-2
+extracted_by: claude-sonnet-4-6

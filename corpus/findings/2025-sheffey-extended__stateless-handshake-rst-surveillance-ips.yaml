@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sheffey-extended
+kind: detection
+summary: Six injected IPv4 addresses (8.7.198.46, 39.109.122.128, 46.82.174.69, 59.24.3.174, 93.46.8.90, 103.97.3.19) accept TCP SYN→SYN+ACK from within China but immediately reply RST when the client sends application data (PSH flag). These hosts mirror IPID values from probe packets, show no response from outside China, and appear to operate statelessly — suggesting GFW-controlled surveillance infrastructure that collects connection metadata without revealing itself.
+techniques:
+    - dns-poisoning
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should treat any server that completes a TCP handshake but RSTs immediately on first application data as a GFW probe/sensor and abort without retrying — logging the IP for blocklist updates.
+    - China-only TCP response behavior (no response from external vantage points) is a reliable fingerprint for GFW-controlled infrastructure; vantage-point diversity in active-probing detection can distinguish this from normal asymmetric routing.
+section: §2.2.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-cheng-in-depth
+kind: evaluation
+summary: 'Chinese public (pDNS) and ISP (iDNS) DNS resolvers exhibit highly variable filtering bypass rates: some resolvers return correct IPs for specific blocked domains with ACR > 0.6 (e.g., wsj.com, vpnintouch.com), while the same resolver queried from a different ISP or region may have ACR < 0.1. The paper identifies three factors that determine effective bypass: DNS resolver identity, client vantage-point location, and the specific blocked domain.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Resolver selection is not uniform in China — circumvention tools bootstrapping via DNS should test multiple Chinese ISP resolvers per region rather than assuming uniform behavior.
+    - Domain-specific bypass patterns (certain resolvers reliably returning correct IPs for select domains) can be exploited as a covert channel to bootstrap initial proxy server contact.
+section: §4.2–§4.3, Figure 7–9
+extracted_by: claude-sonnet-4-6

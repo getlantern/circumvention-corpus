@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-sivan-sevilla-probing
+kind: detection
+summary: 'Trustworthy news sites show dramatically more complex third-party structures than untrustworthy ones: mean MaxBreadth 39.22 vs 19.63, mean ThirdPartyRequests 137.45 vs 74.12, and mean unique third-party domains 44.15 vs 20.31. This finding reverses prior work (Han et al. 2022) and the authors attribute it to untrustworthy sites being under-resourced and optimized for content spread rather than user experience.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Structural complexity (breadth and third-party count) is a strong classifier feature; circumvention mirror sites or landing pages that mimic minimal 'fake news' structure would be incorrectly flagged—operators should ensure mirrors carry realistic third-party request depth.
+    - Censors or platform-based filters using structural fingerprinting will penalize sparse third-party trees; proxy infrastructure that looks under-resourced invites misclassification.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

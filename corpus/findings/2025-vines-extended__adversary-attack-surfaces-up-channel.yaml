@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-vines-extended
+kind: detection
+summary: 'The paper enumerates five adversarial attack surfaces against a video-steganography UP channel: (1) wholesale blocking of the hosting platform, (2) mass-scanning and blocking encoded videos (noted as generally cost-prohibitive per the steganography literature), (3) enumerating videos via pseudorandom tags (feasible but hampered by tag-list overlap with unrelated content and time-window dynamics), (4) banning accounts posting encoded videos, and (5) tracking anticensorship users viewing encoded content. The pseudorandom tag window design specifically prevents preemptive enumeration because the top-n results for a tag at epoch t differ from those at t±1.'
+techniques:
+    - ip-blocking
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Intermix non-steganographic 'cover' content uploads from the same sender accounts so account-level banning requires the censor to distinguish encoded from legitimate uploads — raising the false-positive cost of account suspension.
+    - Select pseudorandom tags from high-volume trending-topic pools so that unassociated legitimate videos dominate the top-n results, increasing the cost of tag-based enumeration attacks while preserving user discoverability.
+section: §2.1
+extracted_by: claude-sonnet-4-6

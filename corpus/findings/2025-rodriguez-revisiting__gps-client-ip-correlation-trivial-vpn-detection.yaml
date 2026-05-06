@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-rodriguez-revisiting
+kind: detection
+summary: Chinese browsers transmit GPS coordinates alongside persistent user IDs (IMEI, GAID, CUID) and client IPs to vendor servers with poor transport security; an attacker with access to this stream can trivially detect VPN use without any DPI—GPS coordinates placing a user inside China combined with a non-Chinese client IP is an unambiguous VPN-use signal. This correlation attack succeeds against VPNs with perfect traffic obfuscation because the detection side-channel is entirely outside the encrypted tunnel.
+techniques:
+    - ip-blocking
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - VPN clients targeting at-risk Chinese users should consider requesting Android DENY_LOCATION or blocking GPS-access by browser processes at the OS level, since GPS-to-IP correlation provides a VPN detection path that bypasses all transport-layer obfuscation.
+    - Circumvention tools cannot rely on traffic obfuscation alone to protect users who run Chinese browsers; operator documentation must explicitly address the GPS-plus-IP correlation risk as a separate threat model.
+section: §5, §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-rodriguez-revisiting
+kind: defense
+summary: PWA-based circumvention tools that display their name or any identifying string in the browser URL bar or page title expose that identifier to all six Chinese browser vendors' telemetry servers, since all six browsers collect page titles and full URLs. Browser SDKs with READ_PHONE_STATE and elevated permissions can monitor PWA activity at the OS level in ways not possible with standard browsers, making browser selection as security-critical as the circumvention tool itself for the Tor Browser threat model.
+techniques:
+    - keyword-filtering
+defenses:
+    - tunneling
+    - tor
+censors:
+    - cn
+defense_implications:
+    - PWA-delivered circumvention tools must suppress or genericize any identifying string from page titles and URLs when operating inside Chinese browsers; the Tor Browser model—where the browser and circumvention tool are co-designed to avoid cross-leakage—should be the reference design for privacy-critical PWAs.
+    - Circumvention tool operators distributing via PWA should detect the running browser's vendor and surface a clear warning (or hard block) when running inside a Chinese browser known to exfiltrate URLs, rather than silently providing weaker privacy guarantees.
+section: §5, §6
+extracted_by: claude-sonnet-4-6

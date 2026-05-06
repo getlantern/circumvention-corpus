@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-wails-precisely
+kind: detection
+summary: State-of-the-art ML-based obfs4 detection (Wang et al. decision tree) achieves 97% precision at equal base rates (λ=1) but precision collapses to 3% at a still-conservative λ=1,000; at λ=10⁶ precision approaches zero for all classifiers tested. This base-rate failure was previously uncharacterized because prior evaluations only considered balanced or near-balanced datasets.
+techniques:
+    - ml-classifier
+    - random-payload-detect
+    - dpi
+defenses:
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocol evaluations must report Precλ across at least six orders of magnitude of base rate, not just λ=1, to expose false-positive collapse that makes flow-level blocking infeasible at scale.
+    - Hiding in the long tail of rarely-seen destination ports raises the censor's collateral-damage cost per true positive, but does not prevent a well-calibrated host-level classifier from eventually identifying proxy servers.
+section: §IV-D (Scalability), Figure 3, Table I
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-xue-discriminative
+kind: detection
+summary: IMAP/SSL traffic on port 993 constitutes less than 1% of total ISP traffic but accounts for nearly one third of all false positives in the RTTdiff exploit, because IMAP's non-RESTful multi-connection pattern violates the request-response correlation assumption. The overall per-flow FPR is bounded at 0.6–0.7% (on par with GFW's estimated FPR against fully-encrypted proxies), but implementing a pre-filter to whitelist IMAP traffic reduces the FPR by approximately one third, making the fingerprint substantially more precise.
+techniques:
+    - traffic-shape
+    - flow-correlation
+censors:
+    - generic
+    - cn
+defense_implications:
+    - Circumvention protocols that mimic non-RESTful traffic patterns (e.g., IMAP, streaming, multiplexed HTTP/2 push) naturally reduce RTTdiff detection accuracy—consider multiplexed or bidirectional-stream designs that defeat cross-correlation ARTT estimation.
+    - Censors combining RTTdiff with protocol-specific filters (e.g., post-filtering out known IMAP SNIs) can achieve very low collateral damage; defense-in-depth obfuscation is necessary to prevent straightforward refinement of the attack.
+section: §VI-C-3, Table III
+extracted_by: claude-sonnet-4-6

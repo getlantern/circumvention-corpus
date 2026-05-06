@@ -1,0 +1,24 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-xue-discriminative
+kind: detection
+summary: 'Cross-layer RTT discrepancy (RTTdiff) is a protocol-agnostic fingerprint that exploits an inherent architectural property of all proxy setups: transport-layer sessions terminate at the proxy while application-layer sessions remain end-to-end. Evaluation across 10 proxy protocols—including VMess, Shadowsocks, VLESS, Trojan, XTLS-Vision, and obfs4-wrapped SOCKS—shows near-identical detection rates for all except obfs4, confirming the fingerprint is not tied to any specific obfuscation scheme. At FPR=0.01, per-website detection rates exceed 70% across all tested client and proxy location combinations.'
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - shadowsocks
+    - vmess
+    - vless
+    - trojan
+    - obfs4
+    - pluggable-transport
+censors:
+    - generic
+    - cn
+    - ru
+defense_implications:
+    - Any circumvention proxy that forwards traffic without modifying packet timing is fundamentally vulnerable regardless of payload obfuscation; designers must address transport/application-layer session misalignment directly, not just payload entropy.
+    - Evaluate RTTdiff exposure as a first-class threat model criterion when selecting or designing proxy architectures—particularly single-hop forwarding designs.
+section: §I, §VI-C
+extracted_by: claude-sonnet-4-6

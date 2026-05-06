@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wilson-extended
+kind: defense
+summary: Shaperd introduces a constraint-agnostic traffic shaping system that operates on both packet content and timing in real time, designed for drop-in integration with any existing FEP. The system uses a four-component constraint definition (function, value, comparison operator, target packets) capable of expressing any rule based on a computable deterministic function over packet contents.
+techniques:
+    - fully-encrypted-detect
+    - traffic-shape
+defenses:
+    - randomization
+    - shadowsocks
+    - vmess
+censors:
+    - generic
+defense_implications:
+    - Decouple traffic shaping from protocol implementation so a single shaping layer can be updated independently as detection rules change, rather than requiring per-protocol rewrites.
+    - Distribute constraint sets via existing trusted channels (e.g., bridge distribution infrastructure) to allow rapid response to new censor detection rules without client software updates.
+section: §2
+extracted_by: claude-sonnet-4-6

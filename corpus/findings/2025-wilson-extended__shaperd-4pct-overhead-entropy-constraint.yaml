@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wilson-extended
+kind: evaluation
+summary: Shaperd's proof-of-concept prototype (~1000 lines of Go) introduces a minimal 4.1% throughput overhead for a single entropy constraint; the first additional constraint added 5.1% overhead and the second added 5.5%, with total overhead scaling with constraint count and rigor.
+techniques:
+    - fully-encrypted-detect
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Real-time traffic shaping for FEPs is feasible at low overhead for simple constraints, making it practical to layer shaping onto existing tools without prohibitive performance costs.
+    - Constraint complexity is the dominant overhead factor; designers should benchmark constraint sets against throughput budgets and prefer efficient constraint functions over naive iterative padding.
+section: §2
+extracted_by: claude-sonnet-4-6

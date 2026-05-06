@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-kamali-anix
+kind: detection
+summary: Standard ECDSA signature schemes are vulnerable to public key recovery attacks that allow an adversary to recover the signer's public verification key from any signature, linking all pseudonymous messages authored under different one-time pseudonyms back to a single user identity. This attack succeeds without any side-channel — it operates solely on the message and its ECDSA signature.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any mesh or circumvention protocol that uses ECDSA to sign per-session or per-message pseudonyms must replace it with a public-key-blinded signing scheme (e.g., Denis et al. 2023) to prevent passive adversaries from linking pseudonyms across sessions.
+    - The blinding factor should be derived deterministically from the message content and the signer's long-term public key so verifiers can recompute it locally without an out-of-band channel, avoiding the common assumption that bk must be transmitted separately.
+section: §4.2
+extracted_by: claude-sonnet-4-6

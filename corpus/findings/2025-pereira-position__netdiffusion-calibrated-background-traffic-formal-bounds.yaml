@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pereira-position
+kind: evaluation
+summary: 'An adversary''s false positive rate against a circumvention tool depends critically on the statistical properties of background traffic; if background traffic is modeled inaccurately (e.g., with toy uniform distributions), formal detection bounds are not meaningful. The paper proposes a hybrid pipeline: train NetDiffusion on real packet-level traces from campus networks or backbone providers, sample synthetic background traffic, extract empirical mean/variance, and integrate those distributions into EasyCrypt formal models to produce statistically grounded detectability proofs.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - meta-resistance
+defense_implications:
+    - When evaluating detection resistance of a new transport, calibrate background-traffic models from real ISP or campus traces rather than synthetic priors — false positive rates computed against miscalibrated background traffic are systematically misleading.
+    - Tools like NetDiffusion that generate protocol-constrained synthetic traffic provide a reusable pipeline for updating formal models as network baselines shift, allowing detection bounds to be re-verified without full re-measurement.
+section: §3
+extracted_by: claude-sonnet-4-6
