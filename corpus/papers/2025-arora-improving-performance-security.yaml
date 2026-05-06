@@ -1,0 +1,23 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-arora-improving-performance-security
+title: Improving the Performance and Security of Tor's Onion Services
+authors:
+    - Arushi Arora
+    - Christina Garman
+venue: PoPETs 2025
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0029.php
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+defenses_discussed:
+    - tor
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Direct relevance to hardening Tor infrastructure; supports Lantern's use of Tor as a circumvention layer and bridges.
+visibility: public
+date_added: "2026-05-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2025/popets-2025-0029.php

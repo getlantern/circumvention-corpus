@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-pulls-ephemeral-network-layer-fingerprinting
+title: Ephemeral Network-Layer Fingerprinting Defenses
+authors:
+    - Tobias Pulls
+    - Topi Korhonen
+    - Ethan Witwer
+    - Niklas Carlsson
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0022.php
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - website-fingerprint
+defenses_discussed:
+    - randomization
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern's strategy for evading traffic-analysis attacks on proxy traffic.
+visibility: public
+date_added: "2026-05-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0022.php
