@@ -143,11 +143,16 @@ func extractAllCLI(args []string) {
 	parallel := fs.Int("parallel", defaultParallel, "concurrent extractions")
 	maxN := fs.Int("max", 0, "max papers to process (0 = no limit)")
 	force := fs.Bool("force", false, "re-extract papers that already have findings")
+	// Default: skip papers older than 10 years. Pre-2015 work is mostly
+	// foundational references whose hosts have rotted (404/timeout/scan
+	// PDFs) and where the load-bearing claims have been re-validated by
+	// modern measurement. Set --min-year=0 to re-enable the full sweep.
+	minYear := fs.Int("min-year", time.Now().Year()-10, "skip papers with year < this (0 disables)")
 	_ = fs.Parse(args)
 	root, err := filepath.Abs(*corpus)
 	must(err)
 
-	cands, err := findCandidates(root, *force)
+	cands, err := findCandidates(root, *force, *minYear)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -192,8 +197,9 @@ func extractAllCLI(args []string) {
 
 // findCandidates returns paper IDs that have no findings yet (or all of
 // them if --force). Iterates corpus/papers/*.yaml and corpus/findings/
-// once each.
-func findCandidates(corpusRoot string, force bool) ([]string, error) {
+// once each. minYear filters out papers older than the given year
+// (0 disables the filter).
+func findCandidates(corpusRoot string, force bool, minYear int) ([]string, error) {
 	hasFindings := map[string]bool{}
 	if !force {
 		fEntries, err := os.ReadDir(filepath.Join(corpusRoot, "corpus", "findings"))
@@ -221,6 +227,12 @@ func findCandidates(corpusRoot string, force bool) ([]string, error) {
 		id := strings.TrimSuffix(e.Name(), ".yaml")
 		if hasFindings[id] {
 			continue
+		}
+		if minYear > 0 {
+			p, err := loadPaper(corpusRoot, id)
+			if err == nil && p.Year > 0 && p.Year < minYear {
+				continue
+			}
 		}
 		out = append(out, id)
 	}
