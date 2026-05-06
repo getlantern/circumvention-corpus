@@ -199,10 +199,15 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	if source == "arxiv" || source == "all" {
 		ax, err := fetchArxiv(ctx, since)
 		if err != nil {
-			return nil, fmt.Errorf("fetch arxiv: %w", err)
+			// Same best-effort posture as the other sources: arXiv's
+			// API is aggressively rate-limited (HTTP 429 within seconds
+			// of consecutive runs) and shouldn't take the whole crawl
+			// down with it.
+			log.Printf("fetch arxiv: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from arXiv cs.CR (%d-day window)", len(ax), opts.windowDays)
+			cands = append(cands, ax...)
 		}
-		log.Printf("fetched %d from arXiv cs.CR (%d-day window)", len(ax), opts.windowDays)
-		cands = append(cands, ax...)
 	}
 	if source == "net4people" || source == "all" {
 		np, err := fetchNet4People(ctx, since)
