@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: 'Active bandwidth perturbation has an inherent detectability–stability trade-off: overly aggressive low-rate phases cause Tor SENDME-based flow control stalls, retransmissions, timeouts, or circuit replacement before sufficient correlation evidence is collected. The paper selects a 30-second modulation period and an empirically determined minimum shaping rate; the usable shaping range varies with relay load, path length, TCP congestion control behavior, and Tor multiplexing.'
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Designing circumvention protocols that are sensitive to throughput degradation — triggering rapid circuit replacement or retry on any anomalous rate drop — raises the cost of maintaining a stable watermark, forcing the adversary toward weaker, less-detectable perturbations.
+    - Protocols with short-lived, rapidly rotating circuits (by design, not just under stress) reduce the adversary's window for waveform injection and accumulation, directly attacking the temporal aggregation model described in §V-E.
+section: §VII-A
+extracted_by: claude-sonnet-4-6
