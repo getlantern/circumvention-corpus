@@ -47,7 +47,14 @@ import (
 )
 
 const (
-	arxivAPI       = "https://export.arxiv.org/api/query"
+	arxivAPI = "https://export.arxiv.org/api/query"
+	// arxivLimit is arxiv's per-page page-size cap; arxivMaxBackfill is
+	// the upper bound on total results returned by fetchArxiv across
+	// pages. The default weekly cron uses window-days=10 so a few
+	// hundred is plenty; bumping for a one-shot backfill is what
+	// arxivMaxBackfill is for. cs.CR averages ~50 papers/day in 2026
+	// so 5000 results ≈ 100 days of submissions.
+	arxivMaxBackfill = 5000
 	arxivCat       = "cs.CR"
 	arxivLimit     = 200
 	gfwReportFeed  = "https://gfw.report/index.xml"
@@ -645,54 +652,91 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 	// residential; we don't need a wick browser shell for plain XML.
 	// wick is reserved for the JS-rendered HTML conference pages we'll
 	// add later (PETS, USENIX, NDSS, IMC).
-	q := fmt.Sprintf("?search_query=cat:%s&start=0&max_results=%d&sortBy=submittedDate&sortOrder=descending",
-		arxivCat, arxivLimit)
-	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
-	defer cancel()
-	req, err := http.NewRequestWithContext(cctx, "GET", arxivAPI+q, nil)
-	if err != nil {
-		return nil, err
-	}
-	req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1 (https://github.com/getlantern/circumvention-corpus)")
-	resp, err := (&http.Client{Timeout: httpTimeout}).Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	if resp.StatusCode != 200 {
-		body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
-		return nil, fmt.Errorf("arxiv API: status %d: %s", resp.StatusCode, string(body))
-	}
-	out, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	var feed arxivFeed
-	if err := xml.Unmarshal(out, &feed); err != nil {
-		return nil, fmt.Errorf("parse arxiv feed: %w", err)
-	}
+	//
+	// Query strategy: use submittedDate range so the window is set on
+	// the arxiv side, then paginate via &start= until we exhaust the
+	// range or hit a safety cap. Earlier versions of this function used
+	// a single non-paginated query with sortBy=submittedDate desc and
+	// max_results=200; that returned only the most-recent ~4 days of
+	// cs.CR (since the archive gets ~50+ submissions per day) and
+	// post-filtered by `since`. The post-filter is harmless when
+	// since-is-within-the-200 but silently DROPS everything older,
+	// which is exactly the bug that left
+	// arxiv:2603.00345 (CensorLess, submitted 2026-02-27) invisible to
+	// every run done so far.
+	until := time.Now().UTC()
+	dateRange := fmt.Sprintf("submittedDate:[%s+TO+%s]",
+		since.UTC().Format("200601021504"),
+		until.Format("200601021504"))
+	searchQuery := fmt.Sprintf("cat:%s+AND+%s", arxivCat, dateRange)
+
 	var cands []candidate
-	for _, e := range feed.Entries {
-		updated, _ := time.Parse(time.RFC3339, e.Updated)
-		if !updated.IsZero() && updated.Before(since) {
-			continue
+	start := 0
+	for ; start < arxivMaxBackfill; start += arxivLimit {
+		q := fmt.Sprintf("?search_query=%s&start=%d&max_results=%d&sortBy=submittedDate&sortOrder=descending",
+			searchQuery, start, arxivLimit)
+		cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+		req, err := http.NewRequestWithContext(cctx, "GET", arxivAPI+q, nil)
+		if err != nil {
+			cancel()
+			return nil, err
 		}
-		c := candidate{
-			Source:   "arxiv",
-			ArxivID:  arxivIDFromURL(e.ID),
-			Title:    cleanText(e.Title),
-			Abstract: cleanText(e.Summary),
-			URL:      strings.Replace(e.ID, "http://", "https://", 1),
-			Venue:    "arXiv preprint",
-			Updated:  updated,
+		req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1 (https://github.com/getlantern/circumvention-corpus)")
+		resp, err := (&http.Client{Timeout: httpTimeout}).Do(req)
+		if err != nil {
+			cancel()
+			return nil, err
 		}
-		for _, a := range e.Authors {
-			c.Authors = append(c.Authors, strings.TrimSpace(a.Name))
+		if resp.StatusCode != 200 {
+			body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
+			resp.Body.Close()
+			cancel()
+			return nil, fmt.Errorf("arxiv API: status %d: %s", resp.StatusCode, string(body))
 		}
-		if pub, err := time.Parse(time.RFC3339, e.Published); err == nil {
-			c.Year = pub.Year()
+		out, err := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		cancel()
+		if err != nil {
+			return nil, err
 		}
-		cands = append(cands, c)
+		var feed arxivFeed
+		if err := xml.Unmarshal(out, &feed); err != nil {
+			return nil, fmt.Errorf("parse arxiv feed: %w", err)
+		}
+		if len(feed.Entries) == 0 {
+			break // arxiv has no more results in this date range
+		}
+		for _, e := range feed.Entries {
+			updated, _ := time.Parse(time.RFC3339, e.Updated)
+			// Defensive: arxiv occasionally returns entries outside
+			// the date range (its date-range matching is fuzzy near
+			// the boundaries). Filter again client-side.
+			if !updated.IsZero() && updated.Before(since) {
+				continue
+			}
+			c := candidate{
+				Source:   "arxiv",
+				ArxivID:  arxivIDFromURL(e.ID),
+				Title:    cleanText(e.Title),
+				Abstract: cleanText(e.Summary),
+				URL:      strings.Replace(e.ID, "http://", "https://", 1),
+				Venue:    "arXiv preprint",
+				Updated:  updated,
+			}
+			for _, a := range e.Authors {
+				c.Authors = append(c.Authors, strings.TrimSpace(a.Name))
+			}
+			if pub, err := time.Parse(time.RFC3339, e.Published); err == nil {
+				c.Year = pub.Year()
+			}
+			cands = append(cands, c)
+		}
+		if len(feed.Entries) < arxivLimit {
+			break // partial page; we've reached the end of the range
+		}
+		// arXiv API guidelines: sleep ≥3s between pages. We use 4 to
+		// be a good citizen + leave headroom for retries.
+		time.Sleep(4 * time.Second)
 	}
 	return cands, nil
 }
