@@ -1,0 +1,23 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-qurbat-list-domains-blocked
+title: List of domains blocked via DNS filtering in India
+authors:
+    - qurbat
+venue: net4people BBS
+year: 2026
+url: https://github.com/qurbat/dnsblocks.in/blob/main/data/compiled_blocklist.csv
+abstract: Measurement study documenting 43,083 apex domains blocked via DNS filtering across 6 Indian ISPs, including domain categories and Tranco popularity rankings from the 'Poisoned Wells' research.
+censors:
+    - in
+techniques:
+    - dns-poisoning
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Direct blocklist dataset; relevant for evaluating DNS-tunneling and DNS evasion defenses against Indian filtering.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/588

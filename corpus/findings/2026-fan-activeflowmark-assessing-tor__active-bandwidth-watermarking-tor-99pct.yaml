@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: NATA (Non-invasive Active Traffic-correlation Analysis) injects low-frequency bandwidth waveforms (sinusoidal, square-wave, triangular) into Tor TCP connections at an upstream gateway without endpoint compromise, payload decryption, or Tor-browser modification. BM-Net, a selective state-space classifier trained on the exit-side observations, achieves a 99.65% binary detection F1 score distinguishing watermarked from natural traffic on a 20,000-trace real-world dataset.
+techniques:
+    - flow-correlation
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that multiplex multiple users through a single Tor guard connection give an infrastructure adversary one high-value target; consider circuit-level isolation or randomized guard selection to reduce per-connection watermark legibility.
+    - Active bandwidth watermarking is distinct from passive traffic analysis — defenses designed to resist passive fingerprinting do not necessarily prevent detection of injected throughput constraints.
+section: §IV, §VI.D, Table III
+extracted_by: claude-sonnet-4-6

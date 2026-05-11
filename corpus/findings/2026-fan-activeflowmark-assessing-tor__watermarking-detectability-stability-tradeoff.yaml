@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: 'An infrastructure-level adversary must balance watermark detectability against connection stability: the paper''s threat model requires a minimum shaping rate rmin to prevent Tor circuit stalls, timeouts, or circuit replacement, and notes that repeated poor-throughput events can cause the circuit to be abandoned before sufficient watermark evidence is accumulated. This detectability–stability trade-off constrains the practical attack to macroscopic (30-second) modulation periods rather than fine-grained packet-level timing manipulation.'
+techniques:
+    - flow-correlation
+    - traffic-shape
+    - throttling
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Circumvention clients that aggressively replace circuits on throughput degradation (i.e., treat low-bandwidth phases as a signal to rotate guards) can disrupt collection of enough watermarked evidence to meet the correlation threshold — proactive circuit health monitoring and rotation could serve as a practical counter.
+    - Tor's SENDME-based flow control interacts with upstream rate limiting in ways that may partially degrade the injected waveform; pluggable transports built on UDP (Hysteria 2, QUIC-based) would interact with token-bucket shapers differently and may warrant separate analysis.
+section: §III.A, §VII.A
+extracted_by: claude-sonnet-4-6

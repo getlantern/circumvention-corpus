@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: 'Padding-based client-side defenses including WTF-PAD and Walkie-Talkie are insufficient against active bandwidth perturbation: they reshape packet timing and burst structure but cannot remove the upstream rate limit imposed by the gateway shaper. BM-Net trained on a defense-aware dataset containing both undefended and WTF-PAD/Walkie-Talkie traces still achieves 99.65% F1, and the paper explicitly notes that ''client-side padding and burst reshaping may alter the logical traffic pattern, but they do not directly remove the rate limit imposed by the upstream bottleneck.'''
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+    - pluggable-transport
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Logical-layer obfuscation (padding, burst shaping) is not a sufficient defense against infrastructure-level bandwidth watermarking; countermeasures must act at the throughput level, such as maintaining a constant-rate send schedule or injecting deliberate cover traffic that fills rate valleys.
+    - Pluggable transports that use QUIC or UDP-based congestion control may interact differently with token-bucket shapers and warrant specific evaluation; evaluating against active shaping attacks should be added to PT test suites.
+section: §VI.E.2, §VII
+extracted_by: claude-sonnet-4-6

@@ -1,5 +1,285 @@
 [
   {
+    "key": "arxiv:2605.02978",
+    "title": "Observability for Post-Quantum TLS Readiness: A Multi-Surface Evidence Framework",
+    "source": "arxiv",
+    "reason": "Paper studies post-quantum TLS observability and endpoint capability measurement, not censorship measurement, censor detection techniques, or circumvention protocol design.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.03095",
+    "title": "Revisiting JBShield: Breaking and Rebuilding Representation-Level Jailbreak Defenses",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness for LLM jailbreak defense; no censorship, circumvention, blocking, or surveillance measurement angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.03309",
+    "title": "Cryptographic Registry Provenance: Structural Defense Against Dependency Confusion in AI Package Ecosystems",
+    "source": "arxiv",
+    "reason": "Supply-chain security for software packages (dependency confusion attacks); no censorship, circumvention, or anonymity angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.03494",
+    "title": "Design of Memristive Lightweight Encryption For In-Memory Image Steganography",
+    "source": "arxiv",
+    "reason": "Hardware cryptography optimization paper with no censorship or circumvention relevance; steganography application is for securing in-memory data in embedded systems, not evading censors.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.04491",
+    "title": "An Evaluation of Chat Safety Moderations in Roblox",
+    "source": "arxiv",
+    "reason": "Studies platform content moderation in a gaming application, not government/ISP censorship infrastructure or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05260",
+    "title": "SecureMCP: A Policy-Enforced LLM Data Access Framework for AIoT Systems via Model Context Protocol",
+    "source": "arxiv",
+    "reason": "Paper addresses LLM prompt injection and database access control in IoT systems; no connection to internet censorship, censor techniques, circumvention protocols, or anonymity research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05774",
+    "title": "SuperPaymaster: Eliminating Centralized Signer Authority via Asset-Oriented Abstraction to Reconcile Usability and Decentralization in Account Abstraction",
+    "source": "arxiv",
+    "reason": "Blockchain smart-contract payment optimization; 'censorship' refers to centralized sponsorship control on Ethereum, not internet censorship or circumvention.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05789",
+    "title": "Stego Battlefield: Evaluating Image Steganography Attacks and Steganalysis Defenses",
+    "source": "arxiv",
+    "reason": "Pure steganography/steganalysis paper evaluating image payload hiding and detection; lacks censorship or circumvention-protocol focus.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05995",
+    "title": "Safety Anchor: Defending Harmful Fine-tuning via Geometric Bottlenecks",
+    "source": "arxiv",
+    "reason": "LLM safety alignment and adversarial robustness paper with no connection to censorship, blocking, circumvention, or surveillance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.06205",
+    "title": "ClawGuard: Out-of-Band Detection of LLM Agent Workflow Hijacking via EM Side Channel",
+    "source": "arxiv",
+    "reason": "Paper studies security threats to LLM autonomous agents (workflow hijacking detection via EM side channels); no connection to censorship, circumvention protocols, or censor capabilities.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.06393",
+    "title": "Constraining Host-Level Abuse in Self-Hosted Computer-Use Agents via TEE-Backed Isolation",
+    "source": "arxiv",
+    "reason": "This paper addresses AI agent sandboxing and access control using TEEs; it has no connection to censorship measurement, blocking techniques, circumvention protocols, or related defenses.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.07241",
+    "title": "Asymmetric Phase Coding Audio Watermarking",
+    "source": "arxiv",
+    "reason": "Audio watermarking for deepfake detection and voice authentication — fraud detection unrelated to censorship circumvention.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.07663",
+    "title": "Quotient Semivalues for False-Name-Resistant Data Attribution",
+    "source": "arxiv",
+    "reason": "Pure ML fairness and data attribution paper with no connection to censorship, circumvention protocols, anonymity systems, or censor detection.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/0de7lze1/",
+    "title": "python装饰器详解 | 二毛",
+    "source": "ermao",
+    "reason": "Generic Python programming tutorial about language features; no relation to censorship, circumvention, or network security.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/106izvxs/",
+    "title": "Zsh 安装与配置 - 使用 Oh My Zsh 美化终端 | 二毛",
+    "source": "ermao",
+    "reason": "This is a Linux shell configuration tutorial for Zsh and Oh My Zsh, with no connection to censorship, circumvention, or internet freedom research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/23w1svxa/",
+    "title": "💸各大机场优惠券汇总 | 二毛",
+    "source": "ermao",
+    "reason": "This is a promotional blog post listing discount coupon codes for VPN services, not research literature or technical analysis of censorship, circumvention protocols, measurement methodologies, or censor capabilities.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/b06gglcq/",
+    "title": "docker 部署 aria2 | 二毛",
+    "source": "ermao",
+    "reason": "This is a technical blog post about deploying Aria2 file-download manager via Docker; it has no connection to censorship measurement, censor capabilities, circumvention protocols, or related research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/bsnuua0h/",
+    "title": "Telegram 搜索机器人实用指南：推荐、技巧与风险边界 | 二毛",
+    "source": "ermao",
+    "reason": "This is a practical how-to guide for using Telegram search bots; it does not study censorship measurement, censor capabilities, circumvention protocols, or blocking events.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/btszw3im/",
+    "title": "Python生成器详解 | 二毛",
+    "source": "ermao",
+    "reason": "This is a Python programming tutorial about generators and iterators with no connection to censorship, circumvention, blocking, anonymity, or related research topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/c3gj5lqy/",
+    "title": "通过Ollama本地部署DeepSeek代码大模型：从硬件配置到VSCode实战指南 | 二毛",
+    "source": "ermao",
+    "reason": "Technical guide for deploying a local AI code model using Ollama; no relationship to censorship measurement, circumvention techniques, or internet filtering.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/choose-good-airport/",
+    "title": "2026年怎么选VPN机场？科学上网翻墙机场避坑与防跑路指南 | 二毛",
+    "source": "ermao",
+    "reason": "Consumer VPN service review and purchasing guide; lacks research contribution to censorship measurement, censor capabilities, protocol design, or circumvention technique evaluation.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/d3apexwx/",
+    "title": "安卓电视/盒子/平板免费使用Emby | 二毛",
+    "source": "ermao",
+    "reason": "Tutorial/how-to guide for setting up Emby media server on Android devices; no research contribution on censorship, detection, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fanqiang2/",
+    "title": "什么是翻墙？2026年最新Clash代理工具完整指南 | 二毛",
+    "source": "ermao",
+    "reason": "Consumer how-to guide for using existing proxy tools (Clash, V2Ray, Trojan); no measurement, analysis, or research contribution to the circumvention literature.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/gokrv7a1/",
+    "title": "ubuntu2204中mongodb数据导入导出 | 二毛",
+    "source": "ermao",
+    "reason": "Technical blog post about MongoDB database administration on Ubuntu; no connection to censorship measurement, circumvention protocols, or related topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/jqtuqouj/",
+    "title": "使用cloudflare进行URL重定向 | 二毛",
+    "source": "ermao",
+    "reason": "Blog post about website migration using Cloudflare URL redirects; no censorship, blocking, circumvention, or surveillance content.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/oh8wwokl/",
+    "title": "⏰ 免费机场 免费梯子 翻墙VPN | 二毛",
+    "source": "ermao",
+    "reason": "This is a service aggregator distributing free circumvention tool subscription links, not a research contribution studying censorship, censor capabilities, or protocol evaluation.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/r50bpg9j/",
+    "title": "如何判断一个机场使用的线路类型（如IPLC/IEPL专线、CN2、BGP中转等） | 二毛",
+    "source": "ermao",
+    "reason": "Consumer how-to guide for evaluating VPN service circuit quality; does not contribute to circumvention research, censor analysis, or censorship-resistance science.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/r6u6yjj9/",
+    "title": "python迭代器详解 | 二毛",
+    "source": "ermao",
+    "reason": "Generic Python programming tutorial on iterators; no connection to censorship, circumvention, surveillance, or network analysis.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/tj38tso3/",
+    "title": "搜索引擎查找 Ollama 本地部署的 DeepSeek，实现免费 AI 运行 | 二毛",
+    "source": "ermao",
+    "reason": "Article is a tutorial on discovering exposed Ollama API services via Fofa/Shodan search engines; no connection to censorship, circumvention, anonymity, or surveillance research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/u5a30qtd/",
+    "title": "HTTP 状态码大全 | 二毛",
+    "source": "ermao",
+    "reason": "Reference guide to HTTP status codes with no connection to censorship, blocking, circumvention, or network security measurement.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/ubm5k5vn/",
+    "title": "wsl将ubuntu换成debian | 二毛",
+    "source": "ermao",
+    "reason": "This is a technical tutorial about switching from Ubuntu to Debian in Windows Subsystem for Linux, unrelated to censorship, blocking, circumvention, anonymity, or surveillance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/vgf2ez1r/",
+    "title": "TrueNAS虚拟机备份 | 二毛",
+    "source": "ermao",
+    "reason": "This is a technical blog post about TrueNAS virtual machine backup procedures; it has no connection to censorship, circumvention, or network security.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/vw1nq52m/",
+    "title": "安卓TV软件推荐与下载 | 二毛",
+    "source": "ermao",
+    "reason": "This is a casual Android TV app recommendations blog post with no research contribution, measurement study, or circumvention/censorship analysis.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/wwpg9n59/",
+    "title": "如何在telegram中使用极搜搜索 | 二毛",
+    "source": "ermao",
+    "reason": "This is a user tutorial for registering Telegram and using a search bot in Telegram, not a research paper studying censorship, censor capabilities, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/yifph1jd/",
+    "title": "使用Vim上班看小说 | 二毛",
+    "source": "ermao",
+    "reason": "Blog post about using Vim as a novel reader at work; unrelated to censorship, circumvention, or security research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/9esim/",
+    "title": "9esim使用指南 - 获取国外手机号，注册Google、Telegram等账号 | 二毛",
+    "source": "ermao",
+    "reason": "Commercial promotional blog post / user guide for eSIM service; not a research paper, measurement study, or original analysis of circumvention or censorship.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/googleseo/",
+    "title": "Google官方SEO入门指南完整版：从零开始优化网站排名 | 二毛",
+    "source": "ermao",
+    "reason": "Blog post about Google SEO optimization that merely incidentally mentions Chinese internet censorship requiring VPN access; contains no analysis of circumvention techniques, censorship mechanisms, or circumvention-specific research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/telegram/",
+    "title": "2026年最新 telegram（电报、飞机）注册使用教程 | 二毛",
+    "source": "ermao",
+    "reason": "User registration and privacy tutorial for Telegram messenger; not research on censorship measurement, censor capabilities, circumvention protocols, or related topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/vpnhefa/",
+    "title": "国内购买vpn违法吗？ | 二毛",
+    "source": "ermao",
+    "reason": "This is legal/regulatory guidance for VPN consumers in China, not a research paper studying censor techniques, circumvention protocols, or policy impact on circumvention tooling.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/yecv6pn6/",
+    "title": "OpenClaw 初阶教程：从 0 到 1 搭建 Telegram AI 助手（2026） | 二毛",
+    "source": "ermao",
+    "reason": "Tutorial blog post on integrating AI assistants into messaging platforms; mentions proxy tools incidentally but does not study censorship, circumvention, or detection techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
     "key": "url:https://petsymposium.org/popets/2026/popets-2026-0003.php",
     "title": "PriVA-C: Defending Voice Assistants from Fingerprinting Attacks",
     "source": "popets",
