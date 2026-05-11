@@ -6,8 +6,16 @@ corpus/pdfs/
 # extraction. Regenerable; not committed.
 corpus/text/
 
-# Go build artifacts.
+# Go build artifacts. The launchd wrapper (deploy/run-crawl.sh) builds
+# corpus-crawl + corpus-findings in-tree on each fire — they're
+# transient and reproducible from source.
 /corpus-mcp
+/corpus-crawl
+/corpus-findings
+/corpus-bundle
+/corpus-site
+/import-censorbib
+/retag-papers
 /dist/
 *.test
 *.out

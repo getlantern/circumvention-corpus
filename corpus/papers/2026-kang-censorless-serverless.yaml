@@ -1,0 +1,74 @@
+# Manually added to fix an auto-ingest gap: the crawler hasn't been
+# scheduled (no launchd job installed) so it has only ever processed
+# papers in its narrow 10-day --window-days bucket on the handful of
+# manual runs. This paper was submitted 2026-02-27, well outside any
+# of those windows. See the parallel commit installing the plist +
+# bumping the manual-backfill window.
+id: 2026-kang-censorless-serverless
+title: 'CensorLess: Cost-Efficient Censorship Circumvention Through Serverless Cloud Functions'
+authors:
+    - Dayeon Kang
+    - Jade Sheffey
+    - Mingshi Wu
+    - Pubali Datta
+    - Amir Houmansadr
+venue: PETS 2026
+year: 2026
+arxiv_id: "2603.00345"
+url: https://arxiv.org/abs/2603.00345
+abstract: |
+    With the increase in Internet censorship globally, various
+    circumvention tools have been designed and developed. However, the
+    monetary cost of these tools deeply impacts both user choice and
+    the sustainability of provider operations. Recent developments in
+    censorship circumvention research attempted to achieve cost
+    efficiency by utilizing Infrastructure-as-a-Service (IaaS) spot
+    instances as bridges, but still incurred substantial expenses
+    related to network connectivity and instance maintenance. In this
+    work, we present CensorLess, a circumvention proxy built leveraging
+    the unique benefits of a serverless platform. CensorLess comprises
+    three components: a local proxy that handles client-side
+    communication and ensures compliance with serverless functions'
+    security restrictions, a function refresher that periodically
+    regenerates bridges, and a live migration mechanism that maintains
+    continuous connectivity. CensorLess inherits the serverless
+    platform's cost efficiency, ephemerality, scalability, concurrency,
+    and performance. Compared to existing low-cost, state-of-the-art
+    circumvention techniques, CensorLess reduces costs by 97%, while
+    simultaneously enabling robust censorship resistance by employing
+    bridge rotation.
+censors:
+    - generic
+techniques:
+    - ip-blocking
+    - asn-blackholing
+defenses_discussed:
+    - bridges
+    - tunneling
+    - meta-resistance
+core: false
+notes: |
+    UMass Amherst (Houmansadr group). Three pieces: local proxy,
+    function refresher that regenerates bridges, live-migration for
+    continuity. Claims 97% cost reduction vs IaaS-spot-instance state
+    of the art and pitches the serverless platform's IP-pool churn +
+    short-lived function lifecycle as inherent collateral-freedom
+    protection (censors can't easily block cloud provider function
+    egress IP ranges without breaking serverless customers).
+
+    Directly relevant to lanturn's session-rotation + coturn-fleet-
+    rotation patterns (design §6.1, §6.2) — same shape (rotate bridges
+    to defeat IP enumeration) on a different substrate (serverless
+    egress vs WebRTC TURN relays). Worth comparing infrastructure
+    cost models — coturn-on-VPS-fleet vs Lambda-style serverless —
+    when Lantern next reviews the egress cost story.
+
+    Related to OBSCURA (2026-vilalonga-obscura-enabling-ephemeral) on
+    the "ephemeral proxy" axis but solves a different problem (cost
+    vs traffic shape).
+visibility: public
+date_added: "2026-05-11"
+added_by: manual
+sources:
+    - url:https://arxiv.org/abs/2603.00345
+    - url:https://arxiv.org/html/2603.00345v1
