@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2603.29520
+id: 2026-he-trafficmoe-heterogeneity-aware-mixture
+title: 'TrafficMoE: Heterogeneity-aware Mixture of Experts for Encrypted Traffic Classification'
+authors:
+    - Qing He
+    - Xiaowei Fu
+    - Lei Zhang
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2603.29520"
+url: https://arxiv.org/abs/2603.29520v1
+abstract: 'Encrypted traffic classification is a critical task for network security. While deep learning has advanced this field, the occlusion of payload semantics by encryption severely challenges standard modeling approaches. Most existing frameworks rely on static and homogeneous pipelines that apply uniform parameter sharing and static fusion strategies across all inputs. This one-size-fits-all static design is inherently flawed: by forcing structured headers and randomized payloads into a unified processing pipeline, it inevitably entangles the raw protocol signals with stochastic encryption noise, thereby degrading the fine-grained discriminative features. In this paper, we propose TrafficMoE, a framework that breaks through the bottleneck of static modeling by establishing a Disentangle-Filter-Aggregate (DFA) paradigm. Specifically, to resolve the structural between-components conflict, the architecture disentangles headers and payloads using dual-branch sparse Mixture-of-Experts (MoE), enabling modality-specific modeling. To mitigate the impact of stochastic noise, an uncertainty-aware filtering mechanism is introduced to quantify reliability and selectively suppress high-variance representations. Finally, to overcome the limitations of static fusion, a routing-guided strategy aggregates cross-modality features dynamically, that adaptively weighs contributions based on traffic context. With this DFA paradigm, TrafficMoE maximizes representational efficiency by focusing solely on the most discriminative traffic features. Extensive experiments on six datasets demonstrate TrafficMoE consistently outperforms state-of-the-art methods, validating the necessity of heterogeneity-aware modeling in encrypted traffic analysis. The source code is publicly available at https://github.com/Posuly/TrafficMoE_main.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Methods directly applicable to censor detection of circumvention traffic through learned statistical fingerprints of encrypted flows.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2603.29520

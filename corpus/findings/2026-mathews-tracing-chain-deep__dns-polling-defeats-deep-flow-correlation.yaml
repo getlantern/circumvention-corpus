@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mathews-tracing-chain-deep
+kind: detection
+summary: ESPRESSO achieves only TPR 0.132 at FPR ≤ 10⁻³ in network-mode for DNS-tunneled traffic—near chance—compared to TPR 0.992 for SSH traffic at the same threshold. The paper attributes this to the polling-based communication mechanism of dnscat2, which disrupts the timing patterns that interval-based flow correlation relies on.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - Adopting a polling/request-response communication pattern—even over non-DNS transports—can substantially degrade flow-correlation accuracy; circumvention relay designers should explore polling rather than streaming models to disrupt interval statistics.
+    - DNS covert channels are the only protocol class where current deep learning correlation degrades to near-chance; studying and emulating DNS timing properties (polling intervals, variable response timing) is a high-leverage direction for correlation-resistant transport design.
+section: §V-B, Table III
+extracted_by: claude-sonnet-4-6

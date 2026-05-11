@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: Client-side padding defenses (WTF-PAD and Walkie-Talkie) do not remove active bandwidth watermarks because they operate on packet timing and burst-level structure, not on the upstream rate limit; BM-Net still achieves 99.65% binary detection F1 on a mixed dataset containing both defended and undefended traces. The upstream shaper's rate constraint causes delayed, queued, or dropped packets whose throughput envelope persists at the exit relay regardless of application-layer obfuscation.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - tor
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Application-layer padding and timing obfuscation are insufficient against infrastructure-level bandwidth shaping; effective defenses must operate at the transport-layer rate level, e.g., by smoothing received throughput with a congestion-blind constant-bitrate shaper before delivery to the application.
+    - Pluggable transport designs should account for the possibility that the upstream ISP shapes the underlying TCP connection; a transport that re-emits at its own independent rate (decoupled from the shaped TCP socket) can mask the imposed waveform more effectively than packet-timing jitter alone.
+section: §VI-E, §VII-A
+extracted_by: claude-sonnet-4-6

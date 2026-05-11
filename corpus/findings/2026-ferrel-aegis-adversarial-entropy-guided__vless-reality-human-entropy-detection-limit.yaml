@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ferrel-aegis-adversarial-entropy-guided
+kind: detection
+summary: 'Flow-physics classifiers face a fundamental ''Human Entropy Horizon'': when VLESS Reality multiplexes true human entropy (a human actively browsing web applications), AEGIS achieves a detection rate of only 1.17%, because XTLS wrappers impart near-zero mechanical overhead and the temporal physics remain entirely stochastic. This implies adversaries operating at human interaction speeds can evade flow-based detection, but must abandon automated high-throughput C2 scripts.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - vless
+    - reality
+censors:
+    - generic
+defense_implications:
+    - Routing circumvention traffic through a real human browsing session (coupling a proxy to an active browser process) can reduce flow-physics detection to near-zero; pure automated proxy traffic remains vulnerable regardless of cryptographic mimicry.
+    - Protocol designers should prioritize human-driven traffic multiplexing (XTLS-style) over synthetic IAT randomization, as synthetic stochastic variance cannot match the true entropy of human browsing behavior.
+section: §V-G
+extracted_by: claude-sonnet-4-6

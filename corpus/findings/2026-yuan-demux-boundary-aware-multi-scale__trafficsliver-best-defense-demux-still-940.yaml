@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yuan-demux-boundary-aware-multi-scale
+kind: evaluation
+summary: Under the TrafficSliver defense — which splits traffic across multiple Tor entry nodes so no single observer sees more than a partial fraction of packets — TMWF collapses to a P@2 of 0.399 and ARES'23 to 0.429, while DEMUX retains a P@2 of 0.940, exceeding the next-best competitor by 2.5 points. WTF-PAD and FRONT are substantially weaker defenses, with most methods maintaining near-baseline performance under WTF-PAD.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Traffic splitting across multiple entry nodes (TrafficSliver-style multi-path) is by far the most effective WF defense evaluated — circumvention systems should explore multi-path architectures that fragment observations across independent vantage points.
+    - Dummy-packet injection defenses (WTF-PAD, FRONT) provide negligible protection against modern multi-scale WF classifiers and should not be treated as a primary defense mechanism.
+section: §V-D, Table IV
+extracted_by: claude-sonnet-4-6

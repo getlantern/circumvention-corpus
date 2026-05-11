@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2604.15677
+id: 2026-yuan-demux-boundary-aware-multi-scale
+title: 'DEMUX: Boundary-Aware Multi-Scale Traffic Demixing for Multi-Tab Website Fingerprinting'
+authors:
+    - Yali Yuan
+    - Yaosheng Liu
+    - Qianqi Niu
+    - Guang Cheng
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2604.15677"
+url: https://arxiv.org/abs/2604.15677v1
+abstract: Website fingerprinting (WF) attacks infer the websites visited by users from encrypted traffic in anonymous networks such as Tor. Existing deep learning methods achieve high accuracy under the single-tab assumption but degrade substantially when users open multiple tabs concurrently, producing interleaved traffic that transforms WF into an implicit demixing problem. We identify three structural requirements for effective multi-tab demixing, namely signal integrity at segment boundaries, multi-scale local modeling, and relative temporal association of dispersed fragments, and show that no prior method satisfies all three simultaneously. We propose DEMUX, a designed framework that addresses these requirements through three tightly coupled components. A Boundary Preserving Aggregation Module employs overlapping window partitioning with joint packet-level and burst-level feature extraction. A Multi-Scale Parallel CNN captures heterogeneous temporal patterns via parallel branches. A two-stage Transformer encoder with Rotary Positional Embedding enables robust cross-window fragment association. The Boundary Preserving Aggregation Module additionally serves as a plug-and-play preprocessor that consistently improves existing baselines without architectural modification. Extensive experiments across closed-world, open-world, defense-augmented, dynamic-tab, and cross-configuration settings demonstrate that DEMUX achieves state-of-the-art performance. In the challenging closed-world 5-tab setting, DEMUX attains a P@5 of 0.943 and MAP@5 of 0.961, outperforming the strongest baseline by 9.2 and 6.2 percentage points respectively, confirming its strong robustness in complex multi-tab demixing scenarios.
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Improved website fingerprinting attacks highlight the need for defenses in Tor and Lantern against traffic-analysis threats; informs understanding of anonymity system vulnerabilities.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2604.15677

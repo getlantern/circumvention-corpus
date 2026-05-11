@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2604.02149
+id: 2026-ferrel-aegis-adversarial-entropy-guided
+title: 'AEGIS: Adversarial Entropy-Guided Immune System -- Thermodynamic State Space Models for Zero-Day Network Evasion Detection'
+authors:
+    - Vickson Ferrel
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2604.02149"
+url: https://arxiv.org/abs/2604.02149v1
+abstract: 'As TLS 1.3 encryption limits traditional Deep Packet Inspection (DPI), the security community has pivoted to Euclidean Transformer-based classifiers (e.g., ET-BERT) for encrypted traffic analysis. However, these models remain vulnerable to byte-level adversarial morphing -- recent pre-padding attacks reduced ET-BERT accuracy to 25.68%, while VLESS Reality bypasses certificate-based detection entirely. We introduce AEGIS: an Adversarial Entropy-Guided Immune System powered by a Thermodynamic Variance-Guided Hyperbolic Liquid State Space Model (TVD-HL-SSM). Rather than competing in the Euclidean payload-reading domain, AEGIS discards payload bytes in favor of 6-dimensional continuous-time flow physics projected into a non-Euclidean Poincare manifold. Liquid Time-Constants measure microsecond IAT decay, and a Thermodynamic Variance Detector computes sequence-wide Shannon Entropy to expose automated C2 tunnel anomalies. A pure C++ eBPF Harvester with zero-copy IPC bypasses the Python GIL, enabling a linear-time O(N) Mamba-3 core to process 64,000-packet swarms at line-rate. Evaluated on a 400GB, 4-tier adversarial corpus spanning backbone traffic, IoT botnets, zero-days, and proprietary VLESS Reality tunnels, AEGIS achieves an F1-score of 0.9952 and 99.50% True Positive Rate at 262 us inference latency on an RTX 4090, establishing a new state-of-the-art for physics-based adversarial network defense.'
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses_discussed:
+    - vless
+    - randomization
+evaluation_methods:
+    - ml-evaluation
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to Lantern as it studies censor-deployable traffic-analysis detection against VLESS Reality and other encrypted tunnels.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2604.02149

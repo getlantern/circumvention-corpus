@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lian-decompose-understand-fuse
+kind: detection
+summary: FreeUp operates under a zero-positive (unsupervised) learning paradigm — trained exclusively on normal traffic with no labeled anomaly examples — yet achieves 95.53% AUC on Tor traffic and 85.44% AUC on DNS-over-HTTPS tunneling detection. This demonstrates that frequency-aware anomaly detectors generalize to novel circumvention protocols without requiring any labeled attack data, eliminating the labeling bottleneck that previously limited ML-based censorship detection.
+techniques:
+    - ml-classifier
+    - fully-encrypted-detect
+    - traffic-shape
+defenses:
+    - tor
+    - dns-tunneling
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools cannot rely on being novel or unlabeled to evade this class of detector; zero-positive classifiers trained only on benign traffic will flag any protocol whose spectral distribution deviates from normal, including previously unseen transports.
+    - Effective evasion requires the circumvention protocol's traffic to be indistinguishable from legitimate traffic in the frequency domain, not just in payload entropy or per-packet length distributions.
+section: §III, §V-B
+extracted_by: claude-sonnet-4-6

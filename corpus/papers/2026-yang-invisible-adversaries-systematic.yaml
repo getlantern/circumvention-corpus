@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2604.04099
+id: 2026-yang-invisible-adversaries-systematic
+title: 'Invisible Adversaries: A Systematic Study of Session Manipulation Attacks on VPNs'
+authors:
+    - Yuxiang Yang
+    - Ao Wang
+    - Xuewei Feng
+    - Qi Li
+    - Ke Xu
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2604.04099"
+url: https://arxiv.org/abs/2604.04099v1
+abstract: Virtual Private Networks (VPNs) are widely used for censorship evasion and traffic protection. VPN users expect to be provided with adequate security protection, and at the same time not be affected by other users connected to the same VPN server, which can be illustrated as the non-interference property. However, in this paper, we have identified several vulnerabilities that violate this property, specifically within the connection tracking frameworks of VPN servers, stemming from shared resource misuse and insufficient validation of session state transitions. We present three session manipulation attacks targeting TCP and UDP traffic tunneled through VPNs. The attacker who only connects to the same VPN server can launch denial-of-service attacks, hijack TCP connections of other clients, or inject forged DNS responses into their queries. We evaluate these attacks against five popular connection tracking frameworks across different OSes and nine major commercial VPN providers. Experimental results reveal that all frameworks and eight providers are vulnerable to at least one of the attacks. We have responsibly disclosed our findings with countermeasures, resulting in 19 assigned CVEs/CNVDs and acknowledgments from the communities and providers.
+censors:
+    - generic
+techniques:
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lanterns VPN-adjacent security posture; evaluates commercial providers globally used for circumvention.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2604.04099

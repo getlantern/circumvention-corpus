@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yan-efficient-provably-secure
+kind: evaluation
+summary: Fine-tuned BERT and RoBERTa steganalysis discriminators achieve only 47.8–50.6% detection accuracy across GPT-2, OPT-1.3B, and Llama-2-7B stegotext — indistinguishable from random guessing. Human evaluators perform similarly poorly (46.6–50.6% accuracy, F1 ≤ 51.5%), while the paper notes statistical classifiers already outperform humans on this discrimination task.
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+defense_implications:
+    - 'Zero-KL divergence is a strong practical guarantee: even discriminatively fine-tuned transformer classifiers cannot distinguish stegotext from cover text, meaning LM-based covert channels survive the strongest known automated steganalysis.'
+    - However, the paper authors flag the dual-use concern and call for parallel detection research — future censors may develop corpus-level timing or metadata analysis rather than per-text classifiers as the attack surface.
+section: §6.5, §6.6, Table 3, Table 8
+extracted_by: claude-sonnet-4-6

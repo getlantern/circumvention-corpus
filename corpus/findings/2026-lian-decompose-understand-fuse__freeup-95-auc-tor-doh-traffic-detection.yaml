@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lian-decompose-understand-fuse
+kind: evaluation
+summary: FreeUp achieves 86.68% AUC on CIC-IoT2023, 85.44% AUC on DoHBrw2020 (malicious DNS-over-HTTPS tunneling), and 95.53% AUC / 93.22% F1 on ISCX-Tor2016 (Tor anonymous traffic), outperforming all nine baselines by more than 3% AUC on the first two datasets. The ISCX-Tor2016 result demonstrates that frequency-decoupled ML classifiers can detect Tor-like anonymous traffic with high confidence under zero-positive (unsupervised) training.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - Tor traffic is detected at 95.53% AUC by anomaly detectors trained only on normal traffic; Tor bridges and pluggable transports should be evaluated against frequency-domain ML classifiers, not just DPI or active-probing defenses.
+    - DNS-over-HTTPS tunneling achieves only 85.44% AUC under this classifier, suggesting some residual evasion; however, circumvention tools relying on DoH face meaningful detection risk from unsupervised spectral classifiers without labeled attack data.
+section: §V-B, Table I
+extracted_by: claude-sonnet-4-6

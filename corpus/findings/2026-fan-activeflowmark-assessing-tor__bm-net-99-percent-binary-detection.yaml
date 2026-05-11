@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: 'BM-Net achieves a 99.65% binary detection F1 score for distinguishing bandwidth-watermarked Tor flows from natural traffic, outperforming all evaluated baselines (next best: TikTok at 75.96% F1). The accuracy gap stems from active perturbation imposing a deterministic low-frequency throughput constraint rather than relying on subtle natural metadata, making the detection task fundamentally easier than passive website fingerprinting.'
+techniques:
+    - flow-correlation
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Passive timing and burst-reshaping defenses (WTF-PAD, Walkie-Talkie) do not protect against active bandwidth watermarking; circumvention tools should include client-side rate-smoothing that counteracts upstream shaper-induced throughput envelopes.
+    - A detector achieving 99.65% F1 on a small labeled dataset confirms active watermarking is a realistic threat; bridge and pluggable-transport designs need explicit countermeasures for infrastructure-level bandwidth control, not just application-layer obfuscation.
+section: §VI-D, Table III–IV
+extracted_by: claude-sonnet-4-6

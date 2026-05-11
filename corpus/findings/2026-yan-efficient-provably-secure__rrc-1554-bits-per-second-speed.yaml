@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yan-efficient-provably-secure
+kind: evaluation
+summary: RRC steganography achieves an embedding speed of up to 1554.66 bits/s on GPT-2 — the fastest among all provably-secure methods tested — and sustains approximately 1500 bits/s across message lengths from 64 to 1024 bits. Embedding a 128-bit secret message takes 0.082 seconds, and the method scales to at least 8192-bit messages (13.5 seconds, 99.99% entropy utilization) without an upper bound on message length.
+defenses:
+    - steganography
+defense_implications:
+    - At ~1500 bits/s, a single LLM-generated paragraph is sufficient to covertly transmit a 256-bit ephemeral key or bridge address — covert channel throughput is no longer a bottleneck for session bootstrap.
+    - 'The method embeds the entire secret message as a single decimal value rather than bit-by-bit; designers must account for all-or-nothing embedding semantics: a truncated stegotext yields no partial secret.'
+section: §6.4, Table 2
+extracted_by: claude-sonnet-4-6

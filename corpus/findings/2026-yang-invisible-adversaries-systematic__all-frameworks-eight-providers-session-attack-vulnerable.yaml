@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yang-invisible-adversaries-systematic
+kind: evaluation
+summary: Empirical evaluation against nine major commercial VPN providers found all five tested connection tracking frameworks (Linux Netfilter, FreeBSD PF, IPFW, IPFilter, natd) and eight of nine providers vulnerable to at least one session manipulation attack, resulting in 19 assigned CVEs/CNVDs.
+techniques:
+    - rst-injection
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - VPN and proxy server operators using shared NAT must treat co-tenant users as potential adversaries, not just external censors; every tested major framework had at least one exploitable configuration.
+    - Circumvention infrastructure deployments should audit their OS-level connection tracking framework and port allocation strategy before assuming session isolation holds.
+section: §I, §IV
+extracted_by: claude-sonnet-4-6

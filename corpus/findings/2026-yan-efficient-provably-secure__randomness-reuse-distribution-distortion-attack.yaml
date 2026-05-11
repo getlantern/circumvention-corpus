@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yan-efficient-provably-secure
+kind: defense
+summary: 'The vanilla range-coding baseline suffers from two provable security failures that RRC corrects: (1) distortion of the token probability distribution because interval boundaries do not align with token probabilities, and (2) randomness reuse across sampling steps, which exposes detectable statistical bias. The rotation mechanism specifically addresses both by introducing fresh PRNG-seeded randomness o~U(0,1) at each step and applying a modulo rotation to the decimal state.'
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+defense_implications:
+    - Naive entropy-coding steganography (raw arithmetic or range coding) is not provably secure and will leak detectable distribution shift — circumvention tools must implement the rotation mechanism (or equivalent) rather than bare AC/RC.
+    - 'Randomness reuse is the subtler failure mode: any covert channel that recycles the same secret bits as sampling entropy across multiple tokens is vulnerable to correlation attacks even if individual token probabilities are preserved.'
+section: §3.2, §4
+extracted_by: claude-sonnet-4-6

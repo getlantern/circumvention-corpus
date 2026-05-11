@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yuan-demux-boundary-aware-multi-scale
+kind: evaluation
+summary: The Traffic Aggregation Matrix (TAM) representation used by the RF baseline — which counts directional packet counts over fixed time slots rather than tracking per-packet sequences — shows unexpectedly strong robustness under TrafficSliver, achieving P@2 of 0.702, substantially exceeding all other CNN-based methods under that defense. Var-CNN similarly achieves P@2 of 0.826 under TrafficSliver despite mediocre no-defense performance, suggesting that tolerance to partial packet loss is architecturally separable from peak single-observer accuracy.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Even time-slot aggregation (rather than per-packet sequences) is sufficient for a censor to achieve ~70% precision under multi-path splitting; traffic splitting must be combined with padding or timing randomization to be effective.
+    - Multi-path defenses should be evaluated against loss-tolerant classifiers (TAM-style), not just sequence-based models, to avoid overestimating the protection afforded by partial packet observation.
+section: §V-D, Table IV
+extracted_by: claude-sonnet-4-6

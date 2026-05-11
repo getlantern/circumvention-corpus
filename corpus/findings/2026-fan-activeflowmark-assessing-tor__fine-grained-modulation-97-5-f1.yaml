@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: BM-Net achieves a 97.5% macro-F1 score for fine-grained classification of three modulation geometries (sinusoidal, square-wave, triangular) from noisy exit-side Tor observations using only 201 labeled test samples collected across cross-continental Tor paths. Residual errors concentrate between natural traffic and square-wave modulation, as abrupt low-rate transitions are partially smoothed by Tor multiplexing and network jitter.
+techniques:
+    - flow-correlation
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Introduce deliberate random variation in client-side throughput (randomized inter-circuit delays, jitter injection) to push square-wave-like patterns further into the natural-traffic confusion region, degrading fine-grained modulation classification beyond the baseline 2.4% error already observed.
+    - Circuit rotation triggered on detected periodic throughput dips can disrupt sustained multi-period patterns required for accurate modulation identification; a guard-level anomaly detector watching for rhythmic rate valleys is a viable client-side countermeasure.
+section: §VI-D, Table V
+extracted_by: claude-sonnet-4-6

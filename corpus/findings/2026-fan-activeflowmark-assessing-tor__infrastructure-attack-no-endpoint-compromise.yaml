@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: NATA requires no endpoint compromise, no Tor-browser modification, and no payload decryption; it operates solely from (1) an upstream gateway controlling Tor TCP connections via standard Linux tc/wondershaper rate-limiting and (2) one or more adversary-controlled exit relays passively recording packet traces. The shaper identifies Tor connections using flow-level metadata (client IP, relay IP, port, transport protocol), meaning the adversary needs only ISP or AS-level vantage, not host-level access.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Bridges and pluggable transports may still be fingerprinted at the TCP-connection level for targeting by the shaper; guard connections should avoid relying on static IP/port combinations, and transports should regularly rotate observable connection metadata to frustrate flow-level targeting.
+    - The attack surface is the TCP connection between the client and its entry/guard relay; reducing that connection's longevity or multiplexing more circuits per connection at shorter intervals limits the modulation periods observable before a circuit change, degrading watermark recovery below the detection threshold.
+section: §III-A, §IV-A
+extracted_by: claude-sonnet-4-6

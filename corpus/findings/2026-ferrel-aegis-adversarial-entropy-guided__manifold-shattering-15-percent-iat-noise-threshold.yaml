@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ferrel-aegis-adversarial-entropy-guided
+kind: detection
+summary: Gaussian noise injection stress testing shows AEGIS maintains F1-scores of 0.9913 at 5% IAT noise and 0.9753 at 10% IAT noise, but degrades to 0.5939 at 15% Gaussian noise — establishing the 'Manifold Shattering Threshold.' The paper asserts that sustaining 15% IAT noise in practice corrupts the adversary's own C2 channel integrity, making this threshold operationally unachievable for high-throughput tunnels.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - IAT jitter injection of 5–10% is insufficient to evade flow-physics classifiers (F1 remains above 0.97); effective temporal obfuscation requires crossing the ~15% threshold or adopting human-driven traffic patterns instead of synthetic randomization.
+    - Protocol designers should validate whether their specific transport can tolerate 15% IAT jitter without functional degradation — if not, human-entropy multiplexing (§V-G) is the only viable evasion path against this classifier class.
+section: §V-F
+extracted_by: claude-sonnet-4-6

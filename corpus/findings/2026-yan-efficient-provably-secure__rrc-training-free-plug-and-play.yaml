@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yan-efficient-provably-secure
+kind: defense
+summary: 'RRC steganography is training-free, model-agnostic, and plug-and-play: it requires no modification to the underlying language model and was validated on GPT-2, OPT-1.3B, and Llama-2-7B. The symmetric-key design requires only that sender and receiver agree on a shared PRNG seed and the secret message length l before communication.'
+defenses:
+    - steganography
+defense_implications:
+    - Any deployment with API access to a hosted LLM (e.g., via a censored region's allowed AI services) could serve as a covert channel without any model fine-tuning or server-side modification — threat model for circumvention tools should include LLM API covert channels.
+    - The requirement to pre-agree on message length l is a coordination overhead; circumvention tools should establish a fixed-length framing protocol (e.g., always 256-bit chunks) to avoid a separate out-of-band negotiation.
+section: §4, §7
+extracted_by: claude-sonnet-4-6

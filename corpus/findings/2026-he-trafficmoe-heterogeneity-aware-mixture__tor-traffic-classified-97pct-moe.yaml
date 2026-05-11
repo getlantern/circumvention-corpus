@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-he-trafficmoe-heterogeneity-aware-mixture
+kind: detection
+summary: TrafficMoE achieves 97.65% accuracy and F1-score on the ISCX-Tor2016 dataset, substantially outperforming all baselines including the best pretraining-based competitor FlowletFormer (91.16% F1), by separately modeling protocol headers and encrypted payloads via dual-branch sparse Mixture-of-Experts rather than treating them as a unified byte stream.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Tor's multi-layer obfuscation is insufficient against classifiers that independently exploit header structure and payload entropy — circumvention transports must destroy discriminative features in both modalities, not just randomize the payload.
+    - Pluggable transports should be evaluated against dual-branch classifiers that score headers and payloads separately, not just unified byte-stream models.
+section: §IV-B, Table II
+extracted_by: claude-sonnet-4-6

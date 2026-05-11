@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lian-decompose-understand-fuse
+kind: detection
+summary: Encrypted traffic exhibits a 'full-frequency' spectral property where both low- and high-frequency components are highly active with comparable intensity, unlike natural images which are dominated by low-frequency components. Fourier Transform analysis across CIC-IoT2023, DoHBrw2020, and ISCX-Tor2016 confirms this distinction is pervasive. This signature is an inherent consequence of encryption disrupting byte-level semantics into a visually disordered, noise-like spatial pattern.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - random-payload-detect
+    - fully-encrypted-detect
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Randomizing circumvention traffic payloads (obfs4, Shadowsocks) creates high-frequency spectral components exploitable by frequency-aware ML classifiers; mimicking legitimate protocol spectral profiles with low-frequency dominance is more evasion-resistant.
+    - Circumvention protocols should embed deliberate low-frequency structure into their traffic representation to avoid the full-frequency fingerprint that distinguishes encrypted tunnels from legitimate traffic.
+section: §II
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yang-invisible-adversaries-systematic
+kind: evaluation
+summary: A co-tenant attacker sharing the same VPN server can launch a port-exhaustion DoS in an average of 4 seconds with over 90% success rate, inject forged HTTP responses in 64.11 seconds at a 66.7% success rate, and hijack DNS responses at success rates of 20% to 70%.
+techniques:
+    - rst-injection
+    - dns-poisoning
+    - port-blocking
+censors:
+    - generic
+defense_implications:
+    - 'Shared-server circumvention architectures (multi-tenant VPN) are highly exposed: an adversary can operationally disable or intercept other users'' traffic by simply subscribing to the same provider, without attacking the circumvention protocol itself.'
+    - Per-user dedicated NAT or isolated IP allocation eliminates the shared connection-tracking table that makes these attacks possible.
+section: §I, §IV-B, §IV-C, §IV-D
+extracted_by: claude-sonnet-4-6

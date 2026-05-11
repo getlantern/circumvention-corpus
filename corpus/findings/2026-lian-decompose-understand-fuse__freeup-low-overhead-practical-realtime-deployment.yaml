@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lian-decompose-understand-fuse
+kind: evaluation
+summary: 'FreeUp''s dual-branch architecture requires only 0.73G MACs and 6.46M parameters at inference — comparable to or lower than simpler baselines (MFR: 1.01G MACs / 11.18M params; ARCADE: 0.82G MACs / 6.70M params) — while achieving substantially higher detection accuracy. The two branches can be deployed in parallel with minimal memory usage, making frequency-decoupled ML detection computationally practical for real-time network monitoring at scale.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - The low computational overhead (0.73G MACs) makes frequency-aware ML anomaly detection deployable at line rate on commodity hardware; circumvention designers should treat this class of detector as operationally feasible for well-resourced censors.
+    - Since the dual-branch architecture parallelizes efficiently without heavy memory usage, detection evasion techniques developed against heavyweight classifiers may not transfer to these lightweight frequency-domain detectors.
+section: §V-F, Table IV
+extracted_by: claude-sonnet-4-6
