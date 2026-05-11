@@ -43,9 +43,19 @@ go build ./cmd/corpus-crawl
 ./corpus-crawl run --dry-run --max 3 --window-days 7    # smoke test
 
 # 6. Install the launchd cron agent
+# On the mini (default checkout at ~/code/circumvention-corpus) the plist's
+# hard-coded path is correct, so a plain cp works:
 mkdir -p ~/Library/LaunchAgents
 cp deploy/io.lantern.corpus-crawl.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/io.lantern.corpus-crawl.plist
+
+# On any OTHER machine (laptop, fresh box, redundant secondary host)
+# where the checkout lives at e.g. ~/go/src/github.com/getlantern/circumvention-corpus,
+# use the install-launchd.sh helper instead — it sed-substitutes the
+# hard-coded /Users/afisk/code/circumvention-corpus path before installing:
+#   bash deploy/install-launchd.sh
+# Do NOT install the cron job on two machines pointing at the same git
+# remote — they'll race to open auto-ingest PRs.
 
 # 7. Verify it's loaded
 launchctl list | grep corpus-crawl
