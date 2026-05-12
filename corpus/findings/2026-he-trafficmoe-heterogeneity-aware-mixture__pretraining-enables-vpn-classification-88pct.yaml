@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-he-trafficmoe-heterogeneity-aware-mixture
+kind: detection
+summary: Pretraining on 30 GB of unlabeled mixed traffic via masked language modeling (ISCX-VPN2016 NonVPN, CICIDS2017, WIDE backbone), then fine-tuning, enables TrafficMoE to classify VPN application traffic at 88.72% F1 and VPN service traffic at 92.61% F1, exceeding all fully supervised and prior pretraining baselines without requiring labeled training data for those domains.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Large-scale unlabeled traffic pretraining dramatically lowers the marginal cost of deploying effective classifiers against novel circumvention protocols — assume adversaries can fine-tune general-purpose traffic models with minimal labeled examples of a new transport.
+    - Evaluate protocol resistance against few-shot and transfer-learning classifiers, not only fully supervised benchmarks trained from scratch on known examples of the protocol.
+section: §IV-A, §IV-B, Table III
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ferrel-aegis-adversarial-entropy-guided
+kind: detection
+summary: Automated proxy engines (e.g., Xray-core running VLESS Reality in automated mode) generate deterministically rigid inter-arrival time distributions because they cannot synthesize the stochastic variance of human-driven IAT, even when volumetrically anchored to benign distributions ('Fat Middle' anchoring via AMOI). The AEGIS Thermodynamic Variance Detector identifies this rigidity via Shannon Entropy of hidden states across 1,000-packet causal windows, rendering volumetric anchoring mathematically distinguishable from genuine human traffic.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - vless
+    - reality
+censors:
+    - generic
+defense_implications:
+    - Injecting artificial IAT variance algorithmically is insufficient if the variance distribution remains deterministic; circumvention tools must source true stochastic IAT from real human interaction or hardware entropy sources rather than PRNG-based jitter.
+    - Protocol implementations should eliminate fixed polling intervals, synchronized batching, and any algorithmic scheduling that produces cyclical or low-entropy IAT signatures detectable across 1,000-packet observation windows.
+section: §III-E, §V-B
+extracted_by: claude-sonnet-4-6

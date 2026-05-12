@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yan-efficient-provably-secure
+kind: defense
+summary: 'Rotation Range-Coding (RRC) steganography achieves approximately 100% entropy utilization (99.98% on GPT-2) while maintaining zero KL divergence at every generative step, outperforming all prior provably-secure baselines: SparSamp at 96.76%, Discop w/ sort at 95.17%, iMEC at 71.44%. The rotation mechanism transforms the discrete uniform random variable into a continuous uniform at each step, preserving the original LM probability distribution exactly.'
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+defense_implications:
+    - LM-based steganographic channels can now achieve near-theoretical maximum covert bandwidth without detectable distribution shift — circumvention tools embedding configuration or keying material in LLM outputs can do so at nearly full entropy capacity.
+    - 'The rotation mechanism is the key primitive: tools implementing covert channels via LM text should rotate the interval state at each step using a PRNG seeded from a shared key rather than directly encoding raw message bits.'
+section: §5.3, Table 1
+extracted_by: claude-sonnet-4-6

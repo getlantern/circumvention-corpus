@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ferrel-aegis-adversarial-entropy-guided
+kind: evaluation
+summary: 'AEGIS, a flow-physics-only ML classifier using a Hyperbolic Liquid State Space Model evaluated on a 400GB adversarial corpus including VLESS Reality, GhostBear, and AMOI-morphed traffic, achieves F1-score 0.9952, 99.50% TPR, and 0.2141% FPR at 262.27 µs inference latency on an RTX 4090. The system discards all payload bytes and classifies traffic exclusively on 6-dimensional flow physics: packet size, inter-arrival time, directionality, TCP window size, TCP flags, and payload ratio.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - vless
+    - reality
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Flow-physics classifiers without payload inspection can achieve near-perfect detection of automated circumvention tools including VLESS Reality; cryptographic mimicry and byte-level obfuscation alone are insufficient to defeat timing-based detection.
+    - 'Circumvention protocol implementations must address IAT determinism: automated proxy engines produce statistically rigid inter-arrival time patterns that remain detectable even with perfect byte-level obfuscation and certificate spoofing.'
+section: §V, Table III
+extracted_by: claude-sonnet-4-6

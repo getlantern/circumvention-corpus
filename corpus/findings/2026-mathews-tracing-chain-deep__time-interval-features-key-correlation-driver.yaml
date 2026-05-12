@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mathews-tracing-chain-deep
+kind: evaluation
+summary: Ablation experiments show that replacing ESPRESSO's transformer backbone with a CNN ('Modified DCF') while retaining time-aligned interval features achieves performance competitive with the full ESPRESSO model across most protocols (e.g., SOCAT network-mode pAUC 0.997 vs. 0.989 at FPR ≤ 10⁻³), demonstrating that the time-interval feature representation—not the transformer architecture—is the primary driver of correlation accuracy.
+techniques:
+    - flow-correlation
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Time-synchronized aggregated interval statistics (byte counts and packet counts per 30 ms bin) are the key input signal enabling robust flow correlation; defenses should prioritize disrupting inter-interval statistical coherence—e.g., jitter that shifts traffic across bin boundaries—over per-packet feature obfuscation.
+    - Since the architecture matters less than the feature representation, circumvention tool developers should assume any sufficiently motivated adversary can reconstruct interval-based correlation with modest ML expertise; the feature space itself must be corrupted.
+section: §V-B, Table III
+extracted_by: claude-sonnet-4-6

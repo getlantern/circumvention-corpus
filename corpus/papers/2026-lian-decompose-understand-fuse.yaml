@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.02970
+id: 2026-lian-decompose-understand-fuse
+title: 'Decompose to Understand, Fuse to Detect: Frequency-Decoupled Anomaly Detection for Encrypted Network Traffic'
+authors:
+    - Xinglin Lian
+    - Chengtai Cao
+    - Ting Zhong
+    - Yong Wang
+    - Kai Chen
+    - Fan Zhou
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.02970"
+url: https://arxiv.org/abs/2605.02970v1
+abstract: Network traffic anomaly detection represents a critical cybersecurity task, yet widespread encryption makes this task increasingly challenging. In response, image-based methods that model traffic as visual patterns have emerged as the dominant approach. However, this work pioneers the identification of a pervasive ``full-frequency'' characteristic and an associated limitation termed ``spectral mismatch'' within this paradigm. Specifically, while encrypted traffic exhibits prominent high-frequency components, mainstream reconstruction methods demonstrate an inherent bias toward learning low-frequency information. This fundamental mismatch results in incomplete representations that consequently degrade anomaly detection performance. To address this challenge, we propose FreeUp, a novel frequency-decoupled framework designed explicitly for encrypted traffic analysis. FreeUp decomposes traffic data into distinct low- and high-frequency bands, processing them through separate, dedicated branches along with a customized training strategy that ensures stable and independent frequency-specific learning. Furthermore, recognizing that simple reconstruction error proves inadequate for evaluating dual-branch architectures, we introduce an uncertainty-inspired fusion scoring mechanism. This mechanism quantifies the reconstruction uncertainty of the frequency-specific branches and dynamically integrates their outputs, yielding a more comprehensive and reliable anomaly score. Extensive experiments across multiple benchmarks demonstrate that FreeUp consistently outperforms state-of-the-art baselines. The code is available at https://github.com/ikun0124/FreeUp.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Understanding ML-based traffic-analysis classifiers is relevant to designing circumvention defenses that evade detection systems.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.02970

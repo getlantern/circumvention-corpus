@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yuan-demux-boundary-aware-multi-scale
+kind: detection
+summary: DEMUX achieves a P@5 of 0.943 and MAP@5 of 0.961 in the closed-world 5-tab multi-tab website fingerprinting setting, outperforming the strongest prior baseline (ARES'25) by 9.2 and 6.2 percentage points respectively. ARES'25's P@K degrades from 0.900 at 2-tab to 0.851 at 5-tab (a drop of 4.9 pp), while DEMUX improves from 0.926 to 0.943 over the same range, expanding the absolute margin from 2.6 to over 9 points.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Multi-tab concurrent browsing no longer provides meaningful anonymity protection against state-of-the-art WF attacks — circumvention tools relying on Tor should not treat tab interleaving as a meaningful defense.
+    - Defensive design must operate at the packet/burst level (padding, splitting) rather than relying on traffic complexity from concurrent tabs to defeat fingerprinting.
+section: §V-B, Table II
+extracted_by: claude-sonnet-4-6

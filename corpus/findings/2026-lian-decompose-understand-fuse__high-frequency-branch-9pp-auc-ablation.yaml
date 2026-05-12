@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lian-decompose-understand-fuse
+kind: detection
+summary: Ablation experiments show that removing the high-frequency branch from FreeUp degrades AUC from 86.68% to 77.09% on CIC-IoT2023 (−9.6 pp) and from 95.53% to 95.10% on ISCX-Tor2016. Removing the entire frequency-decoupled framework causes the largest degradation, dropping to 82.10% AUC on CIC-IoT2023 and 81.26% on DoHBrw2020, confirming that high-frequency components are the primary discriminative signal in encrypted traffic anomaly detection.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - random-payload-detect
+censors:
+    - generic
+defense_implications:
+    - High-frequency spectral content in encrypted traffic is a primary detection feature; circumvention protocols that introduce low-frequency structure (consistent packet sizes, predictable inter-arrival patterns mimicking HTTP/2 or QUIC) are harder to classify as anomalous.
+    - The 9.6 pp AUC gap from suppressing high-frequency analysis suggests traffic shaping toward low-frequency dominance could meaningfully degrade this class of classifier.
+section: §V-C, Table II
+extracted_by: claude-sonnet-4-6

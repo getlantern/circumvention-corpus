@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mathews-tracing-chain-deep
+kind: evaluation
+summary: At operationally realistic base rates—1 million connection pairs per hour with only 10 true stepping-stone chains—a detector with a 1% FPR generates approximately 10,000 false alarms per hour while correctly flagging all 10 intrusions, making classical statistical methods (which cannot reach FPR ≪ 10⁻²) operationally unusable; deep learning methods must target FPR ≤ 10⁻³ to be viable.
+techniques:
+    - flow-correlation
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention systems that generate a high volume of innocuous background connections can exploit base-rate effects to push any correlation attack's operational FPR above its usability threshold, making correlation-based deanonymization impractical even at high TPR.
+    - FPR ≤ 10⁻³ is the practical operational ceiling for adversarial flow correlation at scale; designs that force an attacker above this threshold—through cover traffic volume or timing noise—are effectively correlation-resistant in real deployments.
+section: §I
+extracted_by: claude-sonnet-4-6

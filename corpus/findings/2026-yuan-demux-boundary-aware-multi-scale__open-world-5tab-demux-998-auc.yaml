@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yuan-demux-boundary-aware-multi-scale
+kind: detection
+summary: In the open-world 5-tab setting — where each trace contains one unmonitored site, substantially increasing noise and class imbalance — DEMUX achieves AUC of 0.998, P@5 of 0.951, and MAP@5 of 0.966, while ARES'25 achieves 0.988/0.869/0.911. DEMUX's advantage widens in the open-world setting (the P@5 gap grows from 2.6 pp to 8.2 pp versus closed-world), confirming that state-of-the-art WF attacks are not defeated by open-world conditions or unmonitored co-browsing traffic.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Including unmonitored 'cover' traffic by browsing non-targeted sites concurrently does not meaningfully protect against DEMUX-class WF attacks — circumvention tools cannot rely on decoy traffic patterns to defeat fingerprinting.
+    - Effective defenses must alter the statistical properties of the encrypted traffic stream itself (padding, rate shaping, splitting) rather than depending on realistic-looking co-browsing activity to confuse classifiers.
+section: §V-C, Table III
+extracted_by: claude-sonnet-4-6

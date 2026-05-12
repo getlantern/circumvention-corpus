@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yang-invisible-adversaries-systematic
+kind: detection
+summary: When a VPN server uses Port Preservation for NAT, a co-tenant off-path attacker can infer another user's externally mapped source port by sending probe SYN packets with guessed ports through the tunnel and spoofed SYN/ACK verification packets outside the tunnel; confirmation comes from observing which port the VPN server forwards the response to, enabling targeted TCP session hijacking.
+techniques:
+    - rst-injection
+censors:
+    - generic
+defense_implications:
+    - VPN and proxy servers should use random port selection rather than Port Preservation; Table II confirms that random selection blocks the port-inference prerequisite for TCP hijacking across all tested frameworks.
+    - Circumvention server operators should audit whether their NAT implementation defaults to Port Preservation and switch to random allocation to prevent session enumeration by co-tenants.
+section: §III-B1, §IV-A, Table II
+extracted_by: claude-sonnet-4-6

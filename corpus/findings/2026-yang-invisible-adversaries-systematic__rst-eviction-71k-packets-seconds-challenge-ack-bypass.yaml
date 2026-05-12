@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yang-invisible-adversaries-systematic
+kind: detection
+summary: Spoofed TCP RST packets with sequence numbers stepped at 60,000-unit intervals sent outside the VPN tunnel can evict a victim's ESTABLISHED session entry (timeout drops from 432,000 s to 10 s in Netfilter pre-patch); approximately 71,000 RST packets suffice and can be sent in seconds on modern hardware. Controlling RST TTL to equal the hop count to the VPN server bypasses the RFC 5961 challenge-ACK countermeasure.
+techniques:
+    - rst-injection
+censors:
+    - generic
+defense_implications:
+    - Connection tracking frameworks must enforce strict RST sequence-number validation; loose in-window checks (pre-patch Netfilter, PF, IPFilter) allow session eviction without the victim's participation, and the TTL-control bypass shows that even patched systems remain exploitable.
+    - Circumvention servers should apply RFC 5961 patches and additionally verify that RST packets arrive via the VPN tunnel interface, rejecting spoofed off-tunnel RSTs directed at active sessions.
+section: §III-B2, §IV-A
+extracted_by: claude-sonnet-4-6

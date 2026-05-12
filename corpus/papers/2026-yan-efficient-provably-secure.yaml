@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2604.08052
+id: 2026-yan-efficient-provably-secure
+title: Efficient Provably Secure Linguistic Steganography via Range Coding
+authors:
+    - Ruiyi Yan
+    - Yugo Murawaki
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2604.08052"
+url: https://arxiv.org/abs/2604.08052v2
+abstract: Linguistic steganography involves embedding secret messages within seemingly innocuous texts to enable covert communication. Provable security, which is a long-standing goal and key motivation, has been extended to language-model-based steganography. Previous provably secure approaches have achieved perfect imperceptibility, measured by zero Kullback-Leibler (KL) divergence, but at the expense of embedding capacity. In this paper, we attempt to directly use a classic entropy coding method (range coding) to achieve secure steganography, and then propose an efficient and provably secure linguistic steganographic method with a rotation mechanism. Experiments across various language models show that our method achieves around 100% entropy utilization (embedding efficiency) for embedding capacity, outperforming the existing baseline methods. Moreover, it achieves high embedding speeds (up to 1554.66 bits/s on GPT-2). The code is available at github.com/ryehr/RRC_steganography.
+censors:
+    - generic
+techniques:
+    - keyword-filtering
+defenses_discussed:
+    - steganography
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Could enable covert communication in censored environments via linguistically innocent carrier text, but paper does not evaluate against actual censors or circumvention scenarios.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2604.08052

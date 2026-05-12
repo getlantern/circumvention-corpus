@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-he-trafficmoe-heterogeneity-aware-mixture
+kind: detection
+summary: 'Explicitly disentangling packet headers (structured, low-entropy) from encrypted payloads (high-entropy, stochastic) into separate MoE branches yields consistent gains across six datasets: 86.85% F1 on 120-class TLS 1.3 traffic (CSTNET-TLS), 97.88% F1 on USTC-TFC2016 malware/benign flows, and 92.65% F1 on imbalanced IoT traffic (CIC-IoT2022), demonstrating that headers and payloads carry fundamentally different and independently exploitable discriminative signals.'
+techniques:
+    - ml-classifier
+    - dpi
+    - fully-encrypted-detect
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Obfuscating payload entropy alone is insufficient — IP/TCP header fields, packet sizes, and inter-packet timing retain independent discriminative signal that classifiers exploit separately; transports must normalize headers in addition to payloads.
+    - Circumvention protocol benchmarks should include classifiers that disentangle header and payload branches rather than only evaluating unified byte-stream or flow-feature models.
+section: §III-A, §IV-B, Tables II–III
+extracted_by: claude-sonnet-4-6

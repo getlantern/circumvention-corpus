@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mathews-tracing-chain-deep
+kind: evaluation
+summary: ESPRESSO, a deep learning flow correlator combining a transformer backbone with time-aligned interval features and online triplet mining, achieves TPR >0.99 at FPR ≤ 10⁻³ for SSH, SOCAT, and ICMP stepping-stone traffic in network-mode detection, versus DCF's TPR of 0.320–0.956 across those same protocols at the same threshold. On the harder mixed-protocol dataset in network-mode, ESPRESSO achieves TPR 0.748 at FPR ≤ 10⁻³, more than double DCF's 0.334.
+techniques:
+    - flow-correlation
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Standard bursty tunneling protocols (SSH, SOCAT, ICMP) are reliably correlated at low FPRs by modern deep learning; circumvention proxy chains relying on unmodified tunneling are vulnerable to traffic-correlation deanonymization and require dedicated anti-correlation countermeasures.
+    - Protocol choice alone does not provide meaningful correlation resistance; mixing protocols per-hop (mixed-protocol chains) degrades accuracy but does not defeat detection—architectural defenses are necessary.
+section: §V-B, Table III
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yuan-demux-boundary-aware-multi-scale
+kind: detection
+summary: 'A plug-and-play Boundary Preserving Aggregation Module (overlapping window partitioning with joint packet- and burst-level features, W=20ms, stride=10ms) consistently improves existing WF baselines without architectural modification: applied to DF, AUC rises from 0.780 to 0.901 and P@5 from 0.315 to 0.545; applied to ARES''25, P@5 rises from 0.869 to 0.900 in the open-world 5-tab setting. The module''s consistent gains across all three tested baselines confirm that fixed non-overlapping window segmentation is a structural vulnerability in prior WF pipelines.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Burst-boundary transitions (direction-change moments) are the single most discriminative signal for WF demixing — defenses should specifically obfuscate or randomize burst boundaries rather than only padding inter-burst timing gaps.
+    - Designing circumvention traffic to produce frequent, irregular burst boundaries (e.g., via adaptive packet scheduling) would directly degrade the load-bearing signal that makes modern WF classifiers effective.
+section: §V-G, Figure 5
+extracted_by: claude-sonnet-4-6

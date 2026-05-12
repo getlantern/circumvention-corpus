@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yang-invisible-adversaries-systematic
+kind: evaluation
+summary: DNS hijacking via shared VPN NAT is feasible because the full 16-bit TxID space (up to 65,536 values) can be brute-forced in an average of 4.27 seconds, well within a typical 10-second DNS request timeout; browser DNS cache windows range from 60 seconds (Chrome/Edge) to 660 seconds or more (Firefox), with longer windows enlarging the injection race window.
+techniques:
+    - dns-poisoning
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that route user DNS through a shared VPN NAT expose all co-tenant users to response injection; deploying encrypted DNS (DoH/DoT) over a separate channel or per-user resolver eliminates the shared-session attack surface.
+    - Circumvention clients should avoid relying on the VPN server's forwarded DNS and instead use a trusted local resolver to prevent TxID-based injection races.
+section: §III-C, §IV-D, Table I
+extracted_by: claude-sonnet-4-6

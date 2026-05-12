@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ferrel-aegis-adversarial-entropy-guided
+kind: detection
+summary: Adversarial pre-padding — prepending stochastic byte noise to packets — degrades ET-BERT encrypted traffic classification accuracy from >99% to 25.68%, exposing a structural vulnerability in all payload-byte-dependent detection systems. White-box adversarial attacks (Ayaka AH-MSI) additionally achieve evasion rates exceeding 99.5% against standard continuous-time sequence models via Manifold Shattering, where adversaries align malicious temporal distributions with benign baselines.
+techniques:
+    - dpi
+    - ml-classifier
+defenses:
+    - randomization
+    - vless
+censors:
+    - generic
+defense_implications:
+    - Prepending randomized byte sequences to the beginning of proxy packets effectively defeats payload-sequence classifiers like ET-BERT, but provides no protection against flow-physics classifiers operating exclusively on timing and size features.
+    - Circumvention tools should combine byte-level randomization (to defeat payload classifiers) with human-entropy IAT patterns (to defeat flow-physics classifiers), as each defense targets a distinct detection paradigm.
+section: §II, §VI-A
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-he-trafficmoe-heterogeneity-aware-mixture
+kind: detection
+summary: Routing-guided conditional aggregation (CA) that dynamically weights header versus payload contributions using per-sample MoE routing probabilities outperforms static fusion on all six datasets, demonstrating that the relative discriminative utility of headers versus payloads varies by application type — and that classifiers can adaptively shift reliance to whichever modality is less obfuscated.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols that normalize only one modality (e.g., fixed-size padding) remain vulnerable because adaptive classifiers shift weight to the un-normalized modality; coordinated, simultaneous obfuscation of both headers and payload is required.
+    - Protocol designers should measure classifier confidence as a function of which modality is suppressed to identify and close the most exploitable discrimination channel.
+section: §III-E, §IV-B
+extracted_by: claude-sonnet-4-6
