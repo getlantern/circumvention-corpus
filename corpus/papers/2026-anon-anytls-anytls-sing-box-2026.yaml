@@ -119,11 +119,11 @@ abstract: |-
 censors:
     - generic
 techniques:
-    - tls-fingerprint
+    - traffic-shape
 defenses_discussed:
     - anytls
 core: false
-notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Materially documents AnyTLS protocol design and deployment; relevant to understanding circumvention protocol ecosystem and comparing TLS-based obfuscation approaches.
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Chinese-language technical guide; directly relevant to Lantern's protocol evaluation and emerging circumvention tool support.
 visibility: public
 date_added: "2026-05-11"
 added_by: corpus-crawl-bot

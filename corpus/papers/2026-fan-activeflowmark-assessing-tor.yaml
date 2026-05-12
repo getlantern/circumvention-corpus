@@ -20,14 +20,14 @@ censors:
     - generic
 techniques:
     - flow-correlation
+    - traffic-shape
     - ml-classifier
-defenses_discussed:
-    - tor
 evaluation_methods:
     - measurement-study
+    - ml-evaluation
     - simulation
 core: false
-notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates infrastructure-level flow-correlation attack on Tor that does not require endpoint compromise; relevant to understanding attacks on anonymity systems that circumvention tools depend on.
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates Tor vulnerability to active bandwidth-watermarking attacks by adversaries with upstream network access; relevant for understanding robustness requirements of anonymity-based circumvention.
 visibility: public
 date_added: "2026-05-11"
 added_by: corpus-crawl-bot
