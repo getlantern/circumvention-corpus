@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: evaluation
+summary: Using a 1%-scaled tornettools simulation with historical Tor consensus data, a single adversary-controlled exit relay at 148 Mbps yields an exit-observation probability of approximately 2.13%; deploying 5 adversary-controlled exit relays pushes observation probability above 10%. The aggregation effect is concave — repeated observations across T independent windows compound via 1 − (1 − Pcorr)^T.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Exit relay bandwidth concentration is the primary lever for this attack's network-scale reach; designs that enforce AS-diverse or jurisdiction-diverse circuit selection (not just relay count) directly reduce pexit even at modest adversarial exit bandwidth.
+    - Tor bridge usage forces the Shaper to make additional identification assumptions about non-standard entry connections, raising the identification cost — circumvention tools that wrap Tor in an obfuscated transport (e.g., obfs4, VLESS) complicate the Shaper step and reduce the pool of confidently shaped flows.
+section: §VI-A
+extracted_by: claude-sonnet-4-6

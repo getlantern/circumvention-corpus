@@ -13,6 +13,8 @@ abstract: Linguistic steganography involves embedding secret messages within see
 censors:
     - generic
 techniques:
+    - keyword-filtering
+defenses_discussed:
     - steganography
 evaluation_methods:
     - ml-evaluation

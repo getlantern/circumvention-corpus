@@ -22,14 +22,12 @@ techniques:
     - flow-correlation
     - traffic-shape
     - ml-classifier
-defenses_discussed:
-    - tor
 evaluation_methods:
     - measurement-study
-    - simulation
     - ml-evaluation
+    - simulation
 core: false
-notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to Lantern: demonstrates practical infrastructure-level deanonymization of Tor via bandwidth modulation that adversaries (including censors) could deploy.'
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates Tor vulnerability to active bandwidth-watermarking attacks by adversaries with upstream network access; relevant for understanding robustness requirements of anonymity-based circumvention.
 visibility: public
 date_added: "2026-05-11"
 added_by: corpus-crawl-bot
