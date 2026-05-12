@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: evaluation
+summary: 'Using tornettools-based simulations with historical Tor consensus data scaled to 1% of the real network (80 relays), the adversary''s exit-observation probability p̂exit grows monotonically with adversary-controlled bandwidth: a single exit relay at 148 Mbps yields p̂exit ≈ 2.13%, and 5 adversary-controlled exit relays push p̂exit above 10%.'
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Designs that steer circuits away from high-bandwidth exit relays (e.g., AS-aware path selection, Counter-RAPTOR) directly reduce the exit-observation component of the watermarking attack surface.
+    - Bridge or pluggable-transport configurations that never expose an adversary-controlled Tor exit relay eliminate the Sniffer vantage point required for NATA; deployments should consider end-to-end tunnel designs that bypass the public Tor exit layer.
+section: §V.B, §VI.A
+extracted_by: claude-sonnet-4-6

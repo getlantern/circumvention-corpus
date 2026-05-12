@@ -1,0 +1,21 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-anon-6-github-dns
+title: 全网最全！6种方法解决 GitHub 国内由于 DNS 污染导致无法访问的问题 | 二毛
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/article/jddtxrrw/
+abstract: "全网最全！6种方法解决 GitHub 国内由于 DNS 污染导致无法访问的问题 | 二毛\n\n[Skip to content](#VPContent)\n\n# 全网最全！6种方法解决 GitHub 国内由于 DNS 污染导致无法访问的问题\n\n约 906 字大约 3 分钟\n\n[GitHub](/blog/tags/?tag=GitHub)[DNS](/blog/tags/?tag=DNS)[VPN](/blog/tags/?tag=VPN)\n\n...\n\n2025-02-27\n\nGitHub 是一个面向开源及私有软件项目的托管平台，不管是行业大佬还是编程小白都可以在 GitHub 上交流学习，但是国内的 GitHub 访问被污染，导致无法正常访问。\n\n本文通过 6 种方法解决 GitHub 访问被污染的问题。如果全部方法试用后仍然无法访问（概率极低），欢迎在下方评论，手把手帮你处理！\n\nGitHub 的 DNS 污染问题通常表现为域名解析被劫持到错误的 IP 地址，导致无法正常访问。\n\n浏览器报错如下：\n\n**嗯… 无法访问此页面**\n\n**github.com 响应时间太长**\n\n![github.com 响应时间太长](https://image.ermao.net/images/article/jddtxrrw/image.png)\n\n* * *\n\n下面提供几个可行的方案共大家参考\n\n## [**1\\. 手动修改 Hosts 文件**](#_1-手动修改-hosts-文件)\n\n通过直接绑定 GitHub 域名的正确 IP 地址，绕过 DNS 解析污染。  \n**步骤**：\n\n1.  **获取最新的 GitHub 域名 IP**：\n\n    *   访问 [IPAddress.com](https://www.ipaddress.com/) 查询以下域名的当前 IP：\n        *   `github.com`\n        *   `assets-cdn.github.com`\n        *   `github.global.ssl.fastly.net`\n        *   `api.github.com`\n        *   `raw.githubusercontent.com`\n    *   或使用命令查询（需安装 `nslookup` 或 `dig`）：\n\n        ```bash\n        nslookup github.com 8.8.8.8  # 使用 Google DNS 查询\n        ```\n2.  **修改 Hosts 文件**：\n\n    *   **Windows**：\n        *   文件路径：`C:\\Windows\\System32\\drivers\\etc\\hosts`\n        *   右键用管理员权限编辑，添加以下内容：\n\n            ```\n            # GitHub\n            140.82.113.3    github.com\n            185.199.108.153 assets-cdn.github.com\n            199.232.69.194  github.global.ssl.fastly.net\n            ```\n    *   **macOS/Linux**：\n        *   文件路径：`/etc/hosts`\n        *   终端输入 `sudo nano /etc/hosts`，添加上述内容。\n3.  **刷新 DNS 缓存**：\n\n    *   Windows：`ipconfig /flushdns`\n    *   macOS/Linux：`sudo dscacheutil -flushcache` 或 `sudo systemd-resolve --flush-caches`\n\n* * *\n\n## [**2\\. 使用加密 DNS 服务**](#_2-使用加密-dns-服务)\n\n通过加密 DNS（如 DNS-over-HTTPS 或 DNS-over-TLS）避免解析被劫持。  \n**推荐方案**：\n\n*   **Cloudflare DNS**（`1.1.1.1`）或 **Google DNS**（`8.8.8.8`）：\n    *   手动设置设备的 DNS 地址。\n*   **DNSCrypt 或 DoH/DoT 工具**：\n    *   使用 [AdGuard DNS](https://adguard-dns.io/)、[NextDNS](https://nextdns.io/) 等支持加密的 DNS 服务。\n\n* * *\n\n## [**3\\. 使用代理或 VPN(终极大杀器)**](#_3-使用代理或-vpn-终极大杀器)\n\n通过代理或 VPN 完全绕过本地 DNS 污染。  \n**推荐工具**：\n\n*   **Clash**（支持规则分流，开源免费）\n*   **Shadowsocks/V2Ray**（需自建或购买节点）\n*   商业 VPN（如 ExpressVPN、NordVPN）\n\n相关内容：\n\n*   \U0001F4F1 [clash for Android](https://www.ermao.net/article/eh8f4n86/)\n*   \U0001F5A5 [clash for Windows](https://www.ermao.net/article/0gematwc/)\n*   \U0001F34E [clash for iOS](https://www.ermao.net/article/z747kgjd/)\n\n* * *\n\n## [**4\\. 使用 GitHub 镜像站点**](#_4-使用-github-镜像站点)\n\n访问 GitHub 的镜像服务，避开主域名污染。  \n**常用镜像**：\n\n*   [GitHub 加速下载](https://ghproxy.com/)\n*   [FastGit](https://hub.fastgit.org/)（已停用，可寻找替代）\n\n* * *\n\n## [**5\\. 验证 DNS 污染**](#_5-验证-dns-污染)\n\n确认是否真的是 DNS 污染导致的问题：\n\n1.  使用 `nslookup` 或 `dig` 查询域名：\n\n    ```bash\n    nslookup github.com 8.8.8.8  # 使用干净的 DNS 查询\n    nslookup github.com          # 使用本地默认 DNS 查询\n    ```\n\n    *   若结果不一致，说明存在 DNS 污染。\n\n* * *\n\n## [**6\\. 清除本地 DNS 缓存**](#_6-清除本地-dns-缓存)\n\n*   **Windows**：\n\n    ```cmd\n    ipconfig /flushdns\n    ```\n\n*   **macOS**：\n\n    ```bash\n    sudo killall -HUP mDNSResponder\n    ```\n\n*   **Linux**：\n\n    ```bash\n    sudo systemctl restart nscd\n    ```\n\n* * *\n\n## [**注意事项**](#注意事项)\n\n1.  **IP 地址可能变化**，需定期更新 Hosts 文件。\n2.  **优先使用 HTTPS**，避免中间人攻击。\n3.  如果使用代理/VPN，确保节点未被 GitHub 封禁（如某些机场 IP 可能被限制）。\n\n* * *\n\n通过以上方法，可有效绕过 DNS 污染问题。若问题持续，可能是网络环境限制（如防火墙），需结合代理或 VPN 彻底解决。\n\n0%"
+censors:
+    - cn
+techniques:
+    - dns-poisoning
+defenses_discussed:
+    - tunneling
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. How-to guide rather than formal research; documents DNS-injection censorship technique and client-side defenses relevant to GFW blocking of GitHub.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/article/jddtxrrw/

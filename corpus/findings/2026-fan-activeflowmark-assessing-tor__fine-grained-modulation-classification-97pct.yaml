@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: evaluation
+summary: Fine-grained modulation classification (natural vs. sinusoidal vs. square-wave vs. triangular) achieves 97.5% macro-F1 on a 201-sample held-out test set. Square-wave waveforms are the hardest class (F1 = 95.7%), while sinusoidal and triangular each reach 99.0% F1, because abrupt square-wave transitions are partially smoothed by Tor multiplexing and network dynamics.
+techniques:
+    - flow-correlation
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Square-wave (on/off keying) shaping patterns are more detectable by censors than smooth waveforms because their abrupt edges survive network distortion more distinctively — circumvention tools performing their own rate shaping should prefer smooth or randomized profiles over square-wave patterns.
+    - The small test set (201 samples) reflects the practical difficulty of collecting labeled cross-continental Tor traces, suggesting that empirical attack evaluations in this threat model are often under-powered and reported F1 scores may not generalize across all network paths.
+section: §VI.D.2, Table V
+extracted_by: claude-sonnet-4-6
