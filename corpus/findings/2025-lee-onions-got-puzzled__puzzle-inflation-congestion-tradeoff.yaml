@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: evaluation
+summary: 'The Tor client puzzle mechanism contains a fundamental architectural trade-off: the system is forced to choose between inflation resistance (preventing attackers from artificially raising puzzle difficulty) and congestion resistance (preventing the service from being overwhelmed), but cannot achieve both simultaneously — a root-cause vulnerability acknowledged by the Tor Project.'
+defenses:
+    - tor
+defense_implications:
+    - Any circumvention system adopting client puzzles for DoS mitigation must explicitly decide which failure mode (inflation or congestion) is more acceptable for its threat model and design accordingly.
+    - The Tor puzzle trade-off suggests that purely server-side rate signals are insufficient; client puzzle systems need out-of-band congestion signals or client-reputation mechanisms to close the gap.
+section: Abstract
+extracted_by: claude-sonnet-4-6

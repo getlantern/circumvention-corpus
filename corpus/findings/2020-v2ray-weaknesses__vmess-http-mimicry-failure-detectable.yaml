@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-v2ray-weaknesses
+kind: detection
+summary: 'V2Ray''s HTTP obfuscation mode prepends an HTTP header only to the first TCP payload per connection and uses a hardcoded HTTP 500 response for all failure cases, making the mimicry trivially detectable: legitimate HTTP servers send headers on every response, and do not return 500 for protocol errors a real HTTP server would never encounter.'
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Abandon parrot-style HTTP header prepending; instead route proxy traffic through a full, compliant HTTP engine (e.g., Caddy forwardproxy or naiveproxy) so that active probes elicit responses indistinguishable from a legitimate HTTPS server.
+    - Ensure all failure responses (invalid auth, bad protocol) produce plausible HTTP responses a real web server would generate for that request, not a hardcoded 500.
+section: §Failed to Mimic the HTTP Server
+extracted_by: claude-sonnet-4-6

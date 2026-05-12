@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-miaan-stealth-blackout
+kind: detection
+summary: The June 2025 Iran shutdown achieved approximately 90% reduction in international traffic without BGP withdrawal by combining DNS poisoning, protocol whitelisting, and DPI at the national border — maintaining an outward appearance of normal connectivity for traditional monitoring tools while severing the population's access to the global Internet. Unlike the 2019 shutdown, which was implemented per-provider over 24+ hours, the 2025 operation was centralized and covert.
+techniques:
+    - dns-poisoning
+    - dpi
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - Protocol whitelisting means circumvention tools must tunnel within explicitly allowed protocols or face near-total blocking; pure IP/ASN diversity is insufficient against centralized application-layer shutdowns.
+    - Monitoring for BGP anomalies alone will miss stealth-blackout events; measure application-layer reachability from inside the country to detect this class of enforcement.
+section: Executive Summary — Technical and Strategic Evolution
+extracted_by: claude-sonnet-4-6

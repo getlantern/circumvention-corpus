@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: detection
+summary: Shared domestic-entry transit architectures (国内入口 + 海外转发) suffered disproportionate impact because all nodes sharing a single domestic entry point went down simultaneously when that entry was reported and cut. Operators described configurations degrading from 'three-line redundancy to single entry,' eliminating failover capacity under enforcement pressure.
+techniques:
+    - ip-blocking
+    - asn-blackholing
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Do not share a single domestic ingress across many users or nodes; treating domestic entry points as individually expendable, short-lived bridges — rather than stable shared infrastructure — reduces the blast radius of each enforcement action.
+    - 'Replicate the ''Tor bridge'' model at the infrastructure layer: maintain a pool of independent domestic entry IPs/ASNs so enforcement against any one does not disable a large fraction of users.'
+section: §为什么中转机场这次受冲击更明显
+extracted_by: claude-sonnet-4-6

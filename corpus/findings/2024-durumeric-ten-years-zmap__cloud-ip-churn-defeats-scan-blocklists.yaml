@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: 'A decade of Internet-wide scanning practice has established that cloud-hosted services present a fundamental measurement ambiguity: IP ownership is ephemeral and shared, making per-IP findings unreliable and complicating the attribution of services to specific operators or censors.'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Routing circumvention proxy traffic through major cloud ASNs (AWS, GCP, Azure, Cloudflare) exploits scan-measurement unreliability and the political cost of wholesale ASN blocking — a strategy that has shown durability in high-censorship environments.
+    - Censors using ZMap-style scanning to build blocklists will experience higher false-positive rates on cloud IP ranges; circumvention infrastructure should prefer cloud-hosted deployments with high IP churn over static datacenter addresses.
+section: Abstract (open problems)
+extracted_by: claude-sonnet-4-6

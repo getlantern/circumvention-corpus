@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-6-github-dns
+kind: defense
+summary: Static /etc/hosts bindings that hardcode correct IPs (e.g. 140.82.113.3 for github.com, 185.199.108.153 for assets-cdn.github.com) bypass DNS-injection blocking entirely, but the blog warns that GitHub IP addresses change and the file must be updated periodically to remain effective.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Tools that embed hardcoded IP fallbacks for bootstrap domains must implement an automated refresh mechanism, since static IPs become stale and create a persistent maintenance burden.
+    - 'Treat /etc/hosts bypasses as a fragile last resort: they fail if the censor adds IP-level blocking on top of DNS poisoning.'
+section: §1 手动修改 Hosts 文件
+extracted_by: claude-sonnet-4-6

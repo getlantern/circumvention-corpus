@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-github-2026-6-dns
+kind: detection
+summary: The GFW blocks GitHub via DNS poisoning across at least four domains — github.com, assets-cdn.github.com, github.global.ssl.fastly.net, and raw.githubusercontent.com — causing connection timeouts and page-load failures for mainland China users. The block is persistent as of February 2026, affecting both browser access and command-line git operations.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Tools must address DNS poisoning at the transport layer (e.g., DoH/DoT or hardcoded IPs) rather than relying on system DNS, since ISP-level DNS is the primary attack vector for GitHub blocking.
+    - Both web browsing and git CLI traffic must be captured by the proxy; rule-based split-tunneling that targets GitHub domains by name will fail if DNS is poisoned before the rule can match.
+section: Introduction / §方法一
+extracted_by: claude-sonnet-4-6

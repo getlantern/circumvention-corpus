@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: detection
+summary: OnionFlation attacks succeed by inflating puzzle difficulty without causing detectable congestion at the targeted service, meaning the attack leaves no noticeable traffic-volume signature at the victim — standard congestion-based anomaly detection cannot identify the attack in progress.
+defenses:
+    - tor
+defense_implications:
+    - Detecting puzzle-inflation attacks requires monitoring client-observed puzzle difficulty (or introduction-circuit failure rates) rather than server-side throughput metrics — instrument the client path, not only the server.
+    - Censors or adversaries seeking to deny access to onion services without generating detectable attack traffic now have a documented low-cost technique; circumvention tools should assume this attack class is available to well-resourced adversaries.
+section: Abstract
+extracted_by: claude-sonnet-4-6

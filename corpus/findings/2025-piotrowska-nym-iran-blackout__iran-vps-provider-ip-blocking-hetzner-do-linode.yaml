@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-piotrowska-nym-iran-blackout
+kind: detection
+summary: IP blocking during the June 2025 Iran shutdown targeted large portions of address space belonging to major VPS hosting providers — Hetzner, DigitalOcean, Linode, and others — commonly used to host VPN and proxy servers, with small exceptions carved out for infrastructure deemed critical.
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Commodity-hosting IP ranges are a first-pass block target; circumvention infrastructure should use residential IPs, CDN edge nodes, or domain-fronted paths that share IP space with non-blockable services.
+    - Distributing proxy infrastructure across many diverse ASNs limits blast radius when a provider's entire IP range is swept.
+section: IP blocking of hosting providers
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-anytls-sing-box-2026
+kind: defense
+summary: AnyTLS is a TLS-based proxy protocol maintained by the sing-box team, designed in 2024 and first released in the sing-box dev-next branch. Its core mechanism wraps arbitrary proxy traffic in standard TLS and applies a configurable padding scheme (Padding Scheme) to enhance traffic concealment while maintaining compatibility with standard TLS infrastructure.
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+    - dpi
+defenses:
+    - anytls
+    - mimicry
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - AnyTLS's use of standard TLS as the outer layer makes it blend with normal HTTPS traffic at the protocol level; designers should pair it with a legitimate TLS certificate and port 443 to maximize mimicry.
+    - The customizable padding scheme means traffic fingerprints are not fixed — tools using AnyTLS should rotate or randomize padding parameters across deployments to prevent corpus-based classifier training.
+section: §1.1–1.3
+extracted_by: claude-sonnet-4-6

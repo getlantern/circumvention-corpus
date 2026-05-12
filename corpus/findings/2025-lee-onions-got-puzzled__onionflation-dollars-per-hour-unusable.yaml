@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: evaluation
+summary: OnionFlation attacks can render any existing Tor onion service largely unusable at an attack cost of approximately a couple of dollars per hour, by artificially inflating the required client puzzle difficulty for all connecting clients without causing noticeable congestion at the targeted service.
+defenses:
+    - tor
+defense_implications:
+    - Onion services used as circumvention infrastructure (bridges, hidden service frontends) must account for cheap availability attacks that don't trip congestion-based defenses — availability monitoring and fallback endpoints are essential.
+    - Puzzle difficulty thresholds should not be the sole signal for service health; deploy independent liveness probes that can detect inflation attacks distinct from real congestion.
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: deployment
+summary: China Telecom Group issued directives to Guangdong Telecom requiring comprehensive rectification of cross-border dedicated-line (IEPL/跨境专线) services used for circumvention. Guangzhou launched enforcement first; other Guangdong cities were expected to follow, threatening widespread IEPL line interruptions for providers using Guangdong Telecom as their domestic ingress.
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - 'Treat carrier-specific IEPL dependency as a concentrated risk: a single enforcement directive from a provincial carrier can simultaneously invalidate a large share of a provider''s infrastructure.'
+    - Geographic and carrier diversification of domestic entry points (multiple provinces, multiple carriers) is necessary to maintain availability when any single carrier initiates a rectification campaign.
+section: §广东方向专项整治传闻的影响
+extracted_by: claude-sonnet-4-6

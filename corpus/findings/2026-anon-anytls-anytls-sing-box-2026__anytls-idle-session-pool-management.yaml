@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-anytls-sing-box-2026
+kind: defense
+summary: 'AnyTLS implements a persistent idle-session pool with configurable parameters: idle_session_check_interval (default 30s), idle_session_timeout (default 30s), and min_idle_session (default 5). The client maintains at least 5 pre-established TLS sessions at all times to enable fast connection reuse without a new TLS handshake per request.'
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+defenses:
+    - anytls
+censors:
+    - cn
+defense_implications:
+    - Maintaining a pool of idle pre-authenticated TLS sessions eliminates the per-request handshake burst that distinguishes proxy protocols from browser TLS — set min_idle_session ≥ 5 to ensure the connection pattern resembles persistent HTTP/2 keep-alive traffic.
+    - The idle_session_timeout should be tuned to the expected censor observation window; very short timeouts (< 30s) cause frequent reconnects that may trigger anomaly detection, while very long timeouts waste server resources.
+section: §2.4, §5.3
+extracted_by: claude-sonnet-4-6

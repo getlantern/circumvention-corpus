@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: ZMap can scan the entire public IPv4 address space on a single port in under 45 minutes on a 1 Gbps connection; with a 10 GigE connection and PF_RING, the full IPv4 address space scan completes in 5 minutes. This throughput enables near-real-time Internet-wide enumeration of any service listening on a given port.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Any circumvention proxy reachable on a fixed public IPv4 address and port should be assumed discoverable within minutes by a well-resourced adversary; designs must account for rapid IP enumeration and incorporate rotating or ephemeral addressing.
+    - Proxy operators should treat IP obscurity as having a half-life of hours, not days — active probing after ZMap discovery means a newly deployed server may be fingerprinted and blocked before reaching significant user adoption.
+section: ZMap tool description
+extracted_by: claude-sonnet-4-6

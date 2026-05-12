@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-gfw-esni-blocking
+kind: detection
+summary: The GFW blocks ESNI by dropping client-to-server packets whenever a TLS ClientHello containing the `0xffce` encrypted_server_name extension is sent over a completed TCP handshake. Unlike GFW censorship of SNI and HTTP (which uses RST injection to both endpoints), ESNI censorship uses unidirectional packet dropping with no injected packets. The blocking applies on all ports from 1 to 65535.
+techniques:
+    - esni-eh-blocking
+    - dpi
+    - tls-fingerprint
+censors:
+    - cn
+defense_implications:
+    - Avoid using the `0xffce` ESNI extension value in any TLS ClientHello sent through or into China; even a non-functional ESNI field with this extension ID will trigger blocking.
+    - Because blocking is port-agnostic (ports 1–65535), port hopping alone is insufficient to evade GFW ESNI censorship; the transport must disguise or fragment the ClientHello itself.
+section: Details About the Blocking
+extracted_by: claude-sonnet-4-6

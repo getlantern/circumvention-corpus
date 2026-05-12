@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-miaan-stealth-blackout
+kind: evaluation
+summary: Lantern's proxyless protocol accounted for approximately 40% of its traffic during the June 2025 Iran shutdown, demonstrating that a direct-server / proxyless transport mode provided a significant load-bearing fallback when conventional proxy infrastructure was blocked by centralized DPI enforcement.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - meta-resistance
+censors:
+    - ir
+defense_implications:
+    - Invest in proxyless or direct-server protocol variants alongside traditional proxy infrastructure; during application-layer shutdowns these can carry a substantial share of traffic when proxies are enumerated and blocked.
+    - Protocol diversity — distinct transport mechanisms — outperforms IP/ASN diversity against centralized DPI-based shutdowns; a wider protocol surface reduces the fraction of users neutralized by a single enforcement rule.
+section: Executive Summary — Resilient Response
+extracted_by: claude-sonnet-4-6

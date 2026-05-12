@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-anytls-sing-box-2026
+kind: defense
+summary: AnyTLS's default padding scheme operates across 8 levels (stop=8), with initial padding fixed at 30 bytes, small-data padding 100–400 bytes, and medium-to-large data padding chains of 400–500 bytes continuing through multiple 500–1000 byte segments. The 'c' (continue) marker allows multi-stage padding sequences within a single connection burst.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - anytls
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - The configurable stop=N parameter allows operators to cease padding after N connections per session, reducing overhead once the censor's initial observation window has passed; set this value based on known DPI sampling windows.
+    - The chained 'c' padding format allows construction of realistic burst patterns that mimic HTTPS page loads — consider designing padding profiles based on real CDN traffic traces rather than uniform ranges.
+section: §2.3
+extracted_by: claude-sonnet-4-6

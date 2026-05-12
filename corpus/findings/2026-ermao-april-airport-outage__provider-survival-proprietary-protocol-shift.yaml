@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: deployment
+summary: 'Operators facing the April 2026 enforcement wave described three survival paths: (1) price increases to pass on resource costs, (2) switching entirely to direct-connect, or (3) deploying proprietary protocols with dedicated clients — making standard Clash/Shadowrocket clients non-functional for those providers. The commercial forecast is for low-price high-quality plans to disappear and for month-by-month billing to become the default as users hedge against provider collapse.'
+defenses:
+    - mimicry
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - The shift by surviving providers toward proprietary protocol + dedicated client confirms that protocol-level obfuscation is becoming a baseline operational requirement for commercial CN circumvention infrastructure.
+    - End-user circumvention tools should build in multi-provider redundancy natively, as the commercial reseller ecosystem is contracting and individual providers are increasingly fragile.
+section: §5月以后机场可能怎么活下去
+extracted_by: claude-sonnet-4-6

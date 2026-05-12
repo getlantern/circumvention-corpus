@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-gfw-blocking-1111
+kind: detection
+summary: From September 5–20, 2023, the GFW blocked 1.1.1.1:443 via TCP RST injection; starting October 1, 2023, the mechanism shifted to HTTP packet injection on port 80, while port 443 behavior became inconsistent across ASes — from one AS45090 vantage point, HTTPS connections to 1.1.1.1 still succeeded while other observers confirmed RST injection.
+techniques:
+    - rst-injection
+    - ip-blocking
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Censorship of a single IP can shift technique (RST → HTTP injection) and vary by AS within days; bootstrap probes must test both TCP-reset and application-layer injection, not just reachability.
+    - Multi-vantage-point measurement is essential before declaring an IP 'safe' in CN — per-ASN heterogeneity means a resolver that works from one cloud region may be blocked from another.
+section: Major observations
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-gfw-esni-blocking
+kind: detection
+summary: The GFW's ESNI detector is keyed specifically to extension value `0xffce` (ESNI draft-01). Replacing `0xffce` with ECH draft values `0xff02`, `0xff03`, or `0xff04` produced no blocking as of August 2020. This indicates the GFW deployed a detector matching on a specific extension ID rather than detecting encrypted SNI generically.
+techniques:
+    - esni-eh-blocking
+    - dpi
+defenses:
+    - ech-esni
+censors:
+    - cn
+defense_implications:
+    - As of 2020, migrating from ESNI draft-01 (`0xffce`) to ECH (`0xff02`+) avoids triggering the GFW's ESNI block; however, censors will likely update detectors as ECH adoption grows.
+    - Protocol designers should not assume ECH provides hostname privacy in China without empirically verifying that the current GFW does not block the specific ECH extension values in use.
+section: The GFW censors ESNI, but not omit-SNI / New extension values are not blocked
+extracted_by: claude-sonnet-4-6

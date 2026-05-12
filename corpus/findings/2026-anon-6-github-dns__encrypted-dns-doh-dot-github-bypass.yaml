@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-6-github-dns
+kind: defense
+summary: Encrypted DNS protocols (DNS-over-HTTPS and DNS-over-TLS via Cloudflare 1.1.1.1, Google 8.8.8.8, AdGuard, or NextDNS) prevent DNS injection by encrypting the resolver query, making it opaque to in-path GFW middleboxes. The blog recommends these as a lightweight defense that avoids the maintenance overhead of static hosts entries.
+techniques:
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should bundle a DoH or DoT resolver for their own name lookups rather than relying on the system resolver, eliminating the DNS injection attack surface for bootstrapping.
+    - DoH/DoT alone is insufficient if the censor also IP-blocks the resolver endpoints (e.g., 1.1.1.1 or 8.8.8.8 are intermittently blocked in CN); tools need a fallback chain.
+section: §2 使用加密 DNS 服务
+extracted_by: claude-sonnet-4-6

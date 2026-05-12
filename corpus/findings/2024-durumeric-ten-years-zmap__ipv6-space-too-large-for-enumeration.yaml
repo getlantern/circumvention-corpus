@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: IPv6 measurement remains an open problem for ZMap because the address space is too large for exhaustive single-packet enumeration, unlike IPv4. This asymmetry means IPv6-addressed infrastructure is structurally harder to enumerate via blocklisting.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Circumvention servers hosted on IPv6-only or IPv6-primary addresses are substantially more resistant to IP-blocklist enumeration — consider dual-stack deployments where the IPv6 address is the default path and the IPv4 address is rotated.
+    - Censors relying on ZMap-derived IPv4 blocklists cannot straightforwardly extend the same approach to IPv6; prioritize IPv6 infrastructure in regions where IPv4 blocklisting is aggressive.
+section: Abstract — open problems
+extracted_by: claude-sonnet-4-6

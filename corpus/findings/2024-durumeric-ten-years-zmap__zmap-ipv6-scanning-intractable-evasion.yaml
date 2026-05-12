@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: 'After a decade of ZMap-based measurement, the authors identify IPv6 scanning as an unresolved open problem: the vastly larger IPv6 address space makes exhaustive scanning infeasible, fundamentally changing the threat model for service discovery compared to IPv4.'
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Deploying proxy infrastructure exclusively over IPv6 addresses (especially dynamically assigned or privacy-extension addresses) is a meaningful evasion technique against scan-based discovery — Internet-wide IPv6 enumeration remains computationally intractable.
+    - Circumvention tool designers should evaluate IPv6-primary deployment paths and consider client support for IPv6-only rendezvous mechanisms as a near-term resistance improvement.
+section: Abstract (open problems)
+extracted_by: claude-sonnet-4-6

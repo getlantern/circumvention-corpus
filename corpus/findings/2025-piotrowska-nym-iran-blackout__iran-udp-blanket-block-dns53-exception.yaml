@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-piotrowska-nym-iran-blackout
+kind: detection
+summary: During the June 2025 blackout, virtually all UDP-based protocols were blocked across major Iranian networks — WireGuard, AmneziaWG, QUIC, WebRTC, and OpenVPN — with the sole deliberate exception of UDP port 53 (DNS), preserved to avoid cascading failures in internal infrastructure.
+techniques:
+    - port-blocking
+    - dpi
+    - http3-quic-block
+censors:
+    - ir
+defense_implications:
+    - UDP-based circumvention transports (WireGuard, AmneziaWG, QUIC/Hysteria2, WebRTC/Snowflake) are non-starters during Iranian shutdown events; any tool targeting Iran must ship a TCP fallback.
+    - UDP/53 survives the sweep and remains viable as a DNS-tunnel bootstrap or out-of-band signaling channel even during full UDP blackouts.
+section: Protocol-level blocking
+extracted_by: claude-sonnet-4-6

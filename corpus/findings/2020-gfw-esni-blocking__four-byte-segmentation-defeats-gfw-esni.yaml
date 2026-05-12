@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-gfw-esni-blocking
+kind: defense
+summary: Splitting the TLS ClientHello so that the first TCP segment is ≤4 bytes (less than the 5-byte TLS record header) defeats the GFW's ESNI detection with near 100% reliability. Geneva expressed this as `[TCP:flags:PA]-fragment{tcp:4:True}-|` (client-side) or a server-side window-size reduction to 4 bytes that forces the client to segment. This suggests the GFW's ESNI classifier cannot reassemble TCP segments across all protocol contexts.
+techniques:
+    - esni-eh-blocking
+    - dpi
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Sending the first ≤4 bytes of the TLS ClientHello in a separate TCP segment is a low-overhead, server-side-applicable evasion that breaks GFW ESNI fingerprinting; integrate TCP segmentation into pluggable transports for China.
+    - A server can enforce this evasion without client modification by advertising a TCP window size of 4 during the handshake, making it deployable transparently for unmodified TLS applications.
+section: 'Strategy 2: Four Byte Segmentation'
+extracted_by: claude-sonnet-4-6

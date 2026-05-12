@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: deployment
+summary: Following real-world DoS attacks against onion services, the Tor community revived and shipped an official client puzzle mechanism, which has since been adopted by several major onion services as their primary DoS mitigation strategy.
+defenses:
+    - tor
+defense_implications:
+    - Major onion services now rely on client puzzles as their primary DoS defense, meaning a single class of puzzle vulnerability has wide blast radius across the censorship-circumvention ecosystem — tool designers building on top of hidden services inherit this exposure.
+    - Circumvention operators running onion service frontends should treat the client puzzle as one layer, not a complete defense, and maintain independent circuit-budget controls.
+section: Abstract
+extracted_by: claude-sonnet-4-6

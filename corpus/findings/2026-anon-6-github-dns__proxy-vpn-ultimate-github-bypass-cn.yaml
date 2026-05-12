@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-6-github-dns
+kind: deployment
+summary: Chinese users treat full proxy/VPN (Shadowsocks, V2Ray/Clash, commercial VPNs) as the '终极大杀器' (ultimate solution) for bypassing GitHub DNS poisoning, implying that lighter-weight DNS-only fixes fail in some network environments where the censor adds firewall-layer blocking beyond DNS.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - shadowsocks
+    - vmess
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - 'Design circumvention tools to degrade gracefully through a hierarchy: DoH → hosts file → full proxy; users in stricter network environments will need the full tunnel path.'
+    - Note the warning that commercial VPN/proxy exit nodes with CDN or 'airport' IPs may themselves be GitHub-banned, so exit IP diversity and rotation matters for reliable GitHub access.
+section: §3 使用代理或 VPN
+extracted_by: claude-sonnet-4-6

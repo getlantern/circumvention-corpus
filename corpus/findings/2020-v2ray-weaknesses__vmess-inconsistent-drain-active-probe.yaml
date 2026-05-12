@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-v2ray-weaknesses
+kind: detection
+summary: 'VMess servers exhibit inconsistent TCP connection-draining behavior depending on error type: a first-seen (Encryption IV, Encryption Key) pair waits for more data before closing, while a replayed pair closes immediately. This timing asymmetry allows a prober to distinguish VMess servers from non-VMess servers with a three-connection probe sequence (M1, M2, M2 replay), as documented by @nametoolong in June 2020.'
+techniques:
+    - active-probing
+defenses:
+    - vmess
+censors:
+    - cn
+defense_implications:
+    - Drain the connection identically (read a random byte count or wait a random duration) on all error types—replay detected, checksum failure, invalid auth—so that timing of connection close does not leak error cause.
+    - 'Adopt Frolov et al.''s ''forever read'' recommendation: let the prober always be the first to close the connection, ensuring the server sends FIN/ACK consistently regardless of error path.'
+section: §Replays that trigger inconsistent draining behaviors
+extracted_by: claude-sonnet-4-6

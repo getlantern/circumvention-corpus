@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-gfw-esni-blocking
+kind: defense
+summary: Geneva discovered 6 client-side and 4 server-side TCP-layer evasion strategies against GFW ESNI blocking within 48 hours of training, all achieving near 100% reliability. Effective strategies include desynchronization attacks (triple SYN with corrupt sequence number, FIN+SYN flag confusion, TCB turnaround via pre-handshake SYN+ACK) and TCB teardown via corrupted-checksum RST injection. All strategies operate at the TCP layer and require no changes to the application sending ESNI.
+techniques:
+    - esni-eh-blocking
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - TCP-layer desynchronization strategies (corrupted sequence numbers, FIN+SYN confusion) are application-agnostic and can be layered under any ESNI-bearing protocol without modifying the TLS stack itself.
+    - Because these strategies target GFW stateful tracking weaknesses rather than the ESNI extension itself, they may generalize to future GFW detectors; incorporate Geneva-style TCP manipulation as a fallback layer in circumvention tool stacks targeting China.
+section: Evasion strategies / Summary on Circumvention Strategies
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: defense
+summary: Strict anonymity requirements in Tor onion services render conventional DoS mitigation strategies inapplicable, forcing the Tor community to revive the client-puzzle approach as the only feasible admission-control mechanism compatible with unlinkability guarantees.
+defenses:
+    - tor
+defense_implications:
+    - Circumvention infrastructure that enforces client anonymity must budget for the absence of IP-based or session-based rate limiting; puzzle or token-based admission is the only viable class of defense.
+    - When designing hidden bridge or rendezvous services, evaluate whether partial identity binding (e.g., blind tokens, hashcash tied to an ephemeral identity) offers better DoS resistance than pure PoW without sacrificing censorship-relevant anonymity.
+section: Abstract
+extracted_by: claude-sonnet-4-6
