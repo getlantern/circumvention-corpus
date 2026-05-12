@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vilalonga-obscura-enabling-ephemeral
+kind: defense
+summary: Obscura proxies resist active probing by never exposing open ports or accepting incoming connections; combined with a large ephemeral volunteer pool (analogous to Snowflake's scale), the vast IP address space and rapid proxy rotation make exhaustive enumeration infeasible without causing sufficient collateral damage to deter the censor — consistent with the absence of observed blind-blocking campaigns against Snowflake.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - webrtc-pluggable
+    - bridges
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Design proxy infrastructure so proxies initiate all outbound connections and never listen on open ports, eliminating the surface area for censor-initiated active probing
+    - Invest in volunteer recruitment and gamification to maintain a large, diverse proxy IP pool, since enumeration resistance scales directly with pool size and address diversity
+section: §5.1
+extracted_by: claude-sonnet-4-6

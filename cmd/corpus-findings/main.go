@@ -331,9 +331,24 @@ func pdfURL(p Paper) string {
 		return "https://arxiv.org/pdf/" + p.ArxivID
 	}
 	if p.URL != "" {
-		return p.URL
+		return normalizePDFURL(p.URL)
 	}
 	return ""
+}
+
+// normalizePDFURL rewrites well-known publisher landing-page URLs to their
+// direct-PDF equivalent. The auto-ingest crawler tends to store the
+// canonical citation URL (the .php landing page for PETS/PoPETS, the
+// /presentation/<name> path for USENIX, etc.); without this rewrite the
+// downloader fetches HTML and the extraction silently skips the paper.
+func normalizePDFURL(u string) string {
+	// petsymposium.org popets-YYYY-NNNN.php → .pdf
+	// e.g. https://petsymposium.org/popets/2026/popets-2026-0020.php
+	//   →  https://petsymposium.org/popets/2026/popets-2026-0020.pdf
+	if strings.HasPrefix(u, "https://petsymposium.org/popets/") && strings.HasSuffix(u, ".php") {
+		return strings.TrimSuffix(u, ".php") + ".pdf"
+	}
+	return u
 }
 
 func downloadPDF(ctx context.Context, url, path string) error {

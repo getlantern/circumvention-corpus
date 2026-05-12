@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vilalonga-obscura-enabling-ephemeral
+kind: detection
+summary: Authoritarian regimes blocked Snowflake primarily through DPI targeting fingerprints in Pion's DTLS handshake and TLS fingerprints in complementary WebRTC protocols, not through ML-based traffic analysis — confirming that cost-effective censors consistently favor simple, deterministic methods over computationally expensive classifiers.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - active-probing
+defenses:
+    - webrtc-pluggable
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Use browser-native WebRTC implementations (not Go/Pion) for the client-proxy leg to inherit browser DTLS fingerprints rather than library-specific ones that stand out
+    - Treat DTLS/TLS fingerprint normalization as a first-class design requirement, not a reactive patch applied after censors identify fingerprints in the wild
+section: §1
+extracted_by: claude-sonnet-4-6

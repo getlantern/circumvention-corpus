@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vilalonga-obscura-enabling-ephemeral
+kind: evaluation
+summary: Under baseline conditions (0% packet loss, no bandwidth constraint, 115 ms RTT), Obscura achieves average throughputs of 1.79 Mbps for Firefox-to-Firefox, 1.49 Mbps for Chrome-to-Chrome, and 1.32 Mbps for Pion-to-Pion connections; P-P connections collapse when the 2 Mbps target video bitrate exceeds the 1500 Kbps bandwidth constraint, while C-C connections remain usable at 10% packet loss with an average of 460 Kbps.
+techniques:
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Prefer browser-based (B-B) client/proxy pairs in deployment for better tolerance to packet loss and bandwidth constraints; reserve P-P paths for environments where browsers are unavailable
+    - For Pion-based deployments, set video bitrate targets below the expected available bandwidth in target regions to prevent connection collapse under bandwidth throttling
+section: §4.3
+extracted_by: claude-sonnet-4-6
