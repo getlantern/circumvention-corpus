@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-gfw-blocking-1111
+kind: evaluation
+summary: Injected GFW packets for 1.1.1.1:80 carry a consistent IP TTL of 251 (matching the real Cloudflare server), IP IDs of 0x99b3 (301 responses) and 0x4c57 (302 responses), and TCP flag patterns of PSH+ACK (301) versus PSH+ACK+FIN (302), providing stable per-injection-type fingerprints observable in packet captures.
+techniques:
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Clients can detect GFW HTTP injection by inspecting TCP flags and IP ID fields before trusting a redirect response — PSH+ACK+FIN on a first-data packet is anomalous and signals an injected 302.
+    - Embedding passive injection-detection logic (IP ID / TTL consistency checks) into circumvention bootstrap code can distinguish legitimate resolver responses from censor-injected redirects.
+section: 'Experiment (Table: IP ID, TTL, TCP Flags)'
+extracted_by: claude-sonnet-4-6

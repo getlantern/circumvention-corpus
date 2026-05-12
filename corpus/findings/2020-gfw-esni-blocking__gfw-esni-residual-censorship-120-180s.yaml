@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-gfw-esni-blocking
+kind: detection
+summary: After a GFW ESNI block is triggered, residual censorship persists for 120–180 seconds (varying by vantage point), blocking all traffic on the same (srcIP, dstIP, dstPort) 3-tuple. Additional ESNI handshakes sent during the residual window do not reset the timer, and it takes at least 1 second for the GFW to enable blocking rules after the triggering packet.
+techniques:
+    - esni-eh-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients that accidentally trigger ESNI blocking must rotate to a new (dstIP, dstPort) pair and wait at least 120 seconds before reusing the original tuple, or use ephemeral source IPs.
+    - The 1-second reaction lag means a single probe followed by rapid port rotation may succeed; build in jitter and tuple randomization to avoid residual censorship accumulation.
+section: Residual Censorship
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: defense
+summary: The paper offers practical guidance for Tor onion service operators aimed at balancing mitigation of OnionFlation attacks against maintaining service availability for legitimate clients, recognizing that no complete solution exists within the current puzzle architecture.
+defenses:
+    - tor
+defense_implications:
+    - Until Tor's puzzle architecture is revised upstream, onion service operators should apply the paper's operational mitigations (e.g., difficulty caps, supplementary rate-limiting at the introduction point) and document them in their runbooks.
+    - Circumvention tool designers should track Tor Project's response to this vulnerability report and plan for a protocol update that may require client-version coordination across a large anonymity set.
+section: Abstract
+extracted_by: claude-sonnet-4-6

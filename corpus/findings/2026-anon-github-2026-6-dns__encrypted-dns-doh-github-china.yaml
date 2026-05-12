@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-github-2026-6-dns
+kind: defense
+summary: Configuring encrypted DNS (DoH/DoT) via Cloudflare (1.1.1.1 / https://cloudflare-dns.com/dns-query), Google (8.8.8.8), or Alibaba Cloud (223.5.5.5) is documented as a practical countermeasure to ISP-level DNS hijacking of GitHub in China. Browser-level DoH (Chrome/Edge settings) is highlighted as accessible to non-technical users without installing additional software.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Bundling DoH/DoT as the default DNS resolver inside circumvention clients eliminates the most common failure mode (DNS poisoning) before the tunnel is even established.
+    - Alibaba Cloud DNS (223.5.5.5) being listed alongside Cloudflare and Google suggests Chinese-operated encrypted resolvers are not systematically blocked, making them a viable fallback that avoids blocking of foreign DNS IPs.
+section: §方法四
+extracted_by: claude-sonnet-4-6

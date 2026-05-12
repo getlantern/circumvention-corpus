@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: deployment
+summary: 'Under April 2026 enforcement pressure, surviving VPN resellers converged on three strategies: raising prices to cover higher infrastructure costs, switching from transit to direct-connect (higher latency, worse peak-hour performance), or deploying proprietary protocols with dedicated clients — the last option breaking compatibility with standard Clash and Shadowrocket clients and fragmenting the interoperable ecosystem.'
+defenses:
+    - vmess
+    - shadowsocks
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Proprietary-client lock-in emerging as an operator survival tactic signals a fragmentation risk for users; circumvention tools that support open, interoperable protocol standards (VLESS, Shadowsocks, hysteria2) retain value as cross-provider fallbacks.
+    - 'Protocol designers should account for the operator cost structure: resilient infrastructure requires frequent IP/resource rotation, which benefits from automation and low per-node provisioning costs.'
+section: §5月以后机场可能怎么-活下去
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-github-2026-6-dns
+kind: defense
+summary: 'Bypassing system DNS via local hosts-file entries (e.g., mapping github.com → 140.82.113.4) is documented as the most widely used free workaround for GFW DNS poisoning of GitHub as of 2026. The technique is fragile: GitHub IP addresses change, requiring users to re-query and update entries manually, making it unsuitable as a reliable long-term defense.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Hosts-file overrides confirm that the block is purely DNS-layer for many users, meaning a circumvention tool that forces a trusted DNS resolver (DoH/DoT) before any connection attempt can bypass the block without a full proxy.
+    - The instability of the approach (IP churn) argues for automated IP refresh mechanisms or dynamic DNS pinning rather than static configuration in any tool that uses direct-IP strategies.
+section: §方法一
+extracted_by: claude-sonnet-4-6

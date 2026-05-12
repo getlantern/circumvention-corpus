@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-v2ray-weaknesses
+kind: defense
+summary: Frolov et al. (2020) found that obfs4, Shadowsocks Outline, Psiphon's OSSH, and Lantern's Lampshade are all identifiable by TCP flag and timing patterns when servers close connections on error, because each tool's timeout value and FIN/ACK behavior are distinct. Their recommended mitigation—'forever read' on errors so the prober always closes first—forces the server to terminate with FIN/ACK consistently across all code paths.
+techniques:
+    - active-probing
+defenses:
+    - obfs4
+    - shadowsocks
+    - pluggable-transport
+censors:
+    - cn
+defense_implications:
+    - Implement a single, unified error-handling path that always drains bytes from the client (with a random-length cap) before closing, regardless of which authentication or protocol check failed—never branch on error type when deciding how to close.
+    - Ensure the server-side timeout value on invalid connections is sampled from a distribution wide enough to prevent statistical inference of the error type from close-timing alone.
+section: §Our comments
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: evaluation
+summary: 'Transit/relay architectures (国内入口 + 海外转发) suffered disproportionate impact because multiple nodes share a single domestic entry point: when that entry is reported or cut, the entire batch of nodes fails simultaneously. Operators described this as "三线变单线" (three-line to single-line collapse), with only direct-connect fallback remaining — at higher latency and with worse peak-hour performance.'
+techniques:
+    - ip-blocking
+    - asn-blackholing
+defenses:
+    - tunneling
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Multi-hop relay architectures must distribute domestic entry points across independent ASNs and providers; a shared single entry is a single enforcement target that takes down all downstream nodes simultaneously.
+    - Design fallback tiers so that loss of a relay entry gracefully degrades to direct-connect rather than total outage, and expose entry-point health to clients for automatic failover.
+section: §为什么中转机场这次受冲击更明显
+extracted_by: claude-sonnet-4-6

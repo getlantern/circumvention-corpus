@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-v2ray-weaknesses
+kind: detection
+summary: V2Ray clients emitted TLS ClientHello messages with a hardcoded, rarely-seen ciphersuite (fingerprint ID 8c48b95f67260663 on tlsfingerprint.io) that allowed a machine-learning classifier to identify V2Ray TLS traffic with 0.9999 accuracy; the same classifier could not accurately identify the traffic after the fingerprint was changed. The blocking rule based on the unique ciphersuite could be expressed in a single iptables line.
+techniques:
+    - tls-fingerprint
+    - ml-classifier
+defenses:
+    - vmess
+    - vless
+censors:
+    - cn
+defense_implications:
+    - Never hardcode a TLS ciphersuite list; always delegate to the OS/runtime TLS library's default ordering so the fingerprint matches the ambient browser/OS population.
+    - Use uTLS (utls library) to impersonate a common browser TLS fingerprint rather than relying on go-tls defaults, which may still produce a recognizable non-browser fingerprint.
+section: §Unique TLS ClientHello Fingerprints
+extracted_by: claude-sonnet-4-6

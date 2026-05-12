@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-piotrowska-nym-iran-blackout
+kind: deployment
+summary: NymVPN experienced a 387% increase in demand during the June 2025 Iran blackout but was itself caught by protocol-level UDP restrictions and could not function as a reliable circumvention tool because TCP fallback and other censorship-resistance countermeasures had not yet shipped.
+techniques:
+    - port-blocking
+defenses:
+    - amnezia-wg
+censors:
+    - ir
+defense_implications:
+    - Shipping a privacy or anonymity tool without a censorship-resistant TCP transport layer fails users precisely when demand is highest; WebSocket/TCP-443 fallback must be a baseline requirement before deploying to high-censorship environments.
+    - Treat censorship-resistance transport features as a hard prerequisite for any Iran-targeted release, not a deferred roadmap item.
+section: So does NymVPN work in Iran?
+extracted_by: claude-sonnet-4-6

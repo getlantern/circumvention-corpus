@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-anytls-sing-box-2026
+kind: evaluation
+summary: Compared to peer protocols, AnyTLS rates 'medium' performance (vs. VLESS 'high', Hysteria2 'very high', TUIC 'high'), uses TCP/TLS transport (vs. UDP/QUIC for Hysteria2 and TUIC), and relies on padding-based obfuscation vs. REALITY/WebSocket (VLESS) or HTTP/3 framing (Hysteria2). Client ecosystem support is currently limited primarily to sing-box, vs. broad cross-client support for VLESS, Trojan, and Hysteria2.
+techniques:
+    - traffic-shape
+    - tls-fingerprint
+defenses:
+    - anytls
+    - vless
+    - hysteria2
+    - trojan
+    - reality
+censors:
+    - cn
+defense_implications:
+    - AnyTLS's TCP/TLS transport makes it viable in environments where UDP is blocked outright (common in Iran and China during crackdowns), whereas Hysteria2/TUIC fail in those conditions — consider AnyTLS as a TCP-only fallback protocol.
+    - The performance gap (medium vs. high/very-high) suggests AnyTLS trades throughput for stronger obfuscation; for high-bandwidth use cases, architects should route bulk traffic through Hysteria2 and use AnyTLS only for obfuscation-critical flows.
+section: §1.5, Table 1.5
+extracted_by: claude-sonnet-4-6

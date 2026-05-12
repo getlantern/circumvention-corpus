@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: deployment
+summary: 'The April 2026 enforcement cycle created a resource-scarcity feedback loop: upstream providers cut lines with no obligation to refund resellers, newly acquired replacement resources can themselves be reported and cut within days, and stable-resource availability windows are described as "越来越短" (increasingly short) while costs rise concurrently. The overall effect is systemic capacity contraction forecast to continue through at least May 2026.'
+techniques:
+    - ip-blocking
+    - asn-blackholing
+    - throttling
+censors:
+    - cn
+defense_implications:
+    - Economic models for CN circumvention infrastructure must account for rapid resource turnover and irrecoverable sunk costs; infrastructure-as-code with fast provisioning pipelines is operationally necessary.
+    - Capacity planning for CN-targeted tools should assume sustained contraction, not temporary spikes; reserve-capacity buffers and pre-vetted alternative resource pools are load-bearing, not optional.
+section: §这轮波动到底发生了什么 / §四月后的趋势判断
+extracted_by: claude-sonnet-4-6

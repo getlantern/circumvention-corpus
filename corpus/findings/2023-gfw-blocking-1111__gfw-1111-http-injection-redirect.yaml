@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-gfw-blocking-1111
+kind: detection
+summary: Starting October 1, 2023, the GFW began injecting HTTP 301 and 302 responses to connections destined for 1.1.1.1:80, redirecting clients to China's National Anti-Fraud Center (182.43.124.6, AS58519 China Telecom Cloud). Over 6,169 HTTP requests from a Tencent Cloud Beijing vantage point (AS45090), the GFW injected 301 responses at a 9.06% rate and 302 responses at a 28.5% rate.
+techniques:
+    - packet-injection
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Do not use 1.1.1.1 as a default DoH/DoT bootstrap endpoint for clients in China; maintain a fallback list of non-blocked resolvers and test each from CN vantage points before shipping.
+    - Use HTTPS-only (never plaintext HTTP) for all bootstrap and resolver traffic — plaintext HTTP to any IP is trivially injectable by the GFW regardless of destination address.
+section: Major observations / Analysis on the injection to 1.1.1.1:80
+extracted_by: claude-sonnet-4-6

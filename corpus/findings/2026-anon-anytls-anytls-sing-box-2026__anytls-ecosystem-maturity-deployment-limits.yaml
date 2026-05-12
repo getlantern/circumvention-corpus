@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-anytls-sing-box-2026
+kind: deployment
+summary: As of 2026, AnyTLS lacks a standardized subscription link format (unlike VLESS/Trojan/Hysteria2), requires manual JSON configuration distribution, and is supported primarily by sing-box with limited support in v2rayNG and Shadowrocket. The guide explicitly warns it is unsuitable for production environments and recommends VLESS or Hysteria2 for production deployments and Hysteria2 for high-performance needs.
+defenses:
+    - anytls
+    - vless
+    - hysteria2
+censors:
+    - cn
+defense_implications:
+    - The absence of a URI scheme / subscription format creates a deployment friction barrier — circumvention tools integrating AnyTLS should implement their own provisioning mechanism (e.g., inline JSON in config-new API responses) rather than waiting for ecosystem standardization.
+    - Given AnyTLS's limited multi-client support, tools targeting non-technical users should treat it as an advanced/experimental track rather than a default, and maintain parallel VLESS or Hysteria2 tracks as the primary stable fallback.
+section: §1.4, §4.8, §8.2–8.3
+extracted_by: claude-sonnet-4-6

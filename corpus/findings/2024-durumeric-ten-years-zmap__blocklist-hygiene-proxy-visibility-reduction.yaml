@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: A decade of ZMap-based studies has produced documented operational norms including blocklist hygiene (organizations can opt out of scans via ZBlocklist) and ethical rate-limiting practices. The same blocklist infrastructure that protects opt-out organizations also provides a model for reducing proxy infrastructure visibility.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Proxy operators can submit their IP ranges to ZMap-ecosystem blocklists (and analogous research opt-out registries) to reduce their footprint in researcher and potentially censor scan datasets.
+    - Understand that blocklist-based opt-out only affects ethical scanners; state-level censors running their own enumeration pipelines will not honor these registries.
+section: Abstract — operational practices / ZBlocklist tool
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: evaluation
+summary: The OnionFlation attack family artificially inflates the required client-puzzle difficulty for all connecting clients without causing noticeable congestion at the targeted onion service, rendering any existing onion service largely unusable at an attack cost of a couple of dollars per hour.
+defenses:
+    - tor
+defense_implications:
+    - Do not rely solely on PoW client puzzles as a DoS defense for onion services; the puzzle difficulty signal can be gamed by a low-cost adversary who inflates it without triggering congestion-based countermeasures.
+    - Complement puzzle difficulty with congestion-independent admission controls (e.g., per-introduction-point rate limits or cryptographic tokens) so difficulty inflation is decoupled from actual service load.
+section: Abstract
+extracted_by: claude-sonnet-4-6

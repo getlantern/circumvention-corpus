@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: deployment
+summary: The dominant enforcement mechanism in April 2026 was administrative 'reporting + line-cutting' (通报 + 拔线) backed by MIIT bulletins, not protocol-level DPI changes. Operators reported that newly acquired upstream resources were reported to authorities quickly after acquisition, recovery timelines were uncontrollable, and some upstream providers refused refunds after enforcement actions, producing sustained capacity contraction across the shared VPN-reseller ecosystem.
+techniques:
+    - ip-blocking
+    - asn-blackholing
+censors:
+    - cn
+defense_implications:
+    - 'Design for administrative/economic enforcement: IP and ASN diversity at a scale that survives waves of upstream resource confiscation matters more than any single protocol-level evasion technique.'
+    - Avoid shared-infrastructure reseller dependency; build or contract infrastructure with rapid reprovisioning capability, since enforcement recovery cycles are unpredictable and can strand users indefinitely.
+section: §这轮波动到底发生了什么
+extracted_by: claude-sonnet-4-6

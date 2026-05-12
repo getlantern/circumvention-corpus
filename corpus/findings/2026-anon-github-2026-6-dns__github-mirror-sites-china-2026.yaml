@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-github-2026-6-dns
+kind: deployment
+summary: As of early 2026, GitHub mirror sites (FastGit at hub.fastgit.xyz, CNPMJS at github.com.cnpmjs.org, GitClone at gitclone.com) remain operationally accessible as reverse-proxy workarounds for read-only access and git clone acceleration from mainland China. The blog explicitly warns users against authenticating to GitHub accounts via these mirrors due to credential-theft risk, indicating that mirror operators are not fully trusted by the end-user community.
+techniques:
+    - dns-poisoning
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Mirror sites survive because they present a different hostname than github.com, confirming that blocking is domain-specific rather than IP-range-wide; tools can exploit this by routing through CDN or reverse-proxy infrastructure with non-blocked domain names.
+    - Trust issues with third-party mirrors highlight a gap that circumvention tools can fill by providing authenticated, end-to-end encrypted access to GitHub rather than relying on unauthenticated mirrors.
+section: §方法三
+extracted_by: claude-sonnet-4-6

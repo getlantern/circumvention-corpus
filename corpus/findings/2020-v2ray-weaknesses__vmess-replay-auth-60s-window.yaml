@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-v2ray-weaknesses
+kind: detection
+summary: VMess authentication uses a timestamp-based credential with a maximum 120-second (average ~60-second) expiration window, allowing an attacker to replay a captured legitimate request within that window. By making 16 connections with altered Encryption Key bytes that enumerate all 16 possible Margin P padding-length values, a prober can confirm a VMess server by observing a non-repeated set of connection-close byte counts spanning a delta of 15.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - vmess
+censors:
+    - cn
+defense_implications:
+    - 'Replace VMess timestamp-only replay defense with a nonce+expiration scheme: server rejects any (nonce, user-id) pair seen within the expiration window, requiring nonces to persist across restarts.'
+    - Switch VMess command encryption from AES-128-CFB (malleable stream cipher) to an AEAD so padding-length cannot be enumerated without the key.
+section: §Replay Attacks against the VMess Protocol
+extracted_by: claude-sonnet-4-6

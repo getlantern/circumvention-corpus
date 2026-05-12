@@ -246,9 +246,6 @@ func findCandidates(corpusRoot string, force bool, minYear int) ([]string, error
 // findings written. Returns (0, nil) if findings already exist and
 // !force (a "skipped" signal). All other errors are returned.
 func extract(ctx context.Context, corpusRoot, paperID string, force bool) (int, error) {
-	if err := requireTool("pdftotext"); err != nil {
-		return 0, err
-	}
 	if err := requireTool("claude"); err != nil {
 		return 0, err
 	}
@@ -265,23 +262,9 @@ func extract(ctx context.Context, corpusRoot, paperID string, force bool) (int, 
 		return 0, err
 	}
 
-	url := pdfURL(paper)
-	if url == "" {
-		return 0, errors.New("no URL or arxiv_id to download")
-	}
-
-	pdfPath := filepath.Join(corpusRoot, "corpus", "pdfs", paperID+".pdf")
-	if _, err := os.Stat(pdfPath); err != nil {
-		if err := downloadPDF(ctx, url, pdfPath); err != nil {
-			return 0, fmt.Errorf("download %s: %w", url, err)
-		}
-	}
-
-	txtPath := filepath.Join(corpusRoot, "corpus", "text", paperID+".txt")
-	if _, err := os.Stat(txtPath); err != nil {
-		if err := pdfToText(ctx, pdfPath, txtPath); err != nil {
-			return 0, fmt.Errorf("pdftotext: %w", err)
-		}
+	txtPath, err := resolveSourceText(ctx, corpusRoot, paperID, paper)
+	if err != nil {
+		return 0, err
 	}
 
 	text, err := os.ReadFile(txtPath)
@@ -320,6 +303,61 @@ func extract(ctx context.Context, corpusRoot, paperID string, force bool) (int, 
 		written++
 	}
 	return written, nil
+}
+
+// resolveSourceText produces a plain-text representation of the paper at
+// corpus/text/<id>.txt, falling back through:
+//
+//  1. cache hit on corpus/text/<id>.txt (skip everything)
+//  2. PDF route: download → pdftotext (the original path)
+//  3. HTML route: wick fetch --format markdown — taken when the PDF
+//     download returned errNotPDF, covering blog posts (gfw.report,
+//     ermao.net) and other HTML-only sources we want to extract findings
+//     from. pdftotext is not required on this route.
+//
+// Returns the path to the cached text file.
+func resolveSourceText(ctx context.Context, corpusRoot, paperID string, p Paper) (string, error) {
+	txtPath := filepath.Join(corpusRoot, "corpus", "text", paperID+".txt")
+	if _, err := os.Stat(txtPath); err == nil {
+		return txtPath, nil
+	}
+
+	url := pdfURL(p)
+	if url == "" {
+		return "", errors.New("no URL or arxiv_id to download")
+	}
+
+	pdfPath := filepath.Join(corpusRoot, "corpus", "pdfs", paperID+".pdf")
+	if _, err := os.Stat(pdfPath); err == nil {
+		if err := requireTool("pdftotext"); err != nil {
+			return "", err
+		}
+		if err := pdfToText(ctx, pdfPath, txtPath); err != nil {
+			return "", fmt.Errorf("pdftotext: %w", err)
+		}
+		return txtPath, nil
+	}
+
+	dlErr := downloadPDF(ctx, url, pdfPath)
+	if dlErr == nil {
+		if err := requireTool("pdftotext"); err != nil {
+			return "", err
+		}
+		if err := pdfToText(ctx, pdfPath, txtPath); err != nil {
+			return "", fmt.Errorf("pdftotext: %w", err)
+		}
+		return txtPath, nil
+	}
+	if !errors.Is(dlErr, errNotPDF) {
+		return "", fmt.Errorf("download %s: %w", url, dlErr)
+	}
+
+	// HTML fallback: the URL didn't serve a PDF — fetch the rendered
+	// page via wick and treat the markdown body as the source text.
+	if err := fetchHTMLAsMarkdown(ctx, url, txtPath); err != nil {
+		return "", fmt.Errorf("fetch %s as html: %w (pdf attempt: %v)", url, err, dlErr)
+	}
+	return txtPath, nil
 }
 
 // pdfURL resolves the URL we'll download the paper from. Prefers an
@@ -369,10 +407,15 @@ func downloadPDF(ctx context.Context, url, path string) error {
 	}
 	if !isPDF(path) {
 		os.Remove(path)
-		return fmt.Errorf("response was not a PDF (no %%PDF- header)")
+		return errNotPDF
 	}
 	return nil
 }
+
+// errNotPDF signals that a download succeeded HTTP-wise but the body
+// wasn't a PDF (no %PDF- header). Returned by downloadPDF so the caller
+// can fall back to HTML-extraction via wick.
+var errNotPDF = errors.New("response was not a PDF (no %PDF- header)")
 
 func downloadPDFDirect(ctx context.Context, url, path string) error {
 	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
@@ -438,6 +481,44 @@ func downloadPDFViaWick(ctx context.Context, url, path string) error {
 		return fmt.Errorf("response too large: %d bytes (cap %d)", fi.Size(), pdfMaxBytes)
 	}
 	return os.Rename(tmp, path)
+}
+
+// fetchHTMLAsMarkdown shells out to `wick fetch --format markdown <url>`
+// and writes the rendered markdown body to txtPath. Used as the fallback
+// when downloadPDF returns errNotPDF — covers blog posts and other HTML-
+// only sources (gfw.report, ermao.net, vendor blogs) that don't publish
+// a PDF. The downstream claude classifier is content-agnostic; whether
+// the text came from pdftotext or wick doesn't matter for extraction.
+func fetchHTMLAsMarkdown(ctx context.Context, url, txtPath string) error {
+	bin := locateWick()
+	if bin == "" {
+		return fmt.Errorf("wick binary not found in $PATH or /opt/homebrew/bin")
+	}
+	if err := os.MkdirAll(filepath.Dir(txtPath), 0o755); err != nil {
+		return err
+	}
+	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+	defer cancel()
+	tmp := txtPath + ".part"
+	out, err := os.Create(tmp)
+	if err != nil {
+		return err
+	}
+	cmd := exec.CommandContext(cctx, bin, "fetch", "--format", "markdown", url)
+	cmd.Stdout = out
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	if err := cmd.Run(); err != nil {
+		out.Close()
+		os.Remove(tmp)
+		return fmt.Errorf("wick: %w (stderr: %s)", err, truncate(stderr.String(), 200))
+	}
+	out.Close()
+	if fi, err := os.Stat(tmp); err == nil && fi.Size() > pdfMaxBytes {
+		os.Remove(tmp)
+		return fmt.Errorf("response too large: %d bytes (cap %d)", fi.Size(), pdfMaxBytes)
+	}
+	return os.Rename(tmp, txtPath)
 }
 
 func locateWick() string {

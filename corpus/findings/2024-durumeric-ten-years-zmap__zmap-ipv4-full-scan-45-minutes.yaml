@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: ZMap can scan the entire public IPv4 address space on a single port in under 45 minutes on a gigabit connection; with a 10 GigE connection and PF_RING, the same scan completes in 5 minutes. This makes Internet-wide enumeration of proxy infrastructure operationally trivial for any well-resourced actor.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Proxy IP addresses are fully enumerable at Internet scale in under an hour — circumvention infrastructure must not rely on IP obscurity; rotate IPs frequently or use domain-fronting/CDN indirection.
+    - Any static, long-lived proxy IP will appear in ZMap-derived blocklists; prefer ephemeral cloud IPs or IP ranges that are expensive to blocklist in bulk (shared CDN space, cloud provider ASNs).
+section: Project overview
+extracted_by: claude-sonnet-4-6

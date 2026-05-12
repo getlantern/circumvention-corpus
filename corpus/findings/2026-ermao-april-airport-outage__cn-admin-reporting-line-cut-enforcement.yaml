@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ermao-april-airport-outage
+kind: policy
+summary: The April 2026 enforcement wave against Chinese VPN resellers operates primarily through administrative "reporting + line-cutting" (通报+拔线) mechanisms enforced via Ministry of Industry and Information Technology bulletins, not packet-level DPI changes. Operators report that newly acquired upstream resources are reported and cut with recovery periods described as "uncontrollable," and that upstream providers typically do not refund resellers after enforcement actions.
+techniques:
+    - ip-blocking
+    - asn-blackholing
+censors:
+    - cn
+defense_implications:
+    - Circumvention infrastructure for CN users must achieve IP/ASN diversity at a scale that survives administrative enforcement waves, not just protocol-level evasion of any single DPI signature.
+    - Treat upstream resource pools as ephemeral with unpredictable TTLs; automate discovery, onboarding, and rotation of IP/ASN resources rather than assuming stability.
+section: §一句话结论 / §这轮波动到底发生了什么
+extracted_by: claude-sonnet-4-6

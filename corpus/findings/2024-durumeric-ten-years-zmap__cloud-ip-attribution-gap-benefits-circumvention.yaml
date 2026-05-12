@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: evaluation
+summary: Cloud-hosted services represent an open measurement problem for ZMap because IPs are shared, ephemeral, and behind CDN layers, making traditional IP-to-service attribution unreliable. The paper identifies reconciling scan-based observation with cloud infrastructure as a key challenge for the next decade.
+techniques:
+    - measurement-platform
+    - ip-blocking
+defenses:
+    - domain-fronting
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Hosting circumvention infrastructure behind shared cloud or CDN IPs exploits the same measurement gap that makes ZMap attribution unreliable — blocking the IP collaterally blocks thousands of legitimate services, raising the political cost of blocking.
+    - Domain-fronting and CDN-based tunneling derive their censor-resistance partly from this cloud measurement gap; as censors develop better cloud-attribution techniques, these defenses will need to evolve toward SNI-blind or ECH-protected variants.
+section: Abstract — open problems
+extracted_by: claude-sonnet-4-6

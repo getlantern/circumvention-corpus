@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: evaluation
+summary: 'The Tor client-puzzle mechanism has an inherent design trade-off: the system is forced to choose between inflation resistance (preventing adversarial difficulty inflation) and congestion resistance (absorbing legitimate traffic surges), but cannot achieve both simultaneously. This trade-off is identified as the root cause of OnionFlation.'
+defenses:
+    - tor
+defense_implications:
+    - Any PoW-based admission-control scheme for anonymous services should be evaluated against this dual-resistance requirement before deployment; a scheme that conflates load signal with puzzle difficulty is vulnerable by construction.
+    - Protocol designers should explore two-signal architectures that separate puzzle difficulty (set by a trusted signal) from congestion feedback (set by actual queue depth).
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-gfw-blocking-1111
+kind: detection
+summary: 'The GFW''s HTTP injection for 1.1.1.1:80 does not suppress the real Cloudflare response: the legitimate 301 from the actual server arrives after the injected packet, confirming the GFW operates as a race-condition injector rather than a transparent drop-and-replace proxy.'
+techniques:
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - A client that reads only the first response will be deceived; implement response-validation logic that checks for duplicate or contradictory HTTP responses on the same connection as a detection signal.
+    - Race-condition injection is inherently probabilistic — designing bootstrap flows that retry on suspicious first-response redirects (especially to government-hosted IPs) can recover from injection events.
+section: Analysis on the injection to 1.1.1.1:80
+extracted_by: claude-sonnet-4-6

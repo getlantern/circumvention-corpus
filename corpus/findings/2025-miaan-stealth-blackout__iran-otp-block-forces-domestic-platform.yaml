@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-miaan-stealth-blackout
+kind: detection
+summary: The Iranian government blocked international One-Time Passwords (OTPs) during the June 2025 shutdown, forcing citizens to abandon secure international platforms and migrate to government-approved domestic services with known security and privacy vulnerabilities — using authentication infrastructure as a deliberate chokepoint to coerce adoption of surveilled platforms at scale.
+techniques:
+    - dpi
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools and secure-messaging apps must not depend on SMS OTPs delivered via international carriers for authentication; build offline onboarding or alternative second-factor flows that bypass international telephony infrastructure entirely.
+    - 'Treat forced migration to government-controlled platforms as a threat model distinct from simple blocking: design systems so that blocking the circumvention tool does not automatically degrade users'' security posture by pushing them toward surveilled alternatives.'
+section: Executive Summary — Human Rights Implications
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-piotrowska-nym-iran-blackout
+kind: evaluation
+summary: Between 21–25 June 2025, Iranian fixed-line networks partially restored access via TCP-based protocols (SSH, WebSockets) while mobile networks and UDP-based protocols remained heavily restricted, indicating deliberate asymmetric enforcement to restore domestic data-center operation without re-enabling VPN circumvention.
+techniques:
+    - throttling
+    - port-blocking
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - WebSocket-over-TCP-443 is the highest-probability surviving transport during Iranian shutdown events; tools without this fallback will go dark the moment a UDP sweep is applied.
+    - 'Implement automatic protocol demotion: when a UDP transport fails detection, immediately retry over TCP/443 WebSocket before surfacing an error to the user.'
+section: What is working now? (As of 25 June 2025)
+extracted_by: claude-sonnet-4-6

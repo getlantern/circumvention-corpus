@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-miaan-stealth-blackout
+kind: evaluation
+summary: Psiphon's multi-protocol design maintained access for approximately 1.5 million users during the June 2025 Iran shutdown — roughly one-third of its normal user base — while traffic throttling rendered many single-protocol circumvention tools functionally useless for anything beyond basic text communication.
+techniques:
+    - dpi
+    - throttling
+defenses:
+    - pluggable-transport
+censors:
+    - ir
+defense_implications:
+    - 'Multi-protocol fallback architectures are essential: single-protocol tools were largely neutralized, while tools with adaptive protocol switching retained ~33% of normal user capacity under full centralized DPI enforcement.'
+    - Design for throttled conditions, not just binary block/allow; lightweight protocols, compression, and message batching retain more users than tools that succeed only at full bandwidth.
+section: Executive Summary — Resilient Response
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-durumeric-ten-years-zmap
+kind: detection
+summary: LZR, built on top of ZMap, can identify 99% of unexpected Internet services in five handshakes by acting as a shim between ZMap and ZGrab. This gives censors and researchers alike an efficient active-probing primitive to fingerprint proxy protocols at scale.
+techniques:
+    - active-probing
+    - measurement-platform
+defenses:
+    - mimicry
+    - trojan
+    - reality
+censors:
+    - generic
+defense_implications:
+    - Five-handshake service identification means a proxy that deviates from its claimed protocol in even subtle ways will be fingerprinted; proxy servers must fully complete the cover protocol's handshake (e.g., respond correctly to TLS, HTTP, or SSH) before switching to proxy behavior.
+    - Implement a 'fallback' mode where the server returns a plausible cover-protocol response to any probe that does not carry a valid client credential, exactly as REALITY and Trojan do.
+section: LZR tool description
+extracted_by: claude-sonnet-4-6

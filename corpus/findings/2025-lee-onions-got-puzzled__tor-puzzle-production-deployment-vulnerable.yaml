@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lee-onions-got-puzzled
+kind: deployment
+summary: Client-puzzle DoS mitigation has been adopted in an official Tor protocol update and is in active use by several major onion services. An ethical live-network evaluation of OnionFlation attacks confirmed the vulnerability on the production Tor network, and the Tor Project has acknowledged the findings.
+defenses:
+    - tor
+defense_implications:
+    - Operators of onion services that already deployed the Tor PoW update should treat puzzle difficulty as an untrusted signal until a patched mechanism is available, and monitor for anomalous difficulty spikes as an indicator of active OnionFlation.
+    - Circumvention tools that embed Tor onion services as rendezvouz points should track the Tor Project's remediation work and upgrade promptly once a hardened puzzle scheme is released.
+section: Abstract
+extracted_by: claude-sonnet-4-6

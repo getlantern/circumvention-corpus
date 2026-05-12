@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-miaan-stealth-blackout
+kind: evaluation
+summary: Ceno Browser's decentralized peer-to-peer network grew from approximately 600 active peers on June 13 to nearly 8,000 by July 11, 2025 — a 13× increase in under 30 days — with some Ceno connections remaining online throughout the full blackout, indicating that P2P architectures without fixed enumerable infrastructure can survive centralized application-layer shutdowns.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - webrtc-pluggable
+censors:
+    - ir
+defense_implications:
+    - Decentralized P2P designs that avoid reliance on enumerable server infrastructure are structurally resistant to centralized application-layer shutdowns; treat P2P as a last-resort fallback layer that is bootstrapped before a shutdown begins.
+    - Pre-seeding peer tables from outside the country before a known shutdown would accelerate the organic growth curve observed here (600→8,000 in 28 days) and reduce the time-to-critical-mass for users cut off during the first 48 hours.
+section: Executive Summary — Resilient Response
+extracted_by: claude-sonnet-4-6

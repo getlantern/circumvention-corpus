@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-piotrowska-nym-iran-blackout
+kind: detection
+summary: 'Iran''s June 2025 shutdown enforced a four-layer DPI topology: ISP-administered DPI boxes, centrally commanded DPI at large ISPs under the Communications Regulatory Authority, DPI at Tehran IX that filters domestic-only transit traffic, and DPI at internationally-linked networks — almost all funneling through AS48159 (Telecommunications Infrastructure Company, TIC).'
+techniques:
+    - dpi
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Even domestic-to-domestic relay hops are inspected at the IXP layer; a circumvention architecture that routes through domestic relays does not escape DPI.
+    - AS48159 (TIC) is the single chokepoint for international traffic; any path transiting TIC must assume full DPI inspection.
+section: How is the blackout being enforced?
+extracted_by: claude-sonnet-4-6
