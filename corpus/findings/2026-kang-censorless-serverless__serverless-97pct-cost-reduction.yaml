@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kang-censorless-serverless
+kind: evaluation
+summary: CensorLess vanilla mode costs $0.27/month for a single proxy processing 6.76 GB of traffic monthly, a 97.1% reduction (34.4×) over SpotProxy's optimal single-NIC configuration ($9.28/month). The private mode, which adds a t4g.micro EC2 VPS for end-to-end encryption via SOCKS, costs $3.41/month — still 63.3% cheaper than SpotProxy's cheapest option. Costs remain below $3.50/day even when scaling to 300 proxies.
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - dns-poisoning
+defenses:
+    - bridges
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Replace VPS/spot-instance egress fleets with serverless FaaS bridges (AWS Lambda at $0.20/million invocations) to cut per-proxy operational cost by ~97% — this makes large bridge pools economically viable without grant funding.
+    - 'Model egress cost per-request rather than per-uptime: at AWS Lambda''s pricing, 6.76 GB/month of proxy traffic costs $0.27 in compute charges, making bridge proliferation (many cheap ephemeral endpoints) strictly superior to a few always-on VMs.'
+section: §6.3, Figure 6
+extracted_by: claude-sonnet-4-6

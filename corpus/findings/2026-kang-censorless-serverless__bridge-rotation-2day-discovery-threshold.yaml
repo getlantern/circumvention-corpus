@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kang-censorless-serverless
+kind: defense
+summary: CensorLess's function refresher automatically retires serverless bridges and deploys fresh ones in batches across diverse regions; the expected time until a bridge is identified and blocked in practice is 2 days (per Fifield et al.), while Tor bridges in China are discovered within 2–36 days. The old bridge is only removed after all clients have completed live migration to a new URL, maintaining uninterrupted connectivity.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Set bridge rotation period to under 2 days — the empirically measured lower bound for bridge discovery — and pre-deploy replacement bridges in batch so rotations are instantaneous rather than on-demand.
+    - Encode the new bridge URL inside responses from the current bridge (tag-based migration) to avoid exposing a separate coordination channel that censors could monitor or block.
+section: §4.5
+extracted_by: claude-sonnet-4-6

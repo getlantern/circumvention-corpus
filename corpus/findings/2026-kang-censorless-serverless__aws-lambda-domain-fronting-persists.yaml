@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kang-censorless-serverless
+kind: defense
+summary: Despite AWS, Google, and Microsoft having publicly withdrawn CDN-level domain-fronting support to preserve commercial relationships with censoring states, domain fronting remains functional on AWS Lambda as of early 2026. Microsoft Azure Functions explicitly rejects mismatched SNI/Host headers, whereas AWS Lambda permits a client to present a legitimate *.lambda-url.*.on.aws SNI while routing internally to a different serverless function via the HTTP Host header.
+techniques:
+    - sni-blocking
+defenses:
+    - domain-fronting
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - 'Treat domain fronting as a per-provider capability that must be tested empirically rather than assumed: as of 2026, AWS Lambda supports it but Azure does not — verify availability before baking it into a protocol design.'
+    - Combine domain fronting with bridge rotation rather than relying on it as a standalone defense; cloud providers can disable it unilaterally, so the rotation mechanism must function correctly even when fronting is unavailable.
+section: §4.7
+extracted_by: claude-sonnet-4-6
