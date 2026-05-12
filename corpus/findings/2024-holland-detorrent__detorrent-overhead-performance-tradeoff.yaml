@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-holland-detorrent
+kind: evaluation
+summary: 'DeTorrent exhibits strong diminishing returns in the bandwidth-performance tradeoff: increasing the dummy-download budget from N=1,000 to N=3,000 reduces Tik-Tok accuracy by ~19.1 percentage points, while a further increase from N=5,000 to N=7,000 yields only an additional 4.9-point reduction (accuracy floor near 20.8% at ~210% overhead). At the lowest tested budget (~40% overhead) Tik-Tok accuracy is still only 52.8%.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - randomization
+    - tor
+censors:
+    - generic
+defense_implications:
+    - A bandwidth overhead of roughly 100% is near the efficiency frontier for adversarial padding — additional overhead above ~2× yields little marginal protection and degrades user experience; tune PT defaults to this range rather than maximizing overhead.
+    - Even at 40% overhead the adversarial approach cuts WF accuracy nearly in half, making lightweight deployments viable for bandwidth-constrained users.
+section: §6.2, Figure 6
+extracted_by: claude-sonnet-4-6

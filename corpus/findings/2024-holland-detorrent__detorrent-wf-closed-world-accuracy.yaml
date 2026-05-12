@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-holland-detorrent
+kind: evaluation
+summary: DeTorrent reduces closed-world Tik-Tok attack accuracy from 93.4% to 31.9% on the BE dataset — 10.5 percentage points better than the next-best padding-only defense (FRONT at 42.4%) — and reduces Deep Fingerprinting accuracy from 94.3% to 30.0%, at a bandwidth overhead of 98.9%. On the larger DF dataset, Tik-Tok accuracy falls from 97.7% to 79.5%.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+    - pluggable-transport
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Adversarial GAN-based dummy-padding that co-trains a discriminator to resist retraining outperforms hand-tuned adaptive-padding schemes (WTF-PAD, FRONT) at similar bandwidth budgets — integrate a generator/discriminator training loop into PT development rather than relying on static distributions.
+    - Dataset diversity (multiple subpages per site) dramatically amplifies defense effectiveness; collect representative multi-page traces when evaluating any WF defense to avoid overestimating attack difficulty.
+section: §6.1, Table 4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pulls-ephemeral-network-layer-fingerprinting
+kind: evaluation
+summary: 'Padding-only defenses that inject bursty traffic cause severe additional delay under realistic network bottlenecks: Break-Pad''s delay overhead increases from 0% to 332.6% and FRONT''s from 0% to 111.2% under a per-trace simulated PPS bottleneck. Even ephemeral padding defenses induce 43.9% delay overhead under bottleneck conditions, compared to 0% without a bottleneck, due to congestion from dummy packets.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Account for real-world network bottlenecks when designing and evaluating padding strategies — bursty padding defenses optimized for unconstrained bandwidth can degrade user experience catastrophically under congested links.
+    - Prefer padding defenses with rate awareness or backpressure mechanisms over burst-at-trace-start designs to avoid self-induced congestion that inflates delay overhead by hundreds of percent.
+section: §5.2, Table 1
+extracted_by: claude-sonnet-4-6

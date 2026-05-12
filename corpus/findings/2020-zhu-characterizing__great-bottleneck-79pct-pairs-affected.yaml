@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-zhu-characterizing
+kind: evaluation
+summary: 'The Great Bottleneck of China affects 79% of measured receiver–sender pairs, with more than 70% of those pairs suffering throughput below 1 Mbps for more than 5 hours every day. M-Lab NDT data independently corroborates this: in 64% of 75,464 tests from China, download speed was below 500 kbps.'
+techniques:
+    - throttling
+censors:
+    - cn
+defense_implications:
+    - Do not rely on raw transnational bandwidth between China and foreign endpoints — circumvention infrastructure must account for 5–17 hours of daily near-unusability for most Chinese users.
+    - Evaluate CDN or in-country caching tiers (e.g., a physical relay inside China) as the only reliable path to sub-second latency for Chinese users; protocol-level tricks cannot compensate for infrastructure-level bottlenecks.
+section: §3, §4.2 Observation 1, Figure 5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-micallef-reportor-facilitating-user
+kind: evaluation
+summary: 'The privacy properties of Tor Browser structurally preclude automated telemetry collection, creating a persistent blind spot for diagnosing user experience failures at scale. ReporTor demonstrates that anonymous voluntary in-situ reporting — transmitted over the Tor network and stored in a password-protected onion-service database — can substitute for telemetry: 119 reports over one month from five expert users sufficed to reproduce approximately half of reported issues exactly and identify root causes for most of the remainder.'
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+defense_implications:
+    - Circumvention tools with strong privacy guarantees face the same telemetry-vs-privacy tension; consider onion-service-hosted anonymous structured reporting as a privacy-preserving alternative to conventional crash and usage telemetry.
+    - Design issue-report schemas to capture exit-node ID, protocol version, and security-level settings at report time — these three fields proved load-bearing for root-cause analysis and are absent from current Tor Browser support channels.
+section: §1, §7.1
+extracted_by: claude-sonnet-4-6

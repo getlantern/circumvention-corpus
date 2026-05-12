@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-micallef-reportor-facilitating-user
+kind: evaluation
+summary: 17% of ReporTor reports cited broken content; investigation found that several websites returned HTTP 403 errors through Tor Browser but loaded normally in Firefox, revealing deliberate differential treatment of Tor traffic masquerading as technical failure. Blocked resources included advertising platforms (e.g., t.co) and JavaScript files handling cookie-consent dialogs, and 8% of reports involved authentication failures where initial page load succeeded but subsequent auth steps were silently refused.
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Differential treatment detection — comparing responses across a Tor circuit and a non-Tor reference path — should be built into circumvention clients to disambiguate 'blocked' from 'broken' and surface actionable error information to users.
+    - Authentication flows are a distinct failure mode from page-load blocking; circumvention tools serving users who need persistent sessions should test auth-path availability, not only initial connectivity, when evaluating circuit health.
+section: §6.1.3
+extracted_by: claude-sonnet-4-6

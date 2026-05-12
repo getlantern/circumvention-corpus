@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pulls-ephemeral-network-layer-fingerprinting
+kind: evaluation
+summary: With infinite training time, Laserbeak achieves 93.5%, 95.9%, and 95.9% accuracy against ephemeral padding, FRONT, and Interspace respectively, compared to 96.5% undefended — confirming that padding-only defenses provide no meaningful protection against a sufficiently trained deep-learning WF adversary. Only ephemeral blocking defenses retain measurable protection, reducing Laserbeak to 71.8% accuracy under infinite training versus 96.5% undefended.
+techniques:
+    - ml-classifier
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Do not rely on padding-only defenses (randomized or fixed-rate) against a well-resourced adversary who can train indefinitely on defended traces; budget for blocking (delay) overhead to achieve meaningful protection.
+    - Evaluate defenses with infinite or extended training budgets, not just fixed-epoch defaults — standard 30-epoch training significantly underestimates eventual attack accuracy against padding-only defenses.
+section: §5.3, Table 2
+extracted_by: claude-sonnet-4-6

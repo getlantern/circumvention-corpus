@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-berke-unique-whose-web
+kind: detection
+summary: 'A simple three-hidden-layer MLP trained on only 13 standard browser attributes achieves AUROC above 0.5 for every tested demographic group: gender 0.663–0.679, age 55+ 0.644, Hispanic ethnicity 0.60, Asian race 0.698, Black race 0.677, and high-income bracket 0.617. Because the model used only attributes already collected by mainstream fingerprinting scripts (e.g., FingerprintJS), richer real-world attribute sets would yield substantially higher demographic inference accuracy.'
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool threat models must account for probabilistic demographic inference from browser attributes — an adversary does not need to uniquely identify a user to infer sensitive group membership (race, income, age) that could be used for targeted suppression or surveillance.
+    - Anonymity guarantees based solely on IP-layer encryption are insufficient if browser attributes are exposed; normalization of Screen resolution, User-Agent, and WebGL Unmasked Renderer strings (the three highest-AUROC contributors) should be treated as censorship-resistance features.
+section: §7.1, Table 5
+extracted_by: claude-sonnet-4-6

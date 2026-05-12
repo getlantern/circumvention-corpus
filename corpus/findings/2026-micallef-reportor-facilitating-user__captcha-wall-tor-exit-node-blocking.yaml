@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-micallef-reportor-facilitating-user
+kind: evaluation
+summary: 'CAPTCHAs co-occurred with ''Resource Inaccessible'' in 70% of CAPTCHA reports and appeared in 23% of all ''Resource Inaccessible'' reports; overall 14% of the 119 reports involved one or both problems. Two CAPTCHA failure modes were identified: excessive repetitive CAPTCHAs and broken CAPTCHA servers that made the underlying website permanently inaccessible. The ''Unusual traffic detected from your computer'' Google error appeared in 5% of all reports.'
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - CAPTCHA interception is a soft-blocking vector that is empirically common and underweighted in protocol design; circumvention tools should surface a 'CAPTCHA wall detected' signal so users or automated helpers can attempt circuit refresh or bridge switch rather than silently failing.
+    - Consider integrating CAPTCHA-solving or CAPTCHA-bypass mechanisms (e.g., routing through residential or bridge IPs with clean reputation scores) as a first-class feature rather than an afterthought.
+section: §6.1.2
+extracted_by: claude-sonnet-4-6

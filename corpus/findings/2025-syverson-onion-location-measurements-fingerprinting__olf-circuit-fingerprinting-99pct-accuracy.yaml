@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-syverson-onion-location-measurements-fingerprinting
+kind: detection
+summary: Circuit fingerprinting from a guard-relay position achieves ≥99.9% accuracy with FPR ≤0.1% for all four Tor circuit types (general, HSDir, introductory, rendezvous) using the Deep Fingerprinting classifier on the first 512 cells, despite Tor's deployed partial defenses. Onion-Location fingerprinting (OLF) combining these circuit classifiers then achieves 98.81–99.87% accuracy (FPR 0.16–1.23%) distinguishing O-L sessions from ordinary clearnet or onion-only visits.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - website-fingerprint
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - The exit→HSDir→intro→rendezvous circuit-type sequence is sufficient for near-perfect fingerprinting from a single guard; any OA mechanism that produces this distinguishable sequence should be treated as broken from a traffic-analysis perspective.
+    - Replace header-based O-L with local onion association (pre-downloaded OA list) so that onion access presents an indistinguishable pattern from any other onion service visit at the guard.
+section: §5.1–5.2
+extracted_by: claude-sonnet-4-6

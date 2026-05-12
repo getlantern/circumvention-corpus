@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pulls-ephemeral-network-layer-fingerprinting
+kind: deployment
+summary: Ephemeral defenses were integrated with a WireGuard fork and deployed as Mullvad VPN's 'DAITA' (Defense Against AI-guided Traffic Analysis) opt-in feature across Android, iOS, macOS, Linux, and Windows for over one year, serving a growing number of thousands of daily users. Individual defenses are derived deterministically from seeds in 43.6 ± 4.7 ms on a commodity laptop, making per-connection unique defenses practical at VPN scale.
+techniques:
+    - ml-classifier
+    - website-fingerprint
+defenses:
+    - randomization
+    - meta-resistance
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - 'Maybenot-based ephemeral defenses are production-viable: ~44 ms seed-to-defense derivation is fast enough for unique per-connection defenses in commercial VPN deployments without user-facing latency impact.'
+    - VPN providers are viable deployment vehicles for traffic-analysis defenses; integrating Maybenot at the WireGuard transport layer is a proven path to wide deployment without requiring Tor infrastructure.
+section: §1, §7
+extracted_by: claude-sonnet-4-6

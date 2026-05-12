@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-arora-improving-performance-security
+kind: evaluation
+summary: CenTor, a CDN for Tor onion services deployed as a Bento network function, achieved approximately 56.4% reduction in download time compared to standard Tor under a geographically-aware shadow configuration, while location-unaware CenTor (reducing hops without shadow restriction) achieved a 34.5% reduction. The key mechanism is eliminating the server-side 3-hop circuit by deploying replicas in non-anonymous mode, cutting the default 6-hop onion service path to 3 hops.
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention proxy architectures that mirror CDN replication patterns—geographically distributed replicas with non-anonymous mode for replica-to-client legs—can cut per-connection latency by over 50% without protocol changes, making Tor bridges and onion-routed transports meaningfully more usable for interactive traffic.
+    - 'Separating the anonymity burden (protecting the origin) from the performance path (client-to-replica) is a viable design split: replicas absorb DoS and latency load while the origin maintains full circuit protection.'
+section: §5.1
+extracted_by: claude-sonnet-4-6

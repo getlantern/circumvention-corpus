@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-berke-unique-whose-web
+kind: detection
+summary: Screen resolution (572 distinct values, 4.5% unique, entropy 5.51), WebGL Unmasked Renderer (654 distinct values, 3.2% unique, entropy 6.833), and User-Agent (434 distinct values, 2.8% unique, entropy 4.613) are simultaneously the most uniquely identifying individual attributes and the strongest demographic predictors by normalized mutual information across all five demographic categories tested (gender, age, income, Hispanic ethnicity, race).
+techniques:
+    - tls-fingerprint
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Screen resolution, WebGL Unmasked Renderer, and User-Agent should be the first three attributes targeted for normalization or spoofing in circumvention browsers and WebViews — they account for the dominant share of both uniqueness and demographic leakage with a small, tractable implementation surface.
+    - WebGL renderer normalization (returning a consistent, common GPU string) should be prioritized even on platforms where screen-resolution normalization is difficult, since GPU model strings correlate with economic status and can narrow the anonymity set for lower-income users in high-surveillance environments.
+section: §7.2, Figure 6, Table 1
+extracted_by: claude-sonnet-4-6

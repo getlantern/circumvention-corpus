@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-investigating
+kind: detection
+summary: 'Kazakhstan''s interception system triggered solely on the TLS SNI header: a connection was intercepted only if the SNI contained one of 37 targeted domains AND the path passed through specific AS9198 hops; the server''s actual certificate needed to be browser-trusted but did not need to match the SNI domain, and interception could be triggered bidirectionally — from outside the country connecting to TLS hosts inside Kazakhstan.'
+techniques:
+    - sni-blocking
+    - dpi
+censors:
+    - kz
+defense_implications:
+    - Encrypting or omitting the SNI (via ECH/ESNI) directly defeats this interception mechanism, since the system had no SNI fallback to IP-based or certificate-based targeting.
+    - The bidirectional triggering property means circumvention servers inside a country using SNI-based MitM can be fingerprinted from outside; operators should avoid hosting in affected ASes or use SNI padding/spoofing.
+section: §3.2, §4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-investigating
+kind: policy
+summary: Following publication of the researchers' findings, Mozilla Firefox and Google Chrome shipped changes on August 21, 2019 that completely blocked the Qaznet Trust Network root certificate even if manually installed by users, preventing future re-activation of the interception system without deployment of a new root CA. The paper advocates that browsers display non-intrusive visual indicators whenever a custom root CA is in use, and calls for content providers to detect and share data on large-scale interception via TLS fingerprint monitoring.
+techniques:
+    - tls-fingerprint
+defenses:
+    - ech-esni
+censors:
+    - kz
+defense_implications:
+    - Browser-level root CA blocking is an effective last-resort defense against forced-certificate interception; circumvention tool designers should work with browser vendors to embed similar trust-anchor policies for known-malicious CAs.
+    - Certificate Transparency logs and server-side TLS fingerprint monitoring together form a detection layer that can trigger rapid ecosystem response; circumvention infrastructure should expose CT-visible certificates and log anomalous inbound handshake patterns.
+section: §5
+extracted_by: claude-sonnet-4-6

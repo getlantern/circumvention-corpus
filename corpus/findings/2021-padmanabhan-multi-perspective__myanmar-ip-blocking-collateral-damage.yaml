@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-padmanabhan-multi-perspective
+kind: evaluation
+summary: Post-coup, Myanmar ISPs shifted from primarily DNS-based blocking (dominant in 2020) to IP-based blocking. Blocking Fastly's IP 151.101.1.195 triggered collateral unavailability of more than 10,000 co-hosted websites; blocking a Google-hosted IP (172.217.194.121) rendered snapchat.com, getoutline.org, and others unreachable on at least 4 ASes during Feb. 24–27, 2021.
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - mm
+defense_implications:
+    - Avoid co-locating circumvention tool infrastructure (Outline, Lantern, etc.) on shared CDN IPs that host high-value targets like Snapchat; collateral blocking of those IPs is highly probable when the censor uses coarse IP lists.
+    - Distribute proxy endpoints across many IP prefixes and ASes so that blocking any single IP does not take down the entire fleet.
+section: §3.3
+extracted_by: claude-sonnet-4-6

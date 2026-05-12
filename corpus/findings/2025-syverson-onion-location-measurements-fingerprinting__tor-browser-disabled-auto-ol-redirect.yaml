@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-syverson-onion-location-measurements-fingerprinting
+kind: evaluation
+summary: Automatic Onion-Location redirect was disabled in Tor Browser 13.0.12 as a direct result of this research, because automatic redirect forces the distinguishable clearnet-then-onion circuit pattern on every visit without user awareness. Manual O-L remains in Tor Browser but is still fingerprintable with the same near-perfect accuracy since the exit→onion circuit sequence is identical whether the redirect is automatic or manually triggered.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Removing automatic redirect reduces inadvertent fingerprinting exposure but does not eliminate OLF; tool designers should not treat user opt-in as a sufficient mitigation against guard-level traffic analysis.
+    - Any browser feature that automatically opens a second tunnel (exit → onion) carrying overlapping content creates a correlated two-circuit fingerprint; audit new onion-discovery UX for this pattern before shipping.
+section: §2.2, footnote 1; §6
+extracted_by: claude-sonnet-4-6

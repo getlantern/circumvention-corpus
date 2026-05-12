@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-walsh-improved-open-world-fingerprinting
+kind: evaluation
+summary: When a fingerprinting model is trained on traffic collected from one geographic vantage point and tested on traffic from a different continent, the HTTPS-only open-world FPR at 0.5 recall increased by factors ranging from 2.8x (EU-West-2) to 50.3x (Africa) relative to the same-vantage baseline — despite 60-way closed-world accuracy remaining above 0.99 across all vantage-point pairs (Table 5). For Tor traffic the effect was weaker but still reached 25.2x (Asia-Pacific Southeast-1), showing path diversity also disrupts Tor-based fingerprinting.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Geographic relay diversity is a first-order defense: training a fingerprinting model at one vantage point and deploying it globally degrades FPR by up to 50x, so distributing circumvention relay infrastructure across continents inherently defeats centrally-trained classifiers.'
+    - Never rely on closed-world accuracy to evaluate fingerprinting resistance — a less than 1% accuracy drop masks order-of-magnitude FPR degradation in the open-world; large open-world evaluations from geographically diverse vantage points are required.
+section: §5.1, Table 5
+extracted_by: claude-sonnet-4-6

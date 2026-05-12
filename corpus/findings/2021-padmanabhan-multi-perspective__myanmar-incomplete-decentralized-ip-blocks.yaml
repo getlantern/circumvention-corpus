@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-padmanabhan-multi-perspective
+kind: detection
+summary: 'IP blocking in Myanmar was non-deterministic within individual ASes: Frontiir (AS58952) blocked Facebook''s IP 157.240.15.36 but not 31.13.82.36, indicating ISPs used incomplete address lists. Different websites were blocked on different networks, and DNS interference was inconsistent even within a single ISP''s resolvers, confirming that censorship was decentralized rather than implemented via a national choke point.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+censors:
+    - mm
+defense_implications:
+    - Expose multiple distinct IP addresses for each circumvention endpoint; partial blocking from incomplete ISP lists means that rotating or multi-homing IPs substantially improves reachability.
+    - Do not rely on a single domain or DNS resolution path—inconsistent DNS interference across resolvers within the same ISP means both DoH and system-resolver paths should be tested at runtime.
+section: §3.3
+extracted_by: claude-sonnet-4-6

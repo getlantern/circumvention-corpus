@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-investigating
+kind: detection
+summary: 'The Kazakhstan interception system connected back to the origin TLS server before issuing a fake certificate, and in doing so exposed a unique TLS fingerprint (hash f09427b5aaf9304b): it used TLS record-layer version 1.0, ClientHello version 1.2, and offered only 13 cipher suites — a fingerprint virtually unseen in normal HTTPS traffic — allowing content providers to detect when a connection was being intercepted.'
+techniques:
+    - tls-fingerprint
+    - dpi
+censors:
+    - kz
+defense_implications:
+    - Server-side TLS fingerprint detection (JA3/JA4 on inbound connections) can identify MitM infrastructure before it completes interception; circumvention server operators can use this to refuse handshakes from known interception probes.
+    - 'Active-probing detectors already used against Tor bridges apply here: logging and classifying unexpected inbound TLS connections from country-specific netblocks can surface MitM infrastructure even before a target list is known.'
+section: §4.2.4
+extracted_by: claude-sonnet-4-6

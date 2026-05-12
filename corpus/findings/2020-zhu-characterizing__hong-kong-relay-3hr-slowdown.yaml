@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-zhu-characterizing
+kind: evaluation
+summary: 'Hong Kong is the sole geographic exception: it experiences no measurable slowdowns when accessing the foreign Internet, and Chinese mainland receivers accessing Hong Kong as a sender averaged only ~3 hours of slowdown per day — compared to 5–17 hours for US, European, and most Asian senders — making it an effective high-performance relay between mainland China and the rest of the world.'
+techniques:
+    - throttling
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Deploy circumvention relay infrastructure in Hong Kong as a preferred peering point for Chinese users — the empirical slowdown reduction is 3–6× compared to direct US or European endpoints.
+    - 'Monitor Hong Kong''s exceptional status over time: its special administrative region network topology currently bypasses the Great Bottleneck, but policy or infrastructure changes could eliminate this advantage.'
+section: §3, §4.2 Observation 1, Figure 7
+extracted_by: claude-sonnet-4-6

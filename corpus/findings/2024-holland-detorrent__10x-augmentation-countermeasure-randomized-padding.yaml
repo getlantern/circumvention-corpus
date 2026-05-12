@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-holland-detorrent
+kind: detection
+summary: An attacker who generates 10 defended copies of each training trace (re-sampling noise each time) improves Tik-Tok accuracy against DeTorrent from 31.9% to 48.2%, demonstrating that dataset augmentation with multiple defended samples is a practical countermeasure against randomized padding defenses including DeTorrent and FRONT.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Design defenses whose dummy-traffic distribution is unpredictable even when the attacker can generate arbitrarily many defended samples — pure randomization alone is insufficient; the generator must produce genuinely diverse strategies resistant to augmentation-based retraining.
+    - Evaluate defenses against augmented (Nx) attacker training sets, not just single-defended datasets, to produce realistic performance estimates.
+section: §6.4
+extracted_by: claude-sonnet-4-6

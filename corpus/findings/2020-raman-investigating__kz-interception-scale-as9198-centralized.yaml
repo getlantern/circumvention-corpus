@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-investigating
+kind: evaluation
+summary: Kazakhstan's 2019 HTTPS interception affected 7.0% of 6,736 measured TLS hosts when probed from North America and 24% when probed from inside the country; all affected paths traversed AS9198 (Kazakhtelecom), with 95% of injections occurring at two specific IP addresses (92.47.151.210 or 92.47.150.198), indicating a highly centralized interception infrastructure.
+techniques:
+    - dpi
+    - sni-blocking
+    - ip-blocking
+censors:
+    - kz
+defense_implications:
+    - Circumvention proxies hosted on infrastructure outside AS9198 but routing through Kazakhtelecom should expect SNI-triggered interception; hosting on ASes that do not transit AS9198 reduces exposure.
+    - SNI-based interception that is path-dependent can be evaded by routing around specific AS hops; path-aware proxy selection or multi-path designs could sidestep the centralized interception choke point.
+section: §4.2.1–§4.2.2
+extracted_by: claude-sonnet-4-6

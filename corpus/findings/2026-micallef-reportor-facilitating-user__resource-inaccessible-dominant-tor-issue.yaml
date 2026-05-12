@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-micallef-reportor-facilitating-user
+kind: evaluation
+summary: '''Resource Inaccessible'' was the most frequently reported issue (61% of 119 submitted reports) during a month of naturalistic Tor Browser browsing, followed by CAPTCHAs (18%), Broken Content (17%), Other Issues (13%), and Timeouts (5%). These categories document the operational failure modes that degrade everyday Tor Browser usability beyond protocol-level censorship.'
+techniques:
+    - ip-blocking
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Treat CDN/WAF-based exit-node IP blocking as a first-class failure mode alongside state-level censorship; route-around strategies (private bridges, onion services, decoy routing) should be evaluated against this threat model, not just DPI.
+    - Build in-protocol indicators distinguishing 'site blocks Tor' from 'circuit latency' to reduce user uncertainty and guide automatic circuit-refresh or fallback logic.
+section: §6.1, Figure 3
+extracted_by: claude-sonnet-4-6

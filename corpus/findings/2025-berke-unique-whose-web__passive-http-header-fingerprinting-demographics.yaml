@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-berke-unique-whose-web
+kind: detection
+summary: User-Agent and Accept-Language browser attributes are transmitted in HTTP request headers, enabling passive server-side fingerprinting without JavaScript execution or any browser-detectable signal. In the 8,400-user dataset, the Languages attribute placed Hispanic users (who represent only 11% of the sample) among more than 45% of users with 'es-US' as their Languages value, substantially reducing their anonymity set size versus the general population.
+techniques:
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should normalize or spoof User-Agent and Accept-Language HTTP headers before forwarding requests; these attributes leak device identity and minority-language status to any server — no JavaScript or active probing required.
+    - Proxy deployments serving diaspora or minority-language communities should treat HTTP header normalization as a high-priority countermeasure, since language-tag uniqueness disproportionately narrows anonymity sets for those populations.
+section: §4.1, §6.2
+extracted_by: claude-sonnet-4-6

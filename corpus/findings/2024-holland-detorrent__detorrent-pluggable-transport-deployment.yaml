@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-holland-detorrent
+kind: deployment
+summary: DeTorrent is implemented as a Tor pluggable transport on top of the WFPadTools/Obfsproxy framework and deployed against live Tor traffic; a modest VPS with 4 GB RAM and 2 vCPUs running at under 50% CPU utilization can defend five simultaneous connections in real time with no GPU required. Performance drops only 0.7% when the generator is trained on one dataset partition and tested on another.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - pluggable-transport
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - LSTM-based real-time dummy-padding generators are cheap enough to run on bridge-class servers; there is no hardware barrier to deploying adversarially trained padding as a Tor PT today.
+    - Cross-partition transferability (only 0.7% performance drop) confirms the generator learns generalizable strategies rather than memorizing traces — a strong signal that the training methodology is sound for deployment.
+section: §5.4
+extracted_by: claude-sonnet-4-6

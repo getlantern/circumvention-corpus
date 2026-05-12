@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pulls-ephemeral-network-layer-fingerprinting
+kind: defense
+summary: Ephemeral blocking defenses reduce DF accuracy from 89.0% (undefended) to 10.2% and RF from 90.1% to 14.7% with standard 30-epoch training, at 97.5% bandwidth and 68.4% delay overhead; under infinite training, DF rises to only 29.2% and RF to 24.3%, still far below undefended baselines of 92.7% and 94.7%. Defenses are tunable at deployment time by adjusting Maybenot framework-wide limits, enabling overhead-vs-protection trade-offs without redeployment.
+techniques:
+    - ml-classifier
+    - website-fingerprint
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Design traffic-analysis defenses with blocking (active delay injection), not just padding — only defenses that combine bandwidth and delay overhead remain effective under infinite-training adaptive adversaries.
+    - Expose per-connection tunable overhead limits (Maybenot-style) so that the overhead-vs-protection trade-off can be adjusted at runtime without redeploying or retraining defense logic.
+section: §5.2, §5.3, Table 1, Table 2
+extracted_by: claude-sonnet-4-6

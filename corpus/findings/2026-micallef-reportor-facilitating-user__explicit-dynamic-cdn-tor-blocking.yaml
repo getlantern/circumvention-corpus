@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-micallef-reportor-facilitating-user
+kind: evaluation
+summary: 'Two mechanistically distinct blocking categories account for Tor exit-node inaccessibility: explicit blocks (deliberate CDN/WAF configuration, e.g., Akamai Bot Manager renders AirBnB inaccessible over Tor) and dynamic blocks (abuse-detection systems that flag Tor exit-node IPs because pooled traffic from diverse users raises apparent abuse scores, triggering rate-limiting or blocking despite no explicit Tor policy). Cloudflare does not block Tor by default, but its aggressive IP scoring results in disproportionate blocking in practice.'
+techniques:
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Dynamic reputation-based blocking is not solved by IP rotation alone; consider bridge-based architectures or CDN-aware routing that avoids high-abuse-score exit IPs.
+    - Expose exit-node reputation scores to the client so circumvention tools can steer circuits away from highly-flagged IPs before a connection attempt rather than after a failure.
+section: §6.1.1
+extracted_by: claude-sonnet-4-6

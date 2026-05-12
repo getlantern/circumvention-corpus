@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-syverson-onion-location-measurements-fingerprinting
+kind: defense
+summary: Local onion association—periodically downloading the full set of onion associations from a CT-log-based API and performing each lookup locally—produces a traffic pattern from the guard's perspective that is indistinguishable from generic onion service access, eliminating both the OLF fingerprint and the DNS-based Website Oracle attack vector. This approach requires no per-connection clearnet exit circuit and imposes negligible overhead given the current ~1,500 stable O-L site count.
+techniques:
+    - traffic-shape
+    - website-fingerprint
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Implement onion address discovery as a background periodic bulk download rather than an on-demand per-connection lookup; store associations locally so each connection to an onion service requires no distinguishable clearnet preamble.
+    - Host the bulk association download API on an onion service (e.g., the sauteed-onions.org .onion endpoint) to remove clearnet exposure from the discovery step itself and defeat DNS-based Website Oracle attacks entirely.
+section: §2.2.4, §6
+extracted_by: claude-sonnet-4-6
