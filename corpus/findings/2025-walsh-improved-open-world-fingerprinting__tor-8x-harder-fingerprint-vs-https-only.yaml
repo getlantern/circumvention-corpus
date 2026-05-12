@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-walsh-improved-open-world-fingerprinting
+kind: evaluation
+summary: 'Tor provides substantial and measurable protection against video stream fingerprinting: the best-case FPR at 0.5 recall is 0.0000063 for Tor versus 0.0000008 for HTTPS-only connections, roughly an 8x increase. Translating to world sizes, at 0.5 recall and 0.1 precision the maximum viable platform catalog is 42.9M videos over Tor versus 337.5M over HTTPS-only (Tables 3–4), confirming Tor degrades adversary capability even after an assumed prior website-fingerprinting step that identifies video platform visits.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Routing video traffic through Tor or multi-hop onion paths multiplies the adversary's minimum required world size by ~7–8x, making full-catalog platforms effectively unfingerprinted even under improved attacks.
+    - Circumvention protocols should treat Tor-based transport as a meaningful defense against destination-video inference, not just content encryption; the noisy, variable-latency nature of Tor's path inherently disrupts DASH-layer fingerprinting features.
+section: §4.5.1, Tables 3–4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-raman-investigating
+kind: evaluation
+summary: Of the Alexa Top 10,000 domains tested, only 37 triggered interception; 20 were Google services, 7 were Facebook-affiliated, and others included Mail.Ru properties (vk.com, ok.ru) and Twitter — a social media and communication focus consistent with a surveillance rather than security motive. The interception system was intermittently active for 21 days (July 17 – August 7, 2019), including a four-day shutdown for tuning, with a median of 340 TLS hosts observing interception when active.
+techniques:
+    - sni-blocking
+censors:
+    - kz
+defense_implications:
+    - Selective domain-list interception (rather than all-HTTPS blocking) means circumvention tools that route through popular-but-non-targeted domains or CDN fronts may avoid triggering the interception logic.
+    - The longitudinal intermittency and tuning period suggest operators test interception systems in stages; circumvention tools should implement continuous self-testing to detect MitM conditions and switch to alternate paths or certificate-pinned channels.
+section: §4.2.5, §4.2.6
+extracted_by: claude-sonnet-4-6

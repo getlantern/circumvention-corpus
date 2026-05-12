@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-elmenhorst-web
+kind: evaluation
+summary: 'Across all four studied countries (China, Iran, India, Kazakhstan), HTTP/3 over QUIC had consistently lower failure rates than HTTPS over TCP: 27.1% vs 37.3% in China, 16.2% vs 34.4% in Iran, and 12.0% vs 15.0% in India (AS55836). The only QUIC-specific interference method observed was black-holing during the QUIC handshake (QUIC-hs-to); no RST injection or SNI-based QUIC filtering was detected.'
+techniques:
+    - http3-quic-block
+    - ip-blocking
+censors:
+    - cn
+    - ir
+    - in
+    - kz
+defense_implications:
+    - As of early 2021, QUIC's primary advantage over TCP for circumvention is bypassing SNI-based blocking; designers should treat this as a temporary window before censors deploy SNI inspection for QUIC.
+    - Black-holing (handshake timeout) is the censor's only deployed QUIC interference method, meaning active-probing–resistant designs that complete handshakes quickly are the key robustness target.
+section: §5, Table 1
+extracted_by: claude-sonnet-4-6

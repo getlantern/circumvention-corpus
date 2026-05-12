@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-zhu-characterizing
+kind: evaluation
+summary: Hop-by-hop bottleneck localization showed that in more than 71% of measured paths the first lossy hop is located deep inside China (beyond the border), with only 34.45% of bottleneck hops coinciding with the GFW hop as detected by RST injection probing — suggesting Chinese ISP infrastructure underprovisioning rather than GFW intervention as the primary cause.
+techniques:
+    - throttling
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention proxies placed at China's border (e.g., at IXPs or peering points) will not resolve the bottleneck for the majority of paths — relay traffic must be terminated inside China or routed via Hong Kong to avoid the deep-inland congestion.
+    - 'AS-path selection matters: China Telecom''s GIA tier (IP range 59.43.x.x) consistently outperforms standard ChinaNet Paid-Peer and China Access tiers; circumvention infrastructure vendors should specifically target GIA-capable upstream providers.'
+section: §5, Figure 13
+extracted_by: claude-sonnet-4-6

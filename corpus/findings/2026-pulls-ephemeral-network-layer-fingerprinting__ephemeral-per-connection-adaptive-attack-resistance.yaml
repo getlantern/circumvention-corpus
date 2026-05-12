@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pulls-ephemeral-network-layer-fingerprinting
+kind: defense
+summary: The ephemeral property — using a unique seed-derived defense per connection — prevents attackers from training classifiers on the exact deployed defense variant. Stacked combinations with height H=5 from N=1,000 base defenses yield 6.88×10^25 unique defenses (polynomial growth O(N^{2H})). Attacks trained on ephemeral defenses also generalize significantly better across other randomized defense families than attacks trained on static defenses.
+techniques:
+    - ml-classifier
+    - website-fingerprint
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Instantiate a unique defense configuration per connection using a seeded PRNG rather than a single static defense — this denies the adversary the ability to build a training corpus matching the deployed defense.
+    - Implement polynomial-growth stacked combination (Maybenot height parameter) to generate astronomically large defense spaces from a small base set, making exhaustive adaptive attack training computationally infeasible.
+section: §3.3, §5.4
+extracted_by: claude-sonnet-4-6

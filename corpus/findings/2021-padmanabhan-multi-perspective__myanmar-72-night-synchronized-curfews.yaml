@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-padmanabhan-multi-perspective
+kind: deployment
+summary: Beginning Feb. 14, 2021, country-wide Internet outages affected Myanmar for 72 consecutive nights until Apr. 28, starting at 18:30 UTC (01:00 local time) and lasting 8 hours each night. These nightly curfews were highly synchronized across most ISPs—identical start and end times—in stark contrast to the haphazard, mis-timed outages on the day of the coup.
+techniques:
+    - measurement-platform
+censors:
+    - mm
+defense_implications:
+    - Build automatic reconnect and session-resumption logic keyed to known curfew windows (18:30–02:30 UTC in Myanmar); pre-cache critical content during daytime hours so users can work offline during nightly blackouts.
+    - 'Treat precise nightly synchronization as a signal of mature censorship tooling: expect similar temporal precision when the same regime later targets specific protocols or IPs.'
+section: §3.2
+extracted_by: claude-sonnet-4-6

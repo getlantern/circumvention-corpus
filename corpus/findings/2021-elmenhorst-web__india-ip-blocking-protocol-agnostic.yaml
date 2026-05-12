@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-elmenhorst-web
+kind: detection
+summary: In India (AS55836), TCP and QUIC failure rates closely track each other (15.0% vs 12.0%), with every TCP-hs-to and route-err failure matched by a corresponding QUIC failure, confirming IP-based blocking affects both protocols equally. In contrast, India AS14061 (VPS) shows 16.3% TCP failure entirely from route-err but only 0.1% QUIC failure, suggesting the VPS vantage point sits outside the censored path.
+techniques:
+    - ip-blocking
+    - http3-quic-block
+censors:
+    - in
+defense_implications:
+    - IP-level blocking in India is protocol-agnostic; QUIC alone does not provide circumvention — tools must combine QUIC with IP diversity (CDN relay, bridge rotation) to be effective.
+    - Vantage-point placement strongly affects measured censorship; hosting-network VPS measurements can understate blocking, requiring validation against residential or ISP-connected nodes.
+section: §5.1, Table 1, Figure 3b
+extracted_by: claude-sonnet-4-6

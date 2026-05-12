@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-arora-improving-performance-security
+kind: evaluation
+summary: Interactive communication on Tor incurs latencies more than 5x greater than direct Internet paths; onion services compound this by creating a 6-hop circuit (3 client-side plus 3 server-side). Shadow simulations at 100% Tor network scale (752,338 active clients, 6,666 nodes) showed that deploying 3,500 and 6,000 Bento servers caused only 4.4% and 9.6% client-side performance degradation respectively, demonstrating that programmable middlebox overlays are feasible at Tor scale.
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - The 5x latency penalty of Tor's 6-hop onion-service path is a primary adoption barrier; circumvention tools that route through Tor bridges should account for this overhead and consider architectures that reduce hop count for the non-sensitive leg.
+    - Deploying programmable relay overlays (akin to Bento) at moderate scale (3,500 nodes) adds less than 5% overhead—within acceptable bounds for production deployment of enhanced-functionality relays.
+section: §1, §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-arora-improving-performance-security
+kind: defense
+summary: CenTor's anonymity scoring function quantifies the privacy cost of geographic shadow selection using six parameters (client density, AS-level and country-level entropy, relay density, exit density, guard density). Prior work establishes that reducing the client anonymity set by 20x—retaining at least 5% of total Tor users—still provides strong anonymity; accordingly, CenTor recommends minimum thresholds of CD, EL, EC ≥ 0.05 and RD, ED ≥ 0.2 for safe shadow operation.
+techniques:
+    - flow-correlation
+    - website-fingerprint
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that restrict relay selection geographically (e.g., country-restricted circuits for latency) should quantify anonymity loss against a 20x anonymity-set reduction threshold before deployment, not just measure performance gains.
+    - Western Europe and Eurasia pass all minimum thresholds (αCenTor > 0; Germany alone hosts 978 entry nodes) while providing strong CDN locality—these regions are the best candidates for geo-aware relay clustering in latency-sensitive Tor-based circumvention infrastructure.
+section: §4.1, §4.2, Table 2
+extracted_by: claude-sonnet-4-6

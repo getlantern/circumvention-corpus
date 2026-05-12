@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-syverson-onion-location-measurements-fingerprinting
+kind: detection
+summary: OLF reduces an adversary's target anonymity set from roughly 10,000 active onionsites to the ~1,500 stably available O-L sites—nearly an order of magnitude. Because O-L requires an exit circuit with a DNS lookup, a DNS-based Website Oracle further collapses the false-positive rate, making OLF effectively a closed-world attack on the enumerated O-L site list.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Any OA mechanism that requires a clearnet DNS lookup before connecting to the onion service exposes the visit to a Website Oracle attack; designs should avoid mandatory clearnet contact at per-connection time.
+    - Do not assume the large overall onion-service anonymity set protects O-L users; the effective anonymity set for O-L users is approximately 10× smaller and is fully enumerable by a passive guard adversary.
+section: §2.3, §3
+extracted_by: claude-sonnet-4-6

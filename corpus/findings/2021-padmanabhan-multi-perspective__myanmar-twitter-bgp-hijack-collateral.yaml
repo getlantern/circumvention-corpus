@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-padmanabhan-multi-perspective
+kind: deployment
+summary: On Feb. 5, 2021, Campana Mythic (AS136168) announced Twitter's 104.244.42.0/24 prefix—apparently intending to blackhole Twitter traffic locally as part of the national Twitter block—but the route leaked to operators in Singapore and Vietnam, causing collateral disruption for Twitter users outside Myanmar. This accidental BGP leak corroborates evidence that Myanmar ISPs were independently implementing IP-level censorship without a centralized national kill switch.
+techniques:
+    - bgp-hijack
+    - ip-blocking
+censors:
+    - mm
+defense_implications:
+    - Circumvention infrastructure operators should monitor for BGP hijacks of their IP space using RouteViews/RIPE RIS feeds; an ISP attempting to locally blackhole proxy IPs can accidentally leak the block globally.
+    - Prefer anycast or CDN-backed addressing for proxy endpoints so that a rogue BGP announcement of a single prefix does not take down all access to the service.
+section: §3.4
+extracted_by: claude-sonnet-4-6

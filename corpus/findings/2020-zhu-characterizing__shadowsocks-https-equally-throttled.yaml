@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-zhu-characterizing
+kind: detection
+summary: A/B testing across HTTP, HTTPS, VPN, and Shadowsocks traffic found no measurable difference in packet loss rates, ruling out censorship-targeted protocol throttling as the cause. Even at probe rates as low as one packet per 10 seconds, loss rates were similar across all protocol variants, indicating no per-connection or per-protocol speed throttling by the GFW.
+techniques:
+    - throttling
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Protocol obfuscation (Shadowsocks, VPN, HTTPS mimicry) does not reduce the bandwidth bottleneck entering China — circumvention tool designers should not expect protocol substitution alone to improve throughput for Chinese users.
+    - Focus circumvention infrastructure design on routing topology (relay placement, AS-path selection) rather than protocol-layer evasion when targeting the Great Bottleneck phenomenon.
+section: §4.2 Observation 4, Experiment 3
+extracted_by: claude-sonnet-4-6

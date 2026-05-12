@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-ahmed-llm-censorship-bias
+kind: evaluation
+summary: CensorshipDetector, an XLM-RoBERTa model fine-tuned on 587,819 Baidu Baike articles (censored) and Chinese Wikipedia (uncensored), achieved 91% accuracy on a held-out validation set of Chinese news articles, correctly classifying 93% of Chinese state media articles as censored and 87% of New York Times Chinese articles as uncensored, with average censorship scores of 0.93 and 0.13 respectively.
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that surface AI-generated content (e.g., LLM-enhanced search or translation) can integrate CensorshipDetector as a real-time signal to flag responses that resemble sanitized text, alerting users before they act on biased information.
+    - Information access platforms serving censored populations should treat LLM outputs as a potentially sanitized signal rather than a neutral source, and should cross-check sensitive topic responses against uncensored corpora.
+section: §4.7, §4.7.2
+extracted_by: claude-sonnet-4-6

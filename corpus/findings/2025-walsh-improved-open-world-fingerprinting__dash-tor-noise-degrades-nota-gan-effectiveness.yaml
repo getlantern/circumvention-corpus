@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-walsh-improved-open-world-fingerprinting
+kind: evaluation
+summary: 'The paper establishes, for the first time in a large open-world scenario (64,000 unmonitored test videos), that HTTPS-only video stream fingerprinting is significantly easier than Tor-based fingerprinting because DASH adaptive bitrate selection introduces a second-order network-condition effect: clients request entirely different video segments at different quality levels depending on path conditions, causing traffic traces from different geographic vantage points to diverge at the application layer even when network conditions are nominally similar. This makes NOTA and synthetic training sample techniques less effective on Tor data due to inherent trace noisiness.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - DASH-over-Tor's adaptive bitrate variability is an unintentional but effective defense; circumvention tools should preserve or amplify this variability (e.g., by introducing controlled jitter) rather than smoothing it out with bandwidth optimization.
+    - Synthetic boundary-seeding methods (NOTA, GAN fakes) trained on noisy Tor traces underperform their HTTPS-only counterparts, so defenders should not assume that fingerprinting classifiers hardened against HTTPS traffic will generalize to Tor-tunneled video.
+section: §4.5, §5.1
+extracted_by: claude-sonnet-4-6

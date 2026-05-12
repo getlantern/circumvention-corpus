@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-walsh-improved-open-world-fingerprinting
+kind: evaluation
+summary: "Extrapolating empirical FPRs using Wang's base-rate-adjusted precision formula (\U0001D70B_r), the best HTTPS-only approach can sustain precision 0.5 at recall 0.5 only up to a world size of 37.5M videos; precision 0.1 at recall 0.5 extends to 337.5M — still short of YouTube's ~10 billion catalog (Table 3). For Tor, the corresponding limits are 4.8M and 42.9M, making dragnet surveillance of unselected users on large platforms effectively infeasible at any acceptable precision with current techniques."
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - 'Circumvention tools that blend traffic into large-catalog platforms (YouTube, Vimeo) benefit from the base-rate problem: the sheer catalog size drives adversary precision toward zero for untargeted dragnet surveillance, making mimicry of such platforms a structurally strong defense.'
+    - Targeted surveillance (known user, reduced world size) remains viable even at modest precision; circumvention protocols designed to resist fingerprinting must address both the dragnet and the targeted-individual threat models separately.
+section: §4.5.1, Tables 3–4
+extracted_by: claude-sonnet-4-6

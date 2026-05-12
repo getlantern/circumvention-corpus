@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-ahmed-llm-censorship-bias
+kind: policy
+summary: 'The study finds that LLM censorship bias affects Chinese-speaking diaspora populations who reside outside mainland China: because user language — not user location — determines exposure to sanitized outputs, Chinese speakers globally receive information shaped by CCP information controls when using popular AI chatbots in Simplified Chinese, constituting an extraterritorial export of domestic censorship infrastructure.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool developers serving diaspora communities (not just in-country users) should treat AI-generated content as a censorship vector and provide users with transparent bias indicators or alternative uncensored information sources.
+    - Document LLM censorship bias as a distinct threat model in circumvention tool design — separate from network-layer blocking — requiring content-layer mitigations such as bias detection, source diversification, or user warnings.
+section: §8.3
+extracted_by: claude-sonnet-4-6

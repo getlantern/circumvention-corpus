@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-ahmed-llm-censorship-bias
+kind: evaluation
+summary: 'Using English as a pivot language (prompting the model in English while requesting Chinese-language responses) reduced but did not eliminate censorship bias: CensorshipDetector scores showed less bias in English-pivoted responses than in direct Simplified Chinese prompts, but sentiment analysis and word-embedding analyses still found statistically significant bias in most models, indicating censorship bias is a function of both prompt language and response language.'
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that expose LLM interfaces to users should route sensitive queries through English-language prompts and explicitly request Traditional Chinese or English responses to partially mitigate censorship bias — but cannot rely on this as a complete fix.
+    - Measure the censorship bias of any LLM component in both the prompt language and response language independently, since bias accumulates at both stages of inference.
+section: §8.2
+extracted_by: claude-sonnet-4-6

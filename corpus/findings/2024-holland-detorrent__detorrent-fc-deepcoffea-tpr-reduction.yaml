@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-holland-detorrent
+kind: evaluation
+summary: Against the state-of-the-art DeepCoFFEA flow-correlation attacker, FC-DeTorrent reduces the true positive rate at a 10^-5 false positive rate to approximately 0.12 — less than half that of the next-best defense Decaf (TPR ≈ 0.29) — while using 97.3% bandwidth overhead, without delaying any real traffic packets.
+techniques:
+    - flow-correlation
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Padding-only approaches can meaningfully defeat deep-learning flow-correlation at realistic bandwidth budgets (~97%); protocol designers should not treat FC as an unsolvable problem requiring architectural changes like traffic splitting.
+    - Train the padding generator jointly against a CNN discriminator on matched/unmatched entry-exit pairs (binary cross-entropy loss) rather than against a WF classifier — the FC threat model requires its own training objective.
+section: §4.2, §6, Table 5
+extracted_by: claude-sonnet-4-6

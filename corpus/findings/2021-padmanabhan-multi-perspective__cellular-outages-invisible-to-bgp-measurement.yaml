@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-padmanabhan-multi-perspective
+kind: evaluation
+summary: Cellular data restrictions imposed from Mar. 15, 2021 were invisible to IODA (which uses BGP routing data, active probing, and darknet traffic) because cellular networks commonly use Carrier Grade NAT. Kentik's AS-level NetFlow aggregates clearly showed the cellular traffic drop, with all four major cellular ASes (MPT AS9988, Mytel AS136255, Telenor AS133385, Ooredoo AS132167) experiencing sustained traffic reductions while fixed-line providers only showed nightly dips.
+techniques:
+    - measurement-platform
+censors:
+    - mm
+defense_implications:
+    - Circumvention tools deployed in markets with high mobile-broadband share should instrument connectivity probes that traverse cellular paths specifically, since standard BGP/darknet monitoring will miss cellular-only outages.
+    - 'Design for mobile-first degraded-connectivity scenarios: cellular restrictions may persist indefinitely alongside normal fixed-line service, requiring separate fallback logic for mobile users.'
+section: §3.2
+extracted_by: claude-sonnet-4-6

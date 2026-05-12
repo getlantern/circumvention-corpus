@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-ahmed-llm-censorship-bias
+kind: evaluation
+summary: 'Across all 7 LLMs tested (GPT 4o, GPT 4o Mini, Gemini 1.5 Flash, Gemini 1.5 Pro, Llama 3.2, Claude 3.5 Haiku, Claude 3.5 Sonnet), statistically significant evidence of censorship bias was found in at least one evaluation metric per model: responses to Simplified Chinese prompts were more neutral, more similar to sanitized text, and less opinionated than semantically identical Traditional Chinese prompts (p < 0.05 across refusal-rate, sentiment, CensorshipDetector classification, and word-embedding analyses).'
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Tools designed to help users in censored regions access information must not use LLM-generated content as a substitute for original uncensored sources on sensitive topics — even Western-built models reproduce Chinese information controls when queried in Simplified Chinese.
+    - If a circumvention tool includes an AI assistant, default to Traditional Chinese or English for politically sensitive queries rather than Simplified Chinese to reduce the magnitude of censorship bias in responses.
+section: Table 4, §6
+extracted_by: claude-sonnet-4-6

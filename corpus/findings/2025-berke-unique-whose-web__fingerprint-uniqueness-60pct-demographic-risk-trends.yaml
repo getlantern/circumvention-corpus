@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-berke-unique-whose-web
+kind: evaluation
+summary: 'Approximately 60% of users in the 8,400-participant US dataset had a unique overall browser fingerprint when combining 13 standard attributes, matching FingerprintJS''s advertised 60% accuracy. Fingerprinting risk followed strict monotonic trends: uniqueness increased with age (65+ group most at risk) and decreased with income (household income under $25,000 group at greatest risk), while males showed more unique overall fingerprints but females showed higher uniqueness on passive-fingerprintable attributes (User-Agent, Languages).'
+techniques:
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools targeting lower-income or elderly populations should apply browser attribute normalization as a first-class feature — these groups face the highest fingerprinting risk and are therefore most susceptible to cross-session re-identification by censors or adversarial proxies.
+    - Gender-asymmetric passive fingerprinting (female users more unique via HTTP headers) implies that User-Agent spoofing strategies should aim for a common cross-gender value, not just a plausible one, to avoid demographic leakage.
+section: §4.1, §6.2, §8.2
+extracted_by: claude-sonnet-4-6

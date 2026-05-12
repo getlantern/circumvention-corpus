@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-arora-improving-performance-security
+kind: evaluation
+summary: A Tor relay serving as a Bento server and hosting a CenTor instance for 10,000 simultaneous clients experienced only approximately 0.4% performance degradation compared to a vanilla relay; running 20 concurrent CenTor instances on a single relay caused roughly 1% degradation. Shadow-aware routing in a low-relay-density region (US, 933 of 6,666 relays in shadow) produced 0.7% relay degradation while delivering 3.6% client performance improvement.
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Programmable relay functionality (CDN replication, load balancing) can be safely co-deployed with standard Tor relay duties at very low overhead cost, enabling bridge operators to offer enhanced services without sacrificing relay performance for other users.
+    - 'Low-relay-density regions that also have high user density (e.g., Americas) are the highest-impact targets for new relay deployment: both anonymity scores and performance degrade in these regions, making infrastructure investment there disproportionately valuable for circumvention tool operators.'
+section: §5.2
+extracted_by: claude-sonnet-4-6

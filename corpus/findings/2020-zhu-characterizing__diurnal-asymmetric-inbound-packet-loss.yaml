@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-zhu-characterizing
+kind: evaluation
+summary: 'The bottleneck exhibits strong and consistent diurnal patterns: 80–95% of receiver–sender pairs show a standard deviation of less than 3 hours in daily slowdown duration, and the patterns persist unchanged across weekends and national holidays (May 1–2 and October 1 national day). Packet loss is strictly asymmetric — occurring only for traffic entering China (inbound data and outbound ACK packets), not for traffic leaving China.'
+techniques:
+    - throttling
+    - traffic-shape
+censors:
+    - cn
+defense_implications:
+    - 'Circumvention clients can implement time-aware connection scheduling: pre-fetch or bulk-transfer content during the low-congestion window (roughly 1–8 AM Beijing time) and minimize large transfers during peak slowdown hours.'
+    - The consistent diurnal signature is useful for automated QoS monitoring in circumvention tools — sudden deviations from the expected pattern may indicate policy changes or new throttling mechanisms worth alerting on.
+section: §4.2 Observation 2, Observation 3, Figure 10
+extracted_by: claude-sonnet-4-6

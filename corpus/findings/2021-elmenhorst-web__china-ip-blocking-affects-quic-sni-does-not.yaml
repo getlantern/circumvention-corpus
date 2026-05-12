@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-elmenhorst-web
+kind: evaluation
+summary: In China (AS45090), HTTP/3 over QUIC has a lower overall failure rate (27.1%) than HTTPS over TCP (37.3%), but hosts that time out during the TCP handshake (TCP-hs-to, indicating IP blocking) always also fail over QUIC — while hosts blocked via TLS-hs-to or conn-reset (SNI-based methods) nearly always succeed over QUIC.
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - http3-quic-block
+censors:
+    - cn
+defense_implications:
+    - QUIC/HTTP3 bypasses China's SNI-based blocking (TLS-hs-to, conn-reset) but offers no protection against IP-level blocking; circumvention tools must address IP blocking independently.
+    - A transport that runs over QUIC and avoids blocklisted IPs (e.g., via CDN fronting or domain fronting) would escape both blocking vectors in the Chinese network studied.
+section: §5.1, Table 1, Figure 3a
+extracted_by: claude-sonnet-4-6

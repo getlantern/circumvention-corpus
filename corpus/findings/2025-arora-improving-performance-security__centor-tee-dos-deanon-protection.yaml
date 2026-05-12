@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-arora-improving-performance-security
+kind: defense
+summary: CenTor protects origin onion service operators from DoS and deanonymization by routing all client traffic through geographically distributed Bento replicas running inside SGX-based Trusted Execution Environments (TEEs). The original operator can go fully offline after deploying static content; replicas enforce confidentiality and integrity of hosted content with ephemeral per-enclave encryption keys, preventing malicious Bento node operators from inspecting or modifying content even if they control the underlying hardware.
+techniques:
+    - active-probing
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Tor bridge operators hosting sensitive circumvention services should consider TEE-backed replica deployment to insulate origin infrastructure from both DoS and location-exposure attacks—the origin can remain dark while replicas serve traffic.
+    - For circumvention services requiring operator anonymity (whistleblowing platforms, dissident communication), combining non-anonymous replica hosting with TEE-enforced content isolation offers a practical CDN-style DoS defense without trusting third-party replica operators with plaintext content.
+section: §3.1, §5.3
+extracted_by: claude-sonnet-4-6

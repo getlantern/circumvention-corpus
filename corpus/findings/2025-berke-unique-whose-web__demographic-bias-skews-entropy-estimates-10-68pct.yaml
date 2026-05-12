@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-berke-unique-whose-web
+kind: evaluation
+summary: Simulating a shift from a 0% to 100% male dataset sample changes Shannon entropy estimates by more than 10% for User-Agent (downward) and more than 68% for WebGL Renderer (upward), revealing that prior large fingerprinting studies — Panopticlick (83.6–94.2% unique, predominantly reached via tech-oriented channels) and AmIUnique (90% desktop unique) — likely misrepresent real-world risk due to uncontrolled male bias, as confirmed by a directly comparable study showing 76.5% male participants.
+techniques:
+    - tls-fingerprint
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Entropy-based fingerprinting threat assessments used to justify circumvention tool design decisions should be treated as upper or lower bounds rather than ground truth unless the dataset's demographic composition is known and matches the target user population.
+    - Circumvention deployments serving demographically distinct communities (e.g., users in a specific country with a particular age/income skew) should derive their own fingerprinting risk estimates rather than relying on canonical studies conducted on self-selected privacy-aware audiences.
+section: §6, Figure 4
+extracted_by: claude-sonnet-4-6

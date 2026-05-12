@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-syverson-onion-location-measurements-fingerprinting
+kind: evaluation
+summary: Scanning 0.91B unique SANs extracted from 3.7B certificates across 17 CT logs revealed 3,330 unique .onion addresses configured by 26,937 domains. After six months, only 2,101 onions (63%) remained reachable, of which 1,505 (72%) had matching clearnet index pages, constituting the effectively enumerable target set for a targeted OLF adversary.
+techniques:
+    - measurement-platform
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - The complete set of O-L onion associations is publicly enumerable via CT logs at modest cost; any circumvention design relying on onion address obscurity must not advertise the association via O-L response headers or SANs in CT-logged certificates.
+    - Circumvention services that want to preserve onion address confidentiality should deliver associations through out-of-band or encrypted channels not indexed by CT, such as a separately authenticated onion-service-hosted API.
+section: §4.1
+extracted_by: claude-sonnet-4-6

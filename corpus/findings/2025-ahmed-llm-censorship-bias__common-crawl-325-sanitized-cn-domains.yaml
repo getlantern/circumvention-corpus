@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-ahmed-llm-censorship-bias
+kind: evaluation
+summary: A systematic search of the Common Crawl dataset — the training corpus attributed to most major LLMs including Llama, GPT, and Gemini — found content from 325 of 326 Chinese government and state media domains searched, confirming that sanitized content is pervasive in LLM pretraining data and providing a concrete mechanism for how Chinese information controls propagate into Western-built models.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Developers of AI-assisted circumvention tools (e.g., AI summarizers, chatbots for censored regions) should apply post-hoc debiasing or retrieval-augmented generation from explicitly uncensored sources rather than relying on base LLM outputs for politically sensitive queries.
+    - Audit LLM training pipelines used in circumvention infrastructure for inclusion of state-media-origin content; consider filtering known state-controlled domains from any fine-tuning corpora.
+section: §3.3
+extracted_by: claude-sonnet-4-6

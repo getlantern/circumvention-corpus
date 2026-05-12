@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-elmenhorst-web
+kind: detection
+summary: In Iran (AS62442), HTTPS connections fail at 34.4% (mostly TLS-hs-to, consistent with SNI filtering), while HTTP/3 over QUIC fails at only 16.2%. SNI spoofing reduces TCP failure from 60.1% to 10.2% but has zero effect on QUIC (20.1% both with real and spoofed SNI), indicating Iranian censors apply separate UDP endpoint blocking to QUIC rather than SNI-based identification.
+techniques:
+    - sni-blocking
+    - http3-quic-block
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - QUIC-based transports in Iran face a distinct UDP endpoint blocklist independent of SNI; rotating server IPs or using QUIC over non-443 ports is necessary to evade this blocking layer.
+    - SNI spoofing or ECH is insufficient to unblock QUIC in Iran — the censor's UDP-level filter fires before any TLS negotiation occurs.
+section: §5.2, Table 3
+extracted_by: claude-sonnet-4-6

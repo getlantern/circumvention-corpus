@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-elmenhorst-web
+kind: evaluation
+summary: Only approximately 5% of domains from the combined Citizen Lab and Tranco Top-4000 test lists supported QUIC in early 2021, heavily skewing the measurable set toward large global .com domains (e.g., Google properties). This bias means the study predominantly captures censorship of internationally targeted sites rather than country-specific domains.
+techniques:
+    - http3-quic-block
+    - measurement-platform
+censors:
+    - cn
+    - ir
+    - in
+    - kz
+defense_implications:
+    - Circumvention infrastructure relying on QUIC must be prepared for rapid expansion of censor QUIC-blocking capability as QUIC adoption grows beyond the current ~5% of sites.
+    - Measurement studies of QUIC censorship should maintain separate test lists for major CDN-hosted domains versus country-specific targets to avoid conflating globally targeted and locally targeted blocking.
+section: §4.3
+extracted_by: claude-sonnet-4-6
