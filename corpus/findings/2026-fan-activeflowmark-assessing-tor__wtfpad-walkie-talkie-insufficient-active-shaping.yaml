@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: WTF-PAD and Walkie-Talkie client-side defenses — which operate on packet timing, padding, and burst-level structure — do not remove the throughput constraint imposed by an upstream rate limiter. When the shaping rate decreases, excess traffic is delayed, queued, or dropped; exit-side throughput retains the imposed modulation waveform. BM-Net was trained and evaluated on a dataset that includes both undefended and WTF-PAD/Walkie-Talkie-defended traces, confirming detection persists under this mixed condition.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Defenses must operate at the throughput/bandwidth layer — not just the packet-timing layer — to counter active bandwidth watermarking; deliberate rate smoothing, randomized circuit rotation at regular intervals (to break waveform continuity), or client-side detection of low-frequency rhythmic throughput variation are the relevant research directions.
+    - Pluggable transports that run over QUIC (e.g., Hysteria2) may exhibit different interactions with upstream token-bucket shapers than TCP-based transports, potentially disrupting waveform injection fidelity — this is an open design opportunity worth evaluating.
+section: §VI-E.2
+extracted_by: claude-sonnet-4-6

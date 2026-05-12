@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: detection
+summary: NATA (Non-invasive Active Traffic-correlation Analysis) requires no endpoint compromise, no Tor-browser modification, and no payload decryption. The adversary controls only an upstream network gateway (ISP/AS level) to impose bandwidth modulation on Tor TCP connections, and observes traffic at adversary-controlled exit relays — a Shaper–Sniffer architecture that operates purely at the network-infrastructure layer.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Logical-layer defenses (padding, timing obfuscation) that don't remove upstream rate constraints are insufficient against this class of attack — circumvention tools must consider defenses that obscure or resist bandwidth-level throttling signals, not just packet-level timing.
+    - Bridge and pluggable-transport use complicates Shaper-side identification of Tor connections, so obfuscating the Tor entry-point connection type (e.g., using VLESS/Trojan to blend with HTTPS) raises the bar for traffic identification before shaping can be applied.
+section: §III-A
+extracted_by: claude-sonnet-4-6

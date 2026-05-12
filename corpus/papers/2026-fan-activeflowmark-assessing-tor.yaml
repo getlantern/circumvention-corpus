@@ -1,0 +1,35 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.05887
+id: 2026-fan-activeflowmark-assessing-tor
+title: 'ActiveFlowMark: Assessing Tor Anonymity under Active Bandwidth Watermarking'
+authors:
+    - Zilve Fan
+    - Zijian Zhang
+    - Yangnan Guo
+    - Jiaqi Gao
+    - Zhen Li
+    - Mengyu Wang
+    - Chengxiang Si
+    - Liehuang Zhu
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.05887"
+url: https://arxiv.org/abs/2605.05887v1
+abstract: Low-latency anonymity networks such as Tor remain vulnerable to infrastructure-level traffic analysis that exploits side-channel information observable from encrypted communications. We introduce NATA, a non-invasive active traffic-correlation analysis algorithm that injects distinguishable throughput patterns into traffic flows through controlled bandwidth perturbations. Unlike passive correlation methods, NATA does not require endpoint compromise, Tor-browser modification, or packet-payload decryption or modification. It can be carried out by an adversary that controls an upstream network gateway and observes traffic at adversary-controlled exit relays. To identify perturbed flows under substantial network variability, we develop BM-Net (Bandwidth Modulation Network), a selective state-space learning framework adapted for bandwidth-modulation detection. Given the limited availability of high-fidelity ground truth on real-world cross-continental Tor paths, BM-Net adopts a data-efficient learning strategy that separates self-supervised representation learning from supervised task-specific classification. It first learns reusable traffic representations through masked pre-training on serialized traffic traces, and then adapts these representations to binary perturbation detection and fine-grained modulation classification using task-specific labeled data. Through real Tor traffic measurements, BM-Net achieves a 99.65% binary detection F1 score and a 97.5% macro-F1 score for fine-grained modulation classification under our evaluated settings. In addition, tornettools-based scaled simulations are used to estimate exit-observation probability under bandwidth-weighted relay selection. These results suggest that active bandwidth perturbation can serve as an infrastructure-level side channel for traffic correlation under a clearly defined adversary model.
+censors:
+    - generic
+techniques:
+    - flow-correlation
+    - traffic-shape
+    - ml-classifier
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+    - simulation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates Tor vulnerability to active bandwidth-watermarking attacks by adversaries with upstream network access; relevant for understanding robustness requirements of anonymity-based circumvention.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.05887

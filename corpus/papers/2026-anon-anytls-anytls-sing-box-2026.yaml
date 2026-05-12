@@ -1,0 +1,131 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-anon-anytls-anytls-sing-box-2026
+title: AnyTLS协议是什么？AnyTLS原理、sing-box部署与客户端配置完整指南（2026） | 二毛
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/article/anytls-guide/
+abstract: |-
+    AnyTLS协议是什么？AnyTLS原理、sing-box部署与客户端配置完整指南（2026） | 二毛
+
+    [Skip to content](#VPContent)
+
+    # AnyTLS协议是什么？AnyTLS原理、sing-box部署与客户端配置完整指南（2026）
+
+    约 5965 字大约 20 分钟
+
+    [AnyTLS](/blog/tags/?tag=AnyTLS)[sing-box](/blog/tags/?tag=sing-box)[科学上网](/blog/tags/?tag=科学上网)[代理协议](/blog/tags/?tag=代理协议)
+
+    ...
+
+    2026-05-08
+
+    如果你正在找「AnyTLS 协议怎么用」，这篇可以直接当实战手册：先讲清 AnyTLS 是什么、和其他代理协议有什么差异，再一步步完成 sing-box 服务端部署与多平台客户端配置，最后给出常见报错和排查思路，方便你少踩坑、快速落地。
+
+    ## [一、AnyTLS协议介绍](#一、anytls协议介绍)
+
+    ### [1.1 什么是AnyTLS协议](#_1-1-什么是anytls协议)
+
+    AnyTLS 是一个比较新的 TLS 代理协议，由 sing-box 团队维护。它的目标很直接：在保证安全性的前提下，把配置和使用门槛尽量压低，同时给进阶用户留下可调空间。
+
+    AnyTLS 的核心思路是把标准 TLS 当作传输外壳，再配合可自定义的填充策略（Padding Scheme）来提升流量隐蔽性，同时尽量维持性能和兼容性。
+
+    ### [1.2 AnyTLS协议的发展历程](#_1-2-anytls协议的发展历程)
+
+    | 时间    | 事件   | 说明                      |
+    | ----- | ---- | ----------------------- |
+    | 2024  | 协议设计 | sing-box团队开始设计AnyTLS协议  |
+    | 2024  | 首个版本 | 在sing-box dev-next分支中发布 |
+    | 2025  | 功能完善 | 新增更多填充方案和会话管理功能         |
+    | 2026+ | 持续演进 | 多平台客户端支持，功能不断完善         |
+
+    主要版本特点：
+
+    ### [1.3 设计理念与特点](#_1-3-设计理念与特点)
+
+    #### [1.3.1 设计理念](#_1-3-1-设计理念)
+
+    AnyTLS的设计遵循以下原则：
+
+    *   TLS兼容：基于标准TLS协议，确保广泛兼容性
+    *   灵活填充：支持自定义填充方案，增强流量隐蔽性
+    *   会话管理：完善的空闲会话检测和超时机制
+    *   简单配置：配置简洁，易于部署和维护
+    *   安全优先：使用现代加密算法，确保通信安全
+
+    #### [1.3.2 协议特点](#_1-3-2-协议特点)
+
+    | 特点        | 说明               |
+    | --------- | ---------------- |
+    | 基于TLS     | 使用标准TLS协议传输，兼容性好 |
+    | 填充方案      | 支持自定义填充，增强隐蔽性    |
+    | 会话管理      | 空闲会话检测、超时机制      |
+    | 密码认证      | 简单的用户名密码认证       |
+    | 多用户支持     | 支持多用户管理          |
+    | TCP/UDP支持 | 同时支持TCP和UDP转发    |
+
+    ### [1.4 适用场景](#_1-4-适用场景)
+
+    AnyTLS 比较适合下面这些场景：
+
+    *   流量隐蔽需求：需要TLS流量伪装的场景
+    *   实验性部署：对新协议感兴趣的技术用户
+    *   特定需求：需要自定义填充方案的代理方案
+    *   学习和研究：研究和学习代理协议
+    *   稳定网络环境：在稳定网络环境下使用
+
+    重要说明
+
+    AnyTLS 仍在持续迭代。和 VLESS、Hysteria2 这类成熟方案相比，它的生态和客户端支持还在补齐中，更适合愿意折腾、愿意做测试的用户先用起来。
+
+    ### [1.5 与其他代理协议对比](#_1-5-与其他代理协议对比)
+
+    | 特性    | AnyTLS   | VLESS      | Trojan | Hysteria2 | TUIC      |
+    | ----- | -------- | ---------- | ------ | --------- | --------- |
+    | 传输协议  | TCP/TLS  | TCP/UDP    | TCP    | UDP(QUIC) | UDP(QUIC) |
+    | 加密方式  | TLS      | TLS/XTLS   | TLS    | QUIC TLS  | QUIC TLS  |
+    | 流量伪装  | 填充方案     | Reality/WS | 强      | HTTP/3    | 弱         |
+    | 多用户支持 | 支持       | 支持         | 支持     | 支持        | 支持        |
+    | 性能    | 中        | 高          | 中      | 极高        | 高         |
+    | 配置复杂度 | 低        | 中          | 低      | 低         | 低         |
+    | 客户端支持 | sing-box | 广泛         | 广泛     | 较广        | 较广        |
+
+    ## [二、协议工作原理](#二、协议工作原理)
+
+    ### [2.1 整体架构](#_2-1-整体架构)
+
+    AnyTLS采用客户端-服务器架构，基于TLS协议构建：
+
+    组件说明：
+
+    | 组件    | 功能           |
+    | ----- | ------------ |
+    | TLS连接 | 提供加密传输通道     |
+    | 填充处理  | 添加填充数据，增强隐蔽性 |
+    | 用户认证  | 验证客户端身份      |
+    | 会话管理  | 管理连接会话生命周期   |
+
+    ### [2.2 填充方案机制](#_2-2-填充方案机制)
+
+    AnyTLS 会通过填充方案来增强流量隐蔽性：
+
+    ### [2.3 填充方案详解](#_2-3-填充方案详解)
+
+    AnyTLS 支持自定义填充方案，下面是常见默认配置：
+
+    ```routeros
+    默认填充方案：
+    ┌────────────────────────────────────────────────────────────────
+censors:
+    - generic
+techniques:
+    - traffic-shape
+defenses_discussed:
+    - anytls
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Chinese-language technical guide; directly relevant to Lantern's protocol evaluation and emerging circumvention tool support.
+visibility: public
+date_added: "2026-05-11"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/article/anytls-guide/

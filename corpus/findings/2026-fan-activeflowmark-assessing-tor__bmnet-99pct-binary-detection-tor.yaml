@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-fan-activeflowmark-assessing-tor
+kind: evaluation
+summary: BM-Net achieves a 99.65% binary detection F1 score distinguishing watermarked from natural Tor flows, and a 97.5% macro-F1 score for fine-grained modulation classification across sinusoidal, square-wave, and triangular patterns. The fine-grained test set contains 201 held-out samples collected from ten clients across five geographic regions (Europe, North America, Australia, Southeast Asia, East Asia), with training traces including traffic collected under WTF-PAD and Walkie-Talkie defenses.
+techniques:
+    - flow-correlation
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - The extremely high detection rate against cross-region Tor traffic — even with client-side padding defenses present — means that any anonymity-critical circumvention tool relying on Tor should not assume passive-defense padding (WTF-PAD, Walkie-Talkie) provides meaningful protection against infrastructure-level active watermarking.
+    - 'AS-aware path selection (Counter-RAPTOR, CLAPS, LASTor) is the most actionable existing defense: reducing the probability that entry and exit are both controlled by the same network-level adversary directly attacks the Shaper–Sniffer model.'
+section: §VI-D, Table III, Table V
+extracted_by: claude-sonnet-4-6
