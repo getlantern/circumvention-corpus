@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kang-censorless-serverless
+kind: defense
+summary: 'CensorLess''s threat model explicitly relies on a rational-censor assumption: the censor will not block entire cloud-provider IP ranges or domain namespaces because the collateral damage to legitimate business services would be politically and economically unacceptable. AWS Lambda''s inherent IP-address ephemerality (new IPs on each invocation, function lifetime up to 15 minutes) means even censors willing to attempt enumeration face a continuously shifting target distributed across the cloud provider''s global address space.'
+techniques:
+    - ip-blocking
+    - asn-blackholing
+    - active-probing
+defenses:
+    - bridges
+    - domain-fronting
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Anchor proxy infrastructure inside cloud-provider IP ranges that, if blocked, would cause mass collateral damage (e.g., Lambda/GCF egress) — this structurally raises the censor's blocking cost beyond what rational actors will pay.
+    - Avoid dedicating static or predictable IP blocks to circumvention traffic; prefer infrastructure where IP churn is a built-in platform property rather than an operator-managed rotation.
+section: §4.2
+extracted_by: claude-sonnet-4-6

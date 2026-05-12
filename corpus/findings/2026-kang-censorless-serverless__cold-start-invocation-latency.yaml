@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kang-censorless-serverless
+kind: evaluation
+summary: During the cold-start phase on a newly migrated serverless bridge (approximately the first 0–50 invocations), average function duration spikes to over 6,000 ms and success rate occasionally drops below 90%. The system stabilizes between invocations 100–200, with average durations consistently below 1,000 ms and success rates above 95%; AWS Lambda by default supports up to 1,000 concurrent invocations without throttling.
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Pre-warm newly deployed serverless bridges with 50–100 synthetic keepalive invocations before migrating live client traffic to avoid the cold-start latency window (up to 6,000 ms) that degrades user experience immediately after bridge rotation.
+    - Implement gradual or staggered client migration — move a fraction of clients to a new bridge first and confirm sub-1,000 ms stability before migrating the remainder — to prevent a synchronized cold-start across the full user base.
+section: §6.2, Figure 5
+extracted_by: claude-sonnet-4-6
