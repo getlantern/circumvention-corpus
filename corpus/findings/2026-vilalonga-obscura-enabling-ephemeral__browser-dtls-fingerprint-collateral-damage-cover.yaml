@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vilalonga-obscura-enabling-ephemeral
+kind: defense
+summary: 'Obscura''s browser-to-browser (B-B) WebRTC connections produce DTLS ClientHello and ServerHello messages indistinguishable from genuine browser traffic: across 100 captured handshakes compared against Facebook Messenger, Google Meet, Discord, and a reference WebRTC app using the dfind tool, no unique identifiers were found in C-C connections, and the sole Firefox-specific fingerprint (ServerHello length 86 bytes, cipher TLS_AES_128_GCM_SHA256, extension field length 46 bytes) matches the default Firefox WebRTC profile — meaning blocking it would also block all legitimate Firefox WebRTC users.'
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - webrtc-pluggable
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Route the client-proxy leg through a genuine browser WebRTC stack (e.g., Chromium headless) to inherit browser DTLS fingerprints rather than shipping a standalone DTLS implementation
+    - Validate DTLS fingerprint coverage with dfind or equivalent tooling against a corpus of major video-calling apps before each release to catch regressions before censors do
+section: §5.2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vilalonga-obscura-enabling-ephemeral
+kind: detection
+summary: A differential degradation attack (DDA) that selectively drops RTP packets carrying the last packet of a video frame — exploiting the fact that a single lost packet causes the entire encoded frame to be discarded — reduces Protozoa's covert throughput to single-digit KBps at 1920×1080 with 15% frame loss and at 426×240 with 50% frame loss, while maintaining acceptable video quality for legitimate WebRTC traffic.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+censors:
+    - generic
+defense_implications:
+    - Add a session-layer reliability protocol (e.g., KCP/smux) sitting above the WebRTC media stream so that frame loss triggers retransmission rather than cascading into covert data loss
+    - In Pion-based implementations, perform decapsulation at the individual RTP-packet granularity rather than waiting for full frame reassembly so that partial frames still yield usable covert data
+section: §5.3
+extracted_by: claude-sonnet-4-6
