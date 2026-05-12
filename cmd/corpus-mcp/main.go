@@ -778,6 +778,14 @@ var tools = []tool{
 		},
 	},
 	{
+		Name:        "reload_corpus",
+		Description: "Re-scan the corpus directory and reload all paper/finding YAMLs from disk. Use this when a recently-added paper isn't being found by search_papers/get_paper (typically right after a PR is merged), so subsequent queries can see it without restarting the server. Returns the new paper/finding counts.",
+		InputSchema: map[string]any{
+			"type":       "object",
+			"properties": map[string]any{},
+		},
+	},
+	{
 		Name: "synthesize",
 		Description: "Answer a research question by retrieving every relevant extracted finding (across all papers) along with full paper provenance, grouped by technique / censor / year. The caller is expected to be an LLM that turns this material into a synthesized answer with citations of the form (paper_id, §section). Use this when the user asks 'what does the literature say about X', 'what's known about Y', 'what's contested', or wants a defense recommendation backed by citations. Prefer this over search_papers when the question is about a phenomenon rather than a specific paper.",
 		InputSchema: map[string]any{
@@ -792,6 +800,48 @@ var tools = []tool{
 			},
 		},
 	},
+}
+
+// server wraps the in-memory store with the args needed to rebuild it.
+// The request loop is single-threaded so we can swap srv.s without locks;
+// callers see either the old store or the new one, never a partial.
+type server struct {
+	s          *store
+	corpusDir  string
+	publicOnly bool
+}
+
+func (srv *server) handle(req rpcRequest) rpcResponse {
+	if req.Method == "tools/call" {
+		var p struct {
+			Name string `json:"name"`
+		}
+		if err := json.Unmarshal(req.Params, &p); err == nil && p.Name == "reload_corpus" {
+			return srv.handleReload(req.ID)
+		}
+	}
+	return srv.s.handle(req)
+}
+
+func (srv *server) handleReload(id json.RawMessage) rpcResponse {
+	resp := rpcResponse{JSONRPC: "2.0", ID: id}
+	news, err := loadStore(srv.corpusDir, srv.publicOnly)
+	if err != nil {
+		resp.Result = map[string]any{
+			"isError": true,
+			"content": []any{map[string]any{"type": "text", "text": fmt.Sprintf("reload failed: %v", err)}},
+		}
+		return resp
+	}
+	prevPapers := len(srv.s.papers)
+	prevFindings := len(srv.s.findings)
+	srv.s = news
+	msg := fmt.Sprintf("reloaded from %s: %d papers (was %d), %d findings (was %d)",
+		srv.corpusDir, len(news.papers), prevPapers, len(news.findings), prevFindings)
+	resp.Result = map[string]any{
+		"content": []any{map[string]any{"type": "text", "text": msg}},
+	}
+	return resp
 }
 
 func (s *store) handle(req rpcRequest) rpcResponse {
@@ -945,6 +995,8 @@ func main() {
 	}
 	log.Printf("corpus-mcp v%s loaded %d papers from %s (%s)", serverVersion, len(s.papers), abs, visBanner)
 
+	srv := &server{s: s, corpusDir: abs, publicOnly: *publicOnly}
+
 	in := bufio.NewReader(os.Stdin)
 	out := bufio.NewWriter(os.Stdout)
 	defer out.Flush()
@@ -968,7 +1020,7 @@ func main() {
 			log.Printf("parse: %v", err)
 			continue
 		}
-		resp := s.handle(req)
+		resp := srv.handle(req)
 		// notifications/initialized produces a zero-value response we suppress.
 		if resp.JSONRPC == "" {
 			continue
