@@ -1,0 +1,145 @@
+# Code-project entry, not a peer-reviewed paper. Added because the technique
+# (client-only domain fronting via local MITM with a user-installed CA) is
+# novel-enough deployed prior art that the protocol-designer / lantern team
+# should be aware of it.
+id: 2026-patterniha-mitm-domainfronting
+title: "MITM-DomainFronting: client-only domain fronting via local TLS MITM with a user-installed CA"
+authors:
+  - patterniha
+venue: GitHub (1.5k stars; merged into XTLS/Xray-core via PR #4348)
+year: 2026
+url: https://github.com/patterniha/MITM-DomainFronting
+arxiv_id: ""
+abstract: |
+  Persian-language GitHub project (1.5k stars, MIT/GPL-3.0) that
+  implements **fully client-side domain fronting** without any
+  server-side infrastructure. The project ships an Xray-core
+  configuration plus a self-signed-CA bundle. Currently merged into
+  Xray-core mainline (PR getlantern-style /XTLS/Xray-core/pull/4348),
+  so any recent v2rayN / v2rayNG install can use the method via a single
+  JSON config.
+
+  **Mechanism, summarized in English (the README is in Persian):**
+
+  1. **Local CA install.** The user generates a personal root CA
+     (`mycert.crt` / `mycert.key`) and installs the cert as a Trusted
+     Root in their OS or in a specific browser. The private key never
+     leaves the device. (The author repeatedly warns against accepting
+     a CA from anyone else.)
+  2. **DNS hijack.** Xray's FakeDNS subsystem resolves the target
+     domains (`google.com`, `vercel.com`, `reddit.com`, `github.com`,
+     `pubmed.ncbi.nlm.nih.gov`, etc.) to local 127.0.0.1 sockets on
+     port 11666 (HTTP/1.1) or 11777 (HTTP/2+HTTP/1.1).
+  3. **On-the-fly cert issuance.** Xray's `tunnel` inbound with
+     `usage: "issue"` mints a leaf cert for whatever SNI the browser
+     presents, signed by the user's personal CA. The browser's TLS
+     handshake succeeds against the local proxy.
+  4. **Plaintext intercept.** The browser now sends its HTTP request
+     in cleartext (relative to the local proxy). Xray reads the inner
+     Host header and the request body.
+  5. **Re-encrypt with a fronted SNI.** Xray opens a new TLS
+     connection to the destination CDN's real IP, but sets the outer
+     SNI to a *different* domain on the same CDN — e.g.
+     `nextjs.org` instead of `vercel.com`, `www.python.org` instead
+     of `reddit.com`, `kubernetes.io` instead of any Netlify site, and
+     `www.google.com` for any Google service. The inner Host header
+     remains the user's true destination, so the CDN edge routes the
+     request correctly.
+
+  From the censor's perspective only the fronted SNI is visible. From
+  the CDN's perspective the request is a normal incoming HTTPS request
+  whose Host header it routes off of. From the browser's perspective
+  it's a normal TLS connection to the real site (trusted via the
+  installed personal CA).
+
+  **Supported destinations (per the bundled config, as of 2026-05-14):**
+
+  - Google services (Meet, Drive, Search, Maps, etc.) — fronted on
+    `www.google.com`. (Gemini explicitly IP-blocks Iran, so excluded.)
+  - Fastly-hosted sites — Reddit, GitHub, CNN, BuzzFeed, raw.githubusercontent.com,
+    private-user-images.githubusercontent.com — fronted on
+    `www.python.org`.
+  - Vercel-hosted sites (Vercel.com, Next.js, React.dev, Cursor.com,
+    Vercel.app, vercel.live, etc.) — fronted on `nextjs.org`.
+  - Netlify (via Amazon CloudFront) — fronted on `kubernetes.io`.
+  - GitHub.com / collector.github.com / alive.github.com /
+    objects-origin.githubusercontent.com / api.githubcopilot.com —
+    fronted on github.com itself (since github.com is allowed but the
+    censor blocks specific subdomains).
+  - pubmed.ncbi.nlm.nih.gov / pmc.ncbi.nlm.nih.gov — fronted on
+    `pubmed.ncbi.nlm.nih.gov` (uses the same Akamai cert).
+  - googlevideo.com (YouTube video chunks) — distinct h11-only path.
+
+  **Limitations** (called out by the author):
+
+  - Only works for traffic that can be MITM'd, i.e. browser traffic
+    using the OS/browser cert store. Most native mobile apps use cert
+    pinning and won't trust a user-installed CA.
+  - On non-rooted Android, the user CA only applies to browsers
+    (Chrome/Chromium-derived works out of the box; Firefox requires
+    enabling "use third-party CA certificates" via the hidden debug
+    menu).
+  - This is **not a full VPN** — only the specific CDN-hosted endpoints
+    above are reachable. Anything else still needs a real proxy.
+  - Maintenance burden: the SNI ↔ destination pairing must be
+    refreshed each time a CDN changes its cert SAN list or edge
+    deployment.
+  - Per-platform: Windows, Linux, macOS, Android (non-root).
+
+  **Why it matters for circumvention research:**
+
+  1. **Empirical CDN behavior catalog.** The bundled config is an
+     up-to-date catalog of which major CDNs as of 2026-05 *still*
+     don't enforce SNI ↔ Host header matching. That's a moving target
+     and this project's continual updates are useful telemetry.
+  2. **Client-only deployment model.** Unlike traditional domain
+     fronting (which requires a server inside the fronted CDN's edge),
+     this technique requires nothing beyond what the user can install
+     locally. Lowers operational cost for anti-censorship tools.
+  3. **Iran-specific deployment data.** The author's commit cadence
+     correlates with documented Iranian filtering changes; the project
+     is essentially a moving snapshot of "what's reachable from Iran
+     via CDN fronting" at any given week.
+
+  **What's notable from a protocol-design standpoint:**
+
+  - Forces the user into a trust trade-off (install our CA) for a
+    consumer-grade circumvention tool. Most "easy + secure" tools
+    avoid this; this project explicitly accepts the trade-off for
+    the no-server property.
+  - The fronted-SNI selection is hand-tuned per CDN by inspecting cert
+    SAN lists — there's no automatic discovery. The
+    `verifyPeerCertByName` field in each outbound is a whitelist of
+    SANs the cert chain must include.
+  - The technique can co-exist with a regular tunnel: only matching
+    destinations are MITM'd; everything else falls through to the
+    proxy. The shipped config uses `geosite:` and `domain:` route
+    rules for this gating.
+censors:
+  - ir
+  - generic
+techniques:
+  - sni-blocking
+  - dpi
+  - dns-poisoning
+defenses_discussed:
+  - domain-fronting
+core: false
+notes: |
+  Persian-language project (1.5k stars on GitHub, May 2026). README
+  translated from Persian by Lantern team. Code lives in Xray-core
+  mainline since PR XTLS/Xray-core#4348. License: GPL-3.0.
+
+  Implementation: Batchfile + Xray-core JSON config. The on-the-fly
+  cert issuance is a Xray-specific feature (`tunnel` inbound,
+  `usage: "issue"`) — sing-box upstream does not have an equivalent
+  primitive as of 2026-05, so a direct port to sing-box / lantern-box
+  would require either patching sing-box or running a separate MITM
+  component alongside it.
+visibility: public
+date_added: "2026-05-14"
+added_by: lantern-team
+sources:
+  - github:patterniha/MITM-DomainFronting
+  - github-pr:XTLS/Xray-core#4348
+  - upstream-project:patterniha/MMDF
