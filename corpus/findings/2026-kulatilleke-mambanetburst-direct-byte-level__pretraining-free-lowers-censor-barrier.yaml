@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: evaluation
+summary: Eliminating self-supervised pretraining reduces total wall-clock training time by an estimated 3-15× relative to ET-BERT, YaTC, and NetMamba, while achieving comparable or superior accuracy. Pretraining in representative baselines typically consumes 10-100× more compute than downstream fine-tuning; removing it also eliminates the risk of negative transfer from mismatched pretraining corpora under concept drift.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Rapid classifier retraining (hours rather than days) becomes feasible for a well-resourced censor, meaning circumvention tools cannot rely on a slow adversarial adaptation cycle — transport-layer obfuscation must be adaptable on a similar timescale.
+    - Concept-drift attacks (deliberately shifting protocol byte distributions over time to confuse classifiers trained on stale data) are less effective against pretraining-free models that can be cheaply retrained on fresh traffic samples.
+section: §VI-F
+extracted_by: claude-sonnet-4-6

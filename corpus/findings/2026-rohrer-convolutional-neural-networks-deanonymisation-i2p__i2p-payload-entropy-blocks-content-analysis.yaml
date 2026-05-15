@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: detection
+summary: I2P payload entropy is close to 8 bits per packet (Figure 9), confirming strong encryption that renders payload content analytically unusable. Across all CNN experiments, models trained on payload data alone achieved 72.5–76.5% accuracy versus 95.17–99.5% for metadata-only variants; encrypted payload acted as 'noise that confused the model' rather than as a signal.
+techniques:
+    - ml-classifier
+    - random-payload-detect
+defenses:
+    - randomization
+    - shadowsocks
+censors:
+    - generic
+defense_implications:
+    - High payload entropy is necessary but not sufficient for traffic protection — protocol designers must treat metadata (packet sizes, timing, port numbers, TCP fields) as the primary leakage surface requiring obfuscation.
+    - Fully-encrypted protocols that randomize payload are already defeating payload-based classifiers; the next hardening priority is metadata normalization to prevent metadata-only models from operating.
+section: §IV-A, §V Experiment 2, Table IV
+extracted_by: claude-sonnet-4-6

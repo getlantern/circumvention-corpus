@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: detection
+summary: 'Striding with factor 4 (early downsampling) produces the largest single-factor degradation in the ablation study: average macro-F1 drops from 0.9909 to 0.9772 and cross-dataset variance increases from 4.77×10⁻⁵ to 4.51×10⁻⁴, with worst-case dataset performance falling to MIN 0.9524. Fine-grained byte order and short-range structure — protocol headers, payload signatures, repeated byte motifs — carry essential discriminative signal that stride-based aggregation destroys.'
+techniques:
+    - ml-classifier
+    - dpi
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Byte-level randomization or padding injected early in a flow can degrade classifier accuracy more than any architectural change to the classifier itself; circumvention tools should prioritize disrupting short-range byte structure in the first 1-2 packets.
+    - Inserting carefully structured junk bytes or varying header fields stochastically at packet boundaries directly exploits the classifier's dependence on fine-grained temporal resolution.
+section: §V-B, Table IV
+extracted_by: claude-sonnet-4-6

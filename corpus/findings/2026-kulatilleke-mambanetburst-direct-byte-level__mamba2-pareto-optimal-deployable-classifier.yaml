@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: evaluation
+summary: 'Mamba-2 (2.5M parameters) is Pareto-optimal on the accuracy-vs-inference-time frontier: it achieves average macro-F1 of 0.9909 with 30-60% faster backward passes than Mamba-1 and 2-3× faster inference than linear Transformers with FlashAttention-2 at medium-to-large batch sizes on a single RTX 3090. Memory usage is 2-4× lower than Transformer-based counterparts, enabling single-GPU operation at sequence length 1600.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - The low hardware barrier (single commodity GPU, no distributed pretraining) for deploying a near-SOTA traffic classifier means assumption of low censor capability is no longer valid — design circumvention protocols to resist ML classifiers as a baseline, not an advanced threat.
+    - Rapid ablation cycles on commodity hardware let adversaries iterate on classifier improvements in days; circumvention transport designers should treat their byte-level signatures as perishable and build in protocol agility.
+section: §V-C, §V-D, Figure 2
+extracted_by: claude-sonnet-4-6

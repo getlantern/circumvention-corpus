@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: evaluation
+summary: CNN models trained on I2P lab traffic achieved 99.5% validation accuracy using metadata alone (packet sizes, ports, TCP sequence numbers) versus only 72.5–76.5% accuracy when using encrypted payload only. This demonstrates that packet metadata is far more discriminating than payload content for traffic classification in encrypted anonymity networks.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Randomize packet sizes and inter-arrival timing aggressively — encrypted payload entropy alone is insufficient; metadata leaks are the primary attack surface for ML classifiers.
+    - Normalize or pad TCP sequence number and port distributions since tcp_ack + tcp_seq removal alone drops CNN accuracy from 99.5% to 69.33% (Table VI), making these the highest-value metadata fields to obfuscate.
+section: §V Experiment 2, Table IV
+extracted_by: claude-sonnet-4-6

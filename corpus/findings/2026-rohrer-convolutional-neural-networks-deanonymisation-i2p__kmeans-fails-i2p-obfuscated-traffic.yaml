@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: evaluation
+summary: Unsupervised k-Means clustering on I2P traffic features (port, payload length, protocol type) produced no natural cluster structure — distortion decreased almost linearly with k showing no elbow point — confirming that I2P's obfuscation successfully destroys simple separable patterns that shallow classifiers rely on. CNNs were required to detect any signal at all.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - I2P-style protocol obfuscation raises the classifier complexity floor to deep learning — circumvention protocols should aim to defeat simple statistical classifiers as a baseline, forcing attackers toward CNNs whose generalization to real-world conditions is poor.
+    - Mixing TCP and UDP simultaneously (as I2P does) contributes to this non-separability and should be considered in pluggable transport design.
+section: §V First Experiment, Figure 12
+extracted_by: claude-sonnet-4-6
