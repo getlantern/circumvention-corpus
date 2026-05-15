@@ -122,7 +122,7 @@ serve  — HTTP server with POST /crawl (used by Cloudflare Tunnel)`)
 // the same shape that runOnce() uses.
 type runOptions struct {
 	corpus      string
-	source      string // "arxiv", "net4people", or "all"
+	source      string // "arxiv", "net4people", "ntc-party", … or "all"
 	maxN        int    // cap on accepted (relevant) papers per run — keeps PRs reviewable
 	maxClassify int    // safety bound on how many candidates we send to the LLM
 	windowDays  int
@@ -135,7 +135,7 @@ func runOnce(args []string) {
 	fs := flag.NewFlagSet("run", flag.ExitOnError)
 	opts := runOptions{}
 	fs.StringVar(&opts.corpus, "corpus", ".", "path to circumvention-corpus repo root")
-	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, or all")
+	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, ntc-party, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, or all")
 	fs.IntVar(&opts.maxN, "max", 12, "max ACCEPTED papers per PR (cap applied after classification)")
 	fs.IntVar(&opts.maxClassify, "max-classify", 80, "safety bound on classifier calls per run")
 	fs.IntVar(&opts.windowDays, "window-days", 30, "look back this many days")
@@ -224,6 +224,18 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			log.Printf("fetch net4people: %v (continuing)", err)
 		} else {
 			log.Printf("fetched %d from net4people reading group", len(np))
+			cands = append(cands, np...)
+		}
+	}
+	if source == "ntc-party" || source == "all" {
+		np, err := fetchNTCParty(ctx, since)
+		if err != nil {
+			// ntc.party has been offline (no DNS A record) since at least
+			// March 2026; the fetch will keep failing until/unless it
+			// returns. Same fail-soft posture as the other sources.
+			log.Printf("fetch ntc.party: %v (continuing)", err)
+		} else {
+			log.Printf("fetched %d from ntc.party", len(np))
 			cands = append(cands, np...)
 		}
 	}
@@ -322,7 +334,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	//     etc.) tangentially in unrelated work. Match on title only — a paper
 	//     whose title doesn't contain a circumvention keyword is almost
 	//     certainly not circumvention research, regardless of abstract content.
-	curatedSources := map[string]bool{"net4people": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true}
+	curatedSources := map[string]bool{"net4people": true, "ntc-party": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true}
 	titleOnlySources := map[string]bool{"popets": true, "foci": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
@@ -820,6 +832,160 @@ func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) 
 		})
 	}
 	return out, nil
+}
+
+// ── ntc.party source ──────────────────────────────────────────────
+//
+// ntc.party (NTC — "No Thought is a Crime") is a Discourse forum for
+// censorship-research discussion. Categories include "Censorship
+// research & publications", "Censorship circumvention methods &
+// software", "Internet censorship all around the world", and
+// "Community software". The largest category by volume is the
+// antizapret.prostovpn.org support thread (Russia-context, low corpus
+// signal), which we filter out.
+//
+// As of 2026-05-15 ntc.party has AAAA records but no A records —
+// IPv6-only DNS. Crawlers on IPv4-only or partially-routed networks
+// see "no route to host." We ship the ingest with the standard
+// fail-soft posture: on error, log and continue. From a network with
+// IPv6 connectivity to the site's prefix, ingestion just works.
+//
+// Implementation walks Discourse's /latest.json paged endpoint until
+// it hits topics older than `since`, then fetches each topic's full
+// JSON to get the first post's body for the classifier.
+
+const ntcPartyBase = "https://ntc.party"
+
+// Discourse category IDs to skip — observed on ntc.party 2023-2026:
+//   2  = Site Feedback
+//   5  = antizapret.prostovpn.org support (largest category, low signal)
+//   42 = Manuals and How-Tos (user-support, not research)
+var ntcPartySkipCategories = map[int]bool{2: true, 5: true, 42: true}
+
+type discourseTopic struct {
+	ID         int       `json:"id"`
+	Title      string    `json:"title"`
+	Slug       string    `json:"slug"`
+	PostsCount int       `json:"posts_count"`
+	CreatedAt  time.Time `json:"created_at"`
+	CategoryID int       `json:"category_id"`
+	Excerpt    string    `json:"excerpt"`
+}
+
+type discourseLatest struct {
+	TopicList struct {
+		Topics []discourseTopic `json:"topics"`
+	} `json:"topic_list"`
+}
+
+type discourseTopicView struct {
+	PostStream struct {
+		Posts []struct {
+			Cooked    string    `json:"cooked"` // HTML
+			Username  string    `json:"username"`
+			CreatedAt time.Time `json:"created_at"`
+		} `json:"posts"`
+	} `json:"post_stream"`
+}
+
+func fetchNTCParty(ctx context.Context, since time.Time) ([]candidate, error) {
+	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
+	defer cancel()
+
+	client := &http.Client{Timeout: httpTimeout}
+
+	// Walk pages of latest.json (ordered by created date desc) until we
+	// see topics older than `since`. Cap at 5 pages (~150 topics) as a
+	// safety bound — Discourse's default page size is 30.
+	var topics []discourseTopic
+	for page := 0; page < 5; page++ {
+		url := fmt.Sprintf("%s/latest.json?order=created&page=%d", ntcPartyBase, page)
+		req, err := http.NewRequestWithContext(cctx, "GET", url, nil)
+		if err != nil {
+			return nil, err
+		}
+		req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1 (https://github.com/getlantern/circumvention-corpus)")
+		req.Header.Set("Accept", "application/json")
+		resp, err := client.Do(req)
+		if err != nil {
+			return nil, fmt.Errorf("latest page %d: %w", page, err)
+		}
+		if resp.StatusCode != 200 {
+			body, _ := io.ReadAll(io.LimitReader(resp.Body, 1024))
+			resp.Body.Close()
+			return nil, fmt.Errorf("latest page %d: status %d: %s", page, resp.StatusCode, string(body))
+		}
+		var latest discourseLatest
+		if err := json.NewDecoder(resp.Body).Decode(&latest); err != nil {
+			resp.Body.Close()
+			return nil, fmt.Errorf("latest page %d: parse: %w", page, err)
+		}
+		resp.Body.Close()
+		if len(latest.TopicList.Topics) == 0 {
+			break
+		}
+		topics = append(topics, latest.TopicList.Topics...)
+		// Discourse orders newest-first; once the last topic on the page
+		// is older than `since`, no later page can give us new entries.
+		if last := latest.TopicList.Topics[len(latest.TopicList.Topics)-1]; last.CreatedAt.Before(since) {
+			break
+		}
+	}
+
+	out := make([]candidate, 0, len(topics))
+	for _, t := range topics {
+		if t.CreatedAt.Before(since) {
+			continue
+		}
+		if ntcPartySkipCategories[t.CategoryID] {
+			continue
+		}
+		topicURL := fmt.Sprintf("%s/t/%s/%d", ntcPartyBase, t.Slug, t.ID)
+		// Try to fetch the topic's first post for a fuller abstract; on
+		// failure fall back to the latest.json excerpt (still useful).
+		body := t.Excerpt
+		if fullBody, err := fetchNTCPartyTopicBody(cctx, client, t.Slug, t.ID); err == nil && fullBody != "" {
+			body = fullBody
+		}
+		out = append(out, candidate{
+			Source:   "ntc-party",
+			Title:    cleanText(t.Title),
+			Abstract: cleanText(stripHTML(truncate(body, 4000))),
+			URL:      topicURL,
+			Updated:  t.CreatedAt,
+			Year:     t.CreatedAt.Year(),
+			Refs:     []string{fmt.Sprintf("url:%s", topicURL)},
+		})
+	}
+	return out, nil
+}
+
+// fetchNTCPartyTopicBody returns the HTML-stripped body of a topic's
+// first post (the OP). Used as the abstract for classification.
+func fetchNTCPartyTopicBody(ctx context.Context, client *http.Client, slug string, id int) (string, error) {
+	url := fmt.Sprintf("%s/t/%s/%d.json", ntcPartyBase, slug, id)
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return "", err
+	}
+	req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1")
+	req.Header.Set("Accept", "application/json")
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		return "", fmt.Errorf("status %d", resp.StatusCode)
+	}
+	var view discourseTopicView
+	if err := json.NewDecoder(resp.Body).Decode(&view); err != nil {
+		return "", err
+	}
+	if len(view.PostStream.Posts) == 0 {
+		return "", fmt.Errorf("no posts in topic")
+	}
+	return view.PostStream.Posts[0].Cooked, nil
 }
 
 // ── gfw.report source ──────────────────────────────────────────────
@@ -1665,6 +1831,8 @@ CRITICAL formatting rules:
 For arXiv candidates: title/authors/year/abstract are already correct in the input — you can skip those fields in your response (we keep what we have). Just give relevance + tags + notes.
 
 For net4people candidates: the input "Abstract" is actually the GitHub issue body and contains the metadata you need to extract (authors line, URL link, summary). Extract all the metadata fields above.
+
+For ntc-party candidates: the input "Abstract" is the first post (OP) of a Discourse topic. Topics often link to or summarise external research; extract authors/venue/URL if mentioned in the body. If the topic is a community discussion with no underlying paper (e.g. "blocking event in country X this week"), treat venue as "ntc.party" and the original poster as the author. Be selective: many topics are operational chatter (server-availability reports, install help) and should be marked not-relevant.
 
 === TAXONOMY ===
 `)
