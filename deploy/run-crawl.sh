@@ -73,7 +73,12 @@ fi
 # $GOBIN with an atomic rename internally, and Go's build cache means
 # unchanged code skips compilation entirely.
 stamp "installing corpus-crawl + corpus-findings → $GOBIN"
-install_log=$(mktemp /tmp/corpus-crawl-install.XXXXXX.log)
+# Portable mktemp form: BSD mktemp (macOS) does NOT substitute X's
+# when there is a suffix after them — `mktemp /tmp/x.XXXXXX.log`
+# creates a literal file named "x.XXXXXX.log" and the next invocation
+# collides. `mktemp -t PREFIX` works identically on BSD and GNU and
+# avoids the footgun.
+install_log=$(mktemp -t corpus-crawl-install)
 if go install ./cmd/corpus-crawl/ ./cmd/corpus-findings/ 2>"$install_log"; then
     stamp "install ok"
     rm -f "$install_log"
