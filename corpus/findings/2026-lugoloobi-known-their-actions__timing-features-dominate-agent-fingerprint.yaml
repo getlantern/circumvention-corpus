@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lugoloobi-known-their-actions
+kind: detection
+summary: 'SHAP analysis shows timing-based features — IEI standard deviation, mean click IEI, and time to first action — dominate agent identity classification under normal conditions, receiving substantially larger attributions than structural or action-type features. Agents are distinguishable primarily by their tempo: how long they pause before acting and how variable that pause is.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Timing jitter alone targets the most salient signal but leaves action-structural features (key ratio, click-coordinate dispersion, link-click ratio) intact — a complete behavioral defense must address both temporal and structural dimensions simultaneously.
+    - Design agent harnesses to normalize inter-event intervals to a fixed distribution that is indistinguishable across models, not merely randomized around the model's natural cadence.
+section: §6.1, Figure 4
+extracted_by: claude-sonnet-4-6

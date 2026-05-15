@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: detection
+summary: Under controlled lab conditions, a CNN trained on packet metadata (ports, sizes, TCP sequence numbers) achieved 99.5% accuracy classifying I2P packets with the 'Without payload' variant, versus only 72.5–76.5% using encrypted payload alone. However, when applied to the full recorded dataset, the 'Without payload' model's accuracy for the dominant irrelevant-traffic class dropped to 95.17% while maintaining 100% on target-class packets — but with a high false-positive rate making it forensically unreliable.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Metadata (packet sizes, port numbers, TCP sequence fields) leaks more classification signal than encrypted payloads; circumvention protocols must randomize or normalize these metadata fields, not just encrypt content.
+    - Dropping tcp_ack and tcp_seq simultaneously reduced CNN accuracy to 69.33% (Table VI), suggesting that stripping or randomizing TCP sequence numbers is a high-leverage defensive measure against metadata classifiers.
+section: §V Second Experiment / Table IV–V
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,32 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.11402
+id: 2026-xian-more-than-meets
+title: 'More Than Meets the Eye: A Semantics-Aware Traffic Augmentation Framework for Generalizable Website Fingerprinting'
+authors:
+    - Youquan Xian
+    - Xueying Zeng
+    - Lingjia Meng
+    - Lei Cui
+    - Runhan Song
+    - Wei Wang
+    - Zhengquan Ding
+    - Peng Liu
+    - Zhiyu Hao
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.11402"
+url: https://arxiv.org/abs/2605.11402v1
+abstract: 'Deep learning-based website fingerprinting has emerged as an effective technique for inferring the websites users visit. Although existing methods achieve strong performance on closed-world datasets, they often fail to generalize to real-world environments, especially under geographic and temporal shifts. This limitation fundamentally stems from the coupled effects of two key challenges: application-layer resource composition variability and observable feature instability induced by cross-layer encapsulation. Intertwined, these factors induce systematic shifts between underlying application semantics and observable traffic features. To address the above challenges, we propose SATA , a semantics-aware traffic augmentation framework. Specifically, SATA first performs application-layer semantic augmentation based on protocol rules, expanding the resource composition patterns within each flow and frame sequence patterns under protocol constraints. Based on these augmented frame sequences, we further introduce a cross-layer feature alignment mechanism via knowledge distillation. It aligns frame sequence with packet-length sequence features, enabling cross-layer feature alignment between enhanced semantics and observable sequences. Extensive experiments show that SATA successfully generates traffic patterns that are absent from the training set but genuinely exist in the test set, and significantly improves the performance of mainstream models across diverse and complex scenarios. In particular, in open-world settings, SATA improves ACC by 90.81% and AUROC by 48.37%. The source code of the prototype system is available at https://anonymous.4open.science/r/SATA-B6C2/.'
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Advances website fingerprinting attacks against encrypted proxies; directly threatens Lantern's anonymity guarantees.
+visibility: public
+date_added: "2026-05-15"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.11402

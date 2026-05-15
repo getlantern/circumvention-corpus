@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lugoloobi-known-their-actions
+kind: evaluation
+summary: 'In open-set fingerprinting (leave-one-agent-out protocol), the majority of models exceed AUROC 0.60 for unknown-agent detection, but closed-set and open-set performance are dissociated: Seed-2-lite achieves 96.1% closed-set F1 yet scores below-chance open-set AUROC (0.38–0.47 on three of four datasets), while GPT-5.4 achieves AUROC 0.84 open-set despite ranking third in closed-set F1.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - An adversary can cheaply detect that a session originates from an unenrolled model and trigger offline collection for later enrollment — behavioral outliers are themselves a detection signal, so circumvention agents should mimic the behavioral profile of a common enrolled model rather than attempting novel obfuscation.
+    - New model enrollment requires only a small number of routed sessions through an instrumented page, meaning adversary fingerprint databases will expand rapidly as new LLMs are released; circumvention stacks depending on specific model anonymity should plan for short effective lifespans.
+section: §5.1, Figure 3
+extracted_by: claude-sonnet-4-6

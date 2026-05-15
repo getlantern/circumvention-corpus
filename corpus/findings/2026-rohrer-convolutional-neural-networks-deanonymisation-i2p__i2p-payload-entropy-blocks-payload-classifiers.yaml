@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: detection
+summary: I2P payload entropy was measured at close to 8 bits per byte across sampled packets (Figure 9), confirming that payload content is cryptographically indistinguishable from random noise and provides no usable signal for classification. All experimental variants using raw payload alone achieved poor and high-variance accuracy (72.5–76.5%), while excluding payload improved accuracy to 99.5% in lab conditions.
+techniques:
+    - random-payload-detect
+    - fully-encrypted-detect
+defenses:
+    - shadowsocks
+censors:
+    - generic
+defense_implications:
+    - Full payload encryption is a necessary but insufficient defense — censors and classifiers pivot to metadata when payload is opaque; protocols must also address packet-size and timing fingerprints.
+    - The near-8-bit payload entropy that makes I2P resistant to payload inspection is the same property that triggers 'fully-encrypted protocol' detectors; protocols should couple encryption with traffic shaping to avoid this detection vector.
+section: §IV-A / §V Discussions
+extracted_by: claude-sonnet-4-6

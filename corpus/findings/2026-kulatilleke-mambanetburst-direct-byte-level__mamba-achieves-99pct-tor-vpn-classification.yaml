@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: detection
+summary: MambaNetBurst classifies Tor traffic (ISCXTor2016) at F1=0.9990 and VPN traffic (ISCXVPN2016) at F1=0.9871 using only the first 5 packets (1600 bytes total) with no pre-training, matching or exceeding pre-trained baselines like ET-BERT (ISCXTor F1=0.9967, ISCXVPN F1=0.9565) and NetMamba (ISCXTor F1=0.9986, ISCXVPN F1=0.9806) at 2.5–2.7M parameters.
+techniques:
+    - ml-classifier
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Burst-level (first 5 packets) byte patterns alone are sufficient for near-perfect Tor/VPN classification — circumvention protocols must treat the connection handshake and early payload as the highest-risk exposure window.
+    - Pre-training is no longer a barrier to deploying high-accuracy classifiers; even resource-limited adversaries can train effective models from scratch on raw captures.
+section: §V-A, Table III
+extracted_by: claude-sonnet-4-6

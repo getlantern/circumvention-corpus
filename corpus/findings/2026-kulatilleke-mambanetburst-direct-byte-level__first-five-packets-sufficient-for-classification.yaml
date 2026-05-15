@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: detection
+summary: A burst of just 5 packets truncated to 320 bytes each (1600 bytes total) suffices for macro-F1 ≥0.9824 across all six benchmarks; the classification token reads from the final recurrent state after a 4-layer Mamba-2 stack processing this fixed-length prefix, with no additional flow-level or session-level context required.
+techniques:
+    - ml-classifier
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols should ensure the first 5 packets (≈1600 bytes) are byte-for-byte indistinguishable from the target cover protocol — any distinguishing byte pattern in the opening burst enables near-perfect classification.
+    - Designs that delay the circumvention-specific handshake beyond the opening burst (e.g., by completing a full TLS-mimicry exchange before tunneling) gain meaningful protection against burst-level classifiers.
+section: §III-A, §V-A
+extracted_by: claude-sonnet-4-6

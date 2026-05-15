@@ -1,0 +1,31 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.14786
+id: 2026-lugoloobi-known-their-actions
+title: 'Known By Their Actions: Fingerprinting LLM Browser Agents via UI Traces'
+authors:
+    - William Lugoloobi
+    - Samuelle Marro
+    - Jabez Magomere
+    - Joss Wright
+    - Chris Russell
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.14786"
+url: https://arxiv.org/abs/2605.14786v1
+abstract: 'As LLM-based agents increasingly browse the web on users'' behalf, a natural question arises: can websites passively identify which underlying model powers an agent? Doing so would represent a significant security risk, enabling targeted attacks tailored to known model vulnerabilities. Across 14 frontier LLMs and four web environments spanning information retrieval and shopping tasks, we show that an agent''s actions and interaction timings, captured via a passive JavaScript tracker, are sufficient to identify the underlying model with up to 96\% F1. We formalise this attack surface by demonstrating that classifiers trained on agent actions generalise across model sizes and families. We further show that strong classifiers can be trained from few interaction traces and that agent identity can be inferred early within an episode. Injecting randomised timing delays between actions substantially degrades classifier performance, but does not provide robust protection: a classifier retrained on delayed traces largely recovers performance. We release our harness and a labelled corpus of agent traces \href{https://github.com/KabakaWilliam/known_actions}{here}.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+defenses_discussed:
+    - randomization
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Threat model for LLM-based circumvention agents; fingerprinting attacks and timing-randomization defenses directly applicable to tool design.
+visibility: public
+date_added: "2026-05-15"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.14786

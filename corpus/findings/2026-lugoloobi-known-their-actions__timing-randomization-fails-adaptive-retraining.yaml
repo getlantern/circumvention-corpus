@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lugoloobi-known-their-actions
+kind: evaluation
+summary: Injecting uniformly sampled random delays between agent actions substantially degrades an unadapted XGBoost classifier, but a classifier retrained on delayed traces largely recovers performance across all four datasets. Under 5-second delay injection, the classifier shifts weight onto structural features (click-coordinate dispersion, structural key ratio, link-click ratio) that survive timing perturbation.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Timing randomization is not a durable defense against adaptive adversaries: a single retraining round on delayed traces restores attribution accuracy — circumvention agent designers should assume any deployed jitter will be matched within weeks.'
+    - Effective obfuscation requires suppressing action-structural signals (homogenizing click spatial distributions, normalizing key ratio, standardizing scroll behavior) in addition to inter-event timing jitter.
+section: §6.1, Figure 5
+extracted_by: claude-sonnet-4-6
