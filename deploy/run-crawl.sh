@@ -9,11 +9,18 @@
 #   2. Garbage-collect old local auto-ingest branches.
 #   3. git pull --ff-only main. Failure → continue with existing tree
 #      (offline run still works against last-known-good source).
-#   4. go build into a tempfile, then atomically rename. Failure →
-#      continue with existing binary (broken commit on main shouldn't
+#   4. `go install` corpus-crawl + corpus-findings into $GOBIN. go
+#      install handles atomic rename internally and uses Go's build
+#      cache, so unchanged code skips compilation. Failure → continue
+#      with existing $GOBIN binary (broken commit on main shouldn't
 #      take down the bot).
 #   5. exec the binary with all args passed through. The bot's own
 #      logic (rejection cache, PR creation, etc.) takes over from here.
+#
+# The job is update-proof: any merge to main lands in the next launchd
+# fire automatically, without manual rebuild/reinstall. Same for code
+# changes in any of the crawler's dependencies (go install resolves
+# go.mod every run).
 #
 # Logs go to launchd's Standard{Out,Error}Path (set in the plist).
 
@@ -22,7 +29,13 @@ set -u
 # Resolve real script directory even if called via symlink.
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 REPO=$(cd "$SCRIPT_DIR/.." && pwd)
-BINARY="$REPO/corpus-crawl"
+
+# Install location. Honor user-set GOBIN if present, else use the
+# standard $HOME/go/bin (which is Go's default install dir when
+# $GOBIN and $GOPATH/bin aren't explicitly set).
+: "${GOBIN:=$HOME/go/bin}"
+export GOBIN
+BINARY="$GOBIN/corpus-crawl"
 
 cd "$REPO" || { echo "wrapper: cannot cd to $REPO; abort" >&2; exit 1; }
 
@@ -54,38 +67,27 @@ else
     stamp "pull FAILED; using existing tree @ $(git rev-parse --short HEAD)"
 fi
 
-# 4. Build both binaries into tempfiles, atomically rename. corpus-crawl
-# shells out to corpus-findings for full-text findings extraction on
-# each accepted paper, so both need to be current.
-build_log=$(mktemp /tmp/corpus-crawl-build.XXXXXX.log)
-build_one() {
-    local pkg="$1" target="$2"
-    if go build -o "$target.new" "$pkg" 2>>"$build_log"; then
-        mv -f "$target.new" "$target"
-        chmod +x "$target"
-        return 0
-    fi
-    rm -f "$target.new"
-    return 1
-}
-
-stamp "building corpus-crawl + corpus-findings"
-ok=1
-for pair in "./cmd/corpus-crawl|$REPO/corpus-crawl" "./cmd/corpus-findings|$REPO/corpus-findings"; do
-    pkg="${pair%%|*}"; target="${pair##*|}"
-    if ! build_one "$pkg" "$target"; then
-        stamp "build FAILED for $pkg — using existing binary if present"
-        ok=0
-    fi
-done
-if [[ $ok -eq 1 ]]; then
-    stamp "build ok"
-    rm -f "$build_log"
+# 4. Install both binaries via `go install`. corpus-crawl shells out
+# to corpus-findings for full-text findings extraction on each
+# accepted paper, so both need to be current. go install writes to
+# $GOBIN with an atomic rename internally, and Go's build cache means
+# unchanged code skips compilation entirely.
+stamp "installing corpus-crawl + corpus-findings → $GOBIN"
+install_log=$(mktemp /tmp/corpus-crawl-install.XXXXXX.log)
+if go install ./cmd/corpus-crawl/ ./cmd/corpus-findings/ 2>"$install_log"; then
+    stamp "install ok"
+    rm -f "$install_log"
 else
-    stamp "Build log:"
-    sed 's/^/    /' "$build_log"
-    rm -f "$build_log"
+    stamp "install FAILED — using existing binary if present"
+    sed 's/^/    /' "$install_log"
+    rm -f "$install_log"
 fi
+
+# Belt-and-suspenders: clean up legacy in-repo binaries from earlier
+# `go build` wrappers. locateFindingsBinary checks $REPO first, and a
+# stale in-repo copy would shadow the fresh $GOBIN one. .gitignore
+# already excludes them.
+rm -f "$REPO/corpus-crawl" "$REPO/corpus-findings"
 
 # 5. Sanity: corpus-crawl binary must exist (corpus-findings is best-
 # effort — its absence just disables findings extraction, doesn't kill
