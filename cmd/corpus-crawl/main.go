@@ -223,7 +223,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			// so an arXiv outage / GH-API rate limit doesn't kill the run.
 			log.Printf("fetch net4people: %v (continuing)", err)
 		} else {
-			log.Printf("fetched %d from net4people reading group", len(np))
+			log.Printf("fetched %d from net4people (reading-group + country-labeled threads)", len(np))
 			cands = append(cands, np...)
 		}
 	}
@@ -755,18 +755,34 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 
 // ── net4people/bbs source ──────────────────────────────────────────
 //
-// net4people is a curated forum where the circumvention community
-// flags new papers — academic conf papers, journal articles, NGO
-// reports, MSc theses, and other primary sources. The "reading group"
-// label marks issues that discuss a specific paper. Body format is
-// fairly regular: title, authors, URL, summary written by the
-// community member who posted it.
+// net4people is the circumvention community's open issue tracker on
+// GitHub. Two kinds of issues are corpus-relevant:
 //
-// We pull all reading-group issues since `since` via the GitHub API
-// and create one candidate per issue. Authors and venue are extracted
-// by the LLM during classification (the bodies aren't structured
-// enough for regex parsing to reliably catch e.g. "Article 19" vs
-// "Vincent Brussee" vs five-author conference papers).
+//   1. "reading group" label: a community member posts a specific
+//      paper (academic conf paper, journal article, NGO report, MSc
+//      thesis) for discussion. The issue body is structured as
+//      title + authors + URL + summary. The classifier extracts that
+//      metadata and we ingest a paper-style entry whose underlying
+//      entity is the discussed paper.
+//
+//   2. Country label (Iran, China, Russia, Pakistan, etc. — 35
+//      countries are tagged in the label set): operational thread
+//      reporting a blocking event, a new technique observation, or
+//      another in-country finding. There is no underlying paper —
+//      the thread itself is the primary source. We pull the issue
+//      body plus the comments (where most of the technical content
+//      lives in this case) and let the classifier produce a
+//      paper-equivalent entry whose entity is the thread.
+//
+// Both kinds use Source="net4people" and produce paper-shaped corpus
+// entries. The classifier distinguishes via the `Labels:` prefix we
+// prepend to each abstract; see the classifier prompt for the rules.
+//
+// To support both kinds without making 36 separate label-filtered API
+// calls (GitHub treats ?labels=A,B,C as AND, not OR), we fetch ALL
+// recent issues with no label filter and select client-side. The
+// `since` parameter on /issues is updated_at-based, so threads with
+// fresh activity surface naturally.
 
 type ghIssue struct {
 	Number    int       `json:"number"`
@@ -774,21 +790,50 @@ type ghIssue struct {
 	Body      string    `json:"body"`
 	HTMLURL   string    `json:"html_url"`
 	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 	Labels    []struct {
 		Name string `json:"name"`
 	} `json:"labels"`
-	State string `json:"state"`
+	State       string          `json:"state"`
+	Comments    int             `json:"comments"`
+	PullRequest json.RawMessage `json:"pull_request,omitempty"` // present on PRs; we skip those
+	User        struct {
+		Login string `json:"login"`
+	} `json:"user"`
+}
+
+type ghComment struct {
+	Body      string    `json:"body"`
+	CreatedAt time.Time `json:"created_at"`
+	User      struct {
+		Login string `json:"login"`
+	} `json:"user"`
+}
+
+// net4peopleCountryLabels is the set of country tags net4people uses to
+// mark per-country censorship reports. Maintained from
+// https://github.com/net4people/bbs/labels (as of 2026-05-15). If new
+// country labels appear, they can be added here without other changes.
+var net4peopleCountryLabels = map[string]bool{
+	"Algeria": true, "Bahrain": true, "Bangladesh": true, "Belarus": true,
+	"Brazil": true, "Cameroon": true, "Canada": true, "China": true,
+	"Cuba": true, "Egypt": true, "Ethiopia": true, "Germany": true,
+	"India": true, "Indonesia": true, "Iran": true, "Japan": true,
+	"Kazakhstan": true, "Malaysia": true, "Myanmar": true, "Nigeria": true,
+	"Norway": true, "Pakistan": true, "Russia": true, "Saudi Arabia": true,
+	"South Korea": true, "Spain": true, "Sri Lanka": true, "Turkey": true,
+	"Turkmenistan": true, "UAE": true, "Uganda": true, "USA": true,
+	"Uzbekistan": true, "Vietnam": true, "Zimbabwe": true,
 }
 
 func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) {
 	cctx, cancel := context.WithTimeout(ctx, httpTimeout)
 	defer cancel()
-	// Reading-group label only — high-precision (every issue with that
-	// label discusses a specific paper or report). We pull both open
-	// and closed issues; closed often means "merged into another thread"
-	// not "no longer relevant."
+	// Pull ALL recent issues across both kinds; filter by label client-side.
+	// GitHub's ?labels=A,B,C is AND, not OR, so we'd otherwise need 36
+	// per-label requests to cover reading-group + country labels.
 	endpoint := "https://api.github.com/repos/net4people/bbs/issues"
-	q := fmt.Sprintf("?labels=reading%%20group&state=all&since=%s&per_page=100",
+	q := fmt.Sprintf("?state=all&since=%s&per_page=100",
 		since.UTC().Format(time.RFC3339))
 	req, err := http.NewRequestWithContext(cctx, "GET", endpoint+q, nil)
 	if err != nil {
@@ -800,7 +845,8 @@ func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) 
 	if tok := os.Getenv("GITHUB_TOKEN"); tok != "" {
 		req.Header.Set("Authorization", "Bearer "+tok)
 	}
-	resp, err := (&http.Client{Timeout: httpTimeout}).Do(req)
+	client := &http.Client{Timeout: httpTimeout}
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -815,16 +861,56 @@ func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) 
 	}
 	out := make([]candidate, 0, len(issues))
 	for _, iss := range issues {
-		if iss.CreatedAt.Before(since) {
+		// Skip pull requests (GitHub mixes them into the issues endpoint).
+		if len(iss.PullRequest) > 0 {
 			continue
 		}
-		// Title in the issue is usually the paper's title verbatim. We
-		// preserve it as-is and let the classifier extract structured
-		// metadata from the body.
+		// Classify the labels.
+		var labelNames []string
+		isReadingGroup := false
+		hasCountry := false
+		for _, l := range iss.Labels {
+			labelNames = append(labelNames, l.Name)
+			if l.Name == "reading group" {
+				isReadingGroup = true
+			}
+			if net4peopleCountryLabels[l.Name] {
+				hasCountry = true
+			}
+		}
+		// Unlabeled and non-country-non-reading-group issues are mostly
+		// off-topic or support questions; skip.
+		if !isReadingGroup && !hasCountry {
+			continue
+		}
+		// For country-labeled operational threads, the OP body alone is
+		// usually a one-line observation; the actual technical detail
+		// lives in the replies. Fetch comments and append.
+		body := iss.Body
+		if hasCountry && !isReadingGroup && iss.Comments > 0 {
+			if comments, err := fetchNet4PeopleComments(cctx, client, iss.Number); err == nil && comments != "" {
+				body = body + "\n\n--- Thread replies ---\n\n" + comments
+			}
+		}
+		// Prefix the abstract with the label set so the classifier can
+		// distinguish reading-group threads from country-thread "threads
+		// as primary source" cases without having to infer.
+		body = fmt.Sprintf("Labels: %s\nOpened by: @%s\n\n%s",
+			strings.Join(labelNames, ", "),
+			iss.User.Login,
+			body,
+		)
+		// Larger truncation budget for country threads since they
+		// concatenate OP + comments. 4 KB is enough for reading-group
+		// summaries; 8 KB fits a few rounds of typical replies.
+		truncLimit := 4000
+		if hasCountry && !isReadingGroup {
+			truncLimit = 8000
+		}
 		out = append(out, candidate{
 			Source:   "net4people",
 			Title:    cleanText(iss.Title),
-			Abstract: cleanText(truncate(iss.Body, 4000)), // 4 KB body is plenty for context
+			Abstract: cleanText(truncate(body, truncLimit)),
 			URL:      iss.HTMLURL,
 			Updated:  iss.CreatedAt,
 			Year:     iss.CreatedAt.Year(),
@@ -832,6 +918,44 @@ func fetchNet4People(ctx context.Context, since time.Time) ([]candidate, error) 
 		})
 	}
 	return out, nil
+}
+
+// fetchNet4PeopleComments returns the concatenated body of all comments
+// on the given issue, separated by author + timestamp. Best-effort: on
+// any error returns "" so the caller can fall back to the OP body alone.
+func fetchNet4PeopleComments(ctx context.Context, client *http.Client, issueNum int) (string, error) {
+	url := fmt.Sprintf("https://api.github.com/repos/net4people/bbs/issues/%d/comments?per_page=100", issueNum)
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return "", err
+	}
+	req.Header.Set("Accept", "application/vnd.github+json")
+	req.Header.Set("X-GitHub-Api-Version", "2022-11-28")
+	req.Header.Set("User-Agent", "circumvention-corpus-crawl/0.1")
+	if tok := os.Getenv("GITHUB_TOKEN"); tok != "" {
+		req.Header.Set("Authorization", "Bearer "+tok)
+	}
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		return "", fmt.Errorf("status %d", resp.StatusCode)
+	}
+	var comments []ghComment
+	if err := json.NewDecoder(resp.Body).Decode(&comments); err != nil {
+		return "", err
+	}
+	var b strings.Builder
+	for _, c := range comments {
+		fmt.Fprintf(&b, "@%s (%s):\n%s\n\n",
+			c.User.Login,
+			c.CreatedAt.UTC().Format("2006-01-02"),
+			c.Body,
+		)
+	}
+	return b.String(), nil
 }
 
 // ── ntc.party source ──────────────────────────────────────────────
@@ -1830,7 +1954,24 @@ CRITICAL formatting rules:
 
 For arXiv candidates: title/authors/year/abstract are already correct in the input — you can skip those fields in your response (we keep what we have). Just give relevance + tags + notes.
 
-For net4people candidates: the input "Abstract" is actually the GitHub issue body and contains the metadata you need to extract (authors line, URL link, summary). Extract all the metadata fields above.
+For net4people candidates: the abstract begins with a "Labels: …" line and an "Opened by: @username" line, followed by the issue body (and for thread cases, the comments). Use the Labels line to decide which kind of thread this is, then classify accordingly:
+
+  - **reading group** label present → the thread discusses a specific paper. The body is structured as title + authors + URL + summary written by the community member. Extract the underlying paper's metadata (title, authors, venue, year, URL) into the corresponding fields. The corpus entry's entity IS the discussed paper, not the thread.
+
+  - **Country label** present (Iran, China, Russia, Pakistan, Myanmar, …) and NO "reading group" label → operational thread reporting a blocking event, technique observation, or other in-country finding. There is no underlying paper — treat the THREAD ITSELF as the entity. Fields to set:
+      - title: use the issue title verbatim
+      - authors: the issue OP's "@username" (from the "Opened by:" line). If multiple commenters contributed substantively, list them too (e.g. ["@user1", "@user2"]).
+      - venue: "net4people/bbs"
+      - year: the issue's year
+      - url: the GitHub issue URL
+      - abstract: a 2-4 sentence summary of what the thread observes, written in third person. Quote concrete details where helpful (dates, ASNs, specific blocking patterns).
+      - censors: add the country/countries from the labels (e.g. "iran", "china", "russia") — the censor field captures the per-country apparatus being discussed.
+      - techniques / defenses_discussed: tag the protocols, blocking methods, and circumvention tools mentioned in the thread.
+      - sources: include url:<the issue URL> so the entry is traceable.
+
+  - Both labels present (rare): default to "reading group" treatment but include the country tag in the censors field.
+
+For both kinds, the GitHub issue URL also goes in the sources field of the YAML so a reviewer can navigate to the thread.
 
 For ntc-party candidates: the input "Abstract" is the first post (OP) of a Discourse topic. Topics often link to or summarise external research; extract authors/venue/URL if mentioned in the body. If the topic is a community discussion with no underlying paper (e.g. "blocking event in country X this week"), treat venue as "ntc.party" and the original poster as the author. Be selective: many topics are operational chatter (server-availability reports, install help) and should be marked not-relevant.
 
