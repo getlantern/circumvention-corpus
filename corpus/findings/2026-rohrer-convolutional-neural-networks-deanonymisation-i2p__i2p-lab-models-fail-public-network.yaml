@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: evaluation
+summary: 'Lab-trained CNN models completely failed to generalize to real public I2P network traffic: the ''without payload'' variant produced 12.8–13.2× more false positives for the target service class than ground-truth packets actually existed (Table VIII), rendering all models forensically unusable. The authors conclude that heterogeneity and dynamism of real-world I2P traffic prevents lab-derived classifiers from achieving practical deanonymization.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - I2P's natural traffic heterogeneity across real nodes is itself a defense — circumvention protocols should introduce similar population-level diversity in flow patterns to prevent lab-trained classifiers from transferring to production.
+    - Do not assume lab-measured detection rates reflect real-world attack capability; require adversarial evaluation on live diverse traffic before treating a classifier threat as operationally relevant.
+section: §V Experiment 4, Table VIII
+extracted_by: claude-sonnet-4-6

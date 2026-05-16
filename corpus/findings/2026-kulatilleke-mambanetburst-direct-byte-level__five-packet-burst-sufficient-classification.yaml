@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: detection
+summary: Classification from the first 5 packets × 320 bytes (1600-byte burst) achieves near-perfect accuracy across Tor (F1=0.9990), VPN (F1=0.9871), malware (F1=0.9954), and IoT attack traffic (F1=0.9966), with IP addresses masked and only header and initial payload retained. The earliest portion of each packet provides sufficient discriminative information for a classification decision made within the first kilobyte of a flow.
+techniques:
+    - ml-classifier
+    - dpi
+defenses:
+    - tor
+    - pluggable-transport
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Circumvention handshakes must be indistinguishable from a benign protocol within the first 5 packets; any protocol-specific structure visible in the initial 1600 bytes is actionable by a deployed classifier.
+    - Pluggable transports that front-load randomized or mimicry bytes only in later packets leave early-burst features exposed — the obfuscation must apply from byte 0 of packet 1.
+section: §III-A, §V-A, Table II–III
+extracted_by: claude-sonnet-4-6

@@ -16,10 +16,12 @@ censors:
     - generic
 techniques:
     - ml-classifier
+defenses_discussed:
+    - tor
 evaluation_methods:
     - ml-evaluation
 core: false
-notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Informs defenses against ML-based traffic classification attacks.
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to understanding censor capabilities for detecting Tor and VPN traffic; could inform both detection countermeasures and circumvention tool robustness improvements.
 visibility: public
 date_added: "2026-05-15"
 added_by: corpus-crawl-bot

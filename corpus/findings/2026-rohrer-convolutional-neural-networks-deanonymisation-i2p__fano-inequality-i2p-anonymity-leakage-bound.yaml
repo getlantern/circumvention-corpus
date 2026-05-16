@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: detection
+summary: Applying Fano's inequality, the paper proves Pe ≥ (H(X)−1)/log|Θ|, showing that deanonymization error rate approaches 1 (perfect anonymity) when the anonymity set |Θ| is large and mutual information leakage I(X;Y) between observed traffic Y and target identity X is minimized. A uniform default tunnel length of 3 hops across all nodes, for example, contributes no differential leakage because p(y=3)=1, illustrating that standardized network parameters reduce identifiability.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - flow-correlation
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Maximize the effective anonymity set by ensuring circumvention proxies are indistinguishable from legitimate traffic sources — each parameter (tunnel length, timing, packet size) that becomes uniform across the population removes one mutual-information term from the attacker's classifier.
+    - Standardize protocol parameters across all users rather than exposing configurable options, since parameter diversity creates identifiable sub-populations that shrink the anonymity set.
+section: §III-A, Equation (2)
+extracted_by: claude-sonnet-4-6

@@ -21,6 +21,7 @@ censors:
     - generic
 techniques:
     - website-fingerprint
+    - ml-classifier
 evaluation_methods:
     - ml-evaluation
 core: false
