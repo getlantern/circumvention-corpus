@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: detection
+summary: 'CNN-based passive traffic analysis failed to deanonymize I2P services when transferred from a controlled lab to the public I2P network. Lab-trained models produced mostly unusable results: the ''Without port'' variant misclassified Class 2 packets at 71.6–88.4× the true count, and the ''Without payload'' variant was only marginally better (12.8–13.2× false positives), demonstrating that lab-learned patterns do not generalize to real-world I2P traffic.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - I2P's unidirectional tunnel architecture and mix-net design already provide strong resistance to CNN-based passive fingerprinting — circumvention tools adopting similar multi-hop, unidirectional tunnel designs inherit this robustness for free.
+    - High traffic heterogeneity in real-world deployments is itself a defense property; circumvention infrastructure should avoid homogeneous controlled environments that could simplify classifier training.
+section: §V Fourth Experiment / Table VIII
+extracted_by: claude-sonnet-4-6

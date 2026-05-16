@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: evaluation
+summary: Fano's inequality establishes a theoretical lower bound on deanonymization error probability as a function of anonymity set size |Θ|, prior uncertainty H(X), and mutual information leakage I(X;Y). For a network of N sufficiently large nodes with uniform routing, Pe ≥ (log N − 1) / log(N−1), approaching 1 (perfect anonymity). The authors found that closed-form estimation of I(X;Y) from I2P traffic features was analytically intractable, requiring ML approximation — and that ML also failed in practice.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Increasing the size of the routing anonymity set (more nodes, more candidate paths) is formally the highest-leverage anonymity mechanism per the Fano bound — circumvention systems should prioritize growing and diversifying their relay pool.
+    - 'Routing uniformity matters as much as network size: if a stable subset of nodes handles most traffic, censors can reduce |Θ| by focusing on that subset, so circumvention tools should enforce balanced, randomized peer selection.'
+section: §III-A
+extracted_by: claude-sonnet-4-6

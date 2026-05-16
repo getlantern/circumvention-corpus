@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: detection
+summary: 'Mamba-2''s constrained scalar-times-identity A-matrix acts as an implicit regularizer for packet-byte sequences: under matched settings it yields higher mean F1 (0.9909 vs 0.9874), better worst-case F1 (0.9824 vs 0.9769), and 48% lower cross-dataset variance (4.77×10⁻⁵ vs 9.21×10⁻⁵) relative to Mamba-1, while delivering 30–60% faster backward passes and 2–4× lower GPU memory usage.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Compact SSM-based classifiers are now Pareto-optimal for real-time deployment — circumvention tool designers should assume adversaries can run inline, low-latency classification on commodity hardware without specialized infrastructure.
+    - Evaluating defenses only against known deployed classifiers is insufficient; the low training cost means new classifier variants can be rapidly retrained against updated circumvention signatures.
+section: §V-B, §V-C, Table V
+extracted_by: claude-sonnet-4-6

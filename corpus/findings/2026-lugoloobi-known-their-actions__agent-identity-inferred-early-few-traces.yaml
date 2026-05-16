@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lugoloobi-known-their-actions
+kind: detection
+summary: Strong classifiers can be trained from fewer than one third of available traces with gains diminishing rapidly beyond that threshold. At inference time, macro F1 rises sharply within the first 40% of observed actions across all four datasets, meaning model identity can be inferred while the agent is still actively navigating the page.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Short agent sessions reduce the available fingerprinting signal — circumvention agents should prefer tasks decomposed into many short browsing episodes over single long sessions on potentially adversarial pages.
+    - Early mid-session identification means a site can condition a targeted prompt injection or content poisoning attack before the agent's task completes, making adversary-controlled pages a real-time threat rather than a post-hoc attribution concern.
+section: §6.2, Figure 6
+extracted_by: claude-sonnet-4-6

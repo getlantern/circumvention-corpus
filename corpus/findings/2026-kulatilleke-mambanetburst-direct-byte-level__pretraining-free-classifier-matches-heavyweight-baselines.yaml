@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: evaluation
+summary: Supervised byte-level training without pre-training reduces total compute by an estimated 3–15× in wall-clock training time and 2–4× in training memory footprint compared to pre-trained Transformer baselines (ET-BERT, YaTC, NetMamba), while achieving equivalent or superior classification F1 across six benchmarks spanning encrypted app identification, VPN/Tor, malware, and IoT attack traffic.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - The operational cost of deploying state-of-the-art traffic classifiers has dropped substantially — adversaries no longer need large GPU clusters or pre-collected unlabeled corpora to reach >99% F1 on Tor/VPN detection.
+    - Circumvention tool developers should assume that any traffic pattern stable across multiple connections will be learned quickly; protocols requiring classifier retraining to break (concept drift) must rotate their signatures faster than an adversary can retrain.
+section: §VI-F, §V-A
+extracted_by: claude-sonnet-4-6

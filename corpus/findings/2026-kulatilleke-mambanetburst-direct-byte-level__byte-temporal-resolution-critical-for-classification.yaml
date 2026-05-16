@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kulatilleke-mambanetburst-direct-byte-level
+kind: detection
+summary: Early downsampling via striding (stride=4) is the single most damaging ablation, reducing average macro-F1 from 0.9909 to 0.9772 and increasing cross-dataset variance from 4.77×10⁻⁵ to 4.51×10⁻⁴, while the worst-case dataset drops to F1=0.9524 — far larger degradation than any other design choice including Mamba-1 vs Mamba-2.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Fine-grained byte order within the first packets carries the primary discriminative signal; randomization defenses that perturb per-byte ordering or inject synthetic padding within packets directly degrade classifier accuracy.
+    - Defenses that operate only at the flow-statistical level (packet size distributions, inter-arrival times) are insufficient — byte-level content within each packet must also be obscured.
+section: §V-B, Table IV
+extracted_by: claude-sonnet-4-6

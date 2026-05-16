@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.11606
+id: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+title: Convolutional-Neural-Networks for Deanonymisation of I2P Traffic
+authors:
+    - Luca Rohrer
+    - Konrad Baechler
+    - Dieter Arnold
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.11606"
+url: https://arxiv.org/abs/2605.11606v1
+abstract: This study investigates the potential for deanonymizing services within the Invisible Internet Project (I2P) network through passive traffic analysis and machine learning techniques. The primary objective is to identify distinctive patterns in I2P traffic despite the encryption of its payload. To achieve this, a controlled laboratory environment was established to generate synthetic I2P traffic, providing a training dataset for machine learning models. Furthermore, Fano's inequality is employed to perform a theoretical analysis of anonymous data transmission in mix networks such as I2P, thereby supporting a data-driven approach to uncover causal relationships. In computer experiments, advanced deep learning methods - particularly Convolutional Neural Networks - are applied within the laboratory I2P network, and their effectiveness is further evaluated using real-world traffic data. The results indicate that the proposed methodologies do not compromise the anonymity guarantees of the I2P network.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - website-fingerprint
+evaluation_methods:
+    - simulation
+    - ml-evaluation
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates I2P's mix-network design resists CNN-based traffic analysis; relevant for understanding attack resilience in anonymity systems used by circumvention tools.
+visibility: public
+date_added: "2026-05-15"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.11606

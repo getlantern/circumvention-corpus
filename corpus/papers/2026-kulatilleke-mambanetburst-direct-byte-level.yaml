@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.11034
+id: 2026-kulatilleke-mambanetburst-direct-byte-level
+title: 'MambaNetBurst: Direct Byte-level Network Traffic Classification without Tokenization or Pretraining'
+authors:
+    - Gayan K. Kulatilleke
+    - Siamak Layeghy
+    - Mahsa Baktashmotlagh
+    - Marius Portmann
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.11034"
+url: https://arxiv.org/abs/2605.11034v1
+abstract: We present MambaNetBurst, a compact tokenizer-free byte-level sequence classifier for network burst classification based on a Mamba-2 backbone. In contrast to most recent strong traffic-classification and intrusion-detection approaches, our method operates directly on raw packet bytes, avoids tokenization, patching, and heavy engineered multimodal representations, and does not require any self-supervised pre-training stage. Given a packet flow, we form a fixed-length burst from the first few packets, embed the resulting byte sequence appending a learnable CLS token, and process it with a stack of residual pre-normalized Mamba-2 blocks for end-to-end supervised classification. Across six public benchmarks spanning encrypted mobile app identification, VPN/Tor traffic classification, malware traffic classification, and IoT attack traffic, MambaNetBurst achieves consistently strong results and is competitive with, or outperforms, substantially heavier and often pre-trained baselines. Our ablation study shows that preserving byte-level temporal resolution is critical, that early downsampling through striding is consistently harmful, and that moderate state sizes are sufficient for robust generalization. We further show that Mamba-2, despite its more constrained transition structure relative to Mamba-1, remains highly effective for packet-byte modeling while providing clear efficiency advantages, particularly in training speed. Overall, our results demonstrate that direct **undiluted** byte-to-classification learning with compact selective state space models is a practical, effective and novel direction for efficient, deployable traffic analysis that bypasses the complexity of pre-training pipelines even over highly optimized linear attention architectures.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Informs defenses against ML-based traffic classification attacks.
+visibility: public
+date_added: "2026-05-15"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.11034

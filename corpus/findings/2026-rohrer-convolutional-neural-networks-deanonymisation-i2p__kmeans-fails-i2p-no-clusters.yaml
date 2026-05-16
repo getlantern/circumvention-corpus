@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-rohrer-convolutional-neural-networks-deanonymisation-i2p
+kind: detection
+summary: 'Unsupervised k-Means clustering over I2P flow features (port, payload length, protocol) found no natural cluster structure: distortion decreased nearly linearly with k up to k=20 with no elbow, indicating I2P traffic lacks the simple separable patterns that enable clustering-based traffic classification. The 435-packet dataset yielded one cluster of 75 and clusters as small as 3, with no forensically useful groupings.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - I2P's mix-net design inherently destroys low-dimensional structure in flow-level features, making classical statistical fingerprinting ineffective — circumvention protocols modeling I2P's multi-hop, unidirectional tunnel design inherit this resistance.
+    - The absence of separable clusters even in a homogeneous 16-node lab suggests that protocol-level mixing (not just encryption) is essential; pluggable transports that skip mixing remain vulnerable to clustering-based classifiers.
+section: §V First Experiment / Figure 12
+extracted_by: claude-sonnet-4-6

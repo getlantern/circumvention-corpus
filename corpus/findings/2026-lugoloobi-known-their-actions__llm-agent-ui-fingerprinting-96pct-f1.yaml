@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lugoloobi-known-their-actions
+kind: detection
+summary: Passive JavaScript UI traces are sufficient to fingerprint the underlying LLM of a browser agent with up to 96% macro F1 across 14 frontier models, achieving roughly 10× random-chance accuracy. Even the weakest model pair (Qwen3.5-9B on 2WikiMultiHopQA) reaches 63.7% F1 against a ~7% random baseline for 14 classes.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - LLM-powered circumvention agents browsing adversary-controlled pages can be silently fingerprinted by any operator injecting a lightweight JavaScript tracker — treat every page visit as a potential attribution event requiring behavioral anonymization.
+    - Network-layer anonymization (TLS, IP rotation) is insufficient since the attack requires no network visibility and operates entirely on in-page DOM events.
+section: §5.1, Figure 2
+extracted_by: claude-sonnet-4-6
