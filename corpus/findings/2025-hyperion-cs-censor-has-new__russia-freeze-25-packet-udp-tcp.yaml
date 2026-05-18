@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-hyperion-cs-censor-has-new
+kind: detection
+summary: 'The freezing threshold is packet-count-based rather than strictly byte-based: the censor typically freezes after 25 packets have been sent in either direction (incoming or outgoing), which averages approximately 16 KB of payload. The limit applies to both TCP and UDP flows, and varies slightly by ISP.'
+techniques:
+    - dpi
+    - traffic-shape
+censors:
+    - ru
+defense_implications:
+    - Design proxy transports to rotate or close TCP/UDP associations before the 25-packet (≈16 KB) threshold — per-connection packet counting is the operative signal, not byte-stream content.
+    - For QUIC/UDP-based transports (Hysteria 2, XHTTP), assume the same 25-packet per-flow limit applies and implement connection pooling with early rotation.
+section: upd5
+extracted_by: claude-sonnet-4-6

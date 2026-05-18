@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-personafingerprint-measuring-persona
+kind: detection
+summary: Using only 1,000-packet windows of signed packet lengths and inter-arrival times (no payload, no URLs, no cookies), a passive adversary achieves approximately 84% accuracy at inferring behavioral persona in a mixed-site open-world setting spanning 10 modern websites and 15 canonical personas plus an open-world class. Per-site persona macro-F1 typically ranges from about 0.78 to 0.91 across representative platforms including Bilibili, eBay, Yahoo, Zhihu, and LinkedIn.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Traffic shaping for Tor/VPN circumvention must disrupt session-level behavioral rhythms (interaction cadence, dwell-and-scroll patterns, navigation breadth), not just per-packet size distributions, since these behavioral signatures persist across sites and are learnable from short 1,000-packet windows.
+    - Circumvention tools should evaluate defenses against persona-level fingerprinting in addition to site-level fingerprinting, as both attack surfaces coexist at the same network vantage point (ISP, VPN provider, enterprise gateway).
+section: §5.3, §5.5, Abstract
+extracted_by: claude-sonnet-4-6

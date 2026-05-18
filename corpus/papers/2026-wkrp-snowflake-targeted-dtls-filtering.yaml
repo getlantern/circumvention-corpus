@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-wkrp-snowflake-targeted-dtls-filtering
+title: Snowflake-targeted DTLS filtering in Russia, starting 2026-03-30
+authors:
+    - '@wkrp'
+    - '@kad09'
+    - '@cohosh'
+    - '@theodorsm'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/603
+abstract: Russian censors began blocking Snowflake (Tor's WebRTC-based pluggable transport) on 2026-03-30 by detecting and filtering DTLS ClientHello messages with specific JA3/JA4 fingerprints. Snowflake bandwidth data shows ~99% success before March 30 dropping to near-total failure for standard proxies. Community analysis demonstrates that randomizing DTLS ClientHello via covert-dtls library (under development by Tor Anti-Censorship team) bypasses the filter.
+censors:
+    - ru
+techniques:
+    - tls-fingerprint
+defenses_discussed:
+    - webrtc-pluggable
+    - randomization
+evaluation_methods:
+    - measurement-study
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Critical blocking development: demonstrates DTLS fingerprinting (JA3/JA4) as viable censor technique. covert-dtls defense underway but requires proxy adoption; iptproxy integration pending.'
+visibility: public
+date_added: "2026-05-18"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/603

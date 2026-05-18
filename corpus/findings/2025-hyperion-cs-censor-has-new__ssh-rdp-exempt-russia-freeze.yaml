@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-hyperion-cs-censor-has-new
+kind: detection
+summary: Only SSH/SFTP and sometimes RDP are observed to pass through the Russian mobile network freeze without data-size limitations; raw TCP transfers without TLS and all common TLS-based proxy protocols (VLESS, Reality, Trojan, Shadowsocks) are subject to the 15–20 KB per-connection cap. This suggests the censor's DPI whitelist is protocol-specific and SSH's wire format is recognized as exempt.
+techniques:
+    - dpi
+    - tls-fingerprint
+defenses:
+    - tunneling
+censors:
+    - ru
+defense_implications:
+    - SSH tunneling (via port 22 or common SSH ports) currently bypasses the freeze and is a viable emergency transport for Russian mobile users — consider offering an SSH-transport mode in circumvention clients as a fallback.
+    - Investigate whether disguising proxy traffic as SSH wire format (e.g., using the SSH binary protocol framing as a cover) would inherit the exemption, or whether the exemption is IP/port-based rather than content-based.
+section: upd2
+extracted_by: claude-sonnet-4-6

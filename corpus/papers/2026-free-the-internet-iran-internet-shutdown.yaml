@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-free-the-internet-iran-internet-shutdown
+title: 'Iran: Internet shutdown from 18:45 UTC 8 January 2026'
+authors:
+    - '@free-the-internet'
+    - '@agent188'
+    - '@Phoenix-999'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/561
+abstract: 'On January 8–9, 2026, Iran shut down both global and domestic internet connectivity in response to nationwide protests, preceded by telecommunications blackout including mobile networks and landlines. The thread documents technical mechanisms: BGP prefixes ceased announcement, DNS .ir zone became unavailable (routed only to a single nameserver in Amsterdam), and clients were unable to complete TCP handshakes due to routing failures. Traffic analysis confirmed near-total isolation from global infrastructure within hours.'
+censors:
+    - ir
+techniques:
+    - asn-blackholing
+    - ip-blocking
+    - dns-poisoning
+evaluation_methods:
+    - measurement-study
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Real-time documentation of full-stack network isolation: BGP manipulation + DNS infrastructure takeover + routing-level blockade. Demonstrates extremes of Iranian state censorship capabilities and operational tactics during political crises; directly relevant to Lantern''s understanding of shutdown escalation patterns.'
+visibility: public
+date_added: "2026-05-18"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/561

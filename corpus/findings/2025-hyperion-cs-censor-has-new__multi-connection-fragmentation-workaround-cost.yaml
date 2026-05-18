@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-hyperion-cs-censor-has-new
+kind: defense
+summary: 'Fragmenting large server responses across multiple independent TCP connections each below the ≈15–20 KB threshold circumvents the freeze, but at severe cost: downloading a 50 MB file requires approximately 2,560 separate TCP connections, which is operationally suspicious and significantly degrades throughput.'
+techniques:
+    - dpi
+defenses:
+    - meta-resistance
+censors:
+    - ru
+defense_implications:
+    - Implement automatic TCP connection rotation in proxy clients targeting Russia with a per-connection data cap below 14 KB to stay safely under the threshold — equivalent to multiplexing HTTP/1.1 range requests or XHTTP chunked transfers across a connection pool.
+    - 'Flag this connection-count explosion as a fingerprintable side-effect: 2,560 short-lived TLS connections for a single file transfer is anomalous and may attract secondary classifier attention; explore QUIC stream multiplexing or XHTTP''s packet retransmission features as lower-connection-count alternatives.'
+section: Notes
+extracted_by: claude-sonnet-4-6

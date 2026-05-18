@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-personafingerprint-measuring-persona
+kind: evaluation
+summary: 'Attack accuracy scales steeply with persona-labeled training data: mixed-site open-world persona accuracy rises from 55.0% at 500 windows/persona to 65.0% at 1,000, 76.0% at 2,000, and 84.0% at 5,000 windows/persona across 10 sites (results consistent across 3 random seeds with std ≤1.0%). LLM-driven browsing agents make large-scale persona-labeled traffic generation practical for adversaries.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - The barrier to persona-inference attacks is dropping rapidly as LLM agents can generate labeled behavioral traffic at scale without human participants; circumvention tools should anticipate well-trained persona classifiers as a near-term threat, not a hypothetical one.
+    - Defenses should be evaluated at the high-data regime (≥5,000 samples/class) to reflect realistic adversary capabilities enabled by automated traffic generation.
+section: §5.6, Table 3
+extracted_by: claude-sonnet-4-6

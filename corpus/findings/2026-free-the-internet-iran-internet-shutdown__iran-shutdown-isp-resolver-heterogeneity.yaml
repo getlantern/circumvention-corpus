@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-free-the-internet-iran-internet-shutdown
+kind: deployment
+summary: The January 2026 Iranian shutdown encompassed not only global internet connectivity but also domestic inter-network connectivity and PSTN telephony — even domestic phone calls were reported impossible during the blackout period. This represents a broader telecommunications blockade beyond IP-layer isolation.
+techniques:
+    - bgp-hijack
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - Out-of-band coordination channels (SMS gateways, satellite links, LoRa mesh) are critical for user recovery during shutdowns that extend to the telephony layer.
+    - Circumvention deployments targeting Iran should include pre-crisis user education and cached tool distribution, since real-time coordination via any in-country channel becomes impossible.
+section: §Issue body
+extracted_by: claude-sonnet-4-6

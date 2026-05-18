@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gusgustavo-iran-internet-shutdown
+kind: evaluation
+summary: Iran experienced a near-complete internet shutdown on February 28, 2026 beginning at approximately 07:00 UTC, with Cloudflare Radar measuring ~98% connectivity loss relative to the previous week, affecting Tehran, Fars, Isfahan, Alborz Province, and Razavi Khorasan simultaneously.
+techniques:
+    - bgp-hijack
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - 'Design for ''blackout-grade'' scenarios: assume all IP-routed traffic (including CDN-fronted paths) may be unreachable and pre-position non-IP fallback channels before shutdown events.'
+    - Monitor Cloudflare Radar and IODA as early-warning signals; a 98% drop with BGP withdrawals is a distinct signature that triggers different tool behavior than partial filtering.
+section: Issue body
+extracted_by: claude-sonnet-4-6

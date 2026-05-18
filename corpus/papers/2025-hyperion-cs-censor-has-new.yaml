@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-hyperion-cs-censor-has-new
+title: Censor has a new method of blocking
+authors:
+    - '@hyperion-cs'
+    - '@bmixonba'
+    - '@wallpunch'
+venue: net4people/bbs
+year: 2025
+url: https://github.com/net4people/bbs/issues/490
+abstract: Russian censors deployed a new blocking technique on mobile networks that freezes TCP connections receiving more than 15-20KB of data from servers outside Russia. The technique uses DPI to detect TLS, IP geolocation checks to identify foreign servers, and maintains whitelists based on SNI values and CIDR blocks. Workarounds include SSH tunneling, using whitelisted SNI values with VLESS/Reality, or fragmenting responses across multiple connections.
+censors:
+    - ru
+techniques:
+    - dpi
+    - ip-blocking
+    - throttling
+    - sni-blocking
+defenses_discussed:
+    - tunneling
+    - reality
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Describes a production blocking technique deployed by Russia's mobile operators (MTS, Beeline, MegaFon, Yota). Critical for evaluating VLESS/Reality and other TLS-based circumvention protocols.
+visibility: public
+date_added: "2026-05-18"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/490

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-snowflake-targeted-dtls-filtering
+kind: evaluation
+summary: A Russian user ran a self-built snowflake-proxy from inside the censored country using the 'random-and-mimic' fingerprint option, successfully serving Iranian, Turkmen, Russian, and German Tor users, demonstrating that the blocking is unidirectional (targeting client DTLS hellos) and that snowflake-broker and rendezvous domains (snowflake-broker.torproject.net, snowflake-01/02.torproject.net) remained accessible behind the .net SNI — only the DTLS data channel was filtered.
+techniques:
+    - tls-fingerprint
+    - sni-blocking
+defenses:
+    - webrtc-pluggable
+    - bridges
+censors:
+    - ru
+    - ir
+    - tm
+defense_implications:
+    - Ensure rendezvous / broker channels remain on domain-fronted or SNI-hidden transports even after DTLS fixes — the filter's current scope is narrow, but broker reachability is the remaining chokepoint.
+    - Document which proxy fingerprint variants survive filtering so the user community can contribute compliant relays; operator diversity requires clear fingerprint compliance specs.
+section: 'kad09 original report, Issue #422 comment'
+extracted_by: claude-sonnet-4-6

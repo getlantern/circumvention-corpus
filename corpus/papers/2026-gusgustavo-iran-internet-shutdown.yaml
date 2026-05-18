@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-gusgustavo-iran-internet-shutdown
+title: 'Iran: Internet shutdown from 7 UTC 28 February 2026'
+authors:
+    - '@gusgustavo'
+    - '@wkrp'
+    - '@siq0o'
+    - '@v-zza'
+    - '@amiremohamadi'
+    - '@fortuna'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/586
+abstract: On February 28, 2026, Iran experienced a near-complete internet shutdown (98% connectivity loss) following military strikes, affecting multiple provinces. Cloudflare Radar and IODA measurements revealed BGP route withdrawals and IP-space announcement collapse. The community discovered DNS-based tunneling (dnstt over port 53) was the only working circumvention method; participants shared public dnstt server configurations and experimented with different DNS resolvers and ISPs to maintain connectivity.
+censors:
+    - ir
+techniques:
+    - bgp-hijack
+    - ip-blocking
+defenses_discussed:
+    - dns-tunneling
+    - tor
+    - bridges
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Real-world evidence of dnstt's robustness during major nationwide shutdown; demonstrates BGP/IP-level censor intervention and identifies DNS port as resilient escape route.
+visibility: public
+date_added: "2026-05-18"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/586

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gusgustavo-iran-internet-shutdown
+kind: deployment
+summary: IODA data confirmed the February 28, 2026 Iran shutdown was implemented via BGP route withdrawals and collapse of IP-space announcements, not merely application-layer blocking — the underlying routing infrastructure itself was withdrawn.
+techniques:
+    - bgp-hijack
+    - asn-blackholing
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools relying on IP reachability to any external host (including Tor bridges, Shadowsocks, VPN endpoints) become inoperative under BGP-level shutdowns; only in-band protocols (DNS, ICMP) may survive.
+    - Pre-distribute configurations for DNS-tunneled fallback channels to users before a shutdown event, since BGP-level interventions leave no time for in-band bootstrap.
+section: Issue body (IODA reference)
+extracted_by: claude-sonnet-4-6
