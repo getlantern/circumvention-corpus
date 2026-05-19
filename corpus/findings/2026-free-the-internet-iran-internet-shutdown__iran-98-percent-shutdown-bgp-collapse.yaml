@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-free-the-internet-iran-internet-shutdown
+kind: deployment
+summary: During the January 8–9, 2026 shutdown, Iran's .ir DNS zone became unavailable in-country, with resolution routed exclusively to a single nameserver located in Amsterdam. This infrastructure takeover was simultaneous with the routing blackout, eliminating DNS as an independent resolution path.
+techniques:
+    - dns-poisoning
+    - bgp-hijack
+censors:
+    - ir
+defense_implications:
+    - DNS-tunneling transports (DNSTT, iodine) are neutralized when the censor takes over authoritative nameservers — designs must include non-DNS fallback bootstrap channels.
+    - Hardcoded IP fallbacks and pre-distributed encrypted bootstrap bundles are necessary for Iran-targeting tools, since both DNS and BGP paths may be simultaneously severed.
+section: §Abstract
+extracted_by: claude-sonnet-4-6

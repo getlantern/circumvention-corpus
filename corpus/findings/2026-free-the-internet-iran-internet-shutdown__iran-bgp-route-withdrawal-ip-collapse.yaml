@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-free-the-internet-iran-internet-shutdown
+kind: deployment
+summary: Iran executed a full-stack internet shutdown beginning at 18:45 UTC on January 8, 2026, withdrawing BGP prefix announcements nationwide and causing routing failures that prevented clients from completing TCP handshakes. Traffic dropped to effectively zero within hours of the shutdown's onset.
+techniques:
+    - bgp-hijack
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools must treat BGP-level blackouts as a distinct failure mode from protocol-level blocking; fallbacks relying on any in-country routing will fail regardless of obfuscation technique.
+    - Pre-positioning of out-of-band bootstrap data (cached proxy IPs, DNS seeds) is essential before shutdown events since no in-country resolution path will be available during the blackout.
+section: §Issue body / Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-internet-pro-tiered
+kind: evaluation
+summary: IODA Active Probing shows Iran's global Internet connectivity dropped to approximately 3% on February 28, 2026, and had not recovered as of the report date (59+ days). This matches the near-3% floor seen during the January 2026 protests shutdown, establishing a repeatable operational baseline for the regime's tiered blocking posture.
+techniques:
+    - measurement-platform
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - A persistent ~3% residual signal in IODA Active Probing likely reflects the 'Internet Pro' whitelist cohort, not general population access—circumvention tools should not interpret low-but-nonzero IODA signals as general reachability.
+    - The sustained multi-month duration (59+ days) rules out temporary shutdown assumptions; circumvention deployment strategies for Iran must account for indefinite IP-layer blocking as the new baseline.
+section: 'IODA Data: The Discrepancy in the Signals'
+extracted_by: claude-sonnet-4-6

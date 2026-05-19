@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-personafingerprint-measuring-persona
+kind: detection
+summary: 'In open-world evaluation, an average of 34.4% of traffic from unseen personas is misattributed to a specific canonical persona (MisAttr@OW), and misattributions concentrate heavily: on average 58.7% of misattributed windows fall into just the top-3 canonical personas, rising to 66.8% and 69.3% on Bilibili and Zhihu respectively. The classifier correctly rejects unseen personas as OW with an average F1 of only 65.6%.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Even imperfect persona fingerprinting (34% misattribution rate) provides actionable coarse-grained behavioral profiles that collapse into a small set of stable persona labels — circumvention tools cannot rely on open-world diversity as a practical defense against behavioral deanonymization.
+    - Traffic shaping defenses should target the specific behavioral dimensions (exploration depth, scroll cadence, search-vs-recommendation ratio) that cause unseen personas to cluster near canonical ones, rather than focusing solely on raw packet statistics.
+section: §5.4, Table 2
+extracted_by: claude-sonnet-4-6

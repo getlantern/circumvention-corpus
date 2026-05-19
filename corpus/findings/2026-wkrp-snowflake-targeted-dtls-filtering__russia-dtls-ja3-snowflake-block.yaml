@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-snowflake-targeted-dtls-filtering
+kind: detection
+summary: Russia (TSPU/Roskomnadzor) began blocking Snowflake on 2026-03-30 by detecting DTLS ClientHello messages with specific JA3/JA4 fingerprints after a small delay. The block caused Snowflake to drop from ~100% connection success (measured from November 2025 through March 29) to near-total failure for standard proxies overnight.
+techniques:
+    - tls-fingerprint
+    - active-probing
+defenses:
+    - webrtc-pluggable
+censors:
+    - ru
+defense_implications:
+    - DTLS fingerprint randomization must be a first-class feature in any WebRTC-based pluggable transport, not an optional experimental flag — fingerprint stability is an exploitable invariant.
+    - Deploy covert-dtls or equivalent ClientHello randomization to all proxy types before rolling out in Russia; partial deployment creates a detectable population split.
+section: 'Issue #603 opening comment (wkrp, Apr 6 2026)'
+extracted_by: claude-sonnet-4-6

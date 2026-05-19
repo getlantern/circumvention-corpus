@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-free-the-internet-iran-internet-shutdown
+kind: evaluation
+summary: Iran's January 8, 2026 shutdown was confirmed by Cloudflare Radar traffic telemetry showing a near-instantaneous collapse in Iranian internet traffic to effectively zero. The shutdown was implemented rapidly enough that the Cloudflare Radar timestamp (18:45 UTC) serves as a precise onset marker.
+techniques:
+    - bgp-hijack
+censors:
+    - ir
+defense_implications:
+    - Real-time traffic telemetry from CDN vantage points (Cloudflare Radar, IODA) can provide ~minute-level shutdown onset detection; circumvention infrastructure should monitor these signals to trigger automatic failover or user alerts.
+    - The rapidity of BGP-level shutdowns means circumvention tools cannot rely on graceful degradation — tools must pre-provision out-of-band paths before the shutdown window.
+section: §Issue body / Cloudflare Radar source
+extracted_by: claude-sonnet-4-6

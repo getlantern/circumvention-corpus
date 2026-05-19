@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-internet-pro-tiered
+kind: detection
+summary: During the June 2025 Israel-Iran war, IODA observed that BGP routing announcements remained largely intact while Active Probing and Telescope signals showed a near-total Internet blackout—a 'stealth blackout' technique that hides shutdown actions behind maintained routing infrastructure. This pattern was replicated in the February 28, 2026 shutdown, where Active Probing dropped to ~3% while BGP remained stable.
+techniques:
+    - ip-blocking
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - BGP-intact shutdowns mean IP-reachability probes are unreliable indicators of censorship—circumvention tools should use application-layer liveness checks, not just TCP reachability, to detect blockage.
+    - Whitelist-based IP blocking requires circumvention infrastructure to either use whitelisted IP space (CDN fronting, domestic NIN relay) or accept that connection attempts to foreign IPs will be silently dropped.
+section: The New Normal in Comparative Perspective
+extracted_by: claude-sonnet-4-6

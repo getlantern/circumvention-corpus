@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-snowflake-targeted-dtls-filtering
+kind: detection
+summary: 'PCAP analysis from inside Russia confirmed the filter is fingerprint-based, not IP-based: every failed DTLS connection shared the same JA3/JA4 fingerprint, while a single connection with a different JA3/JA4 fingerprint succeeded and sustained full-speed data transfer, eliminating the hypothesis that censors had enumerated the large proxy IP space.'
+techniques:
+    - tls-fingerprint
+    - ip-blocking
+defenses:
+    - webrtc-pluggable
+censors:
+    - ru
+defense_implications:
+    - IP rotation and bridge diversity alone cannot defeat this filter — the attack surface is the protocol fingerprint, so defense effort should prioritize fingerprint randomization over expanding proxy IP pools.
+    - Use PCAP-level JA3/JA4 logging in production clients as a first-response diagnostic tool when new blocks are reported; fingerprint constancy in failure logs is a fast confirmation signal.
+section: 'kad09 original report, Issue #422 comment (Apr 5 2026)'
+extracted_by: claude-sonnet-4-6

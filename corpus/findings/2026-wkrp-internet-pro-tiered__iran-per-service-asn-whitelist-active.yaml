@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-internet-pro-tiered
+kind: deployment
+summary: 'IODA telescope and Google Product signals, corroborated by Cloudflare Radar and Kentik traffic data, show selective whitelist restoration: Google Search and Images are accessible via the NIN while Google Maps is not, and IranCell (AS44244) shows a slight diurnal Telescope traffic increase consistent with ''Internet Pro'' access—demonstrating that selective per-service and per-ASN whitelisting is operationally active.'
+techniques:
+    - ip-blocking
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - Per-service and per-ASN granularity in Iran's whitelist means circumvention tools can probe which CDN or cloud ASNs are whitelisted and use those as fronting infrastructure; IranCell (AS44244) and whitelisted Google ASNs are confirmed active candidates.
+    - Multi-signal corroboration (IODA + Cloudflare Radar + Kentik) demonstrates that passive measurement from multiple vantage points can map the whitelist boundary—circumvention tooling should incorporate similar multi-source reachability data to dynamically identify accessible infrastructure.
+section: 'IODA Data: The Discrepancy in the Signals'
+extracted_by: claude-sonnet-4-6

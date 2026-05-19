@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-personafingerprint-measuring-persona
+kind: detection
+summary: Joint multi-task training with a combined loss L_joint = L_site + λ·L_pers shows that increasing λ from 0 to 2 raises mixed-site persona accuracy from approximately 45% to approximately 80% while website accuracy declines only from approximately 90% to approximately 75%, demonstrating a wide regime where an attacker can gain strong persona inference at modest cost to existing WFP capability.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - An attacker with access to persona-labeled traffic (e.g., from LLM-driven browsing agents) can upgrade a deployed WFP pipeline to dual-purpose persona inference at low marginal cost — circumvention deployments must not assume that site-level defenses also bound persona-inference risk.
+    - Circumvention protocol evaluations should include dual-head adversary models that jointly optimize site and behavioral classification, since these represent realistic near-future attack capabilities.
+section: §4.4, §5.7.2, Figure 5
+extracted_by: claude-sonnet-4-6

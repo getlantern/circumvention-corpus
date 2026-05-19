@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gusgustavo-iran-internet-shutdown
+kind: defense
+summary: During Iran's near-complete February 2026 shutdown, DNS-based tunneling (dnstt over UDP port 53) was identified by the community as the only functioning circumvention method, with participants successfully sharing public dnstt server configurations to maintain connectivity.
+techniques:
+    - bgp-hijack
+    - ip-blocking
+defenses:
+    - dns-tunneling
+censors:
+    - ir
+defense_implications:
+    - Maintain a hardened dnstt (or equivalent DNS-tunnel) channel as a last-resort fallback specifically for BGP-level shutdown events; DNS port 53 survived when all routed IP traffic was blocked.
+    - Pre-publish multiple public dnstt server addresses (ideally across diverse resolver operators) so users can quickly switch if one resolver is cut; community coordination on resolver diversity proved critical during this event.
+section: Issue body / community comments
+extracted_by: claude-sonnet-4-6

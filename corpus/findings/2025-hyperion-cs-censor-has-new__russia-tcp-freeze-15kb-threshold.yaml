@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-hyperion-cs-censor-has-new
+kind: detection
+summary: 'Russia''s mobile operators (MTS, Beeline, MegaFon, Yota) deployed a TCP connection-freezing technique in mid-2025 that silently halts packet delivery after approximately 15–20 KB of server-to-client data within a single TCP connection, without sending RST packets, causing clients to stall until timeout. The trigger requires: (1) TLS 1.3 or TLS 1.2 over TCP, (2) destination IP located in a foreign datacenter ASN (e.g., Hetzner, DigitalOcean), and (3) cumulative in-connection payload exceeding the threshold.'
+techniques:
+    - dpi
+    - tls-fingerprint
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - Do not rely on single long-lived TCP connections for large data transfers through Russian mobile networks — any TLS-over-TCP proxy (VLESS, Reality, Trojan, etc.) will stall after ~16 KB unless the transport layer rotates connections.
+    - Protocol-mimicry alone (Reality, Trojan) does not exempt traffic — the censor explicitly ignores TLS content legitimacy and acts solely on IP geolocation + per-connection byte count.
+section: Problem description
+extracted_by: claude-sonnet-4-6

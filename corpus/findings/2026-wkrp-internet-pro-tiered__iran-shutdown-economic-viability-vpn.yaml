@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-internet-pro-tiered
+kind: evaluation
+summary: The economic cost of Iran's ongoing Internet shutdown is estimated at 40 million USD per day (FactNameh), with the digital retail sector collapsing and approximately 10 million Iranians dependent on the digital economy losing access. VPN workarounds under 'Internet Pro' pricing are prohibitively expensive, rendering circumvention economically unviable for the general population.
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - When circumvention is blocked via economic pricing rather than purely technical means, tool designers must partner with subsidy programs or integrate zero-cost access models (Psiphon-style sponsored access, operator partnerships) rather than relying on technical evasion alone.
+    - The $40M/day economic pressure creates an adversarial equilibrium where the regime bears high costs for maintaining the shutdown—circumvention strategies that raise the censor's economic cost (e.g., requiring whitelisting decisions at scale) may be more durable than purely protocol-level evasion.
+section: The Economic Toll
+extracted_by: claude-sonnet-4-6

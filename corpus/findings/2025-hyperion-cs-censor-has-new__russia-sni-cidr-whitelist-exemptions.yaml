@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-hyperion-cs-censor-has-new
+kind: detection
+summary: 'The Russian DPI maintains two whitelists that exempt flows from the freeze: (1) a SNI-based whitelist covering select domains (visible in the TLS ClientHello), and (2) a CIDR-based whitelist of IP subnets for trusted destination servers. The SNI whitelist can be exploited by VLESS+Reality clients using an allowed SNI value as the apparent destination; the CIDR whitelist requires routing through an IP from a whitelisted prefix, making circumvention ''extremely difficult'' without an intermediate node in a whitelisted subnet.'
+techniques:
+    - sni-blocking
+    - ip-blocking
+    - dpi
+defenses:
+    - reality
+    - vless
+censors:
+    - ru
+defense_implications:
+    - VLESS+Reality deployments should configure xtls-rprx-vision with a whitelisted SNI/destination to bypass the SNI whitelist check; maintain and update a list of whitelisted SNI values scraped from the public dpi-checkers repository.
+    - Acquiring proxy server IPs within CIDR ranges on the Russian CIDR whitelist (e.g., via residential or CDN IPs) is a higher-priority evasion strategy than protocol-level mimicry for this specific blocking technique.
+section: upd3, upd4
+extracted_by: claude-sonnet-4-6

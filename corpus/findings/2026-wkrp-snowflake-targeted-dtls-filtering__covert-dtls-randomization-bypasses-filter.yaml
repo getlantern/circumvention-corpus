@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-snowflake-targeted-dtls-filtering
+kind: defense
+summary: An experimental 'random-and-mimic' option in snowflake-proxy produced a DTLS ClientHello fingerprint distinct from any observed standard fingerprint and was not blocked by the Russian filter. The covert-dtls library under development by the Tor Anti-Censorship team systematically randomizes the DTLS ClientHello handshake to defeat JA3/JA4-based classification.
+techniques:
+    - tls-fingerprint
+defenses:
+    - webrtc-pluggable
+    - randomization
+    - pluggable-transport
+censors:
+    - ru
+defense_implications:
+    - Merge and ship covert-dtls into the default Snowflake client and proxy path as the highest-priority unblocking action; the defense is already validated by in-field PCAP evidence.
+    - Design the randomization so that the resulting fingerprint does not converge on a new detectable constant — rotate or generate per-session to stay ahead of a fingerprint-update arms race.
+section: kad09 report + abstract team notes
+extracted_by: claude-sonnet-4-6

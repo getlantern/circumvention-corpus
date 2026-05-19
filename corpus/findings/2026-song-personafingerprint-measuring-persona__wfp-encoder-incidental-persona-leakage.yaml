@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-personafingerprint-measuring-persona
+kind: detection
+summary: 'A site-only WFP encoder trained without any persona labels already encodes substantial persona information: attaching a lightweight MLP probe to its frozen representations recovers persona accuracy roughly 20–30 percentage points above a random-encoder baseline across all 10 sites (e.g., approximately 53% vs. 21% on Amazon, 49% vs. 27% on YouTube, using the same probe architecture and training budget).'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - An adversary who already deploys WFP can cheaply pivot to persona inference by probing existing WFP encoder representations — circumvention tools cannot treat site-fingerprinting defenses as sufficient protection against behavioral deanonymization.
+    - Defenses should treat WFP encoder representations as persona-leaky by default; padding/shaping schemes must target the features that make these representations discriminative, not just raw packet sizes.
+section: §4.5, §5.7.1, Figure 4
+extracted_by: claude-sonnet-4-6

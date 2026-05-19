@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wkrp-internet-pro-tiered
+kind: policy
+summary: 'Iran officially unveiled ''Internet Pro'' on April 14, 2026: a permanent tiered-access system granting selective unfiltered international connectivity to state actors and approved businesses at ~10x normal pricing (~$1–3/GB), while restricting the general population to the National Information Network (NIN). This institutionalizes what the regime frames as ''Internet Sovereignty,'' converting international access from a general right to a government-granted privilege.'
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Economic pricing as a blocking mechanism (~$1–3/GB for VPN-grade access) is a novel censor tactic that technical circumvention tools alone cannot defeat; subsidized or zero-rated access infrastructure is required to serve general-population users in this model.
+    - The whitelist architecture means circumvention tools relying on foreign IP endpoints face structural rather than evasion-based blocking—CDN-fronted or domestically-accessible relay architectures (NIN-reachable entry points) become the primary viable path.
+section: 'The Architecture of Tiered Access: "Internet Pro"'
+extracted_by: claude-sonnet-4-6

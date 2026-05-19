@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2605.15962
+id: 2026-song-personafingerprint-measuring-persona
+title: 'PersonaFingerprint: Measuring Persona Inference on Modern Websites with LLM-Driven Browsing'
+authors:
+    - Chuxu Song
+    - Hao Wang
+    - Richard Martin
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2605.15962"
+url: https://arxiv.org/abs/2605.15962v1
+abstract: 'Website Fingerprinting (WFP) has traditionally focused on inferring which website a user visits from encrypted traffic metadata such as packet sizes and timing. In this paper, we identify and quantify a new privacy risk in modern web settings: an adversary can infer a user''s persona using only packet-length and inter-arrival-time sequences. To study this risk at scale, we build an LLM-driven multi-agent browsing framework that enforces controllable persona constraints while a computer-use agent interacts with real websites and collects corresponding encrypted traffic traces. We formalize persona fingerprinting under both closed-set and open-world settings and further evaluate whether persona information is already embedded in representations learned by existing WFP models and can be amplified at low cost. Across 10 modern websites and 15 personas (plus an open-world class), persona inference achieves about 84% accuracy on mixed-site traffic; moreover, a lightweight multi-task objective can boost persona accuracy to around 80% while retaining strong site classification performance (about 93% baseline). Our results show that, on modern websites, encrypted traffic metadata can leak not only which site a user visits, but also how they browse and who is browsing.'
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Extends website fingerprinting to persona inference; relevant to understanding traffic-analysis vulnerabilities that circumvention protocols must defend against.
+visibility: public
+date_added: "2026-05-18"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2605.15962

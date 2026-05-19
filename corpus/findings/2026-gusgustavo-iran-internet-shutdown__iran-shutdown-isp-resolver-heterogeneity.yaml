@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gusgustavo-iran-internet-shutdown
+kind: evaluation
+summary: 'Community experimentation during the February 2026 Iran shutdown revealed heterogeneity across ISPs in what survived: participants tested different DNS resolvers and ISPs to find working dnstt paths, indicating the BGP withdrawal was not perfectly uniform across all Iranian autonomous systems.'
+techniques:
+    - bgp-hijack
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Instrument circumvention clients to detect and report ISP-level reachability variation during shutdown events; routing heterogeneity across ASes creates exploitable gaps that uniform-treatment assumptions would miss.
+    - Build ISP-adaptive probe logic so clients automatically try multiple resolver/path combinations during detected shutdown conditions rather than failing silently.
+section: Issue comments
+extracted_by: claude-sonnet-4-6
