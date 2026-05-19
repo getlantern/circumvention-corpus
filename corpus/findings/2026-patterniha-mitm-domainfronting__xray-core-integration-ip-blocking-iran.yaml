@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patterniha-mitm-domainfronting
+kind: deployment
+summary: MITM-DomainFronting reached 1.8k GitHub stars and 170 forks by May 2026 and was merged into Xray-core mainline (PR XTLS/Xray-core#4348), making it deployable via a standard v2rayN/v2rayNG JSON config with no separate install step. The author additionally notes that Gemini explicitly IP-blocks Iranian addresses, demonstrating that certain Google services enforce IP-geolocation blocking at the application layer — a layer that SNI-based CDN fronting cannot bypass regardless of the fronted SNI.
+techniques:
+    - ip-blocking
+    - sni-blocking
+defenses:
+    - domain-fronting
+censors:
+    - ir
+defense_implications:
+    - Account for destination-side IP sanctions (as with Gemini/Iran) independently of censor-side SNI blocking — tool designers must distinguish between 'blocked by censor' and 'service refuses Iranian IPs', since only the former is addressable by fronting.
+    - The Xray-core integration substantially lowers deployment friction; circumvention tools on sing-box or lantern-box that want equivalent capability need to either contribute a tunnel/issue inbound primitive upstream or run a sidecar MITM component alongside the core.
+section: README / intro and limitations
+extracted_by: claude-sonnet-4-6
