@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-das-self-censorship
+kind: policy
+summary: Das and Kramer measured last-minute self-censorship on Facebook by tracking text typed into composer fields but never submitted; 71% of users in their study composed at least one status update or comment that they ultimately withheld during the 17-day observation window.
+techniques:
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Users preemptively suppress expression even without explicit blocking, suggesting censorship tools must address anticipated rather than observed enforcement to restore free expression.
+    - Platform-level input telemetry can quantify suppressed speech; circumvention tool designers should treat user-side behavioral inhibition — not just packet drops — as a censorship signal.
+section: §3 Results
+extracted_by: claude-sonnet-4-6

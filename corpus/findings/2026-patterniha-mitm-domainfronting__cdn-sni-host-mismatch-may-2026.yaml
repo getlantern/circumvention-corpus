@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patterniha-mitm-domainfronting
+kind: evaluation
+summary: As of May 2026, at least four major CDN providers — Google (fronted via www.google.com), Fastly (fronted via www.python.org), Vercel (fronted via nextjs.org), and Netlify/CloudFront (fronted via kubernetes.io) — route requests based on the HTTP Host header regardless of the outer TLS SNI, enabling domain fronting across more than 20 distinct high-value destinations. The correct fronting SNI for each CDN is selected by inspecting the SAN list of the CDN edge certificate and choosing a co-hosted domain the censor permits.
+techniques:
+    - sni-blocking
+defenses:
+    - domain-fronting
+censors:
+    - ir
+defense_implications:
+    - Maintain a live, CDN-keyed fronting map built from SAN-list inspection rather than hostname assumptions — patterniha's config (20 versioned releases through May 2026) is the most current public reference for which CDN edges still tolerate SNI/Host mismatch.
+    - Use verifyPeerCertByName-style SAN validation rather than hostname matching in outbound TLS config, so the correct CDN edge cert is accepted even when the dialed SNI differs from the intended destination.
+section: README / Supported destinations
+extracted_by: claude-sonnet-4-6

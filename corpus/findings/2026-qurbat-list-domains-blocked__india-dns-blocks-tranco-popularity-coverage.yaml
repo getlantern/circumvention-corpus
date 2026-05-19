@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-qurbat-list-domains-blocked
+kind: evaluation
+summary: The dataset incorporates Tranco popularity rankings for blocked domains (derived from the 'Poisoned Wells' research), enabling measurement of how DNS blocking in India intersects with high-traffic websites rather than being confined to obscure domains.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - in
+defense_implications:
+    - High-Tranco-rank blocked domains are likely to be user-facing circumvention targets; prioritize these domains in default bypass lists and latency-sensitive routing.
+    - CDN-hosted or highly-ranked domains blocked by DNS may still be reachable via IP; domain-fronting or SNI-substitution defenses remain viable for this subset.
+section: Abstract (Tranco ranking annotation)
+extracted_by: claude-sonnet-4-6

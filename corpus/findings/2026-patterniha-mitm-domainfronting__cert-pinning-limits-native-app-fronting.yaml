@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patterniha-mitm-domainfronting
+kind: evaluation
+summary: On non-rooted Android, user-installed CA certificates are honored by Chromium-based browsers natively and by Firefox only after enabling a hidden debug toggle ('Use third-party CA certificates' in Secret Settings), but are not trusted by native apps that use certificate pinning. This restricts MITM-DomainFronting to browser sessions on non-rooted devices and means standalone apps such as the Google Meet native client cannot be fronted without root access.
+defenses:
+    - domain-fronting
+censors:
+    - ir
+defense_implications:
+    - Scope client-CA-MITM fronting explicitly to browser traffic and pair it with a traditional proxy for native-app coverage — presenting it as a VPN replacement will mislead users whose primary use case is a pinned native app.
+    - Investigate whether an Android VPN API (TUN-mode) proxy with an in-process root CA store can intercept pinned-app traffic without OS-level trust elevation; this is the key capability gap between non-root and root deployments of this technique.
+section: README / Android setup and warnings
+extracted_by: claude-sonnet-4-6

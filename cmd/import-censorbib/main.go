@@ -10,7 +10,12 @@
 //
 //	go run ./cmd/import-censorbib --bib /tmp/censorbib.bib --corpus . [--limit 50]
 //
-// The importer writes one YAML per accepted record to corpus/papers/.
+// The importer writes one YAML per accepted record to corpus/papers/ and
+// then shells out to corpus-findings extract-all to generate the matching
+// findings YAMLs in the same run — keeping the corpus invariant that
+// every paper has been through the extraction pipeline. Disable with
+// --extract-findings=false (e.g. when backfilling findings separately).
+//
 // After running, run `go test ./...` to validate the corpus integrity
 // (every tag must resolve in the taxonomy).
 package main
@@ -21,6 +26,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -42,6 +48,8 @@ func main() {
 	corpusDir := flag.String("corpus", ".", "Path to the circumvention-corpus repo root.")
 	limit := flag.Int("limit", 0, "If > 0, stop after this many newly-written records (useful for incremental commits).")
 	dryRun := flag.Bool("dry-run", false, "Parse + plan but don't write any files.")
+	extractFindings := flag.Bool("extract-findings", true, "After import, run corpus-findings extract-all to extract findings for the new papers. Set to false to skip (e.g. during dry-runs or when you'll backfill separately).")
+	parallel := flag.Int("parallel", 3, "Parallelism for the findings-extraction pass.")
 	flag.Parse()
 	if *bibPath == "" {
 		log.Fatal("--bib is required")
@@ -112,6 +120,56 @@ func main() {
 		}
 	}
 	log.Printf("written %d, skipped %d (duplicates or unparseable)", written, skipped)
+
+	if written > 0 && *extractFindings && !*dryRun {
+		runFindingsExtraction(*corpusDir, *parallel)
+	}
+}
+
+// runFindingsExtraction shells out to corpus-findings extract-all after a
+// successful import so every paper that just entered the corpus has its
+// findings YAMLs generated in the same run. The censorbib import was the
+// original source of papers-without-findings in the corpus; running the
+// extractor here closes that gap.
+//
+// --min-year=0 disables the extractor's default 10-year cutoff: censorbib
+// includes foundational pre-2015 work and we want findings extracted for
+// those too (even though many will fail on dead/paywalled URLs — that's
+// a URL-quality problem, not a pipeline problem).
+//
+// Best-effort: a missing binary or extractor error logs a warning but
+// doesn't fail the import. The paper YAMLs still ship.
+func runFindingsExtraction(corpusDir string, parallel int) {
+	bin := locateFindingsBinary(corpusDir)
+	if bin == "" {
+		log.Printf("findings: corpus-findings binary not found in PATH or repo root; skipping extraction. Build it with: go build -o ./corpus-findings ./cmd/corpus-findings")
+		return
+	}
+	log.Printf("findings: running %s extract-all --min-year=0 --parallel=%d", bin, parallel)
+	cmd := exec.Command(bin, "extract-all", "--corpus", corpusDir, "--min-year=0", fmt.Sprintf("--parallel=%d", parallel))
+	cmd.Stdout = os.Stderr
+	cmd.Stderr = os.Stderr
+	if err := cmd.Run(); err != nil {
+		log.Printf("findings: extract-all returned error: %v (continuing — paper YAMLs were written)", err)
+	}
+}
+
+// locateFindingsBinary mirrors the lookup the crawler uses: prefer a
+// sibling binary in the repo root (the typical dev layout) or alongside
+// this binary, then fall back to PATH.
+func locateFindingsBinary(root string) string {
+	for _, candidate := range []string{
+		filepath.Join(root, "corpus-findings"),
+		filepath.Join(filepath.Dir(os.Args[0]), "corpus-findings"),
+	} {
+		if info, err := os.Stat(candidate); err == nil && !info.IsDir() {
+			return candidate
+		}
+	}
+	if path, err := exec.LookPath("corpus-findings"); err == nil {
+		return path
+	}
+	return ""
 }
 
 // parseBibTeX parses a CensorBib-style BibTeX file. The format here is

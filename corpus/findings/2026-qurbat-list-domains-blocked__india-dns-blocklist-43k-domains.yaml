@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-qurbat-list-domains-blocked
+kind: evaluation
+summary: A compiled blocklist dataset documents 43,083 apex domains blocked via DNS filtering across 6 Indian ISPs, representing one of the largest systematic inventories of Indian DNS censorship scope published to date.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - in
+defense_implications:
+    - DNS-tunneling or DNS-over-HTTPS defenses targeting India must account for a blocklist of at least 43,083 domains; any resolver-substitution approach must handle this volume without performance degradation.
+    - Tool designers should pre-seed blocklist awareness from this dataset to provide accurate in-app warnings when users navigate to blocked destinations.
+section: compiled_blocklist.csv (main dataset)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-das-self-censorship
+kind: evaluation
+summary: The study collected behavioral data from approximately 3.9 million Facebook users by instrumenting client-side JavaScript to detect composition-then-abandonment events, without capturing the suppressed text itself; this passive measurement approach allowed population-scale inference of suppression rates without content-level surveillance.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Side-channel behavioral telemetry (timing, keystroke presence/absence) can reveal censorship-induced suppression at scale without accessing content; circumvention systems should minimize metadata leakage about editing/composition activity, not only payload content.
+    - Privacy-preserving instrumentation designs (event counts without text) can serve as a template for measuring censorship impact without exposing user content to the measurement platform.
+section: §2 Methods
+extracted_by: claude-sonnet-4-6

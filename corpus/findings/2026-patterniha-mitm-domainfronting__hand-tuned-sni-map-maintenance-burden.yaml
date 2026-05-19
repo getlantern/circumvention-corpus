@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patterniha-mitm-domainfronting
+kind: evaluation
+summary: The SNI-to-destination mapping in MITM-DomainFronting is hand-curated by inspecting CDN certificate SAN lists with no automatic discovery; the author explicitly flags that these mappings must be refreshed whenever a CDN changes its SAN list or edge topology. This maintenance burden is evidenced by 20 versioned releases published in under five months (through May 18, 2026), making the config effectively a continuously-updated snapshot of 'what CDN fronting pairs are valid from Iran this week.'
+defenses:
+    - domain-fronting
+censors:
+    - ir
+defense_implications:
+    - Automate SAN-list discovery by periodically fetching TLS certificates from known CDN IP ranges and rebuilding the fronting map programmatically, replacing hand-maintained configs with a pipeline that generates and validates pairings continuously.
+    - Decouple the fronting map from the binary release cycle — ship it as a hot-fetched JSON blob at startup so CDN topology changes can be pushed without requiring users to upgrade the application.
+section: README / Limitations
+extracted_by: claude-sonnet-4-6

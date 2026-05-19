@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-letsvpn-vpn
+kind: policy
+summary: 'Two documented enforcement actions against VPN users were reported in April 2026 in China: one user was summoned, given a warning, and fined 300 RMB for using LetsVPN to access foreign platforms; a second user in Dalian was fined 500 RMB on April 2, 2026 for using 快喵VPN to log into Telegram.'
+techniques:
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Traffic that is easily attributable to a specific named commercial VPN service (via shared server fingerprints) increases legal enforcement risk for users — designs that blend into generic HTTPS traffic reduce both detection and attribution.
+    - High-profile commercial VPN branding may itself raise the enforcement priority for identified users; unlisted bridge-style infrastructure lowers the profile of individual users.
+section: §流量形同裸奔，查水表隐患大
+extracted_by: claude-sonnet-4-6

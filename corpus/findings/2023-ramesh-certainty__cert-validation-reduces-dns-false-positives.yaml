@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-certainty
+kind: detection
+summary: Prior DNS-manipulation measurement systems suffered from high false-positive rates because DNS anomalies are also produced by benign infrastructure (CDNs, geo-DNS, captive portals). CERTainty's TLS certificate inspection step disambiguates these cases, establishing that certificate validation is a necessary complement to DNS-response comparison for reliable censor classification.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Censors using DNS poisoning that redirects clients to a server with a mismatched or self-signed certificate are immediately detectable; to evade cert-based measurement, a censor would need to either obtain a valid cert for the target domain or perform a full TLS MITM — both significantly raise the cost of censorship.
+    - Circumvention infrastructure that relies on domain names should validate the server cert against a pinned key at connection time; a cert mismatch should hard-fail rather than silently connect, preventing MITM by the censor's injected IP.
+section: Abstract / §3
+extracted_by: claude-sonnet-4-6

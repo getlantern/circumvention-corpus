@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patterniha-mitm-domainfronting
+kind: defense
+summary: MITM-DomainFronting achieves fully client-side domain fronting without any server-side infrastructure by intercepting browser TLS via a user-generated personal CA, reading the plaintext HTTP Host header, then re-encrypting outbound connections to the CDN edge with a mismatched SNI. The private CA key never leaves the device, eliminating the traditional requirement for a proxy co-located inside a CDN's network and reducing operational cost to zero.
+techniques:
+    - sni-blocking
+defenses:
+    - domain-fronting
+    - tunneling
+    - mimicry
+censors:
+    - ir
+defense_implications:
+    - Implement domain fronting as a pure client-side feature for CDN-hosted destinations — the local-MITM+personal-CA pattern avoids server infrastructure and its associated blocking/seizure risk entirely.
+    - Adopt the Xray-core tunnel/issue inbound pattern (or a parallel MITM component for runtimes like sing-box that lack it) to enable on-the-fly leaf-cert issuance for fronted destinations without pre-generating per-domain certs.
+section: README / Mechanism description
+extracted_by: claude-sonnet-4-6

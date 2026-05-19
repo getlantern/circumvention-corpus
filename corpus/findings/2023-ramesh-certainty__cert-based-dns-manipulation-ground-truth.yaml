@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-certainty
+kind: evaluation
+summary: CERTainty identifies DNS manipulation by attempting a full TLS handshake with the IP returned by a remote resolver and inspecting whether the resulting certificate belongs to the legitimate origin or to an injected blockpage destination. This certificate-based ground truth substantially reduces false positives compared to prior DNS measurement systems that could not distinguish intentional manipulation from CDN geo-DNS or captive portals.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Circumvention tools should treat any cert mismatch on a resolved IP as a strong signal of DNS manipulation and switch to an alternative resolution path (DoH, DoT, or hardcoded IPs) rather than failing open.
+    - Integrating a lightweight cert-validation check (matching the resolved IP's cert against expected SPKI pins) into client bootstrapping gives users a reliable tamper-detection signal without depending on the DNS infrastructure.
+section: Abstract / §1
+extracted_by: claude-sonnet-4-6

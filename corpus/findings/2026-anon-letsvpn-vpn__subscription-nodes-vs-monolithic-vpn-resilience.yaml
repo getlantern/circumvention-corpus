@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-letsvpn-vpn
+kind: evaluation
+summary: The article documents that large-scale 'one-click' commercial VPN providers with static protocol stacks have become effectively non-viable in China, while subscription-based proxy node services using open-source clients (Clash, Shadowrocket) with server-side rapid IP and datacenter switching demonstrate substantially greater resilience to GFW blocking waves.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - ip-blocking
+defenses:
+    - shadowsocks
+    - vless
+    - trojan
+censors:
+    - cn
+defense_implications:
+    - Decoupling the client (open-source, protocol-agnostic) from the server infrastructure allows operators to rotate endpoints and update obfuscation without requiring a client update — this agility is the key operational advantage over monolithic commercial VPNs.
+    - Services should architect for sub-minute server-side failover (IP swap, datacenter change, protocol update) so that a blocking event affecting one endpoint does not take the entire user base offline.
+section: §为啥傻瓜式一键VPN越来越难活 & §应该怎么选替代方案
+extracted_by: claude-sonnet-4-6

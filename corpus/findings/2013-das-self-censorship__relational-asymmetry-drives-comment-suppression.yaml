@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-das-self-censorship
+kind: policy
+summary: 'Comment self-censorship was primarily driven by the relationship between commenter and post author: users were more likely to suppress comments when the audience included the post''s author, underscoring that relational asymmetry — not just content sensitivity — shapes suppression decisions.'
+techniques:
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools deployed in social contexts (messaging apps, forums) should allow users to control relational visibility — who can see that a message was composed or read — not just transport-layer privacy.
+    - Designing for plausible deniability at the social layer (was content ever drafted?) is as important as encrypting what was sent.
+section: §3.2 Comment Abatement
+extracted_by: claude-sonnet-4-6
