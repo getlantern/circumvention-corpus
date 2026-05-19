@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-letsvpn-vpn
+kind: deployment
+summary: 'LetsVPN''s exit is described as part of a broader pattern: a wave of ''airport'' (proxy subscription service) outages across multiple providers in April 2026, documented in a companion article titled ''2026年四月份各大机场断线详解,'' indicating coordinated or systematic GFW blocking affecting the circumvention ecosystem broadly during this period.'
+techniques:
+    - dpi
+    - tls-fingerprint
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention services should treat blocking events as correlated across providers rather than isolated incidents — ecosystem-wide blocking waves require coordinated protocol updates and shared threat intelligence.
+    - Providers should maintain geographically and topologically diverse infrastructure so that a blocking campaign targeting one ASN or datacenter region does not eliminate all user paths simultaneously.
+section: §协议写死，特征太明显 (reference to companion article)
+extracted_by: claude-sonnet-4-6

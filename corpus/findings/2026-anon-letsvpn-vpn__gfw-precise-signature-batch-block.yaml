@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-letsvpn-vpn
+kind: detection
+summary: 'The blog author, drawing on evaluation experience, concludes that LetsVPN''s failure was not caused by IP exhaustion or ordinary node instability but by precise protocol-signature identification: once the GFW extracts a client handshake feature, it can simultaneously block all connections sharing that signature across hundreds of thousands of users.'
+techniques:
+    - dpi
+    - tls-fingerprint
+    - active-probing
+censors:
+    - cn
+defense_implications:
+    - Static protocol implementations embedded in commercial clients become a single point of failure — protocol negotiation or obfuscation layers that vary per connection are necessary to prevent batch blocking.
+    - Rapidly switching server IPs alone is insufficient if the protocol handshake signature is fingerprinted; the obfuscation layer itself must be updatable independently of the client binary.
+section: §公告里的几句大实话
+extracted_by: claude-sonnet-4-6

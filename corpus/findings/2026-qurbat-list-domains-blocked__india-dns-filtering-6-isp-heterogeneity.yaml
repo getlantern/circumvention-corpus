@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-qurbat-list-domains-blocked
+kind: evaluation
+summary: The blocklist spans 6 distinct Indian ISPs, enabling cross-ISP consistency analysis; the multi-ISP scope reflects that DNS-based blocking in India is implemented heterogeneously at the ISP level rather than via a single national chokepoint.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - in
+defense_implications:
+    - Circumvention tools targeting India cannot rely on a single resolver bypass; defenses must work across ISP-specific DNS injection implementations.
+    - Probe-based blocklist discovery should test across all major Indian ISPs (at minimum the 6 measured here) to capture the full censored domain space.
+section: Abstract / dataset metadata
+extracted_by: claude-sonnet-4-6

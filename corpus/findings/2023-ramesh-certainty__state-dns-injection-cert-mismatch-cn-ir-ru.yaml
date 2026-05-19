@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-certainty
+kind: evaluation
+summary: 'CERTainty demonstrates that state-level DNS censorship in China, Iran, and Russia operates through resolver-level injection: queries sent to in-country resolvers return IPs whose TLS certificates do not correspond to the queried domain, revealing blockpage or sinkhole destinations. This pattern is distinguishable from CDN or geographic DNS behavior precisely because blockpage servers cannot present a valid certificate for the censored hostname.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - Circumvention tools bootstrapping via country-local resolvers should cross-check the resolved IP's certificate against a trusted certificate transparency log or pre-pinned SPKI before using the IP, and fall back to an out-of-country DoH resolver on mismatch.
+    - Domain-fronting and meek-style transports that rely on CDN DNS are partially protected from this attack vector since CDN certs will validate correctly, but should still monitor for resolver-level hijacking as a secondary block mechanism.
+section: Abstract / §5–6
+extracted_by: claude-sonnet-4-6

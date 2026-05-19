@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-das-self-censorship
+kind: policy
+summary: Self-censorship of status updates was significantly higher for users whose friend networks spanned greater political diversity, indicating that perceived audience heterogeneity amplifies the chilling effect even in the absence of any explicit platform enforcement action.
+techniques:
+    - keyword-filtering
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should offer identity compartmentalization (e.g., separate audience contexts) to reduce chilling effects from mixed-trust social graphs.
+    - Anonymity or pseudonymity controls are likely more effective at restoring free expression than mere traffic encryption when the chilling effect originates from social graph exposure.
+section: §3.1 Status Update Abatement
+extracted_by: claude-sonnet-4-6

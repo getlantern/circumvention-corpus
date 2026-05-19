@@ -187,6 +187,56 @@ func TestFindingsIntegrity(t *testing.T) {
 	}
 }
 
+// TestPapersHaveFindings flags papers without any extracted findings.
+// It does not fail CI — some papers are legitimately unfetchable
+// (paywalled PDFs, dead links from old censorbib imports) and the
+// extractor will never produce findings for them. The point is
+// visibility: every PR check surfaces the current backlog so it doesn't
+// silently grow. Run `corpus-findings extract-all --min-year=0` (or fix
+// the URL) to drain it.
+func TestPapersHaveFindings(t *testing.T) {
+	root, err := filepath.Abs("../..")
+	if err != nil {
+		t.Fatal(err)
+	}
+	s, err := loadStore(root, false)
+	if err != nil {
+		t.Fatalf("loadStore: %v", err)
+	}
+
+	findingsDir := filepath.Join(root, "corpus", "findings")
+	entries, err := os.ReadDir(findingsDir)
+	if err != nil && !os.IsNotExist(err) {
+		t.Fatal(err)
+	}
+	has := map[string]bool{}
+	for _, e := range entries {
+		if e.IsDir() || !strings.HasSuffix(e.Name(), ".yaml") {
+			continue
+		}
+		id := strings.SplitN(strings.TrimSuffix(e.Name(), ".yaml"), "__", 2)[0]
+		has[id] = true
+	}
+
+	var missing []string
+	for _, p := range s.papers {
+		if !has[p.ID] {
+			missing = append(missing, p.ID)
+		}
+	}
+	slices.Sort(missing)
+
+	if len(missing) == 0 {
+		return
+	}
+	t.Logf("%d/%d papers have no findings (advisory — not failing CI):", len(missing), len(s.papers))
+	for _, id := range missing {
+		t.Logf("  - %s", id)
+	}
+	t.Logf("To extract: ./corpus-findings extract --paper <id> --corpus .")
+	t.Logf("To bulk-backfill: ./corpus-findings extract-all --min-year=0 --corpus .")
+}
+
 func taxonomyIDs(t *testing.T, s *store, category string) []string {
 	t.Helper()
 	section, ok := s.taxonomy[category].(map[string]any)

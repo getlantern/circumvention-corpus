@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-letsvpn-vpn
+kind: deployment
+summary: LetsVPN permanently exited the Chinese mainland market in late April 2026 after its technical team spent 20 days making hourly adjustments and confirmed it could not restore connectivity. The official announcement designated April 8, 2026 as the effective service-termination date and initiated a full refund program.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - fully-encrypted-detect
+censors:
+    - cn
+defense_implications:
+    - Commercial VPNs with static, client-hardcoded protocol stacks are now non-viable in China; any production service must support rapid server-side protocol rotation without client updates.
+    - A fixed handshake signature shared across millions of users creates a high-value, easily blockable target; per-client or per-session fingerprint diversity is essential.
+section: Official announcement & §Introduction
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-qurbat-list-domains-blocked
+kind: detection
+summary: DNS filtering is the documented primary blocking mechanism across the 6 surveyed Indian ISPs, with no evidence in this dataset of complementary IP-blocking or SNI-based blocking layers, suggesting the censor relies on DNS as a sufficient single-layer enforcement point.
+techniques:
+    - dns-poisoning
+censors:
+    - in
+defense_implications:
+    - For India, DNS-layer circumvention (DoH, DoT, DNS-over-QUIC, or DNS tunneling) alone may be sufficient to restore access — tools should treat DNS bypass as the high-priority first line of defense.
+    - Validate whether domain-only DNS blocking means IP connections succeed post-resolution; if so, lightweight resolver-swap tools outperform full VPN tunnels for the Indian threat model.
+section: Abstract / dataset scope
+extracted_by: claude-sonnet-4-6

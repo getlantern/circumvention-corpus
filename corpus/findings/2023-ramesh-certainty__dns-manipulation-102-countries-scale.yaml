@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-ramesh-certainty
+kind: evaluation
+summary: CERTainty measured DNS manipulation across thousands of resolvers in 102 countries, identifying state-level censorship in China, Iran, and Russia, among others. The breadth of coverage — both resolver count and country count — demonstrates that TLS certificate validation scales to Internet-wide vantage-point studies.
+techniques:
+    - dns-poisoning
+    - measurement-platform
+censors:
+    - cn
+    - ir
+    - ru
+defense_implications:
+    - The Internet-wide resolver coverage confirms that DNS poisoning is not confined to a small set of ISPs; circumvention clients must assume any in-path resolver in CN/IR/RU is potentially compromised and default to encrypted or pinned resolution.
+    - Measurement infrastructure using cert validation can serve as a canary for circumvention operators to detect when their own domain's DNS records have been hijacked by a censor.
+section: Abstract / §5
+extracted_by: claude-sonnet-4-6
