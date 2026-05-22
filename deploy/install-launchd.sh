@@ -19,6 +19,12 @@
 #   REPO=~/code/circumvention-corpus bash deploy/install-launchd.sh
 #   bash deploy/install-launchd.sh corpus-crawl-serve corpus-findings-backfill
 #
+# corpus-crawl serve mode needs CORPUS_CRAWL_TOKEN. If a token file
+# exists at ~/.config/lantern/corpus-crawl-token (or $REPO/deploy/.corpus-crawl-token,
+# or $TOKEN_FILE), this script injects the token into the rendered
+# plist's EnvironmentVariables. Without that file, you get a runtime
+# warning and the serve agent will refuse to start until you provide one.
+#
 # Reload after upstream plist edits: re-run this script.
 
 set -euo pipefail
@@ -51,9 +57,48 @@ if [[ $# -gt 0 ]]; then
     done
 fi
 
-# /Users/afisk/code/circumvention-corpus is the hard-coded path in the
-# committed plist; substitute the actual REPO at install time.
-SED_FROM='/Users/afisk/code/circumvention-corpus'
+# Two path substitutions happen at install time:
+#   1. /Users/afisk/code/circumvention-corpus → $REPO
+#      (the corpus checkout; defaults to the dir containing this script)
+#   2. /Users/afisk/go/bin → $GOBIN
+#      (the binary install dir from `go install`; defaults to $HOME/go/bin)
+SED_REPO='/Users/afisk/code/circumvention-corpus'
+SED_GOBIN='/Users/afisk/go/bin'
+: "${GOBIN:=$HOME/go/bin}"
+
+# corpus-crawl serve mode requires CORPUS_CRAWL_TOKEN to be set in the
+# LaunchAgent's environment. The committed plist deliberately doesn't
+# include it (the token is a per-machine secret that mustn't enter
+# git). Historically we relied on `launchctl setenv CORPUS_CRAWL_TOKEN
+# "..."` from a Terminal.app on the host, but that's brittle:
+#   - The value is per-launchd-domain; setenv from SSH targets the
+#     wrong domain (user/<uid> vs gui/<uid>) and is invisible to the
+#     LaunchAgent.
+#   - The value evaporates on every reboot.
+# Both bit us on 2026-05-22 and led to a multi-hour outage.
+#
+# Now: if $TOKEN_FILE exists (default $HOME/.config/lantern/corpus-crawl-token
+# or $REPO/deploy/.corpus-crawl-token, in that order), read its first
+# line as the token and bake it into the rendered plist's
+# EnvironmentVariables dict via plutil. The committed plist stays
+# secret-free; the local rendered copy has the token in-place; reboots
+# preserve it (it lives in the rendered plist, not in launchctl setenv).
+: "${TOKEN_FILE:=}"
+if [[ -z "$TOKEN_FILE" ]]; then
+    for candidate in "$HOME/.config/lantern/corpus-crawl-token" "$REPO/deploy/.corpus-crawl-token"; do
+        if [[ -f "$candidate" ]]; then
+            TOKEN_FILE="$candidate"
+            break
+        fi
+    done
+fi
+TOKEN_VALUE=""
+if [[ -n "$TOKEN_FILE" && -f "$TOKEN_FILE" ]]; then
+    TOKEN_VALUE="$(head -n 1 "$TOKEN_FILE" | tr -d '[:space:]')"
+    if [[ -n "$TOKEN_VALUE" ]]; then
+        echo "  (token file found: $TOKEN_FILE — will inject into corpus-crawl-serve)"
+    fi
+fi
 
 for label in "${plists[@]}"; do
     src="$REPO/deploy/$label.plist"
@@ -62,14 +107,36 @@ for label in "${plists[@]}"; do
         echo "skipping $label: $src not in repo (older repo version?)" >&2
         continue
     fi
-    echo "installing $label → $dst (REPO=$REPO)"
+    echo "installing $label → $dst (REPO=$REPO, GOBIN=$GOBIN)"
     # Unload first if already loaded — silent on missing.
     launchctl unload "$dst" 2>/dev/null || true
-    # Use a different sed delimiter since the path has slashes.
-    sed "s|$SED_FROM|$REPO|g" "$src" > "$dst"
+    # Use a different sed delimiter since the paths contain slashes.
+    sed -e "s|$SED_REPO|$REPO|g" \
+        -e "s|$SED_GOBIN|$GOBIN|g" \
+        "$src" > "$dst"
+    # Token injection for serve mode. plutil -insert is idempotent for
+    # missing keys; if the key happens to exist already, fall back to
+    # -replace.
+    if [[ "$label" == "io.lantern.corpus-crawl-serve" && -n "$TOKEN_VALUE" ]]; then
+        if ! /usr/bin/plutil -insert EnvironmentVariables.CORPUS_CRAWL_TOKEN -string "$TOKEN_VALUE" "$dst" 2>/dev/null; then
+            /usr/bin/plutil -replace EnvironmentVariables.CORPUS_CRAWL_TOKEN -string "$TOKEN_VALUE" "$dst"
+        fi
+        echo "  (CORPUS_CRAWL_TOKEN baked into plist)"
+    fi
     launchctl load "$dst"
     echo "  loaded: $(launchctl list "$label" 2>/dev/null | head -1 || echo '(not visible)')"
 done
+
+if [[ -n "${plists[*]:-}" && " ${plists[*]} " == *" io.lantern.corpus-crawl-serve "* && -z "$TOKEN_VALUE" ]]; then
+    echo
+    echo "WARNING: corpus-crawl-serve was installed without a CORPUS_CRAWL_TOKEN."
+    echo "         It will crash on first start with --auth-token errors."
+    echo "         Create a token file with:"
+    echo "             mkdir -p ~/.config/lantern"
+    echo "             echo '<your token>' > ~/.config/lantern/corpus-crawl-token"
+    echo "             chmod 600 ~/.config/lantern/corpus-crawl-token"
+    echo "         then re-run this script."
+fi
 
 echo
 echo "Done. Logs go to /tmp/corpus-*.log on next firing."
