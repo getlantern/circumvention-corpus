@@ -88,10 +88,32 @@ else
     rm -f "$install_log"
 fi
 
+# Ad-hoc codesign the binaries. macOS 26.2+ kills unsigned binaries
+# launched directly by launchd ("Launch Constraint Violation",
+# CODESIGNING namespace, code 4) — symptom is a process that starts,
+# prints its listening line, then exits after ~2 seconds with
+# SIGKILL "Code Signature Invalid". This bit us on 2026-05-22 when
+# corpus-crawl-serve had been broken since the macOS update without
+# anyone noticing. Ad-hoc signing (`codesign --sign -`) satisfies
+# the launch constraint without needing a Developer ID. Go's
+# `go install` strips signatures on every rebuild, so we re-sign
+# every fire.
+for bin in corpus-crawl corpus-findings; do
+    path="$GOBIN/$bin"
+    if [[ -x "$path" ]]; then
+        if codesign --sign - --force --timestamp=none "$path" 2>/dev/null; then
+            stamp "codesign ok: $bin"
+        else
+            stamp "codesign FAILED: $bin (LaunchAgent may not be able to spawn it)"
+        fi
+    fi
+done
+
 # Belt-and-suspenders: clean up legacy in-repo binaries from earlier
-# `go build` wrappers. locateFindingsBinary checks $REPO first, and a
-# stale in-repo copy would shadow the fresh $GOBIN one. .gitignore
-# already excludes them.
+# `go build` wrappers. The plists target $GOBIN now (see
+# io.lantern.corpus-crawl-serve.plist), but a stale in-repo copy
+# would still shadow the fresh $GOBIN one for locateFindingsBinary's
+# $REPO check. .gitignore already excludes them.
 rm -f "$REPO/corpus-crawl" "$REPO/corpus-findings"
 
 # 5. Sanity: corpus-crawl binary must exist (corpus-findings is best-

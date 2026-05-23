@@ -16,9 +16,24 @@
   <key>Label</key>
   <string>io.lantern.corpus-crawl-serve</string>
 
+  <!--
+    Points at $GOBIN/corpus-crawl, not the in-repo binary. run-crawl.sh
+    (the weekly cron wrapper) `go install`s to $GOBIN and actively
+    deletes the in-repo binary on every fire, so any plist that
+    hardcoded the in-repo path was silently broken after each cron.
+    install-launchd.sh substitutes /Users/afisk/go/bin with the
+    actual $GOBIN at install time.
+
+    The binary must be ad-hoc codesigned for macOS 26.2+ launchd to
+    spawn it (CODESIGNING namespace, "Launch Constraint Violation").
+    run-crawl.sh handles that after every `go install`; for binaries
+    built outside the cron path, run
+      codesign --sign - --force $GOBIN/corpus-crawl
+    manually before loading this plist.
+  -->
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/afisk/code/circumvention-corpus/corpus-crawl</string>
+    <string>/Users/afisk/go/bin/corpus-crawl</string>
     <string>serve</string>
     <string>--listen</string>
     <string>127.0.0.1:8788</string>

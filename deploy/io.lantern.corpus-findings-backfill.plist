@@ -25,9 +25,23 @@
   <key>Label</key>
   <string>io.lantern.corpus-findings-backfill</string>
 
+  <!--
+    Points at $GOBIN/corpus-findings, not the in-repo binary.
+    run-crawl.sh deletes the in-repo binary after each `go install`,
+    so a plist that hardcoded the in-repo path was silently broken
+    after every cron. install-launchd.sh substitutes
+    /Users/afisk/go/bin with the actual $GOBIN at install time.
+
+    Requires ad-hoc codesignature for macOS 26.2+ launchd to spawn
+    it (CODESIGNING namespace, "Launch Constraint Violation").
+    run-crawl.sh handles that after every install; for binaries
+    built outside the cron path, run
+      codesign --sign - --force $GOBIN/corpus-findings
+    manually before triggering this job.
+  -->
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/afisk/code/circumvention-corpus/corpus-findings</string>
+    <string>/Users/afisk/go/bin/corpus-findings</string>
     <string>extract-all</string>
     <string>--corpus</string>
     <string>/Users/afisk/code/circumvention-corpus</string>
