@@ -610,18 +610,22 @@ const layoutTmpl = `<!doctype html>
 <script>
 (function(){
   var d = document.documentElement;
+  var t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var a = 'on';
   try {
-    var t = localStorage.getItem('theme');
-    if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    d.dataset.theme = t;
-    d.dataset.ambient = localStorage.getItem('ambient') || 'on';
+    var st = localStorage.getItem('theme');
+    if (st === 'light' || st === 'dark') t = st;
+    var sa = localStorage.getItem('ambient');
+    if (sa === 'on' || sa === 'off') a = sa;
   } catch (e) {}
+  d.dataset.theme = t;
+  d.dataset.ambient = a;
   function bind() {
     var tb = document.querySelector('[data-theme-toggle]');
     var ab = document.querySelector('[data-ambient-toggle]');
     function sync() {
       if (tb) tb.setAttribute('aria-pressed', d.dataset.theme === 'dark');
-      if (ab) ab.setAttribute('aria-pressed', d.dataset.ambient === 'off');
+      if (ab) ab.setAttribute('aria-pressed', d.dataset.ambient === 'on');
     }
     if (tb) tb.addEventListener('click', function(){
       var next = d.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -1874,7 +1878,7 @@ const styleCSS = `
  *   JetBrains Mono — IDs, controlled vocabulary, terminal data.
  *
  * Theme + ambient are two independent toggles on <html>:
- *   data-theme="light|dark"   — palette swap, applied via :root override
+ *   data-theme="light|dark"   — palette swap, applied via html[data-theme="dark"]
  *   data-ambient="on|off"     — ambient SVG layer visibility
  * Pre-paint script in <head> reads localStorage / prefers-color-scheme
  * so the first frame is correct; nav buttons flip and persist state.
