@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: policy
+summary: Geedge co-founder Fang Binxing—named 'father of the Great Firewall' in company documents—explicitly linked Geedge's international expansion to China's Belt and Road Initiative in a 2024 speech, and a Geedge job advertisement sought candidates willing to travel to Pakistan, Malaysia, Bahrain, Algeria, and India. This confirms BRI as an institutional channel for GFW-derived censorship infrastructure export, not merely bilateral commercial deals.
+techniques:
+    - dpi
+    - ip-blocking
+    - throttling
+censors:
+    - cn
+    - pk
+    - in
+    - kz
+    - et
+    - mm
+defense_implications:
+    - BRI recipient countries with new or expanding centralized internet gateways (national firewalls) should be treated as potential Geedge clients even without confirmed deployment evidence; circumvention tools targeting those regions should be designed against GFW-class adversaries.
+    - The 'Digital Silk Road' framing means censorship-infrastructure exports are state-subsidized and politically motivated, not purely commercial—client governments receive ongoing vendor support and capability updates, raising the long-term sophistication floor for all Geedge-client censors.
+section: body
+extracted_by: claude-sonnet-4-6

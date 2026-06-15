@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: deployment
+summary: As of June 2026, Iran blocks Reality via RST floods immediately after the TLS handshake, WireGuard via blackholing after the initial handshake, and SSH Dynamic Port Forwarding by blocking the server IP within 8 hours — all at the handshake layer, indicating Iran's DPI fingerprints each protocol's handshake signature independently.
+techniques:
+    - rst-injection
+    - active-probing
+    - tls-fingerprint
+    - dpi
+defenses:
+    - reality
+    - amnezia-wg
+censors:
+    - ir
+defense_implications:
+    - Treat Reality, WireGuard, and SSH as blocked or rapidly blockable in Iran as of June 2026 — circumvention tools must layer additional obfuscation over these protocols or replace them with fully-randomized transports.
+    - The immediate post-handshake RST on Reality suggests Iran's DPI actively fingerprints TLS extension ordering and GREASE patterns; AmneziaWG-style handshake randomization or obfs4-class randomization should be evaluated as replacements.
+section: Issue body — Other Observations
+extracted_by: claude-sonnet-4-6

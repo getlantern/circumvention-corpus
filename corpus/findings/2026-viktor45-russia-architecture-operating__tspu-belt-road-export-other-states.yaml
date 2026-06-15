@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-viktor45-russia-architecture-operating
+kind: policy
+summary: The source notes that TSPU technology may have been exported to other countries under the Belt-and-Road framework, suggesting that Russia's centralized DPI filtering model is a template being replicated in other authoritarian states, similar to documented GFW-derived exports from China.
+techniques:
+    - dpi
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools targeting one Belt-and-Road technology recipient may need to apply the same TSPU-specific evasion techniques to other recipient countries; test tooling broadly across suspected recipient states.
+    - Track whether newly-censored states display TSPU behavioral signatures (in-path redirection, specific blocking patterns) as an early indicator of exported infrastructure.
+section: Abstract
+extracted_by: claude-sonnet-4-6

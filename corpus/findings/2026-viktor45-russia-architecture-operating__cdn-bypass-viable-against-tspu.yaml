@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-viktor45-russia-architecture-operating
+kind: defense
+summary: The source notes that CDN-based techniques are discussed as viable methods for bypassing TSPU filtering controls, consistent with domain-fronting and meek-style approaches that route traffic through high-value CDN infrastructure that censors are reluctant to block wholesale.
+techniques:
+    - dpi
+    - sni-blocking
+defenses:
+    - domain-fronting
+    - tunneling
+    - meek
+censors:
+    - ru
+defense_implications:
+    - CDN-fronting remains a practical bypass vector against TSPU; tool designers should maintain CDN-fronted endpoints as a fallback for Russian users.
+    - Monitor for TSPU updates that specifically target CDN traffic (e.g., blocking based on Host vs SNI mismatch), as censors frequently respond to CDN-based circumvention.
+section: Abstract
+extracted_by: claude-sonnet-4-6

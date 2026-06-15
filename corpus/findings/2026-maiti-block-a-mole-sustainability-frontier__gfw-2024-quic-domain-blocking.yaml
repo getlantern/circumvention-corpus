@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: detection
+summary: China's GFW shifted in April 2024 to decrypting QUIC Initial packets at scale and blocking connections by domain, reaching the transport layer that modern moving-target systems rely on for session continuity. This makes domain registration the scarce, persistently blockable resource since blocking a defender's registrable domain costs the censor essentially nothing, while blocking a hyperscaler IP range incurs domestic economic collateral damage. Hundreds of thousands of domains are persistently blocked per GFWatch measurements [61].
+techniques:
+    - dpi
+    - http3-quic-block
+    - sni-blocking
+defenses:
+    - meta-resistance
+    - hysteria2
+censors:
+    - cn
+defense_implications:
+    - Avoid depending on a single registered domain or small set of domains for endpoint discovery; the GFW can persistently block them at negligible cost, making domain-pool depth and replenishment rate the primary availability lever.
+    - Prefer free-tier platform subdomains (*.platform, co-located with millions of tenants) over self-controlled registrable domains where possible, since the censor must block by specific SNI rather than at the registrar level, preserving the defender's wildcard-certificate coverage.
+section: §1, §3, §4
+extracted_by: claude-sonnet-4-6

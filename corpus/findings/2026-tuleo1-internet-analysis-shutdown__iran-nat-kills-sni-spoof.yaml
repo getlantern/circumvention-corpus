@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: detection
+summary: 'Iran deployed NAT-level packet inspection on Cloudflare IP ranges specifically to defeat SNI spoofing: every packet was buffered and validated — incorrect TCP checksum or sequence number caused immediate connection termination. This countermeasure was rolled out within ~4 days of SNI spoofing becoming widespread, though enforcement was uneven across ASNs and ISPs.'
+techniques:
+    - dpi
+    - sni-blocking
+    - middlebox-interference
+censors:
+    - ir
+defense_implications:
+    - SNI-spoofing tricks (low-TTL fake ClientHello, out-of-sequence fake ClientHello) must be treated as ephemeral; the GFW and now Iran can patch them within days of mass adoption.
+    - Any transport that relies on the censor ignoring TCP-layer semantics is fragile; designs must assume a stateful, fully-reassembling NAT on the path.
+section: Issue body (main narrative)
+extracted_by: claude-sonnet-4-6

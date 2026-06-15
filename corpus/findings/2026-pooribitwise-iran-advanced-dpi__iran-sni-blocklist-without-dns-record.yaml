@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: Domains on VLESS+WebSocket behind Cloudflare are blocked in Iran even when they have no configured DNS A record and the root domain was never used — indicating Iran blocklists domain names extracted from SNI in reassembled TCP streams rather than requiring prior DNS query evidence.
+techniques:
+    - sni-blocking
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Do not assume an unconfigured or freshly provisioned domain is safe — Iran's censor extracts and blocklists SNI values regardless of whether the domain resolves or has prior observable traffic.
+    - Use per-session ephemeral subdomains or wildcard fronting (if the CDN supports it) to slow domain-level blocklisting, or switch to ECH to structurally hide the SNI.
+section: Issue body — The Issue
+extracted_by: claude-sonnet-4-6

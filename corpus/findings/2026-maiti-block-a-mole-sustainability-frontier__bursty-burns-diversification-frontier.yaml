@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: defense
+summary: 'Correlated domain burns (e.g., registrar takedowns) collapse the sustainability frontier far more than mean burn rate alone: the interval frontier β* falls from 0.65 at burst size b=1 to 0.5 at b=2, 0.3 at b=4, and at b=8 no β in the tested range is sustainable. Conversely, diversifying the same total domain economy across P=8 independent providers (where each provider''s pool can be emptied by a single takedown but providers fail independently) moves the frontier past β=1, and simulated P-provider availability matches the closed form A_P = 1 - q^P geometrically (Proposition 4, Figure 5d).'
+techniques:
+    - ip-blocking
+defenses:
+    - meta-resistance
+    - bridges
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Spread domain registrations across at least 4-8 independent registrars, certificate authorities, and cloud platforms so no single abuse takedown constitutes a batch burn; concentration under one registrar degrades the effective frontier to near zero even at low mean burn rates.
+    - Model each provider as an independent pool when sizing domain inventory; Proposition 4 shows that P independent providers allow tolerating aggregate β > 1 burn rates, so multi-provider diversification is a direct substitute for increasing the raw domain minting rate.
+section: §8.7, §8.8, Proposition 4, Figure 5
+extracted_by: claude-sonnet-4-6

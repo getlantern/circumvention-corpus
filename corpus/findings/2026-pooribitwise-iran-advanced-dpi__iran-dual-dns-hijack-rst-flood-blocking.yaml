@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: 'Iran''s censor deploys a two-stage blocking response within 24 hours of domain exposure: DNS hijacking that resolves blocked domains to 10.10.34.34, combined with RST floods when clients connect directly to Cloudflare IPs using the blocked SNI. Both mechanisms activate independently, so DNS-resistant clients are still terminated at the TCP layer.'
+techniques:
+    - dns-poisoning
+    - rst-injection
+    - sni-blocking
+censors:
+    - ir
+defense_implications:
+    - Design circumvention tools to be resilient against DNS and TCP-layer blocking simultaneously — a domain that survives DNS filtering can still be blocked via RST injection at the IP+SNI level.
+    - Rotate domains aggressively (sub-24-hour cadence) or adopt SNI-hiding protocols (ECH) to outpace the observed blocking detection cycle.
+section: Issue body — The Issue
+extracted_by: claude-sonnet-4-6

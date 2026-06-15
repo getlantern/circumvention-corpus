@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: defense
+summary: 'Address blocking is a provably losing censor strategy: single-endpoint address-denial probability is p_ip = λ_a/(λ_a+µ), and with n independent endpoints it decays geometrically as (λ_a/(λ_a+µ))^n. Simulation confirms that with µ/λ_a=1 (discovery as fast as rotation), 7 endpoints drive address-denial below 10^-2; even when discovery is twice as fast as rotation (µ/λ_a=0.5), modest redundancy keeps denial small. The censor''s collateral budget γ further caps address blocking, leaving domains as the only rational blocking target (Proposition 3: empirical censor best-response allocates f*=0.97 of discovery budget to domains once n ≥ 2).'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Running n ≥ 7 parallel endpoints is sufficient to neutralize address-level blocking even against an aggressive censor; additional redundancy beyond this threshold yields diminishing returns and engineering budget is better spent on the domain economy.
+    - 'The collateral constraint on hyperscaler IP blocking (γ < 1) is a structural property to exploit: deploy across providers whose IP ranges carry domestic economic load to ensure censors face non-trivial collateral costs.'
+section: §5, §8.1, Lemma 1, Proposition 3
+extracted_by: claude-sonnet-4-6

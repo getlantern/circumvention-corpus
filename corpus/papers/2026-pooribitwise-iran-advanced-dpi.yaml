@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-pooribitwise-iran-advanced-dpi
+title: '[Iran] Advanced DPI is reassembling TCP fragments to extract SNI on VLESS/WS + CDN'
+authors:
+    - '@pooribitwise'
+    - '@its0ka'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/628
+abstract: A user reports advanced DPI capabilities in Iran that defeat heavy TCP fragmentation obfuscation. Despite deploying fragmented packets (10–30 bytes) on a VLESS+WebSocket setup behind Cloudflare's CDN, domains are blocked within 24 hours via DNS hijacking (resolving to 10.10.34.34) and RST floods, indicating Iran has deployed stateful TCP reassembly and sophisticated stateful inspection. Other protocols—Reality, WireGuard, SSH—are experiencing rapid blocking, suggesting significant infrastructure upgrade.
+censors:
+    - ir
+techniques:
+    - dpi
+    - sni-blocking
+    - rst-injection
+    - dns-poisoning
+defenses_discussed:
+    - vless
+    - randomization
+    - tunneling
+    - reality
+    - mimicry
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Indicates Iran has deployed TCP reassembly for SNI extraction, defeating basic fragmentation—critical for circumvention tool design.
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/628

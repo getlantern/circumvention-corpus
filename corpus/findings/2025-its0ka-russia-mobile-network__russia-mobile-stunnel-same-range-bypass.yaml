@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-russia-mobile-network
+kind: defense
+summary: Preliminary testing on Beeline's shutdown network found partial success with stunnel-based TLS tunneling and with proxies hosted on IP addresses within the same IP range as whitelisted services. Same-ISP-range proxy placement appears to reduce the probability of IP-level blocking, though no quantitative bypass rate is reported.
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+    - mimicry
+censors:
+    - ru
+defense_implications:
+    - Deploy proxy infrastructure on IP ranges already present in the carrier's whitelist (major Russian CDN/cloud ASNs) to inherit their pass-through status rather than fighting the whitelist directly.
+    - TLS-wrapping tools like stunnel may partially evade ClientHello inspection, but the primary attack surface is IP-level — combine TLS obfuscation with whitelisted-IP co-location for best results.
+section: Issue comments (bypass attempts)
+extracted_by: claude-sonnet-4-6

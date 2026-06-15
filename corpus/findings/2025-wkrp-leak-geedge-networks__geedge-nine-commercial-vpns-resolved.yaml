@@ -1,0 +1,25 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: detection
+summary: Internal Geedge documentation lists nine commercial VPNs as 'resolved,' providing staff with documented methods for identifying and filtering each protocol's traffic. The leak shows employees reverse-engineering popular circumvention tools to develop blocking signatures, consistent with GFW practices that have rendered most commercial VPNs inaccessible inside China.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - traffic-shape
+    - random-payload-detect
+defenses:
+    - shadowsocks
+    - obfs4
+    - pluggable-transport
+censors:
+    - cn
+    - mm
+    - pk
+    - et
+    - kz
+defense_implications:
+    - Commercial VPNs with static, well-known protocol fingerprints should be treated as already blocked in any Geedge-client country; circumvention tools need continuous protocol evolution and obfuscation that commercial VPN vendors do not invest in.
+    - Tools should assume any protocol whose handshake is publicly documented will eventually be 'resolved'; pluggable-transport architectures that separate the circumvention layer from the transport layer allow rapid re-keying without client updates.
+section: body
+extracted_by: claude-sonnet-4-6

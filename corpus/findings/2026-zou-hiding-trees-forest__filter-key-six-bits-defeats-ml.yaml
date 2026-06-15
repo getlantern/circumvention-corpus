@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: defense
+summary: 'Hash-based covert carrier filtering with filter key length L≥6 reduces ML classifier AUC to near-random-guessing for network storage covert channels: AUC drops from 1.0 (no filtering) to 0.59–0.64 across SVM, Decision Tree, and XGBoost at L=6. For timing channels, all three classifiers fall below AUC 0.6 at L=5, compared to AUC 0.99 without filtering.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - When embedding covert data in protocol fields or packet timing, a SHA-256-based carrier selection filter keyed with L≥6 bits renders the channel statistically indistinguishable from normal traffic against trained ML classifiers — use this as a minimum security parameter.
+    - The filter key (not the covert algorithm) becomes the load-bearing secret; rotating keys periodically prevents long-run statistical accumulation that could defeat the filtering benefit.
+section: §5.3.2, Figures 6–7
+extracted_by: claude-sonnet-4-6

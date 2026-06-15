@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-farrell-ech-trial-report
+kind: evaluation
+summary: Apple iOS devices showed zero ECH successes across all tested versions from iOS 9.1 through iOS 18.5 (totaling 383 accesses), and Mac OS systems showed sparse ECH support limited to Firefox on older macOS and Chrome on macOS 10.15.7. A single GREASEd access from iPadOS/18.0 (Mobile Safari) was the only signal of any Apple ECH awareness.
+techniques:
+    - sni-blocking
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools targeting iOS/Safari users cannot rely on ECH to hide the SNI; a separate pluggable transport or domain-fronting layer remains necessary for Apple platform users.
+    - Monitor Apple ECH rollout in Safari — the current zero-success rate on iOS makes it a critical gap for any ECH-first circumvention architecture targeting mobile users in censored regions.
+section: §6.3, Table 5; §6.5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: detection
+summary: Following Myanmar's 2021 coup, Geedge developed a tool specifically to detect the server endpoints that Psiphon's app connects to, enabling nationwide blocking. OONI measurement data shows Psiphon access was 'highly limited' in Myanmar from June 2024 to March 2025—a roughly nine-month window of near-total suppression.
+techniques:
+    - dpi
+    - ip-blocking
+    - active-probing
+defenses:
+    - bridges
+censors:
+    - mm
+defense_implications:
+    - Server-IP discovery is the primary attack vector against Psiphon-style bridge architectures; tools relying on a fixed or slowly-rotating server pool are vulnerable to this exact technique—bridge churn rate and IP diversity are load-bearing design properties.
+    - Domain-fronted or CDN-hosted ingress (meek, domain-fronting) that does not expose a stable server IP is significantly harder to enumerate than direct bridge connections.
+section: body
+extracted_by: claude-sonnet-4-6

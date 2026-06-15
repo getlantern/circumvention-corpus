@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-russia-mobile-network
+kind: detection
+summary: Non-whitelisted destinations return empty ICMP traceroute responses on Beeline's shutdown network — traffic is silently null-routed rather than RST-injected or redirected to a blockpage. TCP traceroute to 1.1.1.1 shows the same blank response regardless of destination IP, indicating a coarse upstream drop rather than application-layer inspection.
+techniques:
+    - ip-blocking
+    - rst-injection
+censors:
+    - ru
+defense_implications:
+    - Silent null-routing means a circumvention client will time out rather than receive an explicit error; implement aggressive connection timeout detection and fallback logic for Russian mobile contexts.
+    - Active-probing or RST-based blocking mitigations are insufficient here — the threat model is full IP-layer reachability denial, requiring out-of-band rendezvous.
+section: Issue body (traceroute analysis)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: evaluation
+summary: The filtering strategy introduces no measurable increase in bit error rate (BER) or reduction in effective transmission rate (ETR) under packet loss rates up to 15%, reordering rates up to 20%, and delay jitter up to 100±50 ms, because the filter only selects carriers — data embedding and extraction logic remain identical to unfiltered channels.
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Carrier-selection filtering can be layered onto any existing covert channel implementation without degrading its robustness characteristics — it is a drop-in covertness enhancement rather than an architecture change.
+    - For timing covert channels operating over lossy links, the aperiodic pseudo-random modulation produced by filtering additionally prevents regularity-based and autocorrelation-based detectors from flagging the channel, providing a dual benefit beyond pure packet-loss tolerance.
+section: §5.3.1, Figure 5
+extracted_by: claude-sonnet-4-6

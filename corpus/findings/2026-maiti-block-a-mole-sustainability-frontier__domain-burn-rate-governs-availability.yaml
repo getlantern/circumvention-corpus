@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: defense
+summary: The governing parameter for moving-target censorship resistance is the domain burn rate β = λ_disc/λ_intro (censor's domain blocking rate divided by defender's domain introduction rate), not rotation speed. When β > 1, time-average availability is provably bounded by 1/β < 1 regardless of rotation speed µ, endpoint count n, or domain buffer size k_max. This impossibility result (Theorem 2) means a defender minting domains more slowly than the censor burns them cannot sustain high availability under a domain-filtering censor.
+techniques:
+    - dpi
+    - sni-blocking
+    - http3-quic-block
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Replace the heuristic 'rotate faster' with continuous monitoring of the domain economy ratio β; if λ_disc/λ_intro exceeds 1, no increase in IP rotation speed can recover availability.
+    - Instrument circumvention infrastructure to track domain burn rate in near-real-time and trigger automated domain provisioning when β approaches β* ≈ 0.65 (for k_max=8 buffer).
+section: §6, Theorem 2
+extracted_by: claude-sonnet-4-6
