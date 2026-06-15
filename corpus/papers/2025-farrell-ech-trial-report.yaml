@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-farrell-ech-trial-report
+title: ECH Trial Report
+authors:
+    - Stephen Farrell
+    - Sukhbir Singh
+venue: Wikimedia technical report
+year: 2025
+url: https://people.wikimedia.org/~sukhe/ech-trial-report.pdf
+abstract: Documents a small-scale trial deployment of Encrypted Client Hello (ECH) at Wikimedia Foundation in collaboration with the DEfO project. Evaluates whether ECH deployment affects service availability and measures ECH adoption across different client types, operating systems, and regions. Finds that ECH does not impact service availability and works as expected for ECH-capable clients.
+censors:
+    - generic
+techniques:
+    - sni-blocking
+defenses_discussed:
+    - ech-esni
+evaluation_methods:
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Critical for understanding real-world ECH adoption barriers and deployment lessons; directly informs circumvention strategies against SNI-based blocking in China, Iran, Russia, and other state censors.
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/627

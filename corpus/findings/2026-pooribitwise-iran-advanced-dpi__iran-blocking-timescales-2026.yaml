@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: evaluation
+summary: 'As of June 2026, Iranian DPI blocking timescales are: CDN-fronted VLESS+WebSocket domains blocked within 24 hours; SSH dynamic port forwarding server IPs blocked within 8 hours; Reality and WireGuard connections blocked immediately (seconds) after handshake completion. This graduated timeline suggests separate fast-path (handshake-pattern) and slow-path (domain reputation / traffic accumulation) detection pipelines operating in parallel.'
+techniques:
+    - dpi
+    - sni-blocking
+    - ip-blocking
+    - rst-injection
+    - dns-poisoning
+censors:
+    - ir
+defense_implications:
+    - Tools must plan for sub-day domain/IP burn rates in Iran; server infrastructure rotation intervals of more than 24 hours are too slow for CDN-based approaches
+    - Handshake-pattern detectors operate in seconds, not hours — any protocol whose first two packets are fingerprint-detectable will be blocked before the user notices a problem; test new protocols against this threshold explicitly
+section: Issue body — combined observations
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: defense
+summary: Hash-based covert carrier filtering reduces ML classifier AUC for network storage covert channels from 1.0 (no filtering, L=0) to well below 0.7 when filter key size L≥6; SVM detection approaches random-guessing levels. The strategy selects a sparse, pseudo-random 1/2^L subset of packets as covert carriers using SHA-256 keyed by a pre-shared secret, diluting statistical anomalies in header field modifications with a large volume of unmodified legitimate packets.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Use a filter key size of at least 6 bits (~1.56% carrier selection rate) to make header-field modification patterns statistically indistinguishable from normal traffic under SVM, Random Forest, and XGBoost classifiers.
+    - Couple carrier selection to a pre-shared key rather than a fixed embedding algorithm so that even if the obfuscation scheme is known, an adversary faces exhaustive key search rather than pattern recognition.
+section: §5.3.2, Fig.6
+extracted_by: claude-sonnet-4-6

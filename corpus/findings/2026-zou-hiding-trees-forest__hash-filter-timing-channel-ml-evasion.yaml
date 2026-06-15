@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: defense
+summary: For network timing covert channels, hash-based covert carrier filtering reduces ML classifier AUC from 0.99 (L=0) to below 0.6 for all three classifiers (SVM, XGBoost, DT) at filter key size L=5, indistinguishable from the baseline normal-traffic AUC of 0.55. Sparse, aperiodic timing modulation events at L≥5 are masked by the network's inherent jitter, eliminating the autocorrelation and regularity signatures that standard timing-channel detectors exploit.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Apply hash-based carrier filtering to inter-packet delay (IPD) covert channels at L≥5 to disrupt the temporal regularity and autocorrelation that K-S, regularity, entropy, and CCE feature extractors depend on.
+    - Couple timing modulation amplitude to ambient network jitter conditions dynamically so that modulated intervals remain within the natural jitter envelope, further defeating anomaly-threshold detectors.
+section: §5.3.2, Fig.7
+extracted_by: claude-sonnet-4-6

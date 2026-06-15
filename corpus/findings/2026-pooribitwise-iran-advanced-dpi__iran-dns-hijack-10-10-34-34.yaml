@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: Blocked domains in Iran resolve to the known DPI blackhole IP 10.10.34.34 via DNS hijacking, indicating automated DNS poisoning is part of the post-detection blocking pipeline. Domains were added to the DNS blackhole within 24 hours of active use through a CDN circumvention path.
+techniques:
+    - dns-poisoning
+    - sni-blocking
+censors:
+    - ir
+defense_implications:
+    - Circumvention clients targeting Iran must use DNS-over-HTTPS or DNS-over-TLS bootstrapped from a trusted resolver to avoid 10.10.34.34 blackhole responses
+    - Domain rotation cadence must be faster than 24 hours if relying on CDN-based fronting without encrypted SNI
+section: Issue body — The Issue §1
+extracted_by: claude-sonnet-4-6

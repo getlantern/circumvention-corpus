@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: defense
+summary: 'The covert carrier filtering strategy shifts channel covertness from algorithm secrecy to key strength: once the embedding algorithm is exposed, an adversary must exhaustively search a 2^L key space to enumerate the covert carrier set rather than applying pattern recognition. At L=6, only 1/64 (~1.56%) of candidate packets are selected as covert carriers, yielding unit covert capacity Ucc=8 per packet for 8-bit embeddings and Ucc=3.1 for 21-bit embeddings.'
+techniques:
+    - ml-classifier
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Design circumvention obfuscation layers so security rests on a cryptographic key rather than algorithm secrecy—this is Kerckhoffs-compliant and maintains protection even after the transport scheme is reverse-engineered.
+    - 'Plan for the capacity trade-off explicitly: at L=6, usable carriers drop to 1.56% of available packets, requiring sufficient background traffic volume to sustain the needed covert data throughput before deployment.'
+section: §3.2, §4.2.2, Table 6
+extracted_by: claude-sonnet-4-6

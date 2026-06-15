@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: deployment
+summary: Geedge Networks, founded by Fang Binxing ('father of the Great Firewall'), exported its Tiangou Secure Gateway (TSG) to at least four countries — Kazakhstan (first client, from 2018), Ethiopia, Myanmar, and Pakistan — providing each government with GFW-derived capabilities for monitoring, filtering, VPN blocking, and internet shutdowns. The company claims more than 40 global service providers as clients under the Belt and Road Initiative framework.
+techniques:
+    - dpi
+    - ip-blocking
+    - tls-fingerprint
+censors:
+    - cn
+    - mm
+    - pk
+    - kz
+    - et
+defense_implications:
+    - Assume GFW-grade detection capabilities (active probing, DPI, statistical fingerprinting) may be present in any TSG-deployed country, not just China; treat Myanmar, Pakistan, Kazakhstan, and Ethiopia as GFW-equivalent threat environments.
+    - Monitor Belt-and-Road procurement signals to identify newly onboarding TSG countries before blocking patterns are observed in OONI data.
+section: Body
+extracted_by: claude-sonnet-4-6

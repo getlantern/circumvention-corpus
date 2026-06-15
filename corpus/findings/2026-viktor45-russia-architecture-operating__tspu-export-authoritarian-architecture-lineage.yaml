@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-viktor45-russia-architecture-operating
+kind: deployment
+summary: TSPU represents a censor infrastructure model that has been documented for export analysis — similar DPI-based national filtering systems have been identified in Myanmar and Pakistan, suggesting shared architectural lineage with Russian censorship technology under Belt-and-Road frameworks.
+techniques:
+    - dpi
+censors:
+    - ru
+    - mm
+    - pk
+defense_implications:
+    - Circumvention techniques validated against TSPU are likely transferable to TSPU-derived deployments in export countries — test against Russian infrastructure as a proxy for Myanmar/Pakistan environments.
+    - Monitor for TSPU architectural features (e.g., specific DPI vendor signatures) appearing in newly deployed censorship systems in authoritarian regimes.
+section: Abstract
+extracted_by: claude-sonnet-4-6

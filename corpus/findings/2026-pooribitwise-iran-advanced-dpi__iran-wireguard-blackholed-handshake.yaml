@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: WireGuard connections are blackholed by Iranian infrastructure immediately after the initial WireGuard handshake completes — clients stop receiving server packets — indicating the Iranian DPI identifies WireGuard by its distinct UDP handshake pattern and applies IP-level blocking at that point.
+techniques:
+    - dpi
+    - ip-blocking
+defenses:
+    - amnezia-wg
+censors:
+    - ir
+defense_implications:
+    - Plain WireGuard is not viable in Iran; tool designers must use AmneziaWG or equivalent obfuscated WireGuard that alters the handshake byte pattern before deployment
+    - The immediate-post-handshake blocking window is the critical detection moment; obfuscation must cover at minimum the first two handshake messages
+section: Issue body — Other Observations §3
+extracted_by: claude-sonnet-4-6

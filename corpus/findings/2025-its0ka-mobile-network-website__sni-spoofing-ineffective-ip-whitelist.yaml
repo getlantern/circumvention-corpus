@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-mobile-network-website
+kind: evaluation
+summary: 'SNI spoofing — sending a whitelisted domain (e.g., yandex.ru) in the ClientHello while connecting to a non-whitelisted IP — did not bypass the block: any SNI value worked when connecting to a whitelisted IP, but no SNI value worked when connecting to a non-whitelisted VPS IP. This confirms the enforcement is IP-based rather than SNI-based, and SNI spoofing provides no circumvention value in this regime.'
+techniques:
+    - ip-blocking
+    - sni-blocking
+defenses:
+    - mimicry
+censors:
+    - ru
+defense_implications:
+    - SNI spoofing / domain fronting at the TLS layer is ineffective when the censor filters by destination IP rather than SNI; circumvention must route through a whitelisted IP, not merely present a whitelisted hostname.
+    - Only defenses that route traffic through IPs already on the whitelist (domestic CDNs, whitelisted cloud ASNs) can function under this enforcement model.
+section: Issue body (its0ka, Sep 7 2025)
+extracted_by: claude-sonnet-4-6

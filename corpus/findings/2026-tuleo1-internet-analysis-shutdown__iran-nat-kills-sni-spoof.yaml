@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: deployment
+summary: After approximately four days, Iran placed Cloudflare IP ranges behind a NAT that performed full TCP reassembly with strict checksum and sequence-number validation; any packet with an incorrect checksum or out-of-window sequence number caused immediate connection teardown, eliminating both TTL-spoofing and sequence-desynchronization bypasses.
+techniques:
+    - sni-blocking
+    - dpi
+    - middlebox-interference
+censors:
+    - ir
+defense_implications:
+    - SNI spoofing via TCP-layer desynchronization is not a durable defense — plan for NAT-aware adversaries that do full stream reassembly; any bypass relying on DPI/NAT state divergence has a short operational lifetime in Iran.
+    - Circumvention tools must operate within a fully reassembled, well-formed TCP stream; raw-socket tricks that rely on malformed segments will be neutralized by carrier-grade NAT.
+section: Issue body
+extracted_by: claude-sonnet-4-6

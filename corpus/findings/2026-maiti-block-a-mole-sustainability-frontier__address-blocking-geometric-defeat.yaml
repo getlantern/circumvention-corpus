@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: evaluation
+summary: 'Address blocking is a losing strategy for the censor: with n=8 endpoints and µ/λa = 1 (discovery as fast as rotation), address-denial probability falls below 10^-2, and even when the censor discovers twice as fast as the defender rotates (µ/λa = 0.5), 7 endpoints keep address denial below 10^-2 (Lemma 1, Figure 1). The collateral budget γ means the censor cannot even block all addresses it discovers, and Corollary 1 gives the explicit threshold: n ≥ ln(1/ε) / ln((λa+µ)/λa) endpoints suffice for any target ε.'
+techniques:
+    - ip-blocking
+    - active-probing
+defenses:
+    - randomization
+    - bridges
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Run at least 8 redundant endpoints to reduce address-denial probability to negligible levels — this is cheap on commodity cloud and shifts all censor pressure to the domain layer where the minting rate is the only lever that matters.
+    - Do not trade endpoint count for rotation speed; the geometric bound means each additional endpoint multiplies address resilience independently of per-endpoint rotation rate.
+section: §5, §8.1, §8.10, Lemma 1, Corollary 1, Figure 1
+extracted_by: claude-sonnet-4-6

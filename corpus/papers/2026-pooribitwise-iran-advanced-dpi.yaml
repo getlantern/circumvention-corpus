@@ -1,0 +1,32 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-pooribitwise-iran-advanced-dpi
+title: '[Iran] Advanced DPI is reassembling TCP fragments to extract SNI on VLESS/WS + CDN'
+authors:
+    - '@pooribitwise'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/628
+abstract: An Iranian user reports that ISP DPI infrastructure is now performing TCP fragment reassembly to extract SNI values even when packets are heavily fragmented with randomized delays, allowing ISPs to block circumvention domains within hours. The user documents blocking of VLESS+WebSocket, Reality, WireGuard, and xHTTP traffic through DNS poisoning, RST injection, and IP blacklisting. The observation suggests Iranian DPI capabilities have advanced to full TCP reassembly and stateful inspection, defeating simple fragmentation-based obfuscation techniques.
+censors:
+    - ir
+techniques:
+    - dpi
+    - sni-blocking
+    - dns-poisoning
+    - rst-injection
+    - ip-blocking
+defenses_discussed:
+    - vless
+    - tunneling
+    - randomization
+    - reality
+evaluation_methods:
+    - measurement-study
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern: documents emerging Iranian DPI capabilities that defeat fragmentation-based circumvention, informing protocol design priorities.'
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/628

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-farrell-ech-trial-report
+kind: evaluation
+summary: Even ECH-capable browsers frequently GREASE rather than attempt real ECH, with Firefox/138 succeeding only 50% of the time (164/325), Chrome/136 only 25% (42/167), and Chrome Mobile/136 only 24% (29/121). Firefox/139 performed better at 83% real ECH success (351/423), suggesting browser DNS handling of HTTPS RRs remains a significant barrier to ECH efficacy.
+techniques:
+    - sni-blocking
+    - tls-fingerprint
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - ECH circumvention strategies must account for browsers that send GREASE ECH extensions rather than real ECH — GREASE exposes the outer SNI and provides no censorship-resistance benefit despite appearing ECH-aware.
+    - Tools that depend on ECH for SNI hiding should prompt users to update browsers to at least Firefox/139 or Chrome/137, where real ECH success rates climb above 55–83%.
+section: §6.4, Table 8
+extracted_by: claude-sonnet-4-6

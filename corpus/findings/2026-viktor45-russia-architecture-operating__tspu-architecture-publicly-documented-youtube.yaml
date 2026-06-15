@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-viktor45-russia-architecture-operating
+kind: deployment
+summary: TSPU censorship infrastructure has been documented via publicly available YouTube technical presentations, suggesting Russian authorities have not classified the system's architecture. This transparency creates an opportunity for circumvention researchers to study detection logic directly from official sources rather than relying solely on empirical measurement.
+techniques:
+    - dpi
+censors:
+    - ru
+defense_implications:
+    - Index and monitor public TSPU technical presentations as a primary intelligence source — official architecture docs reveal detection thresholds more reliably than black-box probing.
+    - Use the public TSPU documentation to validate or refine traffic models in circumvention protocol simulators before deployment.
+section: Abstract
+extracted_by: claude-sonnet-4-6

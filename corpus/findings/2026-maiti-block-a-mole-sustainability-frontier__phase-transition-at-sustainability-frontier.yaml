@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: evaluation
+summary: Simulator validation shows a sharp phase transition in (α,T)-availability at the sustainability frontier β* ≤ 1. For a canonical configuration of n=8 endpoints and buffer kmax=8, the interval frontier is β* ≈ 0.65, while the time-average crossing is near β ≈ 0.8. Sweeping rotation speed µ/λa from 1 to >100 does not move the frontier — the availability contour over the (β, µ/λa) plane is entirely vertical (Figure 3). The closed-form availability law (Theorem 1) matches simulation to three significant figures across all tested β (Table 2).
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Design for β < 0.65 (8-domain buffer) rather than for rotation speed; once µ/λa ≥ 1, the address layer is saturated and further speed gains provide no measurable availability benefit.
+    - Size domain buffers generously — kmax = 32 pushes β* toward 1.0, a direct lever that no amount of endpoint rotation speed can replicate.
+section: §8.2, §8.5, Figure 2, Figure 3, Table 2
+extracted_by: claude-sonnet-4-6

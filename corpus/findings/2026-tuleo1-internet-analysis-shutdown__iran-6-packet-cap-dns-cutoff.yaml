@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: deployment
+summary: For non-whitelisted SNIs connecting to allowed Cloudflare IPs, Iran's DPI enforced a strict 6-packet limit per connection, sufficient only to load a webpage but not to sustain any tunnel; connections bearing a whitelisted SNI were unrestricted. Outside DNS providers were blocked within one to two weeks and replaced with a local DNS infrastructure that operated at a maximum of ~100 KB/s with connections dropping at approximately the one-minute mark.
+techniques:
+    - sni-blocking
+    - dpi
+    - throttling
+    - dns-poisoning
+censors:
+    - ir
+defense_implications:
+    - A 6-packet cap rules out any handshake-heavy protocol on non-whitelisted connections; circumvention protocols targeting Iran must either obtain a whitelisted SNI (domain fronting) or establish full session state within 6 packets.
+    - DNS-based bootstrapping (DoH, DoT, DNSTT) is unreliable in Iran during shutdowns; Iran-targeted tools need an out-of-band, non-DNS rendezvous mechanism that tolerates sub-minute connection lifetimes.
+section: Issue body
+extracted_by: claude-sonnet-4-6

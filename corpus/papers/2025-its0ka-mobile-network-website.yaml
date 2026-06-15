@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-its0ka-mobile-network-website
+title: Mobile network website whitelist
+authors:
+    - '@its0ka'
+    - '@Ximerixx'
+    - '@someone2037492034'
+venue: net4people/bbs
+year: 2025
+url: https://github.com/net4people/bbs/issues/516
+abstract: Community report documenting IP-based whitelisting enforcement on Russian mobile networks (Beeline, Tele2) in certain regions. Users observed non-whitelisted IPs completely inaccessible, DNS queries to non-whitelisted resolvers blocked, and TLS ClientHello packets dropped to non-whitelisted destinations. Attempted circumvention via SNI spoofing and stunnel tunneling achieved temporary success before being blocked, indicating centralized TSPU-level enforcement.
+censors:
+    - ru
+techniques:
+    - ip-blocking
+    - dns-poisoning
+    - throttling
+defenses_discussed:
+    - tunneling
+    - domain-fronting
+evaluation_methods:
+    - measurement-study
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern: documents emerging Russian mobile-network whitelist infrastructure (GFW-pattern enforcement) and documents failure of existing circumvention strategies, informing mobile proxy design priorities for Russia.'
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/516

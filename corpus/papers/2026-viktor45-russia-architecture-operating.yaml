@@ -1,0 +1,23 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-viktor45-russia-architecture-operating
+title: '[Russia] Architecture and operating principles of the TSPU censorship system'
+authors:
+    - '@Viktor45'
+venue: net4people/bbs
+year: 2026
+url: https://www.youtube.com/watch?v=raNP3IMgwRU
+abstract: A community member shares technical documentation of Russia's TSPU (Roskomnadzor's national censorship infrastructure) compiled from publicly available YouTube presentations. The documentation describes TSPU's architecture and operating principles. A commenter mentions CDN-based circumvention techniques in response.
+censors:
+    - ru
+techniques:
+    - dpi
+defenses_discussed:
+    - domain-fronting
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. TSPU technical documentation valuable for understanding Russian censorship infrastructure and identifying similarities with systems exported to other authoritarian regimes (Myanmar, Pakistan, Ethiopia).
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/578

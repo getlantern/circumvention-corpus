@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-tuleo1-internet-analysis-shutdown
+title: Internet analysis in the shutdown in iran
+authors:
+    - '@tuleo1'
+    - '@jesowozapoc'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/626
+abstract: The thread documents evolving Iranian internet shutdown mechanisms during 2026, progressing from full IP blocking to multi-layered DPI filtering, SNI-based whitelisting (initially bypassable via TTL/TCP sequence spoofing), and ultimately NAT enforcement with strict checksum/sequence validation. The authors discuss the rapid cycle between circumvention and censor adaptation, concluding that future approaches require operating at raw protocol levels.
+censors:
+    - ir
+techniques:
+    - ip-blocking
+    - dpi
+    - sni-blocking
+    - dns-poisoning
+    - http3-quic-block
+    - middlebox-interference
+defenses_discussed:
+    - dns-tunneling
+    - steganography
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Critical operational intelligence on Iranian blocking evolution; documents rapid cat-and-mouse dynamic between circumvention tools and censor adaptation tactics.
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/626

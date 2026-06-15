@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-mobile-network-website
+kind: detection
+summary: The whitelist enforcement drops TLS ClientHello packets to non-whitelisted destination IPs while still accepting the TCP SYN, meaning the block occurs at or after the TCP handshake completes but before application-layer data is processed. This behavior is consistent with TSPU-level in-path interception rather than BGP null-routing.
+techniques:
+    - dpi
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - TCP-based circumvention protocols cannot rely on completing a TCP handshake as evidence that a path is unblocked; the censor allows SYN/SYN-ACK but drops subsequent data to non-whitelisted IPs.
+    - Design fallback probing to test actual data delivery (e.g., send a dummy byte after TCP connect) rather than TCP connect success alone.
+section: Issue body (its0ka, Sep 7 2025)
+extracted_by: claude-sonnet-4-6

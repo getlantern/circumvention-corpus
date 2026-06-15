@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-farrell-ech-trial-report
+kind: evaluation
+summary: Across all 7 global data centers (EU, USA, Singapore, Brazil), every data center recorded ECH successes with no observed evidence of regional ECH blocking or interference. ECH-aware client percentages varied by region — EU 75%, North America 63%, Asia 49%, South America 46% — but this was attributed to browser version distribution rather than censorship.
+techniques:
+    - sni-blocking
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - ECH is not yet being actively blocked at a network level in regions covered by this trial; deployers can enable ECH at public servers without triggering IP-level blocking, unlike what has been observed for Cloudflare ECH in Russia.
+    - Monitor HTTPS RR (TYPE65) DNS query blocking as a potential censorship vector — the trial did not directly test this vector, and it could degrade ECH without producing TLS-level failures.
+section: §6.2, §6.5, Table 4
+extracted_by: claude-sonnet-4-6

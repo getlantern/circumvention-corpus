@@ -1,0 +1,31 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2606.08886
+id: 2026-maiti-block-a-mole-sustainability-frontier
+title: 'Block-A-Mole: The Sustainability Frontier of Moving-Target Censorship Resistance'
+authors:
+    - Anindya Maiti
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2606.08886"
+url: https://arxiv.org/abs/2606.08886v1
+abstract: 'Internet censorship affects over four billion people, and deployed circumvention systems share a common weakness: their endpoints are fixed and discoverable, so a patient censor can enumerate and block them. Moving-target circumvention systems instead rotate endpoints across commercial cloud address space faster than censors can react, but the field lacks a theory of when rotation works, leaving rotation intervals and pool sizes to intuition. We give the first formal account of moving-target censorship resistance by modeling the censor-defender interaction as a continuous-time timing game over a combinatorial address-domain space, generalizing FlipIt to a collateral-bounded adversary. We prove a sustainability frontier separating configurations a censor can defeat from those it cannot, and show that under the Great Firewall''s 2024 shift to blocking QUIC and TLS by domain, raw rotation speed is not the binding constraint. Instead, availability is governed by the domain burn rate, $β=λ_{\mathrm{disc}}/λ_{\mathrm{intro}}$, the ratio between how quickly the censor blocks defender domains and how quickly the defender introduces fresh ones. We derive a closed-form availability law, prove that address rotation alone cannot sustain high availability when $β>1$ regardless of endpoint rotation speed, and characterize the frontier $β^\star$. We validate the analysis with an open, model-level censor-defender simulator requiring no privileged access or cloud deployment. The simulator reproduces the predicted phase transition at $β^\star$ under adversary profiles representative of the GFW, Russia''s TSPU, and Iran, and shows robustness to state-dependent discovery and bursty, provider-correlated burns. The result replaces the heuristic of ``rotate faster'''' with a precise operating condition: keeping the domain economy ahead of the censor.'
+censors:
+    - cn
+    - ru
+    - ir
+techniques:
+    - active-probing
+    - ip-blocking
+    - sni-blocking
+defenses_discussed:
+    - meta-resistance
+evaluation_methods:
+    - formal-analysis
+    - simulation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern's moving-target endpoint rotation strategy and circumvention sustainability theory.
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2606.08886

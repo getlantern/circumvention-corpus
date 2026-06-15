@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-farrell-ech-trial-report
+kind: deployment
+summary: The DEfO project backported ECH support to nginx 1.22.1 (Debian bookworm's shipped version) and deployed it at 14 instances across 7 Wikimedia data centers with no service disruption over 41 days. The primary operational barrier was institutional review process for custom-built binaries and the novel HTTPS RR DNS record type, adding only a few days to the deployment timeline.
+techniques:
+    - sni-blocking
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - ECH deployment on production nginx is viable today via source backports — the DEfO nginx fork (github.com/defo-project/nginx, release-1.22.1-ech branch) provides a reference build process for operators on Debian stable.
+    - ECH split-mode (which would allow Wikimedia content to be fronted via a CDN's IP addresses) remains undeployed due to inability to find a willing CDN partner — circumvention tool designers should investigate this gap as a high-value infrastructure opportunity.
+section: §3, §4, §7
+extracted_by: claude-sonnet-4-6

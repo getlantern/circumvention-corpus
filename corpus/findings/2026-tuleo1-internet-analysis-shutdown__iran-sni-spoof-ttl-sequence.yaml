@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: deployment
+summary: 'Iran deployed SNI whitelisting that permitted only specific domains (e.g., hcaptcha.com); circumventors exploited this for approximately four days using two TTL/TCP-sequence spoofing techniques: sending a fake ClientHello with a low TTL (so it expired before reaching the origin server but was accepted by the DPI) and sending a fake ClientHello at an out-of-window TCP sequence number (dropped by the server but passed by the DPI).'
+techniques:
+    - sni-blocking
+    - dpi
+    - middlebox-interference
+defenses:
+    - mimicry
+censors:
+    - ir
+defense_implications:
+    - TTL-based and sequence-desynchronization SNI spoofing are viable short-term bypasses against stateless or sequence-blind DPI; build them as a fallback layer in any Iran-targeted transport.
+    - Expect a 2–5 day window before the censor patches sequence-blind DPI with NAT-level reassembly; design for rapid transport rotation.
+section: Issue body
+extracted_by: claude-sonnet-4-6
