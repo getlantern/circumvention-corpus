@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-viktor45-architecture-operating-principles
+title: Architecture and operating principles of the TSPU censorship system
+authors:
+    - '@Viktor45'
+    - '@xstyl3s'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/578
+abstract: Documentation of Russia's TSPU (Technical Surveillance of Public Internet) system architecture and operational principles, compiled from a 2021 YouTube presentation featuring operational slides. Discussion includes whitelist-based blocking mechanisms and CDN-based techniques for bypassing the system.
+censors:
+    - ru
+techniques:
+    - middlebox-interference
+    - dpi
+defenses_discussed:
+    - domain-fronting
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Provides technical documentation of Russian censorship infrastructure critical for understanding blocking mechanisms Lantern users encounter.
+visibility: public
+date_added: "2026-06-22"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/578
