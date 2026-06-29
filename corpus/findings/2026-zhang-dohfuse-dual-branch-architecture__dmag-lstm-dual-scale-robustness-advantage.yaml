@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zhang-dohfuse-dual-branch-architecture
+kind: evaluation
+summary: DoHFuse's dual-branch architecture outperforms all five baselines (KNN, Random Forest, FCNN+GRU, LSTM, Transformer) across 100-, 200-, and 449-class closed-world settings with standard deviations under 0.5 percentage points, while the vanilla Transformer's standard deviation exceeds 5 percentage points at 449 classes (mean 61.50%). This demonstrates that attention-based models without recurrence-scale adaptations are unsuitable for the burst–gap temporal dynamics of DoH/3, and that multi-scale gating (DMAG-LSTM) is the key architectural driver of robustness.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Timing-jitter defenses must be designed to disrupt multi-scale structure (both intra-burst and inter-burst intervals) since dual-scale gating specifically targets both; jitter applied at only one temporal scale will be partially absorbed by the complementary gate.
+    - Circumvention protocol designers evaluating WF resistance should benchmark against recurrent dual-scale classifiers rather than simpler baselines, as shallow or attention-only models substantially underestimate adversarial capability on encrypted-DNS traffic.
+section: §V.C; Table II; Figure 6
+extracted_by: claude-sonnet-4-6

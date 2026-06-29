@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: detection
+summary: Incoming traffic is the dominant website fingerprinting leakage vector in Nym because the network requester does not apply Poisson-rate cover traffic by default. The Features In feature set achieves 72.1% random-forest accuracy on Nym Testnet — exceeding Tor's 70.2% — while outgoing Features Out leaks only 43.9% (vs. 65.0% for Tor). The combined Features In/Out (70.0%) provides no additional information beyond Features In alone, confirming the inbound channel is the bottleneck.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Apply cover traffic or rate-shaping to the server-to-client data path, not just client-to-server — asymmetric protection leaves the high-bandwidth response stream fully exposed.
+    - Enabling network-requester Poisson rate (λQR=20 ms) cuts WF F1 from 0.87 to 0.64 but at 12.66× latency overhead, indicating a steep infrastructure cost for protecting the inbound channel.
+section: §5.1, Table 3
+extracted_by: claude-sonnet-4-6

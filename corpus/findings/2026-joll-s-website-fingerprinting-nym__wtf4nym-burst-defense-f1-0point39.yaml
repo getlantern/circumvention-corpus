@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: defense
+summary: WTF4Nym, a burst-aware cover-traffic defense adapted to Nym's Poisson-rate architecture, reduces the Tik-Tok attack F1 score from 0.87 to 0.39 at moderate overhead (latency overhead 3.78×, bandwidth overhead 4.22×). This substantially outperforms directly applying WTF-PAD to Nym (F1=0.87), applying FRONT to Nym (F1=0.63), and the F1=0.65 achieved by FRONT on Tor at comparable overhead, by learning per-network burst distributions and injecting fake bursts that match those statistics.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Tor-specific WF defenses cannot be directly ported to Poisson-rate anonymity networks — continuous cover traffic breaks standard burst-detection state machines and requires architecture-aware variants.
+    - Effective WF defense in mixnets requires learning real burst-duration, inter-burst-time, and per-height inter-arrival distributions from the target network's traffic and matching them in generated cover bursts.
+section: §6.2, Table 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-swift-look-into
+kind: detection
+summary: 'Iran''s SNI filtering is applied inconsistently across allowlisted users: among 737 tested allowlisted IP addresses, approximately half experienced no SNI filtering at all and could reach destinations even using previously-reported blocked domains. For IPs subject to filtering, 49.9% of requests containing hrw.org and 50.2% containing tiktok.com triggered RSTs, while only 0.5% of requests with youtube.com were blocked — suggesting differential access policies tied to specific domains and user classes even within the allowlisted population.'
+techniques:
+    - sni-blocking
+    - rst-injection
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools should not treat Iran's firewall as a uniform system — the same domain or IP may be blocked for some users but not others, so per-user probing or adaptive domain selection is more reliable than static configuration.
+    - The domain-specific filtering rates (nearly 50% for hrw.org/tiktok.com vs. 0.5% for youtube.com) imply a tiered political sensitivity blocklist; proxies should avoid reusing SNIs of high-sensitivity domains as cover traffic.
+section: §4.2
+extracted_by: claude-sonnet-4-6

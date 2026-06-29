@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-bai-provable-secure-steganography
+kind: defense
+summary: The scheme's core mechanism samples a candidate set of tokens at each generation step and constructs a bijective map from possible message bit strings to those tokens. Selecting the output token via this map provably preserves the original model's sampling distribution, yielding output that is computationally indistinguishable from unmodified model output.
+techniques:
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Because the steganographic token selection is distribution-preserving by construction, DPI or ML classifiers trained on LLM output statistics cannot distinguish carrier text from normal output — the cover channel is semantically and statistically correct.
+    - Protocol designers should prefer distribution-preserving token selection over post-hoc reranking or rejection sampling, which can leave detectable statistical artifacts in the output.
+section: Abstract / core mechanism
+extracted_by: claude-sonnet-4-6

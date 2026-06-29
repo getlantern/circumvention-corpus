@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-huangshaomings001-google-auto-jump
+kind: detection
+summary: Chinese users accessing google.com on Android devices through circumvention proxies experience forced HTTP redirects to google.cn/m rather than the expected google.com destination. The behavior is observed specifically on proxied connections, suggesting either in-path HTTP redirect injection by the GFW or Google's own geo-targeting logic acting on IP or device signals that persist through the proxy.
+techniques:
+    - packet-injection
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools routing traffic through China-geolocated exit nodes may trigger Google's geo-redirect logic even when the user's intent is to reach google.com — proxy IP geolocation must be verified as non-CN.
+    - HTTP redirect interference (whether GFW-injected or geo-targeting) can silently reroute users to censored endpoints even when the tunnel is nominally functioning; tools should validate final destination domains against expected targets.
+section: Issue body / screenshot
+extracted_by: claude-sonnet-4-6

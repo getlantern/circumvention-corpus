@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-lunarcanvas-swift-look-into
+title: A Swift Look into the Internet Allowlist in Iran
+authors:
+    - '@LunarCanvas'
+venue: net4people/bbs
+year: 2026
+url: https://randlab.engineering.ucsc.edu/blogs/iran-allowlist/
+abstract: This ongoing measurement study documents Iran's IP-based allowlist blocking system before and after the May 26, 2026 partial Internet restoration, using a vantage point within Iran. The researchers measure the allowlist's expansion, continued SNI-based filtering even for allowlisted IPs, and severe restrictions on inbound access. Active measurement and IP spoofing techniques reveal rapidly evolving blocking policies at both the IP and application layers.
+censors:
+    - ir
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - rst-injection
+evaluation_methods:
+    - measurement-study
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern: understanding Iran''s IP allowlist and SNI filtering mechanisms is critical for adapting circumvention strategies to current Iranian blocking infrastructure.'
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/630

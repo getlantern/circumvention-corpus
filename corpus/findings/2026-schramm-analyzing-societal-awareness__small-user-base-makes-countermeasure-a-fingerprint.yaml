@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schramm-analyzing-societal-awareness
+kind: detection
+summary: 'Countermeasures against fingerprinting can paradoxically increase a user''s identifiability when deployed by a small population: spoofing-introduced attribute inconsistencies and unusual configurations (e.g., Tor Browser''s letterboxing applied to an uncommon monitor size) produce a rarer, higher-entropy fingerprint than baseline. This ''information paradox'' means that countermeasure effectiveness is a property of the anonymity set size, not of individual tool configuration.'
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Design countermeasures to standardize toward a large, shared anonymity set (e.g., Tor Browser's letterboxing strategy) and explicitly grow the population using the identical configuration — a tool's protection degrades as its user base shrinks.
+    - Avoid user-configurable fingerprint-spoofing settings that produce unique attribute combinations; prefer coordinated, fleet-wide normalization locked to a common profile.
+section: §2.2
+extracted_by: claude-sonnet-4-6

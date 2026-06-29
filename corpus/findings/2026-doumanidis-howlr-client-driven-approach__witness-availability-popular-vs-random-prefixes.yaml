@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-doumanidis-howlr-client-driven-approach
+kind: evaluation
+summary: All sampled popular-service prefixes contain at least two TLS-authenticated witnesses, and more than half contain 35 or more witnesses; by contrast, only 40% of randomly selected prefixes feature any valid witnesses. CT log analysis across 5 months shows that witnesses span just 17.4% of the routable IPv4 space, confirming that witness coverage concentrates on professionally-hosted infrastructure.
+techniques:
+    - bgp-hijack
+    - active-probing
+censors:
+    - generic
+defense_implications:
+    - Circumvention server operators placing relays on major hosting providers (AWS, Cloudflare, Azure) gain BGP hijack detectability as a side effect of co-residency with abundant TLS witnesses; residential or small-ISP hosting does not.
+    - When building a HOWLR-like detection layer, prioritize port 443 witnesses only — 82% of valid certificates are served there — enabling sub-4-minute witness discovery with minimal accuracy loss.
+section: §4
+extracted_by: claude-sonnet-4-6

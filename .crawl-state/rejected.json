@@ -1,5 +1,201 @@
 [
   {
+    "key": "arxiv:2606.21842",
+    "title": "Agent-Assisted Side-Channel Attacks on Non-Prefix KV Cache in RAG",
+    "source": "arxiv",
+    "reason": "Hardware side-channel attack on LLM KV cache systems; no connection to censorship measurement, detection techniques, circumvention protocols, or surveillance infrastructure.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22063",
+    "title": "Guarded Equivalence Predicates for Scalable Formal Hardware Information-Flow Verification",
+    "source": "arxiv",
+    "reason": "Formal hardware verification paper on circuit information-flow analysis; not related to censorship measurement, circumvention protocols, or network blocking techniques.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22198",
+    "title": "2.5D Root of Trust: Securing the Chiplet Ecosystem",
+    "source": "arxiv",
+    "reason": "Hardware security paper on chiplet ecosystem integrity; unrelated to censorship measurement, detection, circumvention, anonymity, or surveillance infrastructure.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22588",
+    "title": "Non-Uniform L2 Cache Latency Across the Streaming Multiprocessors of an NVIDIA L40",
+    "source": "arxiv",
+    "reason": "GPU cache latency characterization and hardware fingerprinting; no censorship, circumvention, anonymity, or traffic-analysis angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22698",
+    "title": "Black-Box Forensics for Conversational LLM Agents",
+    "source": "arxiv",
+    "reason": "ML-based forensics for identifying LLM models behind chatbot endpoints; fraud detection unrelated to censorship measurement, circumvention protocol design, or anonymity systems.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22928",
+    "title": "HADES: Privacy-Preserving Federated Learning via Selective Feature Encryption and Hybrid Model Fusion",
+    "source": "arxiv",
+    "reason": "Federated learning privacy paper with no connection to censorship, circumvention protocols, traffic analysis, Tor/VPN systems, or surveillance infrastructure.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.23138",
+    "title": "Rising From the Ashes: How Agentic AI is Unblocking Challenges in Cybersecurity",
+    "source": "arxiv",
+    "reason": "General cybersecurity + agentic AI paper with no focus on censorship, circumvention, blocking detection, or anonymity systems.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.23574",
+    "title": "A Watermark for Vision-Language-Action and World Action Models",
+    "source": "arxiv",
+    "reason": "Paper studies IP watermarking for robot control models, unrelated to censorship, circumvention, anonymity, or surveillance.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.24000",
+    "title": "Cyclic Denoising Reveals Ultrastable Memories in Diffusion Models",
+    "source": "arxiv",
+    "reason": "Paper studies memory extraction from generative models; no censorship, circumvention, or network-blocking angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.24245",
+    "title": "AutoSpec: Safety Rule Evolution for LLM Agents via Inductive Logic Programming",
+    "source": "arxiv",
+    "reason": "Generic LLM agent safety paper with no connection to censorship, circumvention, anonymity systems, surveillance, or blocking techniques.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.24934",
+    "title": "Unprivileged Topology Certificates for Cloud GPU Attestation",
+    "source": "arxiv",
+    "reason": "Cloud GPU attestation and hardware fingerprinting; not related to censorship detection, circumvention protocols, or network security in a censorship context.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25589",
+    "title": "Leaking Circuit Secrets: Gradient Leakage Attacks on Graph Neural Networks",
+    "source": "arxiv",
+    "reason": "Paper studies ML privacy attacks on circuit-design GNNs; no relevance to censorship detection, circumvention protocols, or network security.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25750",
+    "title": "RAS: Measuring LLM Safety Through Refusal Alignment",
+    "source": "arxiv",
+    "reason": "Paper studies LLM safety alignment and jailbreak resistance through internal representations; lacks any network-level censorship, censor-detection, or circumvention-protocol angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25788",
+    "title": "Can Machine Learning Break Wi-Fi Privacy? A Study on MAC Address Randomization",
+    "source": "arxiv",
+    "reason": "Wi-Fi device fingerprinting via MAC address de-randomization; no censorship circumvention or blocking-detection angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25926",
+    "title": "A Tattered Cloak of Invisibility: Measuring Anonymity Loss in Railgun on Ethereum",
+    "source": "arxiv",
+    "reason": "This is a cryptocurrency mixer privacy analysis paper focused on Ethereum Railgun de-anonymization through transaction pattern analysis — blockchain privacy research unrelated to censorship circumvention.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.26412",
+    "title": "What Browsers Do in the Shaders: A Measurement Study of WebGPU Privacy",
+    "source": "arxiv",
+    "reason": "Generic browser fingerprinting and privacy measurement without a censorship detection or circumvention angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.26426",
+    "title": "Nanoelectromechanical Systems (NEMS) for Hardware Security in Advanced Packaging",
+    "source": "arxiv",
+    "reason": "Hardware security primitives for semiconductor manufacturing and tamper detection; unrelated to censorship measurement, network blocking, or circumvention protocols.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.26924",
+    "title": "A Deterministic Control Plane for LLM Coding Agents",
+    "source": "arxiv",
+    "reason": "Software engineering paper on LLM agent governance and configuration management in development environments; no connection to censorship, circumvention, surveillance, traffic analysis, or anonymity systems.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27028",
+    "title": "Design and Performance Evaluation of Secure RF and WiFi-Based Communication in Drone Swarms via Testbed Implementation",
+    "source": "arxiv",
+    "reason": "Paper addresses UAV swarm communication security and drone coordination; entirely within IoT/embedded systems domain with no censorship, circumvention, or censorship-related traffic-analysis components.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27250",
+    "title": "Tilikum: Transaction Fair Ordering on a DAG without Weak Edges",
+    "source": "arxiv",
+    "reason": "This is a blockchain/DeFi consensus protocol paper addressing transaction reordering attacks on DAG-based ledgers; it has no connection to censorship measurement, circumvention techniques, surveillance, or internet blocking.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27698",
+    "title": "What Was That Again? Certified Robustness for Automatic Speech Recognition",
+    "source": "arxiv",
+    "reason": "Pure machine-learning adversarial robustness in speech recognition; no censorship, circumvention, or surveillance angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27701",
+    "title": "Room for Error: Large-Scale Simulation of Over-the-Air Acoustic Attacks",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness against voice-control systems (Whisper, wav2vec) with no censorship, circumvention, detection evasion, or surveillance measurement angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://github.com/net4people/bbs/issues/631",
+    "title": "Colorado University PHD Student Disappeared in China Two Years Ago",
+    "source": "net4people",
+    "reason": "Advocacy documentation of researcher suppression is important human rights work but falls outside the corpus scope of technical/policy research on censorship and circumvention.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0041.php",
+    "title": "SentinelTouch: A Lightweight Privacy-Preserving Biometric-Fingerprinting Authentication and Identification System Based on Neural Networks and Homomorphic Encryption",
+    "source": "popets",
+    "reason": "Biometric authentication system with no censorship measurement, circumvention, detection technique, or anonymity angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/bianyuanjiedian/",
+    "title": "2026 边缘节点机场评测：9元/月起的低门槛方案，适合谁入手 | 二毛",
+    "source": "ermao",
+    "reason": "Consumer product review of a VPN provider offering no technical research, measurement study, protocol analysis, or policy evaluation",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fanqiang-tools/",
+    "title": "2026年翻墙工具汇总推荐：Clash、Shadowrocket、V2RayNG、sing-box科学上网教程 | 二毛",
+    "source": "ermao",
+    "reason": "A user-facing how-to guide for installing and using circumvention tools, not a research contribution.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/jichang-subscription-guide/",
+    "title": "2026翻墙机场订阅指南：Clash节点购买、导入与机场推荐 | 二毛",
+    "source": "ermao",
+    "reason": "Consumer user guide for proxy service selection and client configuration; lacks research contribution, novel technical findings, or measurement methodology.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/yifanyun/",
+    "title": "一翻云机场推荐2026：30元150GB起，轻中度用户怎么选更稳妥 | 二毛",
+    "source": "ermao",
+    "reason": "Commercial VPN service product review with pricing and feature tables; no research contribution to censorship measurement, censor capabilities, protocol design, or internet freedom.",
+    "rejected_at": "2026-06-29"
+  },
+  {
     "key": "arxiv:2605.15984",
     "title": "Beyond Content: A Comprehensive Speech Toxicity Dataset and Detection Framework Incorporating Paralinguistic Cues",
     "source": "arxiv",

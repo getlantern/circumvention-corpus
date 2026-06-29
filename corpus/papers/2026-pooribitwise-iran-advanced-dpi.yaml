@@ -1,0 +1,41 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-pooribitwise-iran-advanced-dpi
+title: '[Iran] Advanced DPI is reassembling TCP fragments to extract SNI on VLESS/WS + CDN'
+authors:
+    - '@pooribitwise'
+    - '@its0ka'
+    - '@SpiderXss'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/628
+abstract: 'The thread documents an escalation in Iranian DPI capabilities that have begun performing TCP reassembly to extract SNI information, nullifying basic fragmentation-based obfuscation techniques. The original reporter tests multiple circumvention protocols (VLESS/WebSocket, Reality, gRPC, WireGuard, SSH) and documents diverse blocking mechanisms: DNS poisoning to 10.10.34.34, RST floods, IP-list blocking, and behavioral analysis of upload/download traffic ratios. Subsequent observers report synchronized blocking across Iranian networks, with port 443 receiving particularly aggressive inspection. The thread proposes UDP-based protocols (Hysteria), traffic padding, and Snowflake as potential mitigations, highlighting the emerging challenge of stateful DPI that tracks connection state and enforces ''cooling-off'' periods on flagged flows.'
+censors:
+    - ir
+techniques:
+    - dpi
+    - sni-blocking
+    - dns-poisoning
+    - rst-injection
+    - active-probing
+    - traffic-shape
+    - ip-blocking
+    - port-blocking
+defenses_discussed:
+    - vless
+    - tunneling
+    - domain-fronting
+    - reality
+    - trojan
+    - hysteria2
+    - webrtc-pluggable
+    - randomization
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern as it documents real-world DPI evasion challenges in Iran with immediate feedback on protocol viability.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/628

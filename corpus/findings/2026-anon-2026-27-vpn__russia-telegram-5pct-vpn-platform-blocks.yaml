@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: evaluation
+summary: In the first 10 days of April 2026, Telegram availability in Russia without VPN dropped to 5%, while an estimated 40%+ of Russian users rely on VPNs. From mid-April, 20+ Russian domestic platforms including Gosuslugi, Ozon, Wildberries, Yandex, Sberbank, and VK began restricting access to users detected as using VPNs.
+techniques:
+    - ip-blocking
+    - throttling
+censors:
+    - ru
+defense_implications:
+    - Russia is deploying second-order VPN detection at the application layer (domestic platforms blocking VPN-origin IPs), meaning circumvention tools targeting Russian users need IP addresses that are not classified as VPN/proxy ranges by commercial IP reputation services.
+    - The combination of infrastructure blocking and domestic platform VPN-detection creates a layered censorship environment; split-tunneling strategies that route domestic Russian services natively (not through the tunnel) may be required to maintain usability.
+section: §4 (OSW analysis, April 2026)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ling-one-prompt-censorship-evasion
+kind: evaluation
+summary: Under maximum-sensitivity classifier settings, FlowPaint forces Random Forest to accept ~25% FPR across all four out-of-distribution protocols in order to maintain high TPR — blocking 1 in 4 legitimate flows, a level of collateral damage operationally unsustainable for state-level censors. Obfs4 and UPGen exhibit clean separation (TPR ≈ 1.00, FPR ≈ 0.00), imposing no such dilemma on the censor and thus offering no protection from the censor's perspective either.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Exploiting the censor's dilemma — forcing unacceptable false-positive rates on legitimate traffic — is a first-class design goal alongside minimizing true-positive detection; tools should measure FPR cost imposed on the censor, not only their own evasion success rate.
+    - A defense that is imperfectly detected but forces 25% collateral FPR may be operationally more durable than one achieving perfect evasion only against weaker classifiers while remaining cleanly separable by stronger ones.
+section: §5.1.2, Table 2
+extracted_by: claude-sonnet-4-6

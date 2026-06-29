@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-doumanidis-howlr-client-driven-approach
+kind: defense
+summary: HOWLR's T4 variant (scanning only port 443) reduces worst-case prefix scan time from 260 minutes to 4 minutes while missing fewer than 2 witnesses in 83.6% of prefixes; the worst-case drop was 13 witnesses in a high-density prefix, still leaving 15 usable witnesses. Over a 6-day monitoring period, 96% of the 30,217-witness set maintained 99+% uptime.
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - A port-443-only witness scan is practical for real-time client-side BGP hijack detection before each sensitive connection; circumvention clients can integrate this as a startup check with low overhead.
+    - Witness sets for Tor relays and VPN endpoints require infrequent refresh (only ~4% churn over 6 days), so daily or weekly re-discovery is sufficient rather than per-session scanning.
+section: §5, §6
+extracted_by: claude-sonnet-4-6

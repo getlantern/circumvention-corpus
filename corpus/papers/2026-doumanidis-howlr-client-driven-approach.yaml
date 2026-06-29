@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2606.21845
+id: 2026-doumanidis-howlr-client-driven-approach
+title: 'HOWLR: A Client-Driven Approach to BGP Hijack Detection'
+authors:
+    - Constantine Doumanidis
+    - Anya Kalogerakos
+    - Maria Apostolaki
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2606.21845"
+url: https://arxiv.org/abs/2606.21845v1
+abstract: 'BGP hijacking enables impersonation attacks in which adversaries divert traffic at the prefix level and serve malicious content to unsuspecting clients. Detecting such attacks has traditionally been the responsibility of network operators, leaving end hosts exposed for hours. We argue that end hosts can detect prefix-level impersonation independently, exploiting a fundamental asymmetry: a BGP hijack diverts traffic for an entire IP prefix, but impersonating every co-hosted service within that prefix is prohibitively difficult at scale, especially if each service is authenticated by a different Certificate Authority. We propose HOWLR, a tool that operationalizes this insight by using co-hosted, TLS-authenticated services as witnesses: if a client can no longer authenticate them, it has evidence of an ongoing attack. This work evaluates the feasibility of this method by quantifying the existence and diversity of witnesses in the wild. We show that HOWLR can protect 89% of Tor relay prefixes, and 75% of Bitcoin pool gateway prefixes.'
+censors:
+    - generic
+techniques:
+    - bgp-hijack
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Studies infrastructure resilience against BGP hijacking for Tor relays, a potential attack vector affecting circumvention networks.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2606.21845

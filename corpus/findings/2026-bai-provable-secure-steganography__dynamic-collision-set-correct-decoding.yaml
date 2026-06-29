@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-bai-provable-secure-steganography
+kind: defense
+summary: Correct decoding is achieved by handling collision cases — where multiple candidate bit-string messages map to the same candidate token — through a dynamic collision set that is maintained and strategically expanded within a bounded size range across generation steps.
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - 'The bounded dynamic collision set is a key correctness constraint: implementations must track collision state across the full generated sequence, meaning the decoder needs stateful access to the same seed and collision history as the encoder.'
+    - When adapting this scheme for circumvention control traffic, the bounded collision-set size limits the maximum covert bandwidth per token; designers should benchmark capacity per output token against alternative PSS schemes before choosing this approach.
+section: Abstract / §3
+extracted_by: claude-sonnet-4-6
