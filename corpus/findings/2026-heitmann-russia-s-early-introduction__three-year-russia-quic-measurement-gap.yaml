@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-heitmann-russia-s-early-introduction
+kind: evaluation
+summary: After Russia's broad QUIC censorship was first identified in 2022, TSPU QUIC filtering received little research attention for approximately three years, allowing the full transition to SNI-dependent filtering to go unnoticed by the research community.
+techniques:
+    - http3-quic-block
+    - sni-blocking
+censors:
+    - ru
+defense_implications:
+    - Censorship measurement programs must continuously monitor all major censors' QUIC handling—not just China—to avoid multi-year blind spots that leave circumvention tool designers working from stale threat models.
+    - Instrument deployed circumvention tools to report QUIC reachability telemetry from Russian networks in real time, so protocol changes are detected operationally rather than waiting for academic measurement studies.
+section: Abstract
+extracted_by: claude-sonnet-4-6

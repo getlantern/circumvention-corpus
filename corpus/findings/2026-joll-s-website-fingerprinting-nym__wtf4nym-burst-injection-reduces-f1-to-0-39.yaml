@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: defense
+summary: WTF4Nym, a Nym-tailored burst-injection defense deployed at the entry gateway, reduces Tik-Tok WF F1 score to 0.39 at moderate overhead (latency overhead 3.78×, bandwidth overhead 4.22×). Directly porting Tor's FRONT defense to Nym yields only F1=0.63, and WTF-PAD yields F1=0.87, because both fail to account for Nym's continuous loop cover traffic in their burst-detection state machines.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - WF defenses must be re-engineered for the specific cover-traffic architecture of the underlying transport; direct ports of Tor-era defenses to non-Tor anonymity networks yield poor results because burst-detection state machines break under continuous cover traffic.
+    - Burst-injection at the gateway/relay level (WTF4Nym pattern) achieves a better protection/overhead tradeoff than tuning the mixnet's own parameters; circumvention tools using relay-based transports should implement relay-side WF defenses.
+section: §6.2, Table 7
+extracted_by: claude-sonnet-4-6

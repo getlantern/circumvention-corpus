@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-heitmann-russia-s-early-introduction
+title: On Russia’s Early Introduction of QUIC SNI Censorship
+authors:
+    - Nico Heitmann
+    - Niklas Niere
+    - Felix Graf Lange
+    - Juraj Somorovsky
+venue: FOCI 2026
+year: 2026
+url: https://petsymposium.org/foci/2026/foci-2026-0010.php
+censors:
+    - ru
+techniques:
+    - sni-blocking
+    - http3-quic-block
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Understanding Russia's QUIC SNI blocking is critical for developing QUIC-based circumvention defenses and protocols that avoid SNI leakage.
+visibility: public
+date_added: "2026-07-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/foci/2026/foci-2026-0010.php

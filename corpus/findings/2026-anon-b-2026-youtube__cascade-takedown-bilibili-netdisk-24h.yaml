@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-b-2026-youtube
+kind: deployment
+summary: Following the Bilibili takedown on 2026-02-22, user-created mirror copies on both Baidu Netdisk and Quark Netdisk were taken down within 24 hours (all links confirmed dead by 2026-02-23), demonstrating coordinated cross-platform suppression across at least three independent storage tiers in under one day.
+techniques:
+    - keyword-filtering
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Multi-tier domestic storage redundancy (Bilibili → cloud storage) provides only hours of resilience; circumvention tools must route users to foreign platforms (YouTube, Internet Archive) rather than relying on domestic mirrors.
+    - 'Cascade suppression speed (~24 hours across multiple platforms) sets a hard deadline: content must reach a GFW-accessible foreign host before the domestic cascade completes.'
+section: 事件回顾
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ujuiujumandan-colorado-university-phd
+kind: policy
+summary: Wang had been developing censorship circumvention technologies since 2017 and contributed to open-source projects targeting the Great Firewall. His personal website prominently displayed the phrase 'Across the Great Wall we can reach every corner in the world,' and a commenter on the HRIC post noted that his GitHub projects displayed 'be water' as a slogan—a phrase associated with the Hong Kong protest movement—which may have been used by authorities to establish a political attribution.
+censors:
+    - cn
+defense_implications:
+    - Political slogans or protest-movement symbolism in public repositories (README files, GitHub profile, personal sites) can be used by Chinese authorities to add a political charge on top of circumvention-tool work; open-source maintainers should audit public-facing content for dual-use political signals.
+    - Circumvention tool contributors should consider whether any metadata on public repositories (commit emails, profile photos, linked social accounts) enables de-anonymization by adversarial state actors.
+section: Full text / comments
+extracted_by: claude-sonnet-4-6

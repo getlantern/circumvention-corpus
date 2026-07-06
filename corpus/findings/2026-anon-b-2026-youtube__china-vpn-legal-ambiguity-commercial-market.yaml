@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-b-2026-youtube
+kind: policy
+summary: The blog post notes that using a VPN in China 'is not illegal in itself, only if used for illegal activities,' citing a separate analysis — reflecting the legal ambiguity that commercial 'airport' services exploit to operate openly at very low price points (¥2/month) while avoiding explicit criminalization.
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - The legal grey zone enables a large commercial proxy market; tool designers can leverage this ecosystem for node supply rather than building proprietary infrastructure, but should plan for periodic crackdowns that temporarily disrupt commercial providers.
+section: 常见问题
+extracted_by: claude-sonnet-4-6

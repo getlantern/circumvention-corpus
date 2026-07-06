@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-huangshaomings001-google-auto-jump
+kind: evaluation
+summary: The redirect behavior varies depending on which proxy type is used, indicating the interception is sensitive to how the proxy mediates the connection rather than being a blanket IP- or DNS-level block. This suggests the triggering condition is protocol- or flow-specific rather than purely destination-based.
+techniques:
+    - dpi
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Proxy implementations should not assume uniform treatment of all HTTPS destinations; connection metadata exposed at the proxy boundary (SNI, TCP timing, HTTP headers) may influence which application-level redirects get injected.
+    - Log and diff google.com responses across different proxy modes (SOCKS5, HTTP CONNECT, transparent) to isolate which metadata element the censor or Google's geolocation logic is keying on.
+section: Issue thread discussion
+extracted_by: claude-sonnet-4-6

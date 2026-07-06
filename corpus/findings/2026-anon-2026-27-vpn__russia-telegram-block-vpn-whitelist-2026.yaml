@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: deployment
+summary: In April 2026, Russia nearly completely blocked Telegram, reducing availability without VPN to 5% during the first ten days; Russia's VPN user base was estimated at no less than 40% of the population. Beginning in mid-April, over 20 major Russian websites and platforms (including Gosuslugi, Ozon, Yandex, Sberbank, VK) began restricting access for VPN users, and Russia introduced a whitelist-based service model permitting only state-approved services under certain network restriction states.
+techniques:
+    - ip-blocking
+    - dpi
+    - throttling
+censors:
+    - ru
+defense_implications:
+    - Russia's whitelist-based model (only approved services run during restriction states) means IP-space-based defenses (domain fronting via CDNs, decoy routing) are at risk of collateral blocking if the CDN or ISP is not on the whitelist; circumvention tools should evaluate whether their cover traffic host is whitelisted in target regions.
+    - Platform-side VPN detection (websites blocking VPN exit IPs) is now a parallel enforcement layer distinct from the network censor; tools need exit-node strategies that do not use well-known datacenter IP ranges detectable by commercial VPN-block lists.
+section: §4 (俄罗斯 Telegram / OSW section)
+extracted_by: claude-sonnet-4-6

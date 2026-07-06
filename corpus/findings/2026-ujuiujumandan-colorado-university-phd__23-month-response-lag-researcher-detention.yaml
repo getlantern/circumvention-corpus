@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ujuiujumandan-colorado-university-phd
+kind: policy
+summary: The HRIC statement notes that Wang disappeared in July 2024 but the formal human-rights organization response did not come until June 2026—a gap of approximately 23 months. This lag illustrates that the international academic and human-rights community lacks rapid-response mechanisms for detecting and publicizing detentions of circumvention researchers.
+censors:
+    - cn
+defense_implications:
+    - Circumvention research communities should establish check-in protocols or trusted contacts outside China who can trigger rapid public disclosure if a researcher goes dark after travel to a high-risk country; a 2-year delay before formal advocacy significantly reduces leverage.
+    - Organizations distributing or maintaining censorship circumvention tools should maintain a list of known contributors and institute welfare-check procedures for those who travel to hostile jurisdictions.
+section: Full text
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-ujuiujumandan-colorado-university-phd
+title: Colorado University PHD Student Disappeared in China Two Years Ago
+authors:
+    - '@UjuiUjuMandan'
+venue: net4people/bbs
+year: 2026
+url: https://hrichina.substack.com/p/internet-freedom-researcher-yiyan
+abstract: In June 2026, Human Rights in China (HRIC) releases a statement expressing concern about the disappearance of internet censorship researcher Yiyan Wang, a PhD student at the University of Colorado Boulder who vanished in July 2024 after returning to China. HRIC documents Wang's research contributions to censorship measurement and circumvention technologies, calls for disclosure of his status, and emphasizes that internet freedom research should not be grounds for punishment.
+censors:
+    - cn
+techniques:
+    - measurement-platform
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Documents how authoritarian governments target circumvention researchers and open-source maintainers; relevant for understanding ecosystem risks and censor tactics beyond technical blocking.
+visibility: public
+date_added: "2026-07-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/631

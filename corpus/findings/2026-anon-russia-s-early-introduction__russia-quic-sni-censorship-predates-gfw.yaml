@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-russia-s-early-introduction
+kind: evaluation
+summary: Russia's TSPU devices switched from broad QUIC blocking to SNI-dependent QUIC censorship between May 2022 and July 2023—at least nine months before the GFW introduced SNI-based QUIC censorship, which was previously considered the first of its kind. This transition was discussed only on Russian-language forums (ntc.party) and went unnoticed by the international research community for approximately three years.
+techniques:
+    - sni-blocking
+    - http3-quic-block
+censors:
+    - ru
+    - cn
+defense_implications:
+    - Russia's demonstrated willingness to adopt fine-grained SNI-based protocol filtering before China signals that TSPU infrastructure is operationally agile; circumvention protocols deployed in Russia should assume SNI-based blocking within months of QUIC adoption.
+    - Russian-language technical forums (ntc.party) provided years of advance warning over academic literature; circumvention teams should monitor them as primary early-warning signals for TSPU behavior changes.
+section: §2.3, §4
+extracted_by: claude-sonnet-4-6

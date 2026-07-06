@@ -1,0 +1,76 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-anon-2026-27-vpn
+title: 2026年第27周翻墙相关新闻周报：VPN封锁、快连动态与全球网络管制 | 二毛
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/blog/vpn-weekly-2026-w27/
+abstract: |-
+    2026年第27周翻墙相关新闻周报：VPN封锁、快连动态与全球网络管制 | 二毛
+
+    [Skip to content](#VPContent)
+
+    # 2026年第27周翻墙相关新闻周报：VPN封锁、快连动态与全球网络管制
+
+    约 3439 字大约 11 分钟
+
+    [翻墙](/blog/tags/?tag=翻墙)[VPN](/blog/tags/?tag=VPN)[科学上网](/blog/tags/?tag=科学上网)[网络审查](/blog/tags/?tag=网络审查)
+
+    ...
+
+    2026-06-29
+
+    这是本站“翻墙相关新闻周报”的第一期。本期按 **2026年第27周** 发布，回补整理近期公开媒体和研究机构中与 VPN、翻墙、网络审查有关的重要新闻，作为后续每周更新的基准。
+
+    本文更新于 **2026年6月29日**。周报只引用网络公开新闻、官方公告和研究报告，不引用本站旧文，也不把社群传闻当新闻。每条新闻都在正文中标明出处，方便读者自行核对原文。
+
+    阅读提醒
+
+    本文是新闻整理，不提供绕过网络封锁的具体操作教程。不同国家和地区对 VPN、代理、跨境联网有不同规定，使用任何网络工具前，请自行了解并遵守当地法律法规。
+
+    快速抓重点
+
+    本周报主要看三条线：一是中国大陆 VPN 可用性与 LetsVPN / 快连事件，二是俄罗斯对 Telegram、VPN、App Store 和网站访问的组合管制，三是全球范围内互联网 shutdown 与商业化审查系统外溢。
+
+    ## [本周重点新闻一览](#本周重点新闻一览)
+
+    **中国相关**
+
+    *   **2026年6月4日**：ABC 报道中国 VPN 使用者遭遇更频繁不稳定，采访对象称稳定 VPN 越来越难找。出处：[ABC News](https://www.abc.net.au/news/2026-06-04/as-beijing-cracks-down-on-vpns-internet-users-in-china-adapt/106754254)。
+    *   **2026年5月27日**：GPPi / ChinaFile 基于泄露数据分析中国 VPN 使用规模与封锁状况。出处：[GPPi](https://gppi.net/2026/05/27/chinas-vpn-crackdown)、[ChinaFile](https://www.chinafile.com/reporting-opinion/features/leaked-documents-show-success-of-chinas-vpn-crackdown)。
+    *   **2026年4月28日、5月8日**：LetsVPN / 快连宣布终止面向中国大陆地区业务，后续又称恢复全球标准运营但无法保证中国大陆可用性。出处：[LetsVPN 4月28日公告](https://letsvpn.world/blog/c130bd)、[LetsVPN 5月8日公告](https://letsvpn.world/blog/f20bkd)、[中央社](https://www.cna.com.tw/news/acn/202604280316.aspx)。
+
+    **俄罗斯相关**
+
+    *   **2026年4月**：俄罗斯加强 Telegram 与 VPN 管制，部分网站开始限制 VPN 用户访问。出处：[OSW](https://www.osw.waw.pl/en/publikacje/analyses/2026-04-17/russia-blocks-telegram-and-cracks-down-vpns)、[Mediazona](https://en.zona.media/article/2026/04/07/russian_internet_censorship_2026)。
+    *   **2026年3月12日**：Human Rights Watch 称俄罗斯监管方确认已封锁 469 个用于绕过审查的 VPN 服务。出处：[Human Rights Watch](https://www.hrw.org/news/2026/03/12/russia-digital-iron-curtain-falls-on-internet-freedom-protection-day)。
+
+    **全球与平台相关**
+
+    *   **2026年发布的 2025 年度报告**：Apple 披露 2025 年因政府下架要求移除 2045 个 App，其中俄罗斯 1213 个、中国大陆 196 个。出处：[Apple 2025 App Store Transparency Report](https://www.apple.com/legal/app-store/transparency/2025/)。
+    *   **2026年3月31日**：Access Now 与 #KeepItOn 报告称 2025 年全球至少发生 313 起互联网 shutdown，涉及 52 个国家。出处：[Access Now](https://www.accessnow.org/campaign/keepiton/)。
+    *   **2025年9月，2026年仍被多篇报道引用**：InterSecLab / WIRED 报道 Geedge Networks 相关泄露资料，称商业化审查系统被输出到多国。出处：[InterSecLab](https://interseclab.org/research/the-internet-coup/)、[WIRED](https://www.wired.com/story/geedge-networks-mass-censorship-leak/)。
+
+    ## [1\. ABC：进入6月，中国用户反映稳定 VPN 越来越难找](#_1-abc-进入6月-中国用户反映稳定-vpn-越来越难找)
+
+    **关键词：** 稳定 VPN、运营商排查、未授权 VPN。
+
+    ABC News 在 2026年6月4日发布报道，采访了在中国大陆使用 VPN 的用户和研究者。报道提到，有用户表示过去可用的 VPN 现在变得不稳定，另有经常往返中国大陆的受访者称自己曾使用 LetsVPN，但在 2026年4月之后需要切换到其他服务。报道还援引美国审查研究者 Eric Liu 的说法，称 2026年4月出现了新一轮 VPN 打击，一些地区的电信运营商被要求排查并封锁 VPN 服务。来源：[ABC News](https://www.abc.net.au/news/2026-06-04/as-beijing-cracks-down-on-vpns-internet-users-in-china-adapt/106754254)。
+
+    ABC 同一篇报道还采访了 Deakin University 学者 Ihsan Yilmaz。他认为，中国的审查已经从单纯封锁境外网站，扩展到限制人们绕过防火墙的方法，包括限制未授权 VPN、干扰 VPN 连接、从应用商店移除 VPN App，以及惩罚部分服务提供者和用户。来源：[ABC News](https://www.abc.net.au/
+censors:
+    - cn
+    - ru
+    - generic
+techniques:
+    - ip-blocking
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Community-curated operational intelligence on VPN blocking trends and commercial censorship exports; directly relevant to circumvention tool deployments in censored regions.
+visibility: public
+date_added: "2026-07-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/blog/vpn-weekly-2026-w27/

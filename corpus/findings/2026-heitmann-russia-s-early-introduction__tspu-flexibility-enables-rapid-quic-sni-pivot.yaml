@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-heitmann-russia-s-early-introduction
+kind: detection
+summary: The rapid transition from blanket international QUIC blocking to fine-grained SNI-dependent QUIC censorship demonstrates that Russian TSPU devices possess significant technical flexibility, and that Russia is willing to invest in strict, up-to-date censorship infrastructure.
+techniques:
+    - sni-blocking
+    - http3-quic-block
+    - dpi
+censors:
+    - ru
+defense_implications:
+    - 'Do not treat any observed Russian censorship configuration as stable: TSPU infrastructure can pivot from blunt-force blocking to precise SNI targeting within months, invalidating transport designs that relied on the earlier broader block.'
+    - Circumvention tools deployed in Russia should be designed for rapid protocol updates, since TSPU flexibility means detection vectors will evolve faster than annual release cycles.
+section: Abstract
+extracted_by: claude-sonnet-4-6
