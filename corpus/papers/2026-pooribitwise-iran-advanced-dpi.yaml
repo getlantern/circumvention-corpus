@@ -1,0 +1,37 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-pooribitwise-iran-advanced-dpi
+title: '[Iran] Advanced DPI is reassembling TCP fragments to extract SNI on VLESS/WS + CDN'
+authors:
+    - '@pooribitwise'
+    - '@its0ka'
+    - '@SpiderXss'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/628
+abstract: Users in Iran report that the Iranian DPI has deployed advanced TCP fragment reassembly and stateful inspection to defeat SNI obfuscation techniques. The DPI performs traffic analysis on upload/download ratios, active probing on port 443, and blocks domains within 24 hours despite fragmentation and Cloudflare CDN. Multiple circumvention protocols tested (VLESS/WS, Reality, gRPC, Trojan) experience blocking within hours to days, manifesting as DNS hijacking to 10.10.34.34, RST floods, and IP blacklisting.
+censors:
+    - ir
+techniques:
+    - dpi
+    - rst-injection
+    - dns-poisoning
+    - active-probing
+    - traffic-shape
+    - ip-blocking
+    - port-blocking
+defenses_discussed:
+    - vless
+    - reality
+    - trojan
+    - randomization
+    - tunneling
+    - webrtc-pluggable
+    - hysteria2
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Documents real-world blocking techniques defeating VLESS, Reality, Trojan, and other protocols Lanterns proxy stack may deploy for Iran access.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/628

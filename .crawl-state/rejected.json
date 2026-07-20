@@ -1,5 +1,40 @@
 [
   {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0041.php",
+    "title": "SentinelTouch: A Lightweight Privacy-Preserving Biometric-Fingerprinting Authentication and Identification System Based on Neural Networks and Homomorphic Encryption",
+    "source": "popets",
+    "reason": "Biometric authentication and neural-network fingerprinting with homomorphic encryption; no censorship, circumvention, or traffic-analysis angle.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0054.php",
+    "title": "Analyzing Societal Awareness and Perception of Digital Fingerprinting and Fingerprinting Countermeasures",
+    "source": "popets",
+    "reason": "Social science study on user awareness of browser fingerprinting and privacy countermeasures; not a censorship-circumvention or censor-capability study.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0078.php",
+    "title": "Banned Books: Analysis of Censorship on Amazon.com",
+    "source": "popets",
+    "reason": "Studies platform-level content moderation on Amazon rather than network-level censorship, detection techniques, or circumvention protocols central to the circumvention-corpus scope.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0082.php",
+    "title": "EXADPrinter: Semi-Exhaustive Permissionless Device Fingerprinting Within the Android Ecosystem",
+    "source": "popets",
+    "reason": "General Android device fingerprinting paper without application to censorship detection, censor capabilities, or circumvention defenses.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0102.php",
+    "title": "An Improved Entropy Measure for Web Browser Fingerprinting Risk",
+    "source": "popets",
+    "reason": "Browser fingerprinting risk metrics are a general privacy concern without specific application to censorship detection, censor capabilities, circumvention protocols, or blocking techniques.",
+    "rejected_at": "2026-07-20"
+  },
+  {
     "key": "arxiv:2605.15984",
     "title": "Beyond Content: A Comprehensive Speech Toxicity Dataset and Detection Framework Incorporating Paralinguistic Cues",
     "source": "arxiv",

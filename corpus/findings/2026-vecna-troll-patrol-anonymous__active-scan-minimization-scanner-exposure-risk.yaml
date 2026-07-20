@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vecna-troll-patrol-anonymous
+kind: defense
+summary: Active scanning of bridges for censorship verification must be minimized because each scan independently risks exposing the scanning infrastructure to the censor, with discovery probability modeled as a monotonically increasing function of scan volume. Troll Patrol reduces required scans by limiting active verification to only bridges for which user-submitted negative reports have been received, and revokes reporting privileges from users who accumulate too many false reports to deter scan-flooding attacks.
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Any bridge censorship measurement infrastructure should gate active scans behind a prior-indication filter (e.g., user reports, usage-statistics anomalies) rather than periodically scanning all known bridges, to bound scanner exposure risk.
+    - Abuse mitigations (e.g., per-credential false-report counters enforced via zero-knowledge proofs) are necessary to prevent adversarial users from triggering unlimited scans and thereby increasing the risk of scanner discovery.
+section: §2.2, §7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-lunarcanvas-we-researched-iran
+title: We researched Iran whitelist system before and after May.26 restoration with a vantage point within Iran
+authors:
+    - '@LunarCanvas'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/630
+abstract: Active measurement study of Iran's allowlist (whitelist) blocking system deployed following the January 2026 nationwide shutdown. Using a privileged vantage point inside Iran, researchers characterize the IP-based filtering rules before and after the May 26 partial restoration, finding that inbound access remains heavily restricted, allowlisted IPs are supplemented by SNI-based filtering for sensitive domains, and blocking policies differ even among allowlisted users.
+censors:
+    - ir
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - rst-injection
+    - active-probing
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Rare inside-Iran measurement of active blocking policy; directly informs circumvention tool design against Iran's allowlist-plus-SNI filtering strategy.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/630

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-witwer-dodge-client-side-framework
+kind: evaluation
+summary: In live deployment with k=10 anonymity sets, video+audio+ABR, Dodge-mimic causes zero playback stalls in approximately 68% of sessions; for the remaining 32%, the mean initial stall time is 1.6 seconds — an extension of normal startup delay rather than mid-playback interruption — and all cycles complete roughly 20 seconds before playback ends even with large trailing cycles.
+techniques:
+    - website-fingerprint
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Dodge-style video fingerprinting defenses are practically deployable without meaningful user-experience degradation; the 1.6s startup overhead is acceptable for privacy-sensitive use cases such as censorship circumvention or hidden service video hosting.
+    - Pre-computing anonymity sets offline and delivering extended manifests via a loopback or local server avoids all network overhead for manifest traffic while preserving zero-server-change deployment.
+section: §5.3, §5.3.3
+extracted_by: claude-sonnet-4-6

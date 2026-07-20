@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-precarious-but-active
+kind: evaluation
+summary: 'Contrary to an apathetic response to surveillance, fans actively constructed collective ''red lines'' — community-shared threat models distinguishing definitely dangerous activities from acceptable gray-area behaviors. This community-level threat modeling was shaped by real incidents (e.g., the 2024–2025 Haitang author arrests) and operated in tension with privacy solutions: individual circumvention (e.g., accessing AO3 via VPN) did not restore community function because the broader fandom remained trapped on domestic platforms.'
+techniques:
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools designed for censored communities must account for community-level network effects — individual access to unblocked platforms does not constitute a usable solution if the broader community cannot follow, so reducing onboarding friction for non-technical users is as important as the protocol itself.
+    - User threat models are actively maintained at the community level and updated in response to enforcement events; circumvention tools should provide timely, in-app communication about detected blocking changes rather than relying on users to self-discover.
+section: §Abstract, §5.2
+extracted_by: claude-sonnet-4-6

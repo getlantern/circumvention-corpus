@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schadt-breaking-partially-fixing
+kind: detection
+summary: The Fragging attack exploits message fragmentation in Nym to break sender-recipient unlinkability without any external side information. In a Shadow network simulator testbed, benign fragment sets complete in an average of 308 ms, while sets with at least one dropped fragment show completion times of ~2000 ms due to Nym's retransmission timeout—a timing signal that remains distinguishable at per-hop mixing delays of up to 500 ms.
+techniques:
+    - traffic-shape
+    - flow-correlation
+censors:
+    - generic
+defense_implications:
+    - Mix networks using per-fragment acknowledgment and retransmission (like Nym/Loopix) must switch to per-message acknowledgments—retransmitting all fragments under a fresh identifier—to prevent the completion-time side-channel from leaking sender identity.
+    - Even large increases in mixing delay (up to 500 ms per hop) do not mask the ~1.5 s retransmission timeout signal; timing-based defenses alone are insufficient against a malicious entry node.
+section: §4.1, Figure 2
+extracted_by: claude-sonnet-4-6

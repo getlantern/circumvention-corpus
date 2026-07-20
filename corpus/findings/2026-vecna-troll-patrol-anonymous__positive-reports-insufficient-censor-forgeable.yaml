@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vecna-troll-patrol-anonymous
+kind: defense
+summary: 'Positive user reports (reporting successful connections) cannot reliably indicate whether a bridge is accessible: censors possess all technical capabilities of regular users and can submit fabricated positive reports after blocking a bridge. Restricting positive reports to high-reputation users would exclude most honest users early in a bridge''s lifetime, when each Tor Lox bridge is initially distributed to only 10 users globally.'
+techniques:
+    - ip-blocking
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Censorship detection pipelines should rely exclusively on negative reports (inaccessibility signals) rather than positive reports, since the latter cannot be made unforgeable against a censor who has all technical capabilities of a legitimate user.
+    - Bridge distribution systems should design reputation mechanics so censors cannot accrue reputation by mimicking honest user behavior during the period a bridge is accessible.
+section: §4
+extracted_by: claude-sonnet-4-6

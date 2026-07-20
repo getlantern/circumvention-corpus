@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-thewizard0fbsod-quirky-chinese-i2p
+kind: detection
+summary: The suspicious Chinese I2P nodes rotate their IP addresses regularly and simultaneously as a coordinated group, and some of the observed IPs have prior history of malicious behavior (SSH brute-forcing, remote exploitation) in threat-intelligence databases. Simultaneous coordinated IP rotation distinguishes state-run infrastructure from organic users and is a fingerprint of centrally managed probe fleets.
+techniques:
+    - active-probing
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Cross-reference I2P peer IPs against public threat-intel feeds (e.g., AbuseIPDB, Shodan) as an additional signal for automated peer filtering
+    - Simultaneous rotation events across a peer cluster should trigger immediate blocklist updates; design netDb tooling to detect and alert on coordinated churn
+section: Issue body
+extracted_by: claude-sonnet-4-6

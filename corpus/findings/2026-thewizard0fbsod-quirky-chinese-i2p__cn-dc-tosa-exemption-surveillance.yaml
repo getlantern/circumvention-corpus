@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-thewizard0fbsod-quirky-chinese-i2p
+kind: deployment
+summary: The suspected Chinese surveillance nodes are hosted in data centers that explicitly prohibit 'circumvention services' (proxy/VPN services) in their terms of service, yet the nodes operate safely for extended periods. This suggests the operators benefit from either state-sanctioned access or ISP-level protection from ToS enforcement, consistent with a government or contractor intelligence-collection operation.
+techniques:
+    - active-probing
+censors:
+    - cn
+defense_implications:
+    - Do not rely on datacenter AUP enforcement as a barrier to censor-operated infrastructure; treat datacenter-hosted peers from high-censorship jurisdictions as structurally suspect regardless of ToS
+    - Document and share observed IP ranges publicly so the broader I2P community can add them to blocklists rapidly
+section: Issue body
+extracted_by: claude-sonnet-4-6

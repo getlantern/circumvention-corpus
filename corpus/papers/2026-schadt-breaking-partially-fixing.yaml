@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-schadt-breaking-partially-fixing
+title: Breaking and (Partially) Fixing Onion Routing with Fragmentation
+authors:
+    - Daniel Schadt
+    - Christoph Coijanovic
+    - Thorsten Strufe
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0120.php
+censors:
+    - generic
+techniques:
+    - traffic-shape
+defenses_discussed:
+    - tor
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Fragmentation-based attacks on Tor are relevant to understanding vulnerabilities in major circumvention systems that adversaries could exploit to block or analyze traffic.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0120.php

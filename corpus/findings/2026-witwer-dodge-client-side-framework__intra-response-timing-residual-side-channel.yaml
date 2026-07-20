@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-witwer-dodge-client-side-framework
+kind: detection
+summary: 'Even with perfectly equalized cycle sizes, a persistent intra-response timing side channel survives in Dodge: timing characteristics of individual packets within server responses cannot be controlled client-side, causing vRF accuracy to remain slightly above random guessing in all tested scenarios. This residual leak is consistent and observable regardless of anonymity set size or media configuration.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Client-side application-layer defenses cannot fully eliminate video fingerprinting; server-side cooperation (privacy-aware TLS pacing, consistent response shaping) is required to close the intra-response timing gap.
+    - Consider pairing Dodge-style cycle equalization with a randomized timing jitter layer (e.g. Maybenot-style network-layer cover traffic) to address the server-pacing side channel.
+section: §5.2.1, §6
+extracted_by: claude-sonnet-4-6

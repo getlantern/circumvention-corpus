@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schadt-breaking-partially-fixing
+kind: defense
+summary: Scylla, a modified Sphinx mix format, applies OAEP (an all-or-nothing transform) to the concatenated recipient address and message before splitting into fragments, so the final hop cannot recover the recipient or message without all fragments. Scylla adds only 39 bytes of header overhead over Sphinx and ~247 µs per fragment of computation time—negligible compared to Nym's default 15 ms per-hop mixing delay.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - meta-resistance
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Implement fragmentation at the mix-packet layer (as in Scylla) rather than above it: embedding the AONT inside the mix format prevents the fragmentation metadata from being visible to intermediate nodes and eliminates the C3 condition for Fragging.'
+    - The 39-byte and 247 µs/fragment overheads are small enough that Scylla is a drop-in Sphinx replacement; mix network designers can adopt secure fragmentation without meaningful throughput or latency penalty.
+section: §5, §7.1, §7.4, Figure 11
+extracted_by: claude-sonnet-4-6

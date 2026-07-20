@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-we-researched-iran
+kind: deployment
+summary: Before the May 26, 2026 partial restoration, only ~0.017% (~2,000 of 11,766,454 tested Iranian IPv4 addresses) could reach outside the country via Iran's source-IP allowlist; after restoration the figure rose ~4× to ~0.07% (~8,000 IPs), with the majority of newly reachable addresses originating from Noyan Abr Arvan Co. (ASN 202468 and 205585). Successful IPs were sparse within individual /24 subnets, indicating that access is granted to specific IP addresses rather than entire network blocks.
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Circumvention proxies hosted on Iranian IP space face near-certain blocking unless the hosting AS is explicitly allowlisted; prefer proxy infrastructure in ASes with confirmed allowlist status (e.g., Noyan Abr Arvan co. post-restoration).
+    - Do not assume /24-level granularity when predicting which Iranian IPs can reach out; the allowlist operates at the individual IP level, so /24-based IP reputation scoring will over-predict reachability.
+section: §4.1.1
+extracted_by: claude-sonnet-4-6

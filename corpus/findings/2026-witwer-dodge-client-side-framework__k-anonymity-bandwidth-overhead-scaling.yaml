@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-witwer-dodge-client-side-framework
+kind: evaluation
+summary: With 32 worker threads, Dodge-mimic anonymity-set bandwidth overhead (as percentage of undefended video content) ranges from 21.0%±0.8 at k=2 to 73.1%±2.8 at k=10 and 107.4%±1.5 at k=20; beyond k=10–16 threads, additional parallelism yields diminishing returns and can increase overhead due to thread-boundary fragmentation of the optimal search space.
+techniques:
+    - website-fingerprint
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Budget roughly 21–73% bandwidth overhead for practical k-anonymity-based video fingerprinting defense; k=2 with many threads is viable for bandwidth-constrained users while still halving attacker accuracy.
+    - Anonymity set generation completes useful sets within 30 seconds (k=2) to 2 minutes (k=10), making pre-computation feasible for any content library.
+section: §5.1, Table 1
+extracted_by: claude-sonnet-4-6

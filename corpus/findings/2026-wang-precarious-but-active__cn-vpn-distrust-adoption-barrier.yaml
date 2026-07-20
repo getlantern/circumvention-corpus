@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-precarious-but-active
+kind: evaluation
+summary: 'Among 10 interviewed overseas members of Chinese transformative fandom, 7 used a VPN to access banned sites while in China, yet VPN distrust was a documented adoption barrier: one participant stated, ''I am considering whether the VPN might be under government surveillance. Some VPNs seem like they are fully monitored by the government, while others, which are more private, feel safer to use.'' Separately, many fans inside China lacked awareness of VPNs entirely, assuming blocked platforms were permanently inaccessible.'
+techniques:
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools targeting Chinese users must invest in trust-signaling (open-source code, third-party audits, transparent infrastructure) because end-user distrust of VPN providers is a concrete adoption barrier, not a theoretical one.
+    - Onboarding flows should proactively explain what traffic is and is not visible to the provider, since users incorrectly assume commercial VPNs may be covertly government-operated.
+section: §5.1.3
+extracted_by: claude-sonnet-4-6

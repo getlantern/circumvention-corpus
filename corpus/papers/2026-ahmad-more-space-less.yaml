@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-ahmad-more-space-less
+title: More Space, Less Privacy? Measuring the Effectiveness of IP-based Website Fingerprinting in IPv6
+authors:
+    - Sumeer Ahmad
+    - Michalis Polychronakis
+    - Theophilus A. Benson
+    - Nguyen Phong Hoang
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0109.php
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lanterns; IPv6 implications for traffic-analysis attacks inform defenses needed in proxy/VPN systems.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0109.php

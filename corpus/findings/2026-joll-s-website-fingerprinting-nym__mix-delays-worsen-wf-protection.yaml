@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: detection
+summary: Increasing the per-hop mixing delay λM from 0 ms to 100 ms without cover traffic raises Tik-Tok F1 from 0.91 to 0.98 (Table 4, configs 6 vs 5), because larger delays push outgoing and incoming traffic bursts apart in time, making them easier to distinguish and removing confounding packet-order variability. Transposition leakage rises from 88.5% to 95.5% accuracy (Table 5) under the same conditions.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Do not rely on propagation delays alone (e.g., long mixnet paths) to defeat website fingerprinting; temporal separation of request/response bursts is exploitable and worsens with added latency.
+    - Cover traffic injected at the client/gateway endpoint is more effective than in-network mixing delays for WF resistance — prioritize endpoint shaping over routing latency.
+section: §5.2, Tables 4–5, Figure 3
+extracted_by: claude-sonnet-4-6

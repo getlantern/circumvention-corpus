@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ahmad-more-space-less
+kind: detection
+summary: 'IP-based website fingerprinting achieves 93–94% top-1 accuracy on dual-stack incomplete websites (those with any IPv4-only third-party dependencies) using both IPv4 and IPv6 fingerprints across 228K sites. For dual-stack complete sites (all resources reachable over IPv6), accuracy drops to 56% over IPv4 and 45% over IPv6. The discriminating signal comes almost entirely from secondary resource IPs: using only the primary domain''s IP yields 5–8% accuracy regardless of protocol.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention proxies that terminate at a shared IP (CDN-fronted or Cloudflare-proxied) dramatically reduce fingerprintability of individual destinations—this is a concrete structural argument for CDN-fronted transports over direct proxy IPs.
+    - Ensure that every third-party resource loaded by users (ads, analytics, fonts) also routes through the proxy; a single IPv4-only dependency leaks the site identity and raises accuracy from ~45% to ~94%.
+section: §6.1, Table 1
+extracted_by: claude-sonnet-4-6

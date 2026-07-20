@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: 'Iran''s DPI now performs full TCP fragment reassembly and stateful inspection on the fly: heavy client-side fragmentation (packets shredded to 10-30 bytes with 10-20ms inter-fragment delays, applied to the first 5 packets) failed to prevent SNI extraction, with VLESS/WS domains behind Cloudflare CDN blocked within 24 hours.'
+techniques:
+    - dpi
+    - sni-blocking
+censors:
+    - ir
+defense_implications:
+    - Fragmentation alone is insufficient against stateful reassembly — defenses must operate at a layer the reassembler cannot reconstitute, such as encrypting the ClientHello (ECH) or forwarding the real TLS handshake (REALITY).
+    - 'Treat TCP fragmentation as a dead defense against Iran: remove it from client defaults and invest engineering effort elsewhere.'
+section: Description
+extracted_by: claude-sonnet-4-6

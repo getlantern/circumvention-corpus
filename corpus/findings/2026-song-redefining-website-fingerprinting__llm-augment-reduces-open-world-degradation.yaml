@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-redefining-website-fingerprinting
+kind: evaluation
+summary: In open-world evaluation against 40 unseen background websites, models trained with Human+Claude traces suffer only 2–3% accuracy degradation versus 5–8% for Human-only training. This demonstrates that LLM-augmented data provides behavioral regularization that reduces false positives on background traffic, sustaining closed-world accuracy under realistic adversarial conditions.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention traffic defenses must be validated in open-world settings with large background populations — a 2–3% attacker degradation in open-world is insufficient protection compared to the 5–8% that was previously assumed.
+    - WFP defenses that generate cover traffic mimicking monitored-site patterns may inadvertently help LLM-trained attackers by reducing the background-class diversity.
+section: §5.5 / Figure 7
+extracted_by: claude-sonnet-4-6

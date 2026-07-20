@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-we-researched-iran
+kind: deployment
+summary: Before the May 26 restoration, Iran's inbound allowlist granted near-full access (100%) to university ASes (e.g., Shahid Beheshti University AS56765, Iran University of Medical Sciences AS47981) while major residential ISPs had <2% pass rates, demonstrating that the Iranian allowlist enforces differentiated access by institution type rather than a uniform policy. Additionally, roughly half of allowlisted IPs experienced no SNI filtering at all, while the other half faced domain-specific RSTs, suggesting non-uniform application-layer policies even among privileged addresses.
+techniques:
+    - ip-blocking
+    - sni-blocking
+censors:
+    - ir
+defense_implications:
+    - Bridges or helper nodes sourced from Iranian academic/institutional IP space are far more likely to have outbound Internet access than residential IPs; partnerships with Iranian academic institutions could provide more reliable relay infrastructure during future shutdowns.
+    - 'Do not model Iran''s censorship as a single uniform policy: the coexistence of IP-allowlist and SNI-blocklist layers with inconsistent per-IP application means circumvention tools must handle both layers independently and cannot assume that passing one check means passing all checks.'
+section: §4.1.2 and §4.2
+extracted_by: claude-sonnet-4-6
