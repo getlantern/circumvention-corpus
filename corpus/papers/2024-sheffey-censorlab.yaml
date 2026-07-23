@@ -15,7 +15,7 @@ techniques:
     - dpi
     - ml-classifier
 core: false
-notes: Generic Rust/NFQ censor-emulation testbed from UMass SPIN. Ships Docker + Nix flake + pre-built VMs; scenario logic is Python or ML models loaded at runtime. Currently the most complete shared platform for reproducible censor-emulation experiments — useful whenever we want to evaluate a Lantern protocol against a known censor technique without deploying to a real censored region.
+notes: Generic censor-emulation testbed from UMass SPIN. Rust binary intercepting live traffic via Linux NFQ + iptables/nftables, with per-scenario logic supplied as Python scripts or ML models. Designed for reproducible experiments against past, present, and hypothetical censorship strategies. Distributions: Docker, Nix flake, pre-built VirtualBox VMs.
 visibility: public
 date_added: "2026-07-23"
 added_by: manual
