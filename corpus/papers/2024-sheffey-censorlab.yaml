@@ -15,7 +15,7 @@ techniques:
     - dpi
     - ml-classifier
 core: false
-notes: Generic censor-emulation testbed from UMass SPIN. Rust binary intercepting live traffic via Linux NFQ + iptables/nftables, with per-scenario logic supplied as Python scripts or ML models. Designed for reproducible experiments against past, present, and hypothetical censorship strategies. Distributions: Docker, Nix flake, pre-built VirtualBox VMs.
+notes: 'Generic censor-emulation testbed from UMass SPIN. Rust binary intercepting live traffic via Linux NFQ + iptables/nftables, with per-scenario logic supplied as Python scripts or ML models. Designed for reproducible experiments against past, present, and hypothetical censorship strategies. Distributed as Docker image, Nix flake, and pre-built VirtualBox VMs.'
 visibility: public
 date_added: "2026-07-23"
 added_by: manual
