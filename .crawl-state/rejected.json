@@ -1545,5 +1545,103 @@
     "source": "arxiv",
     "reason": "Measures bot detection on general websites for web measurement research; lacks any connection to censorship, circumvention, proxying, or VPN systems.",
     "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.14939",
+    "title": "Censorship-Resistant Sealed-Bid Auctions on Blockchains",
+    "source": "arxiv",
+    "reason": "Paper addresses blockchain transaction fairness and MEV protection via sealed-bid auctions, not internet censorship circumvention; 'censorship-resistant' refers to transaction-ordering fairness in consensus, not resistance to government/ISP blocking.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.15221",
+    "title": "Robust and Precise Application Fingerprinting on 5G Physical Uplink Channel",
+    "source": "arxiv",
+    "reason": "Physical-layer application fingerprinting on 5G networks; no circumvention protocol, censor capability, or censorship-evasion angle.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.15810",
+    "title": "Let Them Steal: Trapping Large Language Model Extraction Attacks with Knowledge Honeypot",
+    "source": "arxiv",
+    "reason": "Paper studies model extraction attacks on proprietary LLMs using honeypot knowledge graphs\u2014an ML security problem unrelated to censorship, circumvention, censor detection, or surveillance infrastructure.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16021",
+    "title": "Stickel-type key exchange with hidden subspaces",
+    "source": "arxiv",
+    "reason": "Generic cryptanalysis of post-quantum key exchange schemes with no connection to censorship, circumvention, anonymity systems, or detection techniques.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16100",
+    "title": "Your \"Pro\" LLM Subscription May Actually Be \"Free\": Exposing Fingerprint Spoofing Risks in LLM Inference Services",
+    "source": "arxiv",
+    "reason": "Paper addresses LLM API fingerprinting and model-spoofing attacks; lacks any connection to censorship, circumvention, traffic analysis, or network security.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16121",
+    "title": "Invisible Manipulation Channels in AI-Assisted Financial Advisory: Implications for Market Integrity and Regulatory Design",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness against financial AI systems without a censorship, circumvention, or surveillance angle.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16740",
+    "title": "Robust and Automated Reconfiguration of Byzantine Wide-Area Replication",
+    "source": "arxiv",
+    "reason": "This is a blockchain consensus/distributed systems paper about Byzantine fault tolerance in state-machine replication; it has no connection to censorship measurement, censor detection, circumvention protocols, or internet freedom.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.17533",
+    "title": "SNAS: A Multi-Layer Defense-in-Depth Architecture for Secure Egress in Sandboxed Workloads",
+    "source": "arxiv",
+    "reason": "Cloud infrastructure paper on secure egress control for sandboxed workloads in Snowflake; no connection to censorship measurement, circumvention protocols, or censor detection techniques.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.17562",
+    "title": "Anywhere, Any-Stymie: Remote Activation of Trojan Malware on LiDAR with Modulated Signals",
+    "source": "arxiv",
+    "reason": "IoT/autonomous-vehicle security paper on malware and sensor attacks, unrelated to censorship, blocking, filtering, or circumvention infrastructure.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.18190",
+    "title": "Multi-Source Cybersecurity Logs: An ATT&CK-Labeled Dataset and SLM Evaluation",
+    "source": "arxiv",
+    "reason": "Generic enterprise threat detection using ML on multi-source logs; no censorship measurement, censor techniques, circumvention protocols, or surveillance regime analysis.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.18220",
+    "title": "Gatling: Rapid-Fire Consensus from Parallel Composition",
+    "source": "arxiv",
+    "reason": "Blockchain consensus protocol optimization with no censorship, circumvention, anonymity, or censorship-measurement angle.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.19551",
+    "title": "Passive-User Bell-State Loop-Back Key Establishment without Quantum Detectors at the User Nodes",
+    "source": "arxiv",
+    "reason": "Pure quantum cryptography paper on key distribution; no connection to censorship measurement, detection techniques, circumvention protocols, anonymity systems, or surveillance infrastructure.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.19937",
+    "title": "AutoTam: Specifying Secure Protocol Implementations with Tamarin Model Generation",
+    "source": "arxiv",
+    "reason": "Formal verification methodology paper for cryptographic protocols; WireGuard is a test case for the verification framework, not an evaluation of VPN or circumvention systems.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "url:https://github.com/net4people/bbs/issues/631",
+    "title": "Colorado University PHD Student Disappeared in China Two Years Ago",
+    "source": "net4people",
+    "reason": "While documenting the Chinese government's targeting of a circumvention researcher is important for the community, this is a human rights advocacy statement about a person's disappearance, not a technical research paper, measurement study, or operational report on censorship mechanisms or circumvention techniques.",
+    "rejected_at": "2026-06-22"
   }
 ]
