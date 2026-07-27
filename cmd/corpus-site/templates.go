@@ -604,9 +604,47 @@ const layoutTmpl = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f5f1e6">
 <title>{{.Title}}</title>
+<script>
+(function(){
+  var d = document.documentElement;
+  var t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  var a = 'on';
+  try {
+    var st = localStorage.getItem('theme');
+    if (st === 'light' || st === 'dark') t = st;
+    var sa = localStorage.getItem('ambient');
+    if (sa === 'on' || sa === 'off') a = sa;
+  } catch (e) {}
+  d.dataset.theme = t;
+  d.dataset.ambient = a;
+  function bind() {
+    var tb = document.querySelector('[data-theme-toggle]');
+    var ab = document.querySelector('[data-ambient-toggle]');
+    function sync() {
+      if (tb) tb.setAttribute('aria-pressed', d.dataset.theme === 'dark');
+      if (ab) ab.setAttribute('aria-pressed', d.dataset.ambient === 'on');
+    }
+    if (tb) tb.addEventListener('click', function(){
+      var next = d.dataset.theme === 'dark' ? 'light' : 'dark';
+      d.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+    if (ab) ab.addEventListener('click', function(){
+      var next = d.dataset.ambient === 'off' ? 'on' : 'off';
+      d.dataset.ambient = next;
+      try { localStorage.setItem('ambient', next); } catch (e) {}
+      sync();
+    });
+    sync();
+  }
+  if (document.readyState !== 'loading') bind();
+  else document.addEventListener('DOMContentLoaded', bind);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -644,6 +682,8 @@ const layoutTmpl = `<!doctype html>
       <a href="/use/">use</a>
       <a href="/contribute/">contribute</a>
       <a class="external" href="https://github.com/getlantern/circumvention-corpus" rel="external">github →</a>
+      <button type="button" class="nav-toggle" data-theme-toggle aria-pressed="false" title="toggle dark mode">theme</button>
+      <button type="button" class="nav-toggle" data-ambient-toggle aria-pressed="false" title="toggle ambient layer">ambient</button>
     </nav>
   </div>
 </header>
@@ -1837,7 +1877,11 @@ const styleCSS = `
  *   Atkinson Hyperlegible — body sans, distinctive humanist grotesque.
  *   JetBrains Mono — IDs, controlled vocabulary, terminal data.
  *
- * No light/dark toggle: this is a paper interface, not a screen.
+ * Theme + ambient are two independent toggles on <html>:
+ *   data-theme="light|dark"   — palette swap, applied via html[data-theme="dark"]
+ *   data-ambient="on|off"     — ambient SVG layer visibility
+ * Pre-paint script in <head> reads localStorage / prefers-color-scheme
+ * so the first frame is correct; nav buttons flip and persist state.
  */
 
 :root {
@@ -1857,6 +1901,25 @@ const styleCSS = `
   --moss:        #2e5a3a;  /* tertiary plotter color */
   --code-bg:     #ede7d2;  /* code block background */
   --selection:   #ffe680;  /* highlighter yellow */
+}
+
+html[data-theme="dark"] {
+  --paper:       #0e1116;
+  --paper-2:     #161a22;
+  --paper-edge:  #2a3140;
+  --ink:         #f2efe6;
+  --ink-2:       #d8d3c4;
+  --ink-3:       #9aa1ad;
+  --ink-mute:    #6b7280;
+  --rule:        #2a3140;
+  --rule-fade:   #1a1f2a;
+  --accent:      #8ab4ff;
+  --accent-2:    #a9c4ff;
+  --accent-soft: #1a2540;
+  --rust:        #d97a5e;
+  --moss:        #7fb88f;
+  --code-bg:     #161a22;
+  --selection:   #3b4670;
 }
 
 * { box-sizing: border-box; }
@@ -2024,6 +2087,25 @@ nav a:hover::after {
 }
 nav a.external { color: var(--ink-mute); }
 
+.nav-toggle {
+  appearance: none; background: none; border: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.86rem; letter-spacing: -0.01em;
+  color: var(--ink-mute);
+  padding: 0.3rem 0;
+  cursor: pointer;
+}
+.nav-toggle:hover { color: var(--accent); }
+.nav-toggle[aria-pressed="true"] { color: var(--accent); }
+.nav-toggle[aria-pressed="true"]::after {
+  content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 1px;
+  background: var(--accent);
+}
+.nav-toggle { position: relative; }
+.nav-toggle:focus-visible {
+  outline: 1px solid var(--accent); outline-offset: 3px;
+}
+
 /* ────────────────── HERO ──────────────────
  * The headline + lede sit on a calm cream ground. Ambient protocol
  * motifs (TLS hex, IPv4 header, DNS, active-probing sequence) appear
@@ -2069,7 +2151,7 @@ nav a.external { color: var(--ink-mute); }
   width: 30rem;
   height: 100%;
   overflow: hidden;
-  opacity: 0.16;
+  opacity: 0.07;
   transform: rotate(-0.4deg);
   transform-origin: top left;
 }
@@ -2111,16 +2193,16 @@ nav a.external { color: var(--ink-mute); }
   to   { transform: translateY(-50%); }
 }
 @keyframes pkt-float {
-  0%, 100% { transform: rotate(0.5deg) translate(0, 0);          opacity: 0.10; }
-  50%      { transform: rotate(0.65deg) translate(-1.1rem, 0.6rem); opacity: 0.30; }
+  0%, 100% { transform: rotate(0.5deg) translate(0, 0);             opacity: 0.04; }
+  50%      { transform: rotate(0.65deg) translate(-1.1rem, 0.6rem); opacity: 0.12; }
 }
 @keyframes seq-float {
-  0%, 100% { transform: rotate(-0.3deg) translate(0, 0);          opacity: 0.10; }
-  50%      { transform: rotate(-0.45deg) translate(0.9rem, -0.7rem); opacity: 0.28; }
+  0%, 100% { transform: rotate(-0.3deg) translate(0, 0);              opacity: 0.04; }
+  50%      { transform: rotate(-0.45deg) translate(0.9rem, -0.7rem);  opacity: 0.11; }
 }
 @keyframes dns-float {
-  0%, 100% { transform: translateY(-50%) rotate(0.2deg) translateX(0);     opacity: 0.10; }
-  50%      { transform: translateY(-48%) rotate(0.35deg) translateX(-0.8rem); opacity: 0.30; }
+  0%, 100% { transform: translateY(-50%) rotate(0.2deg) translateX(0);        opacity: 0.04; }
+  50%      { transform: translateY(-48%) rotate(0.35deg) translateX(-0.8rem); opacity: 0.12; }
 }
 
 /* Hide ambient layer on narrow viewports — it'd just clutter on phones.
@@ -2129,9 +2211,12 @@ nav a.external { color: var(--ink-mute); }
   .ambient-layer { display: none; }
 }
 
+/* Reading-mode toggle: hide ambient layer for everyone who opts out. */
+html[data-ambient="off"] .ambient-layer { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .ambient-stream svg { animation: none; }
-  .ambient-pkt, .ambient-seq, .ambient-dns { animation: none; opacity: 0.13; }
+  .ambient-pkt, .ambient-seq, .ambient-dns { animation: none; opacity: 0.06; }
 }
 
 .eyebrow {
