@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-fan-activeflowmark-assessing-tor
 kind: detection
-summary: BM-Net achieves a 97.5% macro-F1 score for fine-grained classification of three modulation geometries (sinusoidal, square-wave, triangular) from noisy exit-side Tor observations using only 201 labeled test samples collected across cross-continental Tor paths. Residual errors concentrate between natural traffic and square-wave modulation, as abrupt low-rate transitions are partially smoothed by Tor multiplexing and network jitter.
+summary: 'BM-Net achieves a 97.5% macro-F1 score for fine-grained classification of three modulation geometries (sinusoidal, square-wave, triangular) from noisy exit-side Tor observations using only 201 labeled test samples collected across cross-continental Tor paths. Residual errors concentrate between natural traffic and square-wave modulation, as abrupt low-rate transitions are partially smoothed by Tor multiplexing and network jitter. Per-class F1 is 95.7% for square-wave, the hardest class, versus 99.0% each for sinusoidal and triangular.'
 techniques:
     - flow-correlation
     - ml-classifier

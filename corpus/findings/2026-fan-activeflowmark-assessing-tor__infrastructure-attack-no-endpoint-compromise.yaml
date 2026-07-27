@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-fan-activeflowmark-assessing-tor
 kind: detection
-summary: NATA requires no endpoint compromise, no Tor-browser modification, and no payload decryption; it operates solely from (1) an upstream gateway controlling Tor TCP connections via standard Linux tc/wondershaper rate-limiting and (2) one or more adversary-controlled exit relays passively recording packet traces. The shaper identifies Tor connections using flow-level metadata (client IP, relay IP, port, transport protocol), meaning the adversary needs only ISP or AS-level vantage, not host-level access.
+summary: 'NATA requires no endpoint compromise, no Tor-browser modification, and no payload decryption; it operates solely from (1) an upstream gateway controlling Tor TCP connections via standard Linux tc/wondershaper rate-limiting and (2) one or more adversary-controlled exit relays passively recording packet traces. The shaper identifies Tor connections using flow-level metadata (client IP, relay IP, port, transport protocol), meaning the adversary needs only ISP or AS-level vantage, not host-level access. The authors name this Shaper-Sniffer architecture NATA, for Non-invasive Active Traffic-correlation Analysis.'
 techniques:
     - traffic-shape
     - flow-correlation

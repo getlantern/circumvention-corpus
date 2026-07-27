@@ -1,13 +1,6 @@
 paper: 2026-lange-towards
 kind: evaluation
-summary: |
-  DPYProxy-DNS tested 8 circumvention modes against DNS censorship from vantage points
-  in Iran (AS201295, Mashhad) and China (AS4837, China Unicom). In Iran, DoQ was entirely
-  uncensored even with the SNI extension present; DoH3 worked for all Cloudflare and
-  NextDNS resolvers. Iran's censor operates in-path (not on-path like the GFW), making
-  the "Last Response" mode (wait 3s for the last UDP reply) ineffective in Iran but
-  highly effective in China. Auto-mode averaged 12.32s (median 8.28s) in Iran and 13.78s
-  (median 12.90s) in China to discover a working combination.
+summary: 'DPYProxy-DNS tested 8 circumvention modes against DNS censorship from vantage points in Iran (AS201295, Mashhad) and China (AS4837, China Unicom). In Iran, DoQ was entirely uncensored even with the SNI extension present; DoH3 worked for all Cloudflare and NextDNS resolvers. Iran''s censor operates in-path (not on-path like the GFW), making the "Last Response" mode (wait 3s for the last UDP reply) ineffective in Iran but highly effective in China. Auto-mode averaged 12.32s (median 8.28s) in Iran and 13.78s (median 12.90s) in China to discover a working combination. Most DoT and DoH resolvers also work once the SNI extension is omitted. Because Iran''s censor is in-path rather than on-path, the GFW-style last-response technique fails entirely there: the original query never reaches the real resolver.'
 techniques: [dns-poisoning, sni-blocking, ip-blocking]
 defenses: [tunneling, ech-esni]
 censors: [ir, cn]

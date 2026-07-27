@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-fan-activeflowmark-assessing-tor
 kind: evaluation
-summary: Tornettools-based simulations with a 1%-scaled Tor network show that with 1 adversary-controlled exit relay (148 Mbps), the exit-observation probability pexit ≈ 2.13%; with 5 adversary-controlled relays, pexit exceeds 10%. Tor's bandwidth-weighted path selection means high-bandwidth malicious exits attract a disproportionate share of circuits, and repeated observations over multiple circuits compound correlation risk multiplicatively even at modest relay counts.
+summary: 'Tornettools-based simulations with a 1%-scaled Tor network show that with 1 adversary-controlled exit relay (148 Mbps), the exit-observation probability pexit ≈ 2.13%; with 5 adversary-controlled relays, pexit exceeds 10%. Tor''s bandwidth-weighted path selection means high-bandwidth malicious exits attract a disproportionate share of circuits, and repeated observations over multiple circuits compound correlation risk multiplicatively even at modest relay counts. The simulation scaled historical Tor consensus data to 1% of the real network (80 relays), and repeated observations across T independent windows compound as 1 - (1 - Pcorr)^T.'
 techniques:
     - flow-correlation
 defenses:

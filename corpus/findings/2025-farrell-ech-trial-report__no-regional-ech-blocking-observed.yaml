@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2025-farrell-ech-trial-report
 kind: evaluation
-summary: Across all 7 global data centers (EU, USA, Singapore, Brazil), every data center recorded ECH successes with no observed evidence of regional ECH blocking or interference. ECH-aware client percentages varied by region — EU 75%, North America 63%, Asia 49%, South America 46% — but this was attributed to browser version distribution rather than censorship.
+summary: 'Across all 7 global data centers (EU, USA, Singapore, Brazil), every data center recorded ECH successes with no observed evidence of regional ECH blocking or interference. ECH-aware client percentages varied by region — EU 75%, North America 63%, Asia 49%, South America 46% — but this was attributed to browser version distribution rather than censorship. The trial spanned 14 geographically distributed PoPs.'
 techniques:
     - sni-blocking
 defenses:

@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-joll-s-website-fingerprinting-nym
 kind: defense
-summary: Routing web traffic through Nym's constant-rate traffic stream (POISS-OFF) reduces Tik-Tok F1 to 0.06, with all feature-set leakage at ≤9.5% accuracy (Table 8), at the cost of latency overhead 7.32 and bandwidth overhead 8.06 (Table 7). Nym's 2,413-byte packet size means each cover packet incurs 4.7× the overhead of a Tor cover cell, making constant-rate defenses significantly more expensive in this architecture.
+summary: 'Routing web traffic through Nym''s constant-rate traffic stream (POISS-OFF) reduces Tik-Tok F1 to 0.06, with all feature-set leakage at ≤9.5% accuracy (Table 8), at the cost of latency overhead 7.32 and bandwidth overhead 8.06 (Table 7). Nym''s 2,413-byte packet size means each cover packet incurs 4.7× the overhead of a Tor cover cell, making constant-rate defenses significantly more expensive in this architecture. This matches near-ideal Tamaraw protection on Tor, against WTF4Nym''s F1 = 0.39 at 3.78x latency and 4.22x bandwidth.'
 techniques:
     - website-fingerprint
     - ml-classifier

@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2024-m-ller-turning
 kind: detection
-summary: 'Iran''s censor contains an implementation bug: when the Content-Length header carries an invalid (non-integer) value and a Transfer-Encoding header is also present, the censor gracefully skips the invalid CL value and attempts to parse subsequent traffic, but fails to correctly interpret the TE header—causing it to pass the smuggled (censored) request. This bug enabled 254 of 2,015 evaluated test vectors to bypass Iranian censorship, all using the CL*/TE or CL/TE* vector types.'
+summary: 'Iran''s censor contains an implementation bug: when the Content-Length header carries an invalid (non-integer) value and a Transfer-Encoding header is also present, the censor gracefully skips the invalid CL value and attempts to parse subsequent traffic, but fails to correctly interpret the TE header—causing it to pass the smuggled (censored) request. This bug enabled 254 of 2,015 evaluated test vectors to bypass Iranian censorship, all using the CL*/TE or CL/TE* vector types. The Wrapping CL*/TE strategy (for example a Content-Length value followed by \u00FF\x0a and a junk header) was especially effective against this graceful-degradation fault.'
 techniques:
     - dpi
     - packet-injection

@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-ermao-april-airport-outage
 kind: policy
-summary: China Telecom Group reportedly issued directives to Guangdong Telecom in April 2026 requiring comprehensive rectification of cross-border leased-line (IEPL/专线) businesses used for circumvention, with Guangzhou leading enforcement and other Guangdong cities expected to follow sequentially. The targeting is infrastructure-class-specific (IEPL lines as a category) rather than generalized protocol blocking.
+summary: 'China Telecom Group reportedly issued directives to Guangdong Telecom in April 2026 requiring comprehensive rectification of cross-border leased-line (IEPL/专线) businesses used for circumvention, with Guangzhou leading enforcement and other Guangdong cities expected to follow sequentially. The targeting is infrastructure-class-specific (IEPL lines as a category) rather than generalized protocol blocking. Providers using Guangdong Telecom as their domestic ingress therefore faced widespread IEPL line interruption.'
 techniques:
     - ip-blocking
     - port-blocking
