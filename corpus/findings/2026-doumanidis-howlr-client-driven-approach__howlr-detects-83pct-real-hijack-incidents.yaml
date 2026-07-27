@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-doumanidis-howlr-client-driven-approach
+kind: evaluation
+summary: HOWLR successfully detects 83% of the 1,902 real-world prefix hijack incidents observed in high-confidence Cloudflare Radar data from May 2026. The detection method fails when the hijacked prefix contains no authenticatable witnesses, and also cannot defend against routing adversaries capable of transparently forwarding non-targeted traffic within the prefix.
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - 'Circumvention tools should treat HOWLR-style detection as a necessary but insufficient layer: a determined nation-state adversary with traffic-forwarding capability can preserve witness consistency and evade detection, so complementary signals (latency anomalies, path-length changes) should also be monitored.'
+    - 17% of real hijack events occur on prefixes with no TLS witnesses, so circumvention bridges/relays on witness-sparse infrastructure must have alternative detection mechanisms or avoid those prefixes entirely.
+section: §4, §7
+extracted_by: claude-sonnet-4-6

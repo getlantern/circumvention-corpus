@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2606.24105
+id: 2026-zhang-dohfuse-dual-branch-architecture
+title: 'DoHFuse: A Dual-Branch Architecture with DMAGLSTM for Website Fingerprinting over DNS over HTTPS/3'
+authors:
+    - ZunDong Zhang
+    - Yanan Cheng
+    - Zhaoxin Zhang
+    - Xueyang Huo
+    - Changjiang Wu
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2606.24105"
+url: https://arxiv.org/abs/2606.24105v1
+abstract: As personal data privacy becomes increasingly critical in Internet of Things (IoT) environments, secure DNS protocols such as DNS over HTTPS (DoH) and DNS over TLS (DoT) have been widely adopted to protect device communications. However, without effective obfuscation, these protocols remain vulnerable to Website Fingerprinting (WF) attacks that can reveal user activity. With the ongoing deployment of DNS over HTTP/3 (DoH/3) in modern networked systems, padding strategies have been increasingly applied in practice. It is therefore essential to investigate whether DoH/3 can effectively mitigate WF attacks in realistic IoT and edge-network scenarios. To address this, we first collect and publicly release the first real-world benchmark dataset of DoH/3 traffic, generated from domain resolution processes in practical network environments. We further propose DoHFuse, a dual-branch learning framework that integrates inter-arrival time sequences and refined statistical features through an improved DMAG-LSTM, specifically designed to capture burst-aligned temporal patterns. Experimental results show that DoHFuse achieves an accuracy of 88.05% (precision 88.56, recall 87.96, F1 87.83) in a closed-world setting of 449 classes, and an AUPRC of 0.975 with an F1 score of 0.951 (precision 0.906, recall 1.0) in open-world detection. These findings demonstrate that DoH/3 traffic remains susceptible to WF attacks, suggesting that commonly deployed padding mechanisms alone are insufficient to ensure privacy protection in IoT-scale encrypted DNS communications.
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - randomization
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates that encrypted DNS protocols (DoH/3) remain vulnerable to traffic-analysis attacks—relevant for designing privacy systems resilient against ISP-level censors.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2606.24105

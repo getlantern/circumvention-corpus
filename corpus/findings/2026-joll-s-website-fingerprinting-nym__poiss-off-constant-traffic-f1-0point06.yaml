@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: defense
+summary: 'POISS-OFF, a constant-traffic defense that routes all web traffic through Nym''s loop cover capabilities, reduces the Tik-Tok WF attack F1 score to 0.06 — matching near-ideal Tamaraw protection on Tor — but at latency overhead of 7.32× and bandwidth overhead of 8.06×. This establishes a clear protection–overhead frontier against WTF4Nym (F1=0.39, LO=3.78×, BO=4.22×): halving F1 from 0.39 to 0.06 roughly doubles latency and bandwidth cost.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Near-zero WF leakage (F1≈0.06) is achievable in mixnets via constant-rate traffic but the 7.32× latency overhead makes it viable only for high-risk, latency-tolerant use cases (e.g., bulk file transfer over Tor-like circuits).
+    - Circumvention system designers should expose both a moderate-overhead burst mode (F1≈0.39) for interactive browsing and a constant-traffic mode for users with elevated threat models, rather than committing to a single overhead tier.
+section: §6, Table 7
+extracted_by: claude-sonnet-4-6

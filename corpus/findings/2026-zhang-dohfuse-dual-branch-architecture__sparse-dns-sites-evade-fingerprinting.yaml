@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zhang-dohfuse-dual-branch-architecture
+kind: evaluation
+summary: Websites generating only one or two observable non-Google DNS queries per visit have classification accuracy below 30% in DoHFuse's closed-world evaluation, compared to the model's overall 88.05% on 449 classes. Sites such as ftc.gov and ailawandorder.com fell near zero accuracy, revealing that extremely sparse DNS activity is a natural but uncontrolled defense against timing-based fingerprinting.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that generate cover traffic through DoH/3 should suppress or limit the total query count per session, mimicking low-activity sites to reduce per-session fingerprint distinctiveness.
+    - Deliberately injecting decoy DNS queries to sites in the 'hard to classify' regime could confuse classifiers that rely on query-count and timing CV as discriminative statistics.
+section: §V.D; Figure 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-schramm-analyzing-societal-awareness
+title: Analyzing Societal Awareness and Perception of Digital Fingerprinting and Fingerprinting Countermeasures
+authors:
+    - Pascal Schramm
+    - Emmanuel Syrmoudis
+    - Alexandros Markou
+    - Jens Grossklags
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0054.php
+censors:
+    - generic
+techniques:
+    - tls-fingerprint
+    - website-fingerprint
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Understanding user threat perception and adoption barriers for fingerprinting defenses is critical for Lantern's design and user education strategy.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0054.php

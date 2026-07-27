@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: detection
+summary: InterSecLab's analysis of 100,000+ leaked Geedge Networks documents found that Geedge sold GFW-analogous censorship and surveillance systems to Kazakhstan, Ethiopia, Pakistan, and Myanmar. The systems include deep packet inspection, real-time mobile user monitoring, and machine-learning classifiers that extract metadata from encrypted traffic to identify VPN and circumvention tool usage.
+techniques:
+    - dpi
+    - ml-classifier
+    - traffic-shape
+censors:
+    - kz
+    - et
+    - pk
+    - mm
+defense_implications:
+    - ML-based encrypted traffic classification is now present in GFW-export deployments across multiple regions beyond China; circumvention tools must defeat flow-level statistical fingerprinting (packet size distributions, inter-arrival times), not just payload-level inspection.
+    - Circumvention deployments in Kazakhstan, Pakistan, Myanmar, and Ethiopia should be treated as facing near-GFW-grade DPI capability, not merely commodity IP blocking — this raises the baseline obfuscation requirement for tools targeting those regions.
+section: §8 (InterSecLab / WIRED, September 2025)
+extracted_by: claude-sonnet-4-6

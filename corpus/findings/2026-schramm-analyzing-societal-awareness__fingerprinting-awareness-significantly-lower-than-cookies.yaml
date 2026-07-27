@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schramm-analyzing-societal-awareness
+kind: evaluation
+summary: Across 734 participants, fingerprinting awareness (mean 2.4 on a 1–4 scale) was significantly lower than cookie awareness (mean 2.86), confirmed by Wilcoxon signed-rank test at p < 0.001. Only 22% of participants had used a privacy-focused browser (Tor or Brave), and the Spearman correlation between cookie and fingerprinting awareness was only ρ = 0.40, indicating that tracking-technology literacy does not transfer automatically between mechanisms.
+techniques:
+    - tls-fingerprint
+defenses:
+    - tor
+defense_implications:
+    - Circumvention tools must provide fingerprinting protection by default without requiring user awareness or configuration — most users cannot recognize or reason about fingerprinting threats even if they manage cookies.
+    - User education materials should treat browser fingerprinting as conceptually distinct from cookie tracking and not assume privacy-literate cookie users will spontaneously adopt fingerprinting countermeasures.
+section: §4.1.1, Figure 2
+extracted_by: claude-sonnet-4-6

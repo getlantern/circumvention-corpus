@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zhang-dohfuse-dual-branch-architecture
+kind: detection
+summary: Inter-arrival time sequences between client DoH/3 request packets retain site-specific temporal structure despite QUIC padding and stream multiplexing, exhibiting characteristic micro-burst and inter-burst gap patterns. Using timing features alone, LSTM achieves 83.75% ± 0.92% accuracy at 449 classes, and DoHFuse with its dual-branch DMAG-LSTM reaches 89.08% ± 0.49%, while length-only LSTM degrades to 8.95% under the same conditions.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Adding inter-packet interval jitter (not just fixed padding) is critical: request-interval statistics and burst timing are the residual fingerprinting signal that survives EDNS(0) padding, so deliberate timing randomization must be layered on top of size obfuscation.'
+    - Covert channels that batch or coalesce DNS queries to flatten burst–gap patterns would directly degrade the discriminative features exploited by DoHFuse's temporal branch.
+section: §IV.D; §V.B; §V.C; Table II
+extracted_by: claude-sonnet-4-6

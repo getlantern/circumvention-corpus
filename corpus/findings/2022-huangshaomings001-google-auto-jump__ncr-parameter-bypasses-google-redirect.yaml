@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-huangshaomings001-google-auto-jump
+kind: defense
+summary: Appending the /ncr (no-country-redirect) parameter to google.com requests successfully bypasses the forced redirect to google.cn/m for Chinese users on circumvention proxies. This workaround operates at the application layer and requires no changes to the underlying transport or proxy configuration.
+techniques:
+    - packet-injection
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients and browsers proxying Google traffic in China should append ?ncr=1 or /ncr to google.com requests by default to prevent silent redirection to censored Google properties.
+    - Application-layer request rewriting (URL parameter injection) is a viable last-resort defense when transport-layer circumvention alone cannot prevent destination-side geo-filtering cooperating with censorship.
+section: Issue comments / abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-bai-provable-secure-steganography
+kind: defense
+summary: Existing Provably Secure Steganography (PSS) schemes require access to the explicit output distribution of the generative model, a requirement that is impractical for black-box API deployments. This paper demonstrates that computational indistinguishability between normal and steganographic output can be achieved using only a seed-based model API, with no distribution access required.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools can embed covert control traffic in LLM-generated text using any commercial API (GPT-4, Claude, etc.) without needing internal model weights or logit distributions — dramatically lowering deployment friction.
+    - The seed-only interface means the scheme is forward-compatible with model updates; the carrier generation pipeline does not need to be retrained or recalibrated when the underlying model changes.
+section: Abstract / §1 Introduction
+extracted_by: claude-sonnet-4-6

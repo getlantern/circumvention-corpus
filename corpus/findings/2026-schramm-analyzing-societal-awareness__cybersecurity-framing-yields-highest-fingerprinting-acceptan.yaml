@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schramm-analyzing-societal-awareness
+kind: evaluation
+summary: Fingerprinting acceptance averaged 3.90 for cybersecurity applications, 3.73 for law enforcement, and 3.00 for user experience on a 5-point scale (n=734); privacy-protective behaviors (Privacy Behavior Index, p<0.01) and prior use of Tor or Brave (p<0.01) were the strongest negative predictors of acceptance across all three domains. Privacy concern level (Westin Index) alone did not significantly predict fingerprinting awareness, whereas behavioral privacy practices did.
+techniques:
+    - tls-fingerprint
+defenses:
+    - tor
+defense_implications:
+    - Frame circumvention tools around security and safety rather than privacy or personalization — users show acceptance scores ~30% higher for security-framed surveillance than for user-experience-framed surveillance, and this framing effect likely transfers to censorship evasion adoption.
+    - Target outreach toward users already exhibiting privacy-protective behaviors (existing tool users), not toward those who merely express privacy concern; behavioral engagement is a far stronger adoption predictor than abstract concern.
+section: §4.2.1, §4.2.2
+extracted_by: claude-sonnet-4-6

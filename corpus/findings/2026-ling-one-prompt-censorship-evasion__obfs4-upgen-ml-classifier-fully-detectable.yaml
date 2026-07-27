@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ling-one-prompt-censorship-evasion
+kind: detection
+summary: Obfs4's payload randomization creates a high-entropy statistical profile that a Decision Tree detects with TPR ≈ 1.00 and FPR ≈ 0.00 across all four out-of-distribution protocols tested. UPGen's procedural protocol assembly similarly yields TPR ≈ 1.00 for most classifiers, confirming that both entropy randomization and rigid structural assembly leave artifacts detectable by even simple statistical classifiers operating under strict false-positive constraints.
+techniques:
+    - random-payload-detect
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - obfs4
+    - randomization
+    - marionette
+censors:
+    - generic
+defense_implications:
+    - Entropy randomization (obfs4/ScrambleSuit lineage) should be treated as broken against any censor deploying even basic ML classifiers; tools relying solely on payload randomization need a complementary header-shaping layer that matches benign traffic distributions.
+    - Procedural protocol assembly that captures syntax without authentic statistical texture leaves detectable artifacts — training on real benign flow distributions rather than hand-authored format grammars is necessary for ML-resistant evasion.
+section: §5.1.3, Table 2
+extracted_by: claude-sonnet-4-6

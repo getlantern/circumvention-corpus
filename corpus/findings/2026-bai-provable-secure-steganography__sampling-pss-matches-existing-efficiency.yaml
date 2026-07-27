@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-bai-provable-secure-steganography
+kind: evaluation
+summary: Across three real-world text datasets and three large language models, the adaptive dynamic sampling scheme achieves efficiency and capacity comparable to existing PSS methods that require explicit model distributions — confirming that relaxing the distribution-access requirement does not degrade steganographic performance.
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Because the scheme matches existing PSS baselines on bits-per-token capacity while requiring only a seed API, it is the preferred option for circumvention deployments where only a third-party LLM API is available.
+    - Evaluation across multiple LLMs implies the technique is not architecture-specific; tool developers can switch underlying models without re-engineering the steganographic layer.
+section: Abstract / Evaluation
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: deployment
+summary: LetsVPN (快连) announced on April 28, 2026 that it was terminating mainland China operations due to persistent blocking, stating its team had spent "nearly every hour" over the preceding 20 days attempting adjustments without success. A May 8 follow-up announcement declared restored global operations but explicitly stated it could not guarantee service availability inside mainland China.
+techniques:
+    - ip-blocking
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Commercial VPNs with fixed server infrastructure are increasingly being systematically blocked in China; circumvention tools should architect for rapid infrastructure rotation and avoid long-lived, identifiable endpoints.
+    - Do not rely on a single ingress strategy for China — fallback mechanisms (e.g., domain fronting, decoy routing) must be pre-integrated before primary paths fail, not retrofitted after.
+section: §3 (LetsVPN announcement summary)
+extracted_by: claude-sonnet-4-6

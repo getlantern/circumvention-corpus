@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-swift-look-into
+kind: evaluation
+summary: 'Inbound access to Iran remains heavily restricted even after the May 26 restoration: only ~2.8% of tested global /24 blocks (~400,000 of 14,461,944 representative IPs) could reach the Iran vantage point, compared to over 70% for comparable hosts outside Iran — more than 25× lower reachability — demonstrating that Iran enforces allowlist-based destination-IP filtering on inbound traffic as well as outbound.'
+techniques:
+    - ip-blocking
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - Circumvention systems that rely on clients inside Iran connecting to external servers should not assume outbound-only filtering; server-side IPs must fall within Iran's inbound allowlist or use relay architectures that do.
+    - Evaluate relay/bridge IP ranges against Iran's inbound allowlist before deployment; ~97.2% of global /24 space is currently unreachable from inside Iran.
+section: §4.1.3
+extracted_by: claude-sonnet-4-6
