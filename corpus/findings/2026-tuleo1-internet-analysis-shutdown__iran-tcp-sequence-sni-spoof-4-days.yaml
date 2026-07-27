@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-tuleo1-internet-analysis-shutdown
 kind: defense
-summary: 'Two TCP-layer SNI-spoofing techniques briefly circumvented Iran''s DPI for approximately four days: (1) sending a fake ClientHello with a TTL too low to reach the server but high enough to pass the censor, and (2) sending a fake ClientHello at a future TCP sequence number that the server would ignore but the stateless DPI would accept. Both were defeated once Iran placed Cloudflare IPs behind a stateful NAT that validated checksums and sequence numbers.'
+summary: 'Two TCP-layer SNI-spoofing techniques briefly circumvented Iran''s DPI for approximately four days: (1) sending a fake ClientHello with a TTL too low to reach the server but high enough to pass the censor, and (2) sending a fake ClientHello at a future TCP sequence number that the server would ignore but the stateless DPI would accept. Both were defeated once Iran placed Cloudflare IPs behind a stateful NAT that validated checksums and sequence numbers. Iran''s SNI whitelist permitted only specific domains, hcaptcha.com among them.'
 techniques:
     - dpi
     - sni-blocking

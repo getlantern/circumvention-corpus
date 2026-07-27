@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2025-wkrp-leak-geedge-networks
 kind: deployment
-summary: A September 2025 leak of 100,000+ internal documents from Geedge Networks—co-founded by Great Firewall architect Fang Binxing—confirms export of GFW-derived Tiangou Secure Gateway (TSG) to Myanmar, Pakistan, Ethiopia, and Kazakhstan, providing those governments with DPI-based filtering, throttling, VPN blocking, and internet-blackout capabilities previously unavailable to them. Pakistan's deployment replaced Sandvine's Web Monitoring System infrastructure after Sandvine was sanctioned and exited in 2023, with Geedge apparently utilizing existing Sandvine hardware.
+summary: 'A September 2025 leak of 100,000+ internal documents from Geedge Networks—co-founded by Great Firewall architect Fang Binxing—confirms export of GFW-derived Tiangou Secure Gateway (TSG) to Myanmar, Pakistan, Ethiopia, and Kazakhstan, providing those governments with DPI-based filtering, throttling, VPN blocking, and internet-blackout capabilities previously unavailable to them. Pakistan''s deployment replaced Sandvine''s Web Monitoring System infrastructure after Sandvine was sanctioned and exited in 2023, with Geedge apparently utilizing existing Sandvine hardware. Kazakhstan was the first client, from 2018, and Geedge claims more than 40 global service providers as clients under the Belt and Road Initiative framework.'
 techniques:
     - dpi
     - ip-blocking

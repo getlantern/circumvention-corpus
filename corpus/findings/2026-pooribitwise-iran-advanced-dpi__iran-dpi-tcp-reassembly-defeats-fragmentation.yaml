@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-pooribitwise-iran-advanced-dpi
 kind: detection
-summary: Iran's DPI infrastructure performs full TCP reassembly and stateful inspection on the fly, nullifying TCP fragmentation (10–30 byte fragments with 10–20ms delays) applied to VLESS+WebSocket behind Cloudflare CDN in full-strict mode. Domains are blocked within 24 hours despite the CDN layer and rotation of clean Cloudflare IPs.
+summary: 'Iran''s DPI infrastructure performs full TCP reassembly and stateful inspection on the fly, nullifying TCP fragmentation (10–30 byte fragments with 10–20ms delays) applied to VLESS+WebSocket behind Cloudflare CDN in full-strict mode. Domains are blocked within 24 hours despite the CDN layer and rotation of clean Cloudflare IPs. Fragmentation was applied to the first 5 packets and verified correct on the client side with tcpdump; the setup used port 443 with a randomized WebSocket path.'
 techniques:
     - dpi
     - sni-blocking

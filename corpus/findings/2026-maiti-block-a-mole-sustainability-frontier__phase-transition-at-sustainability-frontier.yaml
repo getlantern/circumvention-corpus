@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-maiti-block-a-mole-sustainability-frontier
 kind: evaluation
-summary: Simulator validation shows a sharp phase transition in (α,T)-availability at the sustainability frontier β* ≤ 1. For a canonical configuration of n=8 endpoints and buffer kmax=8, the interval frontier is β* ≈ 0.65, while the time-average crossing is near β ≈ 0.8. Sweeping rotation speed µ/λa from 1 to >100 does not move the frontier — the availability contour over the (β, µ/λa) plane is entirely vertical (Figure 3). The closed-form availability law (Theorem 1) matches simulation to three significant figures across all tested β (Table 2).
+summary: 'Simulator validation shows a sharp phase transition in (α,T)-availability at the sustainability frontier β* ≤ 1. For a canonical configuration of n=8 endpoints and buffer kmax=8, the interval frontier is β* ≈ 0.65, while the time-average crossing is near β ≈ 0.8. Sweeping rotation speed µ/λa from 1 to >100 does not move the frontier — the availability contour over the (β, µ/λa) plane is entirely vertical (Figure 3). The closed-form availability law (Theorem 1) matches simulation to three significant figures across all tested β (Table 2). A rotation-only defender at beta = 1.5 stays below 0.25 availability even at the largest buffer and rotation speed tested, while a domain-aware defender at beta = 0.6 with the same n, mu and pool exceeds 0.95.'
 techniques:
     - ip-blocking
     - dpi

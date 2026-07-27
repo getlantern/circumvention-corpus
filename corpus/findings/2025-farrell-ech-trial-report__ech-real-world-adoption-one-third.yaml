@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2025-farrell-ech-trial-report
 kind: evaluation
-summary: In a 41-day real-world ECH trial (2025-05-01 to 2025-06-11) across 14 server instances in 7 global data centers, 64% of accesses came from ECH-aware clients (success or GREASE) while 36% did not attempt ECH at all. Of 4,074 total log events, 1,660 were ECH successes, 825 were GREASE, and 1,589 were not-tried, indicating that today roughly one-third of traffic benefits from full ECH privacy protection.
+summary: 'In a 41-day real-world ECH trial (2025-05-01 to 2025-06-11) across 14 server instances in 7 global data centers, 64% of accesses came from ECH-aware clients (success or GREASE) while 36% did not attempt ECH at all. Of 4,074 total log events, 1,660 were ECH successes, 825 were GREASE, and 1,589 were not-tried, indicating that today roughly 41% of traffic benefits from full ECH privacy protection. The trial found no measurable service disruption from enabling ECH.'
 techniques:
     - sni-blocking
 defenses:

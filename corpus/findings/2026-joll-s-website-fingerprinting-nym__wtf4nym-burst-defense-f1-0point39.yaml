@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-joll-s-website-fingerprinting-nym
 kind: defense
-summary: WTF4Nym, a burst-aware cover-traffic defense adapted to Nym's Poisson-rate architecture, reduces the Tik-Tok attack F1 score from 0.87 to 0.39 at moderate overhead (latency overhead 3.78×, bandwidth overhead 4.22×). This substantially outperforms directly applying WTF-PAD to Nym (F1=0.87), applying FRONT to Nym (F1=0.63), and the F1=0.65 achieved by FRONT on Tor at comparable overhead, by learning per-network burst distributions and injecting fake bursts that match those statistics.
+summary: 'WTF4Nym, a burst-aware cover-traffic defense adapted to Nym''s Poisson-rate architecture, reduces the Tik-Tok attack F1 score from 0.87 to 0.39 at moderate overhead (latency overhead 3.78×, bandwidth overhead 4.22×). This substantially outperforms directly applying WTF-PAD to Nym (F1=0.87), applying FRONT to Nym (F1=0.63), and the F1=0.65 achieved by FRONT on Tor at comparable overhead, by learning per-network burst distributions and injecting fake bursts that match those statistics. FRONT on Tor reaches F1 = 0.65 at 2.79x latency and 1.84x bandwidth, and under WTF4Nym the Time and N-gram feature leakage fall to 26.6% and 29.0% (Table 8).'
 techniques:
     - website-fingerprint
     - ml-classifier
