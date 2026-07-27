@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: defense
+summary: 'Community members propose a two-hop architecture as a potential mitigation for Iran''s current DPI upgrade: a first-hop server inside Iran''s whitelisted datacenter ranges (where outbound traffic faces lighter inspection) proxying to a foreign exit node, with Reality masquerading as a legitimate Iranian organization''s domain. The architecture''s effectiveness under active TCP reassembly and handshake probing is explicitly unverified.'
+techniques:
+    - active-probing
+    - ip-blocking
+defenses:
+    - reality
+    - tunneling
+censors:
+    - ir
+defense_implications:
+    - Evaluate Iran's whitelisted datacenter IP ranges as a first-hop option — traffic originating from these ranges toward foreign servers may receive reduced DPI scrutiny compared to direct client-to-foreign-server flows.
+    - A two-hop design isolates the user's IP from the foreign exit, but the inter-server link still requires obfuscation; Reality masquerading as a whitelisted Iranian domain does not guarantee safety given active handshake probing capabilities now deployed.
+section: Issue body — Description
+extracted_by: claude-sonnet-4-6

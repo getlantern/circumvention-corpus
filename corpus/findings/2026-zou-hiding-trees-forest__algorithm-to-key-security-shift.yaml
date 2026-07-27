@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: defense
+summary: 'The hash-based filtering strategy shifts covert channel security from algorithm secrecy to key secrecy per Kerckhoffs''s principle: even when the covert algorithm is fully exposed, an adversary without the pre-shared key cannot identify which sparse subset (~1/2^L) of packets carries covert data, transforming the detection problem from statistical pattern recognition to exhaustive key-space search. The authors recommend a minimum Input Key length of 128 bits.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - randomization
+    - steganography
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Treat the carrier-selection key as a cryptographic secret with the same rotation and entropy requirements as a session key (≥128-bit Input Key); compromise of the covert algorithm alone should not expose the channel.
+    - Use Diffie-Hellman or PKI-assisted key transport over the covert channel itself to bootstrap shared keys when out-of-band exchange is infeasible, anchoring security in proven public-key protocols.
+section: §3.2, §4.1, §4.2.4
+extracted_by: claude-sonnet-4-6

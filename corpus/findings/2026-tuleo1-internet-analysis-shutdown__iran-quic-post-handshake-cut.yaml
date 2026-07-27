@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: detection
+summary: During full Iranian blackouts, WebRTC and all UDP/QUIC traffic were completely blocked. DNS-over-QUIC (DoQ) could complete a handshake but the censor severed the connection after a single post-handshake data packet, rendering it unusable for tunneling.
+techniques:
+    - http3-quic-block
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - QUIC-based transports (Hysteria 2, etc.) must have TCP-only fallback paths; relying on QUIC is operationally unsafe during Iranian escalation events.
+    - 'DoQ and QUIC-based DNS are not viable covert channels in Iran: the censor distinguishes the handshake from payload and drops at the data phase.'
+section: Issue body (WebRTC/UDP paragraph)
+extracted_by: claude-sonnet-4-6

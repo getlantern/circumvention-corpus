@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-farrell-ech-trial-report
+kind: deployment
+summary: Wikimedia's preferred deployment mode — ECH split-mode, which would use a third-party front-end's IP addresses to bypass IP-level blocking of Wikimedia's own address space — could not be trialed because no suitable front-end partner was found. Potential operators declined due to concerns about traffic volume, risk of inheriting Wikimedia's blocked reputation, or lack of a compatible business model.
+techniques:
+    - ip-blocking
+defenses:
+    - ech-esni
+    - domain-fronting
+censors:
+    - generic
+defense_implications:
+    - 'ECH split-mode (the configuration most useful for bypassing IP-level blocking) faces a critical ecosystem gap: CDN/hosting operators are unwilling to serve as the ECH front-end for high-risk back-ends, limiting ECH''s anti-censorship utility to scenarios where the service''s own IPs are not blocked.'
+    - Circumvention tool designers should not assume ECH split-mode is deployable at scale without pre-negotiated partnerships — standard ECH (same-operator) provides SNI privacy only, not IP address diversity.
+section: §2
+extracted_by: claude-sonnet-4-6

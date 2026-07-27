@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: evaluation
+summary: For a canonical configuration of n=8 endpoints and domain buffer k_max=8, the interval availability frontier sits at β* ≈ 0.65, versus a time-average crossing near β ≈ 0.8. A rotation-only defender operating at β=1.5 achieves (α,T)-availability below 0.25 even at the largest buffer and rotation speed tested, while a domain-aware defender at β=0.6 with the same n, µ, and pool achieves availability above 0.95. The closed-form law (Theorem 1) matches simulation to three significant figures across the full range of β (Table 2).
+techniques:
+    - dpi
+    - http3-quic-block
+defenses:
+    - meta-resistance
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Set domain pool provisioning targets to maintain β < 0.65 (interval guarantee) rather than the softer time-average threshold β < 0.8, because the interval metric is the operationally binding one for session-level user experience.
+    - Do not size infrastructure by IP pool depth or rotation interval alone; add a domain economy dashboard tracking λ_intro vs λ_disc as a primary SLO.
+section: §8.2, §8.3, Table 2
+extracted_by: claude-sonnet-4-6
