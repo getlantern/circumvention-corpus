@@ -2063,5 +2063,26 @@
     "source": "usenix-sec",
     "reason": "Generic steganography research without censorship measurement, censor-specific threat modeling, or circumvention deployment context.",
     "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0078.php",
+    "title": "Banned Books: Analysis of Censorship on Amazon.com",
+    "source": "popets",
+    "reason": "Studies platform-level content moderation on Amazon rather than network-level censorship, detection techniques, or circumvention protocols central to the circumvention-corpus scope.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0082.php",
+    "title": "EXADPrinter: Semi-Exhaustive Permissionless Device Fingerprinting Within the Android Ecosystem",
+    "source": "popets",
+    "reason": "General Android device fingerprinting paper without application to censorship detection, censor capabilities, or circumvention defenses.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0102.php",
+    "title": "An Improved Entropy Measure for Web Browser Fingerprinting Risk",
+    "source": "popets",
+    "reason": "Browser fingerprinting risk metrics are a general privacy concern without specific application to censorship detection, censor capabilities, circumvention protocols, or blocking techniques.",
+    "rejected_at": "2026-07-20"
   }
 ]

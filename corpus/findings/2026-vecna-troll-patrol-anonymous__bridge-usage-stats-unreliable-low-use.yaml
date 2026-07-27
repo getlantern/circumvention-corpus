@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vecna-troll-patrol-anonymous
+kind: evaluation
+summary: 'Bridge usage statistics fail to detect censorship for low-use bridges: in a Belarus 2020–2021 case study, email-distributed obfs4 bridges that were actively blocked regularly received 0 connections from Belarus even on unblocked days, making censorship-vs-inactivity indistinguishable. A censor can also artificially inflate counts by making its own connections from multiple IP addresses, so high connection counts do not imply absence of censorship.'
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - bridges
+    - obfs4
+censors:
+    - by
+defense_implications:
+    - Do not rely on bridge-side connection count telemetry as the primary signal for censorship detection; connection-count thresholds (e.g., Loesing's threshold of 32) are ineffective for bridges distributed to small user populations.
+    - Design bridge health systems to require active verification (scan-based confirmation) rather than inferring censorship from passive usage statistics alone.
+section: §3, Appendix A
+extracted_by: claude-sonnet-4-6

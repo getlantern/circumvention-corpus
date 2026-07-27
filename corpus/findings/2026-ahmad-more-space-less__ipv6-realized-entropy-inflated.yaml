@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ahmad-more-space-less
+kind: evaluation
+summary: Raw IPv6 address entropy is inflated by continuous discovery of previously-unseen addresses throughout the measurement period (1.04M distinct IPv6 vs 552K IPv4 addresses observed), giving a misleading impression of higher fingerprint discriminability. Realized entropy—computed per crawl-batch snapshot to exclude ephemeral addresses never seen during testing—shows more than 20% of IPv6 addresses provide less information gain than their IPv4 counterparts, explaining why dual-stack complete IPv6 fingerprinting accuracy (45%) underperforms IPv4 (56%) despite higher raw uniqueness.
+techniques:
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Rotating server IPv6 addresses frequently (exploiting the large address space) can suppress realized entropy for adversary fingerprints and is a low-cost server-side mitigation; the paper's churn analysis shows that ~35% of churning IPv6 domains already rotate within an hour.
+    - Fingerprint databases need periodic DNS re-resolution to remain effective; this creates a practical window for defenses that aggressively rotate addresses faster than censor refresh cycles.
+section: §6.3, Figure 6, Figure 7
+extracted_by: claude-sonnet-4-6

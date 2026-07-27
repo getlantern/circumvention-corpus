@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schadt-breaking-partially-fixing
+kind: detection
+summary: Fragging-like attacks on Tor allow an adversary controlling the entry node to encode at least a 1-bit confirmation signal by dropping a single stream cell and observing circuit teardown (caused by encryption-state desynchronization between client and exit relay). If the adversary knows the expected cell count, they can select which cell to drop and thereby encode log(n) bits of information to the exit relay.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Tor's current mitigation (client-side anomaly detection) is reactive; a proactive defense requires integrity protection over the entire stream payload at each hop, not just the header—otherwise cell-drop tagging remains viable.
+    - Circuit-level padding or cover traffic does not address this attack because the signal is carried by circuit teardown, not by traffic volume or timing.
+section: §4.2
+extracted_by: claude-sonnet-4-6

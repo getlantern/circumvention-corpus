@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-witwer-dodge-client-side-framework
+kind: defense
+summary: 'Dodge-mimic reduces vRF deep-learning classifier accuracy to 10.6–15.6% for k=10 anonymity sets, matching the theoretical k-anonymity bound of (100/k)%=10%. The heuristic Walls Have Ears attack also fails: WHE-seg peaks at ≤8.5% and WHE-cyk at 9.7%, confirming that equalized cycle sizes leak no per-video information.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use k-anonymity set grouping with equalized DASH segment cycles as a provably bounded defense against video fingerprinting; k=10 is the sweet spot for protection-to-overhead ratio.
+    - Ensure audio streams are defended identically to video — failing to include audio in the anonymity set re-introduces fingerprinting signal.
+section: §5.2, Table 2
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-thewizard0fbsod-quirky-chinese-i2p
+kind: defense
+summary: The author released a netDb scanner tool that reads the local I2Pd network database, identifies routers hosted on Chinese IP ranges, and exports results as IP lists for firewall rules. The tool supports filtering by country (--cn-only), JSON export, and IP-list export, enabling operators to block suspected surveillance nodes at the OS firewall layer before any I2P connection is made.
+techniques:
+    - measurement-platform
+defenses:
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Integrate analogous netDb scanning logic into I2P client builds so users receive automatic warnings or peer exclusions for high-risk IP clusters without needing external tooling
+    - Publish and maintain a community-curated blocklist of suspected state-surveillance I2P node IP ranges, updated as rotation events are observed
+section: Issue body — scanner download
+extracted_by: claude-sonnet-4-6

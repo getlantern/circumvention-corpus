@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-witwer-dodge-client-side-framework
+title: 'Dodge: A Client-Side Framework for Application-Layer Video Fingerprinting Defenses'
+authors:
+    - Ethan Witwer
+    - David Hasselquist
+    - Tobias Pulls
+    - Niklas Carlsson
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0072.php
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+defenses_discussed:
+    - randomization
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly protects circumvention-tool users from behavior-based identification; video fingerprinting defeats encryption and is a real threat in censored regions.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0072.php

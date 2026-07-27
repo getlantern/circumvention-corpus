@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-thewizard0fbsod-quirky-chinese-i2p
+kind: detection
+summary: A community scan of the I2P network database (netDb) in July 2026 identified a cluster of suspicious router nodes uniformly running I2P version 0.9.66 (three versions behind the current 0.9.69), all hosted in Chinese domestic data centers rather than residential broadband. The nodes exhibit anomalous uniformity in their router capabilities (Caps) configuration and self-reported versions, a pattern inconsistent with organic user deployments.
+techniques:
+    - active-probing
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Treat version-stagnant node clusters from single-country datacenter ASNs as high-confidence surveillance infrastructure; implement netDb filtering by ASN or IP range
+    - Build automated detection into I2P client software to flag or deprioritize peers whose version, ASN, and Caps fields all match a known suspicious cluster profile
+section: Issue body
+extracted_by: claude-sonnet-4-6

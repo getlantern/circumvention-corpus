@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-redefining-website-fingerprinting
+kind: detection
+summary: 'Training WFP classifiers with LLM multi-agent simulated traces boosts cross-user accuracy to the 80% range (TikTok: 50.3%→84.9%, NetCLR: 53.6%→77.3%) compared to under 15% for models trained on scripted-only traffic. ClaudeOnly training outperforms ScriptedOnly baselines by approximately 3× on held-out human traces, using only 20% of the data volume, at a cost of roughly $10/GB versus $35/GB for human collection.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Treat WFP as a substantially stronger threat than classical literature assumes — LLM-enhanced attackers can achieve 80%+ accuracy on real human traffic using scalable, low-cost synthetic training data that generalizes across users.
+    - Defenses that rely on behavioral unpredictability or session-boundary ambiguity alone are insufficient; persona-diverse LLM agents can now approximate that variance synthetically.
+section: §5.4 / Figure 6
+extracted_by: claude-sonnet-4-6

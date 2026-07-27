@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: evaluation
+summary: 'Incoming (server→proxy) traffic is the dominant leakage channel: Features In achieves 70–72% random-forest accuracy on Testnet vs. 43–44% for Features Out (Table 3). Enabling Poisson-rate cover traffic on the network requester side (λQR = 10–20 ms) reduces the F1 score from 0.87 to 0.75–0.64 but increases latency overhead to 7.32–12.66× (Table 4, configs 10–11), reflecting the anonymity trilemma.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Circumvention proxies that tunnel web traffic through a mixnet must rate-limit or pad incoming responses from the open internet, not just outgoing requests — raw response bursts leak site identity even through a mixing layer.
+    - The latency cost of server-side Poisson shaping (up to 12× overhead) suggests constant-rate tunneling (POISS-OFF) or burst-mimicry (WTF4Nym) are preferable architectural choices over naive inter-arrival rate limiting.
+section: §5.1, §5.2, Tables 3–4
+extracted_by: claude-sonnet-4-6

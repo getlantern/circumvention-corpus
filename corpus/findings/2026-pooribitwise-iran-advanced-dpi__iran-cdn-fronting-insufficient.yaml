@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: Iran's DPI blocks VLESS/WS traffic routed through Cloudflare CDN in full-strict TLS mode with regularly rotated clean Cloudflare IPs, demonstrating that CDN-fronted traffic is not opaque to the censor and that IP-layer evasion (using clean CDN IPs) is insufficient when the SNI is fingerprinted.
+techniques:
+    - dpi
+    - sni-blocking
+    - ip-blocking
+defenses:
+    - vless
+    - tunneling
+censors:
+    - ir
+defense_implications:
+    - CDN fronting with a stable domain name is no longer reliable against Iran; pair CDN fronting with domain rotation or ECH so the SNI seen by DPI is not the real destination.
+    - Do not assume Cloudflare's infrastructure provides blocking resistance by itself — the censor targets the domain name exposed in the ClientHello, not the CDN IP.
+section: Description
+extracted_by: claude-sonnet-4-6

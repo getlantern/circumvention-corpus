@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-precarious-but-active
+kind: detection
+summary: 'Chinese platforms employ keyword-based algorithmic censorship that produces unexpected false positives even on self-censored content: one participant reported that a 4,000-word work posted as a whole was blocked, but splitting it into two 2,000-word segments caused both halves to be blocked, while splitting the same content into three parts allowed all three to post. The participant interpreted this as the algorithm learning to recognize their work over time, and ceased testing for fear of ''feeding the AI.'''
+techniques:
+    - keyword-filtering
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that transport user content (not just network traffic) should consider that Chinese platform-side ML classifiers may fingerprint content patterns across submissions, not just scan for static keyword lists.
+    - Content-layer censorship is largely opaque to users — designing feedback mechanisms that help users identify what triggered a block (analogous to Lofter's creator-tier human review) would reduce trial-and-error circumvention attempts.
+section: §5.1.1
+extracted_by: claude-sonnet-4-6

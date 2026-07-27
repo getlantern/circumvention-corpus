@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: 'Iran''s DPI blocks multiple protocols at different timescales from a single vantage point: REALITY triggers RST floods immediately after the TLS handshake; WireGuard is blackholed after the initial handshake; SSH dynamic-port-forwarding results in full IP block within 8 hours; and VLESS/WS through a CDN is blocked within 24 hours.'
+techniques:
+    - dpi
+    - rst-injection
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - Protocols whose distinctive handshake is visible in the first few packets (Reality, WireGuard) must either eliminate the fingerprint or accept near-instant blocking — QUIC-based or fully-CDN-fronted transports with no fixed handshake may fare better.
+    - Server IP burn rate is high for low-traffic protocols; design for rapid IP rotation or unlisted-relay distribution (bridge model) rather than assuming stable endpoints.
+section: Other Observations
+extracted_by: claude-sonnet-4-6
