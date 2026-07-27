@@ -62,32 +62,48 @@ const (
 	httpTimeout    = 30 * time.Second
 )
 
-// keywords gates which arXiv submissions are interesting enough to send
-// to the LLM classifier. False positives are fine — the LLM rejects
-// non-relevant ones in the next stage and a human gates the final PR.
+// keywords gates which submissions are interesting enough to send to the
+// LLM classifier. False positives are fine — the LLM rejects non-relevant
+// ones in the next stage.
+//
+// Matched as a prefix at a word boundary, so "censor" catches censorship /
+// censored and "iran" catches Iranian / Iran's. Padding an entry with
+// spaces to fake a boundary (the old " dpi ", "iran ", "meek ") does not
+// work and actively lost papers: "iran " missed "Iranian", "russia " missed
+// "Russia's Android Ecosystem" (FOCI 2026), and every entry failed against
+// a title ending in the keyword. Use exactKeywords for short acronyms that
+// need a closing boundary too.
 var keywords = []string{
-	"censor", "circumvent", "blocking", "blocklist", "throttl",
-	"deep packet inspection", " dpi ", "dpi-", "protocol obfuscat",
-	"great firewall", "gfw", "iran ", "russia ", "china's", "chinese internet",
-	"belarus", "kazakh", "myanmar", "turkmen", "saudi", "uae ", "egypt", "north kore",
-	"active probing", "fingerprint", "ja3", "ja4", "clienthello",
+	"censor", "circumvent", "blocking", "blocklist", "allowlist", "whitelist",
+	"throttl", "shutdown", "deep packet inspection", "protocol obfuscat",
+	"great firewall", "iran", "russia", "china", "chinese", "belarus",
+	"kazakh", "myanmar", "turkmen", "saudi", "egypt", "north kore",
+	"pakistan", "turkey", "turkish", "vietnam", "indonesia", "ethiopia",
+	"venezuela", "syria", "uzbek", "tajik", "azerbaijan", "afghanistan",
+	"active probing", "fingerprint", "clienthello", "trust store",
 	"sni-based", "sni filter", "dns injection", "dns poison", "rst injection",
 	"middlebox", "traffic analysis", "website fingerprint", "flow correlat",
 	"tls fingerprint", "fully encrypted", "fully-encrypted", "entropy detect",
-	// "tor " (with space) was too broad — matched "vec[tor ]Commitments",
-	// "ac[tor ]frameworks", etc. Use multi-word phrases that are
-	// specific to the Tor anonymity network.
-	"tor browser", "tor bridge", "tor relay", "tor network", "tor cell",
 	"onion router", "onion routing", "onion service", "anonymity network",
 	"snowflake", "obfs4", "scramblesuit",
 	"shadowsocks", "v2ray", "vless", "vmess", "trojan", "reality",
 	"hysteria", "amneziawg", "wireguard", "kindling",
 	"refraction", "decoy routing", "tapdance", "conjure", "telex",
 	"domain fronting", "domain front", "fronted",
-	"meek ", "meek-", "esni", "ech ", "encrypted clienthello",
-	"steganograph", "marionette", "format-transforming",
-	"ooni", "censored planet", "iclab", "iris ", "net4people",
-	"geneva",
+	"encrypted clienthello", "steganograph", "marionette",
+	"format-transforming", "covert channel", "covert communication",
+	"hidden communication", "undetectab", "unobservab",
+	"ooni", "censored planet", "iclab", "net4people", "geneva",
+}
+
+// exactKeywords are matched as whole words. These are short enough that
+// prefix matching would misfire — "tor" would hit torrent/tornado, "ech"
+// would hit echo, "dpi" would hit rapid. A closing word boundary still
+// admits the punctuation and possessive forms that broke the old
+// space-padded entries, so "Who Carries Tor?" now matches.
+var exactKeywords = []string{
+	"tor", "dpi", "gfw", "ech", "esni", "sni", "quic",
+	"ja3", "ja4", "meek", "uae", "iris", "vpn", "proxy", "i2p",
 }
 
 func main() {
@@ -194,6 +210,10 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	taxRaw, err := os.ReadFile(filepath.Join(root, "schema", "taxonomy.yaml"))
 	if err != nil {
 		return nil, fmt.Errorf("read taxonomy: %w", err)
+	}
+	tax, err := parseTaxonomy(taxRaw)
+	if err != nil {
+		return nil, fmt.Errorf("parse taxonomy: %w", err)
 	}
 
 	since := time.Now().AddDate(0, 0, -opts.windowDays)
@@ -326,16 +346,25 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	res := &runResult{Considered: len(cands)}
 
 	// Curation tier:
-	//   net4people + gfw.report — every entry is human-curated research, so
-	//     skip the keyword filter entirely.
+	//   net4people + gfw.report + foci — every entry is censorship research
+	//     by definition of the venue, so skip the keyword filter entirely.
 	//   arxiv — has full abstract on the API; we keyword-match title+abstract.
-	//   popets / foci / usenix-sec — proceedings pages give us full abstracts
-	//     too, but those abstracts mention many keywords ("Tor", "fingerprint",
-	//     etc.) tangentially in unrelated work. Match on title only — a paper
-	//     whose title doesn't contain a circumvention keyword is almost
-	//     certainly not circumvention research, regardless of abstract content.
-	curatedSources := map[string]bool{"net4people": true, "ntc-party": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true}
-	titleOnlySources := map[string]bool{"popets": true, "foci": true, "usenix-sec": true}
+	//   popets / usenix-sec — proceedings pages give us full abstracts too,
+	//     but those abstracts mention many keywords ("Tor", "fingerprint",
+	//     etc.) tangentially in unrelated work, and both venues are large.
+	//     Match on title only to keep classifier volume sane.
+	//
+	// FOCI moved out of the title-only tier on 2026-07-27. It is the Workshop
+	// on Free and Open Communications on the Internet — a ~15-paper program
+	// where every paper is in scope — yet the title gate silently dropped 6
+	// of the 14 papers listed in net4people/bbs#636, including "Gaps in the
+	// Record: On the Observability and Documentation of Internet Shutdowns"
+	// and "Beyond OS Trust Stores: TLS Trust in Russia's Android Ecosystem".
+	// They never reached the classifier, so they never even appeared in the
+	// rejection cache as a reviewable decision. A whole venue's worth of
+	// on-topic work should not hinge on the title happening to say "censor".
+	curatedSources := map[string]bool{"net4people": true, "ntc-party": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true, "foci": true}
+	titleOnlySources := map[string]bool{"popets": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
 	for _, c := range cands {
 		switch {
@@ -354,8 +383,20 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	res.Filtered = len(kept)
 	log.Printf("%d passed keyword filter", len(kept))
 
+	// Dedup against the corpus AND against everything already kept this run.
+	// One paper routinely arrives from two sources in a single crawl — the
+	// 2026-07-06 run ingested "On Russia's Early Introduction of QUIC SNI
+	// Censorship" twice, once from the FOCI proceedings and once from the
+	// authors' own blog, because each candidate was only ever compared to
+	// the corpus on disk and never to its siblings.
+	seen := &existingCorpus{
+		byID:    map[string]bool{},
+		byTitle: map[string]bool{},
+		byURL:   map[string]bool{},
+		byArxiv: map[string]bool{},
+	}
 	novel := make([]candidate, 0, len(kept))
-	skippedRejected := 0
+	skippedRejected, skippedIntraRun := 0, 0
 	for _, c := range kept {
 		if existing.contains(c) {
 			continue
@@ -364,7 +405,16 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			skippedRejected++
 			continue
 		}
+		if seen.contains(c) {
+			skippedIntraRun++
+			log.Printf("intra-run duplicate: %q (%s)", truncate(c.Title, 60), c.Source)
+			continue
+		}
+		seen.remember(c)
 		novel = append(novel, c)
+	}
+	if skippedIntraRun > 0 {
+		log.Printf("%d intra-run duplicates collapsed", skippedIntraRun)
 	}
 	res.Novel = len(novel)
 	if skippedRejected > 0 {
@@ -434,6 +484,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 				c.URL = k.CanonicalURL
 			}
 		}
+		k = tax.sanitize(k, ident)
 		log.Printf("✓ %s — censors=%v techniques=%v", ident, k.Censors, k.Techniques)
 		out = append(out, accepted{c: c, k: k})
 		// Stop classifying once we have maxN accepted — saves API calls
@@ -2119,21 +2170,135 @@ func (c candidate) identityKey() string {
 	return ""
 }
 
+// ── taxonomy validation ───────────────────────────────────────────
+
+// taxonomy holds the controlled-vocabulary IDs the classifier is allowed to
+// use. The prompt hands Claude the whole taxonomy, but nothing checked what
+// came back: the 2026-07-06 run tagged the Cawthon FOCI paper with
+// technique "pluggable-transport", which exists only as a *defense*, and the
+// invalid ID went straight into the YAML and turned CI red. That is worse
+// under auto-merge — a hallucinated tag would silently park the batch
+// forever — so drop unknown IDs at the source and say so in the log.
+type taxonomy struct {
+	censors    map[string]bool
+	techniques map[string]bool
+	defenses   map[string]bool
+	evalMethod map[string]bool
+}
+
+func parseTaxonomy(raw []byte) (*taxonomy, error) {
+	var doc map[string]map[string]any
+	if err := yaml.Unmarshal(raw, &doc); err != nil {
+		return nil, err
+	}
+	set := func(section string) map[string]bool {
+		out := map[string]bool{}
+		for k := range doc[section] {
+			out[k] = true
+		}
+		return out
+	}
+	t := &taxonomy{
+		censors:    set("censors"),
+		techniques: set("techniques"),
+		defenses:   set("defenses"),
+		evalMethod: set("evaluation_methods"),
+	}
+	if len(t.censors) == 0 || len(t.techniques) == 0 {
+		return nil, fmt.Errorf("taxonomy.yaml missing censors or techniques")
+	}
+	return t, nil
+}
+
+func (t *taxonomy) sanitize(k classification, ident string) classification {
+	filter := func(field string, vals []string, valid map[string]bool) []string {
+		out := make([]string, 0, len(vals))
+		for _, v := range vals {
+			if valid[v] {
+				out = append(out, v)
+				continue
+			}
+			log.Printf("dropping invalid %s id %q on %s (not in taxonomy)", field, v, ident)
+		}
+		return out
+	}
+	k.Censors = filter("censor", k.Censors, t.censors)
+	k.Techniques = filter("technique", k.Techniques, t.techniques)
+	k.DefensesDiscussed = filter("defense", k.DefensesDiscussed, t.defenses)
+	k.EvaluationMethods = filter("evaluation_method", k.EvaluationMethods, t.evalMethod)
+	if len(k.Techniques) == 0 {
+		// Deliberately left empty rather than guessed at: TestCorpusIntegrity
+		// fails on a paper with no techniques, which holds the batch back for
+		// a human instead of filing a confidently mis-tagged record.
+		log.Printf("WARNING: %s has no valid techniques — this batch will not auto-merge until a human tags it", ident)
+	}
+	return k
+}
+
 // ── existing-corpus dedup ─────────────────────────────────────────
 
+// existingCorpus indexes the corpus by every identity a candidate can be
+// recognized under. Before 2026-07-27 it indexed only byID and byTitle,
+// which is why the same work was ingested up to four times: both of those
+// derive from the LLM-generated title, and a net4people thread gets
+// re-summarized differently on each crawl, so the same issue yielded a
+// different id AND a different title every week. The URL never moved.
 type existingCorpus struct {
 	byID    map[string]bool
 	byTitle map[string]bool
+	byURL   map[string]bool
+	byArxiv map[string]bool
 }
 
 func (e *existingCorpus) contains(c candidate) bool {
 	if e.byID[proposeID(c)] {
 		return true
 	}
-	if e.byTitle[normalizeTitle(c.Title)] {
+	if t := normalizeTitle(c.Title); t != "" && e.byTitle[t] {
 		return true
 	}
+	if a := canonicalArxivID(c.ArxivID, c.URL); a != "" && e.byArxiv[a] {
+		return true
+	}
+	for _, u := range c.identityURLs() {
+		if e.byURL[u] {
+			return true
+		}
+	}
 	return false
+}
+
+// remember records a candidate's identities so later candidates in the same
+// run collide with it.
+func (e *existingCorpus) remember(c candidate) {
+	e.byID[proposeID(c)] = true
+	if t := normalizeTitle(c.Title); t != "" {
+		e.byTitle[t] = true
+	}
+	if a := canonicalArxivID(c.ArxivID, c.URL); a != "" {
+		e.byArxiv[a] = true
+	}
+	// Only the candidate's own URL — a ref may be a shared listing page,
+	// which would collapse unrelated papers from the same source.
+	if u := canonicalURL(c.URL); u != "" {
+		e.byURL[u] = true
+	}
+}
+
+// identityURLs is every URL that identifies this candidate: its own URL plus
+// any secondary refs. A ref may be a listing page shared by many papers, so
+// loadExisting only trusts a source URL that resolves to exactly one record.
+func (c candidate) identityURLs() []string {
+	out := make([]string, 0, 1+len(c.Refs))
+	if u := canonicalURL(c.URL); u != "" {
+		out = append(out, u)
+	}
+	for _, r := range c.Refs {
+		if u := canonicalURL(strings.TrimPrefix(r, "url:")); u != "" {
+			out = append(out, u)
+		}
+	}
+	return out
 }
 
 func loadExisting(root string) (*existingCorpus, error) {
@@ -2142,7 +2307,16 @@ func loadExisting(root string) (*existingCorpus, error) {
 	if err != nil {
 		return nil, err
 	}
-	out := &existingCorpus{byID: map[string]bool{}, byTitle: map[string]bool{}}
+	out := &existingCorpus{
+		byID:    map[string]bool{},
+		byTitle: map[string]bool{},
+		byURL:   map[string]bool{},
+		byArxiv: map[string]bool{},
+	}
+	// A source URL is only a usable identity if exactly one paper claims it.
+	// jonsnowwhite.de/publications is listed as a source by three distinct
+	// papers; treating it as an identity would collapse them into one.
+	sourceURLOwners := map[string]int{}
 	for _, e := range entries {
 		if e.IsDir() || !strings.HasSuffix(e.Name(), ".yaml") {
 			continue
@@ -2152,8 +2326,11 @@ func loadExisting(root string) (*existingCorpus, error) {
 			return nil, err
 		}
 		var p struct {
-			ID    string `yaml:"id"`
-			Title string `yaml:"title"`
+			ID      string   `yaml:"id"`
+			Title   string   `yaml:"title"`
+			URL     string   `yaml:"url"`
+			ArxivID string   `yaml:"arxiv_id"`
+			Sources []string `yaml:"sources"`
 		}
 		if err := yaml.Unmarshal(raw, &p); err != nil {
 			continue
@@ -2161,11 +2338,58 @@ func loadExisting(root string) (*existingCorpus, error) {
 		if p.ID != "" {
 			out.byID[p.ID] = true
 		}
-		if p.Title != "" {
-			out.byTitle[normalizeTitle(p.Title)] = true
+		if t := normalizeTitle(p.Title); t != "" {
+			out.byTitle[t] = true
+		}
+		if u := canonicalURL(p.URL); u != "" {
+			out.byURL[u] = true
+		}
+		if a := canonicalArxivID(p.ArxivID, p.URL); a != "" {
+			out.byArxiv[a] = true
+		}
+		for _, s := range p.Sources {
+			if strings.HasPrefix(s, "arxiv:") {
+				if a := canonicalArxivID(strings.TrimPrefix(s, "arxiv:"), ""); a != "" {
+					out.byArxiv[a] = true
+				}
+				continue
+			}
+			if u := canonicalURL(strings.TrimPrefix(s, "url:")); u != "" {
+				sourceURLOwners[u]++
+			}
+		}
+	}
+	for u, n := range sourceURLOwners {
+		if n == 1 {
+			out.byURL[u] = true
 		}
 	}
 	return out, nil
+}
+
+func canonicalURL(u string) string {
+	u = strings.ToLower(strings.TrimSpace(u))
+	if u == "" {
+		return ""
+	}
+	if i := strings.IndexByte(u, '#'); i >= 0 {
+		u = u[:i]
+	}
+	u = strings.TrimPrefix(strings.TrimPrefix(u, "https://"), "http://")
+	u = strings.TrimPrefix(u, "www.")
+	return strings.TrimSuffix(u, "/")
+}
+
+var arxivInURLRE = regexp.MustCompile(`(?i)arxiv\.org/(?:abs|pdf)/([0-9.]+)`)
+
+func canonicalArxivID(id, url string) string {
+	id = strings.TrimSpace(id)
+	if id == "" {
+		if m := arxivInURLRE.FindStringSubmatch(url); m != nil {
+			id = m[1]
+		}
+	}
+	return arxivIDFromURL(id)
 }
 
 // ── YAML writing ───────────────────────────────────────────────────
@@ -2320,6 +2544,28 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 		return "", fmt.Errorf("gh pr create: %v\n%s", err, string(out))
 	}
 	url := strings.TrimSpace(string(out))
+
+	// Hand the merge decision to CI. GitHub squash-merges the moment the
+	// required `test` check passes, so main picks up this batch within
+	// minutes instead of waiting for someone to notice the PR.
+	//
+	// This is the fix for the duplicate-ingest pileup, not just a
+	// convenience: dedup compares candidates against main, so an unmerged
+	// batch makes the next run rediscover everything in it. Five weekly PRs
+	// sat unmerged from 2026-06-15 to 2026-07-27 and the crawler re-ingested
+	// the same papers up to four times.
+	//
+	// A batch that fails CI (invalid taxonomy tag, missing techniques, a
+	// duplicate that slipped past dedup) simply stays open for a human. That
+	// is the intended behaviour — never force it.
+	if err := run("gh", "pr", "merge", "--auto", "--squash", url); err != nil {
+		log.Printf("could not enable auto-merge on %s: %v", url, err)
+		log.Printf("PR is open and will wait for a manual merge; if this persists, check that "+
+			"branch protection on main requires the `test` check (auto-merge needs it)")
+	} else {
+		log.Printf("auto-merge enabled on %s — merges when CI passes", url)
+	}
+
 	// Reset to main so the next run starts clean.
 	_ = run("git", "checkout", "main")
 	return url, nil
@@ -2807,14 +3053,24 @@ func matchesKeywords(c candidate) bool {
 	return matchesKeywordsInText(c.Title + " " + c.Abstract)
 }
 
-func matchesKeywordsInText(s string) bool {
-	hay := strings.ToLower(s)
+// keywordRE matches any entry in keywords as a word-boundary-anchored
+// prefix, or any entry in exactKeywords as a whole word. Built once — it is
+// applied to every candidate on every run.
+var keywordRE = buildKeywordRE()
+
+func buildKeywordRE() *regexp.Regexp {
+	alts := make([]string, 0, len(keywords)+len(exactKeywords))
 	for _, k := range keywords {
-		if strings.Contains(hay, k) {
-			return true
-		}
+		alts = append(alts, `\b`+regexp.QuoteMeta(k))
 	}
-	return false
+	for _, k := range exactKeywords {
+		alts = append(alts, `\b`+regexp.QuoteMeta(k)+`\b`)
+	}
+	return regexp.MustCompile(`(?i)` + strings.Join(alts, "|"))
+}
+
+func matchesKeywordsInText(s string) bool {
+	return keywordRE.MatchString(s)
 }
 
 func proposeID(c candidate) string {
@@ -2886,8 +3142,17 @@ func stripVenueSuffix(t string) string {
 	return strings.TrimSpace(venueSuffixRE.ReplaceAllString(t, ""))
 }
 
+// countryPrefixRE matches the "[Iran]" / "[Russia]" tag net4people uses on
+// thread titles. The LLM copies it into the paper title inconsistently
+// between crawls of the same thread, so "[Iran] Advanced DPI is
+// reassembling…" and "Advanced DPI is reassembling…" hashed to different
+// titles and both got ingested. Stripped for normalization only — the tag
+// stays in the stored title, where it is useful.
+var countryPrefixRE = regexp.MustCompile(`^\s*\[[^\]]{1,40}\]\s*`)
+
 func normalizeTitle(t string) string {
 	t = stripVenueSuffix(t)
+	t = countryPrefixRE.ReplaceAllString(t, "")
 	t = strings.ToLower(t)
 	t = slugRE.ReplaceAllString(t, " ")
 	return strings.Join(strings.Fields(t), " ")
