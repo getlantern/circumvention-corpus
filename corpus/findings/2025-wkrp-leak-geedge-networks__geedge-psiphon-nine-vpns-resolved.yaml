@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: detection
+summary: Geedge's internal documents list nine commercial VPNs as 'resolved,' providing specific techniques to identify and filter their traffic via fingerprinting. Following the 2021 Myanmar coup, Geedge developed a targeted tool to detect which servers Psiphon's app connected to, enabling nationwide blocking; OONI data confirms Psiphon access was highly limited in Myanmar from June 2024 to March 2025.
+techniques:
+    - tls-fingerprint
+    - dpi
+    - active-probing
+    - ip-blocking
+censors:
+    - mm
+    - cn
+defense_implications:
+    - Server-side IP enumeration by well-resourced adversaries is a confirmed operational threat; circumvention tools must implement bridge/relay rotation that outpaces active discovery faster than the censor's update cycle.
+    - Static server infrastructure (commercial VPN model) is systematically enumerated first — designs must support rapid reprovisioning and unlisted relay discovery.
+section: Body
+extracted_by: claude-sonnet-4-6

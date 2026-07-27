@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: evaluation
+summary: Despite Geedge's targeted Psiphon blocking in Myanmar (confirmed by OONI, June 2024–March 2025), Psiphon gained users during Myanmar's worst internet disruptions because all circumvention tools were simultaneously disrupted, with commercial VPNs collapsing first. Grant-funded tools with active anti-censorship investment (Psiphon, Tor) showed measurably greater resilience than commercial VPNs that do not invest in pluggable transport infrastructure.
+techniques:
+    - ip-blocking
+    - dpi
+    - active-probing
+defenses:
+    - bridges
+    - pluggable-transport
+censors:
+    - mm
+defense_implications:
+    - Active anti-censorship investment (bridge rotation, pluggable transports) provides demonstrated survival advantage even when a tool is the primary target of a well-resourced censor — static commercial VPN architecture collapses first under the same pressure.
+    - 'Tool diversity across a censored population creates systemic resilience: when one tool is targeted, users shift to alternatives rather than going dark, provided multiple circumvention options are maintained and accessible.'
+section: Body
+extracted_by: claude-sonnet-4-6

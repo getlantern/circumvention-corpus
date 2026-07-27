@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: deployment
+summary: After Sandvine exited Pakistan in 2023 under U.S. sanctions, Geedge stepped in to power Pakistan's Web Monitoring System (national firewall), reportedly utilizing existing Sandvine hardware alongside new Geedge technology. This demonstrates that Western vendor exits under sanctions pressure do not disrupt national filtering infrastructure — they create vacuums filled by Chinese GFW-derivative equivalents.
+techniques:
+    - dpi
+    - ip-blocking
+    - keyword-filtering
+censors:
+    - pk
+defense_implications:
+    - Circumvention tools deployed in Pakistan should be evaluated against full GFW-grade DPI signatures, not legacy Sandvine ruleset assumptions.
+    - Vendor transition periods in national firewall deployments do not produce windows of reduced filtering — do not model censorship capability as degraded during procurement changeovers.
+section: Body
+extracted_by: claude-sonnet-4-6

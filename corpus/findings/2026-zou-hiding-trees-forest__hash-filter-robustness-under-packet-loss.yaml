@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: evaluation
+summary: Introducing hash-based covert carrier filtering does not affect bit error rate (BER) or effective transmission rate (ETR) of the underlying covert channel under packet loss up to 15%, reordering up to 20%, or delays up to 100±50 ms, because the filtering layer only governs carrier selection and leaves embedding and extraction logic unchanged. Results for L=0 and L=6 were statistically indistinguishable across all tested network impairment conditions.
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Covert carrier filtering can be layered on top of existing storage or timing covert channel implementations without modifying their reliability mechanisms—robustness under lossy or reordered links is inherited unchanged.
+    - The strategy is safe to deploy over UDP-based transports in high-loss censored network environments without requiring a separate error-correction layer specific to the filtering component.
+section: §5.3.1, Fig.5
+extracted_by: claude-sonnet-4-6

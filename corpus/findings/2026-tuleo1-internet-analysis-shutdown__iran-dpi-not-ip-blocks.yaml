@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: deployment
+summary: During the 2026 Iranian internet shutdown, nearly all IP addresses were fully blocked; a small subset of Cloudflare IPs completed TCP three-way handshakes (SYN-ACK returned) but DPI terminated sessions before any data transfer, confirming that the primary enforcement mechanism was payload-level DPI rather than IP-layer blocking alone.
+techniques:
+    - dpi
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - A tool that only needs TCP connectivity will fail — any Iran-targeted transport must assume DPI scrutiny on every byte after the handshake; pure IP rotation is insufficient.
+    - Cloudflare-fronted transports that rely on TCP keepalive without immediately sending a whitelisted SNI will be dropped before payload exchange begins.
+section: Issue body
+extracted_by: claude-sonnet-4-6

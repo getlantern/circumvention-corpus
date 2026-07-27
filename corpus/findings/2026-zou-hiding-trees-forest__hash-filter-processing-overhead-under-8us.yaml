@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: evaluation
+summary: 'Per-packet processing overhead for SHA-256-based covert carrier filtering remains below 8 µs across all tested filter key sizes (L=1–8): storage channels (709-byte average payload) take 5.7–6.48 µs; timing channels (1146-byte average payload) take 7.44–7.87 µs, measured on a 12th-gen Intel Core i5-12400 at 2.50 GHz. This overhead does not cause packet loss or measurable end-to-end latency increase.'
+defenses:
+    - steganography
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - SHA-256 carrier filtering is safe for real-time transport paths (video surveillance, streaming UDP) with latency budgets well above 8 µs; SHA-256 can be substituted with faster primitives (e.g., BLAKE3) for tighter embedded or high-throughput environments without altering the filtering architecture.
+    - The sub-8 µs budget is hash-algorithm-agnostic by design, so operators can trade security margin for speed by selecting lighter hash functions while keeping the same carrier-selection logic.
+section: §5.3.3, Table 5
+extracted_by: claude-sonnet-4-6

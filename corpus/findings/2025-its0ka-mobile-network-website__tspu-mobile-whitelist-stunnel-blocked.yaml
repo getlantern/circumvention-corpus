@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-mobile-network-website
+kind: deployment
+summary: Stunnel tunneling achieved temporary circumvention before being blocked, and the enforcement was observed consistently across Beeline and Tele2 in affected regions, suggesting centralized TSPU-level implementation rather than per-ISP configuration. The whitelist appeared in September 2025 following a period of mobile-network shutdowns in some Russian regions or cities.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - ru
+defense_implications:
+    - Tunneling protocols that initially evade detection (as stunnel did) will face rapid adaptive blocking; circumvention tools targeting Russia's TSPU should plan for frequent server rotation and avoid static endpoints that can be fingerprinted over time.
+    - The centralized TSPU architecture means any effective countermeasure must work against a single shared enforcement point, but also means regional variation in strictness may offer windows for region-specific configurations.
+section: Comments (Ximerixx, someone2037492034, Sep 2025)
+extracted_by: claude-sonnet-4-6

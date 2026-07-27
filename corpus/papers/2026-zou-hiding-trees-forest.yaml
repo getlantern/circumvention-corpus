@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2606.11532
+id: 2026-zou-hiding-trees-forest
+title: 'Hiding the Trees in the Forest: Building Network Covert Channels with Hash-Based Covert Carrier Filtering'
+authors:
+    - Zexiao Zou
+    - Zhiqiang Wang
+    - Baoxu Liu
+    - Yuyang Han
+    - Yan Zhang
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2606.11532"
+url: https://arxiv.org/abs/2606.11532v1
+abstract: 'As an effective anti-censorship mechanism, network covert channels can provide data privacy protection and ensure communication security. However, the covertness of existing network covert channels primarily depends on the secrecy of their covert algorithms. With the increasing depth of research in this field, the difficulty of breaking such algorithms has gradually decreased. Once the algorithm is exposed, the network covert channel can be easily detected by adversaries. To address this issue, this paper proposes a covert carrier filtering strategy based on the hash. In this strategy, a key-dependent filtering rule is introduced during the construction of the network covert channel, enabling the communicating parties to randomly and dynamically filter a sparse subset from the carrier set as the covert carrier set. This strategy not only enhances the randomness of carrier selection but also tightly couples the covertness of the network covert channel with the security of the key. We employ machine learning-based traffic analysis methods to experimentally validate the strategy in two types of network covert channels: network storage and timing covert channels. The experimental results demonstrate that the proposed strategy significantly improves the detection resistance of network covert channels. When the filter key size exceeds six bits, the impact on the detection effect of the classifier becomes quite significant. Furthermore, the processing delay for a single packet is less than 8 $μs$, indicating the feasibility of deploying the proposed strategy in high-speed network environments.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - randomization
+    - steganography
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Evaluates detection resilience against ML traffic classifiers; relevant for understanding covert channel security in censored environments.
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2606.11532

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-mobile-network-website
+kind: detection
+summary: Non-whitelisted DNS resolvers — including 1.1.1.1, 9.9.9.9, and Yandex DNS — were blocked with ICMP also blocked, while Beeline's own UDP DNS and Google's 8.8.8.8 remained accessible and non-hijacked (verified via Akamai WHOIS). This selective resolver blocking constrains which DNS infrastructure circumvention tools can use for bootstrap.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools bootstrapping in Russia should not rely on 1.1.1.1 or 9.9.9.9 as fallback resolvers; only ISP-assigned DNS and 8.8.8.8 were reachable in the tested environment.
+    - Consider encoding bootstrap server addresses directly in the client rather than relying on DNS lookups to non-whitelisted resolvers.
+section: Issue body (its0ka, Sep 7 2025)
+extracted_by: claude-sonnet-4-6

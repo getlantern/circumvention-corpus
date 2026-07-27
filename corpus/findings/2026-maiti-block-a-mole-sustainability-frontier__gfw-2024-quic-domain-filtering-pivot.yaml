@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: detection
+summary: In April 2024 the GFW began decrypting QUIC Initial packets at scale and blocking connections by domain rather than by IP address, targeting the exact transport layer that modern moving-target circumvention systems rely on for session continuity. Because blocking a registrable domain costs the censor essentially zero collateral (unlike blocking a hyperscaler IP range), the censor's optimal Stackelberg budget split allocates f* = 0.97 of its discovery budget to the domain channel once the defender runs n ≥ 2 endpoints (§8.10, Figure 7).
+techniques:
+    - http3-quic-block
+    - dpi
+    - sni-blocking
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - cn
+defense_implications:
+    - Treat domain names as the primary exhaustible resource in any QUIC-based moving-target system — QUIC session continuity does not help if the domain is blocked at the Initial packet level before the session migrates.
+    - Prefer free-tier platform sub-domains (collateral-protected, near-zero cost) over self-owned registrable domains wherever possible, since the censor can block registrable domains persistently at essentially zero collateral cost.
+section: §1, §3, §6, §8.10, Figure 7
+extracted_by: claude-sonnet-4-6

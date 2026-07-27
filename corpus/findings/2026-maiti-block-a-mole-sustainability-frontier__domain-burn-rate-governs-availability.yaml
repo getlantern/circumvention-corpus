@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maiti-block-a-mole-sustainability-frontier
+kind: evaluation
+summary: When the domain burn rate β = λdisc/λintro exceeds 1, time-average availability is bounded by A ≤ 1/β regardless of rotation speed µ, endpoint count n, or domain buffer kmax (Theorem 2). Rotation speed µ appears only in the address factor, which redundancy already saturates, and is entirely absent from the binding domain layer — proving that 'rotate faster' is categorically the wrong design lever under a domain-filtering censor.
+techniques:
+    - http3-quic-block
+    - dpi
+    - ip-blocking
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - cn
+    - ru
+    - ir
+defense_implications:
+    - Measure and track λdisc (censor domain-block throughput) and λintro (your domain-minting rate); keep β < β* ≈ 0.65 — investing in faster endpoint rotation without hitting this target wastes resources.
+    - 'Budget domain provisioning as a first-class operating cost: λintro ≥ λdisc/β* is the binding constraint, so even against a censor blocking hundreds of domains/day the cash outlay is modest but the minting pipeline must be automated and sustained.'
+section: §6, Theorem 2
+extracted_by: claude-sonnet-4-6

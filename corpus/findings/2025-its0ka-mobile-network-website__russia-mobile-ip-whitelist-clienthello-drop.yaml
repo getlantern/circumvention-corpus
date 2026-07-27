@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-its0ka-mobile-network-website
+kind: deployment
+summary: 'Beeline mobile users in certain Russian regions observed complete IP-based whitelisting: non-whitelisted IPs were unreachable at the ICMP level (traceroutes returned empty), TCP SYN packets were delivered but TLS ClientHello was silently dropped, and any domain resolving to a non-whitelisted IP was inaccessible regardless of SNI value. Only a curated set of IPs (primarily .gov.ru domains plus selected commercial sites) remained reachable.'
+techniques:
+    - ip-blocking
+    - tls-fingerprint
+censors:
+    - ru
+defense_implications:
+    - Proxies must reside on IPs already present in the Russian whitelist (e.g., large domestic CDNs, whitelisted cloud ranges) — foreign VPS IPs are blocked at the IP layer before any protocol-level circumvention can operate.
+    - Tunnel entry points should use TCP ports and IP ranges consistent with whitelisted traffic; any IP not on the whitelist will have its ClientHello silently dropped regardless of SNI.
+section: Issue body (its0ka, Sep 7 2025)
+extracted_by: claude-sonnet-4-6

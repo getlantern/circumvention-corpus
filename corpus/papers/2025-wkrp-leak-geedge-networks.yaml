@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-wkrp-leak-geedge-networks
+title: Leak of Geedge Networks internal documents (100,000+ from Jira, Confluence, GitLab)
+authors:
+    - '@wkrp'
+venue: net4people/bbs
+year: 2025
+url: https://www.theglobeandmail.com/world/article-leaked-files-show-a-chinese-company-is-exporting-the-great-firewalls/
+abstract: Internal documents from Geedge Networks, a Chinese censorship technology vendor founded by Fang Binxing ('father of the Great Firewall'), were leaked and analyzed in 2025 by investigative teams. Multiple reports (InterSecLab's 'The Internet Coup,' Amnesty International's Pakistan surveillance report, Justice for Myanmar's 'Silk Road of Surveillance') document Geedge's export of GFW-derived surveillance and VPN-blocking technology to Myanmar, Pakistan, Ethiopia, Kazakhstan, and other countries.
+censors:
+    - cn
+    - kz
+    - in
+    - pk
+    - et
+    - mm
+techniques:
+    - dpi
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Reveals operational structure and geographic reach of a major GFW-derivative censorship exporter; directly applicable to understanding circumvention challenges in multiple deployed countries.
+visibility: public
+date_added: "2026-06-15"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/519
