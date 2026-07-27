@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-viktor45-russia-architecture-operating
 kind: deployment
-summary: Russia's TSPU (Технические средства противодействия угрозам) is the national censorship infrastructure operated by Roskomnadzor, deployed inline at Russian ISPs. Technical documentation of its architecture and operating principles has been made publicly available via YouTube presentations by Russian-language researchers.
+summary: 'Russia''s TSPU (Технические средства противодействия угрозам) is the national censorship infrastructure operated by Roskomnadzor, deployed inline at Russian ISPs. Technical documentation of its architecture and operating principles has been made publicly available via YouTube presentations by Russian-language researchers. The system is evidently not classified, so circumvention researchers can study its detection logic from these materials rather than relying solely on empirical measurement; a 2021 presentation documents TSPU performing in-path filtering and traffic redirection rather than relying on endpoint-level DNS alone.'
 techniques:
     - dpi
     - ip-blocking

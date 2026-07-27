@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2025-lee-onions-got-puzzled
 kind: deployment
-summary: Client-puzzle DoS mitigation has been adopted in an official Tor protocol update and is in active use by several major onion services. An ethical live-network evaluation of OnionFlation attacks confirmed the vulnerability on the production Tor network, and the Tor Project has acknowledged the findings.
+summary: 'Client-puzzle DoS mitigation has been adopted in an official Tor protocol update and is in active use by several major onion services. An ethical live-network evaluation of OnionFlation attacks confirmed the vulnerability on the production Tor network, and the Tor Project has acknowledged the findings. The mechanism was revived and shipped by the Tor community in response to real-world DoS attacks against onion services.'
 defenses:
     - tor
 defense_implications:

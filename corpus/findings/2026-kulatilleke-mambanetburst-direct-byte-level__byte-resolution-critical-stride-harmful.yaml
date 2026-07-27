@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-kulatilleke-mambanetburst-direct-byte-level
 kind: detection
-summary: 'Striding with factor 4 (early downsampling) produces the largest single-factor degradation in the ablation study: average macro-F1 drops from 0.9909 to 0.9772 and cross-dataset variance increases from 4.77×10⁻⁵ to 4.51×10⁻⁴, with worst-case dataset performance falling to MIN 0.9524. Fine-grained byte order and short-range structure — protocol headers, payload signatures, repeated byte motifs — carry essential discriminative signal that stride-based aggregation destroys.'
+summary: 'Striding with factor 4 (early downsampling) produces the largest single-factor degradation in the ablation study: average macro-F1 drops from 0.9909 to 0.9772 and cross-dataset variance increases from 4.77×10⁻⁵ to 4.51×10⁻⁴, with worst-case dataset performance falling to MIN 0.9524. Fine-grained byte order and short-range structure — protocol headers, payload signatures, repeated byte motifs — carry essential discriminative signal that stride-based aggregation destroys. This is a far larger degradation than any other design choice tested, including Mamba-1 versus Mamba-2.'
 techniques:
     - ml-classifier
     - dpi

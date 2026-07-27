@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-lange-towards
 kind: detection
-summary: All major browsers (Firefox, Chromium) issue an unencrypted DNS-over-UDP query to resolve their configured DoH resolver's domain before initiating any encrypted DNS session. In Iran, nearly all tested DoH resolver domains are directly censored at the DNS layer (returning block-page IPs), which renders browser-native encrypted DNS ineffective regardless of whether the underlying encrypted protocol would otherwise succeed. Additionally, browsers always include the SNI extension in TLS handshakes with DNS resolvers even though no tested resolver requires it.
+summary: 'All major browsers (Firefox, Chromium) issue an unencrypted DNS-over-UDP query to resolve their configured DoH resolver''s domain before initiating any encrypted DNS session. In Iran, nearly all tested DoH resolver domains are directly censored at the DNS layer (returning block-page IPs), which renders browser-native encrypted DNS ineffective regardless of whether the underlying encrypted protocol would otherwise succeed. Additionally, browsers always include the SNI extension in TLS handshakes with DNS resolvers even though no tested resolver requires it. The bootstrap query resolves the DoH server''s own domain (for example doh.opendns.com) in cleartext, so an in-path censor can poison it before any encrypted session exists.'
 techniques:
     - dns-poisoning
     - sni-blocking
