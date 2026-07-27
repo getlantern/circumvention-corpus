@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-wang-precarious-but-active
+title: 'Precarious But Active: A Look At Privacy Behaviors in Chinese Transformative Fandom on a Censored and Surveilled Internet'
+authors:
+    - Kelly Wang
+    - Ruochen Liu
+    - Ada Lerner
+    - Abigail Marsh
+    - Tianshi Li
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0095.php
+censors:
+    - cn
+techniques:
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Informs understanding of user privacy needs and adaptive strategies in heavily censored and surveilled environments.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0095.php

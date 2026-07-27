@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cawthon-fountain-codes-censorship
+kind: defense
+summary: Encrypted DNS has attractive anti-blocking properties for circumvention rendezvous, but its constraint of conveying only small amounts of data per message makes it difficult to use as a generic data-exchange channel. Fountain codes offer an uncomplicated way to transmit discrete, bounded-length messages over such channels, including those that are unordered or unreliable.
+techniques:
+    - dns-poisoning
+    - dpi
+defenses:
+    - dns-tunneling
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Implement fountain-code framing at the rendezvous layer so that any covert channel with small per-message capacity (DNS, AMP, etc.) can carry bootstrapping payloads without bespoke length-splitting logic.
+    - Prefer encrypted DNS (DoH/DoT) over plaintext DNS for rendezvous because it defeats SNI/DNS-payload inspection while the fountain-code layer absorbs unreliability and fragmentation.
+section: Abstract
+extracted_by: claude-sonnet-4-6

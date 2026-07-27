@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ujuiujumandan-colorado-university-phd
+kind: policy
+summary: HRIC's June 2026 statement documents that Wang conducted his research under the supervision of Eric Wustrow, a named and prominent internet censorship researcher at CU Boulder. This establishes a pattern in which graduate students working under publicly identified circumvention researchers are themselves identifiable targets for state action, even while residing outside China.
+censors:
+    - cn
+defense_implications:
+    - Academic supervisors of circumvention research should consider advising students with PRC ties against travel to China; institutional affiliation with well-known researchers increases a student's visibility to state security apparatus.
+    - Research groups working on GFW measurement or circumvention should adopt explicit opsec policies about student travel to high-risk jurisdictions and consider pseudonymous authorship for students with family in China.
+section: Full text
+extracted_by: claude-sonnet-4-6

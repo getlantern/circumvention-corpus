@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-bai-provable-secure-steganography
+title: Provable Secure Steganography Based on Adaptive Dynamic Sampling
+authors:
+    - Kaiyi Pang and Minhao Bai
+venue: USENIX Security 2026
+year: 2026
+url: https://www.usenix.org/conference/usenixsecurity26/presentation/pang-kaiyi
+abstract: The security of private communication is increasingly at risk due to widespread surveillance. Steganography, a technique for embedding secret messages within innocuous carriers, enables covert communication over monitored channels. Provably Secure Steganography (PSS), which ensures computational indistinguishability between the normal model output and steganography output, is the state-of-the-art in this field. However, current PSS methods often require obtaining the explicit distributions of the model. In this paper, we propose a provably secure steganography scheme that only requires a model API that accepts a seed as input. Our core mechanism involves sampling a candidate set of tokens and constructing a map from possible message bit strings to these tokens. The output token is selected by applying this mapping to the real secret message, which provably preserves the original model's distribution. To ensure correct decoding, we address collision cases, where multiple candidate messages map to the same token, by maintaining and strategically expanding a dynamic collision set within a bounded size range. Extensive evaluations of three real-world datasets and three large language models demonstrate that our sampling-based method is comparable with existing PSS methods in efficiency and capacity.
+censors:
+    - generic
+techniques:
+    - fully-encrypted-detect
+defenses_discussed:
+    - steganography
+evaluation_methods:
+    - formal-analysis
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Could be applied to Lantern for obfuscating circumvention control traffic by embedding it in LLM-generated content.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.usenix.org/conference/usenixsecurity26/presentation/pang-kaiyi

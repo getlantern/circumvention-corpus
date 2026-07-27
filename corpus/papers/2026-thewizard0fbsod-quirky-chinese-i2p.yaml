@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-thewizard0fbsod-quirky-chinese-i2p
+title: The Quirky "Chinese I2P Routers"
+authors:
+    - '@ThEWiZaRd0fBsoD'
+    - '@wkrp'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/633
+abstract: A community member scanned the I2P network database and discovered suspicious router nodes hosted in Chinese data centers running outdated versions (0.9.66) with histories of malicious activity. These nodes appear to be surveillance infrastructure operated by Chinese censors or contractors, designed to identify I2P users and accessible nodes for subsequent blocking, despite being hosted in datacenters that prohibit VPN services.
+censors:
+    - cn
+techniques:
+    - active-probing
+    - ip-blocking
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. 2026 documentation of state-level network reconnaissance and blocking tactics targeting I2P; concrete technical indicators (IP ranges, router uniformity, version stagnation) useful for I2P operator defense.
+visibility: public
+date_added: "2026-07-20"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/633

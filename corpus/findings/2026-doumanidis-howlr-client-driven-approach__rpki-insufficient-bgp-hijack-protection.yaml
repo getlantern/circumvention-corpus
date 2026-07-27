@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-doumanidis-howlr-client-driven-approach
+kind: detection
+summary: 'BGP hijacking remains a practical threat to circumvention infrastructure: BGPWatch reported 5,673 possible hijack events in 2024 alone, and approximately 43% of ASes currently do not enforce route origin validation, leaving RPKI-covered prefixes still vulnerable. An attacker can statistically divert 50% of traffic by announcing an equally specific prefix with the genuine origin and itself prepended as next hop.'
+techniques:
+    - bgp-hijack
+    - ip-blocking
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should not rely on RPKI coverage alone as a guarantee against traffic diversion; client-side BGP hijack detection (e.g., witness polling) is necessary for high-value relay infrastructure.
+    - Tor bridge and relay operators should host on professional infrastructure co-located with multiple independently-certified services to enable witness-based detection.
+section: §2.2
+extracted_by: claude-sonnet-4-6

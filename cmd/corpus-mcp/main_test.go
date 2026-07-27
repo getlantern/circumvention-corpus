@@ -1,8 +1,10 @@
 package main
 
 import (
+	"maps"
 	"os"
 	"path/filepath"
+	"regexp"
 	"slices"
 	"strings"
 	"testing"
@@ -127,13 +129,13 @@ func TestFindingsIntegrity(t *testing.T) {
 	}
 
 	type finding struct {
-		Paper                string   `yaml:"paper"`
-		Kind                 string   `yaml:"kind"`
-		Summary              string   `yaml:"summary"`
-		Techniques           []string `yaml:"techniques"`
-		Defenses             []string `yaml:"defenses"`
-		Censors              []string `yaml:"censors"`
-		DefenseImplications  []string `yaml:"defense_implications"`
+		Paper               string   `yaml:"paper"`
+		Kind                string   `yaml:"kind"`
+		Summary             string   `yaml:"summary"`
+		Techniques          []string `yaml:"techniques"`
+		Defenses            []string `yaml:"defenses"`
+		Censors             []string `yaml:"censors"`
+		DefenseImplications []string `yaml:"defense_implications"`
 	}
 
 	count := 0
@@ -235,6 +237,91 @@ func TestPapersHaveFindings(t *testing.T) {
 	}
 	t.Logf("To extract: ./corpus-findings extract --paper <id> --corpus .")
 	t.Logf("To bulk-backfill: ./corpus-findings extract-all --min-year=0 --corpus .")
+}
+
+// TestNoDuplicatePapers fails when two paper records describe the same
+// paper. Between 2026-05 and 2026-07 the crawler ingested the same work up
+// to four times: it deduped only on the proposed id and the LLM-generated
+// title, both of which drift between runs, so a re-crawl of one net4people
+// thread or one proceedings listing produced a fresh record every week.
+// The crawler now dedups on URL and arXiv id too, but that check only runs
+// at ingest time and only against whatever main happened to hold. This test
+// is the invariant itself: whatever the crawler does, main never ends up
+// with two records for one paper.
+//
+// Identity is the paper's own url, its arXiv id, and its normalized title.
+// sources entries are deliberately NOT indexed — they legitimately include
+// listing pages (an author's publications index, a net4people round-up)
+// that several distinct papers share.
+func TestNoDuplicatePapers(t *testing.T) {
+	root, err := filepath.Abs("../..")
+	if err != nil {
+		t.Fatal(err)
+	}
+	s, err := loadStore(root, false)
+	if err != nil {
+		t.Fatalf("loadStore: %v", err)
+	}
+
+	byKey := map[string][]string{}
+	note := func(key, id string) {
+		if key != "" {
+			byKey[key] = append(byKey[key], id)
+		}
+	}
+	for _, p := range s.papers {
+		note("arxiv:"+canonicalArxivID(p.ArxivID, p.URL), p.ID)
+		note("url:"+canonicalURL(p.URL), p.ID)
+		note("title:"+normalizePaperTitle(p.Title), p.ID)
+	}
+
+	for _, key := range slices.Sorted(maps.Keys(byKey)) {
+		ids := byKey[key]
+		if len(ids) < 2 || strings.TrimSpace(strings.SplitN(key, ":", 2)[1]) == "" {
+			continue
+		}
+		slices.Sort(ids)
+		t.Errorf("%d papers share identity %s — merge them into one record:\n    %s",
+			len(ids), key, strings.Join(ids, "\n    "))
+	}
+}
+
+var (
+	nonAlnum       = regexp.MustCompile(`[^a-z0-9]+`)
+	trailingVenue  = regexp.MustCompile(`\s*\([^)]*\b(19|20)\d{2}\)\s*$`)
+	leadingBracket = regexp.MustCompile(`^\s*\[[^\]]{1,40}\]\s*`)
+	arxivInURL     = regexp.MustCompile(`(?i)arxiv\.org/(?:abs|pdf)/([0-9.]+)`)
+	arxivVersion   = regexp.MustCompile(`v\d+$`)
+)
+
+// normalizePaperTitle strips the decorations that differ between two
+// ingests of one paper: a "(FOCI 2026)" venue suffix and a "[Russia]"
+// country prefix, both of which net4people thread titles carry
+// inconsistently.
+func normalizePaperTitle(t string) string {
+	t = trailingVenue.ReplaceAllString(strings.TrimSpace(t), "")
+	t = leadingBracket.ReplaceAllString(t, "")
+	return strings.Join(strings.Fields(nonAlnum.ReplaceAllString(strings.ToLower(t), " ")), " ")
+}
+
+func canonicalURL(u string) string {
+	u = strings.ToLower(strings.TrimSpace(u))
+	if i := strings.IndexByte(u, '#'); i >= 0 {
+		u = u[:i]
+	}
+	u = strings.TrimPrefix(strings.TrimPrefix(u, "https://"), "http://")
+	u = strings.TrimPrefix(u, "www.")
+	return strings.TrimSuffix(u, "/")
+}
+
+func canonicalArxivID(id, url string) string {
+	id = strings.TrimSpace(id)
+	if id == "" {
+		if m := arxivInURL.FindStringSubmatch(url); m != nil {
+			id = m[1]
+		}
+	}
+	return arxivVersion.ReplaceAllString(id, "")
 }
 
 func taxonomyIDs(t *testing.T, s *store, category string) []string {

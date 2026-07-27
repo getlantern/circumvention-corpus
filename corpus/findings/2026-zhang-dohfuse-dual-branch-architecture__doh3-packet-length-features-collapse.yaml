@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zhang-dohfuse-dual-branch-architecture
+kind: detection
+summary: 'Under DoH/3, EDNS(0) padding and HTTP/3 framing collapse packet-length diversity: more than 99% of request packets fall within 233–350 bytes and more than 99% of response packets fall within 555–777 bytes. Direction-signed length-sequence classifiers (RF, LSTM, CNN) achieve only 67.39%, 8.95%, and 7.43% accuracy respectively on 449 classes — near or below random — confirming that size-based traffic analysis features lose nearly all discriminative power against DoH/3.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Circumvention transports that route through DoH/3 gain meaningful size-obfuscation for free from EDNS(0) padding; adopting DoH/3 as an inner-tunnel framing neutralizes the most common passive-classifier attack surface.
+    - Tool designers should not assume that size-homogenizing padding prevents fingerprinting — adversaries will pivot to timing features, so complementary inter-packet interval jitter is still required.
+section: §IV.D; §V.B; Table I
+extracted_by: claude-sonnet-4-6

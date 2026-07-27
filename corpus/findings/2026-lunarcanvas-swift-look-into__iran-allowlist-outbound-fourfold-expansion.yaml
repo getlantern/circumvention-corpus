@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-swift-look-into
+kind: evaluation
+summary: 'Iran''s source-IP allowlist severely restricted outbound access before the May 26, 2026 partial restoration: only ~0.017% (~2,000 of 11,766,454 spoofed Iranian IPs) could reach destinations outside Iran. After restoration, reachable IPs increased nearly fourfold to ~0.07% (~8,000), with most newly reachable addresses originating from Noyan Abr Arvan Co. (ASN 202468), indicating expansion rather than removal of the allowlist.'
+techniques:
+    - ip-blocking
+    - measurement-platform
+censors:
+    - ir
+defense_implications:
+    - Design Iran-facing proxy infrastructure to use IP addresses from data-center ASNs that remain restricted even post-restoration, rather than residential ranges, to avoid detection via allowlist membership changes.
+    - Monitor allowlist churn continuously — policy changes (e.g., the fourfold expansion on May 26) can abruptly shift which IP ranges are viable for hosting proxies or entry points.
+section: §4.1.1
+extracted_by: claude-sonnet-4-6

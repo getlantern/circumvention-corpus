@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schramm-analyzing-societal-awareness
+kind: evaluation
+summary: Brave's built-in strict fingerprinting protection was discontinued in January 2024 because of low adoption and frequent web breakages caused by restricting JavaScript APIs; browser vendors are broadly reluctant to implement robust built-in countermeasures for the same compatibility reason. Spoofing-based extensions (HTTP-header spoofers, Canvas Defender) offer only partial protection and can degrade site functionality through overlapping layouts, unreadable fonts, or bot misclassification.
+techniques:
+    - tls-fingerprint
+defenses:
+    - randomization
+    - tor
+defense_implications:
+    - Design fingerprinting protections that degrade gracefully rather than breaking site functionality — binary on/off protection modes produce unacceptable usability costs and lead to user abandonment or product deprecation.
+    - Prefer noise-based or crowd-blending approaches over attribute-spoofing approaches, which introduce detectable inconsistencies between spoofed values and actual device attributes.
+section: §2.2, §3.1.4
+extracted_by: claude-sonnet-4-6

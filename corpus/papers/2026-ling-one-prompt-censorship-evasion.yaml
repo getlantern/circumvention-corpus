@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2606.22717
+id: 2026-ling-one-prompt-censorship-evasion
+title: One-Prompt Censorship Evasion via Generative Diffusion Models
+authors:
+    - Shiyi Ling
+    - Yuhang Gan
+    - Chen Qian
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2606.22717"
+url: https://arxiv.org/abs/2606.22717v1
+abstract: The escalating arms race between Internet censorship and evasion has driven censors to evolve from static rule-based filtering to sophisticated deep learning-based traffic analysis. While recent automated evasion tools have attempted to counter this by leveraging stochastic search and programmable heuristics, they continue to suffer from insufficient evasion robustness across diverse censorship modalities and poor usability due to complex, mechanism-specific configurations that require manual fitness tuning or domain-specific languages. In this paper, we propose a paradigm shift that reframes censorship evasion as a semantic image-to-image editing task, allowing users to execute it with a single prompt. We introduce FlowPaint, a novel generative framework that leverages the "world knowledge" of large diffusion models to automatically reshape censored traffic into benign patterns. FlowPaint utilizes an instruction-tuned diffusion architecture to perform semantic editing on network flows. Evaluations against both industrial-grade rule-based middleboxes and learning-based classifiers demonstrate that FlowPaint outperforms existing censorship evasion baselines, enabling users to counter diverse censorship paradigms solely by varying natural language instructions
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - randomization
+evaluation_methods:
+    - controlled-deployment
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Novel ML-based traffic obfuscation approach; broadly applicable against diverse censor regimes without protocol-specific configuration.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2606.22717

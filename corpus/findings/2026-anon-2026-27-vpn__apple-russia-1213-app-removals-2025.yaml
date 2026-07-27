@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: policy
+summary: Apple's 2025 App Store Transparency Report shows Russia demanded removal of 1,213 apps in 2025, up from 171 in 2024, 12 in 2023, and 7 in 2022 — by far the highest government takedown volume globally. China demanded removal of 196 apps. In total, 2,045 apps were removed globally due to government requests in 2025.
+censors:
+    - ru
+    - cn
+defense_implications:
+    - App store distribution for circumvention tools in Russia is increasingly unreliable as a primary distribution channel; out-of-band distribution (sideloading, F-Droid, direct APK, web install) must be a first-class supported path rather than a fallback.
+    - The dramatic year-over-year escalation in Russia (7→12→171→1213 apps) signals an accelerating regulatory posture; circumvention tool teams should proactively mirror distribution across multiple channels before removal, not after.
+section: §6 (Apple 2025 App Store Transparency Report)
+extracted_by: claude-sonnet-4-6

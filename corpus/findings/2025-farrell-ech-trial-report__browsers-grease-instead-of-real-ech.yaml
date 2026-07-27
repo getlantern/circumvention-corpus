@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-farrell-ech-trial-report
+kind: evaluation
+summary: 'Even among ECH-capable browsers, a large fraction GREASE rather than performing real ECH: Chrome/136 was 25% real success vs 75% GREASE (167 accesses), Firefox/138 was 50% success vs 50% GREASE (325 accesses). GREASE sends a fake ECH extension that does not hide the inner SNI, providing no censorship resistance despite appearing ECH-aware.'
+techniques:
+    - sni-blocking
+    - tls-fingerprint
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - Do not treat GREASE events as circumvention coverage — only SUCCESS status means the SNI is hidden; tool designers should not assume Chrome/Firefox ECH-awareness translates to SNI protection for current deployed versions.
+    - Circumvention tools that rely on ECH should verify actual SUCCESS status server-side and log the split, since GREASE is invisible to the censor but also useless as a defense.
+section: §6.4, Table 6, Table 8
+extracted_by: claude-sonnet-4-6

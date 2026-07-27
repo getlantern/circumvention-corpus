@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: deployment
+summary: LetsVPN (快连) announced termination of China mainland operations on April 28, 2026, stating the team had attempted adjustments 'almost every hour' for 20 days before concluding the connectivity problem was unsolvable. A follow-up announcement on May 8 declared 'resumption of global standard operations' but explicitly stated it could not guarantee China mainland availability.
+techniques:
+    - ip-blocking
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Commercial VPN providers serving China cannot rely on server-side countermeasures alone — the April 2026 crackdown defeated a well-resourced operator after 20 days of active adaptation; circumvention tools must architect for rapid transport-layer pivoting without requiring a full product release cycle.
+    - Operators should design for graceful degradation and clear user communication when a region becomes untenable, including refund and migration paths, to avoid users being stranded mid-crackdown.
+section: §3 (快连 / LetsVPN section)
+extracted_by: claude-sonnet-4-6

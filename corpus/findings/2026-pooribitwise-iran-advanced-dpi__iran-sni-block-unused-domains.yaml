@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: Iran's DPI blocks domain names that have never had a DNS record published and have not been used as root domains, indicating that SNI-based blocking is triggered by the string in the TLS ClientHello alone — independent of any prior DNS activity or traffic volume — and can fire on previously unused domains within 24 hours of first connection.
+techniques:
+    - sni-blocking
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Single-use or ephemeral domain strategies (burn a domain after first use) may slow the block cycle but cannot prevent it; the only durable defense is hiding the SNI via ECH or REALITY-style handshake forwarding.
+    - Assume any domain string transmitted in a cleartext ClientHello will be added to the Iranian blocklist within hours regardless of prior exposure.
+section: Description
+extracted_by: claude-sonnet-4-6

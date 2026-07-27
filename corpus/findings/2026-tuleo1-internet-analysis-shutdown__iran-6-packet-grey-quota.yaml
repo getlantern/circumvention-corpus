@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: detection
+summary: 'Iran implemented a per-connection packet quota tied to SNI whitelisting: connections whose SNI was not on the approved list were classified as ''grey'' and hard-limited to exactly 6 packets before DPI terminated the session. Connections presenting a whitelisted SNI were passed without a packet cap.'
+techniques:
+    - dpi
+    - sni-blocking
+censors:
+    - ir
+defense_implications:
+    - A 6-packet cap is enough to load a webpage but not to sustain a proxy tunnel; circumvention flows must either complete a handshake within 6 packets or use a whitelisted cover SNI.
+    - Designs that present a legitimate cover hostname (domain fronting, Trojan, REALITY) are far more durable than bare SNI-spoofing under this enforcement model.
+section: Issue body (SNI whitelisting paragraph)
+extracted_by: claude-sonnet-4-6

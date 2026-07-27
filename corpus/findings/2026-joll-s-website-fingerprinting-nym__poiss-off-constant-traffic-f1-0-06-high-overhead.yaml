@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: defense
+summary: POISS-OFF, which routes all web traffic through Nym's constant-rate traffic channel, reduces Tik-Tok WF F1 score to 0.06 and drops all feature-set leakage below 10% accuracy. This near-perfect WF resistance costs 7.32× latency overhead and 8.06× bandwidth overhead, versus 3.78×/4.22× for WTF4Nym which achieves only F1=0.39.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Near-perfect WF resistance (F1=0.06) is achievable via constant-rate traffic, confirming the anonymity trilemma: strong WF protection requires accepting ~7× latency and ~8× bandwidth overhead; tool designers must decide whether the use case justifies this cost.'
+    - Consider offering a high-privacy mode using constant-rate tunneling for high-risk users browsing a small set of sensitive sites, while defaulting to moderate-overhead burst-injection (WTF4Nym pattern) for general use.
+section: §6, Table 7
+extracted_by: claude-sonnet-4-6

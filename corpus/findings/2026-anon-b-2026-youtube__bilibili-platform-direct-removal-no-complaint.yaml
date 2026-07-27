@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-b-2026-youtube
+kind: policy
+summary: On 2026-02-22, Bilibili removed a video by tech blogger 极客湾 (GeekWan) exposing benchmark-cheating by Chinese phone manufacturers without any third-party legal complaint or copyright infringement record — the platform executed the removal directly, leaving no backend trace of an invoking party.
+techniques:
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Platform-direct removal leaves no legal paper trail, so appeals processes tied to copyright law are inapplicable; out-of-band hosting (e.g., YouTube) must be pre-positioned before suppression occurs, not after.
+    - 'Tool designers should treat domestic Chinese platforms as unreliable mirrors: assume any content triggering political/commercial sensitivity will be removed within hours with no recourse.'
+section: 事件回顾
+extracted_by: claude-sonnet-4-6

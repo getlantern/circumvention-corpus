@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: evaluation
+summary: At filter key length L=6, approximately 1.56% of packets are selected as covert carriers, yielding a unit covert capacity (packets required per covert bit) of 3.1–8 depending on bits embedded per packet. Each additional filter key bit halves the carrier selection rate (r = 1/2^L), so L=8 selects 0.39% of packets and pushes unit covert capacity above 32.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - 'Design covert channel capacity budgets around the r=1/2^L curve: L=6 (1.56% carrier rate) is the practical minimum for ML evasion, so plan for ~64× throughput reduction versus an unfiltered channel when covertness is required.'
+    - Embedding more bits per selected carrier packet (e.g., 21 bits per packet yields unit covert capacity 3.1 at L=6) partially recovers throughput — prioritize high-capacity per-packet encoding to offset the filtering overhead.
+section: §4.2.2, §5.3.2, Table 6
+extracted_by: claude-sonnet-4-6

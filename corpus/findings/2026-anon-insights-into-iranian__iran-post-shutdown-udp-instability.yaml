@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-insights-into-iranian
+kind: evaluation
+summary: After the shutdown lifted (Scan 3), DNS-over-UDP degraded severely — 89.18% of the 9,000 queried domains were affected — but the paper attributes this to general UDP transport instability rather than domain-specific censorship, corroborated by GitHub user reports of ongoing UDP issues. TCP-based protocols (HTTP, TLS) returned to pre-shutdown censorship levels (~15%) in Scan 3, confirming the post-shutdown persistence effect was UDP-specific and not a broadening of the blocklist.
+techniques:
+    - throttling
+    - http3-quic-block
+censors:
+    - ir
+defense_implications:
+    - After an Iranian shutdown event, any circumvention protocol relying on UDP (QUIC, WireGuard, Shadowsocks over UDP) should expect prolonged transport instability beyond the formal end of the blackout; fall back to TCP-based transports in the recovery window.
+    - TCP-based mimicry transports (Trojan, REALITY, meek) are strategically advantaged in post-shutdown Iran because TCP-layer censorship reverts to pre-shutdown domain-list blocking while UDP infrastructure recovers.
+section: §2.2.4, Table 1
+extracted_by: claude-sonnet-4-6

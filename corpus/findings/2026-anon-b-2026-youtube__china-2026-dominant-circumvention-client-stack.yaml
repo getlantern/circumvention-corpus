@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-b-2026-youtube
+kind: deployment
+summary: 'As of 2026-02-23, the dominant consumer GFW circumvention stack for mainland Chinese users is: Clash Verge Rev on Windows/macOS, Clash Meta for Android, and Shadowrocket (requiring a non-mainland Apple ID) on iOS — all configured via subscription URLs purchased from commercial ''airport'' (机场) proxy services starting at ¥2/month.'
+defenses:
+    - tunneling
+    - shadowsocks
+    - vless
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools targeting mainland China should support subscription-URL import (Clash-compatible YAML/JSON format) as a first-class onboarding path, since this is the primary distribution mechanism users already understand.
+    - iOS distribution requires non-mainland App Store access; tool designers must provide a foreign App Store distribution path or web-based install to reach iOS users without shared Apple ID workarounds.
+section: 如何翻墙观看
+extracted_by: claude-sonnet-4-6

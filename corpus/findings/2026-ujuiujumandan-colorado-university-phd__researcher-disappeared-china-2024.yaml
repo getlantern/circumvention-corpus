@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ujuiujumandan-colorado-university-phd
+kind: policy
+summary: Yiyan Wang, a PhD student at the University of Colorado Boulder studying internet censorship under Eric Wustrow, disappeared in July 2024 after returning to China. As of June 2026—nearly two years later—his whereabouts remain unknown and he is unreachable through all normal channels. Human Rights in China (HRIC) issued a formal statement in June 2026 calling on the Chinese government to disclose his status.
+censors:
+    - cn
+defense_implications:
+    - Circumvention researchers with ties to China should treat travel to China as a high personal-risk activity regardless of academic or US institutional affiliation; assume that public research identity offers no protection.
+    - Maintain strict separation between real identity and circumvention tool contributions; public GitHub profiles, academic papers, and conference participation create a durable attribution trail that Chinese authorities can act on years later.
+section: Full text
+extracted_by: claude-sonnet-4-6

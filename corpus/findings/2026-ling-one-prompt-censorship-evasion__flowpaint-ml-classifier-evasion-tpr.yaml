@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ling-one-prompt-censorship-evasion
+kind: defense
+summary: Under a strict FPR ≤ 0.1% operational budget, FlowPaint achieves a TPR of 0.00 against Decision Tree and nPrintML classifiers across multiple out-of-distribution protocols (CurveZMQ, secio, SSH, TLS), while Obfs4 and UPGen remain near-fully detectable (TPR ≈ 1.00). Even against Deep Fingerprinting, FlowPaint reduces TPR to 0.80–0.92, compared to 1.00 for Obfs4 across all protocols tested.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - mimicry
+    - obfs4
+censors:
+    - generic
+defense_implications:
+    - Train obfuscation layers on the statistical manifold of real benign traffic rather than relying on fixed randomization rules; rule-based entropy obfuscation (obfs4-style) is trivially detectable by simple classifiers even under strict false-positive constraints.
+    - Design evasion layers as traffic editors that preserve encrypted payload while selectively modifying header statistical features (TCP window size, IPv4 TTL, DSCP) to project flows onto the benign traffic manifold rather than a crafted synthetic one.
+section: §5.1, Table 1
+extracted_by: claude-sonnet-4-6

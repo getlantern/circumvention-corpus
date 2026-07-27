@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ling-one-prompt-censorship-evasion
+kind: defense
+summary: FlowPaint evades all three GFW-style rule-based middlebox configurations — stateful TCP keyword reassembler (Censor A), heuristic header filter dropping flows with TCP data offset ≥ 9 (Censor B), and anti-replay validator caching (SEQ, payload_hash) pairs and injecting bidirectional RSTs on replay detection (Censor C). Geneva's duplicate-packet desynchronization strategy fails against Censor C because its malformed artifacts simultaneously satisfy the anti-replay blocking condition, while FlowPaint succeeds by recalculating checksums and injecting no extra packets.
+techniques:
+    - dpi
+    - rst-injection
+    - active-probing
+defenses:
+    - mimicry
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Evasion strategies that inject malformed or duplicate packets (Geneva-style desynchronization) are fragile against anti-replay middleboxes; prefer in-place header modification that produces semantically valid traffic without extra packet injection.
+    - Recalculating checksums and keeping TCP data offset within standard RFC bounds is necessary to simultaneously survive heuristic header filters and anti-replay validators — both defenses must hold together, not independently.
+section: §5.2, Table 4
+extracted_by: claude-sonnet-4-6

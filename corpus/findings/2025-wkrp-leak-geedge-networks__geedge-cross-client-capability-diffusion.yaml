@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-leak-geedge-networks
+kind: deployment
+summary: Geedge's internal documents show that capabilities developed for one national deployment are explicitly documented to 'trickle down' to all the company's global clients—for example, Psiphon-blocking logic developed for Myanmar was tested for Ethiopia, though not yet fully deployed there as of the leak date. This vendor-mediated capability diffusion accelerates censorship sophistication across all client states simultaneously.
+techniques:
+    - dpi
+    - ip-blocking
+    - traffic-shape
+censors:
+    - mm
+    - et
+    - pk
+    - kz
+defense_implications:
+    - Circumvention tool teams should treat any successful Geedge client deployment as a preview of capabilities rolling out to all ~40 client states; monitoring blocking events in one Geedge country (e.g., Myanmar) is an early-warning signal for the broader Geedge client set.
+    - Defeating a technique in one country may buy only months before the fix is shared across the vendor's client base; tool developers should plan for synchronized capability upgrades across multiple censors.
+section: body
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-redefining-website-fingerprinting
+kind: evaluation
+summary: 'WFP models trained and tested on scripted browser traffic achieve near-perfect accuracy (NetCLR: 98.9%, TF: 98.3%, Var-CNN: 98.9%), but accuracy collapses to below 10% — with F1-scores near zero (TF: 0.034, Var-CNN: 0.022, ARES: 0.025) — when trained on scripted traffic and tested on real human traffic (CrossDomain). This structural mismatch means scripted datasets overestimate the real-world WFP threat by more than 80 percentage points.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Re-evaluate all existing WFP defenses against human-generated behavioral traffic rather than scripted crawlers — published defense results may be validated against a threat model that overstates attacker accuracy by 80+ pp.
+    - Behavioral unpredictability (diverse scroll depth, dwell time, dynamic SPA interactions) is a natural form of traffic obfuscation; circumvention tools running inside browsers should exploit this variance rather than suppress it.
+section: §5.3 / Table 1
+extracted_by: claude-sonnet-4-6

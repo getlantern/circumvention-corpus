@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-cawthon-fountain-codes-censorship
+title: Fountain codes in censorship circumvention rendezvous
+authors:
+    - Eleanor Cawthon
+    - David Fifield
+venue: FOCI 2026
+year: 2026
+url: https://petsymposium.org/foci/2026/foci-2026-0011.php
+censors:
+    - generic
+techniques:
+    - dns-poisoning
+defenses_discussed:
+    - dns-tunneling
+    - pluggable-transport
+evaluation_methods:
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly applicable to Lantern's circumvention architecture; DNS-based rendezvous addresses anti-blocking properties and integrates with pluggable-transport frameworks.
+visibility: public
+date_added: "2026-07-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/foci/2026/foci-2026-0011.php

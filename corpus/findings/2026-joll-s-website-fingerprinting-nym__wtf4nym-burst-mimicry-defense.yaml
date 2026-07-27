@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: defense
+summary: WTF4Nym, a burst-mimicry defense implemented at the Nym gateway that accounts for continuous loop cover traffic when detecting and synthesizing fake bursts, reduces Tik-Tok F1 to 0.39 (closed-world, Testnet) at latency overhead 3.78 and bandwidth overhead 4.22 — compared to 0.65 for FRONT on Tor (LO 2.79, BO 1.84) and 0.87 for Nym's default (Table 7). Time and N-gram leakage drop to 26.6% and 29.0% respectively (Table 8).
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Burst-shaping defenses applied to mixnet-based proxies must be calibrated against the constant background cover traffic; standard WTF-PAD histograms derived from Tor-scale inter-arrival times (ms vs μs in Nym) will produce oversized fake bursts that are trivially distinguished by deep-learning classifiers.
+    - Implement the WTF4Nym finite-state machine at the entry gateway rather than the client, triggering via loop cover packets as covert signalling so the defense activation is itself undetectable.
+section: §6.2, Tables 7–8, Figure 5
+extracted_by: claude-sonnet-4-6

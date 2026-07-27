@@ -1,1083 +1,5 @@
 [
   {
-    "key": "arxiv:2606.08403",
-    "title": "Hiding in Plain Floats: Steganographic Carriers for Indirect Prompt and Content Injection",
-    "source": "arxiv",
-    "reason": "Paper studies LLM prompt-injection attacks via steganography to evade text classifiers; unrelated to network-level censorship measurement, circumvention protocol design, or censor detection techniques.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.08726",
-    "title": "Evaluating Multimodal Steganalysis for Split-Payload Audiovisual Steganography",
-    "source": "arxiv",
-    "reason": "Paper studies ML-based detection and evasion of steganography in audiovisual media without any connection to censorship, circumvention, or censor capabilities.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.09135",
-    "title": "Steganography Without Modification: Hidden Communication via LLM Seeds",
-    "source": "arxiv",
-    "reason": "Generic steganography/cryptanalysis paper on LLMs without specific application to circumvention, censor detection, or evaluation against any blocking mechanisms.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.09189",
-    "title": "Pretrained, Frozen, Still Leaking: Auditing Cross-Encoder Attribute Transfer in EEG Foundation Models",
-    "source": "arxiv",
-    "reason": "This is a machine-learning privacy audit paper on EEG foundation models; it has no connection to censorship, circumvention, or internet blocking.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.09411",
-    "title": "Now You (Still) See Me: Detecting Evasive Steganographic Payloads in LLMs",
-    "source": "arxiv",
-    "reason": "Machine learning paper on detecting steganographic trojans in LLMs; no censorship measurement, censor capability evaluation, circumvention protocol work, or internet-filtering context.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.09915",
-    "title": "ARTA: Adaptive Reinforcement-Learning-Based Throttling Agent for RowHammer Vulnerabilities",
-    "source": "arxiv",
-    "reason": "Hardware security paper on DRAM RowHammer mitigation; no connection to censorship, circumvention, anonymity, traffic analysis, or internet blocking.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.10031",
-    "title": "The Chronicles of Radio Frequency Fingerprinting",
-    "source": "arxiv",
-    "reason": "Radio Frequency Fingerprinting for wireless device identification and spectrum monitoring is IoT/device authentication, not censorship detection or circumvention.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.10163",
-    "title": "GRAFT: Graphlet-Triggered Backdoor Attack on GNN-Based Hardware Security Systems",
-    "source": "arxiv",
-    "reason": "Paper studies ML backdoor attacks on hardware security systems; no censorship, circumvention, anonymity, or network-blocking angle.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.10502",
-    "title": "When VR Meets BCI: (Un)Observable Brainwave-aware Privacy Reconstruction in the Metaverse via Unrestricted Inbuilt Motion Sensors",
-    "source": "arxiv",
-    "reason": "Studies privacy attacks on VR motion sensors to extract biometric signals and user behavior; unrelated to Internet censorship, blocking, or circumvention protocols.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.10724",
-    "title": "Fingerprinting All AI Cluster I/O Without Mutually Trusted Processors",
-    "source": "arxiv",
-    "reason": "Paper is about AI data-center compliance verification and preventing covert data exfiltration in international agreements; no relevance to censorship measurement, detection techniques, circumvention protocols, or surveillance infrastructure targeting internet users.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.10911",
-    "title": "Ethical and Technical Limits of Deepfake Speech Datasets",
-    "source": "arxiv",
-    "reason": "Paper studies deepfake speech detector fairness and dataset quality; no connection to censorship measurement, circumvention, censor detection, or internet blocking.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.10912",
-    "title": "What Do Deepfake Speech Detectors Actually Hear?",
-    "source": "arxiv",
-    "reason": "Deepfake speech detection is a biometric/content-verification problem unrelated to censorship, circumvention, or network filtering.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.11111",
-    "title": "A Longitudinal Study of Recently Observed Malicious Domains: Characteristics, Infrastructure, and Abuse Patterns",
-    "source": "arxiv",
-    "reason": "Paper studies malicious domain abuse and cybercrime infrastructure (phishing, malware, brand impersonation); not relevant to censorship measurement, circumvention design, or surveillance systems.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.11828",
-    "title": "Feature-Aligned Speech Watermarking for Robustness to Reconstruction Distortions",
-    "source": "arxiv",
-    "reason": "Audio watermarking paper with no connection to censorship, circumvention, anonymity, or censor detection.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.12703",
-    "title": "SMSR: Certified Defence Against Runtime Memory Poisoning in Persistent LLM Agent Systems",
-    "source": "arxiv",
-    "reason": "Machine-learning adversarial robustness paper on LLM memory poisoning with no connection to censorship, internet blocking, surveillance, or circumvention.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.12737",
-    "title": "PI-Hunter: Automated Red-Teaming for Exposing and Localizing Prompt Injections",
-    "source": "arxiv",
-    "reason": "ML adversarial robustness of LLMs with no connection to censorship, circumvention, surveillance, or anonymity.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.12977",
-    "title": "Efficient, Robust, and Anti-Collusion Fingerprinting of Image Diffusion Models",
-    "source": "arxiv",
-    "reason": "Pure ML/security paper on model watermarking and IP protection with no censorship, circumvention, surveillance, or internet freedom angle.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.13107",
-    "title": "The Invisible Ink of the Android Malware World: A Longitudinal Study on the Usage of Covert Communication Channels",
-    "source": "arxiv",
-    "reason": "Studies malware's misuse of VPNs/proxies/Tor for C\u0026C communication; malware analysis / cybersecurity concern, not censorship research.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.13621",
-    "title": "Beyond Runtime Enforcement: Shield Synthesis as Defensibility Analysis for Adversarial Networks",
-    "source": "arxiv",
-    "reason": "This paper applies reinforcement learning and formal verification to generic network defense games; it has no connection to censorship measurement, detection, circumvention, or the censorship-resistance landscape.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.14165",
-    "title": "Security Evaluation of Mobile Banking Applications in Sudan",
-    "source": "arxiv",
-    "reason": "Mobile banking application security audit unrelated to censorship, blocking detection, or circumvention technologies.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2606.14525",
-    "title": "Detecting Bot Detection: Prevalence, Techniques, and Implications for Web Measurement Research",
-    "source": "arxiv",
-    "reason": "Measures bot detection on general websites for web measurement research; lacks any connection to censorship, circumvention, proxying, or VPN systems.",
-    "rejected_at": "2026-06-15"
-  },
-  {
-    "key": "arxiv:2605.15984",
-    "title": "Beyond Content: A Comprehensive Speech Toxicity Dataset and Detection Framework Incorporating Paralinguistic Cues",
-    "source": "arxiv",
-    "reason": "Toxic speech detection via audio ML classification; no censorship, circumvention, or censor-capability angle.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "arxiv:2605.16227",
-    "title": "LymphNode: A Plug-and-Play Access Control Method for Deep Neural Networks",
-    "source": "arxiv",
-    "reason": "Machine learning model security paper about protecting DNNs from extraction attacks; no connection to censorship, circumvention, blocking, or surveillance.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/8jxmo76u/",
-    "title": "✈️【机场推荐】SSONE - 便宜实惠、高性价比、稳定可靠 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial VPN service review and promotion; lacks technical analysis, research contribution, or methodological rigor.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/giwzl7sq/",
-    "title": "✈️机场推荐【OKANC】 - 新机场、大流量、高质量 | 二毛",
-    "source": "ermao",
-    "reason": "This is a commercial product recommendation blog post for a VPN service provider, not a research paper, measurement study, or technical analysis of censorship or circumvention.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/jd2i293q/",
-    "title": "✈️机场推荐【百变小樱】 - 五年老机场、免费流媒体账号 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial VPN service advertisement and pricing guide, not research or measurement.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/mcridsxx/",
-    "title": "✈️机场推荐【青云梯】 - 高性价比、老牌机场 | 二毛",
-    "source": "ermao",
-    "reason": "This is commercial VPN provider advertising, not research literature.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/ssone/",
-    "title": "2026 SSONE机场评测：月付10元60G便宜机场推荐｜Netflix/ChatGPT解锁 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial product review/advertisement for a VPN service; lacks research methodology, measurement, or analysis that advances circumvention science.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/ccyz/",
-    "title": "2026 CCYZ机场评测：15元100G高性价比IEPL专线机场推荐｜Netflix/ChatGPT解锁 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial VPN service advertisement and user review, not research contributing to understanding circumvention or censorship.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/ermaoyun/",
-    "title": "二猫云评测与推荐：20元100GB起步的IPLC/IEPL新开机场 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial product review and pricing recommendation for a VPN service; no research contribution, measurement study, or analysis of circumvention protocols or censor capabilities.",
-    "rejected_at": "2026-05-18"
-  },
-  {
-    "key": "arxiv:2605.08278",
-    "title": "Trapping Attacker in Dilemma: Examining Internal Correlations and External Influences of Trigger for Defending GNN Backdoors",
-    "source": "arxiv",
-    "reason": "GNN backdoor defense paper with no connection to censorship, circumvention, blocking, or anonymity systems.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.08984",
-    "title": "Hardware-Accelerated Line-Rate Bitstream Screening for Secure FPGA Reconfiguration",
-    "source": "arxiv",
-    "reason": "Hardware FPGA bitstream security and Trojan detection; unrelated to internet censorship, circumvention protocols, or surveillance infrastructure.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.09041",
-    "title": "BiAxisAudit: A Novel Framework to Evaluate LLM Bias Across Prompt Sensitivity and Response-Layer Divergence",
-    "source": "arxiv",
-    "reason": "LLM bias auditing framework; no connection to censorship measurement, circumvention protocols, censor detection, anonymity systems, or internet freedom.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.09606",
-    "title": "On the Generation and Mitigation of Harmful Geometry in Image-to-3D Models",
-    "source": "arxiv",
-    "reason": "Paper addresses 3D model safety and harmful geometry generation via AI — no connection to censorship measurement, blocking techniques, circumvention protocols, or surveillance.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.10867",
-    "title": "BEACON: A Multimodal Dataset for Learning Behavioral Fingerprints from Gameplay Data",
-    "source": "arxiv",
-    "reason": "This paper studies behavioral biometrics and continuous authentication for user verification in competitive gaming, not censorship detection, circumvention techniques, or traffic analysis in the context of censorship evasion.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.11418",
-    "title": "Under the Hood of SKILL.md: Semantic Supply-chain Attacks on AI Agent Skill Registry",
-    "source": "arxiv",
-    "reason": "Paper studies supply-chain attacks on AI agent skill metadata; no connection to censorship, circumvention, surveillance, or internet blocking.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.11997",
-    "title": "A microservices-based endpoint monitoring platform with predictive NLP models for real-time security and hate-speech risk alerting",
-    "source": "arxiv",
-    "reason": "Enterprise endpoint monitoring platform for internal corporate security (DLP, policy violation detection, hate-speech moderation) with no connection to censorship measurement, censor capabilities, circumvention design, or anonymity systems.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.12869",
-    "title": "Quantifying LLM Safety Degradation Under Repeated Attacks Using Survival Analysis",
-    "source": "arxiv",
-    "reason": "This paper studies adversarial jailbreak attacks on LLMs, not censorship measurement or circumvention techniques; 'circumventing safety guardrails' refers to fooling AI systems, not evading internet censorship infrastructure.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.12927",
-    "title": "ThermalTap: Passive Application Fingerprinting in VR Headsets via Thermal Side Channels",
-    "source": "arxiv",
-    "reason": "VR device thermal side-channel attacks; no connection to internet censorship, circumvention protocols, or censor detection capabilities.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.13163",
-    "title": "LoREnc: Low-Rank Encryption for Securing Foundation Models and LoRA Adapters",
-    "source": "arxiv",
-    "reason": "Cryptographic defense against AI model extraction attacks; no connection to censorship, surveillance, or circumvention.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.13338",
-    "title": "Inducing Overthink: Hierarchical Genetic Algorithm-based DoS Attack on Black-Box Large Language Reasoning Models",
-    "source": "arxiv",
-    "reason": "Paper studies DoS attacks on large language models via input perturbation; no relation to censorship, internet blocking, circumvention techniques, or surveillance infrastructure.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.13764",
-    "title": "VectorSmuggle: Steganographic Exfiltration in Embedding Stores and a Cryptographic Provenance Defense",
-    "source": "arxiv",
-    "reason": "This paper studies steganographic exfiltration attacks on vector databases in ML/RAG systems—a cryptographic and data-privacy problem unrelated to censorship, censor capabilities, circumvention protocol design, or network blocking.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.14032",
-    "title": "StormShield: Fingerprint-Based Detection and Mitigation of RRC Signaling Storms in O-RAN 5G RANs",
-    "source": "arxiv",
-    "reason": "Paper studies 5G network DoS attacks and base-station resource exhaustion; no censorship, circumvention, or internet-access blocking angle.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.14387",
-    "title": "Model Forensics in AI-Native Wireless Networks: Taxonomy, Applications, and Case Study",
-    "source": "arxiv",
-    "reason": "Paper studies AI model integrity and authenticity verification in wireless networks using RF fingerprinting for device authentication; no connection to censorship measurement, censor capabilities, circumvention protocols, or traffic analysis.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2605.14786",
-    "title": "Known By Their Actions: Fingerprinting LLM Browser Agents via UI Traces",
-    "source": "arxiv",
-    "reason": "Fingerprints LLM browser agents via UI traces and timing patterns; addresses bot detection without a circumvention, censorship measurement, or censor-capability angle.",
-    "rejected_at": "2026-05-15"
-  },
-  {
-    "key": "arxiv:2603.23966",
-    "title": "Policy-Guided Threat Hunting: An LLM enabled Framework with Splunk SOC Triage",
-    "source": "arxiv",
-    "reason": "General organizational cybersecurity and SOC threat-hunting paper using ML for APT detection; no censorship, blocking, or circumvention angle.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.24982",
-    "title": "LiteGuard: Efficient Task-Agnostic Model Fingerprinting with Enhanced Generalization",
-    "source": "arxiv",
-    "reason": "Paper studies ML model fingerprinting for intellectual-property protection, unrelated to censorship, blocking, circumvention, or anonymity.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.24996",
-    "title": "IrisFP: Adversarial-Example-based Model Fingerprinting with Enhanced Uniqueness and Robustness",
-    "source": "arxiv",
-    "reason": "Paper studies ML model fingerprinting for ownership verification via adversarial examples; no censorship, circumvention, or network-blocking angle.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.25304",
-    "title": "Physical Backdoor Attack Against Deep Learning-Based Modulation Classification",
-    "source": "arxiv",
-    "reason": "This paper studies adversarial backdoor attacks on RF signal modulation classifiers—a pure wireless communications / ML security topic with no connection to internet censorship, circumvention protocols, censor detection capabilities, or network filtering.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.25310",
-    "title": "On the Vulnerability of Deep Automatic Modulation Classifiers to Explainable Backdoor Threats",
-    "source": "arxiv",
-    "reason": "Generic ML adversarial robustness paper (backdoor attacks on signal classifiers) with no connection to censorship measurement, circumvention, traffic analysis, or surveillance.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.25403",
-    "title": "Shape and Substance: Dual-Layer Side-Channel Attacks on Local Vision-Language Models",
-    "source": "arxiv",
-    "reason": "Paper studies side-channel attacks on local ML models; unrelated to censorship detection, censor capabilities, circumvention design, or blocking mechanisms.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.26890",
-    "title": "Privacy-Preserving Iris Recognition: Performance Challenges and Outlook",
-    "source": "arxiv",
-    "reason": "Biometric iris-recognition system using FHE; unrelated to censorship, circumvention, or detection techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.27439",
-    "title": "Attacking AI Accelerators by Leveraging Arithmetic Properties of Addition",
-    "source": "arxiv",
-    "reason": "Hardware security paper on AI accelerator aging attacks; no relation to censorship measurement, circumvention protocols, or detection techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.28655",
-    "title": "Safeguarding LLMs Against Misuse and AI-Driven Malware Using Steganographic Canaries",
-    "source": "arxiv",
-    "reason": "Paper addresses AI/ML security (detecting unauthorized LLM processing of documents via steganographic canaries); unrelated to censorship circumvention, censor capabilities, anonymity systems, or related domains.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.28727",
-    "title": "BitSov: A Composable Bitcoin-Native Architecture for Sovereign Internet Infrastructure",
-    "source": "arxiv",
-    "reason": "Proposes alternative decentralized internet infrastructure using Bitcoin but does not address censorship detection, blocking techniques, circumvention protocols, or empirical measurement against active censors.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.29038",
-    "title": "Trojan-Speak: Bypassing Constitutional Classifiers with No Jailbreak Tax via Adversarial Finetuning",
-    "source": "arxiv",
-    "reason": "Paper studies adversarial attacks on LLM-based AI safety classifiers, not network-level censorship detection or circumvention protocols.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.29063",
-    "title": "Uncovering Relationships between Android Developers, User Privacy, and Developer Willingness to Reduce Fingerprinting Risks",
-    "source": "arxiv",
-    "reason": "This is a mobile app privacy and developer UX study about device fingerprinting for user tracking/analytics, not about censorship detection, blocking, or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2603.29545",
-    "title": "Stand-Alone Complex or Vibercrime? Exploring the adoption and innovation of GenAI tools, coding assistants, and agents within cybercrime ecosystems",
-    "source": "arxiv",
-    "reason": "Paper studies GenAI adoption in cybercrime and fraud ecosystems, not censorship circumvention, measurement, detection, or related surveillance/anonymity topics.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.00627",
-    "title": "When Safe Models Merge into Danger: Exploiting Latent Vulnerabilities in LLM Fusion",
-    "source": "arxiv",
-    "reason": "LLM security paper about adversarial model merging attacks; no connection to censorship measurement, censor capabilities, circumvention protocols, or surveillance infrastructure.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.01330",
-    "title": "Evolutionary Multi-Objective Fusion of Deepfake Speech Detectors",
-    "source": "arxiv",
-    "reason": "Machine learning paper on deepfake speech detection with no connection to censorship measurement, censor capabilities, circumvention protocols, or surveillance infrastructure.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.01370",
-    "title": "\"The System Will Choose Security Over Humanity Every Time\": Understanding Security and Privacy for U.S. Incarcerated Users",
-    "source": "arxiv",
-    "reason": "Addresses institutional surveillance and access control in U.S. prisons rather than internet censorship, censor detection, or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.03121",
-    "title": "An Independent Safety Evaluation of Kimi K2.5",
-    "source": "arxiv",
-    "reason": "This is an LLM safety evaluation paper focused on content moderation and model bias; it does not study network censorship, censor detection techniques, or circumvention protocols.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.04757",
-    "title": "Undetectable Conversations Between AI Agents via Pseudorandom Noise-Resilient Key Exchange",
-    "source": "arxiv",
-    "reason": "Cryptographic theory on steganographic communication between AI agents; no evaluation against censors or circumvention-specific threat models.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.04833",
-    "title": "Cryptanalysis of the Legendre Pseudorandom Function over Extension Fields",
-    "source": "arxiv",
-    "reason": "Generic cryptanalysis of a pseudorandom function for MPC/ZKP applications with no connection to censorship, circumvention, anonymity, or detection techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.05502",
-    "title": "AttnDiff: Attention-based Differential Fingerprinting for Large Language Models",
-    "source": "arxiv",
-    "reason": "ML paper on LLM model fingerprinting for IP protection; no connection to censorship, circumvention, anonymity, or network traffic analysis.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.05599",
-    "title": "PQC-Enhanced QKD Networks: A Layered Approach",
-    "source": "arxiv",
-    "reason": "Paper addresses quantum-resistant cryptography and key distribution for general network security; no connection to censorship detection, circumvention protocols, or evasion of censorship systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.06148",
-    "title": "Who Governs the Machine? A Machine Identity Governance Taxonomy (MIGT) for AI Systems Operating Across Enterprise and Geopolitical Boundaries",
-    "source": "arxiv",
-    "reason": "Enterprise AI identity governance and regulatory compliance paper with no connection to censorship measurement, censor capabilities, circumvention protocols, anonymity systems, or related research domains.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.06285",
-    "title": "Harnessing Hyperbolic Geometry for Harmful Prompt Detection and Sanitization",
-    "source": "arxiv",
-    "reason": "Paper addresses AI safety and prompt injection attacks on VLMs; no relevance to censorship measurement, censor capabilities, circumvention techniques, or surveillance infrastructure.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.06811",
-    "title": "SkillTrojan: Backdoor Attacks on Skill-Based Agent Systems",
-    "source": "arxiv",
-    "reason": "Generic ML security paper on backdoor attacks against AI agent systems; no censorship, anonymity, or circumvention angle.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.06900",
-    "title": "SentinelSphere: Integrating AI-Powered Real-Time Threat Detection with Cybersecurity Awareness Training",
-    "source": "arxiv",
-    "reason": "General cybersecurity threat detection (DDoS, brute force) with ML and LLM training; no connection to censorship measurement, circumvention protocols, censor detection techniques, or anonymity systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.07568",
-    "title": "MEV-ACE: Identity-Authenticated Fair Ordering for Proposer-Controlled MEV Mitigation",
-    "source": "arxiv",
-    "reason": "Paper addresses blockchain transaction ordering and MEV mitigation, not internet censorship, circumvention protocols, or censor capabilities.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.08037",
-    "title": "PrivFedTalk: Privacy-Aware Federated Diffusion with Identity-Stable Adapters for Personalized Talking-Head Generation",
-    "source": "arxiv",
-    "reason": "Generic federated learning and generative AI paper with no connection to censorship measurement, circumvention techniques, or censor capabilities.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.08276",
-    "title": "ACF: A Collaborative Framework for Agent Covert Communication under Cognitive Asymmetry",
-    "source": "arxiv",
-    "reason": "Studies covert communication between AI agents with asynchronous memory states; does not address censorship, circumvention protocols, censor capabilities, or network-level blocking detection.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.09750",
-    "title": "Conflicts Make Large Reasoning Models Vulnerable to Attacks",
-    "source": "arxiv",
-    "reason": "Pure ML safety/alignment paper studying adversarial attacks on LLM reasoning; no censorship, circumvention, or network-security angle.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.10326",
-    "title": "Jailbreaking the Matrix: Nullspace Steering for Controlled Model Subversion",
-    "source": "arxiv",
-    "reason": "This paper studies adversarial attacks on LLM safety mechanisms through circuit-level steering, which is an AI/ML adversarial robustness problem unrelated to internet censorship circumvention, protocol design, blocking detection, or any technique in the corpus vocabulary.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.10460",
-    "title": "Toward Accountable AI-Generated Content on Social Platforms: Steganographic Attribution and Multimodal Harm Detection",
-    "source": "arxiv",
-    "reason": "Paper addresses AI-generated content attribution and harm detection for platform content moderation, not censorship, circumvention techniques, or censor capabilities.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.10473",
-    "title": "AI Identification: An Integrated Framework for Sustainable Governance in Digital Enterprises",
-    "source": "arxiv",
-    "reason": "Paper addresses AI governance and accountability frameworks for enterprises, not censorship, circumvention, or blocking detection.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.11309",
-    "title": "The Salami Slicing Threat: Exploiting Cumulative Risks in LLM Systems",
-    "source": "arxiv",
-    "reason": "Paper studies LLM jailbreaking and AI safety alignment, not censorship measurement, censor capabilities, circumvention protocols, or network-level blocking techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.12431",
-    "title": "VeriX-Anon: A Multi-Layered Framework for Mathematically Verifiable Outsourced Target-Driven Data Anonymization",
-    "source": "arxiv",
-    "reason": "Data privacy and anonymization verification framework with no connection to network censorship, circumvention, or blocking techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.12446",
-    "title": "Scaling Exposes the Trigger: Input-Level Backdoor Detection in Text-to-Image Diffusion Models via Cross-Attention Scaling",
-    "source": "arxiv",
-    "reason": "This is a machine learning security paper about backdoor detection in text-to-image diffusion models; it has no connection to censorship, circumvention, anonymity systems, or network blocking.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.12834",
-    "title": "Rapid LoRA Aggregation for Wireless Channel Adaptation in Open-Set Radio Frequency Fingerprinting",
-    "source": "arxiv",
-    "reason": "Wireless biometric authentication via RF fingerprinting; no censorship measurement, detection, or circumvention component.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.13348",
-    "title": "Listening Alone, Understanding Together: Collaborative Context Recovery for Privacy-Aware AI",
-    "source": "arxiv",
-    "reason": "Paper focuses on privacy in always-listening AI assistants through speaker verification and inter-agent context recovery; no connection to censorship measurement, circumvention techniques, or surveillance regimes targeted by the corpus.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.15118",
-    "title": "NFTDELTA: Detecting Permission Control Vulnerabilities in NFT Contracts through Multi-View Learning",
-    "source": "arxiv",
-    "reason": "Smart-contract security vulnerability detection in NFT contracts; no relevance to censorship measurement, circumvention protocols, or surveillance resistance.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.15637",
-    "title": "Too Private to Tell: Practical Token Theft Attacks on Apple Intelligence",
-    "source": "arxiv",
-    "reason": "Security research on Apple Intelligence token authentication; not related to censorship measurement, censor detection, circumvention protocols, or anonymity systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.15641",
-    "title": "Half-Moon Cookie: Private, Similarity-Based Blocklisting with TOCTOU-Attack Resilience",
-    "source": "arxiv",
-    "reason": "This is a cryptographic protocol paper for private malware-detection blocklists, with no connection to censorship measurement, censor capabilities, or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.15810",
-    "title": "Secure Authentication in Wireless IoT: Hamming Code Assisted SRAM PUF as Device Fingerprint",
-    "source": "arxiv",
-    "reason": "Hardware-based IoT device authentication using SRAM PUFs is unrelated to censorship measurement, censor detection techniques, or circumvention protocol design.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.16080",
-    "title": "ProcRoute: Process-Scoped Authorization of Split-Tunnel Routes",
-    "source": "arxiv",
-    "reason": "Enterprise network access control for VPN/ZTNA deployments, not censorship measurement or circumvention.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.17093",
-    "title": "HarmChip: Evaluating Hardware Security Centric LLM Safety via Jailbreak Benchmarking",
-    "source": "arxiv",
-    "reason": "Hardware security / EDA benchmark for LLM jailbreaking; no connection to censorship, circumvention, surveillance, or network-level security.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.17476",
-    "title": "Privatar: Scalable Privacy-preserving Multi-user VR via Secure Offloading",
-    "source": "arxiv",
-    "reason": "Paper studies privacy-preserving offloading in multi-user VR systems using differential privacy and secure computation; no connection to internet censorship, circumvention protocols, detection techniques, or anonymity systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.17481",
-    "title": "A Novel Quantum Augmented Framework to Improve Microgrid Cybersecurity",
-    "source": "arxiv",
-    "reason": "Paper addresses quantum-augmented cybersecurity for critical-infrastructure microgrids and nuclear reactors, not internet censorship circumvention or detection.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.17860",
-    "title": "TitanCA: Lessons from Orchestrating LLM Agents to Discover 100+ CVEs",
-    "source": "arxiv",
-    "reason": "Generic software vulnerability discovery using LLMs; no censorship, circumvention, blocking, anonymity, or traffic-analysis angle.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.18633",
-    "title": "Global Web, Local Privacy? An International Review of Web Tracking",
-    "source": "arxiv",
-    "reason": "Paper studies commercial web tracking and privacy regulation (GDPR, California law), not censorship, blocking, or circumvention.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.18756",
-    "title": "Towards Understanding the Robustness of Sparse Autoencoders",
-    "source": "arxiv",
-    "reason": "Paper studies LLM adversarial robustness against jailbreak attacks using sparse autoencoders—pure ML robustness work with no censorship, circumvention, or internet-freedom angle.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.19090",
-    "title": "Dual-Guard: Dual-Channel Latent Watermarking for Provenance and Tamper Localization in Diffusion Images",
-    "source": "arxiv",
-    "reason": "Image watermarking and tampering detection for AI-generated diffusion models; no connection to censorship, circumvention, or network-based surveillance.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.20020",
-    "title": "Potentials and Pitfalls of Applying Federated Learning in Hardware Assurance",
-    "source": "arxiv",
-    "reason": "Hardware security and federated learning application; no connection to censorship, network blocking, circumvention, or anonymity systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.20269",
-    "title": "Text Steganography with Dynamic Codebook and Multimodal Large Language Model",
-    "source": "arxiv",
-    "reason": "General text steganography paper with no explicit connection to circumvention, censorship, or adversarial scenarios.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.21001",
-    "title": "VRSafe: A Secure Virtual Keyboard to Mitigate Keystroke Inference in Virtual Reality",
-    "source": "arxiv",
-    "reason": "VR authentication security and keystroke inference mitigation are unrelated to censorship measurement, detection, circumvention protocols, or internet freedom.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.21394",
-    "title": "Provably Secure Steganography Based on List Decoding",
-    "source": "arxiv",
-    "reason": "Pure cryptographic theory paper improving steganographic capacity. While steganography is a circumvention defense, this work has no focus on censorship systems, censor detection, or circumvention deployments—it advances a generic cryptographic primitive without circumvention-specific evaluation.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.21840",
-    "title": "TraceScope: Interactive URL Triage via Decoupled Checklist Adjudication",
-    "source": "arxiv",
-    "reason": "Phishing URL detection via interactive forensics and LLM-based adjudication; no connection to censorship, circumvention, or surveillance infrastructure.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.22935",
-    "title": "Secure eFPGA-Enabled Edge LLM Inference: Architectural and Hardware Countermeasures",
-    "source": "arxiv",
-    "reason": "Hardware security for edge LLM inference; no connection to censorship detection, circumvention techniques, network surveillance, or blocking mechanisms.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.23067",
-    "title": "Training a General Purpose Automated Red Teaming Model",
-    "source": "arxiv",
-    "reason": "Paper focuses on automated red teaming of large language models for safety/content moderation vulnerabilities, not censorship measurement, censor capabilities, or circumvention protocol design.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.23141",
-    "title": "UNSEEN: A Cross-Stack LLM Unlearning Defense against AR-LLM Social Engineering Attacks",
-    "source": "arxiv",
-    "reason": "Paper addresses AR-LLM social engineering defense; unrelated to internet censorship, circumvention, or blocking techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.23341",
-    "title": "Evaluating Jailbreaking Vulnerabilities in LLMs Deployed as Assistants for Smart Grid Operations: A Benchmark Against NERC Standards",
-    "source": "arxiv",
-    "reason": "LLM adversarial robustness / jailbreaking study unrelated to censorship, circumvention, or surveillance; smart-grid regulatory compliance falls outside the corpus scope.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2604.23425",
-    "title": "When the Agent Is the Adversary: Architectural Requirements for Agentic AI Containment After the April 2026 Frontier Model Escape",
-    "source": "arxiv",
-    "reason": "Paper studies AI sandbox escape and agentic containment, not internet censorship or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.02978",
-    "title": "Observability for Post-Quantum TLS Readiness: A Multi-Surface Evidence Framework",
-    "source": "arxiv",
-    "reason": "Post-quantum TLS readiness measurement paper with no study of censorship, censor detection, or circumvention systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.03095",
-    "title": "Revisiting JBShield: Breaking and Rebuilding Representation-Level Jailbreak Defenses",
-    "source": "arxiv",
-    "reason": "This is a machine-learning security paper about LLM jailbreak defenses, with no connection to network censorship, circumvention protocols, blocking detection, or anonymity systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.03309",
-    "title": "Cryptographic Registry Provenance: Structural Defense Against Dependency Confusion in AI Package Ecosystems",
-    "source": "arxiv",
-    "reason": "Paper addresses software supply-chain security (dependency confusion attacks in package managers); unrelated to censorship measurement, circumvention protocols, censor detection, or anonymity systems.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.03494",
-    "title": "Design of Memristive Lightweight Encryption For In-Memory Image Steganography",
-    "source": "arxiv",
-    "reason": "Hardware cryptography paper on memristor-based in-memory computing with image steganography; no connection to network censorship, blocking, or circumvention.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.04491",
-    "title": "An Evaluation of Chat Safety Moderations in Roblox",
-    "source": "arxiv",
-    "reason": "Platform-level content moderation study on Roblox gaming chat; not related to network-level censorship, circumvention protocols, or blocking infrastructure.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.05260",
-    "title": "SecureMCP: A Policy-Enforced LLM Data Access Framework for AIoT Systems via Model Context Protocol",
-    "source": "arxiv",
-    "reason": "Database and IoT security paper focused on LLM prompt injection attacks and role-based access control; no connection to censorship, circumvention, anonymity, or surveillance-resistance.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.05774",
-    "title": "SuperPaymaster: Eliminating Centralized Signer Authority via Asset-Oriented Abstraction to Reconcile Usability and Decentralization in Account Abstraction",
-    "source": "arxiv",
-    "reason": "Blockchain account abstraction and transaction sponsorship architecture; no connection to internet censorship measurement, censor capabilities, or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.05789",
-    "title": "Stego Battlefield: Evaluating Image Steganography Attacks and Steganalysis Defenses",
-    "source": "arxiv",
-    "reason": "General-purpose image steganography benchmark focused on content moderation bypass and LLM jailbreaking, not internet censorship circumvention or censor detection techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.05995",
-    "title": "Safety Anchor: Defending Harmful Fine-tuning via Geometric Bottlenecks",
-    "source": "arxiv",
-    "reason": "Paper studies LLM safety alignment against fine-tuning attacks; no connection to internet censorship, circumvention, network blocking, or surveillance.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.06205",
-    "title": "ClawGuard: Out-of-Band Detection of LLM Agent Workflow Hijacking via EM Side Channel",
-    "source": "arxiv",
-    "reason": "Side-channel analysis of LLM agent security; no connection to censorship detection, circumvention protocols, or surveillance/blocking techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.06393",
-    "title": "Constraining Host-Level Abuse in Self-Hosted Computer-Use Agents via TEE-Backed Isolation",
-    "source": "arxiv",
-    "reason": "Security/containment of AI agents using TEEs; does not address censorship measurement, blocking techniques, or circumvention protocols.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.07241",
-    "title": "Asymmetric Phase Coding Audio Watermarking",
-    "source": "arxiv",
-    "reason": "Audio watermarking and deepfake detection; no connection to censorship measurement, circumvention, blocking, or network interference.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "arxiv:2605.07663",
-    "title": "Quotient Semivalues for False-Name-Resistant Data Attribution",
-    "source": "arxiv",
-    "reason": "Machine learning data valuation paper addressing Sybil attacks in ML training pipelines; no connection to censorship, circumvention, anonymity systems, or blocking detection.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/0de7lze1/",
-    "title": "python装饰器详解 | 二毛",
-    "source": "ermao",
-    "reason": "Generic Python programming tutorial about language features; no relation to censorship, circumvention, or network security.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/106izvxs/",
-    "title": "Zsh 安装与配置 - 使用 Oh My Zsh 美化终端 | 二毛",
-    "source": "ermao",
-    "reason": "This is a Linux shell configuration tutorial for Zsh and Oh My Zsh, with no connection to censorship, circumvention, or internet freedom research.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/23w1svxa/",
-    "title": "💸各大机场优惠券汇总 | 二毛",
-    "source": "ermao",
-    "reason": "This is a promotional blog post listing discount coupon codes for VPN services, not research literature or technical analysis of censorship, circumvention protocols, measurement methodologies, or censor capabilities.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/b06gglcq/",
-    "title": "docker 部署 aria2 | 二毛",
-    "source": "ermao",
-    "reason": "This is a technical blog post about deploying Aria2 file-download manager via Docker; it has no connection to censorship measurement, censor capabilities, circumvention protocols, or related research.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/bsnuua0h/",
-    "title": "Telegram 搜索机器人实用指南：推荐、技巧与风险边界 | 二毛",
-    "source": "ermao",
-    "reason": "This is a practical how-to guide for using Telegram search bots; it does not study censorship measurement, censor capabilities, circumvention protocols, or blocking events.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/btszw3im/",
-    "title": "Python生成器详解 | 二毛",
-    "source": "ermao",
-    "reason": "This is a Python programming tutorial about generators and iterators with no connection to censorship, circumvention, blocking, anonymity, or related research topics.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/c3gj5lqy/",
-    "title": "通过Ollama本地部署DeepSeek代码大模型：从硬件配置到VSCode实战指南 | 二毛",
-    "source": "ermao",
-    "reason": "Technical guide for deploying a local AI code model using Ollama; no relationship to censorship measurement, circumvention techniques, or internet filtering.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/choose-good-airport/",
-    "title": "2026年怎么选VPN机场？科学上网翻墙机场避坑与防跑路指南 | 二毛",
-    "source": "ermao",
-    "reason": "Consumer VPN service review and purchasing guide; lacks research contribution to censorship measurement, censor capabilities, protocol design, or circumvention technique evaluation.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/cocoduck/",
-    "title": "2026 CocoDuck机场评测：海外团队自有机房｜两年稳定运营老牌机场推荐 | 二毛",
-    "source": "ermao",
-    "reason": "This is a commercial VPN service review/advertisement, not a research contribution on censorship measurement, protocol design, or circumvention evaluation.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/d3apexwx/",
-    "title": "安卓电视/盒子/平板免费使用Emby | 二毛",
-    "source": "ermao",
-    "reason": "Tutorial/how-to guide for setting up Emby media server on Android devices; no research contribution on censorship, detection, or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/edge-x/",
-    "title": "2026 Edge-X机场评测：IEPL专线+低倍率策略，22.8元档到底值不值 | 二毛",
-    "source": "ermao",
-    "reason": "This is a commercial VPN service review and consumer recommendation blog post, not research on censorship measurement, detection, protocol design, or the VPN ecosystem.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/fanqiang/",
-    "title": "路由器翻墙详细教程：2026年最佳路由器VPN配置指南 | 二毛",
-    "source": "ermao",
-    "reason": "A practical how-to blog post for router VPN configuration, not a research study, measurement, censor capability analysis, or technical advance in circumvention.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/fanqiang2/",
-    "title": "什么是翻墙？2026年最新Clash代理工具完整指南 | 二毛",
-    "source": "ermao",
-    "reason": "Consumer how-to guide for using existing proxy tools (Clash, V2Ray, Trojan); no measurement, analysis, or research contribution to the circumvention literature.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/gokrv7a1/",
-    "title": "ubuntu2204中mongodb数据导入导出 | 二毛",
-    "source": "ermao",
-    "reason": "Technical blog post about MongoDB database administration on Ubuntu; no connection to censorship measurement, circumvention protocols, or related topics.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/jqtuqouj/",
-    "title": "使用cloudflare进行URL重定向 | 二毛",
-    "source": "ermao",
-    "reason": "Blog post about website migration using Cloudflare URL redirects; no censorship, blocking, circumvention, or surveillance content.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/oh8wwokl/",
-    "title": "⏰ 免费机场 免费梯子 翻墙VPN | 二毛",
-    "source": "ermao",
-    "reason": "This is a service aggregator distributing free circumvention tool subscription links, not a research contribution studying censorship, censor capabilities, or protocol evaluation.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/r50bpg9j/",
-    "title": "如何判断一个机场使用的线路类型（如IPLC/IEPL专线、CN2、BGP中转等） | 二毛",
-    "source": "ermao",
-    "reason": "Consumer how-to guide for evaluating VPN service circuit quality; does not contribute to circumvention research, censor analysis, or censorship-resistance science.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/r6u6yjj9/",
-    "title": "python迭代器详解 | 二毛",
-    "source": "ermao",
-    "reason": "Generic Python programming tutorial on iterators; no connection to censorship, circumvention, surveillance, or network analysis.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/tj38tso3/",
-    "title": "搜索引擎查找 Ollama 本地部署的 DeepSeek，实现免费 AI 运行 | 二毛",
-    "source": "ermao",
-    "reason": "Article is a tutorial on discovering exposed Ollama API services via Fofa/Shodan search engines; no connection to censorship, circumvention, anonymity, or surveillance research.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/u5a30qtd/",
-    "title": "HTTP 状态码大全 | 二毛",
-    "source": "ermao",
-    "reason": "Reference guide to HTTP status codes with no connection to censorship, blocking, circumvention, or network security measurement.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/ubm5k5vn/",
-    "title": "wsl将ubuntu换成debian | 二毛",
-    "source": "ermao",
-    "reason": "This is a technical tutorial about switching from Ubuntu to Debian in Windows Subsystem for Linux, unrelated to censorship, blocking, circumvention, anonymity, or surveillance.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/vgf2ez1r/",
-    "title": "TrueNAS虚拟机备份 | 二毛",
-    "source": "ermao",
-    "reason": "This is a technical blog post about TrueNAS virtual machine backup procedures; it has no connection to censorship, circumvention, or network security.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/vw1nq52m/",
-    "title": "安卓TV软件推荐与下载 | 二毛",
-    "source": "ermao",
-    "reason": "This is a casual Android TV app recommendations blog post with no research contribution, measurement study, or circumvention/censorship analysis.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/wwpg9n59/",
-    "title": "如何在telegram中使用极搜搜索 | 二毛",
-    "source": "ermao",
-    "reason": "This is a user tutorial for registering Telegram and using a search bot in Telegram, not a research paper studying censorship, censor capabilities, or circumvention techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/yifph1jd/",
-    "title": "使用Vim上班看小说 | 二毛",
-    "source": "ermao",
-    "reason": "Blog post about using Vim as a novel reader at work; unrelated to censorship, circumvention, or security research.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/9esim/",
-    "title": "9esim使用指南 - 获取国外手机号，注册Google、Telegram等账号 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial promotional blog post / user guide for eSIM service; not a research paper, measurement study, or original analysis of circumvention or censorship.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/googleseo/",
-    "title": "Google官方SEO入门指南完整版：从零开始优化网站排名 | 二毛",
-    "source": "ermao",
-    "reason": "Blog post about Google SEO optimization that merely incidentally mentions Chinese internet censorship requiring VPN access; contains no analysis of circumvention techniques, censorship mechanisms, or circumvention-specific research.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/huanyuyun/",
-    "title": "寰宇云评测：18元150GB起的新开IPLC中转机场怎么选 | 二毛",
-    "source": "ermao",
-    "reason": "This is a consumer product review of a proxy service with pricing and stability evaluation, not research on circumvention techniques, censor capabilities, protocol design, or measurement methodology.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/sogoyun/",
-    "title": "Sogo云评测与推荐：20元120GB起步的自研客户端机场 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial VPN service review without technical contribution to circumvention research, censorship measurement, protocol analysis, or censor capability assessment.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/telegram/",
-    "title": "2026年最新 telegram（电报、飞机）注册使用教程 | 二毛",
-    "source": "ermao",
-    "reason": "User registration and privacy tutorial for Telegram messenger; not research on censorship measurement, censor capabilities, circumvention protocols, or related topics.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/vpnhefa/",
-    "title": "国内购买vpn违法吗？ | 二毛",
-    "source": "ermao",
-    "reason": "This is legal/regulatory guidance for VPN consumers in China, not a research paper studying censor techniques, circumvention protocols, or policy impact on circumvention tooling.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/yecv6pn6/",
-    "title": "OpenClaw 初阶教程：从 0 到 1 搭建 Telegram AI 助手（2026） | 二毛",
-    "source": "ermao",
-    "reason": "Tutorial blog post on integrating AI assistants into messaging platforms; mentions proxy tools incidentally but does not study censorship, circumvention, or detection techniques.",
-    "rejected_at": "2026-05-11"
-  },
-  {
-    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0003.php",
-    "title": "PriVA-C: Defending Voice Assistants from Fingerprinting Attacks",
-    "source": "popets",
-    "reason": "Voice assistant fingerprinting defense is a privacy/IoT security topic, not censorship circumvention or censor capabilities.",
-    "rejected_at": "2026-05-06"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/u1s1/",
-    "title": "2026 U1S1机场评测：IPLC专线、不限设备、晚高峰不降速的性价比之选 | 二毛",
-    "source": "ermao",
-    "reason": "Commercial VPN service review and pricing comparison, not a research paper studying censorship mechanisms, censor capabilities, or circumvention protocol design.",
-    "rejected_at": "2026-05-06"
-  },
-  {
-    "key": "url:https://www.ermao.net/article/z747kgjd/",
-    "title": "Shadowrocket(小火箭)新手使用教程2026：下载安装、节点订阅与配置指南(含免费美区ID) | 二毛",
-    "source": "ermao",
-    "reason": "End-user tutorial for configuring Shadowrocket; no research, measurement, analysis, or scholarly contribution to censorship-circumvention literature.",
-    "rejected_at": "2026-05-06"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/clashmi/",
-    "title": "iOS Clash Mi 使用教程（2026最新版）：下载安装、订阅导入与常见问题 | 二毛",
-    "source": "ermao",
-    "reason": "This is a Chinese-language blog tutorial for end-users on configuring a VPN/proxy client (Clash Mi), not a research paper, measurement study, protocol evaluation, or policy document.",
-    "rejected_at": "2026-05-06"
-  },
-  {
-    "key": "url:https://www.ermao.net/blog/freeappleid/",
-    "title": "2026最新免费美区Apple ID共享账号 | Shadowrocket/小火箭下载 | iOS美区账号每日更新 | 二毛",
-    "source": "ermao",
-    "reason": "Consumer how-to guide for obtaining shared Apple IDs to download VPN apps; does not research, measure, or evaluate censorship techniques, censor capabilities, or circumvention protocols.",
-    "rejected_at": "2026-05-06"
-  },
-  {
     "key": "arxiv:2604.24542",
     "title": "Layerwise Convergence Fingerprints for Runtime Misbehavior Detection in Large Language Models",
     "source": "arxiv",
@@ -1151,7 +73,7 @@
     "key": "arxiv:2604.27002",
     "title": "Membership Inference Attacks Against Video Large Language Models",
     "source": "arxiv",
-    "reason": "Paper studies membership inference attacks on video LLMs—pure ML privacy adversarial robustness with no censorship, circumvention, anonymity, or traffic-analysis angle.",
+    "reason": "Paper studies membership inference attacks on video LLMs\u2014pure ML privacy adversarial robustness with no censorship, circumvention, anonymity, or traffic-analysis angle.",
     "rejected_at": "2026-05-05"
   },
   {
@@ -1478,7 +400,7 @@
   },
   {
     "key": "url:https://www.usenix.org/conference/usenixsecurity25/presentation/teymourian",
-    "title": "SoK: Come Together – Unifying Security, Information Theory, and Cognition for a Mixed Reality Deception Attack Ontology \u0026 Analysis Framework",
+    "title": "SoK: Come Together \u2013 Unifying Security, Information Theory, and Cognition for a Mixed Reality Deception Attack Ontology & Analysis Framework",
     "source": "usenix-sec",
     "reason": "Paper studies deception attacks in Mixed Reality (VR/AR) environments; no connection to censorship, circumvention, internet filtering, or surveillance.",
     "rejected_at": "2026-05-05"
@@ -1545,5 +467,1622 @@
     "source": "usenix-sec",
     "reason": "This is a cybersecurity/APT detection paper focused on multi-flow traffic analysis for attack attribution in enterprise networks, not censorship measurement or circumvention analysis.",
     "rejected_at": "2026-05-05"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0003.php",
+    "title": "PriVA-C: Defending Voice Assistants from Fingerprinting Attacks",
+    "source": "popets",
+    "reason": "Voice assistant fingerprinting defense is a privacy/IoT security topic, not censorship circumvention or censor capabilities.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/u1s1/",
+    "title": "2026 U1S1\u673a\u573a\u8bc4\u6d4b\uff1aIPLC\u4e13\u7ebf\u3001\u4e0d\u9650\u8bbe\u5907\u3001\u665a\u9ad8\u5cf0\u4e0d\u964d\u901f\u7684\u6027\u4ef7\u6bd4\u4e4b\u9009 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service review and pricing comparison, not a research paper studying censorship mechanisms, censor capabilities, or circumvention protocol design.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/z747kgjd/",
+    "title": "Shadowrocket(\u5c0f\u706b\u7bad)\u65b0\u624b\u4f7f\u7528\u6559\u7a0b2026\uff1a\u4e0b\u8f7d\u5b89\u88c5\u3001\u8282\u70b9\u8ba2\u9605\u4e0e\u914d\u7f6e\u6307\u5357(\u542b\u514d\u8d39\u7f8e\u533aID) | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "End-user tutorial for configuring Shadowrocket; no research, measurement, analysis, or scholarly contribution to censorship-circumvention literature.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/clashmi/",
+    "title": "iOS Clash Mi \u4f7f\u7528\u6559\u7a0b\uff082026\u6700\u65b0\u7248\uff09\uff1a\u4e0b\u8f7d\u5b89\u88c5\u3001\u8ba2\u9605\u5bfc\u5165\u4e0e\u5e38\u89c1\u95ee\u9898 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a Chinese-language blog tutorial for end-users on configuring a VPN/proxy client (Clash Mi), not a research paper, measurement study, protocol evaluation, or policy document.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/freeappleid/",
+    "title": "2026\u6700\u65b0\u514d\u8d39\u7f8e\u533aApple ID\u5171\u4eab\u8d26\u53f7 | Shadowrocket/\u5c0f\u706b\u7bad\u4e0b\u8f7d | iOS\u7f8e\u533a\u8d26\u53f7\u6bcf\u65e5\u66f4\u65b0 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer how-to guide for obtaining shared Apple IDs to download VPN apps; does not research, measure, or evaluate censorship techniques, censor capabilities, or circumvention protocols.",
+    "rejected_at": "2026-05-06"
+  },
+  {
+    "key": "arxiv:2603.23966",
+    "title": "Policy-Guided Threat Hunting: An LLM enabled Framework with Splunk SOC Triage",
+    "source": "arxiv",
+    "reason": "General organizational cybersecurity and SOC threat-hunting paper using ML for APT detection; no censorship, blocking, or circumvention angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.24982",
+    "title": "LiteGuard: Efficient Task-Agnostic Model Fingerprinting with Enhanced Generalization",
+    "source": "arxiv",
+    "reason": "Paper studies ML model fingerprinting for intellectual-property protection, unrelated to censorship, blocking, circumvention, or anonymity.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.24996",
+    "title": "IrisFP: Adversarial-Example-based Model Fingerprinting with Enhanced Uniqueness and Robustness",
+    "source": "arxiv",
+    "reason": "Paper studies ML model fingerprinting for ownership verification via adversarial examples; no censorship, circumvention, or network-blocking angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.25304",
+    "title": "Physical Backdoor Attack Against Deep Learning-Based Modulation Classification",
+    "source": "arxiv",
+    "reason": "This paper studies adversarial backdoor attacks on RF signal modulation classifiers\u2014a pure wireless communications / ML security topic with no connection to internet censorship, circumvention protocols, censor detection capabilities, or network filtering.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.25310",
+    "title": "On the Vulnerability of Deep Automatic Modulation Classifiers to Explainable Backdoor Threats",
+    "source": "arxiv",
+    "reason": "Generic ML adversarial robustness paper (backdoor attacks on signal classifiers) with no connection to censorship measurement, circumvention, traffic analysis, or surveillance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.25403",
+    "title": "Shape and Substance: Dual-Layer Side-Channel Attacks on Local Vision-Language Models",
+    "source": "arxiv",
+    "reason": "Paper studies side-channel attacks on local ML models; unrelated to censorship detection, censor capabilities, circumvention design, or blocking mechanisms.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.26890",
+    "title": "Privacy-Preserving Iris Recognition: Performance Challenges and Outlook",
+    "source": "arxiv",
+    "reason": "Biometric iris-recognition system using FHE; unrelated to censorship, circumvention, or detection techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.27439",
+    "title": "Attacking AI Accelerators by Leveraging Arithmetic Properties of Addition",
+    "source": "arxiv",
+    "reason": "Hardware security paper on AI accelerator aging attacks; no relation to censorship measurement, circumvention protocols, or detection techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.28655",
+    "title": "Safeguarding LLMs Against Misuse and AI-Driven Malware Using Steganographic Canaries",
+    "source": "arxiv",
+    "reason": "Paper addresses AI/ML security (detecting unauthorized LLM processing of documents via steganographic canaries); unrelated to censorship circumvention, censor capabilities, anonymity systems, or related domains.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.28727",
+    "title": "BitSov: A Composable Bitcoin-Native Architecture for Sovereign Internet Infrastructure",
+    "source": "arxiv",
+    "reason": "Proposes alternative decentralized internet infrastructure using Bitcoin but does not address censorship detection, blocking techniques, circumvention protocols, or empirical measurement against active censors.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.29038",
+    "title": "Trojan-Speak: Bypassing Constitutional Classifiers with No Jailbreak Tax via Adversarial Finetuning",
+    "source": "arxiv",
+    "reason": "Paper studies adversarial attacks on LLM-based AI safety classifiers, not network-level censorship detection or circumvention protocols.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.29063",
+    "title": "Uncovering Relationships between Android Developers, User Privacy, and Developer Willingness to Reduce Fingerprinting Risks",
+    "source": "arxiv",
+    "reason": "This is a mobile app privacy and developer UX study about device fingerprinting for user tracking/analytics, not about censorship detection, blocking, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2603.29545",
+    "title": "Stand-Alone Complex or Vibercrime? Exploring the adoption and innovation of GenAI tools, coding assistants, and agents within cybercrime ecosystems",
+    "source": "arxiv",
+    "reason": "Paper studies GenAI adoption in cybercrime and fraud ecosystems, not censorship circumvention, measurement, detection, or related surveillance/anonymity topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.00627",
+    "title": "When Safe Models Merge into Danger: Exploiting Latent Vulnerabilities in LLM Fusion",
+    "source": "arxiv",
+    "reason": "LLM security paper about adversarial model merging attacks; no connection to censorship measurement, censor capabilities, circumvention protocols, or surveillance infrastructure.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.01330",
+    "title": "Evolutionary Multi-Objective Fusion of Deepfake Speech Detectors",
+    "source": "arxiv",
+    "reason": "Machine learning paper on deepfake speech detection with no connection to censorship measurement, censor capabilities, circumvention protocols, or surveillance infrastructure.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.01370",
+    "title": "\"The System Will Choose Security Over Humanity Every Time\": Understanding Security and Privacy for U.S. Incarcerated Users",
+    "source": "arxiv",
+    "reason": "Addresses institutional surveillance and access control in U.S. prisons rather than internet censorship, censor detection, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.03121",
+    "title": "An Independent Safety Evaluation of Kimi K2.5",
+    "source": "arxiv",
+    "reason": "This is an LLM safety evaluation paper focused on content moderation and model bias; it does not study network censorship, censor detection techniques, or circumvention protocols.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.04757",
+    "title": "Undetectable Conversations Between AI Agents via Pseudorandom Noise-Resilient Key Exchange",
+    "source": "arxiv",
+    "reason": "Cryptographic theory on steganographic communication between AI agents; no evaluation against censors or circumvention-specific threat models.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.04833",
+    "title": "Cryptanalysis of the Legendre Pseudorandom Function over Extension Fields",
+    "source": "arxiv",
+    "reason": "Generic cryptanalysis of a pseudorandom function for MPC/ZKP applications with no connection to censorship, circumvention, anonymity, or detection techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.05502",
+    "title": "AttnDiff: Attention-based Differential Fingerprinting for Large Language Models",
+    "source": "arxiv",
+    "reason": "ML paper on LLM model fingerprinting for IP protection; no connection to censorship, circumvention, anonymity, or network traffic analysis.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.05599",
+    "title": "PQC-Enhanced QKD Networks: A Layered Approach",
+    "source": "arxiv",
+    "reason": "Paper addresses quantum-resistant cryptography and key distribution for general network security; no connection to censorship detection, circumvention protocols, or evasion of censorship systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.06148",
+    "title": "Who Governs the Machine? A Machine Identity Governance Taxonomy (MIGT) for AI Systems Operating Across Enterprise and Geopolitical Boundaries",
+    "source": "arxiv",
+    "reason": "Enterprise AI identity governance and regulatory compliance paper with no connection to censorship measurement, censor capabilities, circumvention protocols, anonymity systems, or related research domains.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.06285",
+    "title": "Harnessing Hyperbolic Geometry for Harmful Prompt Detection and Sanitization",
+    "source": "arxiv",
+    "reason": "Paper addresses AI safety and prompt injection attacks on VLMs; no relevance to censorship measurement, censor capabilities, circumvention techniques, or surveillance infrastructure.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.06811",
+    "title": "SkillTrojan: Backdoor Attacks on Skill-Based Agent Systems",
+    "source": "arxiv",
+    "reason": "Generic ML security paper on backdoor attacks against AI agent systems; no censorship, anonymity, or circumvention angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.06900",
+    "title": "SentinelSphere: Integrating AI-Powered Real-Time Threat Detection with Cybersecurity Awareness Training",
+    "source": "arxiv",
+    "reason": "General cybersecurity threat detection (DDoS, brute force) with ML and LLM training; no connection to censorship measurement, circumvention protocols, censor detection techniques, or anonymity systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.07568",
+    "title": "MEV-ACE: Identity-Authenticated Fair Ordering for Proposer-Controlled MEV Mitigation",
+    "source": "arxiv",
+    "reason": "Paper addresses blockchain transaction ordering and MEV mitigation, not internet censorship, circumvention protocols, or censor capabilities.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.08037",
+    "title": "PrivFedTalk: Privacy-Aware Federated Diffusion with Identity-Stable Adapters for Personalized Talking-Head Generation",
+    "source": "arxiv",
+    "reason": "Generic federated learning and generative AI paper with no connection to censorship measurement, circumvention techniques, or censor capabilities.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.08276",
+    "title": "ACF: A Collaborative Framework for Agent Covert Communication under Cognitive Asymmetry",
+    "source": "arxiv",
+    "reason": "Studies covert communication between AI agents with asynchronous memory states; does not address censorship, circumvention protocols, censor capabilities, or network-level blocking detection.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.09750",
+    "title": "Conflicts Make Large Reasoning Models Vulnerable to Attacks",
+    "source": "arxiv",
+    "reason": "Pure ML safety/alignment paper studying adversarial attacks on LLM reasoning; no censorship, circumvention, or network-security angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.10326",
+    "title": "Jailbreaking the Matrix: Nullspace Steering for Controlled Model Subversion",
+    "source": "arxiv",
+    "reason": "This paper studies adversarial attacks on LLM safety mechanisms through circuit-level steering, which is an AI/ML adversarial robustness problem unrelated to internet censorship circumvention, protocol design, blocking detection, or any technique in the corpus vocabulary.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.10460",
+    "title": "Toward Accountable AI-Generated Content on Social Platforms: Steganographic Attribution and Multimodal Harm Detection",
+    "source": "arxiv",
+    "reason": "Paper addresses AI-generated content attribution and harm detection for platform content moderation, not censorship, circumvention techniques, or censor capabilities.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.10473",
+    "title": "AI Identification: An Integrated Framework for Sustainable Governance in Digital Enterprises",
+    "source": "arxiv",
+    "reason": "Paper addresses AI governance and accountability frameworks for enterprises, not censorship, circumvention, or blocking detection.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.11309",
+    "title": "The Salami Slicing Threat: Exploiting Cumulative Risks in LLM Systems",
+    "source": "arxiv",
+    "reason": "Paper studies LLM jailbreaking and AI safety alignment, not censorship measurement, censor capabilities, circumvention protocols, or network-level blocking techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.12431",
+    "title": "VeriX-Anon: A Multi-Layered Framework for Mathematically Verifiable Outsourced Target-Driven Data Anonymization",
+    "source": "arxiv",
+    "reason": "Data privacy and anonymization verification framework with no connection to network censorship, circumvention, or blocking techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.12446",
+    "title": "Scaling Exposes the Trigger: Input-Level Backdoor Detection in Text-to-Image Diffusion Models via Cross-Attention Scaling",
+    "source": "arxiv",
+    "reason": "This is a machine learning security paper about backdoor detection in text-to-image diffusion models; it has no connection to censorship, circumvention, anonymity systems, or network blocking.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.12834",
+    "title": "Rapid LoRA Aggregation for Wireless Channel Adaptation in Open-Set Radio Frequency Fingerprinting",
+    "source": "arxiv",
+    "reason": "Wireless biometric authentication via RF fingerprinting; no censorship measurement, detection, or circumvention component.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.13348",
+    "title": "Listening Alone, Understanding Together: Collaborative Context Recovery for Privacy-Aware AI",
+    "source": "arxiv",
+    "reason": "Paper focuses on privacy in always-listening AI assistants through speaker verification and inter-agent context recovery; no connection to censorship measurement, circumvention techniques, or surveillance regimes targeted by the corpus.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.15118",
+    "title": "NFTDELTA: Detecting Permission Control Vulnerabilities in NFT Contracts through Multi-View Learning",
+    "source": "arxiv",
+    "reason": "Smart-contract security vulnerability detection in NFT contracts; no relevance to censorship measurement, circumvention protocols, or surveillance resistance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.15637",
+    "title": "Too Private to Tell: Practical Token Theft Attacks on Apple Intelligence",
+    "source": "arxiv",
+    "reason": "Security research on Apple Intelligence token authentication; not related to censorship measurement, censor detection, circumvention protocols, or anonymity systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.15641",
+    "title": "Half-Moon Cookie: Private, Similarity-Based Blocklisting with TOCTOU-Attack Resilience",
+    "source": "arxiv",
+    "reason": "This is a cryptographic protocol paper for private malware-detection blocklists, with no connection to censorship measurement, censor capabilities, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.15810",
+    "title": "Secure Authentication in Wireless IoT: Hamming Code Assisted SRAM PUF as Device Fingerprint",
+    "source": "arxiv",
+    "reason": "Hardware-based IoT device authentication using SRAM PUFs is unrelated to censorship measurement, censor detection techniques, or circumvention protocol design.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.16080",
+    "title": "ProcRoute: Process-Scoped Authorization of Split-Tunnel Routes",
+    "source": "arxiv",
+    "reason": "Enterprise network access control for VPN/ZTNA deployments, not censorship measurement or circumvention.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.17093",
+    "title": "HarmChip: Evaluating Hardware Security Centric LLM Safety via Jailbreak Benchmarking",
+    "source": "arxiv",
+    "reason": "Hardware security / EDA benchmark for LLM jailbreaking; no connection to censorship, circumvention, surveillance, or network-level security.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.17476",
+    "title": "Privatar: Scalable Privacy-preserving Multi-user VR via Secure Offloading",
+    "source": "arxiv",
+    "reason": "Paper studies privacy-preserving offloading in multi-user VR systems using differential privacy and secure computation; no connection to internet censorship, circumvention protocols, detection techniques, or anonymity systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.17481",
+    "title": "A Novel Quantum Augmented Framework to Improve Microgrid Cybersecurity",
+    "source": "arxiv",
+    "reason": "Paper addresses quantum-augmented cybersecurity for critical-infrastructure microgrids and nuclear reactors, not internet censorship circumvention or detection.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.17860",
+    "title": "TitanCA: Lessons from Orchestrating LLM Agents to Discover 100+ CVEs",
+    "source": "arxiv",
+    "reason": "Generic software vulnerability discovery using LLMs; no censorship, circumvention, blocking, anonymity, or traffic-analysis angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.18633",
+    "title": "Global Web, Local Privacy? An International Review of Web Tracking",
+    "source": "arxiv",
+    "reason": "Paper studies commercial web tracking and privacy regulation (GDPR, California law), not censorship, blocking, or circumvention.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.18756",
+    "title": "Towards Understanding the Robustness of Sparse Autoencoders",
+    "source": "arxiv",
+    "reason": "Paper studies LLM adversarial robustness against jailbreak attacks using sparse autoencoders\u2014pure ML robustness work with no censorship, circumvention, or internet-freedom angle.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.19090",
+    "title": "Dual-Guard: Dual-Channel Latent Watermarking for Provenance and Tamper Localization in Diffusion Images",
+    "source": "arxiv",
+    "reason": "Image watermarking and tampering detection for AI-generated diffusion models; no connection to censorship, circumvention, or network-based surveillance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.20020",
+    "title": "Potentials and Pitfalls of Applying Federated Learning in Hardware Assurance",
+    "source": "arxiv",
+    "reason": "Hardware security and federated learning application; no connection to censorship, network blocking, circumvention, or anonymity systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.20269",
+    "title": "Text Steganography with Dynamic Codebook and Multimodal Large Language Model",
+    "source": "arxiv",
+    "reason": "General text steganography paper with no explicit connection to circumvention, censorship, or adversarial scenarios.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.21001",
+    "title": "VRSafe: A Secure Virtual Keyboard to Mitigate Keystroke Inference in Virtual Reality",
+    "source": "arxiv",
+    "reason": "VR authentication security and keystroke inference mitigation are unrelated to censorship measurement, detection, circumvention protocols, or internet freedom.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.21394",
+    "title": "Provably Secure Steganography Based on List Decoding",
+    "source": "arxiv",
+    "reason": "Pure cryptographic theory paper improving steganographic capacity. While steganography is a circumvention defense, this work has no focus on censorship systems, censor detection, or circumvention deployments\u2014it advances a generic cryptographic primitive without circumvention-specific evaluation.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.21840",
+    "title": "TraceScope: Interactive URL Triage via Decoupled Checklist Adjudication",
+    "source": "arxiv",
+    "reason": "Phishing URL detection via interactive forensics and LLM-based adjudication; no connection to censorship, circumvention, or surveillance infrastructure.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.22935",
+    "title": "Secure eFPGA-Enabled Edge LLM Inference: Architectural and Hardware Countermeasures",
+    "source": "arxiv",
+    "reason": "Hardware security for edge LLM inference; no connection to censorship detection, circumvention techniques, network surveillance, or blocking mechanisms.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.23067",
+    "title": "Training a General Purpose Automated Red Teaming Model",
+    "source": "arxiv",
+    "reason": "Paper focuses on automated red teaming of large language models for safety/content moderation vulnerabilities, not censorship measurement, censor capabilities, or circumvention protocol design.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.23141",
+    "title": "UNSEEN: A Cross-Stack LLM Unlearning Defense against AR-LLM Social Engineering Attacks",
+    "source": "arxiv",
+    "reason": "Paper addresses AR-LLM social engineering defense; unrelated to internet censorship, circumvention, or blocking techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.23341",
+    "title": "Evaluating Jailbreaking Vulnerabilities in LLMs Deployed as Assistants for Smart Grid Operations: A Benchmark Against NERC Standards",
+    "source": "arxiv",
+    "reason": "LLM adversarial robustness / jailbreaking study unrelated to censorship, circumvention, or surveillance; smart-grid regulatory compliance falls outside the corpus scope.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2604.23425",
+    "title": "When the Agent Is the Adversary: Architectural Requirements for Agentic AI Containment After the April 2026 Frontier Model Escape",
+    "source": "arxiv",
+    "reason": "Paper studies AI sandbox escape and agentic containment, not internet censorship or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.02978",
+    "title": "Observability for Post-Quantum TLS Readiness: A Multi-Surface Evidence Framework",
+    "source": "arxiv",
+    "reason": "Post-quantum TLS readiness measurement paper with no study of censorship, censor detection, or circumvention systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.03095",
+    "title": "Revisiting JBShield: Breaking and Rebuilding Representation-Level Jailbreak Defenses",
+    "source": "arxiv",
+    "reason": "This is a machine-learning security paper about LLM jailbreak defenses, with no connection to network censorship, circumvention protocols, blocking detection, or anonymity systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.03309",
+    "title": "Cryptographic Registry Provenance: Structural Defense Against Dependency Confusion in AI Package Ecosystems",
+    "source": "arxiv",
+    "reason": "Paper addresses software supply-chain security (dependency confusion attacks in package managers); unrelated to censorship measurement, circumvention protocols, censor detection, or anonymity systems.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.03494",
+    "title": "Design of Memristive Lightweight Encryption For In-Memory Image Steganography",
+    "source": "arxiv",
+    "reason": "Hardware cryptography paper on memristor-based in-memory computing with image steganography; no connection to network censorship, blocking, or circumvention.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.04491",
+    "title": "An Evaluation of Chat Safety Moderations in Roblox",
+    "source": "arxiv",
+    "reason": "Platform-level content moderation study on Roblox gaming chat; not related to network-level censorship, circumvention protocols, or blocking infrastructure.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05260",
+    "title": "SecureMCP: A Policy-Enforced LLM Data Access Framework for AIoT Systems via Model Context Protocol",
+    "source": "arxiv",
+    "reason": "Database and IoT security paper focused on LLM prompt injection attacks and role-based access control; no connection to censorship, circumvention, anonymity, or surveillance-resistance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05774",
+    "title": "SuperPaymaster: Eliminating Centralized Signer Authority via Asset-Oriented Abstraction to Reconcile Usability and Decentralization in Account Abstraction",
+    "source": "arxiv",
+    "reason": "Blockchain account abstraction and transaction sponsorship architecture; no connection to internet censorship measurement, censor capabilities, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05789",
+    "title": "Stego Battlefield: Evaluating Image Steganography Attacks and Steganalysis Defenses",
+    "source": "arxiv",
+    "reason": "General-purpose image steganography benchmark focused on content moderation bypass and LLM jailbreaking, not internet censorship circumvention or censor detection techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.05995",
+    "title": "Safety Anchor: Defending Harmful Fine-tuning via Geometric Bottlenecks",
+    "source": "arxiv",
+    "reason": "Paper studies LLM safety alignment against fine-tuning attacks; no connection to internet censorship, circumvention, network blocking, or surveillance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.06205",
+    "title": "ClawGuard: Out-of-Band Detection of LLM Agent Workflow Hijacking via EM Side Channel",
+    "source": "arxiv",
+    "reason": "Side-channel analysis of LLM agent security; no connection to censorship detection, circumvention protocols, or surveillance/blocking techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.06393",
+    "title": "Constraining Host-Level Abuse in Self-Hosted Computer-Use Agents via TEE-Backed Isolation",
+    "source": "arxiv",
+    "reason": "Security/containment of AI agents using TEEs; does not address censorship measurement, blocking techniques, or circumvention protocols.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.07241",
+    "title": "Asymmetric Phase Coding Audio Watermarking",
+    "source": "arxiv",
+    "reason": "Audio watermarking and deepfake detection; no connection to censorship measurement, circumvention, blocking, or network interference.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.07663",
+    "title": "Quotient Semivalues for False-Name-Resistant Data Attribution",
+    "source": "arxiv",
+    "reason": "Machine learning data valuation paper addressing Sybil attacks in ML training pipelines; no connection to censorship, circumvention, anonymity systems, or blocking detection.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/0de7lze1/",
+    "title": "python\u88c5\u9970\u5668\u8be6\u89e3 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Generic Python programming tutorial about language features; no relation to censorship, circumvention, or network security.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/106izvxs/",
+    "title": "Zsh \u5b89\u88c5\u4e0e\u914d\u7f6e - \u4f7f\u7528 Oh My Zsh \u7f8e\u5316\u7ec8\u7aef | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a Linux shell configuration tutorial for Zsh and Oh My Zsh, with no connection to censorship, circumvention, or internet freedom research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/23w1svxa/",
+    "title": "\ud83d\udcb8\u5404\u5927\u673a\u573a\u4f18\u60e0\u5238\u6c47\u603b | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a promotional blog post listing discount coupon codes for VPN services, not research literature or technical analysis of censorship, circumvention protocols, measurement methodologies, or censor capabilities.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/b06gglcq/",
+    "title": "docker \u90e8\u7f72 aria2 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a technical blog post about deploying Aria2 file-download manager via Docker; it has no connection to censorship measurement, censor capabilities, circumvention protocols, or related research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/bsnuua0h/",
+    "title": "Telegram \u641c\u7d22\u673a\u5668\u4eba\u5b9e\u7528\u6307\u5357\uff1a\u63a8\u8350\u3001\u6280\u5de7\u4e0e\u98ce\u9669\u8fb9\u754c | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a practical how-to guide for using Telegram search bots; it does not study censorship measurement, censor capabilities, circumvention protocols, or blocking events.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/btszw3im/",
+    "title": "Python\u751f\u6210\u5668\u8be6\u89e3 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a Python programming tutorial about generators and iterators with no connection to censorship, circumvention, blocking, anonymity, or related research topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/c3gj5lqy/",
+    "title": "\u901a\u8fc7Ollama\u672c\u5730\u90e8\u7f72DeepSeek\u4ee3\u7801\u5927\u6a21\u578b\uff1a\u4ece\u786c\u4ef6\u914d\u7f6e\u5230VSCode\u5b9e\u6218\u6307\u5357 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Technical guide for deploying a local AI code model using Ollama; no relationship to censorship measurement, circumvention techniques, or internet filtering.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/choose-good-airport/",
+    "title": "2026\u5e74\u600e\u4e48\u9009VPN\u673a\u573a\uff1f\u79d1\u5b66\u4e0a\u7f51\u7ffb\u5899\u673a\u573a\u907f\u5751\u4e0e\u9632\u8dd1\u8def\u6307\u5357 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer VPN service review and purchasing guide; lacks research contribution to censorship measurement, censor capabilities, protocol design, or circumvention technique evaluation.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/cocoduck/",
+    "title": "2026 CocoDuck\u673a\u573a\u8bc4\u6d4b\uff1a\u6d77\u5916\u56e2\u961f\u81ea\u6709\u673a\u623f\uff5c\u4e24\u5e74\u7a33\u5b9a\u8fd0\u8425\u8001\u724c\u673a\u573a\u63a8\u8350 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a commercial VPN service review/advertisement, not a research contribution on censorship measurement, protocol design, or circumvention evaluation.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/d3apexwx/",
+    "title": "\u5b89\u5353\u7535\u89c6/\u76d2\u5b50/\u5e73\u677f\u514d\u8d39\u4f7f\u7528Emby | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Tutorial/how-to guide for setting up Emby media server on Android devices; no research contribution on censorship, detection, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/edge-x/",
+    "title": "2026 Edge-X\u673a\u573a\u8bc4\u6d4b\uff1aIEPL\u4e13\u7ebf+\u4f4e\u500d\u7387\u7b56\u7565\uff0c22.8\u5143\u6863\u5230\u5e95\u503c\u4e0d\u503c | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a commercial VPN service review and consumer recommendation blog post, not research on censorship measurement, detection, protocol design, or the VPN ecosystem.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fanqiang/",
+    "title": "\u8def\u7531\u5668\u7ffb\u5899\u8be6\u7ec6\u6559\u7a0b\uff1a2026\u5e74\u6700\u4f73\u8def\u7531\u5668VPN\u914d\u7f6e\u6307\u5357 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "A practical how-to blog post for router VPN configuration, not a research study, measurement, censor capability analysis, or technical advance in circumvention.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fanqiang2/",
+    "title": "\u4ec0\u4e48\u662f\u7ffb\u5899\uff1f2026\u5e74\u6700\u65b0Clash\u4ee3\u7406\u5de5\u5177\u5b8c\u6574\u6307\u5357 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer how-to guide for using existing proxy tools (Clash, V2Ray, Trojan); no measurement, analysis, or research contribution to the circumvention literature.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/gokrv7a1/",
+    "title": "ubuntu2204\u4e2dmongodb\u6570\u636e\u5bfc\u5165\u5bfc\u51fa | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Technical blog post about MongoDB database administration on Ubuntu; no connection to censorship measurement, circumvention protocols, or related topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/jqtuqouj/",
+    "title": "\u4f7f\u7528cloudflare\u8fdb\u884cURL\u91cd\u5b9a\u5411 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Blog post about website migration using Cloudflare URL redirects; no censorship, blocking, circumvention, or surveillance content.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/oh8wwokl/",
+    "title": "\u23f0 \u514d\u8d39\u673a\u573a \u514d\u8d39\u68af\u5b50 \u7ffb\u5899VPN | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a service aggregator distributing free circumvention tool subscription links, not a research contribution studying censorship, censor capabilities, or protocol evaluation.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/r50bpg9j/",
+    "title": "\u5982\u4f55\u5224\u65ad\u4e00\u4e2a\u673a\u573a\u4f7f\u7528\u7684\u7ebf\u8def\u7c7b\u578b\uff08\u5982IPLC/IEPL\u4e13\u7ebf\u3001CN2\u3001BGP\u4e2d\u8f6c\u7b49\uff09 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer how-to guide for evaluating VPN service circuit quality; does not contribute to circumvention research, censor analysis, or censorship-resistance science.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/r6u6yjj9/",
+    "title": "python\u8fed\u4ee3\u5668\u8be6\u89e3 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Generic Python programming tutorial on iterators; no connection to censorship, circumvention, surveillance, or network analysis.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/tj38tso3/",
+    "title": "\u641c\u7d22\u5f15\u64ce\u67e5\u627e Ollama \u672c\u5730\u90e8\u7f72\u7684 DeepSeek\uff0c\u5b9e\u73b0\u514d\u8d39 AI \u8fd0\u884c | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Article is a tutorial on discovering exposed Ollama API services via Fofa/Shodan search engines; no connection to censorship, circumvention, anonymity, or surveillance research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/u5a30qtd/",
+    "title": "HTTP \u72b6\u6001\u7801\u5927\u5168 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Reference guide to HTTP status codes with no connection to censorship, blocking, circumvention, or network security measurement.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/ubm5k5vn/",
+    "title": "wsl\u5c06ubuntu\u6362\u6210debian | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a technical tutorial about switching from Ubuntu to Debian in Windows Subsystem for Linux, unrelated to censorship, blocking, circumvention, anonymity, or surveillance.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/vgf2ez1r/",
+    "title": "TrueNAS\u865a\u62df\u673a\u5907\u4efd | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a technical blog post about TrueNAS virtual machine backup procedures; it has no connection to censorship, circumvention, or network security.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/vw1nq52m/",
+    "title": "\u5b89\u5353TV\u8f6f\u4ef6\u63a8\u8350\u4e0e\u4e0b\u8f7d | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a casual Android TV app recommendations blog post with no research contribution, measurement study, or circumvention/censorship analysis.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/wwpg9n59/",
+    "title": "\u5982\u4f55\u5728telegram\u4e2d\u4f7f\u7528\u6781\u641c\u641c\u7d22 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a user tutorial for registering Telegram and using a search bot in Telegram, not a research paper studying censorship, censor capabilities, or circumvention techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/yifph1jd/",
+    "title": "\u4f7f\u7528Vim\u4e0a\u73ed\u770b\u5c0f\u8bf4 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Blog post about using Vim as a novel reader at work; unrelated to censorship, circumvention, or security research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/9esim/",
+    "title": "9esim\u4f7f\u7528\u6307\u5357 - \u83b7\u53d6\u56fd\u5916\u624b\u673a\u53f7\uff0c\u6ce8\u518cGoogle\u3001Telegram\u7b49\u8d26\u53f7 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial promotional blog post / user guide for eSIM service; not a research paper, measurement study, or original analysis of circumvention or censorship.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/googleseo/",
+    "title": "Google\u5b98\u65b9SEO\u5165\u95e8\u6307\u5357\u5b8c\u6574\u7248\uff1a\u4ece\u96f6\u5f00\u59cb\u4f18\u5316\u7f51\u7ad9\u6392\u540d | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Blog post about Google SEO optimization that merely incidentally mentions Chinese internet censorship requiring VPN access; contains no analysis of circumvention techniques, censorship mechanisms, or circumvention-specific research.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/huanyuyun/",
+    "title": "\u5bf0\u5b87\u4e91\u8bc4\u6d4b\uff1a18\u5143150GB\u8d77\u7684\u65b0\u5f00IPLC\u4e2d\u8f6c\u673a\u573a\u600e\u4e48\u9009 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a consumer product review of a proxy service with pricing and stability evaluation, not research on circumvention techniques, censor capabilities, protocol design, or measurement methodology.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/sogoyun/",
+    "title": "Sogo\u4e91\u8bc4\u6d4b\u4e0e\u63a8\u8350\uff1a20\u5143120GB\u8d77\u6b65\u7684\u81ea\u7814\u5ba2\u6237\u7aef\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service review without technical contribution to circumvention research, censorship measurement, protocol analysis, or censor capability assessment.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/telegram/",
+    "title": "2026\u5e74\u6700\u65b0 telegram\uff08\u7535\u62a5\u3001\u98de\u673a\uff09\u6ce8\u518c\u4f7f\u7528\u6559\u7a0b | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "User registration and privacy tutorial for Telegram messenger; not research on censorship measurement, censor capabilities, circumvention protocols, or related topics.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/vpnhefa/",
+    "title": "\u56fd\u5185\u8d2d\u4e70vpn\u8fdd\u6cd5\u5417\uff1f | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is legal/regulatory guidance for VPN consumers in China, not a research paper studying censor techniques, circumvention protocols, or policy impact on circumvention tooling.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/yecv6pn6/",
+    "title": "OpenClaw \u521d\u9636\u6559\u7a0b\uff1a\u4ece 0 \u5230 1 \u642d\u5efa Telegram AI \u52a9\u624b\uff082026\uff09 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Tutorial blog post on integrating AI assistants into messaging platforms; mentions proxy tools incidentally but does not study censorship, circumvention, or detection techniques.",
+    "rejected_at": "2026-05-11"
+  },
+  {
+    "key": "arxiv:2605.08278",
+    "title": "Trapping Attacker in Dilemma: Examining Internal Correlations and External Influences of Trigger for Defending GNN Backdoors",
+    "source": "arxiv",
+    "reason": "GNN backdoor defense paper with no connection to censorship, circumvention, blocking, or anonymity systems.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.08984",
+    "title": "Hardware-Accelerated Line-Rate Bitstream Screening for Secure FPGA Reconfiguration",
+    "source": "arxiv",
+    "reason": "Hardware FPGA bitstream security and Trojan detection; unrelated to internet censorship, circumvention protocols, or surveillance infrastructure.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.09041",
+    "title": "BiAxisAudit: A Novel Framework to Evaluate LLM Bias Across Prompt Sensitivity and Response-Layer Divergence",
+    "source": "arxiv",
+    "reason": "LLM bias auditing framework; no connection to censorship measurement, circumvention protocols, censor detection, anonymity systems, or internet freedom.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.09606",
+    "title": "On the Generation and Mitigation of Harmful Geometry in Image-to-3D Models",
+    "source": "arxiv",
+    "reason": "Paper addresses 3D model safety and harmful geometry generation via AI \u2014 no connection to censorship measurement, blocking techniques, circumvention protocols, or surveillance.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.10867",
+    "title": "BEACON: A Multimodal Dataset for Learning Behavioral Fingerprints from Gameplay Data",
+    "source": "arxiv",
+    "reason": "This paper studies behavioral biometrics and continuous authentication for user verification in competitive gaming, not censorship detection, circumvention techniques, or traffic analysis in the context of censorship evasion.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.11418",
+    "title": "Under the Hood of SKILL.md: Semantic Supply-chain Attacks on AI Agent Skill Registry",
+    "source": "arxiv",
+    "reason": "Paper studies supply-chain attacks on AI agent skill metadata; no connection to censorship, circumvention, surveillance, or internet blocking.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.11997",
+    "title": "A microservices-based endpoint monitoring platform with predictive NLP models for real-time security and hate-speech risk alerting",
+    "source": "arxiv",
+    "reason": "Enterprise endpoint monitoring platform for internal corporate security (DLP, policy violation detection, hate-speech moderation) with no connection to censorship measurement, censor capabilities, circumvention design, or anonymity systems.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.12869",
+    "title": "Quantifying LLM Safety Degradation Under Repeated Attacks Using Survival Analysis",
+    "source": "arxiv",
+    "reason": "This paper studies adversarial jailbreak attacks on LLMs, not censorship measurement or circumvention techniques; 'circumventing safety guardrails' refers to fooling AI systems, not evading internet censorship infrastructure.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.12927",
+    "title": "ThermalTap: Passive Application Fingerprinting in VR Headsets via Thermal Side Channels",
+    "source": "arxiv",
+    "reason": "VR device thermal side-channel attacks; no connection to internet censorship, circumvention protocols, or censor detection capabilities.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.13163",
+    "title": "LoREnc: Low-Rank Encryption for Securing Foundation Models and LoRA Adapters",
+    "source": "arxiv",
+    "reason": "Cryptographic defense against AI model extraction attacks; no connection to censorship, surveillance, or circumvention.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.13338",
+    "title": "Inducing Overthink: Hierarchical Genetic Algorithm-based DoS Attack on Black-Box Large Language Reasoning Models",
+    "source": "arxiv",
+    "reason": "Paper studies DoS attacks on large language models via input perturbation; no relation to censorship, internet blocking, circumvention techniques, or surveillance infrastructure.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.13764",
+    "title": "VectorSmuggle: Steganographic Exfiltration in Embedding Stores and a Cryptographic Provenance Defense",
+    "source": "arxiv",
+    "reason": "This paper studies steganographic exfiltration attacks on vector databases in ML/RAG systems\u2014a cryptographic and data-privacy problem unrelated to censorship, censor capabilities, circumvention protocol design, or network blocking.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.14032",
+    "title": "StormShield: Fingerprint-Based Detection and Mitigation of RRC Signaling Storms in O-RAN 5G RANs",
+    "source": "arxiv",
+    "reason": "Paper studies 5G network DoS attacks and base-station resource exhaustion; no censorship, circumvention, or internet-access blocking angle.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.14387",
+    "title": "Model Forensics in AI-Native Wireless Networks: Taxonomy, Applications, and Case Study",
+    "source": "arxiv",
+    "reason": "Paper studies AI model integrity and authenticity verification in wireless networks using RF fingerprinting for device authentication; no connection to censorship measurement, censor capabilities, circumvention protocols, or traffic analysis.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.14786",
+    "title": "Known By Their Actions: Fingerprinting LLM Browser Agents via UI Traces",
+    "source": "arxiv",
+    "reason": "Fingerprints LLM browser agents via UI traces and timing patterns; addresses bot detection without a circumvention, censorship measurement, or censor-capability angle.",
+    "rejected_at": "2026-05-15"
+  },
+  {
+    "key": "arxiv:2605.15984",
+    "title": "Beyond Content: A Comprehensive Speech Toxicity Dataset and Detection Framework Incorporating Paralinguistic Cues",
+    "source": "arxiv",
+    "reason": "Toxic speech detection via audio ML classification; no censorship, circumvention, or censor-capability angle.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "arxiv:2605.16227",
+    "title": "LymphNode: A Plug-and-Play Access Control Method for Deep Neural Networks",
+    "source": "arxiv",
+    "reason": "Machine learning model security paper about protecting DNNs from extraction attacks; no connection to censorship, circumvention, blocking, or surveillance.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/8jxmo76u/",
+    "title": "\u2708\ufe0f\u3010\u673a\u573a\u63a8\u8350\u3011SSONE - \u4fbf\u5b9c\u5b9e\u60e0\u3001\u9ad8\u6027\u4ef7\u6bd4\u3001\u7a33\u5b9a\u53ef\u9760 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service review and promotion; lacks technical analysis, research contribution, or methodological rigor.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/giwzl7sq/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010OKANC\u3011 - \u65b0\u673a\u573a\u3001\u5927\u6d41\u91cf\u3001\u9ad8\u8d28\u91cf | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a commercial product recommendation blog post for a VPN service provider, not a research paper, measurement study, or technical analysis of censorship or circumvention.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/jd2i293q/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u767e\u53d8\u5c0f\u6a31\u3011 - \u4e94\u5e74\u8001\u673a\u573a\u3001\u514d\u8d39\u6d41\u5a92\u4f53\u8d26\u53f7 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service advertisement and pricing guide, not research or measurement.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/mcridsxx/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u9752\u4e91\u68af\u3011 - \u9ad8\u6027\u4ef7\u6bd4\u3001\u8001\u724c\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is commercial VPN provider advertising, not research literature.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/ssone/",
+    "title": "2026 SSONE\u673a\u573a\u8bc4\u6d4b\uff1a\u6708\u4ed810\u514360G\u4fbf\u5b9c\u673a\u573a\u63a8\u8350\uff5cNetflix/ChatGPT\u89e3\u9501 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial product review/advertisement for a VPN service; lacks research methodology, measurement, or analysis that advances circumvention science.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/ccyz/",
+    "title": "2026 CCYZ\u673a\u573a\u8bc4\u6d4b\uff1a15\u5143100G\u9ad8\u6027\u4ef7\u6bd4IEPL\u4e13\u7ebf\u673a\u573a\u63a8\u8350\uff5cNetflix/ChatGPT\u89e3\u9501 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service advertisement and user review, not research contributing to understanding circumvention or censorship.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/ermaoyun/",
+    "title": "\u4e8c\u732b\u4e91\u8bc4\u6d4b\u4e0e\u63a8\u8350\uff1a20\u5143100GB\u8d77\u6b65\u7684IPLC/IEPL\u65b0\u5f00\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial product review and pricing recommendation for a VPN service; no research contribution, measurement study, or analysis of circumvention protocols or censor capabilities.",
+    "rejected_at": "2026-05-18"
+  },
+  {
+    "key": "arxiv:2606.08403",
+    "title": "Hiding in Plain Floats: Steganographic Carriers for Indirect Prompt and Content Injection",
+    "source": "arxiv",
+    "reason": "Paper studies LLM prompt-injection attacks via steganography to evade text classifiers; unrelated to network-level censorship measurement, circumvention protocol design, or censor detection techniques.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.08726",
+    "title": "Evaluating Multimodal Steganalysis for Split-Payload Audiovisual Steganography",
+    "source": "arxiv",
+    "reason": "Paper studies ML-based detection and evasion of steganography in audiovisual media without any connection to censorship, circumvention, or censor capabilities.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.09135",
+    "title": "Steganography Without Modification: Hidden Communication via LLM Seeds",
+    "source": "arxiv",
+    "reason": "Generic steganography/cryptanalysis paper on LLMs without specific application to circumvention, censor detection, or evaluation against any blocking mechanisms.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.09189",
+    "title": "Pretrained, Frozen, Still Leaking: Auditing Cross-Encoder Attribute Transfer in EEG Foundation Models",
+    "source": "arxiv",
+    "reason": "This is a machine-learning privacy audit paper on EEG foundation models; it has no connection to censorship, circumvention, or internet blocking.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.09411",
+    "title": "Now You (Still) See Me: Detecting Evasive Steganographic Payloads in LLMs",
+    "source": "arxiv",
+    "reason": "Machine learning paper on detecting steganographic trojans in LLMs; no censorship measurement, censor capability evaluation, circumvention protocol work, or internet-filtering context.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.09915",
+    "title": "ARTA: Adaptive Reinforcement-Learning-Based Throttling Agent for RowHammer Vulnerabilities",
+    "source": "arxiv",
+    "reason": "Hardware security paper on DRAM RowHammer mitigation; no connection to censorship, circumvention, anonymity, traffic analysis, or internet blocking.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.10031",
+    "title": "The Chronicles of Radio Frequency Fingerprinting",
+    "source": "arxiv",
+    "reason": "Radio Frequency Fingerprinting for wireless device identification and spectrum monitoring is IoT/device authentication, not censorship detection or circumvention.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.10163",
+    "title": "GRAFT: Graphlet-Triggered Backdoor Attack on GNN-Based Hardware Security Systems",
+    "source": "arxiv",
+    "reason": "Paper studies ML backdoor attacks on hardware security systems; no censorship, circumvention, anonymity, or network-blocking angle.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.10502",
+    "title": "When VR Meets BCI: (Un)Observable Brainwave-aware Privacy Reconstruction in the Metaverse via Unrestricted Inbuilt Motion Sensors",
+    "source": "arxiv",
+    "reason": "Studies privacy attacks on VR motion sensors to extract biometric signals and user behavior; unrelated to Internet censorship, blocking, or circumvention protocols.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.10724",
+    "title": "Fingerprinting All AI Cluster I/O Without Mutually Trusted Processors",
+    "source": "arxiv",
+    "reason": "Paper is about AI data-center compliance verification and preventing covert data exfiltration in international agreements; no relevance to censorship measurement, detection techniques, circumvention protocols, or surveillance infrastructure targeting internet users.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.10911",
+    "title": "Ethical and Technical Limits of Deepfake Speech Datasets",
+    "source": "arxiv",
+    "reason": "Paper studies deepfake speech detector fairness and dataset quality; no connection to censorship measurement, circumvention, censor detection, or internet blocking.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.10912",
+    "title": "What Do Deepfake Speech Detectors Actually Hear?",
+    "source": "arxiv",
+    "reason": "Deepfake speech detection is a biometric/content-verification problem unrelated to censorship, circumvention, or network filtering.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.11111",
+    "title": "A Longitudinal Study of Recently Observed Malicious Domains: Characteristics, Infrastructure, and Abuse Patterns",
+    "source": "arxiv",
+    "reason": "Paper studies malicious domain abuse and cybercrime infrastructure (phishing, malware, brand impersonation); not relevant to censorship measurement, circumvention design, or surveillance systems.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.11828",
+    "title": "Feature-Aligned Speech Watermarking for Robustness to Reconstruction Distortions",
+    "source": "arxiv",
+    "reason": "Audio watermarking paper with no connection to censorship, circumvention, anonymity, or censor detection.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.12703",
+    "title": "SMSR: Certified Defence Against Runtime Memory Poisoning in Persistent LLM Agent Systems",
+    "source": "arxiv",
+    "reason": "Machine-learning adversarial robustness paper on LLM memory poisoning with no connection to censorship, internet blocking, surveillance, or circumvention.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.12737",
+    "title": "PI-Hunter: Automated Red-Teaming for Exposing and Localizing Prompt Injections",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness of LLMs with no connection to censorship, circumvention, surveillance, or anonymity.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.12977",
+    "title": "Efficient, Robust, and Anti-Collusion Fingerprinting of Image Diffusion Models",
+    "source": "arxiv",
+    "reason": "Pure ML/security paper on model watermarking and IP protection with no censorship, circumvention, surveillance, or internet freedom angle.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.13107",
+    "title": "The Invisible Ink of the Android Malware World: A Longitudinal Study on the Usage of Covert Communication Channels",
+    "source": "arxiv",
+    "reason": "Studies malware's misuse of VPNs/proxies/Tor for C&C communication; malware analysis / cybersecurity concern, not censorship research.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.13621",
+    "title": "Beyond Runtime Enforcement: Shield Synthesis as Defensibility Analysis for Adversarial Networks",
+    "source": "arxiv",
+    "reason": "This paper applies reinforcement learning and formal verification to generic network defense games; it has no connection to censorship measurement, detection, circumvention, or the censorship-resistance landscape.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.14165",
+    "title": "Security Evaluation of Mobile Banking Applications in Sudan",
+    "source": "arxiv",
+    "reason": "Mobile banking application security audit unrelated to censorship, blocking detection, or circumvention technologies.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.14525",
+    "title": "Detecting Bot Detection: Prevalence, Techniques, and Implications for Web Measurement Research",
+    "source": "arxiv",
+    "reason": "Measures bot detection on general websites for web measurement research; lacks any connection to censorship, circumvention, proxying, or VPN systems.",
+    "rejected_at": "2026-06-15"
+  },
+  {
+    "key": "arxiv:2606.14939",
+    "title": "Censorship-Resistant Sealed-Bid Auctions on Blockchains",
+    "source": "arxiv",
+    "reason": "Paper addresses blockchain transaction fairness and MEV protection via sealed-bid auctions, not internet censorship circumvention; 'censorship-resistant' refers to transaction-ordering fairness in consensus, not resistance to government/ISP blocking.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.15221",
+    "title": "Robust and Precise Application Fingerprinting on 5G Physical Uplink Channel",
+    "source": "arxiv",
+    "reason": "Physical-layer application fingerprinting on 5G networks; no circumvention protocol, censor capability, or censorship-evasion angle.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.15810",
+    "title": "Let Them Steal: Trapping Large Language Model Extraction Attacks with Knowledge Honeypot",
+    "source": "arxiv",
+    "reason": "Paper studies model extraction attacks on proprietary LLMs using honeypot knowledge graphs\u2014an ML security problem unrelated to censorship, circumvention, censor detection, or surveillance infrastructure.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16021",
+    "title": "Stickel-type key exchange with hidden subspaces",
+    "source": "arxiv",
+    "reason": "Generic cryptanalysis of post-quantum key exchange schemes with no connection to censorship, circumvention, anonymity systems, or detection techniques.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16100",
+    "title": "Your \"Pro\" LLM Subscription May Actually Be \"Free\": Exposing Fingerprint Spoofing Risks in LLM Inference Services",
+    "source": "arxiv",
+    "reason": "Paper addresses LLM API fingerprinting and model-spoofing attacks; lacks any connection to censorship, circumvention, traffic analysis, or network security.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16121",
+    "title": "Invisible Manipulation Channels in AI-Assisted Financial Advisory: Implications for Market Integrity and Regulatory Design",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness against financial AI systems without a censorship, circumvention, or surveillance angle.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.16740",
+    "title": "Robust and Automated Reconfiguration of Byzantine Wide-Area Replication",
+    "source": "arxiv",
+    "reason": "This is a blockchain consensus/distributed systems paper about Byzantine fault tolerance in state-machine replication; it has no connection to censorship measurement, censor detection, circumvention protocols, or internet freedom.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.17533",
+    "title": "SNAS: A Multi-Layer Defense-in-Depth Architecture for Secure Egress in Sandboxed Workloads",
+    "source": "arxiv",
+    "reason": "Cloud infrastructure paper on secure egress control for sandboxed workloads in Snowflake; no connection to censorship measurement, circumvention protocols, or censor detection techniques.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.17562",
+    "title": "Anywhere, Any-Stymie: Remote Activation of Trojan Malware on LiDAR with Modulated Signals",
+    "source": "arxiv",
+    "reason": "IoT/autonomous-vehicle security paper on malware and sensor attacks, unrelated to censorship, blocking, filtering, or circumvention infrastructure.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.18190",
+    "title": "Multi-Source Cybersecurity Logs: An ATT&CK-Labeled Dataset and SLM Evaluation",
+    "source": "arxiv",
+    "reason": "Generic enterprise threat detection using ML on multi-source logs; no censorship measurement, censor techniques, circumvention protocols, or surveillance regime analysis.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.18220",
+    "title": "Gatling: Rapid-Fire Consensus from Parallel Composition",
+    "source": "arxiv",
+    "reason": "Blockchain consensus protocol optimization with no censorship, circumvention, anonymity, or censorship-measurement angle.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.19551",
+    "title": "Passive-User Bell-State Loop-Back Key Establishment without Quantum Detectors at the User Nodes",
+    "source": "arxiv",
+    "reason": "Pure quantum cryptography paper on key distribution; no connection to censorship measurement, detection techniques, circumvention protocols, anonymity systems, or surveillance infrastructure.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.19937",
+    "title": "AutoTam: Specifying Secure Protocol Implementations with Tamarin Model Generation",
+    "source": "arxiv",
+    "reason": "Formal verification methodology paper for cryptographic protocols; WireGuard is a test case for the verification framework, not an evaluation of VPN or circumvention systems.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "url:https://github.com/net4people/bbs/issues/631",
+    "title": "Colorado University PHD Student Disappeared in China Two Years Ago",
+    "source": "net4people",
+    "reason": "While documenting the Chinese government's targeting of a circumvention researcher is important for the community, this is a human rights advocacy statement about a person's disappearance, not a technical research paper, measurement study, or operational report on censorship mechanisms or circumvention techniques.",
+    "rejected_at": "2026-06-22"
+  },
+  {
+    "key": "arxiv:2606.21842",
+    "title": "Agent-Assisted Side-Channel Attacks on Non-Prefix KV Cache in RAG",
+    "source": "arxiv",
+    "reason": "Hardware side-channel attack on LLM KV cache systems; no connection to censorship measurement, detection techniques, circumvention protocols, or surveillance infrastructure.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22063",
+    "title": "Guarded Equivalence Predicates for Scalable Formal Hardware Information-Flow Verification",
+    "source": "arxiv",
+    "reason": "Formal hardware verification paper on circuit information-flow analysis; not related to censorship measurement, circumvention protocols, or network blocking techniques.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22198",
+    "title": "2.5D Root of Trust: Securing the Chiplet Ecosystem",
+    "source": "arxiv",
+    "reason": "Hardware security paper on chiplet ecosystem integrity; unrelated to censorship measurement, detection, circumvention, anonymity, or surveillance infrastructure.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22588",
+    "title": "Non-Uniform L2 Cache Latency Across the Streaming Multiprocessors of an NVIDIA L40",
+    "source": "arxiv",
+    "reason": "GPU cache latency characterization and hardware fingerprinting; no censorship, circumvention, anonymity, or traffic-analysis angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22698",
+    "title": "Black-Box Forensics for Conversational LLM Agents",
+    "source": "arxiv",
+    "reason": "ML-based forensics for identifying LLM models behind chatbot endpoints; fraud detection unrelated to censorship measurement, circumvention protocol design, or anonymity systems.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.22928",
+    "title": "HADES: Privacy-Preserving Federated Learning via Selective Feature Encryption and Hybrid Model Fusion",
+    "source": "arxiv",
+    "reason": "Federated learning privacy paper with no connection to censorship, circumvention protocols, traffic analysis, Tor/VPN systems, or surveillance infrastructure.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.23138",
+    "title": "Rising From the Ashes: How Agentic AI is Unblocking Challenges in Cybersecurity",
+    "source": "arxiv",
+    "reason": "General cybersecurity + agentic AI paper with no focus on censorship, circumvention, blocking detection, or anonymity systems.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.23574",
+    "title": "A Watermark for Vision-Language-Action and World Action Models",
+    "source": "arxiv",
+    "reason": "Paper studies IP watermarking for robot control models, unrelated to censorship, circumvention, anonymity, or surveillance.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.24000",
+    "title": "Cyclic Denoising Reveals Ultrastable Memories in Diffusion Models",
+    "source": "arxiv",
+    "reason": "Paper studies memory extraction from generative models; no censorship, circumvention, or network-blocking angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.24245",
+    "title": "AutoSpec: Safety Rule Evolution for LLM Agents via Inductive Logic Programming",
+    "source": "arxiv",
+    "reason": "Generic LLM agent safety paper with no connection to censorship, circumvention, anonymity systems, surveillance, or blocking techniques.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.24934",
+    "title": "Unprivileged Topology Certificates for Cloud GPU Attestation",
+    "source": "arxiv",
+    "reason": "Cloud GPU attestation and hardware fingerprinting; not related to censorship detection, circumvention protocols, or network security in a censorship context.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25589",
+    "title": "Leaking Circuit Secrets: Gradient Leakage Attacks on Graph Neural Networks",
+    "source": "arxiv",
+    "reason": "Paper studies ML privacy attacks on circuit-design GNNs; no relevance to censorship detection, circumvention protocols, or network security.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25750",
+    "title": "RAS: Measuring LLM Safety Through Refusal Alignment",
+    "source": "arxiv",
+    "reason": "Paper studies LLM safety alignment and jailbreak resistance through internal representations; lacks any network-level censorship, censor-detection, or circumvention-protocol angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25788",
+    "title": "Can Machine Learning Break Wi-Fi Privacy? A Study on MAC Address Randomization",
+    "source": "arxiv",
+    "reason": "Wi-Fi device fingerprinting via MAC address de-randomization; no censorship circumvention or blocking-detection angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.25926",
+    "title": "A Tattered Cloak of Invisibility: Measuring Anonymity Loss in Railgun on Ethereum",
+    "source": "arxiv",
+    "reason": "This is a cryptocurrency mixer privacy analysis paper focused on Ethereum Railgun de-anonymization through transaction pattern analysis \u2014 blockchain privacy research unrelated to censorship circumvention.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.26412",
+    "title": "What Browsers Do in the Shaders: A Measurement Study of WebGPU Privacy",
+    "source": "arxiv",
+    "reason": "Generic browser fingerprinting and privacy measurement without a censorship detection or circumvention angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.26426",
+    "title": "Nanoelectromechanical Systems (NEMS) for Hardware Security in Advanced Packaging",
+    "source": "arxiv",
+    "reason": "Hardware security primitives for semiconductor manufacturing and tamper detection; unrelated to censorship measurement, network blocking, or circumvention protocols.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.26924",
+    "title": "A Deterministic Control Plane for LLM Coding Agents",
+    "source": "arxiv",
+    "reason": "Software engineering paper on LLM agent governance and configuration management in development environments; no connection to censorship, circumvention, surveillance, traffic analysis, or anonymity systems.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27028",
+    "title": "Design and Performance Evaluation of Secure RF and WiFi-Based Communication in Drone Swarms via Testbed Implementation",
+    "source": "arxiv",
+    "reason": "Paper addresses UAV swarm communication security and drone coordination; entirely within IoT/embedded systems domain with no censorship, circumvention, or censorship-related traffic-analysis components.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27250",
+    "title": "Tilikum: Transaction Fair Ordering on a DAG without Weak Edges",
+    "source": "arxiv",
+    "reason": "This is a blockchain/DeFi consensus protocol paper addressing transaction reordering attacks on DAG-based ledgers; it has no connection to censorship measurement, circumvention techniques, surveillance, or internet blocking.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27698",
+    "title": "What Was That Again? Certified Robustness for Automatic Speech Recognition",
+    "source": "arxiv",
+    "reason": "Pure machine-learning adversarial robustness in speech recognition; no censorship, circumvention, or surveillance angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.27701",
+    "title": "Room for Error: Large-Scale Simulation of Over-the-Air Acoustic Attacks",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness against voice-control systems (Whisper, wav2vec) with no censorship, circumvention, detection evasion, or surveillance measurement angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0041.php",
+    "title": "SentinelTouch: A Lightweight Privacy-Preserving Biometric-Fingerprinting Authentication and Identification System Based on Neural Networks and Homomorphic Encryption",
+    "source": "popets",
+    "reason": "Biometric authentication system with no censorship measurement, circumvention, detection technique, or anonymity angle.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/bianyuanjiedian/",
+    "title": "2026 \u8fb9\u7f18\u8282\u70b9\u673a\u573a\u8bc4\u6d4b\uff1a9\u5143/\u6708\u8d77\u7684\u4f4e\u95e8\u69db\u65b9\u6848\uff0c\u9002\u5408\u8c01\u5165\u624b | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer product review of a VPN provider offering no technical research, measurement study, protocol analysis, or policy evaluation",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fanqiang-tools/",
+    "title": "2026\u5e74\u7ffb\u5899\u5de5\u5177\u6c47\u603b\u63a8\u8350\uff1aClash\u3001Shadowrocket\u3001V2RayNG\u3001sing-box\u79d1\u5b66\u4e0a\u7f51\u6559\u7a0b | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "A user-facing how-to guide for installing and using circumvention tools, not a research contribution.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/jichang-subscription-guide/",
+    "title": "2026\u7ffb\u5899\u673a\u573a\u8ba2\u9605\u6307\u5357\uff1aClash\u8282\u70b9\u8d2d\u4e70\u3001\u5bfc\u5165\u4e0e\u673a\u573a\u63a8\u8350 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer user guide for proxy service selection and client configuration; lacks research contribution, novel technical findings, or measurement methodology.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/yifanyun/",
+    "title": "\u4e00\u7ffb\u4e91\u673a\u573a\u63a8\u83502026\uff1a30\u5143150GB\u8d77\uff0c\u8f7b\u4e2d\u5ea6\u7528\u6237\u600e\u4e48\u9009\u66f4\u7a33\u59a5 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service product review with pricing and feature tables; no research contribution to censorship measurement, censor capabilities, protocol design, or internet freedom.",
+    "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.29389",
+    "title": "Exploring the Cryptographic Limits of Transformer Networks",
+    "source": "arxiv",
+    "reason": "Generic cryptography and machine-learning theory paper; no censorship measurement, censor capabilities, circumvention protocols, or anonymity-system content.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.29451",
+    "title": "The Platonic Defense: Backdoor Defense for Self-Supervised Encoders in the Era of Large Scale Pre-training",
+    "source": "arxiv",
+    "reason": "Paper studies ML backdoor defenses in self-supervised learning with no connection to censorship, circumvention, blocking, or network measurement.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.29759",
+    "title": "GoodDiffusion: Proactive Copyright Protection for Diffusion Bridge Models via Learnable Sample-specific Signatures",
+    "source": "arxiv",
+    "reason": "Paper addresses copyright protection for generative AI models via digital signatures and backdoor mechanisms; unrelated to censorship measurement, circumvention protocol design, or internet blocking.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30119",
+    "title": "On the Internet, Nobody Knows You're an LLM Bot: Unmasking Web Agents with Multi-Layer Fingerprinting",
+    "source": "arxiv",
+    "reason": "Studies web bot detection and fingerprinting for website operators; not censorship-related or circumvention-focused.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30566",
+    "title": "Forensic Trajectory Signatures for Agent Memory Poisoning Detection",
+    "source": "arxiv",
+    "reason": "This paper studies memory-poisoning attacks on LLM agents through behavioral classification; it has no connection to censorship, circumvention, surveillance, or internet freedom.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30595",
+    "title": "Wireless Backdoor Attack and Defense for Semantic Communications over Multiple Access Channel",
+    "source": "arxiv",
+    "reason": "Studies backdoor attacks on wireless semantic communication ML systems; no connection to censorship measurement, detection techniques, circumvention protocols, or internet freedom.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30701",
+    "title": "An AI-Based Solution for Secure Service Provisioning in IoT",
+    "source": "arxiv",
+    "reason": "Generic IoT security paper focused on service provisioning, device authentication, and behavioral monitoring within IoT networks\u2014no connection to censorship, circumvention protocols, or censor capabilities.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.31272",
+    "title": "The Decomposition Is the Fingerprint: Per-Component Identity for Agent Skills",
+    "source": "arxiv",
+    "reason": "Paper studies AI skill component fingerprinting and registry management; no connection to censorship, circumvention, anonymity, traffic analysis, or blocking detection.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.31427",
+    "title": "No Prompt, No Leaks: A Robust Generative Steganography Framework via Prompt-Free Diffusion",
+    "source": "arxiv",
+    "reason": "Pure ML/steganography paper focused on image generation quality; no engagement with censorship, blocking, circumvention protocols, or censor detection.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.00763",
+    "title": "Forensic-Oriented Intrusion Detection Using Synthetic Network Traffic Data and Explainable Artificial Intelligence",
+    "source": "arxiv",
+    "reason": "General network intrusion detection using ML on standard attack types (brute force, port scan, DoS); no censorship measurement, censor detection, circumvention, or anonymity angle.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01435",
+    "title": "Sign in the Air to Unlock: An Interface for authentication in Virtual and Augmented Reality Powered by Point-Voxel Cross-Attention Network",
+    "source": "arxiv",
+    "reason": "Biometric authentication in VR/AR using 3D gesture recognition; no connection to censorship, circumvention, blocking, or internet measurement.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01442",
+    "title": "From Forgeries to Foundation Models: A Systematic Survey of Identity Document Attack and Detection",
+    "source": "arxiv",
+    "reason": "Paper concerns identity document forgery detection and biometric authentication; no connection to censorship measurement, detection, circumvention protocols, or anonymity systems.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01526",
+    "title": "LIB-TRAP: Standard Cell Library Hardware Trojan Risk Assessment and Prevention",
+    "source": "arxiv",
+    "reason": "Hardware trojan detection in semiconductor manufacturing; no connection to censorship, circumvention, surveillance, or network security.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01668",
+    "title": "VeriChat: An Agentic Conversational AI Assistant for Hardware Security Verification",
+    "source": "arxiv",
+    "reason": "Hardware security verification for cryptographic circuits (AES S-box Trojans) is unrelated to censorship measurement, circumvention protocols, surveillance infrastructure, or network blocking \u2014 falls under generic cryptanalysis exclusion.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01702",
+    "title": "Pmeta-TLA: Backdoor Attacks for Speech Classification Models via Meta-Learning with Timbre Leakage Attack",
+    "source": "arxiv",
+    "reason": "Backdoor attacks on speech classification models; no censorship, circumvention, or surveillance angle.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0054.php",
+    "title": "Analyzing Societal Awareness and Perception of Digital Fingerprinting and Fingerprinting Countermeasures",
+    "source": "popets",
+    "reason": "Survey of public awareness and perception regarding fingerprinting; not a technical study of fingerprinting as a detection technique or circumvention countermeasure, and no connection to censorship domains established.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/4m7fg8r9/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010CyberGuard\u3011 - \u8d28\u91cf\u9ad8\u3001\u7a33\u5b9a\u8fd0\u8425\u4e24\u5e74 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a commercial VPN service advertisement with pricing, features, and promotional links\u2014no research, measurement study, technical analysis, or field-advancing content.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/4uxesz79/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010TNT\u3011 - \u65b0\u673a\u573a\u3001IPLC\u4e13\u7ebf | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial promotional post for a VPN service provider; lacks research analysis of censorship measurement, censor capabilities, circumvention protocols, or any academic contribution.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/6e3quult/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010xx\u4e91\u52a0\u901f\u3011 - \u65b0\u673a\u573a\u3001\u4ef7\u683c\u5b9e\u60e0 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service promotional blog post; no research contribution, evaluation methodology, or field advancement.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/73dnyy9a/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u597d\u9e2d\u4e91\u3011 - \u4ef7\u683c\u5b9e\u60e0\u3001\u9001emby\u5f71\u89c6\u670d\u52a1 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service promotional blog post; lacks research, measurement, technical analysis, or policy substance required for the corpus.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/7eogfldo/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u638c\u4e2d\u4e16\u754c\u3011 - 7\u5929\u514d\u8d39\u8bd5\u7528 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service advertisement with no research, measurement, analysis, or technical content relevant to censorship circumvention.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/994p0u8j/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u5927\u54e5\u4e91\u3011 - \u9ad8\u6027\u4ef7\u6bd4\u3001\u8001\u724c\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Promotional/commercial article for a VPN service provider; contains no research contribution, measurement, or technical analysis of circumvention or censorship techniques.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/aofygutj/",
+    "title": "\u98de\u725bOS\u901a\u8fc7docker\u5b89\u88c5OneDrive\u5907\u4efd\u6587\u4ef6(\u8d85\u591a\u5e9f\u8bdd\u7248) | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Technical tutorial on OneDrive backup via Docker; lacks any research into censorship detection, blocking, circumvention protocol design, or measurement methodology.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/bc6o8acd/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010XSUS\u3011 - \u9ad8\u6027\u4ef7\u6bd4\u3001\u8001\u724c\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN provider recommendation blog post without technical analysis, measurement, or research contributions to circumvention research.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/ds0jr525/",
+    "title": "\u26a0\ufe0f\u3010\u5df2\u786e\u8ba4\u8dd1\u8def\u3011\u5948\u4e91\u673a\u573a\u5df2\u786e\u8ba4\u8dd1\u8def\uff0c\u505c\u6b62\u7eed\u8d39\u8d2d\u4e70 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer VPN service review and fraud warning; not circumvention research, censorship measurement, or censor-capability analysis.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/dycrz2ch/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u51b2\u4e0a\u4e91\u9704\u3011 - \u81ea\u7814\u5e73\u53f0\u3001\u53f0\u6e7e\u5bb6\u5bbd | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service review and pricing promotion; contains no research, measurement, or technical analysis of circumvention techniques.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/eh8f4n86/",
+    "title": "2026\u5e74 Clash for Android \u4e0b\u8f7d\u4e0e\u5b89\u88c5 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Installation tutorial for Clash proxy client; lacks research, measurement, analysis, or novel technical contribution to advance censorship-circumvention knowledge.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fhvr729f/",
+    "title": "\u2708\ufe0f\u3010\u673a\u573a\u63a8\u8350\u3011\u5c0f\u725b\u4e91 - \u8001\u724c\u673a\u573a\u3001\u7a33\u5b9a\u53ef\u9760 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service recommendation with pricing tables; not research, measurement, or scholarship advancing circumvention or censorship studies.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/gqs2dway/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u4e5d\u9704\u4e91\u3011 - \u670d\u52a1\u597d\uff0c\u56de\u8d2d\u7387\u9ad8 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Promotional advertisement for a commercial VPN service, not research, measurement, or technical analysis.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/kewe92tu/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u52a0\u901f\u5566\u3011- \u4fbf\u5b9c\u5b9e\u60e0\u3001\u9ad8\u6027\u4ef7\u6bd4 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial blog post promoting a VPN service provider; contains no research, measurement, protocol analysis, or technical contribution to censorship circumvention.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/q8yp9r2b/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010flybit\u3011- \u4fbf\u5b9c\u5b9e\u60e0\u3001\u9ad8\u6027\u4ef7\u6bd4 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service recommendation blog post; not research, measurement, or operational reporting on censorship or circumvention.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/rq55p9dn/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010koodog\u3011- \u65b0\u673a\u573a\uff0c\u4fbf\u5b9c\u5b9e\u60e0\uff0c\u4f53\u9a8c\u6d41\u7545 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN/proxy service review and advertisement with no research contribution, measurement study, or technical analysis relevant to censorship research.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity26/presentation/pang-kaiyi",
+    "title": "Provable Secure Steganography Based on Adaptive Dynamic Sampling",
+    "source": "usenix-sec",
+    "reason": "Generic steganography research without censorship measurement, censor-specific threat modeling, or circumvention deployment context.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0078.php",
+    "title": "Banned Books: Analysis of Censorship on Amazon.com",
+    "source": "popets",
+    "reason": "Studies platform-level content moderation on Amazon rather than network-level censorship, detection techniques, or circumvention protocols central to the circumvention-corpus scope.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0082.php",
+    "title": "EXADPrinter: Semi-Exhaustive Permissionless Device Fingerprinting Within the Android Ecosystem",
+    "source": "popets",
+    "reason": "General Android device fingerprinting paper without application to censorship detection, censor capabilities, or circumvention defenses.",
+    "rejected_at": "2026-07-20"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0102.php",
+    "title": "An Improved Entropy Measure for Web Browser Fingerprinting Risk",
+    "source": "popets",
+    "reason": "Browser fingerprinting risk metrics are a general privacy concern without specific application to censorship detection, censor capabilities, circumvention protocols, or blocking techniques.",
+    "rejected_at": "2026-07-20"
   }
 ]

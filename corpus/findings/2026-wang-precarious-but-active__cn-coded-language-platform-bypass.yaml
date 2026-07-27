@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-precarious-but-active
+kind: defense
+summary: 'Fans in Chinese transformative fandom developed systematic coded language to reference banned platforms and circumvent link blocking: AO3 was referred to as ''the red and white website whose name cannot be mentioned,'' direct URLs were converted to text passwords posted in comments, and fan communities used numeric codes (e.g., ''123456'') to identify celebrity pairings in ways opaque to platform keyword filters. These community-maintained encoding conventions were required knowledge for platform access.'
+techniques:
+    - keyword-filtering
+    - ip-blocking
+defenses:
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Censored communities spontaneously develop steganographic naming conventions; circumvention tools could formalize this pattern by providing shared, updateable alias registries for blocked domain names distributed out-of-band.
+    - Link-sharing suppression on domestic platforms is a critical discovery bottleneck — circumvention tools should prioritize low-friction sharing mechanisms (QR codes, short codes, offline distribution) that survive platform link-stripping.
+section: §5.1.3, §5.2.1
+extracted_by: claude-sonnet-4-6

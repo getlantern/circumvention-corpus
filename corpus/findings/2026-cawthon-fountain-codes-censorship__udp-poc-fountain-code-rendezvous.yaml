@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cawthon-fountain-codes-censorship
+kind: evaluation
+summary: 'A proof-of-concept implementation over UDP demonstrates the essential elements of fountain-code–based rendezvous: breaking a message into pieces, transmitting them over a lossy channel, and reconstructing them at the receiver. The authors also work out a prospective design for rendezvous over encrypted DNS.'
+defenses:
+    - dns-tunneling
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - The UDP proof-of-concept validates that fountain-code rendezvous is implementable with straightforward tooling; teams can prototype a DoH rendezvous channel by substituting DNS query/response as the datagram carrier.
+    - Treat the prospective encrypted-DNS design as a concrete blueprint for adding a low-detectability bootstrap channel to any pluggable-transport framework.
+section: Abstract
+extracted_by: claude-sonnet-4-6

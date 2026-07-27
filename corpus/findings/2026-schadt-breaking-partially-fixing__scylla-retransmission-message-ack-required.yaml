@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schadt-breaking-partially-fixing
+kind: defense
+summary: 'Scylla''s AONT-based fragmentation closes the C3 condition for Fragging (fragment-drop as a tagging mechanism) but does not close the retransmission timing side-channel in Nym: per-fragment acknowledgments still allow a malicious recipient to measure fragment-set completion time and distinguish dropped-fragment senders. Full mitigation requires replacing per-fragment acknowledgments with per-message acknowledgments that retransmit all fragments under a fresh identifier only after the complete message is confirmed received.'
+techniques:
+    - traffic-shape
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any reliable-delivery layer built on top of a mix network must aggregate acknowledgments at the message level, not the fragment level, to avoid leaking fragment-set completion timing to malicious recipients.
+    - Scylla also cannot protect against delay-based fragment tagging (an adversary delaying rather than dropping a fragment); systems requiring protection against delay adversaries must combine Scylla with additional timing-obfuscation techniques.
+section: §5.5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cawthon-fountain-codes-censorship
+kind: defense
+summary: Drawing on the Collage and Assemblage censorship-circumvention systems — which use fountain codes in conjunction with steganography — this work narrows focus to the rendezvous step alone, treating fountain codes as a standalone design component useful independently of steganographic cover channels.
+defenses:
+    - steganography
+    - dns-tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - 'Decouple rendezvous from steganography: fountain-code rendezvous can bootstrap a connection even in deployments where full steganographic traffic shaping is too expensive or operationally complex.'
+    - Modular rendezvous design allows swapping the underlying covert channel (DNS today, AMP or IPFS tomorrow) without redesigning the fountain-code framing layer.
+section: Abstract
+extracted_by: claude-sonnet-4-6

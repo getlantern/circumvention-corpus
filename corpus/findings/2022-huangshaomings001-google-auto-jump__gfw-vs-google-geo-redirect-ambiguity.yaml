@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-huangshaomings001-google-auto-jump
+kind: detection
+summary: 'The redirect from google.com to google.cn/m on proxied Android connections in China is ambiguous as to origin: it may represent GFW-side in-path HTTP redirect packet injection, or Google''s server-side geo-redirect responding to signals (device locale, exit IP, or Accept-Language headers) that survive the proxy hop. The thread documents this as an unresolved mechanistic question requiring disambiguation.'
+techniques:
+    - packet-injection
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should strip or rewrite Accept-Language and locale headers on proxied HTTP requests to prevent leaking user geography to destination servers that may cooperate with local censorship regimes.
+    - If GFW-side HTTP injection is confirmed as the mechanism, this represents an active interception capability affecting non-TLS traffic even over proxied connections — a strong argument for enforcing HTTPS-only access to critical destinations.
+section: Issue body / abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schramm-analyzing-societal-awareness
+kind: evaluation
+summary: Among 734 participants, 70.4% were categorized as Privacy Pragmatists willing to trade data for convenience, while only 25.9% were Privacy Fundamentalists; prior use of Tor or Brave (~22% of the sample) and a higher Privacy Behavior Index were the strongest positive predictors of fingerprinting awareness (p<0.01 each), while self-reported privacy concern alone had no significant relationship with awareness. The structural minority of Fundamentalists represents the population disposed to tolerate the usability costs of strong countermeasures.
+techniques:
+    - tls-fingerprint
+defenses:
+    - tor
+defense_implications:
+    - Accept that 70%+ of potential users are Privacy Pragmatists who prioritize convenience over protection; circumvention tools must impose near-zero usability cost to reach beyond the small Fundamentalist minority, or they will remain niche.
+    - Prioritize integrations and referrals from existing privacy-tool ecosystems (Tor, Brave, extension stores) to efficiently reach the behaviorally privacy-active population, who are both aware of threats and predisposed to adopt countermeasures.
+section: §4.1.2, §3.3, Figure 10
+extracted_by: claude-sonnet-4-6

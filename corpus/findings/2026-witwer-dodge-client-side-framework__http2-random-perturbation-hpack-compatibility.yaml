@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-witwer-dodge-client-side-framework
+kind: defense
+summary: Small random per-session perturbations (±bytes per range) to Dodge-mimic extended manifests fully compensate for HPACK header compression in HTTP/2, yielding vRF accuracy of 10.5–14.2% for k=10 — indistinguishable from HTTP/1.1 results and near the theoretical bound. Because HTTP/3-QUIC uses analogous QPACK compression, the approach generalizes to the dominant future transport.
+techniques:
+    - website-fingerprint
+    - http3-quic-block
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Random ±byte perturbations per extended-manifest download eliminate the need for manual HTTP/2 header accounting; this is simpler and more robust than exact header calculation.
+    - Dodge-style defenses are viable for HTTP/3-QUIC deployments without redesign — a concrete counter to the concern that QUIC's adoption would outpace video fingerprinting defenses.
+section: §5.4, Table 3
+extracted_by: claude-sonnet-4-6

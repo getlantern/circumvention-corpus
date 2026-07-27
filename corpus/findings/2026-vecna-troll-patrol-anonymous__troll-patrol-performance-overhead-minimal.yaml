@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-vecna-troll-patrol-anonymous
+kind: defense
+summary: 'Troll Patrol''s anonymous negative-reporting protocols, implemented as an extension to the Tor Project''s Lox system, impose only a small overhead over existing Lox protocols: Report Submit adds a 1,300-byte request (vs. 877 bytes for Check Blockage) with a 2.72 ms client computation time; existing protocols increase by approximately 100–200 bytes per request due to two new credential attributes. All new protocol timings are sub-5 ms on the client side.'
+defenses:
+    - bridges
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Anonymous credential-based reporting is computationally practical to deploy alongside existing bridge distribution protocols with negligible latency impact on user-facing operations.
+    - Bridge distribution systems using anonymous credentials (e.g., Lox-derived systems) can integrate abuse-resistant censorship reporting with minimal changes to existing client and server performance budgets.
+section: §6, Table 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-swift-look-into
+kind: detection
+summary: 'Unlike the Great Firewall of China, Iran''s SNI-triggered blocking produces no residual interference: after a TCP RST caused by a sensitive SNI, subsequent connections from the same source IP using benign or randomly generated SNIs proceed normally without additional disruption. This behavior was observed consistently before and after the May 26, 2026 partial restoration.'
+techniques:
+    - sni-blocking
+    - rst-injection
+censors:
+    - ir
+    - cn
+defense_implications:
+    - Circumvention clients in Iran can safely probe with a sensitive SNI to detect firewall presence, then immediately fall back to a safe SNI or alternative transport on the same IP without risking connection-level penalties or IP-level suspicion windows.
+    - Protocol designers need not implement GFW-style post-block timeout logic for Iran — retry loops on failed SNI connections can be tight, improving reconnection latency for censored users.
+section: §4.2
+extracted_by: claude-sonnet-4-6

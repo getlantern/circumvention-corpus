@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schadt-breaking-partially-fixing
+kind: detection
+summary: 'Three conditions are jointly necessary and sufficient for a Fragging attack: (C1) the adversary can drop packets while knowing their sender—met by a malicious gateway/entry node in both Nym and Tor; (C2) the adversary can detect a missing fragment—met by Nym''s explicit fragment-set identifiers and by Tor''s encryption-state desynchronization on cell drop; and (C3) the adversary can learn the recipient from the surviving fragments—met in both systems because other fragments of the set arrive intact.'
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - 'Breaking condition C3 is the most tractable design target: applying an all-or-nothing transform to the payload before fragmentation ensures the recipient is unrecoverable until every fragment arrives, turning a dropped fragment from a privacy leak into a denial-of-service.'
+    - Designs that use fixed entry nodes or statically-known gateways structurally satisfy C1; rotating or unlisted entry points (bridges) partially mitigate C1 by reducing the adversary's ability to know which sender a dropped packet belongs to.
+section: §4.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-redefining-website-fingerprinting
+kind: evaluation
+summary: 'Cross-user generalization (LeaveOneUser) causes 30–40% accuracy drops across all nine state-of-the-art WFP models in closed-world settings: Var-CNN falls from 75.6% to 46.8%, DF from 78.2% to 48.7%, and TikTok/NetCLR from over 80% to approximately 50% in the 10-site task. Models lose recall faster than precision, indicating overfitting to frequent behavioral patterns of seen users rather than site-invariant features.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - User behavioral heterogeneity (variation in scroll depth, dwell time, interaction style) functions as natural WFP obfuscation; circumvention proxies that amplify per-user traffic variance — rather than imposing uniform padding — exploit this structural attacker weakness.
+    - Defenses should prioritize maximizing inter-user traffic diversity (e.g., by randomizing padding schedules per session) over deterministic shaping, to exploit the cross-user generalization gap that persists even in LLM-enhanced classifiers.
+section: §5.3–5.4 / Table 1 / Figure 6
+extracted_by: claude-sonnet-4-6

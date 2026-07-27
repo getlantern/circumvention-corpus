@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2606.18427
+id: 2026-habib-understanding-airport-censorship
+title: Understanding the "Airport" Censorship Circumvention Ecosystem in China
+authors:
+    - Rumaisa Habib
+    - Mingshi Wu
+    - Shiva Shahandeh
+    - Min Ni
+    - Eric Wustrow
+    - Zakir Durumeric
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2606.18427"
+url: https://arxiv.org/abs/2606.18427v1
+abstract: 'In China, a burgeoning underground market sells citizens subscription-based censorship circumvention proxies known as ''''airports''''. We present the first systematic study of this ecosystem, combining user surveys, social media analysis, and active network measurements. We find that airports are by far the most popular off-the-shelf censorship circumvention tool in China, used by over half of our 1,667~survey respondents, who cite their ease of use, performance, and access to geo-restricted services like ChatGPT and Netflix. By scanning the Internet and scraping Telegram announcement channels, we identify 3,431 active airports built on a handful of open-source toolkits. We subscribe to 35 airports and characterize their performance, which often surpasses direct connections through the Great Firewall due to a distinctive multi-hop architecture. However, airports also pose new challenges and security risks: they accept payment through commercial services like Alipay, suffer frequent government takedowns, and are difficult for clients to configure optimally. Many airports also deploy their own distinct censorship policies. Airports are far more widely used than other circumvention tools from the academic literature, but introduce new forms of fragility and control, offering both lessons and opportunities for future circumvention research.'
+censors:
+    - cn
+techniques:
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. First systematic study of the airport ecosystem; highly relevant for understanding real-world circumvention adoption patterns and ecosystem dynamics in China.
+visibility: public
+date_added: "2026-06-22"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2606.18427

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lunarcanvas-swift-look-into
+kind: detection
+summary: 'Iran layers SNI-based domain blocking on top of its IP allowlist: even source IPs permitted by the allowlist trigger TCP RSTs when a TLS ClientHello contains a sensitive SNI value. Randomly generated, non-existent domain names pass through without triggering resets, confirming the blocking operates as a domain-name blocklist rather than a generic TLS fingerprinting rule. Blocking behavior was highly consistent, with 97.4% of (source IP, SNI) pairs producing identical outcomes across three test repetitions.'
+techniques:
+    - sni-blocking
+    - rst-injection
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - SNI encryption (ECH/ESNI) or domain fronting is necessary even for IPs that pass Iran's allowlist filter, since application-layer SNI inspection constitutes a second, independent blocking layer.
+    - Avoid relying on obscure or randomly generated domain names as a bypass strategy — Iran's filter is a blocklist, so unknown SNIs currently pass; however, this could shift to a default-deny allowlist at any time.
+section: §4.2
+extracted_by: claude-sonnet-4-6

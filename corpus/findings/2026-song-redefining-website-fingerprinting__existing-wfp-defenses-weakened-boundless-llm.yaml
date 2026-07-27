@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-redefining-website-fingerprinting
+kind: evaluation
+summary: In the boundless (boundary-free, session-unsegmented) setting with Human+Claude training, TrafficSliver reduces WFNet accuracy from 0.760 to 0.592, Cluster Anonymization (Palette) to 0.647, and Zero-delay (FRONT) to 0.706 at 2000 training samples. All three defenses assume clean session or page-load boundaries and are less effective against an attacker classifying arbitrary 5,000-packet continuous segments.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Design WFP defenses that do not rely on session-start or page-boundary synchronization — TrafficSliver and FRONT lose significant effectiveness (22% and 7% respectively) when attackers operate on arbitrary stream segments.
+    - Padding and shaping schemes should be evaluated in the boundless threat model (continuous stream, no session markers) rather than the traditional page-load model to avoid overstating their protection.
+section: §5.7 / Table 2
+extracted_by: claude-sonnet-4-6

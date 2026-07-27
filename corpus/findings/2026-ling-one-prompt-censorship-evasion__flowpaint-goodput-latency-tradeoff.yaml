@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ling-one-prompt-censorship-evasion
+kind: evaluation
+summary: FlowPaint achieves a steady-state goodput of 3.05 Gbps versus 10.7–10.85 Gbps for lightweight baselines (UPGen, Dummy) that provide near-zero evasion (TPR ≈ 1.00), with an initial TTFB of ~1.9 s dominated by fixed diffusion model inference cost that grows by only 1.28× as network RTT increases tenfold (20 ms to 200 ms). At 3.05 Gbps, FlowPaint exceeds 4K and 8K streaming bandwidth requirements (25 Mbps and 100 Mbps respectively) by two orders of magnitude, indicating that compute overhead is a manageable hardware-scaling constraint rather than a fundamental barrier.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - A ~1.9 s connection-setup latency from batch diffusion inference is acceptable for censorship-bypass use cases where the alternative is total blockage; designers should architect buffered shaping layers (e.g., 1,024-packet blocks) to amortize the fixed inference cost rather than targeting per-packet processing.
+    - 'Compute-bound obfuscation overhead (vs. network-bound) is preferable for long-term viability: hardware acceleration naturally reduces it over time, unlike algorithmic brittleness inherent to rule-based or entropy-based approaches.'
+section: Appendix A, Table 7, Fig. 4
+extracted_by: claude-sonnet-4-6

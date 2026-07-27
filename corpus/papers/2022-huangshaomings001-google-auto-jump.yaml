@@ -1,0 +1,23 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2022-huangshaomings001-google-auto-jump
+title: Google Auto Jump in China
+authors:
+    - '@huangshaomingS001'
+venue: net4people
+year: 2022
+url: https://github.com/net4people/bbs/issues/158
+abstract: Chinese users report that accessing google.com on Android devices proxied through circumvention systems redirects to google.cn/m instead of the expected destination. Discussion in the thread explores whether this is GFW-side HTTP redirect injection or Google's own geo-redirect logic, with workarounds discovered via the /ncr (no-country-redirect) parameter that successfully bypass the issue.
+censors:
+    - cn
+techniques:
+    - packet-injection
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Documents potential GFW capability for in-path HTTP redirect injection or interaction between Google geo-targeting and proxied circumvention traffic.
+visibility: public
+date_added: "2026-06-29"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/158

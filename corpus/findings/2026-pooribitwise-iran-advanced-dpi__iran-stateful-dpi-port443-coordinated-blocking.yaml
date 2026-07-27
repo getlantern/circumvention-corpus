@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pooribitwise-iran-advanced-dpi
+kind: detection
+summary: Iranian DPI exhibits stateful connection tracking with 'cooling-off' enforcement periods on flagged flows and is synchronized across multiple ISPs, suggesting centralized or coordinated blocking infrastructure. Port 443 receives particularly aggressive inspection, and the DPI performs behavioral analysis of upload/download traffic ratios to identify proxy usage, enabling SSH-based proxy server IPs to be fully blocked within 8 hours.
+techniques:
+    - dpi
+    - port-blocking
+    - traffic-shape
+    - ml-classifier
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools targeting Iran should avoid port 443 as a default egress given its heightened inspection; QUIC/UDP-based transports on non-standard ports may receive lower scrutiny.
+    - Tools should implement automatic detection of stateful blocking (cooling-off periods) and trigger proactive IP rotation or connection teardown before the DPI flags the flow, rather than waiting for user-visible failures.
+section: Issue body and thread summary (Jun 10, 2026)
+extracted_by: claude-sonnet-4-6

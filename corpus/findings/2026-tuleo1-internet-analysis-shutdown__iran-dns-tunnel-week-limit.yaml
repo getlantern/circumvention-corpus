@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tuleo1-internet-analysis-shutdown
+kind: evaluation
+summary: 'DNS tunneling operated for ''at most a week or two'' before Iran blocked all external DNS resolvers and forced traffic to local DNS providers. The local DNS infrastructure was effectively unusable as a tunneling substrate: maximum throughput was ~100 kb/s and connections were reliably severed around the 1-minute mark.'
+techniques:
+    - dns-poisoning
+defenses:
+    - dns-tunneling
+censors:
+    - ir
+defense_implications:
+    - DNS tunneling should be treated as a short-lived fallback during Iranian shutdowns, not a primary channel; tool designers should plan for external resolver reachability to be cut within days.
+    - 100 kb/s with 60-second connection resets is below the minimum viable threshold for most applications; throughput-aware protocol design (e.g., session resumption, aggressive retransmit) is necessary if DNS is used at all.
+section: Issue body (DNS paragraph)
+extracted_by: claude-sonnet-4-6

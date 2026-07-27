@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ahmad-more-space-less
+kind: evaluation
+summary: 'IP-based fingerprints are operationally stable: approximately 60% of domains exhibit no IP changes across the three-month measurement period for both IPv4 and IPv6. Among churning domains, per-domain churn behavior is comparable across protocols—about 28% of churning IPv4 domains rotate within one hour on average vs 35% for IPv6. Fingerprint databases of ≈100 KB per site (50–60 GB for 520K sites) can be maintained with only periodic DNS re-resolution at negligible overhead for adversaries already collecting NetFlow data.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - 'The attack is operationally cheap and long-lived: a censor building an IP fingerprint database once can identify 60%+ of destinations for months without updating it, so defenses cannot rely on temporal decay alone.'
+    - Circumvention tools serving long-lived sessions should consider periodic IP rotation on the server side (exploiting IPv6 address space abundance) as a structural defense, targeting the ~35% of IPv6 domains that already rotate sub-hourly naturally.
+section: §6.4, §5.3.2
+extracted_by: claude-sonnet-4-6

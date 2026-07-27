@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ahmad-more-space-less
+kind: evaluation
+summary: Encrypted DNS (DoH, DoT) and Encrypted ClientHello (ECH) fully hide plaintext domain names from on-path observers but leave destination IP addresses visible, enabling IP-based fingerprinting with no protocol-level metadata required. An adversary collecting only NetFlow/IPFIX destination-IP records—without TLS fingerprints, packet timing, or port metadata—correctly identifies 72% of all 520K dual-stack websites over IPv4 and 68% over IPv6.
+techniques:
+    - website-fingerprint
+    - sni-blocking
+    - esni-eh-blocking
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - ECH/DoH/DoT alone are insufficient privacy protections against a passive ISP-level adversary; circumvention tools must also prevent destination IP attribution, not merely hide the SNI.
+    - Any transport that reveals the true destination IP (including after ECH negotiation) remains fingerprintable; full tunneling through a shared proxy or decoy-routing is required to defeat this attack class.
+section: §1, §3, §6.1
+extracted_by: claude-sonnet-4-6

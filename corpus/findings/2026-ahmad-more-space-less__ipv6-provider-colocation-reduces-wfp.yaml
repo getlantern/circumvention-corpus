@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ahmad-more-space-less
+kind: detection
+summary: 'IPv6 does not inherently worsen fingerprinting privacy: dual-stack complete sites are measurably harder to fingerprint via IPv6 (45%) than IPv4 (56%), contrary to community fears. The key driver is not the protocol but hosting provider behavior—Cloudflare, Google, and Fastly co-locate large clusters of domains behind a small set of shared IPv6 addresses, creating structured similarity clusters that reduce classifier separability, while Amazon allocates domains across vast unique IPv6 prefixes, increasing fingerprintability.'
+techniques:
+    - website-fingerprint
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Selecting a CDN or hosting provider with aggressive IPv6 address sharing (Cloudflare, Google) as a proxy front inherently degrades IP fingerprinting accuracy for any individual destination co-hosted on that infrastructure.
+    - When evaluating CDN-fronted transports, prefer providers with high domain co-location density in IPv6—this structural property reduces fingerprintability of the circumvention destination without any active defense.
+section: §7.1, §6.1, §6.2
+extracted_by: claude-sonnet-4-6

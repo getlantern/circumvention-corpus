@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-doumanidis-howlr-client-driven-approach
+kind: evaluation
+summary: HOWLR provides Light protection (≥3 witnesses in prefix) to 89% of Tor relay prefixes and Strong protection (≥8 witnesses from ≥2 CAs) to 64%, based on sampling 200 random relays. By contrast, DNS server prefixes receive Light protection in only 40% and Strong protection in only 12% of cases, reflecting their tendency toward residential or sparse hosting.
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Tor relay operators should prioritize hosting on professional cloud/data-center infrastructure rather than residential IPs, where co-located TLS-authenticated witnesses exist at sufficient density for BGP-hijack detection.
+    - Circumvention tools can implement HOWLR-style witness discovery as a pre-flight check before adding a relay/bridge to an active peer set.
+section: §6
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-precarious-but-active
+kind: evaluation
+summary: 'Blocking of AO3 in China since 2020 produced a fraudulent mirror-site ecosystem that deceived users: one social media post documented financial extortion through a mirror site, mirror sites charged for fanworks (exposing original authors to legal risk), and critically, mirrors collected domestic phone numbers—which are legally linked to government identity—unlike the real AO3 which requires only an email address. Users could not reliably distinguish mirror sites from the canonical platform.'
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - When a platform is blocked, the vacuum is filled by unvetted mirrors that create new identity-exposure risks; circumvention tools should consider bundling canonical domain verification (e.g., certificate pinning or signed mirror lists) to protect users from phishing infrastructure that exploits blocking.
+    - Users in censored environments have limited ability to verify platform authenticity — tool designers should treat mirror-site deception as a first-order threat model, not an edge case.
+section: §5.1.3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-heitmann-russia-s-early-introduction
+kind: detection
+summary: Russia's TSPU devices began dropping all international QUIC traffic on approximately February 26, 2022, coinciding with the full-scale invasion of Ukraine. The filter identified QUIC flows by requiring the first UDP packet destined to port 443 to be at least 1001 bytes and contain the 4-byte QUIC version 1 header (0x00000001); QUIC traffic from Russia to Cloudflare dropped 46% within days. The TSPU maintained 420-second state on the 4-tuple and applied residual censorship to all subsequent packets.
+techniques:
+    - http3-quic-block
+    - dpi
+    - port-blocking
+censors:
+    - ru
+defense_implications:
+    - Fragmentation or padding below 1001 bytes may have bypassed the Period B broad filter; any QUIC-based transport should test whether sub-MTU fragmentation avoids the version-header detection heuristic.
+    - TSPU residual censorship persists 420 seconds on the 4-tuple and resets on each new packet; circumvention tools must anticipate that triggering detection locks the 4-tuple and should rotate ports or IPs accordingly.
+section: §2.2
+extracted_by: claude-sonnet-4-6

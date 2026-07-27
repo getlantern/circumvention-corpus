@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zhang-dohfuse-dual-branch-architecture
+kind: evaluation
+summary: DoHFuse achieves 88.05% accuracy (precision 88.56, recall 87.96, F1 87.83) fingerprinting 449 websites from DoH/3 traffic alone, demonstrating that EDNS(0) padding and QUIC/HTTP3 multiplexing are insufficient to prevent website fingerprinting. In the open-world setting, the model achieves AUPRC 0.975 with F1 0.951 (precision 0.906, recall 1.0), meaning every monitored site is detected while maintaining a low false-positive rate.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - EDNS(0) padding alone cannot be relied upon as a privacy defense for DNS-over-HTTPS traffic; circumvention tools that use DoH/3 as a covert channel must add timing obfuscation on top of standard padding.
+    - Open-world detection precision of 0.906 at recall 1.0 means passive observers can reliably flag all monitored destinations with manageable false positives — DoH/3 tunnels should not be considered low-profile even against mid-capability adversaries.
+section: Abstract; §V.C; §V.E
+extracted_by: claude-sonnet-4-6

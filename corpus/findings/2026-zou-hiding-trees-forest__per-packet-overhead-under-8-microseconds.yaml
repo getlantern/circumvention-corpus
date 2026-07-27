@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-zou-hiding-trees-forest
+kind: evaluation
+summary: 'Per-packet SHA-256 filtering overhead remains below 8 µs across all tested filter key lengths (L=1–8): storage channel packets (average 709 bytes) average 5.70–6.48 µs, and timing channel packets (average 1,146 bytes) average 7.44–7.87 µs. Introducing the filter adds less than 0.01 µs overhead over unfiltered embedding for storage channels.'
+defenses:
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - SHA-256-based carrier filtering is viable in high-speed network environments without causing packet-processing bottlenecks; the sub-8 µs overhead can be further reduced by substituting lightweight hash algorithms (e.g., BLAKE3) if latency is critical.
+    - The overhead is payload-size-dependent but not filter-key-size-dependent — choose any L≥6 without per-packet latency penalty, making the covertness–capacity tradeoff purely a bandwidth design decision.
+section: §5.3.3, Table 5
+extracted_by: claude-sonnet-4-6
