@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-russia-s-early-introduction
+kind: evaluation
+summary: 'Reproducing Zohaib et al.''s 10-payload QUIC parser test suite against Russian TSPU devices reveals that the Russian QUIC parser differs meaningfully from the GFW: payload 8 (PING and PADDING frames inserted before the Crypto frame), which circumvents the GFW, does not bypass Russian censorship. Payload 10 (QUICv2) bypasses both censors. Payload 9 (ECH with outer SNI cloudflare-ech.com) is blocked by Russia; payload 3 (version bytes 0x00000002 with invalid MAC) is blocked by both.'
+techniques:
+    - http3-quic-block
+    - dpi
+    - sni-blocking
+defenses:
+    - ech-esni
+    - protocol-versioning
+censors:
+    - ru
+    - cn
+defense_implications:
+    - Do not port GFW QUIC circumvention techniques directly to Russia without independent validation; the TSPU QUIC parser has distinct implementation differences that cause techniques effective against the GFW to fail against TSPU.
+    - ECH with a fronting SNI is blocked by Russian TSPU; concealing the inner SNI via ECH alone is insufficient for Russia and must be combined with a transport that does not expose the ECH extension to the TSPU parser.
+section: Appendix B, Table 2
+extracted_by: claude-sonnet-4-6

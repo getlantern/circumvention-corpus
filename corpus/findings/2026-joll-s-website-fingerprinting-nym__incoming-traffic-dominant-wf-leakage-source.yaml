@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: evaluation
+summary: 'In Nym''s default configuration, the incoming (server-to-proxy) traffic direction is the dominant WF leakage source: Features In leaks 72.1% classifier accuracy on Testnet versus 43.9% for outgoing traffic (Features Out). The root cause is that Nym''s network requester forwards web server responses at full rate without Poisson-rate smoothing, leaving identifiable burst patterns visible at the observation point between client and gateway.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Apply cover traffic and rate-smoothing to the incoming (server-to-client) direction, not just the outgoing direction — this is the primary architectural gap in Nym's default design and likely generalizes to any asymmetric tunneling protocol.
+    - The server-side relay must implement Poisson-rate or constant-rate padding; client-side cover traffic alone is insufficient when server responses are forwarded in unmodified bursts.
+section: §5.1, Table 3
+extracted_by: claude-sonnet-4-6

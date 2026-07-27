@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cawthon-fountain-codes-censorship
+kind: defense
+summary: Fountain codes (rateless erasure codes) break a message into many small, specially encoded pieces that can be reconstructed from any sufficient subset, making them well-suited to covert channels that are lossy, unordered, or bandwidth-constrained — properties common to DNS-based rendezvous channels.
+techniques:
+    - traffic-shape
+defenses:
+    - dns-tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use rateless erasure codes as a drop-in framing layer for any rendezvous channel where packet loss or reordering is expected, avoiding the need for a reliable transport or custom retry protocol at the rendezvous layer.
+    - Design rendezvous message sizes to fit within DNS label/response limits and rely on fountain-code redundancy rather than TCP-style retransmission to achieve reliability.
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: policy
+summary: Apple's 2025 App Store Transparency Report disclosed that 2,045 apps were removed globally due to government takedown requests, with Russia accounting for 1,213 removals and China mainland for 196. Russia's count increased dramatically from 171 in 2024, 12 in 2023, and 7 in 2022 — a roughly 7× year-over-year increase — while Access Now reported that 2025 saw at least 313 internet shutdowns across 52 countries, the highest number recorded since tracking began in 2016.
+defenses:
+    - bridges
+censors:
+    - ru
+    - cn
+defense_implications:
+    - App-store distribution is no longer reliable for users in Russia or China; circumvention tools targeting these markets must maintain out-of-band distribution channels (direct APK sideload, F-Droid, Telegram bots, web installers) as the primary distribution path rather than a fallback.
+    - The 7× year-over-year growth in Russian government takedown requests signals an accelerating enforcement posture; operators should assume any App Store listing in Russia has a short operational horizon and build user communication flows that proactively migrate users before removal occurs.
+section: §6 (Apple App Store section) and §7 (Access Now section)
+extracted_by: claude-sonnet-4-6

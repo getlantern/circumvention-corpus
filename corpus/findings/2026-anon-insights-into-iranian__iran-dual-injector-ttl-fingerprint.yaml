@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-insights-into-iranian
+kind: detection
+summary: 'HTTP censorship blockpages in Iran fell into two distinct clusters distinguished by IP TTL values: type NTL1 (TTL 53–55) and type NTE1 (TTL 186–188); TCP RST injections targeting TLS and DNS-over-TCP exhibited the same two TTL ranges. The NTL1 injector was absent on June 11 but present on other days, leading the authors to conclude that an entire injector went offline rather than that a single injection pattern was selectively disabled.'
+techniques:
+    - rst-injection
+    - packet-injection
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Two independent injector infrastructures with different TTL signatures mean a circumvention probe that succeeds when one injector is offline may fail when both are active — test resilience against both TTL clusters, not just one.
+    - The transient absence of one injector (NTL1 on June 11) represents a narrow evasion window; however, this is likely maintenance-driven and unpredictable, so it should not be relied upon as a circumvention strategy.
+section: §2.2.5
+extracted_by: claude-sonnet-4-6

@@ -1832,5 +1832,236 @@
     "source": "ermao",
     "reason": "Commercial VPN service product review with pricing and feature tables; no research contribution to censorship measurement, censor capabilities, protocol design, or internet freedom.",
     "rejected_at": "2026-06-29"
+  },
+  {
+    "key": "arxiv:2606.29389",
+    "title": "Exploring the Cryptographic Limits of Transformer Networks",
+    "source": "arxiv",
+    "reason": "Generic cryptography and machine-learning theory paper; no censorship measurement, censor capabilities, circumvention protocols, or anonymity-system content.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.29451",
+    "title": "The Platonic Defense: Backdoor Defense for Self-Supervised Encoders in the Era of Large Scale Pre-training",
+    "source": "arxiv",
+    "reason": "Paper studies ML backdoor defenses in self-supervised learning with no connection to censorship, circumvention, blocking, or network measurement.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.29759",
+    "title": "GoodDiffusion: Proactive Copyright Protection for Diffusion Bridge Models via Learnable Sample-specific Signatures",
+    "source": "arxiv",
+    "reason": "Paper addresses copyright protection for generative AI models via digital signatures and backdoor mechanisms; unrelated to censorship measurement, circumvention protocol design, or internet blocking.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30119",
+    "title": "On the Internet, Nobody Knows You're an LLM Bot: Unmasking Web Agents with Multi-Layer Fingerprinting",
+    "source": "arxiv",
+    "reason": "Studies web bot detection and fingerprinting for website operators; not censorship-related or circumvention-focused.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30566",
+    "title": "Forensic Trajectory Signatures for Agent Memory Poisoning Detection",
+    "source": "arxiv",
+    "reason": "This paper studies memory-poisoning attacks on LLM agents through behavioral classification; it has no connection to censorship, circumvention, surveillance, or internet freedom.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30595",
+    "title": "Wireless Backdoor Attack and Defense for Semantic Communications over Multiple Access Channel",
+    "source": "arxiv",
+    "reason": "Studies backdoor attacks on wireless semantic communication ML systems; no connection to censorship measurement, detection techniques, circumvention protocols, or internet freedom.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.30701",
+    "title": "An AI-Based Solution for Secure Service Provisioning in IoT",
+    "source": "arxiv",
+    "reason": "Generic IoT security paper focused on service provisioning, device authentication, and behavioral monitoring within IoT networks\u2014no connection to censorship, circumvention protocols, or censor capabilities.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.31272",
+    "title": "The Decomposition Is the Fingerprint: Per-Component Identity for Agent Skills",
+    "source": "arxiv",
+    "reason": "Paper studies AI skill component fingerprinting and registry management; no connection to censorship, circumvention, anonymity, traffic analysis, or blocking detection.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2606.31427",
+    "title": "No Prompt, No Leaks: A Robust Generative Steganography Framework via Prompt-Free Diffusion",
+    "source": "arxiv",
+    "reason": "Pure ML/steganography paper focused on image generation quality; no engagement with censorship, blocking, circumvention protocols, or censor detection.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.00763",
+    "title": "Forensic-Oriented Intrusion Detection Using Synthetic Network Traffic Data and Explainable Artificial Intelligence",
+    "source": "arxiv",
+    "reason": "General network intrusion detection using ML on standard attack types (brute force, port scan, DoS); no censorship measurement, censor detection, circumvention, or anonymity angle.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01435",
+    "title": "Sign in the Air to Unlock: An Interface for authentication in Virtual and Augmented Reality Powered by Point-Voxel Cross-Attention Network",
+    "source": "arxiv",
+    "reason": "Biometric authentication in VR/AR using 3D gesture recognition; no connection to censorship, circumvention, blocking, or internet measurement.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01442",
+    "title": "From Forgeries to Foundation Models: A Systematic Survey of Identity Document Attack and Detection",
+    "source": "arxiv",
+    "reason": "Paper concerns identity document forgery detection and biometric authentication; no connection to censorship measurement, detection, circumvention protocols, or anonymity systems.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01526",
+    "title": "LIB-TRAP: Standard Cell Library Hardware Trojan Risk Assessment and Prevention",
+    "source": "arxiv",
+    "reason": "Hardware trojan detection in semiconductor manufacturing; no connection to censorship, circumvention, surveillance, or network security.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01668",
+    "title": "VeriChat: An Agentic Conversational AI Assistant for Hardware Security Verification",
+    "source": "arxiv",
+    "reason": "Hardware security verification for cryptographic circuits (AES S-box Trojans) is unrelated to censorship measurement, circumvention protocols, surveillance infrastructure, or network blocking \u2014 falls under generic cryptanalysis exclusion.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "arxiv:2607.01702",
+    "title": "Pmeta-TLA: Backdoor Attacks for Speech Classification Models via Meta-Learning with Timbre Leakage Attack",
+    "source": "arxiv",
+    "reason": "Backdoor attacks on speech classification models; no censorship, circumvention, or surveillance angle.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://petsymposium.org/popets/2026/popets-2026-0054.php",
+    "title": "Analyzing Societal Awareness and Perception of Digital Fingerprinting and Fingerprinting Countermeasures",
+    "source": "popets",
+    "reason": "Survey of public awareness and perception regarding fingerprinting; not a technical study of fingerprinting as a detection technique or circumvention countermeasure, and no connection to censorship domains established.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/4m7fg8r9/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010CyberGuard\u3011 - \u8d28\u91cf\u9ad8\u3001\u7a33\u5b9a\u8fd0\u8425\u4e24\u5e74 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "This is a commercial VPN service advertisement with pricing, features, and promotional links\u2014no research, measurement study, technical analysis, or field-advancing content.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/4uxesz79/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010TNT\u3011 - \u65b0\u673a\u573a\u3001IPLC\u4e13\u7ebf | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial promotional post for a VPN service provider; lacks research analysis of censorship measurement, censor capabilities, circumvention protocols, or any academic contribution.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/6e3quult/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010xx\u4e91\u52a0\u901f\u3011 - \u65b0\u673a\u573a\u3001\u4ef7\u683c\u5b9e\u60e0 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service promotional blog post; no research contribution, evaluation methodology, or field advancement.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/73dnyy9a/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u597d\u9e2d\u4e91\u3011 - \u4ef7\u683c\u5b9e\u60e0\u3001\u9001emby\u5f71\u89c6\u670d\u52a1 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service promotional blog post; lacks research, measurement, technical analysis, or policy substance required for the corpus.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/7eogfldo/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u638c\u4e2d\u4e16\u754c\u3011 - 7\u5929\u514d\u8d39\u8bd5\u7528 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service advertisement with no research, measurement, analysis, or technical content relevant to censorship circumvention.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/994p0u8j/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u5927\u54e5\u4e91\u3011 - \u9ad8\u6027\u4ef7\u6bd4\u3001\u8001\u724c\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Promotional/commercial article for a VPN service provider; contains no research contribution, measurement, or technical analysis of circumvention or censorship techniques.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/aofygutj/",
+    "title": "\u98de\u725bOS\u901a\u8fc7docker\u5b89\u88c5OneDrive\u5907\u4efd\u6587\u4ef6(\u8d85\u591a\u5e9f\u8bdd\u7248) | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Technical tutorial on OneDrive backup via Docker; lacks any research into censorship detection, blocking, circumvention protocol design, or measurement methodology.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/bc6o8acd/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010XSUS\u3011 - \u9ad8\u6027\u4ef7\u6bd4\u3001\u8001\u724c\u673a\u573a | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN provider recommendation blog post without technical analysis, measurement, or research contributions to circumvention research.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/ds0jr525/",
+    "title": "\u26a0\ufe0f\u3010\u5df2\u786e\u8ba4\u8dd1\u8def\u3011\u5948\u4e91\u673a\u573a\u5df2\u786e\u8ba4\u8dd1\u8def\uff0c\u505c\u6b62\u7eed\u8d39\u8d2d\u4e70 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Consumer VPN service review and fraud warning; not circumvention research, censorship measurement, or censor-capability analysis.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/dycrz2ch/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u51b2\u4e0a\u4e91\u9704\u3011 - \u81ea\u7814\u5e73\u53f0\u3001\u53f0\u6e7e\u5bb6\u5bbd | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service review and pricing promotion; contains no research, measurement, or technical analysis of circumvention techniques.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/eh8f4n86/",
+    "title": "2026\u5e74 Clash for Android \u4e0b\u8f7d\u4e0e\u5b89\u88c5 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Installation tutorial for Clash proxy client; lacks research, measurement, analysis, or novel technical contribution to advance censorship-circumvention knowledge.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/fhvr729f/",
+    "title": "\u2708\ufe0f\u3010\u673a\u573a\u63a8\u8350\u3011\u5c0f\u725b\u4e91 - \u8001\u724c\u673a\u573a\u3001\u7a33\u5b9a\u53ef\u9760 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service recommendation with pricing tables; not research, measurement, or scholarship advancing circumvention or censorship studies.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/gqs2dway/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u4e5d\u9704\u4e91\u3011 - \u670d\u52a1\u597d\uff0c\u56de\u8d2d\u7387\u9ad8 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Promotional advertisement for a commercial VPN service, not research, measurement, or technical analysis.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/kewe92tu/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010\u52a0\u901f\u5566\u3011- \u4fbf\u5b9c\u5b9e\u60e0\u3001\u9ad8\u6027\u4ef7\u6bd4 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial blog post promoting a VPN service provider; contains no research, measurement, protocol analysis, or technical contribution to censorship circumvention.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/q8yp9r2b/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010flybit\u3011- \u4fbf\u5b9c\u5b9e\u60e0\u3001\u9ad8\u6027\u4ef7\u6bd4 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN service recommendation blog post; not research, measurement, or operational reporting on censorship or circumvention.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/rq55p9dn/",
+    "title": "\u2708\ufe0f\u673a\u573a\u63a8\u8350\u3010koodog\u3011- \u65b0\u673a\u573a\uff0c\u4fbf\u5b9c\u5b9e\u60e0\uff0c\u4f53\u9a8c\u6d41\u7545 | \u4e8c\u6bdb",
+    "source": "ermao",
+    "reason": "Commercial VPN/proxy service review and advertisement with no research contribution, measurement study, or technical analysis relevant to censorship research.",
+    "rejected_at": "2026-07-06"
+  },
+  {
+    "key": "url:https://www.usenix.org/conference/usenixsecurity26/presentation/pang-kaiyi",
+    "title": "Provable Secure Steganography Based on Adaptive Dynamic Sampling",
+    "source": "usenix-sec",
+    "reason": "Generic steganography research without censorship measurement, censor-specific threat modeling, or circumvention deployment context.",
+    "rejected_at": "2026-07-06"
   }
 ]

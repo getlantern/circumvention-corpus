@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-heitmann-russia-s-early-introduction
+kind: evaluation
+summary: Russian TSPU devices switched to SNI-dependent QUIC censorship on a large scale between May 2022 and July 2023, at least nine months before the GFW adopted broad SNI-dependent QUIC censorship—making Russia the first major censor to deploy this capability at scale.
+techniques:
+    - sni-blocking
+    - http3-quic-block
+censors:
+    - ru
+    - cn
+defense_implications:
+    - QUIC-based transports must encrypt SNI via ECH from day one; Russia has actively exploited plaintext QUIC SNI for 3+ years before it became widely recognized.
+    - 'Do not assume targeted SNI filtering is China-only: Russia''s TSPU achieved parity (and precedence) independently, so test QUIC transports against SNI-based filtering in Russian ISP environments.'
+section: Abstract
+extracted_by: claude-sonnet-4-6

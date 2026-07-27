@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-joll-s-website-fingerprinting-nym
+kind: evaluation
+summary: 'Increasing Nym''s per-hop mixing delay (λM) counterintuitively worsens WF resistance: without cover traffic, raising λM to 100 ms raises Tik-Tok F1 from 0.91 (no mixing) to 0.98. Larger delays create a visible temporal gap between outgoing request bursts and incoming response bursts, making the Transposition feature set leak 95.5% classifier accuracy versus 88.5% with no delay at all.'
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Do not rely on per-hop mixing delays as a WF defense; they actively help the WF adversary by separating the two traffic directions. Cover traffic at the endpoints matters far more than delay magnitude.
+    - Any protocol that adds asymmetric per-direction delays must apply cover traffic on both client-to-network and network-to-client paths simultaneously, or the burst-separation effect will be exploitable.
+section: §5.2, Table 4, Table 5
+extracted_by: claude-sonnet-4-6

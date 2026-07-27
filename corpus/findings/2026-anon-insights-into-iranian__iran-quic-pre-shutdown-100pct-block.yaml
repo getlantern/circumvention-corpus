@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-insights-into-iranian
+kind: evaluation
+summary: In the pre-shutdown scan (Scan 2), Iran's QUIC censorship jumped from 1 domain (0.01%) to 9,000 domains (100%) via complete UDP Initial-packet drops, while DNS-over-TCP censorship spiked from 15.12% to 96.68% of 9,000 queried domains. Both changes preceded the full blackout by roughly 5 days, indicating they were preparatory measures rather than incidental. After the shutdown lifted, QUIC remained 100% blocked while DNS-over-TCP returned to baseline (15.38%).
+techniques:
+    - http3-quic-block
+    - dns-poisoning
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools targeting Iran should not rely on QUIC or HTTP/3 as a covert channel; QUIC is now persistently blocked post-shutdown and may remain so as permanent policy rather than event-specific suppression.
+    - 'Monitor QUIC and DNS-over-TCP blocking rates as leading indicators: a sudden spike toward 100% censorship of these protocols can signal an impending full shutdown, giving operators a preparation window of ~5 days.'
+section: §2.2, Table 1
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-27-vpn
+kind: deployment
+summary: Russia's Roskomnadzor confirmed in February 2026 that it had blocked 469 VPN services used to bypass censorship. Starting December 2025, Russia began blocking the three most commonly used VPN protocols, and from 2025 onward began imposing penalties for promoting VPN services.
+techniques:
+    - port-blocking
+    - dpi
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - Russia's shift to blocking protocol categories (not just individual services) — with 469 services already blocked — means any protocol with a stable fingerprint or known port will eventually be enumerated and blocked; circumvention transports targeting Russia must use mimicry or randomization to avoid categorical detection.
+    - Promoting tools publicly in Russia now carries legal risk; distribution strategies should use non-attributable channels and avoid branding that can be targeted under the 'VPN promotion' penalty framework.
+section: §5 (Human Rights Watch section)
+extracted_by: claude-sonnet-4-6

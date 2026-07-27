@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-heitmann-russia-s-early-introduction
+kind: deployment
+summary: Following Russia's full-scale invasion of Ukraine, Russian censorship infrastructure introduced sweeping changes including the complete blocking of all international QUIC connections, first identified publicly in 2022.
+techniques:
+    - http3-quic-block
+    - ip-blocking
+censors:
+    - ru
+defense_implications:
+    - 'QUIC-based circumvention tools must implement seamless TCP/TLS fallback: Russia demonstrated willingness to blanket-block all international QUIC when targeted filtering was not yet operational.'
+    - Treat QUIC availability as opportunistic, not guaranteed, in Russian network environments; protocol negotiation should be resilient to complete QUIC blackholing.
+section: Abstract
+extracted_by: claude-sonnet-4-6

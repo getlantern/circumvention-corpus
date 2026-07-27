@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-russia-s-early-introduction
+kind: evaluation
+summary: 'Testing the Tranco Top 100k domain list from Russian vantage points shows that all 2,644 domains blocked over TLS SNI are also blocked over QUIC SNI, and domains accessible via TLS are accessible via QUIC—indicating the TSPU maintains a unified SNI blocklist across protocols. Additionally, 31 domain patterns including discord.com exhibit ''residual clearance'': QUIC connections to those domains are not censored when immediately preceded by non-censored data on the same 4-tuple; 22 domains are only blocked on port 443.'
+techniques:
+    - sni-blocking
+    - http3-quic-block
+    - dpi
+censors:
+    - ru
+defense_implications:
+    - Domain selection cannot serve as a QUIC evasion strategy in Russia; any domain blocked over TLS is blocked over QUIC, so circumvention tools must conceal the SNI rather than choose an unblocked domain.
+    - The residual-clearance property for select domains (including wirevpn.app, nordpass.com) suggests that pre-seeding the 4-tuple with benign uncensored traffic before initiating a censored QUIC connection may temporarily bypass blocking—worth testing as a short-term evasion mechanism.
+section: §3, Table 3
+extracted_by: claude-sonnet-4-6

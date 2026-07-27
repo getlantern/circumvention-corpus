@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-huangshaomings001-google-auto-jump
+kind: detection
+summary: 'Android users in China accessing google.com through circumvention tools report forced redirection to google.cn/m instead of the expected GFW block page. The thread investigates three possible mechanisms: GFW HTTP packet injection, Google''s server-side geolocation redirect, or ISP-level interference—each implying a different interception layer.'
+techniques:
+    - packet-injection
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should verify whether the redirect occurs at the TCP/IP layer (injected packet) or the application layer (HTTP 302 from Google's servers) before deciding whether to handle it at the proxy or advise users to append /ncr to URLs.
+    - Test proxy configurations against google.com redirection behavior specifically on Android user-agents, as the mobile UA may trigger different GFW or Google-side logic than desktop clients.
+section: Issue body / thread opening
+extracted_by: claude-sonnet-4-6

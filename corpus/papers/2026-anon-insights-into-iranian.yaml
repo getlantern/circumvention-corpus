@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-anon-insights-into-iranian
+title: Insights into an Iranian Internet Shutdown
+venue: Free and Open Communications on the Internet (FOCI)
+year: 2026
+url: https://jonsnowwhite.github.io/page/files/foci_26_iran.pdf
+abstract: 'In June 2025, Iran enacted a nationwide Internet shutdown, culminating its already strict censorship apparatus. While Internet shutdowns happen regularly, insights into these shutdowns are notoriously difficult to obtain: their timing is hard to predict, and measurements are often impossible. In this paper, we present unique measurements surrounding Iran’s 2025 Internet shutdown in June, which we acquired during a regular analysis of Iran’s censorship apparatus. We contextualize our findings of Iranian DNS, HTTP, TLS, and QUIC censorship during the shutdown with measurements from platforms such as Cloudflare Radar and user reports. Our measurements show that Iranian censorship changed before and after the shutdown, marking preparation and recovery periods. For instance, QUIC censorship went into effect before and stayed in effect after the shutdown, while DNS over TCP censorship was only present briefly before the shutdown and resumed working afterwards. We also measured general network instabilities, especially for UDP, after the shutdown and the disabling of certain middleboxes. Our findings indicate that the Iranian censor enforced its shutdown using fine-grained techniques instead of relying on an all-or-nothing blackout. We advertise for continued measurements of the Iranian censor and hypothesize that future shutdowns in censoring countries could be detected during their preparation phase.'
+censors:
+    - ir
+techniques:
+    - dpi
+    - dns-poisoning
+    - sni-blocking
+    - http3-quic-block
+    - middlebox-interference
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Provides primary-source evidence of Iranian shutdown mechanisms and preparation phases; findings could inform circumvention detection and evasion strategies.
+visibility: public
+date_added: "2026-07-06"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://jonsnowwhite.github.io/page/files/foci_26_iran.pdf
+    - url:https://www.jonsnowwhite.de/publications/

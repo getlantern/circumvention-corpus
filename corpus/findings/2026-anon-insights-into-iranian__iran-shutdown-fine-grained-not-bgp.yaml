@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-insights-into-iranian
+kind: deployment
+summary: 'Iran''s June 2025 shutdown was enforced using fine-grained, service-level techniques rather than BGP withdrawals or a single ''big switch'' event: individual protocols were selectively blocked before and after the 7-day full blackout (June 18–25), with the total preparation and recovery periods each lasting roughly 4–5 days. Cloudflare Radar showed HTTP traffic reaching near-zero by June 18 but partial recovery already on June 21, while the authors'' vantage point (AS57497) remained unreachable until June 25, confirming heterogeneous recovery across Iranian networks.'
+techniques:
+    - dpi
+    - http3-quic-block
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - Design circumvention infrastructure that can detect when a network path is degraded but not fully blocked (partial censorship phase), and automatically shift to protocols that remain permitted during the preparation window before total blackout.
+    - Heterogeneous recovery across Iranian ASes means censorship tool monitoring should use multiple vantage points — a single VPS may show full blockage days after broader connectivity has partially restored.
+section: §2, §3
+extracted_by: claude-sonnet-4-6
