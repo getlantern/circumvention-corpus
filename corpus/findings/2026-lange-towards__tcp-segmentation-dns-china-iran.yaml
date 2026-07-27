@@ -1,6 +1,6 @@
 # Auto-extracted by corpus-findings from full paper text.
 # Review summary + tags before relying.
-paper: 2026-niere-dpyproxy-dns
+paper: 2026-lange-towards
 kind: defense
 summary: 'TCP segmentation — splitting DNS-over-TCP messages into 20-byte fragments — successfully circumvented DNS censorship for 40 of 41 tested resolvers in China. In Iran, TCP segmentation is inconsistently effective: it succeeds in some scan runs and fails entirely in others, suggesting the Iranian censor can reassemble TCP fragments when processing capacity permits.'
 techniques:

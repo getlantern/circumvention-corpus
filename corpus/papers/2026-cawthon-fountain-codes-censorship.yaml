@@ -12,7 +12,6 @@ censors:
     - generic
 techniques:
     - dns-poisoning
-    - pluggable-transport
 defenses_discussed:
     - dns-tunneling
     - pluggable-transport

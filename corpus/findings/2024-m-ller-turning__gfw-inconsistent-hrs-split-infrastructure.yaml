@@ -1,6 +1,6 @@
 # Auto-extracted by corpus-findings from full paper text.
 # Review summary + tags before relying.
-paper: 2024-niere-http-smuggling
+paper: 2024-m-ller-turning
 kind: detection
 summary: 'China''s GFW exhibited unusually inconsistent HTTP censorship behavior: 13 of the evaluated HRS test vectors circumvented the GFW in some executions but not others, with per-vector success rates between 10% and 35% across 100 executions per domain. The authors attribute this to two distinct parts of GFW infrastructure employing different HTTP censorship mechanisms, a departure from the GFW''s typical consistency.'
 techniques:

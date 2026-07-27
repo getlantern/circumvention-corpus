@@ -1,6 +1,6 @@
 # Auto-extracted by corpus-findings from full paper text.
 # Review summary + tags before relying.
-paper: 2026-niere-dpyproxy-dns
+paper: 2026-lange-towards
 kind: evaluation
 summary: DPYProxy-DNS's automated probe-and-select mode identified a working DNS circumvention in an average of 13.78 seconds (median 12.90s) in China and 12.32 seconds (median 8.28s) in Iran across 100 runs each; best-case startup was 0.32s (China) and 0.47s (Iran) when the first-tried combination succeeded, while worst-case exceeded 30.72s in China and 58.16s in Iran due to the slow Last Response mode (3s fixed wait per attempt) being selected early in the randomized probe order.
 techniques:

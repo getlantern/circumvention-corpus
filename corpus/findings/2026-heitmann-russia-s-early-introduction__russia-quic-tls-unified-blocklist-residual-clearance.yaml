@@ -1,6 +1,6 @@
 # Auto-extracted by corpus-findings from full paper text.
 # Review summary + tags before relying.
-paper: 2026-anon-russia-s-early-introduction
+paper: 2026-heitmann-russia-s-early-introduction
 kind: evaluation
 summary: 'Testing the Tranco Top 100k domain list from Russian vantage points shows that all 2,644 domains blocked over TLS SNI are also blocked over QUIC SNI, and domains accessible via TLS are accessible via QUIC—indicating the TSPU maintains a unified SNI blocklist across protocols. Additionally, 31 domain patterns including discord.com exhibit ''residual clearance'': QUIC connections to those domains are not censored when immediately preceded by non-censored data on the same 4-tuple; 22 domains are only blocked on port 443.'
 techniques:

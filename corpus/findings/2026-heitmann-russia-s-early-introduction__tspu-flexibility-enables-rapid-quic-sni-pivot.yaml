@@ -2,7 +2,7 @@
 # Review summary + tags before relying.
 paper: 2026-heitmann-russia-s-early-introduction
 kind: detection
-summary: The rapid transition from blanket international QUIC blocking to fine-grained SNI-dependent QUIC censorship demonstrates that Russian TSPU devices possess significant technical flexibility, and that Russia is willing to invest in strict, up-to-date censorship infrastructure.
+summary: As measured from three Russian vantage points in March–April 2026, TSPU devices decrypt QUIC Initial packets, locate the SNI extension in the embedded TLS handshake, and drop packets with forbidden domains plus all subsequent packets on the 4-tuple for 420 seconds (timer resets on each packet). Censorship is unidirectional (outgoing only), covers all destination ports up to 65535 at Saint Petersburg and Novosibirsk (Moscow exempts 22% of system ports 1–1023), and targets only QUICv1—QUICv2 passes uncensored at all vantage points.
 techniques:
     - sni-blocking
     - http3-quic-block
@@ -10,7 +10,7 @@ techniques:
 censors:
     - ru
 defense_implications:
-    - 'Do not treat any observed Russian censorship configuration as stable: TSPU infrastructure can pivot from blunt-force blocking to precise SNI targeting within months, invalidating transport designs that relied on the earlier broader block.'
-    - Circumvention tools deployed in Russia should be designed for rapid protocol updates, since TSPU flexibility means detection vectors will evolve faster than annual release cycles.
-section: Abstract
+    - QUICv2 (RFC 9369) is not blocked by Russian TSPU devices as of April 2026 and represents the highest-confidence current bypass; circumvention tools using QUIC transport should default to QUICv2 for Russian users.
+    - Non-port-443 destination ports do not reliably evade TSPU QUIC censorship outside a subset of Moscow system ports; avoid relying on obscure ports as a primary evasion strategy in Russia.
+section: §3
 extracted_by: claude-sonnet-4-6

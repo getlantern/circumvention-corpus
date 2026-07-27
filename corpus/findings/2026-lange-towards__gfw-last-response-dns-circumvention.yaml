@@ -1,6 +1,6 @@
 # Auto-extracted by corpus-findings from full paper text.
 # Review summary + tags before relying.
-paper: 2026-niere-dpyproxy-dns
+paper: 2026-lange-towards
 kind: defense
 summary: The GFW operates as an on-path censor that injects forged DNS responses faster than the real resolver but cannot suppress the legitimate response from also arriving. Waiting approximately 3 seconds and accepting the last-received UDP response circumvented GFW DNS injection for 40 of 41 tested public resolvers in China; the single exception (Cloudflare 1.1.1.1) was IP-blocked via packet dropping rather than injection racing.
 techniques:
