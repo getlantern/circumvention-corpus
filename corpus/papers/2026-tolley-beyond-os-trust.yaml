@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-tolley-beyond-os-trust
+title: 'Beyond OS Trust Stores: TLS Trust in Russia’s Android Ecosystem'
+authors:
+    - William J. Tolley
+    - Everett Morse
+    - Jedidiah R. Crandall
+venue: FOCI 2026
+year: 2026
+url: https://petsymposium.org/foci/2026/foci-2026-0012.php
+censors:
+    - ru
+techniques:
+    - dpi
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Documents Russia's MITM infrastructure on mobile platforms; directly relevant to understanding TLS interception risks Lantern users face in Russia.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/foci/2026/foci-2026-0012.php

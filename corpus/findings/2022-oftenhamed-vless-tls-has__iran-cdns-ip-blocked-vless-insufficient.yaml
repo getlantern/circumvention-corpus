@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-oftenhamed-vless-tls-has
+kind: detection
+summary: Iran's censorship infrastructure employs IP-list blocking of major media CDNs (Instagram, YouTube, Facebook) that remains effective against VLESS+TLS users on domestic VPS endpoints. Telegram's accessibility—because it is reachable directly by IP without domain resolution—confirms that the IP blocklist targets CDN address ranges specifically rather than applying blanket traffic inspection.
+techniques:
+    - ip-blocking
+defenses:
+    - vless
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools must route all destination traffic—including CDN-resolved IPs—through the proxy; split-tunnel or direct-connection fallbacks will expose users to IP-list blocking.
+    - Test reachability of major CDN IP ranges (Akamai, Fastly, Cloudflare, Meta, Google) as a baseline check in any Iran deployment.
+section: Issue thread (abstract)
+extracted_by: claude-sonnet-4-6

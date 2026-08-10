@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2608.04167
+id: 2026-saleem-open-world-darknet-traffic
+title: Open-World Darknet Traffic Recognition Under Leave-One-Service-Out Evaluation
+authors:
+    - Javeriah Saleem
+    - Rafiqul Islam
+    - Md Zahidul Islam
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2608.04167"
+url: https://arxiv.org/abs/2608.04167v1
+abstract: Darknet traffic recognition is critical for cyber threat intelligence, as anonymity networks are often used to conceal malicious activity. However, most existing studies rely on closed-world evaluation, assuming all service categories are known during training and testing, which is unrealistic in real-world environments. This paper presents an open-world darknet traffic classification framework using leave-one-service-out evaluation and uncertainty-aware classification with Random Forest and XGBoost models. Experimental results demonstrate significant performance degradation when transitioning from closed-world to open-world settings, demonstrating that closed-world evaluation substantially overestimates deployment robustness. For example, XGBoost Macro-F1 decreases from 88.8% to 46.1% in the I2P environment, while Random Forest performance drops from 87.4% to 45.7%. Although uncertainty-based rejection slightly improves robustness, strong behavioral similarity between known and unknown services leads to frequent misclassification. Semantic absorption analysis further shows that FreeNet video traffic is classified as browsing traffic with an 88.1% assignment rate, while I2P peer-to-peer traffic is absorbed into FTP-related behavior with an 83.4% assignment rate. The findings demonstrate that behavioral overlap remains a major challenge for reliable open-world darknet traffic classification.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates practical limitations of behavioral fingerprinting for detecting multiple anonymity networks simultaneously—relevant for understanding how traffic-analysis defenses must account for unknown services and behavioral polymorphism.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2608.04167

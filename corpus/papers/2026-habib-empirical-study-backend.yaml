@@ -1,0 +1,22 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-habib-empirical-study-backend
+title: An Empirical Study of Backend Infrastructure in Leading Pakistani Mobile Apps
+authors:
+    - Sana Habib
+    - Mohammad Taha Khan
+    - Jedidiah R. Crandall
+venue: FOCI 2026
+year: 2026
+url: https://petsymposium.org/foci/2026/foci-2026-0013.php
+censors:
+    - pk
+techniques:
+    - measurement-platform
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant given Pakistan's documented surveillance infrastructure and Crandall's expertise in censorship circumvention; exact relation to censorship/surveillance mechanisms requires abstract review.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/foci/2026/foci-2026-0013.php

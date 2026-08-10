@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2608.04143
+id: 2026-saleem-behavioral-information-leakage
+title: 'Behavioral Information Leakage in Darknet Traffic: A Multi-Channel Analysis Across Anonymity Networks'
+authors:
+    - Javeriah Saleem
+    - Rafiqul Islam
+    - Md Zahidul Islam
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2608.04143"
+url: https://arxiv.org/abs/2608.04143v1
+abstract: Existing darknet traffic classification studies largely emphasize predictive accuracy while offering limited insight into the behavioral mechanisms that make encrypted services distinguishable. This paper proposes a behavioral information leakage framework that decomposes flow-level traffic into control, structural, and rhythmic descriptor groups across Tor, I2P, FreeNet, and ZeroNet. The framework combines normalized mutual information analysis with Random Forest-based predictive validation, structural-rhythmic interaction analysis, and cross-network service-variability evaluation under leakage-safe repeated stratified cross-validation. Results show that behavioral leakage varies considerably across anonymity networks. Tor achieves the highest service separability, with a Macro-F1 of 0.7165 and cumulative normalized leakage of 3.9461, whereas FreeNet exhibits the lowest combined leakage of 0.8744. Packet-size organization, directional exchange imbalance, packet tempo, and silence-burst behavior emerge as the main leakage mechanisms. The combined structural-rhythmic representation consistently provides the strongest within-network performance, while leave-one-network-out evaluation reveals limited transferability across anonymity architectures. The proposed Service Variability Index and Leakage Variability Index further show that video exhibits consistent network-specific separability, whereas chat and email demonstrate greater variability across anonymity-network pairs.
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - website-fingerprint
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates traffic-analysis vulnerabilities in Tor that reveal service identity; highlights behavioral leakage as a key attack vector relevant to Lanterns threat model.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2608.04143

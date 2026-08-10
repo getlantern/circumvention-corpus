@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-habib-empirical-study-backend
+kind: policy
+summary: App store listings and privacy documentation for Pakistani government and telecom apps show limited disclosure of data retention and deletion policies, even for apps handling identity credentials, location data, and communication metadata — creating an accountability gap between what users can verify and what data the backend infrastructure actually retains.
+techniques:
+    - measurement-platform
+censors:
+    - pk
+defense_implications:
+    - Do not rely on published privacy policies to assess actual data retention risk for Pakistani government apps; empirical backend analysis (DNS, WHOIS, BGP) is required to ground threat models in real infrastructure.
+    - Circumvention tools serving Pakistani users should surface backend jurisdiction warnings in-product, since users cannot obtain this information from official app disclosures.
+section: Abstract
+extracted_by: claude-sonnet-4-6

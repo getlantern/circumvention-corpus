@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-story-defending-messaging-apps
+kind: deployment
+summary: The paper enumerates practical obstacles to deploying data-diode defenses in messaging apps, noting the approach is anticipated to be viable primarily for journalists, politicians, and other individuals who are targeted rather than for general consumer use.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Novel hardware-based security architectures face deployment friction that constrains adoption to a narrow high-risk population — circumvention tool designers should explicitly scope hardware-security features to the threat models where the deployment cost is justified.
+    - When prototyping security mechanisms for at-risk users, enumerate deployment obstacles early; a technically sound defense that cannot be deployed by the target population provides no real-world protection.
+section: §Deployment obstacles
+extracted_by: claude-sonnet-4-6

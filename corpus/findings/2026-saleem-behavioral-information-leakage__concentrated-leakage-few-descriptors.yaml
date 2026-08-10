@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-behavioral-information-leakage
+kind: detection
+summary: 'Behavioral leakage is concentrated in a small subset of flow-level descriptors rather than uniformly distributed across the feature space. Globally, S_payload_per_packet (normalized MI = 0.173) and R_silence_density (normalized MI = 0.132) are the dominant leakage sources. No descriptor dominates across all networks: I2P leaks primarily through S_forward_packet_share (MI = 0.069) and R_burst_frequency_proxy (MI = 0.056), while FreeNet and ZeroNet rely on R_packet_tempo (MI = 0.066 and 0.101 respectively).'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Payload-per-packet normalization (constant-size padding to a fixed MTU) and silence-density masking (injecting cover traffic during idle periods) address the two globally strongest leakage channels and should be baseline requirements for any anonymity transport.
+    - Per-network leakage profiles differ — a single universal obfuscation scheme will not suppress all channels; transports must profile and suppress the dominant mechanism for their specific routing architecture.
+section: §4.2, Table 2, Figure 3
+extracted_by: claude-sonnet-4-6

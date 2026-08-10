@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lu-rpki-based-location-unaware-tor
+kind: evaluation
+summary: Shadow simulation at 10% Tor scale (719 relays, 75,234 clients) shows the Matching Selection algorithm adds 5.3% latency to circuit build time and 2.4% to round-trip time versus vanilla Tor; average overall transfer time is 1.8 seconds slower (out of 12 seconds baseline). For 100MB transfers—which occur rarely given the probability distribution of transfer sizes—the matching algorithm is 6.5 seconds slower on average and 15 seconds slower at median versus vanilla Tor's 31-second average.
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - The matching algorithm's performance penalty is concentrated in large (≥100MB) transfers and is negligible for typical web traffic; circumvention tools transporting primarily small web requests can adopt it without user-visible latency cost.
+    - Operators should cap the relay weight boost factor θ at 5 and monitor per-relay load to prevent the matching optimization from concentrating traffic on a small set of ROV-enforcing relays under high network load.
+section: §5.4
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-habib-empirical-study-backend
+kind: deployment
+summary: One of the four high-sensitivity first-party endpoints is served through U.S.-based CDN infrastructure despite being organizationally associated with Pakistan, demonstrating that backend jurisdictional placement is not determined by organizational affiliation alone and can introduce geographic ambiguity in data governance.
+techniques:
+    - measurement-platform
+censors:
+    - pk
+defense_implications:
+    - CDN-backed endpoints already introduce jurisdictional ambiguity even in government app infrastructure; circumvention tools employing domain fronting or CDN tunneling can exploit this existing architectural pattern to blend sensitive traffic with normal CDN flows.
+    - When classifying risk exposure for Pakistani users, do not assume all government-app endpoints are on domestic infrastructure — WHOIS/ASN attribution is required per-endpoint.
+section: Abstract
+extracted_by: claude-sonnet-4-6

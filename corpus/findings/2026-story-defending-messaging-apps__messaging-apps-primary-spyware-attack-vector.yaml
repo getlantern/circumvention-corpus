@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-story-defending-messaging-apps
+kind: detection
+summary: Messaging apps are frequently exploited as the initial attack vector for spyware delivery, creating a paradox where the secure communication channel is simultaneously the pathway for compromising the device that hosts it.
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools bundling messaging functionality should treat the message-receiving surface as a critical attack boundary — sandboxing or hardware-isolated rendering reduces spyware landing opportunities.
+    - Separate the network-facing receive path from privileged storage and key material to limit lateral movement after an initial exploit via a malicious message payload.
+section: Abstract
+extracted_by: claude-sonnet-4-6

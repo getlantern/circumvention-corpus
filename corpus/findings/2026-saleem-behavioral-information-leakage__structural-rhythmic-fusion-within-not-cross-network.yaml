@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-behavioral-information-leakage
+kind: evaluation
+summary: 'Combining structural and rhythmic descriptors into a unified S+R representation consistently yields the highest within-network Macro-F1 across all four anonymity networks, providing evidence of complementary information in the two behavioral channels. However, the same fusion does not improve cross-network transferability: S+R performs similarly to or slightly worse than the best individual channel under leave-one-network-out evaluation (e.g., Tor held-out: Combined 0.1175 vs. Rhythmic 0.1822). This asymmetry indicates that structural–rhythmic interactions encode network-architecture-specific rather than universally transferable behavioral information.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - tor
+censors:
+    - generic
+defense_implications:
+    - A censor deploying a joint structural-rhythmic classifier has strong within-network performance but poor cross-network generalization — circumvention designs that route traffic through novel or under-studied networks gain a meaningful classifier blindspot that persists even against fusion models.
+    - Transport obfuscation that independently attacks structural (padding) and rhythmic (timing jitter) channels provides no compounding synergy benefit to the censor, confirming that addressing both channels in isolation is the correct threat model.
+section: §4.1, §4.3, Table 1
+extracted_by: claude-sonnet-4-6

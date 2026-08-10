@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-open-world-darknet-traffic
+kind: detection
+summary: Unknown darknet service traffic is not randomly misclassified but is absorbed into semantically related known services with high confidence. FreeNet video traffic is classified as browsing with an 88.1% assignment rate at 97.95% mean confidence; I2P P2P traffic is absorbed into FTP-related behavior with an 83.4% assignment rate at 92.93% mean confidence. Behavioral similarity, not classifier uncertainty, drives open-world failure.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Anonymity tools that mimic semantically related 'benign' traffic categories (e.g., making P2P flows resemble FTP or video flows resemble browsing) may trigger systematic misclassification that persists even under uncertainty-based rejection.
+    - 'Designers should target the high-confidence absorption zone: flows shaped to match known-service behavioral profiles will receive near-certain false-positive labels rather than being flagged as anomalous.'
+section: §IV-C, Table III
+extracted_by: claude-sonnet-4-6

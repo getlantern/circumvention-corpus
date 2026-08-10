@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-spiderxss-tlshello-fragmentation-not
+kind: detection
+summary: 'Iran''s fragmentation-detection capability targets the fragmentation mechanism itself, not the SNI field content: testers report blocking occurs even when the fragmented ClientHello carries a clean, non-blocked SNI. This indicates the censor is classifying flows by structural packet properties (fragment boundary patterns) rather than by inspected SNI value.'
+techniques:
+    - dpi
+    - sni-blocking
+    - traffic-shape
+censors:
+    - ir
+defense_implications:
+    - SNI whitelisting or substitution alone does not restore the bypass; a fundamentally different transport-layer approach is required.
+    - Assume Iranian middleboxes perform reassembly-aware DPI and can classify fragmented TLS independently of payload content.
+section: Issue body (Jul 31 2026)
+extracted_by: claude-sonnet-4-6

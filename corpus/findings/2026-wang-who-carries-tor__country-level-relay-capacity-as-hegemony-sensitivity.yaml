@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-who-carries-tor
+kind: evaluation
+summary: Country-level analysis shows significant sensitivity of AS-level transit dependency to the distribution of relay capacity across ASes within each country, implying that a censor controlling a dominant national transit AS gains disproportionately high visibility into Tor traffic if domestic relay capacity is concentrated in that AS's customer cone.
+techniques:
+    - flow-correlation
+    - asn-blackholing
+    - ip-blocking
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Relay operators in high-censorship countries should place capacity across multiple upstream providers to reduce any single transit AS's bandwidth-weighted hegemony over inbound/outbound Tor flows.
+    - Network diversity policies for Tor should incorporate country-level AS hegemony scores, not just raw relay counts or bandwidth totals.
+section: Abstract
+extracted_by: claude-sonnet-4-6

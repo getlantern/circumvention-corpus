@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-open-world-darknet-traffic
+kind: evaluation
+summary: Closed-world evaluation substantially overestimates deployment robustness for darknet traffic classifiers. XGBoost Macro-F1 drops from 88.8% to 46.1% in I2P and Random Forest from 87.4% to 45.7% when unknown services are introduced at inference time under leave-one-service-out evaluation. FreeNet shows the highest closed-world inflation, with RF reaching 96.0% closed-world vs. 61.9% under open-world forced classification.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - 'Circumvention tool designers can exploit the closed-world assumption gap: deploying novel traffic patterns that ML classifiers were not trained on may yield high-confidence misclassification rather than detection, buying deployment window before retraining.'
+    - Protocol versioning and deliberate behavioral drift can continuously introduce 'unknown service' characteristics that degrade classifier Macro-F1 toward the ~46% open-world floor.
+section: §IV-A, Table II
+extracted_by: claude-sonnet-4-6

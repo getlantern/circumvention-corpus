@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-beyond-os-trust
+kind: policy
+summary: The paper directly challenges the assumption that TLS provides a sufficient security fallback against hostile networks, demonstrating that Russia's Android ecosystem enables trust-anchor expansion through app packaging that undermines OS trust store boundaries. The implication is that TLS interception in Russia may be feasible at the app level without requiring OS-level compromise or user consent.
+censors:
+    - ru
+defense_implications:
+    - Circumvention protocol designers should not treat TLS certificate validation as a reliable security primitive for Russia; build additional application-layer integrity mechanisms that remain valid even if an intermediate CA is MITM-capable.
+    - Communicate clearly to Russian users that TLS protections may be partially undermined via app-bundled CA certificates from domestic app stores, and recommend verification steps beyond trusting the TLS lock icon.
+section: Abstract
+extracted_by: claude-sonnet-4-6

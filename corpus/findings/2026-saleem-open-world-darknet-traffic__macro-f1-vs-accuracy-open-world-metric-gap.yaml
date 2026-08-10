@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-open-world-darknet-traffic
+kind: evaluation
+summary: Macro-F1 degrades more severely than Accuracy under open-world evaluation, revealing that classification failures disproportionately concentrate on behaviorally overlapping minority service classes. High Accuracy values in FreeNet (unknown services absorbed at 97.95% confidence) do not indicate successful detection of unseen services. Conventional single-metric reporting thus conceals the most operationally relevant failure modes.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool red-teaming should target Macro-F1 rather than Accuracy when benchmarking against traffic classifiers — high Accuracy can mask the complete failure to detect novel transport protocols if they are absorbed into existing service categories.
+    - New protocol designs should be evaluated against leave-one-service-out classifiers, not closed-world baselines, to realistically estimate evasion durability.
+section: §IV-B, Fig. 3
+extracted_by: claude-sonnet-4-6

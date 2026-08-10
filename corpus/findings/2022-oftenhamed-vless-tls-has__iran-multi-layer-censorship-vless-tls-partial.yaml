@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-oftenhamed-vless-tls-has
+kind: evaluation
+summary: 'This primary-source community report documents that Iran''s censorship is multi-layered: VLESS+TLS successfully evades transport-protocol detection but is defeated simultaneously by DNS poisoning and CDN IP-list blocking. A circumvention tool that addresses only one layer (transport obfuscation) is insufficient for consistent access in Iran.'
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - vless
+censors:
+    - ir
+defense_implications:
+    - 'Treat Iran deployments as requiring at least three independent defenses in tandem: transport obfuscation, encrypted/tunneled DNS, and full-tunnel routing of all destination IPs.'
+    - Use service-level reachability tests (not just tunnel connectivity) to validate circumvention effectiveness, since partial failures from secondary blocking layers are otherwise invisible to the user.
+section: Issue thread (abstract)
+extracted_by: claude-sonnet-4-6

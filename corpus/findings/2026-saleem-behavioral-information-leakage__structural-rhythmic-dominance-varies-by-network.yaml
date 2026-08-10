@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-behavioral-information-leakage
+kind: detection
+summary: 'Structural vs. rhythmic dominance is network-dependent: Tor traffic leakage is structurally dominated (S_byte_directional_dominance NMI = 0.258 vs. R_byte_tempo 0.198; dominance index DRF positive), while FreeNet and ZeroNet show rhythmic dominance with R_packet_tempo ranking as the strongest descriptor (NMI = 0.066 and 0.101). I2P shows near-balanced dominance. The Service Variability Index further reveals that video has consistent cross-network separability, whereas chat and email vary considerably across anonymity-network pairs.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Tor transports should prioritize suppressing directional imbalance (byte-level asymmetry between forward and backward cells) over timing jitter, since structural leakage dominates its fingerprinting surface.
+    - Video streaming tunneled through anonymity networks represents a consistently high-leakage service category across networks — tunneling video over anonymity channels requires dedicated shaping (e.g., constant-bitrate padding) regardless of the underlying network.
+section: §4.2, §4.4, Table 2
+extracted_by: claude-sonnet-4-6

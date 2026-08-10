@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-khoury-maude-hcs-model-checking
+kind: evaluation
+summary: 'In the DNS+Mastodon steganographic HCS case study, model-predicted latency distribution for 1,600B Iodine file transfers shows strong semantic alignment with testbed measurements: KL(EXP ∥ SMC) = 0.0007 and KL(SMC ∥ EXP) = 0.0007, with experimental mean 3.822s (σ=1.191, n=300) versus model mean 3.796s (σ=1.166, n=13,080).'
+techniques:
+    - traffic-shape
+defenses:
+    - dns-tunneling
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - 'Formal model predictions can be trusted as proxies for real deployment behavior: model-validated privacy parameters transfer to physical testbeds with minimal divergence, enabling pre-deployment privacy hardening without full hardware testbed access.'
+section: §5.3
+extracted_by: claude-sonnet-4-6

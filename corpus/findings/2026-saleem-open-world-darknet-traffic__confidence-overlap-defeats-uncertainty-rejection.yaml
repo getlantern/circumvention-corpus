@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-open-world-darknet-traffic
+kind: detection
+summary: Uncertainty-based rejection (confidence thresholding) provides negligible improvement against behaviorally overlapping unknown services. In I2P, XGBoost rejection recovery is +0.0% Macro-F1; FreeNet known-service mean confidence is 97.75% vs. unknown-service 97.95%, making threshold-based separation impossible. Only Tor exhibits partial confidence separation (known 81.22% vs. unknown 67.66%), enabling XGB recovery of +8.5%.
+techniques:
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols whose flows behaviorally resemble trained service categories will evade confidence-based anomaly rejection; designing flows to sit in the behavioral overlap zone of known services is a viable evasion strategy against this class of classifier.
+    - Tor's partial confidence separation (mean 67.66% vs. 81.22% for known services) suggests that onion-routing traffic inherently produces enough behavioral distinctiveness to partially trigger uncertainty-based rejection — a property other protocols could intentionally exploit by injecting timing or size variability.
+section: §IV-D, Table IV
+extracted_by: claude-sonnet-4-6

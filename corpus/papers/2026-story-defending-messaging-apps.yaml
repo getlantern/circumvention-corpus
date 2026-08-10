@@ -1,0 +1,20 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-story-defending-messaging-apps
+title: Defending Messaging Apps Against Spyware Using Data Diodes
+authors:
+    - Peter Story
+venue: FOCI 2026
+year: 2026
+url: https://petsymposium.org/foci/2026/foci-2026-0009.php
+censors:
+    - generic
+techniques:
+    - dpi
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Marginally relevant; focuses on anti-spyware defenses for messaging apps rather than network-level censorship circumvention, but addressing surveillance threats to circumvention-adjacent tools in a censorship-focused venue.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/foci/2026/foci-2026-0009.php

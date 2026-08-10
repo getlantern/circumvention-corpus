@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-habib-empirical-study-backend
+kind: deployment
+summary: Three of the four active first-party sensitive-data endpoints in Pakistani government and telecom apps rely on domestic Pakistani infrastructure, identified via ASN and registry-level signals pointing to local administrative entities — placing identity credentials, location, and communication metadata within reach of Pakistani government administrative access.
+techniques:
+    - measurement-platform
+censors:
+    - pk
+defense_implications:
+    - Assume data sent to Pakistani government app endpoints traverses domestically-controlled ASNs; circumvention tools should treat these endpoints as high-risk for state visibility even when the connection itself is TLS-encrypted.
+    - Consider end-to-end encrypted overlays (not just transport-layer VPNs) for users running Pakistani government apps, since encryption in transit does not protect data once it reaches a domestically-administered server.
+section: Abstract
+extracted_by: claude-sonnet-4-6

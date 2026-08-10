@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lu-rpki-based-location-unaware-tor
+kind: evaluation
+summary: ROA coverage of Tor guard relays grew steadily from 47.20% in January 2021 to 71.43% in May 2024 for IPv4, while IPv6 coverage grew from 19.41% to 43.89% over the same period. Overall ROA coverage for all Tor relays reached 83.51% by May 2024, with more than 90% of observed route announcements for covered prefixes being valid (reaching 92.91% for IPv4 guard relays in May 2024).
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - RPKI ROA infrastructure is now sufficiently deployed (>70% of guard relay IPv4s covered) to build relay selection policies that rely on ROA status without sacrificing significant relay diversity.
+    - IPv6 Tor relays lag IPv4 by ~28 percentage points in ROA coverage; circumvention tools defaulting to IPv4 guards gain meaningfully better BGP-hijack resistance than those accepting IPv6 guards indiscriminately.
+section: §3.2
+extracted_by: claude-sonnet-4-6

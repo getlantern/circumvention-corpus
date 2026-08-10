@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-who-carries-tor
+kind: evaluation
+summary: A longitudinal study of Tor transit dependency from 2015 to 2025 reveals persistent concentration in a small number of transit ASes, indicating that AS-level chokepoints enabling flow-correlation attacks are a structural rather than transient property of the Tor network.
+techniques:
+    - flow-correlation
+    - asn-blackholing
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Treat AS-level diversity as a first-class relay placement constraint, not a post-hoc metric — persistent concentration across a decade indicates that organic growth alone does not distribute traffic.
+    - Publish longitudinal AS hegemony timeseries as part of the Tor Metrics portal so relay operators can identify and avoid over-represented transit ASes when provisioning new capacity.
+section: Abstract
+extracted_by: claude-sonnet-4-6

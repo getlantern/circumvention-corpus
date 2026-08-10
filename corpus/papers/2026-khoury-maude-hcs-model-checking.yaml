@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-khoury-maude-hcs-model-checking
+title: 'Maude-HCS: Model Checking the Undetectability-Performance Tradeoffs of Hidden Communication Systems'
+authors:
+    - Joud Khoury
+    - Minyoung Kim
+    - Christophe Merlin
+    - José Meseguer
+    - Zachary Ratliff
+    - Carolyn Talcott
+venue: PoPETs 2026
+year: 2026
+url: https://petsymposium.org/popets/2026/popets-2026-0156.php
+censors:
+    - generic
+techniques:
+    - fully-encrypted-detect
+defenses_discussed:
+    - meta-resistance
+evaluation_methods:
+    - formal-analysis
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Framework for analyzing design tradeoffs in hidden communication systems; relevant to understanding how to balance undetectability against performance constraints in circumvention protocols.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2026/popets-2026-0156.php
