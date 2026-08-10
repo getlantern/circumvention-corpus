@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-khoury-maude-hcs-model-checking
+kind: defense
+summary: 'Maude-HCS formalizes undetectability as (M, d)-HCS undetectability: a deployment satisfies the property if for all adversary strategies A and all initial environment states E₀, the divergence measure M between the HCS and ordinary trace distributions is at most d. Using the data-processing inequality for KL divergence, certified lower bounds on DKL(Q_t ∥ P_t) are derived from Monte Carlo estimates of detector TPR and FPR, enabling falsification of claimed privacy parameters under specified modeling assumptions.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool designers can adopt this auditing methodology to produce quantitative, falsifiable privacy guarantees tied to explicit adversary and network models rather than ad hoc empirical claims.
+    - The certified lower bound approach allows designers to discover which deployment scenarios or parameter settings falsify their undetectability claims before fielding, enabling principled hardening of the protocol configuration space.
+section: §3, §3.1
+extracted_by: claude-sonnet-4-6

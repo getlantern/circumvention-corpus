@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-khoury-maude-hcs-model-checking
+kind: evaluation
+summary: 'Increasing goodput in a tunneling-based HCS generally increases statistical distinguishability between HCS and ordinary traffic: as Alice''s mean inter-post wait time decreases, the certified KL divergence lower bound rises across all tested scenarios (0% and 2.5–5% link loss), though the magnitude depends heavily on background traffic volume and packet loss rate.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - steganography
+    - dns-tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must treat sending rate as a first-class privacy parameter, not just a performance knob — aggressive throughput directly inflates detectability even when payload is disguised.
+    - Design rate-limiting or adaptive pacing into the sending state machine so the protocol can back off when approaching a detectability threshold, rather than leaving this to the operator.
+section: §5.2
+extracted_by: claude-sonnet-4-6

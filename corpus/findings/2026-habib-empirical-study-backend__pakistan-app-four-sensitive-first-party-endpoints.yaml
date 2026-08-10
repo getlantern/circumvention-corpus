@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-habib-empirical-study-backend
+kind: deployment
+summary: Across approximately 172 observed domains in 7 Pakistani government and telecom apps, only 4 active first-party endpoints handle highly sensitive data — including identity credentials, location information, and communication metadata — revealing extreme concentration of sensitive data flows into a small number of reachable endpoints.
+techniques:
+    - measurement-platform
+censors:
+    - pk
+defense_implications:
+    - Route all traffic through a VPN or proxy tunnel rather than inspecting app-layer destination counts alone; the small number of sensitive endpoints means a single unprotected connection to a government app can expose the most sensitive user data.
+    - Prioritize coverage of government/telecom app traffic (not just browser traffic) in circumvention tooling, since sensitive credential and location data concentrates in a handful of identifiable first-party endpoints outside the browser.
+section: Abstract
+extracted_by: claude-sonnet-4-6

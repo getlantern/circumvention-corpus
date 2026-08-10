@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-behavioral-information-leakage
+kind: detection
+summary: 'A leave-one-network-out evaluation shows that behavioral classifiers trained on three anonymity networks (Tor, I2P, FreeNet, ZeroNet) fail to generalize to the held-out network, with all Macro-F1 scores remaining below 0.1822 regardless of whether structural, rhythmic, or combined descriptors are used. The highest individual result (Rhythmic, Tor held out: 0.1822) is still far below intra-network performance. This demonstrates that behavioral leakage signatures are architecture-specific rather than universal.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Behavioral signatures learned by a censor from one anonymity network cannot reliably be applied to classify traffic from an architecturally distinct network — circumvention tools that combine or mimic multiple dissimilar network architectures gain natural evasion from cross-network classifiers.
+    - Decoy-routing or bridge designs that blend traffic profiles from multiple protocol families force censors to maintain per-architecture models, significantly raising their operational cost.
+section: §4.1, Table 1
+extracted_by: claude-sonnet-4-6

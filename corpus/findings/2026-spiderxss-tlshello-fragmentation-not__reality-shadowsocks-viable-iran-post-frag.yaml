@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-spiderxss-tlshello-fragmentation-not
+kind: evaluation
+summary: Community testing in Iran following the fragmentation bypass failure confirms that REALITY and Shadowsocks remain viable circumvention mechanisms as of late July 2026. Neither protocol relies on ClientHello fragmentation for evasion, which accounts for their continued functionality under the updated Iranian filtering regime.
+techniques:
+    - sni-blocking
+    - dpi
+defenses:
+    - reality
+    - shadowsocks
+censors:
+    - ir
+defense_implications:
+    - Prioritize REALITY and Shadowsocks-family transports for Iranian users over fragmentation-dependent mechanisms when deploying or recommending tools.
+    - Track continued viability of these alternatives proactively, as Iranian infrastructure upgrades have historically followed a pattern of incremental capability additions.
+section: Abstract / issue comments
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lu-rpki-based-location-unaware-tor
+kind: defense
+summary: A client-agnostic Discount Selection algorithm—discounting consensus weights of non-ROA-covered guard relays by factor d—achieves 90.2% of clients selecting ROA-protected guards at d=0.5 and 80% network load, an 18.8% improvement over vanilla Tor, with no measurable performance difference in Shadow simulation even at 100MB transfer sizes.
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Directory authorities can implement BGP-hijack resistance without any client-side changes by publishing a single discount scalar in the hourly consensus; the discount value should be computed from current ROA-covered bandwidth and load factor to avoid overloading ROA-covered relays.
+    - Because the algorithm is client-agnostic (ignores client IP/location), it introduces no location side-channel—a strict improvement over location-aware alternatives when anonymity is the priority.
+section: §4.3
+extracted_by: claude-sonnet-4-6

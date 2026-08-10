@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-beyond-os-trust
+kind: deployment
+summary: RuStore provides a state-adjacent software supply chain through which APKs containing certificate material can reach Russian Android users at scale, creating a vector for expanding TLS trust anchors outside the OS trust store and outside Google's certificate governance. The 2022 sanctions that drove RuStore adoption also concentrated this distribution power in domestically controlled infrastructure.
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools distributed via Russian domestic app stores should be considered potentially subject to supply-chain certificate injection; deploy additional binary integrity checks independent of app-store signing.
+    - Treat Russian domestic distribution channels as a potential vector for pre-installing MITM capability on user devices before circumvention tools are even launched.
+section: Abstract
+extracted_by: claude-sonnet-4-6

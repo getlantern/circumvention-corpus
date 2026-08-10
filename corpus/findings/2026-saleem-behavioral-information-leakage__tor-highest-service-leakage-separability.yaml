@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-saleem-behavioral-information-leakage
+kind: detection
+summary: Tor exhibits the highest service separability among the four evaluated anonymity networks, achieving a Macro-F1 of 0.7165 and a cumulative normalized behavioral leakage of 3.9461 under combined structural–rhythmic classification. FreeNet exhibits the lowest combined leakage (0.8744) and the lowest intra-network Macro-F1 (0.4510). The primary leakage drivers in Tor are directional byte-exchange asymmetry (S_byte_directional_dominance, normalized MI = 0.258) and byte tempo (R_byte_tempo, normalized MI = 0.198).
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Tor's single largest leakage signal is directional byte asymmetry — designs should pad or rebalance forward/backward byte volumes to reduce this asymmetry before it reaches the exit or guard.
+    - Byte tempo (inter-arrival regularity) is the second strongest Tor signal; introduce deliberate jitter or burst-smoothing at the cell scheduler to suppress R_byte_tempo leakage.
+section: §4.2–4.3, Table 2–3
+extracted_by: claude-sonnet-4-6

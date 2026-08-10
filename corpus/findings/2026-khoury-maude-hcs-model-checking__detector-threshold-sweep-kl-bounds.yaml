@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-khoury-maude-hcs-model-checking
+kind: evaluation
+summary: Sweeping the moving-average detector threshold multiplier k shows that different adversary thresholds produce substantially different certified KL divergence lower bounds; more conservative thresholds (larger k) reduce FPR but can yield significantly larger KL lower bounds even as TPR also changes. The framework audits the HCS against a suite of statistical tests by reporting the maximum lower bound across the family.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Undetectability claims must be evaluated against a range of adversary detector thresholds, not a single chosen operating point — a protocol that passes one threshold can fail badly under a more conservative one.
+    - Protocol designers should publish KL divergence lower bounds as a function of detector configuration, not just pass/fail against a single threshold, to give deployers an honest picture of the privacy envelope.
+section: §5.2
+extracted_by: claude-sonnet-4-6

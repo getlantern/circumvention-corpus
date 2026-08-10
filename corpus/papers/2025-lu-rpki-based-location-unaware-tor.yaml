@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-lu-rpki-based-location-unaware-tor
+title: RPKI-Based Location-Unaware Tor Guard Relay Selection Algorithms
+authors:
+    - Zhifan Lu
+    - Siyang Sun
+    - Yixin Sun
+venue: PoPETs 2025
+year: 2025
+url: https://petsymposium.org/popets/2025/popets-2025-0077.php
+censors:
+    - generic
+techniques:
+    - ip-blocking
+defenses_discussed:
+    - tor
+    - bridges
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to Lantern as a core Tor anonymity system study; guard relay selection is fundamental to Tor security and circumvention usability.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/popets/2025/popets-2025-0077.php

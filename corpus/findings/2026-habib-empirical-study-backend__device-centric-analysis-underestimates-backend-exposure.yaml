@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-habib-empirical-study-backend
+kind: evaluation
+summary: Device-centric security analyses systematically underestimate user data exposure because backend infrastructure placement and jurisdictional context — not just on-device behavior — determine which actors can access sensitive data; a five-service geolocation ensemble (MaxMind, IPinfo, ip-api, DBIP, BGPView/RIPE) with CDN-aware attribution and WHOIS/BGP mapping was required to accurately characterize server-side risk.
+techniques:
+    - measurement-platform
+censors:
+    - pk
+defense_implications:
+    - Circumvention tool threat models must account for server-side data exposure, not only transport-layer visibility; effective privacy tools must protect the user both from network surveillance and from sensitive data landing on state-accessible servers.
+    - When evaluating whether a tool protects Pakistani users, map backend ASN and jurisdictional ownership of destination endpoints — app-store or privacy-policy metadata is insufficient.
+section: Abstract
+extracted_by: claude-sonnet-4-6

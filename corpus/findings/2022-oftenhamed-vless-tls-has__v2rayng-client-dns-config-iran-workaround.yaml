@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-oftenhamed-vless-tls-has
+kind: defense
+summary: Configuring client-side DNS settings within V2rayNG resolves the DNS poisoning component of Iran's multi-layer censorship when using VLESS+TLS from a domestic VPS. This workaround routes DNS queries through the tunnel rather than the local, poisoned resolver, restoring domain resolution for blocked services.
+techniques:
+    - dns-poisoning
+defenses:
+    - vless
+censors:
+    - ir
+defense_implications:
+    - Expose a DNS-over-tunnel option as a first-class user-configurable setting in V2Ray/Xray-based clients so users can remediate DNS poisoning without advanced configuration.
+    - Default the in-app DNS to a tunneled resolver for users connecting from high-censorship ISPs in Iran; a poisoned local DNS is the norm, not an edge case.
+section: Issue thread (abstract)
+extracted_by: claude-sonnet-4-6

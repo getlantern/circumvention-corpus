@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lu-rpki-based-location-unaware-tor
+kind: detection
+summary: 'Location-aware Tor relay selection algorithms leak client AS-level location: an adversary observing 5 guard selections can guess the client''s AS in under 10 attempts, and under 5 attempts after 15 selections. A chosen-destination attack exploiting guard selection bias finds the client''s guard relay 94% of the time after 300 destination visits.'
+techniques:
+    - flow-correlation
+    - bgp-hijack
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Any relay selection algorithm that weights relays differently per client location creates a side-channel; prefer client-agnostic weight distributions or limit per-relay weight variance to a bounded factor (e.g., θ=5) to cap guard placement attack surface.
+    - Circumvention tools building on Tor should avoid topology-aware path selection unless they can bound the resulting entropy leak to below 1 bit per observed selection.
+section: §2.1
+extracted_by: claude-sonnet-4-6

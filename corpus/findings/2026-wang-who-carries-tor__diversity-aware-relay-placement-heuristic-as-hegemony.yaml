@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-who-carries-tor
+kind: defense
+summary: The authors propose a diversity-aware relay placement heuristic derived from bandwidth-weighted AS Hegemony scores to guide future mitigation of transit concentration. By incorporating consensus bandwidth weighting into hegemony calculations, the methodology reflects actual Tor traffic patterns rather than relay counts alone.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Adopt bandwidth-weighted AS Hegemony (not unweighted relay count) as the canonical diversity metric when deciding where to solicit or incentivize new relay deployment.
+    - Integrate the diversity-aware placement heuristic into relay operator guidance and potentially into the Tor consensus weight algorithm to automatically discount relays that increase AS-level concentration.
+section: Abstract
+extracted_by: claude-sonnet-4-6

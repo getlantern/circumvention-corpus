@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-lu-rpki-based-location-unaware-tor
+kind: defense
+summary: A linear-programming Matching Selection algorithm pairing ROA-covered clients with ROV-enforcing guard ASes (and vice versa) achieves 48.47% of all client-relay pairs with full ROA+ROV protection using parameters l=0.8, d1=0.9, d2=0.7, B=1.5—a multifold increase over vanilla Tor's base rate. The algorithm is constrained so no relay exceeds θ=5× its vanilla selection probability, bounding guard placement attack risk.
+techniques:
+    - bgp-hijack
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Full BGP-hijack resistance requires both ROA (prefix authorization) and ROV (route filtering at the AS); designing relay selection to co-locate client and guard in mutually ROV-enforcing ASes provides deterministic rather than merely probabilistic hijack protection.
+    - Implementing the matching optimization at directory authorities and distributing per-subcategory weight tables to clients (keyed only on client ROA/ROV status, not location) preserves anonymity while enabling stronger routing security.
+section: §5.3
+extracted_by: claude-sonnet-4-6

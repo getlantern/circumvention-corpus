@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-oftenhamed-vless-tls-has
+kind: detection
+summary: 'Iran''s censorship against VLESS+TLS users on domestic VPS infrastructure is selective by destination type: Telegram, which is accessed by IP, remained reachable, while Instagram, YouTube, and Facebook were blocked or partially inaccessible. This indicates blocking operates at the destination-IP/domain layer independently of the transport protocol.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - vless
+censors:
+    - ir
+defense_implications:
+    - Transport-layer obfuscation (VLESS+TLS) does not prevent destination-based filtering; tools must also handle DNS resolution and CDN IP reachability to avoid selective breakage.
+    - Design for Telegram-style IP-direct fallback as a signal to diagnose whether a blockage is DNS- or IP-list-based rather than protocol-based.
+section: Issue thread (abstract)
+extracted_by: claude-sonnet-4-6

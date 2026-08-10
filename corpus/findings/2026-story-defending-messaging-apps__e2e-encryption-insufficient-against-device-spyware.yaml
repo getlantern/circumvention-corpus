@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-story-defending-messaging-apps
+kind: detection
+summary: 'End-to-end encryption in messaging apps such as Signal, WhatsApp, and iMessage protects against passive government surveillance but offers limited protection against targeted spyware: if a user''s device is compromised, the attacker gains access to all messages regardless of transport-layer encryption.'
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should not treat transport-layer encryption as a complete security guarantee for high-risk users — device-level compromise bypasses all network-layer protections and requires separate mitigation.
+    - For activists and journalists in high-surveillance environments, architectural isolation between network-facing components and secure storage is necessary beyond protocol-level encryption.
+section: Abstract
+extracted_by: claude-sonnet-4-6

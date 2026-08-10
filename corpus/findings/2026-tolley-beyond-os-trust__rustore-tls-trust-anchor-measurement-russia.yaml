@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-beyond-os-trust
+kind: evaluation
+summary: A measurement study of RuStore — Russia's domestic Android marketplace promoted after 2022 sanctions isolated Russian users from Google Play — finds that APKs bundle certificate material and trust-configuration artifacts independently of the OS trust store. The study combines ecosystem-wide measurement with a weighted top-application analysis to characterize how this app-level certificate bundling expands the effective TLS trust boundary.
+techniques:
+    - measurement-platform
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools targeting Russian users cannot treat the Android OS trust store as a security boundary; implement certificate pinning or SPKI pinning against known server keys to resist app-level CA injection.
+    - Monitor RuStore and similar Russian domestic distribution channels for CA certificate distribution patterns that may silently expand the MITM surface for Russian Android users.
+section: Abstract
+extracted_by: claude-sonnet-4-6

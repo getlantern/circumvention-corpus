@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-oftenhamed-vless-tls-has
+kind: detection
+summary: 'Community analysis of the Iran VLESS+TLS failure identified DNS poisoning as a primary root cause: domain-based resolution for services like Instagram, YouTube, and Facebook was disrupted even when traffic transited a VLESS+TLS tunnel from a domestic VPS, bypassing the transport-layer obfuscation entirely.'
+techniques:
+    - dns-poisoning
+defenses:
+    - vless
+censors:
+    - ir
+defense_implications:
+    - Bundle a trusted, non-local DNS resolver (DoH, DoT, or DNS-over-proxy) inside the tunnel to prevent the censor's poisoned DNS from affecting destination resolution.
+    - Do not rely on the system resolver when operating from within a censored network, even when the tunnel transport is undetected.
+section: Issue thread (abstract)
+extracted_by: claude-sonnet-4-6

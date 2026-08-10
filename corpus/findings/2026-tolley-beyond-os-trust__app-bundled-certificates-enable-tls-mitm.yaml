@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-tolley-beyond-os-trust
+kind: detection
+summary: Application packaging and software supply chains in Russia's Android ecosystem can expand the effective TLS trust boundary beyond OS-level controls, enabling MITM attacks on TLS connections for apps that bundle or inherit Russian-controlled certificate authorities. This bypasses the assumption that the OS trust store constrains which CAs can intercept encrypted traffic.
+techniques:
+    - middlebox-interference
+    - dpi
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools must implement application-layer authentication independent of TLS certificate chain validation for connections to Russia-deployed servers, as intermediate CA MITM cannot be ruled out.
+    - Server SPKI pinning should be mandatory in circumvention tool client-server communications for Russian deployments; do not rely on certificate chain validation to a trusted root.
+section: Abstract
+extracted_by: claude-sonnet-4-6

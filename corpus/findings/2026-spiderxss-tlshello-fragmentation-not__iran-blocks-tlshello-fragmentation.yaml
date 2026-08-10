@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-spiderxss-tlshello-fragmentation-not
+kind: detection
+summary: Iran's censorship infrastructure began dropping all fragmented TLS ClientHello packets around late July 2026, rendering the tlshello fragmentation bypass technique non-functional. The blocking took effect approximately July 27, 2026, based on user-reported timelines in the net4people/bbs community report.
+techniques:
+    - dpi
+    - sni-blocking
+    - middlebox-interference
+censors:
+    - ir
+defense_implications:
+    - Do not rely on TLS ClientHello fragmentation as a sole bypass layer for Iran; treat it as deprecated for that censor as of mid-2026.
+    - Audit any tool that uses fragmentation as a primary SNI-evasion primitive and gate-check it against live Iranian infrastructure before shipping.
+section: Issue body (Jul 31 2026)
+extracted_by: claude-sonnet-4-6

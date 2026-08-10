@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-who-carries-tor
+kind: evaluation
+summary: SURF (AS1103) surged to over 50% exit hegemony in 2024, meaning a single AS gained visibility into the majority of bandwidth-weighted Tor exit traffic. This represents a dramatic concentration event in an otherwise persistent but distributed chokepoint landscape spanning 2015–2025.
+techniques:
+    - flow-correlation
+    - asn-blackholing
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Monitor AS-level exit hegemony metrics continuously; a single AS exceeding ~20% exit bandwidth share should trigger active rebalancing of relay capacity away from that AS.
+    - Tor directory authorities and relay operators should treat SURF AS1103 concentration as a case study for rapid-onset chokepoint risk, warranting emergency bandwidth-weight policy interventions.
+section: Abstract
+extracted_by: claude-sonnet-4-6

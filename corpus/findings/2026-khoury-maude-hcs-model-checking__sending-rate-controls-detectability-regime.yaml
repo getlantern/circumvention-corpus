@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-khoury-maude-hcs-model-checking
+kind: defense
+summary: Performance tuning alone — adjusting mean inter-post wait time with a fixed detector threshold — can shift the HCS between high-detectability and low-detectability operating regimes. Even with no change to the adversary's classifier or the protocol's structural properties, wait-time variation moves the certified KL divergence lower bound across operating points that span qualitatively different detection risk levels.
+techniques:
+    - traffic-shape
+defenses:
+    - steganography
+    - dns-tunneling
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Embed explicit timing controls (configurable inter-message delays, jitter, rate caps) into HCS designs as a primary undetectability lever — traffic-rate shaping is a more accessible countermeasure than structural protocol changes.
+    - Provide operators with a pacing configuration parameter tied to a published privacy-performance curve so they can select an operating point appropriate to their threat model and bandwidth requirements.
+section: §5.2
+extracted_by: claude-sonnet-4-6

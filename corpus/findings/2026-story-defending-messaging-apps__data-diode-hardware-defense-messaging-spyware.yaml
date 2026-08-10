@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-story-defending-messaging-apps
+kind: defense
+summary: The paper proposes using data diodes — hardware-enforced one-way network devices — to harden messaging apps against spyware, providing a physical enforcement boundary that software-only sandboxing cannot replicate, targeted at journalists, politicians, and other high-value surveillance targets.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Hardware-enforced unidirectional data flow offers a categorically stronger exfiltration barrier than software isolation for the highest-risk users; circumvention tool designers should evaluate data-diode architectures for key-material and message-storage components.
+    - 'Design circumvention tools for tiered deployment: standard software-only builds for general users, hardware-isolated variants for journalists and activists facing nation-state spyware threats.'
+section: Abstract
+extracted_by: claude-sonnet-4-6

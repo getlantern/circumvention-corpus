@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-wang-who-carries-tor
+title: Who Carries Tor? Measuring Bandwidth-Weighted Transit Concentration
+authors:
+    - Isabelle Wang
+    - Shinyoung Cho
+venue: FOCI 2026
+year: 2026
+url: https://petsymposium.org/foci/2026/foci-2026-0014.php
+censors:
+    - generic
+techniques:
+    - measurement-platform
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Informs whether Tor infrastructure is vulnerable to carrier-level or AS-level blocking strategies censors might deploy.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://petsymposium.org/foci/2026/foci-2026-0014.php

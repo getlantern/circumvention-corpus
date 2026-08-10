@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-spiderxss-tlshello-fragmentation-not
+title: tlshello Fragmentation is not working in Iran anymore
+authors:
+    - '@SpiderXss'
+    - '@therealtunge'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/640
+abstract: A community report from August 2026 documenting Iran's new capability to detect and block fragmented TLS ClientHello packets, which previously allowed circumvention of SNI-based blocking by enabling CDN IP usage with both clean and blocked SNIs. The technique ceased functioning approximately late July 2026. Users confirm REALITY and ShadowSocks remain viable alternatives.
+censors:
+    - ir
+techniques:
+    - middlebox-interference
+defenses_discussed:
+    - reality
+    - shadowsocks
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Real-time signal of evolving Iranian middlebox capabilities; relevant for assessing robustness of fragmentation-dependent and alternative circumvention mechanisms.
+visibility: public
+date_added: "2026-08-10"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/640
