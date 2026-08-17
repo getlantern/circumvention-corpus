@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-ciphersight-robust-website
+kind: detection
+summary: In open-world evaluation — where 213,099 traces from websites absent from training must be rejected — CipherSight achieves 97.64% AUROC, 88.54% AUPR, and 94.81% OSCR, exceeding the strongest baseline (RF at 93.04% AUROC, 72.03% AUPR, 87.61% OSCR) by 4.60, 16.51, and 7.20 percentage points respectively, demonstrating effective discrimination of monitored sites even amid a large pool of unseen traffic.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - 'Open-world robustness at 97.64% AUROC means that routing circumvention traffic through a large number of cover domains provides limited protection: a sufficiently capable fingerprinter can still isolate monitored from unmonitored sites with high confidence.'
+    - Effective defenses must make circumvention traffic indistinguishable from the full distribution of HTTPS traffic at the TLS-record level, not merely blend with a broad set of monitored websites.
+section: Table 5, Open-World Evaluation
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cheek-gaps-record-observability
+kind: evaluation
+summary: 'Prolonged conflicts with gradual infrastructure recovery represent a third category of detection gap: IODA-style automated systems struggle to distinguish ongoing partial outages from normal network fluctuation, causing recovery-phase disruptions in conflict zones (e.g., Myanmar, Sudan) to go undocumented in automated records.'
+techniques:
+    - measurement-platform
+censors:
+    - mm
+defense_implications:
+    - In conflict-zone deployments, design circumvention infrastructure to tolerate persistent partial degradation rather than treating it as a transient event — 'mostly up' may be the long-term steady state, not a signal of imminent full recovery.
+    - Time-boxed fallback timeouts calibrated to normal outage durations will misfire in prolonged-conflict scenarios; implement adaptive timeout strategies based on geopolitical context signals.
+section: §3 Detection Gap Categories
+extracted_by: claude-sonnet-4-6

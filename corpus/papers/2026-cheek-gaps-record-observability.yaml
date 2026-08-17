@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-cheek-gaps-record-observability
+title: 'Gaps in the Record: On the Observability and Documentation of Internet Shutdowns'
+authors:
+    - Simon Cheek
+    - Zachary S. Bischof
+    - Amanda Meng
+    - Alberto Dainotti
+venue: FOCI 2026
+year: 2026
+url: https://www.petsymposium.org/foci/2026/foci-2026-0015.php
+abstract: 'Comparative analysis of internet shutdown detection comparing IODA''s automated network-level approach (BGP, Active Probing, Telescope, Google Search) against Access Now''s #KeepItOn Shutdown Tracker. Identifies three categories of detection gaps: prolonged conflicts with gradual infrastructure recovery, AS-targeted shutdowns affecting specific ISPs rather than entire countries, and application-layer blocking invisible to network-level measurement. Analysis of 73 unmatched events (2022 onward) reveals that application-layer shutdowns represent a growing blind spot in automated detection systems.'
+censors:
+    - mm
+techniques:
+    - measurement-platform
+    - bgp-hijack
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Paper discusses shutdowns in Myanmar, Palestine, Ukraine, Sudan, and Senegal; only Myanmar currently in taxonomy. Key finding that application-layer blocking evades network-level measurement is relevant to understanding censor infrastructure and detection gaps.
+visibility: public
+date_added: "2026-08-17"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/647

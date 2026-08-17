@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patel-generative-ai-encrypted
+kind: evaluation
+summary: 'Synthetic anomalous traffic (attack patterns) is substantially harder to reproduce than normal traffic: models trained on synthetic data showed good precision for normal traffic (class 0) but notably lower precision for anomalous traffic (class 1), with tree-based models (XGBoost, Random Forest) proving more robust to synthetic training data than neural networks.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Real circumvention traffic retains subtle statistical signatures not captured by synthetic generation — this implies that censors relying solely on synthetically augmented classifiers will have higher false-negative rates for novel circumvention protocols not present in training data.
+    - Introducing deliberate statistical irregularities (noise patterns, rare burst signatures) that diverge from cluster-center behavior can evade classifiers trained on cluster-based synthetic data.
+section: §V.C, Fig. 11
+extracted_by: claude-sonnet-4-6

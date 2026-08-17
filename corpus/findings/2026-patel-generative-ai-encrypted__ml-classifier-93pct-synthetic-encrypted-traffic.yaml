@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patel-generative-ai-encrypted
+kind: detection
+summary: XGBoost classifiers trained and tested on real encrypted traffic data (CICIDS2017 + darknet) achieved 99.8% accuracy; models trained only on synthetic data reached 93.1% accuracy on real-data test sets, demonstrating that ML classifiers can effectively detect anomalous encrypted traffic without inspecting payload contents.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Flow-level behavioral features (packet sizes, timing, directional counts) alone enable >93% anomaly detection — circumvention tools must actively shape these metadata signatures, not rely on encryption alone.
+    - The gap between synthetic-trained (93.1%) and real-trained (99.8%) detectors is narrow enough that a censor can bootstrap capable classifiers even with limited labeled circumvention-traffic samples.
+section: §V.C
+extracted_by: claude-sonnet-4-6

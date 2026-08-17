@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cheek-gaps-record-observability
+kind: evaluation
+summary: AS-targeted shutdowns — where censors restrict connectivity at specific ISPs or autonomous systems rather than imposing country-wide outages — evade country-level aggregation in automated detection systems, which are calibrated to detect national-scope disruptions.
+techniques:
+    - measurement-platform
+    - asn-blackholing
+censors:
+    - generic
+defense_implications:
+    - Circumvention deployment health checks and fallback logic must operate at ASN granularity, not country level — a user on a targeted ISP may be cut off while users on other domestic ISPs appear unaffected.
+    - Distribute circumvention servers and bridge discovery across multiple ASNs in high-risk countries so an AS-targeted shutdown doesn't simultaneously block access and the user's ability to retrieve new server addresses.
+section: §3 Detection Gap Categories
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cheek-gaps-record-observability
+kind: evaluation
+summary: 'Comparative analysis of 73 unmatched events (2022 onward) between IODA''s automated network-level detection and Access Now''s #KeepItOn Shutdown Tracker reveals systematic documentation gaps — shutdowns recorded by human reporters are frequently absent from automated measurement platforms and vice versa.'
+techniques:
+    - measurement-platform
+    - bgp-hijack
+    - active-probing
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools relying on automated shutdown-detection APIs (IODA, Censored Planet) to trigger backup routes will miss a significant fraction of real shutdowns; supplement with human-reported signal sources.
+    - Building a 'no censorship detected' assumption into fallback logic is unsafe — automated platforms systematically undercount shutdowns documented by civil-society monitors.
+section: Abstract / §1 Introduction
+extracted_by: claude-sonnet-4-6

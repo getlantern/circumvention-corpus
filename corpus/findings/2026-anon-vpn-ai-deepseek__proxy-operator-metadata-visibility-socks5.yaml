@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-vpn-ai-deepseek
+kind: deployment
+summary: Malicious VPN browser extensions using chrome.proxy.settings route all browser requests through an operator-controlled SOCKS5 proxy, giving that operator direct visibility into source IP, connection destinations, TLS SNI hints, and cleartext HTTP content. For HTTPS destinations the payload is not readable, but connection metadata, access patterns, and DNS queries remain exposed at the proxy layer regardless of in-tunnel encryption.
+techniques:
+    - sni-blocking
+    - traffic-shape
+defenses:
+    - shadowsocks
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - Proxy-based circumvention tools should treat the proxy operator as an untrusted on-path observer and use ECH or DNS-over-HTTPS to prevent SNI and resolver metadata from leaking to the proxy layer even when the payload is encrypted.
+    - User-facing documentation should explain that a 'working' proxy connection does not imply operator trustworthiness or traffic metadata privacy; users accessing sensitive resources should use end-to-end authenticated encryption independent of the proxy tunnel.
+section: §免费VPN扩展的核心问题
+extracted_by: claude-sonnet-4-6

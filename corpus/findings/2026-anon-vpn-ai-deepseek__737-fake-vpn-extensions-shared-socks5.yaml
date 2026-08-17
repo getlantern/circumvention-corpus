@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-vpn-ai-deepseek
+kind: evaluation
+summary: A code-level audit of 737 Chrome VPN and proxy browser extensions found that 520 of 522 sampled packages routed all non-loopback browsing traffic to a single shared SOCKS5 infrastructure; 274 of the 737 impersonated 66 known VPN or privacy brands across at least 40 developer accounts, and 516 of the identified extensions remained live in the Chrome Web Store at the time of data collection.
+techniques:
+    - measurement-platform
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention projects must provide users a canonical, brand-verified installation path (e.g., a direct link from the official domain) rather than relying on store search discovery, where impersonators with similar names and icons can dominate results.
+    - Extensions that allow remote configuration changes after install-time review can silently substitute proxy endpoints; tools should use signed, pinned server configurations to prevent post-install infrastructure substitution.
+section: §免费VPN扩展的核心问题
+extracted_by: claude-sonnet-4-6

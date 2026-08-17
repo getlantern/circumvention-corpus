@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patel-generative-ai-encrypted
+kind: detection
+summary: Feature importance analysis across all models identified Flow Duration and packet length features (Forward Packet Length Maximum, Backward Packet Length Maximum, Total Length of Forward/Backward Packets) as the most discriminative for separating normal from anomalous encrypted traffic — these seven flow-level metadata features suffice to classify traffic without DPI.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols should randomize or normalize Flow Duration and packet length distributions to match benign baselines; fixed-size padding and burst-splitting target precisely these high-importance features.
+    - Directional asymmetry (forward vs. backward packet counts and bytes) is a high-signal feature — protocols that proxy symmetrically or mimic browser-like request/response ratios reduce classifier confidence.
+section: §III.A, §V.C, Fig. 14
+extracted_by: claude-sonnet-4-6

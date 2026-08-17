@@ -1,0 +1,117 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-anon-vpn-ai-deepseek
+title: 免费 VPN 扩展接管流量，AI 推理日志泄密：DeepSeek Harness、平台审计与数学进展周报 | 二毛
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/blog/weekly-news-2026-08-13/
+abstract: !!binary |
+    5YWN6LS5IFZQTiDmianlsZXmjqXnrqHmtYHph4/vvIxBSSDmjqjnkIbml6Xlv5fms4Tlr4
+    bvvJpEZWVwU2VlayBIYXJuZXNz44CB5bmz5Y+w5a6h6K6h5LiO5pWw5a2m6L+b5bGV5ZGo
+    5oqlIHwg5LqM5q+bCgpbU2tpcCB0byBjb250ZW50XSgjVlBDb250ZW50KQoKIyDlhY3otL
+    kgVlBOIOaJqeWxleaOpeeuoea1gemHj++8jEFJIOaOqOeQhuaXpeW/l+azhOWvhu+8mkRl
+    ZXBTZWVrIEhhcm5lc3PjgIHlubPlj7DlrqHorqHkuI7mlbDlrabov5vlsZXlkajmiqUKCu
+    e6piA3NTAyIOWtl+Wkp+e6piAyNSDliIbpkp8KClvmr4/lkajmlrDpl7tdKC9ibG9nL3Rh
+    Z3MvP3RhZz3mr4/lkajmlrDpl7spW+eDreeCueaWsOmXu10oL2Jsb2cvdGFncy8/dGFnPe
+    eDreeCueaWsOmXuylb5pWw5a2X55Sf5rS7XSgvYmxvZy90YWdzLz90YWc95pWw5a2X55Sf
+    5rS7KVtBSV0oL2Jsb2cvdGFncy8/dGFnPUFJKQoKLi4u4oCUCgoyMDI2LTA4LTE0CgoyMD
+    I2IOW5tCA4IOaciCA3IOaXpeiHsyAxMyDml6XvvIzmnIDlgLzlvpflhbPms6jnmoTkuI3m
+    mK/lj4jlpJrkuoblh6DkuKrigJxBSSDmlrDlip/og73igJ3vvIzogIzmmK/miJHku6zmio
+    rku4DkuYjkuqTnu5nkuoblt6XlhbfvvJrmtY/op4jlmajmianlsZXlj6/ku6XmjqXnrqHl
+    hajpg6jnvZHpobXmtYHph4/vvIzlhazlvIAgQWdlbnQg5pel5b+X5Y+v6IO96JeP552A5a
+    +G6ZKl77yM5LyB5Lia6KGl5LiB5ouW5bu25Lya5ZyoIFBvQyDlhazlvIDlkI7ov4XpgJ/l
+    j5jmiJDmlLvlh7vpnaLjgILlkIzml7bvvIxEZWVwU2VlayDlj5HluIPkuobnnJ/mraPlj6
+    /ov5DooYzkvYbmmI7noa7kvJrnoLTlnY/lhbzlrrnnmoQgSGFybmVzc++8jOW5s+WPsOeb
+    keaOp+S4jiBBSSDmlbDlrabnoJTnqbbkuZ/nu5nlh7rkuobkuKTnp43kuI3lkIznmoTigJ
+    zlj6/moLjmn6Xov5vmraXigJ3jgIIKCiFbMjAyNiDlubQgOCDmnIggNyDml6Xoh7MgMTMg
+    5pelIEFJIOW3peWFt+OAgVZQTiDmianlsZXpo47pmankuI7lubPlj7Dpl67otKPlkajmiq
+    XlsIHpnaJdKGh0dHBzOi8vaW1hZ2UuZXJtYW8ubmV0L2ltYWdlcy9ibG9nL3dlZWtseS1u
+    ZXdzLTIwMjYtMDgtMTMvMjAyNjA4MTRfMDkxMTE5LTcwY2FmMS5zdmcpCgo+ICoq6I2J56
+    i/6K+05piO77yaKiog5pys5paH55Sx5LqM5q+b5Y2a5a6i5L6d5o2u5YWs5byA5p2l5rqQ
+    5LiO6Ieq5Yqo5YyW5pW055CG55Sf5oiQ77yM5b2T5YmN562J5b6F5Lq65bel5a6h5qC444
+    CC5paH5Lit55qE4oCc5bey56Gu6K6k4oCd5Y+q6KaG55uW5omA5YiX5p2l5rqQ6IO95aSf
+    55u05o6l5pSv5oyB55qE6IyD5Zu077yb5Y6C5ZWG6K+05rOV44CB56CU56m257uT6K6644
+    CB5oql6YGT6KeC5a+f5LiO5pys56uZ5YiG5p6Q5YiG5Yir5qCH5rOo77yM5Z2H5LiN5YaS
+    5YWF5pys56uZ5a6e5rWL44CCCgojIyBb5pys5ZGo5pyA5YC85b6X5YWz5rOoXSgj5pys5Z
+    Go5pyA5YC85b6X5YWz5rOoKQoKfCDmlrnlkJEgICAgIHwg5LqL5Lu2ICAgICAgICAgICAg
+    ICAgICAgICAgfCDlt7LmoLjlrp7kuovlrp4gICAgICAgICAgICAgICAgICAgICAgICAgIC
+    AgICAgICAgICAgICAgICAgICAgICB8IOS4uuS7gOS5iOmHjeimgSAgICAgICAgICAgICAg
+    ICAgICAgICAgICAgICAgfCDor4Hmja7nirbmgIEgICAgICAgICAgICAgICAgICAgICAgfA
+    p8IC0tLS0tLSB8IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gfCAtLS0tLS0tLS0tLS0tLS0t
+    LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHwgLS0tLS0tLS0tLS0tLS
+    0tLS0tLS0tLS0tLS0tLS0tLS0tIHwgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSB8Cnwg
+    QUkg5bel5YW3ICB8IERlZXBTZWVrIEhhcm5lc3Mg5byA5Y+R6ICF6aKE6KeIIHwg5a6Y5p
+    a55LuT5bqT5o+Q5L6bIGBucHggQGRlZXBzZWVrLWFpL2RzaCB3ZWJgIOWQr+WKqOaWueW8
+    j+OAgeaPkuS7tuaetuaehOS4jiBNSVQg6K645Y+v6K+BIHwg6IO96L+Q6KGM5LiN562J5L
+    qO5o6l5Y+j56iz5a6a77yM55Sf5Lqn5o6l5YWl6KaB5Li656C05Z2P5oCn5Y+Y5pu055WZ
+    5Ye66L6555WMICAgICAgICB8IOWumOaWueS7k+W6k++8jHZlcmlmaWVkICAgICAgICAgIC
+    AgIHwKfCDot6jlooPkuI7lronlhaggIHwgNzM3IOS4quS7v+WGkiBWUE4g5omp5bGVICAg
+    ICAgICAgfCA1MjIg5Liq5Y+v5Y+W5qC35YyF5LitIDUyMCDkuKrov57mjqXlkIzkuIAgU0
+    9DS1M1IOS9k+ezu++8jDUxNiDkuKrph4fpm4bml7bku43kuIrmnrYgICAgICAgICAgIHwg
+    5om+5Yiw4oCc6IO96L+e4oCd55qE5YWN6LS55omp5bGV77yM5Y+v6IO9562J5LqO5oqK5Y
+    Wo6YOo5rWP6KeI5rWB6YeP5Lqk57uZ5pyq55+l6L+Q6JCl5pa5ICAgIHwg5LiA5omL5Luj
+    56CB56CU56m2ICsg54us56uL5oql6YGT77yMdmVyaWZpZWQgICAgfAp8IEFJIOWuieWFqC
+    AgfCDliqDlr4bmjqjnkIblnZflj6/ooqvph43mlL7op6PnoIEgICAgICAgICAgICB8IOeg
+    lOeptuiAheS7juWFrOW8gOi9qOi/ueino+eggSAzMTUsMzIwIOS4quaOqOeQhuWdl++8m+
+    S4u+imgeaUu+WHu+aNruensOW3sue8k+inoyAgICAgICAgICAgICAgICAgICAgfCDmuIXn
+    kIblj6/op4HmloflrZfkuI3otrPku6Xkv53or4EgQWdlbnQg5pel5b+X5rKh5pyJ5rOE6Z
+    yy5a+G6ZKl5ZKM56eB5Lq65L+h5oGvICAgfCDorrrmlocgKyDni6znq4vmiqXpgZPvvIx2
+    ZXJpZmllZCAgICAgICAgfAp8IOS8geS4muWuieWFqCAgIHwgU2hhcmVQb2ludCBQb0Mg5Z
+    CO5Ye6546w5Yip55SoICAgfCBDVkUtMjAyNi01NTA0MCDlj6/orqnov5znqIvmnKrorqTo
+    r4HmlLvlh7vogIXlhpLlhYXnlKjmiLfmiJbnrqHnkIblkZjvvIw3IOaciOW3suacieihpe
+    S4gSAgICAgICAgICAgIHwg4oCc6KGl5LiB5bey5Y+R5biD4oCd5LiN5piv4oCc6LWE5Lqn
+    5bey5L+u5aSN4oCd77yMUG9DIOS8muaYvuiRl+WOi+e8qeaLluW7tueql+WPoyAgICB8IF
+    JhcGlkNyDliIbmnpAgKyDliKnnlKjop4LmtYvvvIx2ZXJpZmllZCB8Cnwg5bmz5Y+w6Zeu
+    6LSjICAgfCBGbG9jayDovabniYzmlbDmja7lupPmlbTmlLkgICAgICAgICAgfCDlhazlj7
+    jmib/or7rlvLrliLbmoYjku7bnvJblj7fjgIHlvILluLjlrqHorqHlubbnvKnnn63pu5jo
+    rqTnlZnlrZjvvIzkvYbmjqrmlr3lsJrmnKrlhajpnaLnlJ/mlYggICAgICAgICAgICAgIC
+    AgICAgICB8IOecn+ato+eahOmakOengeS/neaKpOimgeeci+m7mOiupOadg+mZkOOAgeeV
+    meWtmOOAgeWkjeaguOS4juWklumDqOe6puadn++8jOiAjOS4jeaYr+WjsOaYjiAgICB8IO
+    e+juiBlOekvuaKpemBk++8jHZlcmlmaWVkICAgICAgICAgICAgfAp8IOenkeWtpuS4jiBB
+    SSB8IENsYXVkZSDmj5Dpq5jpu47mm7zpm7bngrnmr5TkvovkuIvnlYwgICAgICB8IOWFrO
+    W4g+adkOaWmeensOS4i+eVjOS7jiA0MS42JSDmj5Doh7MgNjcuMiXvvIzmj5Dkvpvorrrm
+    lofjgIHov4fnqIvorrDlvZXkuI4gTGVhbiDku5PlupMgICAgICAgICAgIHwgQUkg5rKh5p
+    yJ6K+B5piO6buO5pu854yc5oOz77yM5Y205bGV56S65LqG5aSx6LSl44CB5LiT5a625aSN
+    5qC45LiO5b2i5byP5YyW6aqM6K+B5oCO5qC357uE5ZCIIHwg6K665paH5LiO5LiT5a625p
+    2Q5paZ77yMdmVyaWZpZWTvvIzlvoXlkIzooYzor4Torq4gICAgfAoK6L+Z5YWt5p2h5Li7
+    5paw6Ze75Lit77yM5YmN5Zub5p2h5bGe5LqO5LqM5q+b5Y2a5a6i6ZW/5pyf5YWz5rOo55
+    qEIEFJ44CB572R57uc5a6J5YWo44CB5pWw5a2X5bel5YW35ZKM6Leo5aKD6K6/6Zeu77yb
+    5ZCO5Lik5p2h5YiG5Yir5o+Q5L6b5bmz5Y+w6Zeu6LSj5ZKM5Lq654mp56eR5a2m5LmL5a
+    SW55qE55+l6K+G5byg5Yqb44CC6L275p2+6aG55Y2V5YiX77yM5LiN5ou/5a6D5aGr5YWF
+    5Li75paw6Ze75pWw6YeP44CC5omA5pyJ5LiD5Lu95pel5qGj546w5Z2H5Li6IGBjb21wbG
+    V0ZWDvvJo4IOaciCAxMiDml6Xljp/lhYjnvLrmoaPvvIzmnKzova7lj6rooaXph4for6Xm
+    l6XvvIzmsqHmnInph43mkJzlhbbkvZnlha3lpKnjgIIKCiMjIFtBSSDlt6Xlhbfov5vlha
+    XigJzmoYbmnrbmnJ/igJ3vvJpEZWVwU2VlayBIYXJuZXNzIOiDvei3ke+8jOS9huS4jeim
+    geWBh+ijheW3sue7j+eos+Wuml0oI2FpLeW3peWFt+i/m+WFpS3moYbmnrbmnJ8tZGVlcH
+    NlZWstaGFybmVzcy3og73ot5Et5L2G5LiN6KaB5YGH6KOF5bey57uP56iz5a6aKQoKOCDm
+    nIggMTMg5pel77yMW0RlZXBTZWVrIEhhcm5lc3Mg5a6Y5pa55LuT5bqTXShodHRwczovL2
+    dpdGh1Yi5jb20vZGVlcHNlZWstYWkvZGVlcHNlZWstaGFybmVzcynlhazlvIDjgILlroPk
+    uI3mmK/kuIDkuKrlj6rmnInkuqflk4HmiKrlm77lkozpooTnuqbmjInpkq7nmoTpooTlkY
+    rvvJpSRUFETUUg57uZ5Ye655u05o6l6L+Q6KGM5ZG95LukIGBucHggQGRlZXBzZWVrLWFp
+    L2RzaCB3ZWJg77yM6buY6K6k5Zyo5pys5py6IGAxMjcuMC4wLjE6MzA4MGAg5o+Q5L6bIF
+    dlYiBVSe+8m+S5n+e7meWHuuS7jua6kOeggeWFi+mahuOAgeWuieijheS+nei1luOAgeae
+    hOW7uuWSjOWQr+WKqOeahOa1geeoi+OAgumhueebrumHh+eUqCBNSVQg6K645Y+v6K+B77
+    yM5bm25oqK6K6o6K665Yy644CB5byA5Y+R5paH5qGj5ZKM5o+S5Lu25Y+R546w5pa55byP
+    5LiA6LW35byA5pS+44CCCgrnnJ/mraPlgLzlvpfop6Pph4rnmoTmmK/lroPoh6rnp7AgYW
+    dlbnQgKipoYXJuZXNzKirvvIzogIzkuI3mmK/lj4jkuIDkuKrogYrlpKnnvZHpobXjgIJI
+    YXJuZXNzIOabtOWDj+aKiuaooeWei+OAgeW3peWFt+OAgeS4iuS4i+aWh+OAgeS7u+WKoe
+    W+queOr+OAgeeUqOaIt+eVjOmdouWSjOaJqeWxleacuuWItuaOpeWcqOS4gOi1t+eahOi/
+    kOihjOmqqOaetuOAguWumOaWueW8uuiwg+KAnOS4gOWIh+eahuaPkuS7tuKAne+8jOW6le
+    WxgueUsSBDb3JkaXMg5o+Q5L6b5Y+v57uE5ZCI5p625p6E44CC5a+55byA5Y+R6ICF5p2l
+    6K+077yM6L+Z5oSP5ZGz552A5pu/5o2i5oiW5aKe5Yqg6IO95Yqb5pe277yM55CG6K665L
+    iK5LiN5b+F5LiN5pat5L+u5pS55LiA5Z2X6LaK5p2l6LaK5aSn55qE5qC45b+D77yb5a+5
+    5pmu6YCa55So5oi35p2l6K+077yM55y85YmN5pyA55u05o6l55qE5Y+Y5YyW5Y+q5piv5Y
+    +v5Lul6L6D5L2O6Zc=
+censors:
+    - generic
+techniques:
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Primarily aggregated news rather than original research; VPN section addresses ecosystem integrity and measurement methodology relevant to circumvention tool security.
+visibility: public
+date_added: "2026-08-17"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/blog/weekly-news-2026-08-13/

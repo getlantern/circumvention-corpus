@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patel-generative-ai-encrypted
+kind: evaluation
+summary: Traditional DPI examining payload contents is described as 'largely ineffective' against TLS/SSL-encrypted traffic, forcing modern network security systems entirely onto flow-based and statistical analysis of packet metadata — packet sizes, inter-arrival timing, flow duration, and directional characteristics — without decrypting content.
+techniques:
+    - dpi
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Encryption of payload is a necessary but insufficient defense; circumvention tools must treat traffic metadata (size distributions, timing, flow duration) as a separate attack surface requiring explicit shaping.
+    - Since even security-focused classifiers rely solely on metadata, censors operating at national scale face the same constraints — randomizing the seven key flow features identified in this paper directly degrades censor-side classifier performance.
+section: §II.A
+extracted_by: claude-sonnet-4-6

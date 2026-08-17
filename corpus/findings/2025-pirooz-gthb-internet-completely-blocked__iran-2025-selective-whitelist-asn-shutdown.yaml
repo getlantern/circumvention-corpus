@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pirooz-gthb-internet-completely-blocked
+kind: deployment
+summary: 'Iran implemented a near-complete internet shutdown from June 17–26, 2025 using selective IP-based whitelisting: api.github.com and api.google.com remained accessible while the general internet was blocked. IODA measurements confirmed that ASes 44244 (IranCell) and 57218 (RighTel)—the two largest mobile carriers—were nearly unreachable for the duration.'
+techniques:
+    - ip-blocking
+    - asn-blackholing
+censors:
+    - ir
+defense_implications:
+    - Circumvention infrastructure should be hosted on IPs and domains that fall within a censor's whitelist surface (CDN endpoints, major API hostnames) to survive selective-whitelist shutdowns.
+    - Monitor IODA or equivalent BGP-layer signals per AS—carrier-level blackholing (IranCell AS44244, RighTel AS57218) requires exit-node diversity spanning multiple upstream ASes, not just multiple IPs.
+section: Issue body / abstract
+extracted_by: claude-sonnet-4-6

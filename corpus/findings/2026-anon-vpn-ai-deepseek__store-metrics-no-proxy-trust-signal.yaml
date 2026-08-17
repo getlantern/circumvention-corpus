@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-vpn-ai-deepseek
+kind: evaluation
+summary: Chrome Web Store metrics—including cumulative installation display counts totaling 75,486, five-star ratings, and brand-similar icons—provided no reliable signal of proxy operator trustworthiness among the 737 identified malicious VPN extensions; 516 remained listed throughout the study period despite routing traffic to a shared centralized infrastructure.
+techniques:
+    - measurement-platform
+defenses:
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention projects should publish reproducible builds with signed checksums so users can verify extension authenticity independently of store metadata; app store presence is not a trust anchor against impersonation.
+    - Operational security programs for circumvention tools should include automated monitoring of major browser extension stores for brand-similar listings, with a clear takedown-request workflow, given that impersonating extensions can persist for extended periods.
+section: §免费VPN扩展的核心问题
+extracted_by: claude-sonnet-4-6
