@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pirooz-gthb-internet-completely-blocked
+kind: evaluation
+summary: The June 2025 Iran shutdown lasted 10 days (June 17–26) and generated real-time community measurement via IODA and crowdsourced circumvention testing, establishing this event as primary-source documentation of simultaneous carrier-level BGP suppression and application-layer proxy blocking—a dual-layer shutdown strategy distinct from typical content-level filtering.
+techniques:
+    - asn-blackholing
+    - active-probing
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - 'Circumvention systems must plan for dual-layer shutdown scenarios: BGP-level carrier blackholing plus active proxy detection can co-occur; surviving one layer does not guarantee surviving both.'
+    - Real-time community reporting (net4people/bbs issues) provides faster ground-truth signal than post-hoc measurement studies; instrument circumvention tools to report reachability telemetry that can feed such threads.
+section: Issue metadata / abstract
+extracted_by: claude-sonnet-4-6

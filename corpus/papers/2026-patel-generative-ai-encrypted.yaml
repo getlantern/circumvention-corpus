@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2608.09852
+id: 2026-patel-generative-ai-encrypted
+title: 'Generative AI for Encrypted Traffic Analysis: Synthetic Dataset Generation and Classifier Evaluation'
+authors:
+    - Harshil Patel
+    - Himanshu Garg
+    - Aswani Kumar Cherukuri
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2608.09852"
+url: https://arxiv.org/abs/2608.09852v1
+abstract: Network traffic analysis faces significant challenges with encrypted communications, primarily due to limited visibility into packet contents and the inherent imbalance in available datasets, particularly for anomalous traffic patterns. This paper addresses these challenges by exploring Generative AI (GAI) techniques to create realistic and balanced synthetic encrypted traffic datasets. Our approach incorporates feature analysis, clustering-based data generation, and comprehensive classifier evaluation to ensure synthetic data quality. We demonstrate that properly generated synthetic data can effectively supplement real- world datasets, achieving up to 93% performance when training classifiers compared to those trained on real data. The proposed methodology preserves critical statistical properties and feature correlations while enabling the creation of balanced datasets, ad- dressing the persistent challenge of anomaly underrepresentation in cybersecurity data. Along with the results we provide complete programming code designed and implemented in this work.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates high-accuracy ML-based detection of encrypted traffic anomalies; relevant to understanding statistical/ML-based censor capabilities against circumvention tools.
+visibility: public
+date_added: "2026-08-17"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2608.09852

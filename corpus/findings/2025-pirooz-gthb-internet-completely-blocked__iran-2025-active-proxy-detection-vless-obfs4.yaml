@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pirooz-gthb-internet-completely-blocked
+kind: detection
+summary: 'Iranian censors actively detected and blocked circumvention proxies in real time during the June 2025 shutdown: MTProto proxies, v2ray tunnels (VLESS and VMESS variants), and Tor bridges using both Snowflake and obfs4 all experienced mixed or degraded success as proxies were identified and blocked.'
+techniques:
+    - active-probing
+    - dpi
+    - fully-encrypted-detect
+defenses:
+    - vless
+    - vmess
+    - webrtc-pluggable
+    - obfs4
+censors:
+    - ir
+defense_implications:
+    - Proxy endpoints must be rotated rapidly during active-detection phases; single static proxy addresses will be enumerated and blocked within hours.
+    - Rely on transport designs (Snowflake, domain-fronted bridges) that do not expose a stable server-side IP surface; server-IP-addressable proxies (VLESS, VMESS endpoints) are enumerable and were specifically targeted.
+section: Abstract / community testing thread
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cheek-gaps-record-observability
+kind: evaluation
+summary: Application-layer blocking — where censors restrict specific applications or services without disrupting IP connectivity — is invisible to network-level measurement systems like IODA that monitor BGP, active probing, darknet telescope, and Google Search traffic, making it a growing blind spot in automated shutdown detection.
+techniques:
+    - measurement-platform
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention infrastructure that monitors network reachability at the IP/BGP layer will fail to detect app-layer blocks; add application-layer probes (e.g., HTTP endpoint checks for specific services) to deployment health monitoring.
+    - Application-layer shutdowns may target circumvention tools directly while leaving general internet access intact — passive IP-reachability checks are insufficient to confirm circumvention service availability.
+section: Abstract / §3 Detection Gap Categories
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-patel-generative-ai-encrypted
+kind: evaluation
+summary: Kolmogorov-Smirnov tests showed statistically insignificant differences (p-values above 0.05) between real and synthetic feature distributions, and correlation matrix comparison showed a maximum absolute difference of 0.016 across all feature pairs — achieving an overall synthetic data quality score of 88.2%, sufficient to train production-grade anomaly detectors without access to real attack traffic.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Censors can generate high-fidelity training data for encrypted-traffic classifiers using only unlabeled normal traffic plus a small seed of known-anomalous samples — the barrier to deploying capable detectors is lower than previously assumed.
+    - Circumvention tool developers should test against classifiers trained on synthetically balanced datasets, not just real-traffic baselines, since censors may use synthetic augmentation to compensate for limited labeled circumvention samples.
+section: §IV.A, §IV.C, Fig. 7, Fig. 8
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-ciphersight-robust-website
+kind: detection
+summary: CipherSight achieves 91.09% accuracy in Singapore and 90.59% in France when trained exclusively on US traffic, with only 0.50 pp variation between regions; the strongest regional baselines lag by 11.56 pp (Singapore) and 8.52 pp (France), and some baselines vary by up to 24.38 pp across regions, confirming that TLS-record-level fingerprinting is geographically transferable while packet-level methods are not.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - A censor can train on domestic traffic captures and apply the resulting classifier to users in other regions with minimal accuracy loss; geographically distributed circumvention infrastructure does not inherently evade fingerprinting.
+    - Defenses that rely on regional CDN or routing path variation to produce unpredictable traffic patterns are insufficient against TLS-record-level classifiers.
+section: Table 3, Geographic Drift
+extracted_by: claude-sonnet-4-6

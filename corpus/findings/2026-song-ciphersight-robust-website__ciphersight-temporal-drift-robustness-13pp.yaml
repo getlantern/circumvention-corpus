@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-ciphersight-robust-website
+kind: detection
+summary: Under a 16-day temporal distribution shift (us0304→us0320), CipherSight retains 92.99% accuracy with only a −2.42 pp drop from its closed-world baseline, while the strongest prior baseline (H&W) falls to 79.96% (−6.49 pp) and Tor-oriented methods drop 18–25 pp, demonstrating that TLS-record-level representations generalize substantially better than packet-level ones over time.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Temporal churn in website resources — a historically useful defense property — does not degrade TLS-record-level fingerprinting meaningfully; circumvention tool designers should not rely on website content turnover to frustrate fingerprinting.
+    - Defenses need to actively perturb the stable structural patterns CipherSight exploits (TLS record count, size distribution, multi-flow concurrency patterns) rather than counting on organic drift.
+section: Table 2, Temporal Drift
+extracted_by: claude-sonnet-4-6

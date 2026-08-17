@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-ciphersight-robust-website
+kind: detection
+summary: CipherSight achieves 95.41% top-1 accuracy across 2,008 website classes in closed-world evaluation, outperforming the strongest Tor-oriented baseline (VarCNN at 92.16%) by 3.25 percentage points and all HTTPS-native baselines by a wider margin, using only ciphertext-observable TLS record metadata without decrypting payloads.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - 'TCP-level traffic shaping is insufficient: censors operating at the TLS-record abstraction layer can fingerprint sites with 95%+ accuracy even when TCP packets are irregular or padded.'
+    - Obfuscation must randomize TLS record sizes, outer content-type distributions, and inter-record timing — not merely packet-level attributes — to defeat record-level classifiers.
+section: Table 1, Closed-World Evaluation
+extracted_by: claude-sonnet-4-6

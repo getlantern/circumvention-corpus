@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-pirooz-gthb-internet-completely-blocked
+title: Internet is completely blocked in Iran (2025-06-17 to 2025-06-26)
+authors:
+    - '@pirooz-gthb'
+    - '@wkrp'
+    - '@HoseanRC'
+venue: net4people/bbs
+year: 2025
+url: https://github.com/net4people/bbs/issues/484
+abstract: Iran experienced a near-complete internet shutdown from June 17-26, 2025, with selective IP-based whitelisting (api.github.com, api.google.com accessible; ASes 44244 IranCell and 57218 RighTel nearly unreachable per IODA measurements). Community members tested circumvention approaches including MTProto proxies, v2ray tunnels (VLESS/VMESS), and Tor bridges with Snowflake and obfs4 in real-time, finding mixed success as the censor actively detected and blocked circumvention proxies.
+censors:
+    - ir
+techniques:
+    - ip-blocking
+    - active-probing
+defenses_discussed:
+    - vmess
+    - vless
+    - tor
+    - bridges
+    - webrtc-pluggable
+    - obfs4
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Real-time blocking event documentation with user-tested circumvention effectiveness; demonstrates selective IP whitelisting and active protocol detection in production.
+visibility: public
+date_added: "2026-08-17"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/484

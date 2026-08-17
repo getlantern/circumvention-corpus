@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-song-ciphersight-robust-website
+kind: evaluation
+summary: The authors find that more than 80% of TCP packet sequences are inconsistent across repeated captures of the same websites, making packet-level features inherently noisy and motivating TLS-record-level modeling; TLS records, which may span multiple TCP segments or share a segment, provide a more stable abstraction over transport-layer variability.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - TCP-level padding and packet-splitting defenses exploit the instability of packet sequences but become ineffective against classifiers that operate at the TLS-record layer — a defense must target TLS record boundaries and sizes specifically.
+    - Circumvention tools should consider injecting spurious TLS records or randomizing record payload sizes at the TLS layer, not just at the TCP segment level, to undermine record-level fingerprinting.
+section: Introduction, Challenges (Challenge 1)
+extracted_by: claude-sonnet-4-6

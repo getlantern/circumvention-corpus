@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-pirooz-gthb-internet-completely-blocked
+kind: evaluation
+summary: During Iran's June 2025 shutdown, early reports indicated TCP connections were broadly blocked while UDP-based proxies (Telegram MTProto over UDP) could still establish sessions, suggesting the initial blocking rule targeted TCP at the transport layer rather than applying protocol-agnostic packet filtering.
+techniques:
+    - port-blocking
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Designs that run over UDP (QUIC, WireGuard, Hysteria 2) may survive TCP-kill phases of a shutdown; maintain a UDP-capable fallback path.
+    - Do not rely on TCP-only transport stacks for shutdown-resilient circumvention in Iran—confirm UDP reachability independently per carrier.
+section: Issue body (Edit1 / initial reports)
+extracted_by: claude-sonnet-4-6
