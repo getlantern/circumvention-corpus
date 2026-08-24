@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-technical-analysis-geedge
+kind: deployment
+summary: Measurements of TCP RST injectors confirm that GFW II and GFW III consistently yield a seed key k=13, matching TSG's default seed_key parameter in trick_algo_getrandval_with_seed. The probability of sharing TSG's default value of 13 by chance is approximately 10⁻⁴⁴, strongly indicating these GFW components run Geedge Networks TSG code or a close derivative.
+techniques:
+    - rst-injection
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Craft TCP RST fingerprinting probes (measuring IPID and TCP window pairwise differentials) to detect TSG presence before connecting, enabling preemptive evasion or routing decisions.
+    - Because TSG's RST injection parameters (seed_key, RST count, flags) are configurable defaults, circumvention protocols that survive RST injection (e.g., QUIC-based transports with loss tolerance) are more resilient than TCP-based ones that terminate on a single RST.
+section: §6.3, Table 7
+extracted_by: claude-sonnet-4-6

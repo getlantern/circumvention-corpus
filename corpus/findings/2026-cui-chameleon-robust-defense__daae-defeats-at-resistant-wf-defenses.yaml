@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cui-chameleon-robust-defense
+kind: detection
+summary: Defense-aware autoencoder (DAAE) attacks can recover website fingerprinting accuracy against defenses that successfully resist adversarial training. On the GTT23 dataset, DAAE-based DF attacks achieve over 90% accuracy against RegulaTor and over 80% against Palette and Adaptive Tamaraw, despite those defenses reducing unaugmented DF attack accuracy from 93.2% to 2–35%. Adversarial training robustness and DAAE robustness are distinct and non-interchangeable properties.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Do not rely on defenses that apply deterministic or stable traffic transformations; an attacker with access to paired original/defended traces can train an autoencoder to strip the defense pattern.
+    - Treat DAAE-resistance as a separate, required evaluation criterion alongside adversarial-training resistance when assessing any traffic-shaping defense.
+section: §I, Figure 1
+extracted_by: claude-sonnet-4-6

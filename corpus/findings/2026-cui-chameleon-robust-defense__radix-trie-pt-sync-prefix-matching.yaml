@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cui-chameleon-robust-defense
+kind: defense
+summary: 'Chameleon''s radix-trie-based synchronization allows pluggable transport client and server endpoints to independently identify the same morphing trace using packet-direction prefixes without transmitting an explicit trace identifier. With a balanced-branch implementation and a candidate pool of at most 10 remaining traces, the selected trace is typically uniquely identified by a prefix of only 4–5 packet directions. Early-stage traffic (up to 60% of packets loaded) leaks minimal information: the Holmes partial-load WF attack achieves only 14.67% F1 against Chameleon at 60% load, a 74.5% reduction from the 57.61% baseline.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - randomization
+    - pluggable-transport
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Use direction-prefix-based implicit signaling rather than out-of-band coordination to synchronize randomized traffic shaping between PT client and PT server; this avoids adding a detectable synchronization side-channel.
+    - Radix-trie lookup with row-wise normalized embeddings enables sublinear candidate search, making randomized morphing computationally feasible for real-time PT deployments.
+section: §IV-B, §V-D, Table V
+extracted_by: claude-sonnet-4-6

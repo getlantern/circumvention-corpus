@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-amigocarra-bypassing-russian-federation-s
+kind: evaluation
+summary: Across three testers all on MTS, whitelist behavior varied by network segment in ways that could not be explained by protocol configuration alone; the operator has zero confirmed data for MegaFon, Beeline, or T2 under whitelist conditions. The open question of whether whitelist policy (site+IP list) is centrally issued by the Ministry of Digital Development while implementation differs per carrier remains unresolved, making cross-carrier generalization of any circumvention finding unreliable.
+techniques:
+    - ip-blocking
+    - sni-blocking
+censors:
+    - ru
+defense_implications:
+    - Circumvention tool operators serving Russia should not extrapolate MTS test results to other carriers; instrument users to self-report carrier and collect per-carrier effectiveness data before making protocol recommendations.
+    - Engage the net4people/bbs community to crowdsource per-carrier whitelist CIDR lists, since centralized Ministry-issued lists may be implemented heterogeneously at each carrier's DPI layer.
+section: Issue body — questions 1 and 2
+extracted_by: claude-sonnet-4-6

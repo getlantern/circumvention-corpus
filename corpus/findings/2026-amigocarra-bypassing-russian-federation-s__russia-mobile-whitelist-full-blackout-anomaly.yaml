@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-amigocarra-bypassing-russian-federation-s
+kind: detection
+summary: During apparent whitelist-activation periods on MTS mobile LTE, the affected user experienced a complete network blackout in which even explicitly whitelisted resources (gosuslugi.ru) were inaccessible — behavior inconsistent with a standard default-deny CIDR+SNI whitelist, which should pass approved destinations unconditionally. The operator concludes this may represent a stricter enforcement variant, a SIM-specific restriction, or a mechanism entirely separate from the documented whitelist architecture.
+techniques:
+    - ip-blocking
+    - sni-blocking
+censors:
+    - ru
+defense_implications:
+    - Do not assume Russia's mobile whitelist operates as pure CIDR+SNI default-deny; design for the possibility of complete carrier-side shutoffs that bypass the whitelist logic entirely and cannot be circumvented at the IP or TLS layer.
+    - Instrument clients to distinguish between 'whitelist active but target not listed' and 'full blackout including whitelisted sites' so support channels can triage which failure mode users face.
+section: Issue body — main mystery paragraph
+extracted_by: claude-sonnet-4-6

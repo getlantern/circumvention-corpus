@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cui-chameleon-robust-defense
+kind: evaluation
+summary: Chameleon's defense remains robust against randomization-aware attackers who augment training with up to K=20 independently randomized defended variants per trace. On the GTT23 dataset, even at K=20, DF, Var-CNN, RF, and NetCLR achieve only 17.50%, 18.82%, 31.06%, and 17.04% accuracy respectively — well below the 100-class closed-world ceiling — confirming that protection does not depend on limiting the attacker's exposure to defended traffic samples.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+    - tor
+censors:
+    - generic
+defense_implications:
+    - A circumvention defense must remain secure even when the adversary can collect many labeled samples of the defended traffic; K=20 augmented-sample evaluation should be a standard stress-test for any randomized defense before deployment.
+    - The many-to-many morphing pool can be sourced from arbitrary real-world website traces rather than a fixed pre-configured set, making the defense dataset-agnostic and adaptable across deployments.
+section: §V-E, Table VII
+extracted_by: claude-sonnet-4-6

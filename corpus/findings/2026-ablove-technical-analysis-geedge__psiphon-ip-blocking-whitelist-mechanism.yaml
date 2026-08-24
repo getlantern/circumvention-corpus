@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-technical-analysis-geedge
+kind: detection
+summary: Internal Jira tickets reveal that Psiphon lacked obvious protocol signatures, forcing censors to fall back to IP-based blocking of Psiphon3 client IPs combined with a 'whitelist protection mechanism' that allows traffic when the destination SNI matches a popular domain—an explicit collateral-damage tradeoff documented in the Confluence file 'GTN498 The collateral damage analysis of Psiphon3 Blocking.' A ticket from the Ethiopia (E21) deployment shows customers complaining that the VPN deny policy inadvertently blocked non-VPN applications.
+techniques:
+    - ip-blocking
+    - sni-blocking
+defenses:
+    - shadowsocks
+    - mimicry
+    - randomization
+censors:
+    - cn
+    - mm
+    - et
+defense_implications:
+    - Strong protocol obfuscation that eliminates obvious signatures forces censors toward blunt IP-blocking, which causes collateral damage on popular SNIs and incentivizes operators to maintain SNI whitelists—circumvention tools that tunnel over CDN IPs or popular SNIs (domain fronting, meek) exploit this whitelist mechanism.
+    - The Psiphon case demonstrates that the cost of false positives constrains censor aggressiveness; circumvention tools hosted on IPs shared with high-value legitimate services gain meaningful protection from over-blocking pressure.
+section: §4.1.2, Figure 2, Figure 3
+extracted_by: claude-sonnet-4-6

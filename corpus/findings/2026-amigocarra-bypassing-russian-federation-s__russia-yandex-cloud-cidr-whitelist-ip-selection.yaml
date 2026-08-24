@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-amigocarra-bypassing-russian-federation-s
+kind: deployment
+summary: 'Community-maintained public CIDR lists of Russian mobile whitelist ranges allow operators to identify specific whitelisted IP blocks within cloud providers: a /22 subnet inside Yandex Cloud''s /16 pool appears on these lists, while the ephemeral addresses from a different /20 pool of the same provider do not. Reserving a static IP from the whitelisted /22 allows the Reality handshake to complete and traffic to proxy from external vantage points, though in-whitelist passage on a real mobile device remained unconfirmed at time of writing.'
+techniques:
+    - ip-blocking
+defenses:
+    - reality
+    - vless
+censors:
+    - ru
+defense_implications:
+    - When deploying servers inside Russia for whitelist traversal, cross-reference available static IPs against community-maintained CIDR whitelist databases before provisioning — not all subnets within a provider's address space are whitelisted.
+    - Treat whitelist passage as a probabilistic property of individual /22–/24 blocks rather than of the hosting provider as a whole; build tooling to re-check IP status after any cloud re-provisioning event.
+section: Issue body — Yandex Cloud architecture paragraph
+extracted_by: claude-sonnet-4-6
