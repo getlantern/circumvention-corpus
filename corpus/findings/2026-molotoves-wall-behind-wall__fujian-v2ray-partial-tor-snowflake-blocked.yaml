@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-molotoves-wall-behind-wall
+kind: deployment
+summary: As of August 2026 in Fuzhou, Fujian, most censorship-resistant service providers are non-functional; a small number of providers using v2ray remain partially functional, while Tor Browser bridges and Snowflake are no longer usable.
+techniques:
+    - dpi
+    - active-probing
+    - traffic-shape
+defenses:
+    - vmess
+    - vless
+    - tor
+    - webrtc-pluggable
+    - bridges
+censors:
+    - cn
+defense_implications:
+    - Do not rely on Snowflake or standard Tor bridges as fallback channels in Fujian; prioritize v2ray-based transports with active mimicry as the current least-blocked option.
+    - Monitor regional blocking status independently — Fujian appears to be an advance pilot zone; assume techniques observed there will propagate to other provinces.
+section: Issue body
+extracted_by: claude-sonnet-4-6

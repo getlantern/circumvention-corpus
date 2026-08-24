@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-amigocarra-bypassing-russian-federation-s
+title: Bypassing the Russian Federation's mobile internet whitelists—we're stuck, looking for real-world experience
+authors:
+    - '@amigocarra'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/650
+abstract: 'An operator of a custom VPN service in Russia documents attempts to circumvent mobile-carrier whitelisting on MTS and other carriers using VLESS+Reality with decoy SNI to popular domains. Testing reveals inconsistent results: the protocol bypasses standard DPI blocking for one user over several weeks, but another user on the same carrier in a different network segment cannot establish connections even once. The thread raises questions about whether whitelist behavior differs between carriers and suggests complete internet blockades may involve mechanisms beyond simple CIDR+SNI filtering.'
+censors:
+    - ru
+techniques:
+    - ip-blocking
+    - sni-blocking
+    - dpi
+defenses_discussed:
+    - reality
+    - vless
+    - mimicry
+evaluation_methods:
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Direct operational experience with Russia's mobile whitelist blocking and VLESS+Reality effectiveness; reports indicate whitelist enforcement varies by network segment and may involve additional mechanisms beyond IP/SNI checks.
+visibility: public
+date_added: "2026-08-24"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/650

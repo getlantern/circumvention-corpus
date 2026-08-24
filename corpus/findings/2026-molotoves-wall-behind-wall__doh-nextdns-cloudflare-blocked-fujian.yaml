@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-molotoves-wall-behind-wall
+kind: deployment
+summary: DNS over HTTPS provided by both NextDNS and Cloudflare DNS (1.1.1.1) has become completely unusable in Fuzhou when accessed via Firefox, with one isolated unreproducible exception for Cloudflare DNS.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - DoH to well-known resolvers (Cloudflare, NextDNS) can no longer serve as an anti-censorship primitive in this region; tools relying on DoH for bootstrapping or name resolution must use private/unlisted resolver IPs or DNS-over-HTTPS with domain fronting.
+    - The sporadic single-instance success suggests deep inspection that occasionally misfires — consider whether DoH smuggled inside a trusted CDN connection might evade the block.
+section: Issue body
+extracted_by: claude-sonnet-4-6

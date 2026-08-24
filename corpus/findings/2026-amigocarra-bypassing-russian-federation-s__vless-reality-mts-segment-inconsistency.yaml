@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-amigocarra-bypassing-russian-federation-s
+kind: evaluation
+summary: VLESS+Reality with uTLS and decoy SNI pointed at popular domains (vk.com, cloudflare.com) bypasses standard DPI blocking on MTS and has operated stably for one real user over several weeks with thousands of connections logged. However, an identical configuration failed to establish a single connection for a second user on the same carrier but in a different network segment (Moscow number vs. regional/southern number), including during periods confirmed to be outside whitelist activation.
+techniques:
+    - dpi
+    - sni-blocking
+    - ip-blocking
+defenses:
+    - vless
+    - reality
+censors:
+    - ru
+defense_implications:
+    - VLESS+Reality should remain viable against standard Russian DPI, but operators must account for segment-level variance within a single carrier — testing from one region does not validate coverage for all users.
+    - Maintain logging of per-user connection outcomes by carrier segment to detect silent per-segment blocks that aggregate success metrics would obscure.
+section: Issue body — confirmed working / not working sections
+extracted_by: claude-sonnet-4-6

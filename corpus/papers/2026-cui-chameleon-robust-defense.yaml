@@ -1,0 +1,35 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2608.20160
+id: 2026-cui-chameleon-robust-defense
+title: 'Chameleon: Robust Defense Against Tor Website Fingerprinting via Many-to-Many Traffic Morphing'
+authors:
+    - Yuwen Cui
+    - Kai Wei
+    - Kehan Shen
+    - Ning Wang
+    - Zhuo Lu
+    - Yao Liu
+    - Guangjing Wang
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2608.20160"
+url: https://arxiv.org/abs/2608.20160v1
+abstract: Website fingerprinting (WF) attacks can infer users' browsing activities from encrypted Tor traffic by exploiting side-channel features. Although many WF defenses have been proposed, we find that most existing defenses create learnable web trace mapping features. We further show that robustness against adversarial training does not necessarily imply robustness against defense-aware autoencoder (DAAE)-based attacks. To address these limitations, we present Chameleon, a robust WF defense based on many-to-many randomized traffic morphing. Chameleon selects morphing candidates with high intra-class diversity and low inter-class disparity. Chameleon randomly maps each webpage trace to multiple candidates, and allows different webpages to share morphing targets, thereby increasing adversarial uncertainty. For practical Tor deployment, Chameleon introduces a radix-trie-based synchronization mechanism that enables pluggable transport (PT) endpoints to identify consistent morphing traces using packet-direction prefixes, together with trace mutation and normalized prefix matching to reduce overhead. We evaluate Chameleon against six state-of-the-art defenses and five WF attacks on three public datasets in closed- and open-world settings. Compared with Adaptive Tamaraw, Chameleon reduces adversarial-training-based attack accuracy by up to 36.74% while reducing bandwidth and time overhead by 34.12% and 60.38%, respectively. Under DAAE-based RF attacks on GTT23, Chameleon limits attack performance to 35.19% F1-score while Adaptive Tamaraw only limits it to 88.22% F1-score. In the real-world PT bridge evaluation, Chameleon substantially reduces the effectiveness of strong WF attacks while incurring only 16.25% time overhead.
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+defenses_discussed:
+    - randomization
+    - pluggable-transport
+    - tor
+evaluation_methods:
+    - measurement-study
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern's traffic-analysis resistance; defense approach is applicable to encrypted-tunnel circumvention systems generally.
+visibility: public
+date_added: "2026-08-24"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2608.20160

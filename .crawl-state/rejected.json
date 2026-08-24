@@ -1,5 +1,96 @@
 [
   {
+    "key": "arxiv:2608.15184",
+    "title": "Pre-Model Representation Failures in GNN-Based Smart Contract Vulnerability Detection",
+    "source": "arxiv",
+    "reason": "Smart contract vulnerability detection using GNNs; no censorship, circumvention, surveillance, or networking angle.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.15310",
+    "title": "FedADB: Class Anchor-Driven Dual-Branch Federated Learning for Mitigating Forgetting",
+    "source": "arxiv",
+    "reason": "Standard federated learning methodology paper on mitigating catastrophic forgetting in heterogeneous settings; no censorship, circumvention, anonymity, or surveillance angle.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.15640",
+    "title": "A contribution to the critique of blockchain censorship",
+    "source": "arxiv",
+    "reason": "This paper studies blockchain transaction censorship via game theory and validator incentives, not internet censorship, circumvention protocols, network-level blocking, or censorship measurement.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.16026",
+    "title": "SkillWatermark: An Embedded Skill Watermark of Progressive Privacy Inference via Benign Prompts",
+    "source": "arxiv",
+    "reason": "Paper describes privacy attacks on LLM agent systems via traffic pattern analysis; does not address censorship, circumvention protocols, or detection of circumvention tools.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.16177",
+    "title": "Measuring Obedience to Authority Across Large Language Models with the Milgram Paradigm",
+    "source": "arxiv",
+    "reason": "Paper studies LLM obedience and alignment using psychological experiments; no connection to censorship measurement, circumvention protocols, censor detection, or related topics.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.16504",
+    "title": "Vantage: Availability-Graded Broadcast for Signature-Free BFT",
+    "source": "arxiv",
+    "reason": "Blockchain consensus protocol paper; no censorship measurement, censor detection, circumvention design, or censorship-policy content.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.17220",
+    "title": "PACE: Policy-Attested Contract Execution for Safe AI Agents in Decentralized Finance",
+    "source": "arxiv",
+    "reason": "Paper studies smart-contract security and LLM safety in decentralized finance, not censorship measurement, detection techniques, or circumvention methods.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.17251",
+    "title": "ADAPTD: Adaptive Detection and Proactive Threat Defense for Autonomous APT attacks",
+    "source": "arxiv",
+    "reason": "Paper addresses Advanced Persistent Threat (APT) detection and lateral movement containment in enterprise networks, without any relation to censorship, circumvention, or censor capabilities.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.18605",
+    "title": "Finality Before Disclosure for Ledger Authenticators in the Quantum Random Oracle Model",
+    "source": "arxiv",
+    "reason": "Pure cryptographic theory paper on ledger-based authentication protocols and QROM security proofs; no censorship, circumvention, anonymity, or traffic-analysis content.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.18642",
+    "title": "IriSig-Spoof: A Real-World Benchmark for Time-Robust Satellite RF Fingerprinting and Spoofing Detection",
+    "source": "arxiv",
+    "reason": "Paper develops satellite RF fingerprinting benchmarks for LEO internet authentication; lacks any connection to censorship measurement, circumvention protocols, or surveillance detection.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.19750",
+    "title": "TGL-APT: Temporal Graph Learning with Graph Distillation for Efficient APT Investigation",
+    "source": "arxiv",
+    "reason": "Paper addresses APT detection via provenance-graph analysis using temporal graph learning; no nexus to censorship measurement, circumvention, anonymity, censor detection, or internet blocking.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.19821",
+    "title": "Survival of~the~Stealthiest: Evolving Low-Entropy Ransomware via~Genetic Algorithms",
+    "source": "arxiv",
+    "reason": "This paper studies ransomware evasion via genetic algorithm optimization of encryption patterns, not censorship detection, network blocking, circumvention protocols, or traffic analysis relevant to censorship systems.",
+    "rejected_at": "2026-08-24"
+  },
+  {
+    "key": "arxiv:2608.20240",
+    "title": "QUASAR: A Quantum-Classical Neural Network for SAR Satellite Physical-Layer Authentication",
+    "source": "arxiv",
+    "reason": "Paper studies quantum-classical ML for X-band SAR satellite physical-layer authentication; no connection to internet censorship, circumvention, or censor detection.",
+    "rejected_at": "2026-08-24"
+  },
+  {
     "key": "arxiv:2608.07846",
     "title": "China RealDID: Verifiable Credentials Anchored in Legal Identity",
     "source": "arxiv",

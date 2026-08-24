@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cui-chameleon-robust-defense
+kind: evaluation
+summary: Compared with Adaptive Tamaraw on the DF dataset, Chameleon reduces adversarial-training-based WF attack accuracy by up to 36.74 percentage points while simultaneously lowering bandwidth overhead by 34.12% (130.60% vs. 198.23%) and time overhead by 60.38% (14.51% vs. 36.62%). In closed-world evaluation across DF, Var-CNN, RF, and NetCLR attacks, Chameleon holds all attack accuracies below 27% and reduces average SOTA attack accuracy by 76.52% relative to the undefended baseline.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Trace mutation (the lightweight Chameleon variant at 130.60% bandwidth / 14.51% time overhead) already provides strong DAAE-resistant protection and should be preferred over heavier regularization schemes when latency budget is constrained.
+    - Randomized morphing with high-intra-class-diversity candidates can outperform fixed regularization (Adaptive Tamaraw) on both security and efficiency simultaneously.
+section: §V-B, Table II, Abstract
+extracted_by: claude-sonnet-4-6

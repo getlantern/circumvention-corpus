@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-molotoves-wall-behind-wall
+kind: deployment
+summary: 'BitTorrent (qBittorrent) experiences asymmetric throttling in Fuzhou: connections to peers in Russia are severely impaired while connections to peers within mainland China remain normal, indicating selective cross-border flow throttling rather than protocol-level blocking.'
+techniques:
+    - throttling
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention relays hosted on Russian or European ASNs face additional throttling pressure in Fujian beyond protocol-level detection; diversify bridge infrastructure across multiple geographic regions.
+    - Asymmetric domestic-vs-international throttling confirms that the censor can distinguish cross-border flows at the ISP level — transports that blend with domestic traffic patterns gain a structural advantage.
+section: Issue body
+extracted_by: claude-sonnet-4-6

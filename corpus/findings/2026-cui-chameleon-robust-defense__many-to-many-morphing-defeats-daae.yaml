@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-cui-chameleon-robust-defense
+kind: defense
+summary: Chameleon's many-to-many randomized traffic morphing blocks DAAE by eliminating the stable origin→defended-trace mapping that DAAE exploits. Under DAAE-based RF attacks on GTT23, Chameleon limits attack precision to 40.68% and F1-score to 35.19%, compared with 80.64%/70.30% for Palette and 89.82%/88.22% for Adaptive Tamaraw. The defense works by randomly mapping each webpage trace to one of multiple candidate traces, and allowing different webpages to share morphing targets, so no fixed per-class transformation exists for the autoencoder to learn.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - pluggable-transport
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Implement many-to-many randomized morphing rather than one-to-one or class-regularized transforms; the key invariant is that no stable mapping from original to defended traffic should be observable across repeated sessions.
+    - Select morphing candidates that maximize intra-class diversity and minimize inter-class disparity so that decision boundaries for any classifier remain unstable across training runs.
+section: §V-C, Table IV
+extracted_by: claude-sonnet-4-6

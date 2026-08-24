@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-technical-analysis-geedge
+kind: detection
+summary: TSG's Context-Based Detector (CBD) evaluates circumvention tool signatures across JA3/JA4 TLS fingerprints, SSL certificate issuer fields, UDP payload length, first-packet byte patterns, server IP ranges, and FQDN matches, often combining multiple conditions with logical AND. Of 29 VPN and circumvention tool signatures logged in the VPN Signature File Update Log (March–November 2024), 21 carry risk level 5 (the maximum), indicating aggressive prioritization of blocking major tools including ExpressVPN, NordVPN, Tor Browser, and Psiphon.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - traffic-shape
+    - ip-blocking
+    - sni-blocking
+censors:
+    - cn
+    - mm
+    - et
+    - kz
+    - pk
+defense_implications:
+    - Rotate JA3/JA4 fingerprints and avoid static TLS certificate issuer strings; TSG explicitly matches on these fields in AND-conditions, so changing any one field breaks a multi-condition signature.
+    - Use payload padding or randomization to defeat fixed-length first-packet signatures (e.g., HideMe VPN is detected by a UDP payload of exactly 54 bytes with a specific prefix); even a small random prefix defeats such rules.
+section: §4.1, §4.1.2, Table 3, Table 4
+extracted_by: claude-sonnet-4-6

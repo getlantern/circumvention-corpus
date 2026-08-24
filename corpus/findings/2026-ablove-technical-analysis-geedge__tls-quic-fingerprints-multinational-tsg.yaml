@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-technical-analysis-geedge
+kind: deployment
+summary: TLS ClientHello length-field permutation tests show that GFW II's parsing behavior matches an older tagged version of TSG's SSL module, while Kazakhstan and Pakistan (DROP mode) exhibit parsing behaviors consistent with TSG QUIC plugin deployments. QUIC version fingerprinting further confirms Kazakhstan runs an older version of TSG's QUIC parsing code, and Myanmar's supported QUIC versions exactly match TSG's, spanning at least five countries confirmed or plausibly running TSG components.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - http3-quic-block
+    - sni-blocking
+censors:
+    - cn
+    - kz
+    - pk
+    - mm
+defense_implications:
+    - TLS and QUIC length-field permutations (e.g., setting Extensions Length to half or twice its correct value) that bypass TSG's parser can be used as active evasion techniques against confirmed TSG deployments in CN, KZ, PK, and MM.
+    - TSG's modular architecture means different components version independently; fingerprinting the specific plugin version in a deployment enables targeted bypasses tuned to that version's parsing idiosyncrasies rather than assuming a monolithic censor.
+section: §6.4, §6.5, Table 8, Table 9
+extracted_by: claude-sonnet-4-6

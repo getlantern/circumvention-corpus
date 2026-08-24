@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-molotoves-wall-behind-wall
+kind: detection
+summary: There is evidence that ISPs in Fujian (and neighboring Zhejiang) are deploying DPI plugins directly on ISP-provided integrated optical modem-routers used in home installations, extending inspection to the residential access layer rather than only upstream backbone choke points.
+techniques:
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Circumvention transports must assume DPI is present at the CPE (Customer Premises Equipment) level, not just at ISP backbone; packet-level obfuscation must survive inspection from the first hop rather than relying on a clear path to the ISP edge.
+    - Users in affected provinces should be advised to test whether VPN or proxy traffic is blocked even on local-network segments before attributing failures to remote blocking infrastructure.
+section: Issue body
+extracted_by: claude-sonnet-4-6

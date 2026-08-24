@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ablove-technical-analysis-geedge
+kind: deployment
+summary: TSG's DNS parser enforces a hard limit of exactly 17 compression-pointer jumps per query; a query with 18 jumps causes domain name extraction to fail and suppresses the injection response. Only China's GFW Injector 2 shares the full combination of DNS flags 0x8180, compression-pointer encoding in injected answers, and the 17-pointer capability boundary, confirming it runs TSG's DNS injection code.
+techniques:
+    - dns-poisoning
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Send a probe DNS query with 18 successive compression-pointer indirections to a censored domain; absence of an injected response is a reliable signal that TSG's DNS injector is on-path, informing transport selection (e.g., DoH/DoT bypass).
+    - DNS-over-HTTPS or encrypted DNS resolvers bypass this injection vector entirely; circumvention tools should default to encrypted DNS to remove the TSG DNS fingerprinting surface.
+section: §6.1, Table 5
+extracted_by: claude-sonnet-4-6
