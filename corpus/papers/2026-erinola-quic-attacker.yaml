@@ -1,0 +1,35 @@
+id: 2026-erinola-quic-attacker
+title: 'Breaking the Boundaries: Analyzing QUIC Frame-Packet Interactions With QUIC-Attacker'
+authors:
+- Nurullah Erinola
+- Marcel Maehren
+- Marcus Brinkmann
+- Jörg Schwenk
+venue: USENIX Security
+year: 2026
+url: https://www.usenix.org/conference/usenixsecurity26/presentation/erinola
+abstract: The authors introduce QUIC-Attacker and evaluate fragmentation, coalescence, frame placement,
+  and stream-state interactions across 15 QUIC server libraries. Their controlled experiments uncover
+  interoperability differences, eight denial-of-service vulnerabilities, and injection vulnerabilities
+  in Kwik and XQUIC. The framework supports fine-grained construction of both conforming and malformed
+  QUIC traffic.
+censors:
+- generic
+techniques:
+- packet-injection
+- http3-quic-block
+core: false
+notes: 'Protocol-generation pipeline relevance: use the test catalogs and QUIC-Docker-Library to
+  evaluate endpoint compatibility and security when generating QUIC fragmentation or coalescence
+  strategies. This is an application of the research, not a censorship-evasion result reported by
+  the authors. The paper evaluates specific library versions in a controlled lab; do not assume current
+  releases remain vulnerable. Its limited frame combinations are not exhaustive. QUIC-Attacker is
+  implemented in TLS-Attacker: https://github.com/tls-attacker/TLS-Attacker ; deployment artifact:
+  https://github.com/tls-attacker/QUIC-Docker-Library .'
+visibility: public
+date_added: '2026-09-07'
+added_by: codex
+sources:
+- manual:2026-conference-coverage-audit
+- url:https://www.usenix.org/conference/usenixsecurity26/technical-sessions
+- url:https://www.usenix.org/system/files/usenixsecurity26-erinola.pdf
