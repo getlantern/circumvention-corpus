@@ -76,7 +76,7 @@ const (
 var keywords = []string{
 	"censor", "circumvent", "blocking", "blocklist", "allowlist", "whitelist",
 	"throttl", "shutdown", "deep packet inspection", "protocol obfuscat",
-	"great firewall", "iran", "russia", "china", "chinese", "belarus",
+	"great firewall", "geedge", "iran", "russia", "china", "chinese", "belarus",
 	"kazakh", "myanmar", "turkmen", "saudi", "egypt", "north kore",
 	"pakistan", "turkey", "turkish", "vietnam", "indonesia", "ethiopia",
 	"venezuela", "syria", "uzbek", "tajik", "azerbaijan", "afghanistan",
@@ -326,19 +326,18 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	if source == "usenix-sec" || source == "all" {
 		// USENIX Security uses a 2-digit-year URL slug. Each year has
 		// up to 2 cycles (Cycle 1, Cycle 2) plus an aggregated
-		// technical-sessions page. We try both cycles for the current
-		// and previous year — broken cycles 404 and we skip cleanly.
+		// technical-sessions page. Include the final program because later
+		// papers may never appear on a cycle page (and some cycles 404).
 		thisYear := time.Now().Year()
 		for _, y := range []int{thisYear, thisYear - 1} {
 			yy := y % 100
-			for _, cycle := range []string{"cycle1-accepted-papers", "cycle2-accepted-papers"} {
-				url := fmt.Sprintf("https://www.usenix.org/conference/usenixsecurity%02d/%s", yy, cycle)
+			for _, url := range usenixSecurityURLs(y) {
 				us, err := fetchUSENIXSecurity(ctx, url, y)
 				if err != nil {
-					log.Printf("fetch USENIX Sec %d %s: %v (continuing)", y, cycle, err)
+					log.Printf("fetch USENIX Sec %d %s: %v (continuing)", y, url, err)
 					continue
 				}
-				log.Printf("fetched %d from USENIX Security '%02d %s", len(us), yy, cycle)
+				log.Printf("fetched %d from USENIX Security '%02d %s", len(us), yy, url)
 				cands = append(cands, us...)
 			}
 		}
@@ -1551,13 +1550,20 @@ func fetchPETSymposiumProceedings(ctx context.Context, venuePrefix, url string, 
 // we use this just to find section starts and slice the body manually.
 var usenixHeadingRE = regexp.MustCompile(`(?m)^## \[([^\]]+)\]\(([^)]+)\)`)
 
+func usenixSecurityURLs(year int) []string {
+	base := fmt.Sprintf("https://www.usenix.org/conference/usenixsecurity%02d/", year%100)
+	return []string{base + "technical-sessions", base + "cycle1-accepted-papers", base + "cycle2-accepted-papers"}
+}
+
 func fetchUSENIXSecurity(ctx context.Context, url string, year int) ([]candidate, error) {
 	md, err := wickFetch(ctx, url, "markdown")
 	if err != nil {
 		return nil, err
 	}
-	text := string(md)
+	return parseUSENIXSecurity(string(md), url, year)
+}
 
+func parseUSENIXSecurity(text, url string, year int) ([]candidate, error) {
 	// Find all paper section starts.
 	starts := usenixHeadingRE.FindAllStringSubmatchIndex(text, -1)
 	if len(starts) == 0 {

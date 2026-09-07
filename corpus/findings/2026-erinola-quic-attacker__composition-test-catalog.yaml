@@ -1,0 +1,17 @@
+paper: 2026-erinola-quic-attacker
+kind: evaluation
+summary: QUIC-Attacker exposes control over packets, frames, streams, and cryptographic state for
+  systematic tests of conforming and malformed QUIC flows. The study tests 15 server libraries and
+  reports eight denial-of-service vulnerabilities; its catalogs restrict fragmentation to at most
+  two frames per data stream and do not exhaust all compositions.
+techniques:
+- packet-injection
+- http3-quic-block
+censors:
+- generic
+defense_implications:
+- Use the published catalogs as a starting point for automated compatibility and security evaluation,
+  then expand combinations and client coverage. Passing the catalog is not proof of censorship resistance
+  or complete protocol correctness.
+section: §5–§8, Tables 2–5
+extracted_by: codex
