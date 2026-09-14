@@ -1,5 +1,12 @@
 [
   {
+    "key": "url:https://www.ermao.net/en/blog/weekly-news-2026-09-03/",
+    "title": "GPT-6 Astra Crosses a Cyber Threshold: Airport Data, Platform Accountability, and Jilong Recovery | Ermao",
+    "source": "ermao",
+    "reason": "News digest blog post covering AI capabilities, data breaches, and platform governance; lacks substantive analysis of censorship measurement, circumvention techniques, or blocking infrastructure relevant to the corpus.",
+    "rejected_at": "2026-09-14"
+  },
+  {
     "key": "arxiv:2608.15184",
     "title": "Pre-Model Representation Failures in GNN-Based Smart Contract Vulnerability Detection",
     "source": "arxiv",

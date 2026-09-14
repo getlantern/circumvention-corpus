@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-gpt-6-astra
+kind: policy
+summary: China's CAC Phase 2 'Clearance·Rectify AI Application Chaos' campaign (reported 2026-09-02) removed 5.61 million pieces of content, processed 49,000+ accounts, and actioned 2,400+ websites and apps. Enforcement extended beyond post-publication removal to include AI-generated content labeling mandates, corpus auditing in generative AI products, and app-store developer vetting with retrospective re-testing of live apps.
+techniques:
+    - ml-classifier
+    - keyword-filtering
+censors:
+    - cn
+defense_implications:
+    - Circumvention app distribution targeting China-based users faces increasing app-store vetting pressure with retrospective re-testing; out-of-band or side-loading distribution mechanisms become more important as formal store access narrows.
+    - Censor-side AI moderation upgrades (multi-modal recognition, voiceprint/face sample libraries) signal detection moving toward richer behavioral signals beyond packet-level analysis, raising the bar for steganographic or covert-channel approaches.
+section: §China CAC enforcement
+extracted_by: claude-sonnet-4-6

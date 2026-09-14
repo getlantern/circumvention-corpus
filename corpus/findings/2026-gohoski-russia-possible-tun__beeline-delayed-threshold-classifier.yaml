@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gohoski-russia-possible-tun
+kind: detection
+summary: The detection event on Beeline (AS16345) exhibits a 5–15 minute delay between TUN activation and connection degradation onset, followed by a further delay before full blocking, consistent with a behavioral or statistical classifier rather than a signature-based real-time inspector. The graduated timeline (partial degradation → near-total block) suggests a threshold-based scoring system rather than an immediate signature match.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - throttling
+censors:
+    - ru
+defense_implications:
+    - Circumvention tools should randomize early-session traffic volume and inter-packet timing to avoid building up a statistical fingerprint that crosses a classifier threshold within the 5–15 minute detection window.
+    - Consider burst-and-idle traffic shaping that mimics legitimate application behavior over medium-term sessions, not just per-packet or per-handshake mimicry.
+section: Issue body
+extracted_by: claude-sonnet-4-6

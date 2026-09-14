@@ -1,0 +1,22 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2025-cloud206-myanmar-severe-internet
+title: '[Myanmar] Severe Internet Slowdown & VPN Connectivity Issues (Since Nov 1st) - Firewall or Cable Issue?'
+authors:
+    - '@cloud206'
+venue: net4people/bbs
+year: 2025
+url: https://github.com/net4people/bbs/issues/545
+abstract: Community report of widespread internet disruption in Myanmar beginning November 1st, 2025, characterized by asymmetrical speeds (slow downloads, normal uploads), rapid blocking of newly-created VPN server IPs, and selective access to Google/YouTube while other services remain blocked. Observers suspect new national firewall deployment rather than submarine cable faults.
+censors:
+    - mm
+techniques:
+    - ip-blocking
+    - throttling
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Ground-truth observations of VPN IP blocking and throttling in Myanmar; relevant to understanding Burmese military regime's use of GFW-derived Geedge filtering infrastructure.
+visibility: public
+date_added: "2026-09-14"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/545

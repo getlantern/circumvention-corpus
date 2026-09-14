@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-cloud206-myanmar-severe-internet
+kind: detection
+summary: A freshly provisioned VPN server in Myanmar was functional for approximately 5 hours before its IP address was completely blocked across all connection methods, indicating the Myanmar filtering infrastructure performs rapid active detection and IP blacklisting of new proxy endpoints.
+techniques:
+    - ip-blocking
+    - active-probing
+censors:
+    - mm
+defense_implications:
+    - IP lifetimes of ~5 hours require IP rotation infrastructure or CDN-fronted endpoints to remain reachable; fixed-IP proxy deployments are untenable in Myanmar.
+    - Consider protocol-level mimicry or tunneling through allowlisted CDN IPs to avoid IP-based detection, since fresh IPs appear to be probed and fingerprinted rapidly.
+section: Issue body
+extracted_by: claude-sonnet-4-6

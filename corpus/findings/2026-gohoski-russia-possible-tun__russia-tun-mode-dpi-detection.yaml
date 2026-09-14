@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gohoski-russia-possible-tun
+kind: detection
+summary: On Beeline mobile internet (AS16345, Russia), enabling TUN mode with a VLESS+REALITY proxy consistently triggers ISP-level connection degradation after 5–15 minutes, while using the same proxy in HTTP/SOCKS5 proxy mode produces no such effect. The detection is reproducible across two independent GUI clients (v2rayN and Throne) with stock settings, suggesting the DPI trigger is the TUN traffic pattern rather than a client-specific artifact.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - vless
+    - reality
+censors:
+    - ru
+defense_implications:
+    - TUN mode's OS-level routing produces distinct traffic patterns (e.g., DNS, routing, packet-size distributions) that differ from user-space proxy modes — circumvention tools using TUN should actively shape or mask these OS-level signatures.
+    - Test circumvention deployments in both proxy and TUN modes separately; a protocol evading detection in proxy mode cannot be assumed to evade detection when operating as a full TUN interface.
+section: Issue body
+extracted_by: claude-sonnet-4-6

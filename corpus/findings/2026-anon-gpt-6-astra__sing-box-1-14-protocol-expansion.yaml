@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-gpt-6-astra
+kind: deployment
+summary: sing-box 1.14.0 (released 2026-08-31) added OpenVPN client and server, OpenConnect, and Snell protocol support alongside L3 forwarding, network namespaces, a REST API, Dashboard UI, and desktop client. The release also adjusted DNS rule semantics, TUN, TLS, Hysteria2 fingerprint behavior, and rule-set processing.
+defenses:
+    - hysteria2
+    - pluggable-transport
+defense_implications:
+    - Tool maintainers should audit which newly-added protocols (OpenConnect, Snell) are currently detectable by censors before routing production traffic through them in new sing-box deployments.
+    - Config migrations to 1.14 must be validated on a non-critical device first; DNS rule semantic changes can silently alter routing behavior without surfacing errors.
+section: §sing-box 1.14
+extracted_by: claude-sonnet-4-6
