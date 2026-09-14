@@ -1,0 +1,59 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-anon-gpt-6-astra
+title: GPT-6 Astra 跨过网络安全门槛：机场数据泄露、平台问责与吉隆恢复周报 | 二毛
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/blog/weekly-news-2026-09-03/
+abstract: |-
+    GPT-6 Astra 跨过网络安全门槛：机场数据泄露、平台问责与吉隆恢复周报 | 二毛
+
+    [Skip to content](#VPContent)
+
+    # GPT-6 Astra 跨过网络安全门槛：机场数据泄露、平台问责与吉隆恢复周报
+
+    约 7630 字大约 25 分钟
+
+    [每周新闻](/blog/tags/?tag=每周新闻)[热点新闻](/blog/tags/?tag=热点新闻)[数字生活](/blog/tags/?tag=数字生活)[AI](/blog/tags/?tag=AI)
+
+    ...—
+
+    2026-09-04
+
+    2026 年 8 月 28 日至 9 月 3 日，AI 的问题从“模型能做什么”进一步变成“谁能用、谁来监督、出了问题怎样追责”。GPT-6 Astra 首次达到 OpenAI 自定框架的 Critical 网络安全门槛；欧盟和中国监管者分别把平台风险与内容治理推向执行层。与此同时，870 万机场客户资料泄露、sing-box 大版本迁移和吉隆口岸灾害恢复提醒我们：数字能力最终仍要落到权限、数据和基础设施上。
+
+    ![2026年8月28日至9月3日新闻周报封面，主题为Astra安全、平台问责与跨境恢复](https://image.ermao.net/images/blog/weekly-news-2026-09-03/20260904_090756-d3b425.svg)
+
+    头图由二毛博客根据本期主题生成，只是编辑插图，不是事件证据。本期入选事件的日档原图均为 `review-only` 或缺失，没有为了视觉统一而擅自上传；正文三张卡片同样由本站依据已复核事实生成，并在相邻段落给出来源。
+
+    > **草稿说明：** 本篇由二毛博客借助公开资料研究和自动化工具整理，正在等待人工审核。文中将官方公告、独立报道和编辑分析分开标注。“已确认”只表示所引证据能支持该句，不代表本站进行过模型、网络、灾害或安全实测。
+
+    ## [本周最值得关注](#本周最值得关注)
+
+    | 领域       | 事件                 | 已核实的事实                                                                            | 为什么值得关注                            | 证据状态                             |
+    | -------- | ------------------ | --------------------------------------------------------------------------------- | ---------------------------------- | -------------------------------- |
+    | AI 与网络安全 | GPT-6 Astra 发布     | OpenAI 称其首次达到自有 Preparedness Framework 的 Critical 网络安全能力门槛，首批面向 Trusted Access 企业 | 更强的漏洞发现与工具执行能力，要求更细的访问、监控和人工授权     | 官方安全概览与型号页；能力和安全评测尚待独立复现         |
+    | 数据安全     | MAG 机场客户资料泄露       | 邮箱、电话、车牌和邮编等被获取；媒体引述约 870 万人受影响，支付资料和机场运营未受影响                                     | 这些字段足以组合出高度可信的旅行钓鱼话术               | 运营商公告加独立报道；入侵路径和分项人数未公布          |
+    | 平台责任     | 欧盟指定三项超大型服务        | ChatGPT 成为 VLOSE，Reddit 和 Roblox 成为 VLOP，四个月内需履行额外 DSA 义务                         | 算法、未成年人和申诉风险从原则进入可审计责任             | 欧盟委员会公告；产品改动和执法结果未发生             |
+    | 国内 AI 治理 | 网信办通报专项整治          | 清理 561 万余条信息、查处 4.9 万余账号、处置 2400 余网站和应用                                           | 大规模处置会改变标识、审核和上架，但申诉与误判数据仍缺席       | 官方通报；无分平台清单和纠错统计                 |
+    | 跨境工具     | sing-box 1.14 正式版  | 新增多协议、API、桌面客户端并调整 DNS 语义；Apple 客户端和旧字段需要迁移                                       | “正式版”并不等于原配置可无痛继承                  | GitHub 正式发布页；第三方配置兼容性未系统实测       |
+    | 公共事件     | 吉隆泥石流灾害链与恢复        | 冰岩崩至口岸约 6–7 分钟、冲击约 22 公里；道路通信电力中断，9 月 1 日仍剩 800 米道路待抢通                            | 跨境灾害恢复不是一条道路通车，而是人员、通信、电力和次生风险同步收敛 | 官方发布会、自然资源与应急部门资料；最终伤亡和全面恢复待通报   |
+    | 科学与数字服务  | WeatherNext 3 进入产品 | 模型用实时卫星和站点观测，每小时更新，地表变量最高 5 公里网格，并开始接入 Google 产品                                  | AI 天气预报从研究结果进入普通人的搜索和地图入口          | Google 发布及其指向的独立实时评估；极端天气长期表现待验证 |
+
+    本周七份日档均为 `complete`。8 月 28 日至 9 月 2 日的日档截止时间在每日 23:03–23:06，9 月 3 日原本缺失，本轮只对这一天做了整日回填，没有重搜其余六天。七条主事件中五条属
+censors:
+    - cn
+techniques:
+    - keyword-filtering
+defenses_discussed:
+    - shadowsocks
+    - vless
+    - trojan
+    - hysteria2
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. News blog tracking circumvention tool updates and Chinese censorship enforcement; sing-box 1.14 release reported with protocol additions but no evaluation.
+visibility: public
+date_added: "2026-09-14"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/blog/weekly-news-2026-09-03/

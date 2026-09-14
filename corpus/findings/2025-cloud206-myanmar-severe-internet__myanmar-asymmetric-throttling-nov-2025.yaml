@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-cloud206-myanmar-severe-internet
+kind: deployment
+summary: 'Beginning November 1st, 2025, Myanmar users reported severely asymmetric internet speeds: download speeds were near-unusable while upload speeds remained at normal maximum capacity, a pattern inconsistent with submarine cable faults which typically degrade both directions.'
+techniques:
+    - throttling
+censors:
+    - mm
+defense_implications:
+    - Upload-only or low-download tunneling protocols (e.g. DNS tunneling, ICMP) may remain usable under asymmetric throttling regimes; consider fallback modes that exploit the intact upload channel.
+    - Measure upload vs. download throughput independently in censorship detection tools to distinguish throttling from cable faults.
+section: Issue body
+extracted_by: claude-sonnet-4-6

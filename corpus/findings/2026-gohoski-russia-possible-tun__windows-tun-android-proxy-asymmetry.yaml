@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gohoski-russia-possible-tun
+kind: detection
+summary: The TUN-mode detection occurs exclusively on Windows 10 and does not manifest on Android using the same VLESS+REALITY server and Beeline SIM, nor when running as a system proxy on Windows. The effect is also observed to impact all devices sharing the Windows hotspot simultaneously, ruling out endpoint-local causes and confirming the classification occurs upstream at the ISP/TSPU layer.
+techniques:
+    - dpi
+    - traffic-shape
+defenses:
+    - vless
+    - reality
+censors:
+    - ru
+defense_implications:
+    - Windows TUN stacks (WinTun/Wintun-based) produce OS-level traffic signatures (NDIS driver behavior, DNS resolver patterns, IP routing artifacts) that differ from mobile OS TUN or user-space proxying — protocol designers should characterize and mitigate these OS-specific signals.
+    - Hotspot propagation of the penalty confirms ISP-level state tied to the upstream connection, not the device; circumvention tools deployed as hotspot gateways face amplified collateral damage risk and should prioritize rapid penalty-state detection and recovery.
+section: Issue body
+extracted_by: claude-sonnet-4-6

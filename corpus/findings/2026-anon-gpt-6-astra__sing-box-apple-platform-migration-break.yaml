@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-gpt-6-astra
+kind: deployment
+summary: 'sing-box 1.14 breaks Apple platform continuity: users of the legacy App Store app ''sing-box VT'' must manually migrate to the new ''sing-box MT'' under a new developer account, while the macOS ''SFM'' client is no longer distributed through the App Store at all. Profiles and settings from the old sandboxed app are not automatically inherited by the replacement.'
+defenses:
+    - pluggable-transport
+defense_implications:
+    - Circumvention tool maintainers distributing through Apple's App Store must account for Apple's developer-account sandboxing when planning major version releases; users lose stored config state on developer account changes, creating a gap in usability during transitions.
+    - Users in censored regions relying on iOS/macOS sing-box clients should export configs to an external location before any major upgrade — the standard App Store update flow does not guarantee config migration across developer account transitions.
+section: §sing-box 1.14 Apple migration
+extracted_by: claude-sonnet-4-6

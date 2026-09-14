@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gohoski-russia-possible-tun
+kind: deployment
+summary: 'After the detection event triggers on Beeline (AS16345), the connection is restricted to exactly one destination: the government-approved MAX messenger (max.ru), while all other Russian domestic whitelist domains (ok.ru, vk.ru, ya.ru, mail.ru) are also blocked. This response is enforced at the ISP/TSPU level and persists until the LTE router is restarted, indicating a stateful per-subscriber penalty state rather than simple packet-level blocking.'
+techniques:
+    - ip-blocking
+    - throttling
+censors:
+    - ru
+defense_implications:
+    - Russian TSPU enforcement can enter a persistent penalty state for a subscriber that survives reconnection without a router restart — circumvention clients should monitor for this failure mode (access only to a government-controlled destination) and alert users to cycle their connection.
+    - The granularity of the response (one allowed destination, not zero) confirms state-level TSPU can maintain per-subscriber allow-lists; assume future states may tighten to zero.
+section: Issue body
+extracted_by: claude-sonnet-4-6
