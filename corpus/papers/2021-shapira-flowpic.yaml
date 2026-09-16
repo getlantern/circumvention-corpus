@@ -1,0 +1,31 @@
+id: 2021-shapira-flowpic
+title: "FlowPic: A Generic Representation for Encrypted Traffic Classification and Applications Identification"
+year: 2021
+venue: IEEE Transactions on Network and Service Management
+doi: "10.1109/TNSM.2021.3071441"
+url: "https://www.eng.tau.ac.il/~shavitt/pub/TNSM2021.pdf"
+authors:
+  - Tal Shapira
+  - Yuval Shavitt
+visibility: public
+censors: [generic]
+techniques: [traffic-shape, ml-classifier]
+evaluation_methods: [ml-evaluation]
+core: false
+date_added: 2026-09-16
+abstract: |
+  Represents unidirectional flows as two-dimensional histograms of packet size
+  and normalized arrival time, then applies a convolutional neural network to
+  distinguish traffic categories, applications, and encryption settings.
+notes: |
+  Expanded version of 2019-shapira-flowpic. Sections III-B and IV describe
+  overlapping 60-second blocks; later experiments also consider shorter
+  blocks. The representation is not confined to connection handshakes.
+  Figures 1 and 2 illustrate application and traffic-category patterns.
+  This is dataset-based classification research, not evidence of a particular
+  censor's deployment, and it does not evaluate REALITY or XTLS Vision.
+references: [2019-shapira-flowpic]
+sources:
+  - "doi:10.1109/TNSM.2021.3071441"
+  - "https://www.eng.tau.ac.il/~shavitt/pub/TNSM2021.pdf"
+  - "https://github.com/talshapira/FlowPic"
