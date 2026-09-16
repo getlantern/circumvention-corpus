@@ -206,3 +206,34 @@ enough that most PRs are routine merges.
 Schema, taxonomy, and corpus metadata: CC0 / public domain.
 Paper PDFs (when stored locally): NOT redistributed. Each paper YAML
 points at the canonical URL; downloads are the user's responsibility.
+
+## Discovery coverage and historical backfills
+
+The default `--source all` crawl includes Crossref title searches for encrypted
+traffic classification, application identification, VPN fingerprinting, and TLS
+traffic analysis. This adds publisher metadata (including IEEE papers) beyond
+the conference pages and arXiv `cs.CR` / `cs.NI` feeds. Candidates still pass the
+keyword filter, deduplication, classifier, and existing PR ingestion policy.
+Sources are interleaved before the classification budget is applied.
+
+A recent-paper crawl cannot recover all foundational work. The installed weekly
+job uses a 10-day window. Run a separate bounded historical discovery pass:
+
+```sh
+go run ./cmd/corpus-crawl run --source crossref --window-days 3650 \
+  --dry-run --max 400 --max-classify 400
+```
+
+Review the candidate list before running without `--dry-run`; the normal run
+uses the existing PR/auto-merge policy. For example, `--max 10 --max-classify 80`
+bounds a real batch. Dry runs do not write papers or call the classifier.
+Crossref returns relevance-ranked, partial matches. Each query is limited to
+200 results over two pages, with truncation logged. This is targeted discovery,
+not an exhaustive archive scan; widening the time window alone does not remove
+that limit. Source HTTP failures and classifier-budget truncation are also
+logged and must not be interpreted as an empty research field.
+
+Keep a historical discovery pass alongside recent crawls when adding a research
+area. Regression fixtures cover both FlowPic titles, publisher pagination and
+metadata, rate limiting, and competition between sources. Passing those tests
+protects these specific discovery paths, not completeness of the literature.
