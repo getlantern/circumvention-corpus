@@ -477,7 +477,14 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 	novel = interleaveSources(novel)
 	if len(novel) > opts.maxClassify {
 		log.Printf("capping classifier input at --max-classify=%d (was %d)", opts.maxClassify, len(novel))
-		novel = novel[:opts.maxClassify]
+		novel = capClassifyBudget(novel, opts.maxClassify)
+		bulk := 0
+		for _, c := range novel {
+			if bulkSources[c.Source] {
+				bulk++
+			}
+		}
+		log.Printf("classifier budget: %d curated/feed candidates, %d from bulk metadata sources", len(novel)-bulk, bulk)
 	}
 	if len(novel) == 0 {
 		log.Println("nothing to ingest")
@@ -533,6 +540,14 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 			}
 		}
 		k = tax.sanitize(k, ident)
+		if len(k.Techniques) == 0 {
+			// Deliberately still ingested: writeYAMLs does not default
+			// techniques, so the integrity test fails in PR review and a
+			// human picks the right tag. Flag it here too — on title-only
+			// metadata this is the likely failure and the log is the only
+			// place it shows up before CI.
+			log.Printf("warning: %s classified relevant with no techniques; ingest PR will fail the integrity test until a reviewer tags it", ident)
+		}
 		log.Printf("✓ %s — censors=%v techniques=%v", ident, k.Censors, k.Techniques)
 		out = append(out, accepted{c: c, k: k})
 		// Stop classifying once we have maxN accepted — saves API calls
@@ -921,7 +936,21 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 		time.Sleep(4 * time.Second)
 	}
 	if start >= arxivMaxBackfill {
-		log.Printf("arxiv: reached %d-result safety cap; narrow --window-days for complete coverage", arxivMaxBackfill)
+		// Results come back newest-first, so the cap drops the OLDEST
+		// submissions in the window — narrowing --window-days would drop
+		// those same papers, not recover them. Report where coverage
+		// actually stops so the gap is reviewable.
+		oldest := time.Time{}
+		for _, c := range cands {
+			if !c.Updated.IsZero() && (oldest.IsZero() || c.Updated.Before(oldest)) {
+				oldest = c.Updated
+			}
+		}
+		boundary := "unknown"
+		if !oldest.IsZero() {
+			boundary = oldest.UTC().Format("2006-01-02")
+		}
+		log.Printf("arxiv: reached %d-result safety cap; coverage stops at %s and older submissions in the window were NOT fetched. Raise arxivMaxBackfill for a one-shot backfill — narrowing --window-days drops the same papers.", arxivMaxBackfill, boundary)
 	}
 	return cands, nil
 }
@@ -2129,6 +2158,8 @@ CRITICAL formatting rules:
   - "title" must be ONLY the paper's actual title. Do not append "(FOCI 2026)", "(Journal of X 2026)", "(USENIX Security 2025)", or any venue/year suffix. The venue goes in its own "venue" field; the year in "year". Many net4people issue titles have these suffixes — strip them.
   - "techniques" must contain at least one taxonomy ID for any relevant paper. If no specific detection technique fits, use the broadest applicable tag (e.g., "ip-blocking" for IP/geo-based blocking like sanctions, "measurement-platform" for measurement studies that don't study a specific technique, "keyword-filtering" for content-based blocking). Do NOT default to "dpi" unless the paper actually studies DPI.
 
+METADATA-ONLY candidates: some feeds deposit no abstract — Crossref has none for roughly 86% of works — so "--- Abstract / body ---" may read "(none …)". Judge those from the title, venue, and URL alone, and do NOT invent findings, methods, or datasets that the title does not state. If the title alone does not support at least one taxonomy technique ID, answer is_relevant=false with reason "title-only metadata: insufficient to tag". A relevant paper with no technique tag fails corpus CI on the ingest PR, so skipping here is better than guessing; re-run with --reclassify once the record has an abstract.
+
 For arXiv candidates: title/authors/year/abstract are already correct in the input — you can skip those fields in your response (we keep what we have). Just give relevance + tags + notes.
 
 For net4people candidates: the abstract begins with a "Labels: …" line and an "Opened by: @username" line, followed by the issue body (and for thread cases, the comments). Use the Labels line to decide which kind of thread this is, then classify accordingly:
@@ -2170,7 +2201,13 @@ For ntc-party candidates: the input "Abstract" is the first post (OP) of a Disco
 		fmt.Fprintf(&b, "Year hint: %d\n", c.Year)
 	}
 	b.WriteString("\n--- Abstract / body ---\n")
-	b.WriteString(c.Abstract)
+	if strings.TrimSpace(c.Abstract) == "" {
+		// Say so explicitly. An empty section reads as a truncated prompt
+		// and invites the model to fill the gap from the title.
+		b.WriteString("(none — this source provided title-level metadata only)")
+	} else {
+		b.WriteString(c.Abstract)
+	}
 	b.WriteString("\n")
 	return b.String()
 }

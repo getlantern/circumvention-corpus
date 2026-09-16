@@ -214,7 +214,24 @@ traffic classification, application identification, VPN fingerprinting, and TLS
 traffic analysis. This adds publisher metadata (including IEEE papers) beyond
 the conference pages and arXiv `cs.CR` / `cs.NI` feeds. Candidates still pass the
 keyword filter, deduplication, classifier, and existing PR ingestion policy.
-Sources are interleaved before the classification budget is applied.
+Sources are interleaved before the classification budget is applied, and
+curated sources (net4people, gfw-report, FOCI, …) fill that budget first:
+Crossref matches hundreds of thousands of works per query, and a curated
+candidate pushed past `--max-classify` is neither ingested nor cached as a
+rejection, so next week's narrower window loses it for good.
+
+The window is applied as Crossref's *indexing* date, not publication date.
+Crossref reads a `date-parts` of `[[2026,9]]` as 2026-09-01 and `[[2026]]` as
+2026-01-01, so a publication-date floor a few days back silently excludes every
+month- or year-granularity record — most conference proceedings, i.e. exactly
+the IEEE/ACM metadata this source exists to reach. Indexing date asks "what did
+Crossref learn about during the window" instead, at the cost of re-seeing
+already-indexed older work each run; dedup and the rejection cache absorb that.
+
+Crossref requests carry a `mailto:` in the User-Agent so they run in Crossref's
+polite pool, are paced, and retry on HTTP 429 honoring `Retry-After`. A query
+that stays throttled is logged and skipped — the remaining queries still run,
+because each reaches a different slice of the literature.
 
 A recent-paper crawl cannot recover all foundational work. The installed weekly
 job uses a 10-day window. Run a separate bounded historical discovery pass:
@@ -228,12 +245,16 @@ Review the candidate list before running without `--dry-run`; the normal run
 uses the existing PR/auto-merge policy. For example, `--max 10 --max-classify 80`
 bounds a real batch. Dry runs do not write papers or call the classifier.
 Crossref returns relevance-ranked, partial matches. Each query is limited to
-200 results over two pages, with truncation logged. This is targeted discovery,
+200 results over two pages, with truncation logged. Most Crossref works carry
+no abstract, so those candidates are classified from the title and venue alone;
+the classifier is told to skip rather than guess when a title will not support
+a taxonomy tag. This is targeted discovery,
 not an exhaustive archive scan; widening the time window alone does not remove
 that limit. Source HTTP failures and classifier-budget truncation are also
 logged and must not be interpreted as an empty research field.
 
 Keep a historical discovery pass alongside recent crawls when adding a research
 area. Regression fixtures cover both FlowPic titles, publisher pagination and
-metadata, rate limiting, and competition between sources. Passing those tests
+metadata, rate-limit retry and skip-to-next-query behavior, and competition
+between sources for the classifier budget. Passing those tests
 protects these specific discovery paths, not completeness of the literature.
