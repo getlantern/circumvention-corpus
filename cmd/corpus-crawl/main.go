@@ -48,18 +48,13 @@ import (
 
 const (
 	arxivAPI = "https://export.arxiv.org/api/query"
-	// arxivLimit is arxiv's per-page page-size cap; arxivMaxBackfill is
-	// the upper bound on total results returned by fetchArxiv across
-	// pages. The default weekly cron uses window-days=10 so a few
-	// hundred is plenty; bumping for a one-shot backfill is what
-	// arxivMaxBackfill is for. cs.CR averages ~50 papers/day in 2026
-	// so 5000 results ≈ 100 days of submissions.
+	// The result cap bounds backfills; reaching it is logged as incomplete coverage.
 	arxivMaxBackfill = 5000
-	arxivCat       = "cs.CR"
-	arxivLimit     = 200
-	gfwReportFeed  = "https://gfw.report/index.xml"
-	classModel     = "claude-haiku-4-5"
-	httpTimeout    = 30 * time.Second
+	arxivCategories  = "(cat:cs.CR+OR+cat:cs.NI)"
+	arxivLimit       = 200
+	gfwReportFeed    = "https://gfw.report/index.xml"
+	classModel       = "claude-haiku-4-5"
+	httpTimeout      = 30 * time.Second
 )
 
 // keywords gates which submissions are interesting enough to send to the
@@ -82,7 +77,7 @@ var keywords = []string{
 	"venezuela", "syria", "uzbek", "tajik", "azerbaijan", "afghanistan",
 	"active probing", "fingerprint", "clienthello", "trust store",
 	"sni-based", "sni filter", "dns injection", "dns poison", "rst injection",
-	"middlebox", "traffic analysis", "website fingerprint", "flow correlat",
+	"middlebox", "traffic analysis", "encrypted traffic", "encrypted internet traffic", "encrypted network traffic", "website fingerprint", "flow correlat",
 	"tls fingerprint", "fully encrypted", "fully-encrypted", "entropy detect",
 	"onion router", "onion routing", "onion service", "anonymity network",
 	"snowflake", "obfs4", "scramblesuit",
@@ -151,7 +146,7 @@ func runOnce(args []string) {
 	fs := flag.NewFlagSet("run", flag.ExitOnError)
 	opts := runOptions{}
 	fs.StringVar(&opts.corpus, "corpus", ".", "path to circumvention-corpus repo root")
-	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, ntc-party, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, or all")
+	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, ntc-party, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, crossref, or all")
 	fs.IntVar(&opts.maxN, "max", 12, "max ACCEPTED papers per PR (cap applied after classification)")
 	fs.IntVar(&opts.maxClassify, "max-classify", 80, "safety bound on classifier calls per run")
 	fs.IntVar(&opts.windowDays, "window-days", 30, "look back this many days")
@@ -232,7 +227,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			// down with it.
 			log.Printf("fetch arxiv: %v (continuing)", err)
 		} else {
-			log.Printf("fetched %d from arXiv cs.CR (%d-day window)", len(ax), opts.windowDays)
+			log.Printf("fetched %d from arXiv cs.CR + cs.NI (%d-day window)", len(ax), opts.windowDays)
 			cands = append(cands, ax...)
 		}
 	}
@@ -343,6 +338,14 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			}
 		}
 	}
+	if source == "crossref" || source == "all" {
+		items, err := fetchCrossref(ctx, since)
+		if err != nil {
+			log.Printf("fetch crossref: %v (continuing with %d candidates)", err, len(items))
+		}
+		log.Printf("fetched %d from Crossref", len(items))
+		cands = append(cands, items...)
+	}
 	res := &runResult{Considered: len(cands)}
 
 	// Curation tier:
@@ -366,7 +369,9 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	curatedSources := map[string]bool{"net4people": true, "ntc-party": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true, "foci": true}
 	titleOnlySources := map[string]bool{"popets": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
+	sourceCounts := map[string][2]int{}
 	for _, c := range cands {
+		before := len(kept)
 		switch {
 		case curatedSources[c.Source]:
 			kept = append(kept, c)
@@ -379,6 +384,13 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 				kept = append(kept, c)
 			}
 		}
+		counts := sourceCounts[c.Source]
+		counts[0]++
+		counts[1] += len(kept) - before
+		sourceCounts[c.Source] = counts
+	}
+	for source, counts := range sourceCounts {
+		log.Printf("source %s: fetched=%d keyword_kept=%d keyword_dropped=%d", source, counts[0], counts[1], counts[0]-counts[1])
 	}
 	res.Filtered = len(kept)
 	log.Printf("%d passed keyword filter", len(kept))
@@ -427,6 +439,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	// run away on a future high-volume source. Note: this is NOT --max;
 	// --max caps the *accepted* set after classification so we don't
 	// undercount because the classifier rejected most of the first N.
+	novel = interleaveSources(novel)
 	if len(novel) > opts.maxClassify {
 		log.Printf("capping classifier input at --max-classify=%d (was %d)", opts.maxClassify, len(novel))
 		novel = novel[:opts.maxClassify]
@@ -731,7 +744,7 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 	dateRange := fmt.Sprintf("submittedDate:[%s+TO+%s]",
 		since.UTC().Format("200601021504"),
 		until.Format("200601021504"))
-	searchQuery := fmt.Sprintf("cat:%s+AND+%s", arxivCat, dateRange)
+	searchQuery := fmt.Sprintf("%s+AND+%s", arxivCategories, dateRange)
 
 	var cands []candidate
 	start := 0
@@ -800,6 +813,9 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 		// arXiv API guidelines: sleep ≥3s between pages. We use 4 to
 		// be a good citizen + leave headroom for retries.
 		time.Sleep(4 * time.Second)
+	}
+	if start >= arxivMaxBackfill {
+		log.Printf("arxiv: reached %d-result safety cap; narrow --window-days for complete coverage", arxivMaxBackfill)
 	}
 	return cands, nil
 }
@@ -1970,7 +1986,7 @@ RELEVANCE — be GENEROUS. A paper is relevant if it studies any of:
   (b) censor capabilities or detection techniques (DPI, fingerprinting, ML classifiers, active probing, traffic analysis)
   (c) circumvention protocol design or evaluation
   (d) anonymity systems / Tor / VPN ecosystem studies
-  (e) traffic-analysis attacks or defenses on encrypted tunnels
+  (e) traffic-analysis attacks or defenses on encrypted tunnels, including encrypted network traffic classification and application identification without an explicit censorship framing
   (f) NGO / advocacy / journalism reports on censorship infrastructure or policy
   (g) primary-source measurements of internet shutdowns, blocking events, or surveillance regimes
   (h) MSc / PhD theses, mailing-list crossposts, blog write-ups that materially advance the field
