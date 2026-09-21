@@ -1,5 +1,152 @@
 [
   {
+    "key": "arxiv:2609.14043",
+    "title": "A High-Throughput FPGA Architecture for Real-Time TCP-SYN Scan Detection",
+    "source": "arxiv",
+    "reason": "TCP-SYN port scan detection is a traditional network intrusion detection problem unrelated to censorship, censor capabilities, circumvention protocols, or traffic analysis of encrypted tunnels.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.14119",
+    "title": "Same Name, Different Server: A Security Census of Silent Drift in the Model Context Protocol Ecosystem",
+    "source": "arxiv",
+    "reason": "Paper studies security vulnerabilities in Model Context Protocol (MCP) servers for LLM applications; has no connection to censorship measurement, circumvention protocols, censor detection techniques, anonymity systems, or internet shutdowns.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.14210",
+    "title": "Enc53: DNSSEC-Anchored Stateless Tickets for Post-Quantum Authoritative DNS",
+    "source": "arxiv",
+    "reason": "DNS encryption and post-quantum cryptography paper with no connection to censorship measurement, detection, or circumvention techniques.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.15039",
+    "title": "SpliTEE: Improving LLM Inference on Trusted Hardware with Differentially Private GPU Outsourcing",
+    "source": "arxiv",
+    "reason": "Paper addresses privacy-preserving LLM inference using trusted execution environments and differential privacy; no censorship, circumvention, or anonymity components.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.15425",
+    "title": "An Empirical Security Analysis of Open-Source Software Used in Onboard Satellite Systems",
+    "source": "arxiv",
+    "reason": "Generic software-security analysis of satellite systems; no connection to censorship, circumvention, blocking detection, anonymity, or surveillance.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.15576",
+    "title": "Approval Integrity and Recovery in LLM Answer Publication",
+    "source": "arxiv",
+    "reason": "Paper studies LLM authorization and content integrity mechanisms; no censorship, circumvention, or blocking angle.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.15693",
+    "title": "HYDRA: Quantifying Botnet Resource Thresholds for Efficient Link-Flooding Attacks on LEO Satellite Networks",
+    "source": "arxiv",
+    "reason": "Paper studies botnet-based link-flooding attacks (DDoS) on LEO satellite networks; does not address censorship measurement, detection techniques, circumvention protocols, or anonymity systems.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.16231",
+    "title": "RuleAutoPilot: Synthesizing Deployable Suricata Rules from Network Traffic",
+    "source": "arxiv",
+    "reason": "Generic malware detection paper using LLMs to synthesize Suricata IDS rules; no censorship, blocking, circumvention, or censor-capability angle.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.16403",
+    "title": "Implementing a White-Box Undetectable Backdoor for Random Fourier Features",
+    "source": "arxiv",
+    "reason": "Generic cryptography and machine-learning security paper about undetectable backdoors in random fourier features; no connection to censorship measurement, censor detection techniques, circumvention protocols, or anonymity systems.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.17817",
+    "title": "Reflections on Trusting Trust, Revisited: Contaminating Self-Modifying AI Coding Agents with Poisoned Benchmarks",
+    "source": "arxiv",
+    "reason": "Paper studies AI system security and benchmark poisoning attacks; unrelated to censorship measurement, censor capabilities, or circumvention protocols.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.17922",
+    "title": "Demystifying Gate-Level Localization of RTL Trojans",
+    "source": "arxiv",
+    "reason": "Hardware Trojan detection in integrated circuits; no connection to internet censorship, circumvention protocols, or surveillance infrastructure.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.18864",
+    "title": "ASLEval: Measuring Privacy Exposure Displacement in LLM Agent Sessions",
+    "source": "arxiv",
+    "reason": "Paper studies privacy exposure in LLM agent sessions; no relevance to censorship measurement, censor detection techniques, circumvention protocols, anonymity systems, traffic analysis, internet shutdowns, or circumvention policy.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.19587",
+    "title": "Red-Teaming Auto Mode: Improving Blocking Classifiers Against Malign Coding Agents",
+    "source": "arxiv",
+    "reason": "AI safety paper on adversarial attacks against AI coding-agent monitors; no connection to internet censorship, circumvention, or blocking detection.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.19893",
+    "title": "Hopper: Bounded-Memory Collaborative Debiasing for Byzantine-Tolerant Peer Sampling",
+    "source": "arxiv",
+    "reason": "Byzantine-tolerant peer sampling paper with no engagement with censorship, circumvention, anonymity, surveillance, or VPN systems.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.20386",
+    "title": "Compact Vision Models for Iris Presentation Attack Detection under Presentation Attack Instrument Shift and Environmental Degradation",
+    "source": "arxiv",
+    "reason": "Biometric authentication / iris presentation attack detection; no censorship, blocking, or circumvention angle.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.20457",
+    "title": "Fingerprinting Multimodal Large Language Models",
+    "source": "arxiv",
+    "reason": "Paper studies ML model provenance and distillation detection; no relevance to censorship measurement, circumvention protocols, censor detection techniques, or network traffic analysis.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.20614",
+    "title": "Inference-Engine Fingerprinting Attacks are Practical: Exploring Model-Driven Environmental Discovery, Exploitation, and Escape",
+    "source": "arxiv",
+    "reason": "Generic ML security paper about inference-engine sandbox escapes; not about censorship detection, circumvention protocols, or surveillance techniques.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.21340",
+    "title": "Conformal Privacy Auditing: Calibrated Re-identification Attacks with Statistical Guarantees",
+    "source": "arxiv",
+    "reason": "Privacy leakage in released text datasets via LLM-based re-identification; not about censorship detection, circumvention, or anonymity systems.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.21713",
+    "title": "TERMon: Detecting Persistent Behavioral Threats in Edge AI via Hardware-Native Ternary Runtime Monitor",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness paper focused on edge AI model integrity, not censorship detection or circumvention techniques.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.21873",
+    "title": "SFPF: Spatio-Frequency Polarization Fingerprint for Anomalous Wireless Device Detection",
+    "source": "arxiv",
+    "reason": "Pure wireless device authentication and anomaly detection paper; no relation to internet censorship, circumvention protocols, censor capabilities, or traffic analysis of circumvention systems.",
+    "rejected_at": "2026-09-21"
+  },
+  {
+    "key": "arxiv:2609.22076",
+    "title": "APort Vault: Benchmarking AI Agent Payment Authorization with the Open Agent Passport",
+    "source": "arxiv",
+    "reason": "Paper benchmarks AI agent payment authorization and security policies; no relation to censorship measurement, circumvention protocols, anonymity systems, or blocking detection techniques.",
+    "rejected_at": "2026-09-21"
+  },
+  {
     "key": "url:https://www.ermao.net/en/blog/weekly-news-2026-09-03/",
     "title": "GPT-6 Astra Crosses a Cyber Threshold: Airport Data, Platform Accountability, and Jilong Recovery | Ermao",
     "source": "ermao",

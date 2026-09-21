@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-arash1343-v2ray-v2ray-configuration
+kind: deployment
+summary: In Iran circa mid-2024, V2Ray-based protocols (VLESS/VMess via subscription services) emerged as the recommended practical replacement for failed DPI-bypass tools, with open-source clients MahsaNG and Oblivion cited as accessible entry points.
+techniques:
+    - dpi
+defenses:
+    - vless
+    - vmess
+censors:
+    - ir
+defense_implications:
+    - V2Ray subscription infrastructure (VLESS/VMess) is the current baseline for Iran; circumvention tools targeting Iran should support or integrate V2Ray protocol variants.
+    - Bundle or prominently recommend subscription-based server discovery so users without self-hosting capability can onboard quickly.
+section: Abstract / thread summary
+extracted_by: claude-sonnet-4-6

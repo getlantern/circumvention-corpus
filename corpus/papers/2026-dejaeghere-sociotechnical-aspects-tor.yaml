@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2609.15192
+id: 2026-dejaeghere-sociotechnical-aspects-tor
+title: Sociotechnical Aspects of Tor Relay Rejection
+authors:
+    - Jules Dejaeghere
+    - Lionel Goffaux
+    - Pierre Luycx
+    - Hosam Elkoulak
+    - Florentin Rochet
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2609.15192"
+url: https://arxiv.org/abs/2609.15192v1
+abstract: In 2019, the Tor Project enforced an end-of-life (EoL) policy for Tor versions, leading to the rejection of outdated relays, amounting to a notable fraction of consensus weight. While this policy aids network maintenance, reduces backporting efforts, and shortens vulnerability exposure, its sociotechnical implications remain unstudied. A user study ($N=26$) reveals that relay operators, though not universally aware of the EoL policy, generally view it favorably. Operational practices vary, occasionally excluding newly installed relays from the network. Network simulations, grounded in historical data, assess the policy's immediate impact on Tor clients against common adversaries. Results indicate a marginal adversarial advantage, with network churn (i.e., relays entering and exiting) exerting a more pronounced effect on user anonymity. Security metrics are introduced to evaluate relay contributions against two adversary models, enabling ranking by individual utility and security. Analysis of four exclusion rounds shows that a minority of rejected relays typically account for over 50% of the security provided by all excluded relays. Recommendations for EoL policy implementation are proposed to mitigate potential drawbacks.
+censors:
+    - generic
+techniques:
+    - measurement-platform
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relay operator practices and relay-network policy have direct implications for circumvention-tool robustness, adoption barriers, and practical deployment trade-offs.
+visibility: public
+date_added: "2026-09-21"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2609.15192

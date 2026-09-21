@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-chen-closing-loop-bidirectional
+kind: defense
+summary: 'For datagram-mode BiFEP (UDP), a configurable linger depth L prevents permanent one-sided close: without linger (L=0), one-sided ACK loss causes the peer that closed first to go silent at epoch 4, making the missing ACK permanently undeliverable and leaving the remote endpoint live indefinitely (e⋆=⊥). With one-bucket linger (L=1), the closing endpoint continues retransmitting FIN+ACK through the next close bucket, resolving all one-sided ACK-loss scenarios in Table VI within epochs 8–12 across all six tested drop counts.'
+techniques:
+    - fully-encrypted-detect
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any QUIC- or UDP-based obfuscation protocol that aims for BiFEP-level security must implement an authenticated linger phase (L≥1 additional close bucket) after close readiness to tolerate ACK loss without creating detectable asymmetric connection lifetime.
+    - Design the FIN/ACK retransmission to be idempotent and scheduled within the existing cover-traffic budget — not as extra out-of-schedule packets — to avoid introducing a burst fingerprint during connection teardown.
+section: §V-D, Eq. (12); §VIII-F, Table VI; Figure 3
+extracted_by: claude-sonnet-4-6
