@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-chen-closing-loop-bidirectional
+kind: evaluation
+summary: 'The Rust BiFEP reference implementation (≈20.4k lines: 2,195 datastream, 989 datagram, 813 shared, 16,375 harness) achieves 28.2 MiB/s goodput at 37.0 µs per epoch operation for datastreams, and 420 MiB/s at 1.36 µs per atomic send/receive for datagrams; all 62,119 conformance assertions passed across 491 trials and 5,321 logical epochs, with 0 forged semantics across 360 datastream and 120 datagram active-integrity trials.'
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - BiFEP's per-epoch overhead (~37 µs for datastream at 1,200-byte schedule) is practical for integration into VPN or proxy tunnels; the datagram path (1.36 µs) is suitable for QUIC-based transports without significant latency penalty.
+    - Cover expansion increases sharply as application load drops toward idle — protocol designers should budget for worst-case cover cost at low throughput and expose a configurable schedule generator so deployments can tune the expansion-versus-fingerprint tradeoff.
+section: §VII; §VIII-A,B,C; Table II; Table V
+extracted_by: claude-sonnet-4-6

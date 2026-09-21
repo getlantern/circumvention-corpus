@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-arash1343-v2ray-v2ray-configuration
+kind: deployment
+summary: As of May 2024, DPI-bypass tools including DPI Tunnel and GoodbyeDPI no longer function for circumvention in Iran, indicating that Iran's filtering infrastructure has become effective against obfuscation-only tools that require no remote proxy server.
+techniques:
+    - dpi
+    - fully-encrypted-detect
+censors:
+    - ir
+defense_implications:
+    - Deprecate DPI-bypass-only tools (no relay server) for Iran deployments; client-side obfuscation without server-side infrastructure is insufficient against current Iranian DPI.
+    - Document and surface tool deprecation timelines so users are not stranded on ineffective configurations.
+section: Abstract / thread summary
+extracted_by: claude-sonnet-4-6

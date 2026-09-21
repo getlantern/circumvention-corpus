@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-dejaeghere-sociotechnical-aspects-tor
+kind: evaluation
+summary: In the April 2024 Tor exclusion event, 440 of 7,765 relays were excluded; only 68 (15%) returned with the same fingerprint within one month, while 372 (85%) never returned. Of the 553 relays running to-be-excluded versions one month before the deadline, only 75 updated in time.
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention networks relying on volunteer relays should assume ~85% permanent attrition after a forced exclusion event; design relay onboarding and geographic-diversity planning around this base rate rather than expecting excluded relays to return.
+    - Proactive operator notification 1–2 months before a version deadline materially improves pre-deadline update compliance and reduces permanent relay loss.
+section: §3.3.4, Figure 4
+extracted_by: claude-sonnet-4-6
