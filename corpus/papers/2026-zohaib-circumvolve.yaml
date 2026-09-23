@@ -1,0 +1,65 @@
+id: 2026-zohaib-circumvolve
+title: "CircumVolve: Automated Discovery of Censorship Evasion Strategies Using Large Language Models"
+authors:
+  - Ali Zohaib
+  - Jackson Sippe
+  - Jade Sheffey
+  - Mingshi Wu
+  - Eric Wustrow
+  - Amir Houmansadr
+venue: "ACM CCS"
+year: 2026
+doi: "10.1145/3830454.3846759"
+url: "https://people.cs.umass.edu/~amir/papers/2026-CCS-CircumVolve.pdf"
+abstract: |
+  Discovering new censorship evasion strategies remains a predominantly
+  slow and manual process. Prior systems that automate evasion
+  discovery are restricted to packet headers and unencrypted protocols
+  by the limited expressiveness of their domain-specific grammars,
+  leaving more complex and widely-used encrypted protocols like TLS and
+  QUIC out of reach. To address this, we present CircumVolve, a system
+  that formulates censorship evasion as LLM-guided program synthesis
+  within an evolutionary optimization loop. Candidate evasion
+  strategies are expressed as executable Python programs that can
+  encode arbitrary protocol manipulations, including cryptographic
+  operations, and are iteratively refined by an LLM that proposes
+  semantically informed mutations based on empirical feedback. This
+  programmatic representation enables automated discovery of evasion
+  strategies across the full network stack.
+
+  We evaluate CircumVolve on five major network protocols subject to
+  censorship (TCP/IP, DNS, HTTP, TLS, and QUIC) in both simulated and
+  real-world environments. Against real-world censors in China, Iran,
+  Pakistan, and Kazakhstan, the system successfully identifies
+  effective evasion techniques spanning all protocol layers, from
+  variants of previously known methods to entirely novel strategies.
+
+censors: [cn, ir, pk, kz]
+techniques: [dpi, sni-blocking, dns-poisoning, rst-injection, http3-quic-block, keyword-filtering]
+defenses_discussed: [geneva, meta-resistance]
+evaluation_methods: [measurement-study, simulation]
+
+core: true
+visibility: public
+
+date_added: "2026-09-23"
+added_by: afisk
+sources: ["url:https://people.cs.umass.edu/~amir/papers/2026-CCS-CircumVolve.pdf"]
+references: [2019-bock-geneva]
+
+notes: |
+  LLM-guided successor to Geneva: instead of a fixed genetic-algorithm
+  grammar over packet-header mutations, evasion strategies are
+  arbitrary Python programs (including crypto ops), refined by an LLM
+  acting as a semantic mutation operator inside an evolutionary loop.
+  This is the first automated-discovery system to reach encrypted
+  protocols (TLS, QUIC) rather than just packet headers/unencrypted
+  traffic. Found 47 distinct evasion strategies across DNS/TCP-IP/
+  HTTP/TLS/QUIC against live censors in China (34), Iran (20), Pakistan
+  (17), and Kazakhstan (10) — 27 of the 47 undocumented in prior work.
+  Uses GPT-5.1, ~$10/100-iteration run. Worth reading against Lantern's
+  own protocol-design pipeline: this is essentially an automated
+  version of the manual "observe a block, hypothesize an evasion,
+  test it" loop the team runs by hand, and the 27 novel strategies are
+  candidate techniques worth checking against lantern-box's current
+  transport set.
