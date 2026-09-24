@@ -55,11 +55,11 @@ const (
 	// arxivMaxBackfill is for. cs.CR averages ~50 papers/day in 2026
 	// so 5000 results ≈ 100 days of submissions.
 	arxivMaxBackfill = 5000
-	arxivCat       = "cs.CR"
-	arxivLimit     = 200
-	gfwReportFeed  = "https://gfw.report/index.xml"
-	classModel     = "claude-haiku-4-5"
-	httpTimeout    = 30 * time.Second
+	arxivCat         = "cs.CR"
+	arxivLimit       = 200
+	gfwReportFeed    = "https://gfw.report/index.xml"
+	classModel       = "claude-haiku-4-5"
+	httpTimeout      = 30 * time.Second
 )
 
 // keywords gates which submissions are interesting enough to send to the
@@ -170,19 +170,31 @@ func runOnce(args []string) {
 // runResult summarizes a single crawl. Returned both from runOnce and
 // from the HTTP handler.
 type runResult struct {
-	Considered int      `json:"considered"`
-	Filtered   int      `json:"filtered"`
-	Novel      int      `json:"novel"`
-	Accepted   int      `json:"accepted"`
-	Written    []string `json:"written"`
-	PRURL      string   `json:"pr_url,omitempty"`
+	Considered  int      `json:"considered"`
+	Filtered    int      `json:"filtered"`
+	Novel       int      `json:"novel"`
+	Accepted    int      `json:"accepted"`
+	Written     []string `json:"written"`
+	PRURL       string   `json:"pr_url,omitempty"`
+	FetchErrors []string `json:"fetch_errors,omitempty"`
 }
 
-func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
+// runWith executes one crawl. Named returns (res, err) so the deferred
+// alert below can inspect the final result: if any source failed to
+// fetch AND the run produced no PR to carry that news to a human (the
+// "arXiv silently returned nothing for a week" failure mode that lost
+// arxiv:2609.12242), it's otherwise invisible outside
+// /tmp/corpus-crawl.err.log on the residential mini, which nobody tails.
+func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 	root, err := filepath.Abs(opts.corpus)
 	if err != nil {
 		return nil, err
 	}
+	defer func() {
+		if res != nil && !opts.dryRun && res.PRURL == "" && len(res.FetchErrors) > 0 {
+			reportFetchFailures(ctx, root, res.FetchErrors, opts.windowDays)
+		}
+	}()
 
 	if err := requireTool("wick"); err != nil && !opts.dryRun {
 		return nil, err
@@ -222,6 +234,18 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		source = "all"
 	}
 
+	// fetchErrs collects every source-fetch failure this run, source-
+	// tagged, so it can be surfaced to a human — either in the PR body
+	// (if a PR gets opened) or via reportFetchFailures (if it doesn't).
+	// A silently-empty arXiv fetch is exactly what dropped
+	// arxiv:2609.12242 for good: it never appeared in the corpus or the
+	// rejection cache, because logging "continuing" to a log file on the
+	// mini that nobody tails is not the same as anyone finding out.
+	var fetchErrs []string
+	recordFetchErr := func(source string, err error) {
+		fetchErrs = append(fetchErrs, fmt.Sprintf("%s: %v", source, err))
+	}
+
 	var cands []candidate
 	if source == "arxiv" || source == "all" {
 		ax, err := fetchArxiv(ctx, since)
@@ -231,6 +255,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			// of consecutive runs) and shouldn't take the whole crawl
 			// down with it.
 			log.Printf("fetch arxiv: %v (continuing)", err)
+			recordFetchErr("arxiv", err)
 		} else {
 			log.Printf("fetched %d from arXiv cs.CR (%d-day window)", len(ax), opts.windowDays)
 			cands = append(cands, ax...)
@@ -242,6 +267,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			// net4people is best-effort; if it fails, log and continue
 			// so an arXiv outage / GH-API rate limit doesn't kill the run.
 			log.Printf("fetch net4people: %v (continuing)", err)
+			recordFetchErr("net4people", err)
 		} else {
 			log.Printf("fetched %d from net4people (reading-group + country-labeled threads)", len(np))
 			cands = append(cands, np...)
@@ -254,6 +280,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			// March 2026; the fetch will keep failing until/unless it
 			// returns. Same fail-soft posture as the other sources.
 			log.Printf("fetch ntc.party: %v (continuing)", err)
+			recordFetchErr("ntc-party", err)
 		} else {
 			log.Printf("fetched %d from ntc.party", len(np))
 			cands = append(cands, np...)
@@ -263,6 +290,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		gr, err := fetchGFWReport(ctx, since)
 		if err != nil {
 			log.Printf("fetch gfw.report: %v (continuing)", err)
+			recordFetchErr("gfw-report", err)
 		} else {
 			log.Printf("fetched %d from gfw.report", len(gr))
 			cands = append(cands, gr...)
@@ -278,6 +306,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			pp, err := fetchPETSymposiumProceedings(ctx, "PoPETs", fmt.Sprintf("https://petsymposium.org/popets/%d/", y), y, "popets")
 			if err != nil {
 				log.Printf("fetch PoPETs %d: %v (continuing)", y, err)
+				recordFetchErr(fmt.Sprintf("popets-%d", y), err)
 				continue
 			}
 			log.Printf("fetched %d from PoPETs %d", len(pp), y)
@@ -290,6 +319,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			f, err := fetchPETSymposiumProceedings(ctx, "FOCI", fmt.Sprintf("https://petsymposium.org/foci/%d/", y), y, "foci")
 			if err != nil {
 				log.Printf("fetch FOCI %d: %v (continuing)", y, err)
+				recordFetchErr(fmt.Sprintf("foci-%d", y), err)
 				continue
 			}
 			log.Printf("fetched %d from FOCI %d", len(f), y)
@@ -300,6 +330,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		em, err := fetchErmaoNet(ctx, since)
 		if err != nil {
 			log.Printf("fetch ermao.net: %v (continuing)", err)
+			recordFetchErr("ermao", err)
 		} else {
 			log.Printf("fetched %d from ermao.net", len(em))
 			cands = append(cands, em...)
@@ -309,6 +340,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		pb, err := fetchPaderbornSyssec(ctx, since)
 		if err != nil {
 			log.Printf("fetch Paderborn syssec publications: %v (continuing)", err)
+			recordFetchErr("paderborn", err)
 		} else {
 			log.Printf("fetched %d from Paderborn syssec publications", len(pb))
 			cands = append(cands, pb...)
@@ -318,6 +350,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 		pb, err := fetchPaderbornBlog(ctx, since)
 		if err != nil {
 			log.Printf("fetch Paderborn syssec blog: %v (continuing)", err)
+			recordFetchErr("paderborn-blog", err)
 		} else {
 			log.Printf("fetched %d from Paderborn syssec blog", len(pb))
 			cands = append(cands, pb...)
@@ -336,6 +369,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 				us, err := fetchUSENIXSecurity(ctx, url, y)
 				if err != nil {
 					log.Printf("fetch USENIX Sec %d %s: %v (continuing)", y, cycle, err)
+					recordFetchErr(fmt.Sprintf("usenix-sec-%d-%s", y, cycle), err)
 					continue
 				}
 				log.Printf("fetched %d from USENIX Security '%02d %s", len(us), yy, cycle)
@@ -343,7 +377,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 			}
 		}
 	}
-	res := &runResult{Considered: len(cands)}
+	res = &runResult{Considered: len(cands), FetchErrors: fetchErrs}
 
 	// Curation tier:
 	//   net4people + gfw.report + foci — every entry is censorship research
@@ -546,7 +580,7 @@ func runWith(ctx context.Context, opts runOptions) (*runResult, error) {
 	if rejectPath != "" {
 		prFiles = append(prFiles, rejectPath)
 	}
-	prURL, err := openPR(ctx, root, out, prFiles)
+	prURL, err := openPR(ctx, root, out, prFiles, fetchErrs)
 	if err != nil {
 		log.Printf("PR creation failed (YAMLs are written, push manually): %v", err)
 	} else {
@@ -664,6 +698,77 @@ func commitRejectCacheOnly(ctx context.Context, root, rejectPath string, totalEn
 	}
 	log.Printf("pushed rejection-cache update to main")
 	return nil
+}
+
+// reportFetchFailures makes source-fetch failures visible in the GitHub
+// issue tracker when a run has nothing else (no auto-ingest PR) to carry
+// that news to a human. Best-effort: any gh error here is logged and
+// swallowed — alerting must never fail the crawl run itself.
+//
+// Reuses an existing open tracking issue (matched by title) instead of
+// opening a new one every time, so a source that's down for several
+// consecutive weeks accumulates as comments on one issue rather than
+// spawning a pile of duplicates.
+const fetchFailureIssueTitle = "corpus-crawl: source fetch failures"
+
+func reportFetchFailures(ctx context.Context, root string, fetchErrs []string, windowDays int) {
+	if err := requireTool("gh"); err != nil {
+		log.Printf("alert: gh not available, can't report %d fetch failure(s): %v", len(fetchErrs), err)
+		return
+	}
+
+	date := time.Now().UTC().Format("2006-01-02")
+	var body strings.Builder
+	fmt.Fprintf(&body, "corpus-crawl run on %s (window=%d days) hit %d source fetch failure(s) and produced no auto-ingest PR this run:\n\n",
+		date, windowDays, len(fetchErrs))
+	for _, e := range fetchErrs {
+		fmt.Fprintf(&body, "- %s\n", e)
+	}
+	body.WriteString("\nIf this repeats across runs, a source is likely down or rate-limiting the crawler — see `/tmp/corpus-crawl.err.log` on the residential mini. " +
+		"A single missed week is usually harmless (the next run's window overlaps), but repeated failures create permanent blind spots for anything that ages out of the window before ever being fetched.\n")
+
+	searchCmd := exec.CommandContext(ctx, "gh", "issue", "list",
+		"--repo", "getlantern/circumvention-corpus",
+		"--search", fmt.Sprintf("in:title %q", fetchFailureIssueTitle),
+		"--state", "open", "--json", "number,title", "--limit", "10")
+	searchCmd.Dir = root
+	var existingNum string
+	if out, err := searchCmd.Output(); err == nil {
+		var issues []struct {
+			Number int    `json:"number"`
+			Title  string `json:"title"`
+		}
+		if json.Unmarshal(out, &issues) == nil {
+			for _, iss := range issues {
+				if iss.Title == fetchFailureIssueTitle {
+					existingNum = fmt.Sprintf("%d", iss.Number)
+					break
+				}
+			}
+		}
+	}
+
+	if existingNum != "" {
+		cmd := exec.CommandContext(ctx, "gh", "issue", "comment", existingNum,
+			"--repo", "getlantern/circumvention-corpus", "--body", body.String())
+		cmd.Dir = root
+		if out, err := cmd.CombinedOutput(); err != nil {
+			log.Printf("alert: gh issue comment on #%s failed: %v\n%s", existingNum, err, string(out))
+		} else {
+			log.Printf("alert: appended fetch-failure report to existing issue #%s", existingNum)
+		}
+		return
+	}
+
+	cmd := exec.CommandContext(ctx, "gh", "issue", "create",
+		"--repo", "getlantern/circumvention-corpus",
+		"--title", fetchFailureIssueTitle, "--body", body.String())
+	cmd.Dir = root
+	if out, err := cmd.CombinedOutput(); err != nil {
+		log.Printf("alert: gh issue create failed: %v\n%s", err, string(out))
+	} else {
+		log.Printf("alert: opened fetch-failure issue: %s", strings.TrimSpace(string(out)))
+	}
 }
 
 // ── arXiv fetch ────────────────────────────────────────────────────
@@ -1032,9 +1137,10 @@ func fetchNet4PeopleComments(ctx context.Context, client *http.Client, issueNum 
 const ntcPartyBase = "https://ntc.party"
 
 // Discourse category IDs to skip — observed on ntc.party 2023-2026:
-//   2  = Site Feedback
-//   5  = antizapret.prostovpn.org support (largest category, low signal)
-//   42 = Manuals and How-Tos (user-support, not research)
+//
+//	2  = Site Feedback
+//	5  = antizapret.prostovpn.org support (largest category, low signal)
+//	42 = Manuals and How-Tos (user-support, not research)
 var ntcPartySkipCategories = map[int]bool{2: true, 5: true, 42: true}
 
 type discourseTopic struct {
@@ -1341,7 +1447,10 @@ func fetchErmaoNet(ctx context.Context, since time.Time) ([]candidate, error) {
 	// Filter to post URLs that look like content (skip index/landing
 	// pages, friends/stats/airport directories, scamvpn slop, etc.)
 	// and skip anything older than `since`.
-	type kept struct{ url string; lastmod time.Time }
+	type kept struct {
+		url     string
+		lastmod time.Time
+	}
 	var posts []kept
 	for _, u := range set.URLs {
 		if !ermaoIsPost(u.Loc) {
@@ -1398,7 +1507,7 @@ func ermaoIsPost(url string) bool {
 		"https://www.ermao.net/blog/tags",
 		"https://www.ermao.net/blog/categories",
 		"https://www.ermao.net/blog/archives",
-		"https://www.ermao.net/blog/",  // careful — this is a path-prefix, but only the root /blog/ is the index
+		"https://www.ermao.net/blog/", // careful — this is a path-prefix, but only the root /blog/ is the index
 	} {
 		if url == strings.TrimSuffix(prefix, "/") || url == prefix+"/" {
 			return false
@@ -1515,13 +1624,13 @@ func fetchPETSymposiumProceedings(ctx context.Context, venuePrefix, url string, 
 		}
 
 		out = append(out, candidate{
-			Source:   sourceName,
-			Title:    title,
-			Authors:  authors,
-			URL:      paperURL,
-			Venue:    fmt.Sprintf("%s %d", venuePrefix, year),
-			Year:     year,
-			Refs:     []string{"url:" + paperURL},
+			Source:  sourceName,
+			Title:   title,
+			Authors: authors,
+			URL:     paperURL,
+			Venue:   fmt.Sprintf("%s %d", venuePrefix, year),
+			Year:    year,
+			Refs:    []string{"url:" + paperURL},
 		})
 	}
 	return out, nil
@@ -1909,12 +2018,12 @@ type classification struct {
 	// (the GH issue title is the paper title but authors/venue/year
 	// live in the body). Empty for arXiv candidates which have these
 	// from the API directly.
-	Authors          []string `json:"authors,omitempty"`
-	Venue            string   `json:"venue,omitempty"`
-	Year             int      `json:"year,omitempty"`
-	Title            string   `json:"title,omitempty"`             // override if the issue title differs from paper title
-	CleanAbstract    string   `json:"clean_abstract,omitempty"`    // 1-3 sentence abstract LLM derives from body
-	CanonicalURL     string   `json:"canonical_url,omitempty"`     // first paper URL found in body
+	Authors       []string `json:"authors,omitempty"`
+	Venue         string   `json:"venue,omitempty"`
+	Year          int      `json:"year,omitempty"`
+	Title         string   `json:"title,omitempty"`          // override if the issue title differs from paper title
+	CleanAbstract string   `json:"clean_abstract,omitempty"` // 1-3 sentence abstract LLM derives from body
+	CanonicalURL  string   `json:"canonical_url,omitempty"`  // first paper URL found in body
 }
 
 // classifyWithClaude shells out to `claude -p` to classify a paper. We
@@ -2434,13 +2543,13 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 		}
 		sources = append(sources, a.c.Refs...)
 		y := paperYAML{
-			ID:      id,
-			Title:   stripVenueSuffix(a.c.Title),
-			Authors: a.c.Authors,
-			Venue:   venue,
-			Year:    a.c.Year,
-			ArxivID: a.c.ArxivID,
-			URL:     a.c.URL,
+			ID:       id,
+			Title:    stripVenueSuffix(a.c.Title),
+			Authors:  a.c.Authors,
+			Venue:    venue,
+			Year:     a.c.Year,
+			ArxivID:  a.c.ArxivID,
+			URL:      a.c.URL,
 			Abstract: a.c.Abstract,
 			// Censors defaults to ["generic"] when not specific — that's
 			// always a valid taxonomy ID. Techniques does NOT default:
@@ -2483,7 +2592,7 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 // openPR commits prFiles (new YAMLs + optionally the rejection cache)
 // on a fresh auto-ingest branch and opens a PR labeled `auto-ingest`.
 // `accepted` count comes from the items slice (one per new YAML).
-func openPR(ctx context.Context, root string, items []accepted, prFiles []string) (string, error) {
+func openPR(ctx context.Context, root string, items []accepted, prFiles []string, fetchErrs []string) (string, error) {
 	if err := requireTool("gh"); err != nil {
 		return "", err
 	}
@@ -2523,7 +2632,7 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 		return "", err
 	}
 
-	body := buildPRBody(items)
+	body := buildPRBody(items, fetchErrs)
 	bodyFile := filepath.Join(root, ".pr-body.md")
 	if err := os.WriteFile(bodyFile, []byte(body), 0o644); err != nil {
 		return "", err
@@ -2560,7 +2669,7 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 	// is the intended behaviour — never force it.
 	if err := run("gh", "pr", "merge", "--auto", "--squash", url); err != nil {
 		log.Printf("could not enable auto-merge on %s: %v", url, err)
-		log.Printf("PR is open and will wait for a manual merge; if this persists, check that "+
+		log.Printf("PR is open and will wait for a manual merge; if this persists, check that " +
 			"branch protection on main requires the `test` check (auto-merge needs it)")
 	} else {
 		log.Printf("auto-merge enabled on %s — merges when CI passes", url)
@@ -2571,7 +2680,7 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 	return url, nil
 }
 
-func buildPRBody(items []accepted) string {
+func buildPRBody(items []accepted, fetchErrs []string) string {
 	var b strings.Builder
 	b.WriteString("# Auto-ingest from arXiv cs.CR\n\n")
 	fmt.Fprintf(&b, "Ingested %d candidate paper%s. Each is a stub committed to `corpus/papers/`. Please:\n\n", len(items), pluralS(len(items)))
@@ -2580,6 +2689,16 @@ func buildPRBody(items []accepted) string {
 	b.WriteString("- [ ] Replace the auto-generated `notes` with a real team note if interesting\n")
 	b.WriteString("- [ ] Set `core: true` for any load-bearing addition\n")
 	b.WriteString("- [ ] Drop entries that aren't worth corpus-keeping\n\n---\n\n")
+
+	if len(fetchErrs) > 0 {
+		fmt.Fprintf(&b, "> **⚠️ %d source fetch failure%s this run** — the candidates below only came from "+
+			"whatever sources DID respond; a failed source contributed zero candidates and won't be retried "+
+			"once its papers age out of the lookback window:\n>\n", len(fetchErrs), pluralS(len(fetchErrs)))
+		for _, e := range fetchErrs {
+			fmt.Fprintf(&b, "> - %s\n", e)
+		}
+		b.WriteString(">\n---\n\n")
+	}
 
 	sort.SliceStable(items, func(i, j int) bool {
 		return len(items[i].k.Techniques) > len(items[j].k.Techniques)
@@ -2779,12 +2898,12 @@ func askHandler(w http.ResponseWriter, r *http.Request, authToken, corpusRoot st
 // browser can render the bundle as soon as it's available (~300ms) and
 // show "Claude is thinking…" while the LLM call runs (5–30s). Events:
 //
-//   event: started      data: {question}
-//   event: searching    data: {}
-//   event: bundle       data: {<full synthesize bundle>}
-//   event: claude-start data: {n_findings}
-//   event: answer       data: {answer, elapsed_ms}
-//   event: error        data: {message}
+//	event: started      data: {question}
+//	event: searching    data: {}
+//	event: bundle       data: {<full synthesize bundle>}
+//	event: claude-start data: {n_findings}
+//	event: answer       data: {answer, elapsed_ms}
+//	event: error        data: {message}
 //
 // The browser reads via fetch() + ReadableStream; CF Pages Functions
 // pass the body through unbuffered as long as we don't call .text()

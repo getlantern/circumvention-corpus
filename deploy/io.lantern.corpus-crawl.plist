@@ -26,6 +26,17 @@
     pull/build failure. Code changes pushed to main land in the next
     cron firing automatically.
   -->
+  <!--
+    --window-days 17, not 10: with a 7-day cadence, a paper needs a
+    window of at least ~14 days for TWO consecutive Monday runs to both
+    see it — otherwise a single source-fetch failure on the one run
+    where it was eligible drops it permanently once it ages out of the
+    next run's lookback. arxiv:2609.12242 (submitted 2026-09-10) was
+    lost exactly this way: the 2026-09-14 run's arXiv fetch came back
+    empty, and by 2026-09-21 the paper's submittedDate had already
+    fallen outside a 10-day window. 17 gives a few days of margin
+    beyond the 14-day minimum for run jitter / arXiv indexing lag.
+  -->
   <key>ProgramArguments</key>
   <array>
     <string>/Users/afisk/code/circumvention-corpus/deploy/run-crawl.sh</string>
@@ -35,7 +46,7 @@
     <string>--max</string>
     <string>10</string>
     <string>--window-days</string>
-    <string>10</string>
+    <string>17</string>
   </array>
 
   <!-- Mondays at 10:00 local time. Tweak Hour/Minute as desired. -->
