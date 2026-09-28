@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-gusgustavo-iran-using-champa
+kind: deployment
+summary: 'Because GitHub is blocked in Iran, Champa distributes binaries through three alternative channels: a Telegram bot (@getchampabot), Google Drive folders, and curl commands documented in the GitHub issue thread itself. The issue thread remains accessible via Google cache / AMP even when GitHub''s domain is blocked, creating a bootstrapping loop.'
+techniques:
+    - ip-blocking
+defenses:
+    - amp-cache
+    - tunneling
+censors:
+    - ir
+defense_implications:
+    - Publish release binaries on multiple platforms that have different blocking profiles in the target country (Google Drive, Telegram, and a direct CDN URL) — no single distribution channel should be a single point of failure when the primary channel (GitHub) is blocked.
+    - Consider a Telegram bot as a first-class distribution mechanism for Iran deployments; Telegram was reportedly blocked during the period covered by this thread, but the bot endpoint was still reachable for binary delivery, suggesting partial or inconsistent blocking.
+section: Download section (§1)
+extracted_by: claude-sonnet-4-6
