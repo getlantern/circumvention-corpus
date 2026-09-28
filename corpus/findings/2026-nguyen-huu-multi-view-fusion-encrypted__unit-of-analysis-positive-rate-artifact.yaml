@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-nguyen-huu-multi-view-fusion-encrypted
+kind: evaluation
+summary: 'The apparent 55.1% positive rate in a 17,577-flow Cobalt Strike corpus is an artifact of counting individual flows rather than endpoints: those flows reduce to only 2,132 independent endpoint groups, where the true positive rate is 4.2%. No endpoint triple carries a mixed label, so flows sharing a destination are not independent observations and standard deviations computed at flow level are artificially small.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - When modeling censor-side ML detection, use endpoint-level (destination-grouped) base rates rather than flow-level rates; a censor or SOC blocking by destination operates in the ~4% positive-rate regime, not the 55% figure typical of published results.
+    - Circumvention protocol evaluations should report metrics at both flow and endpoint/session granularity to surface unit-of-analysis artifacts before drawing conclusions about detectability.
+section: §V-A, Table II
+extracted_by: claude-sonnet-4-6

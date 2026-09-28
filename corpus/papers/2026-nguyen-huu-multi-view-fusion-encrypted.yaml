@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2609.27311
+id: 2026-nguyen-huu-multi-view-fusion-encrypted
+title: 'Multi-View Fusion for Encrypted C2 Detection: A Leakage-Controlled Measurement Study of Evaluation Pitfalls'
+authors:
+    - Hoang-Huy Nguyen-Huu
+    - Van-Tri Phan
+    - Khuong Nguyen-An
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2609.27311"
+url: https://arxiv.org/abs/2609.27311v1
+abstract: Command-and-control (C2) traffic increasingly hides within TLS, so defenders now apply machine learning to traffic metadata. Many studies assume that combining two metadata views, namely flow statistics and TLS handshake fingerprints, improves both accuracy and robustness. We tested this assumption on 17,577 TLS flows from 62 real Cobalt Strike captures. Our evaluation removes the data leakage that leads to overly optimistic reported scores. We report three findings that matter more than the fusion result itself. First, an incorrect preprocessing step increases the F1 score by 0.28. This step computes the frequency encoding across the entire dataset rather than within each cross-validation fold. The increase is about ten times larger than any real effect we measured. Second, both the labels and the behavioral features depend on the destination address. Because of this, the 17,577 flows form only 2,132 independent groups, and the positive rate of 55.1\%, which looks balanced, drops to 4.2\%. Therefore, class balance is just a result of how we analyze the data, specifically whether we count flows or endpoints, and not a real feature of the task. Third, 20 of the 62 captures (32\%) have no TLS flows to any known C2 address, so they contain only benign samples. We checked these captures directly and confirmed that this is a gap in the ground truth, not a labeling error. In this context, fusion beats the best single view by only 0.022 in F1. When an attacker forges both feature surfaces simultaneously, every model performs worse than a simple baseline that always predicts positive (F1 = 0.711). For encrypted C2 detection, the evaluation design is not a preliminary step. It \emph{is} the main result.
+censors:
+    - generic
+techniques:
+    - tls-fingerprint
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Evaluation methodology and traffic-analysis classifier design directly inform robust circumvention protocol design against censor-side detection.
+visibility: public
+date_added: "2026-09-28"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2609.27311

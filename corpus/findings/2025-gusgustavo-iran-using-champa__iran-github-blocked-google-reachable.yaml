@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-gusgustavo-iran-using-champa
+kind: deployment
+summary: 'As of June 2025, Iran blocks GitHub.com and Telegram but leaves the IP address of google.com reachable and Google Drive accessible. This selective blocking pattern created the operational window for Champa: because google.com is reachable, its AMP cache (cdn.ampproject.org) can be reached by fronting on that IP, then used to proxy connections to otherwise-blocked destinations.'
+techniques:
+    - ip-blocking
+    - dns-poisoning
+defenses:
+    - amp-cache
+    - domain-fronting
+censors:
+    - ir
+defense_implications:
+    - Monitor which major CDN/platform IPs remain reachable in Iran — reachable CDN IPs are the substrate for AMP-cache and domain-fronting transports; losing google.com reachability kills this entire class of defenses.
+    - Maintain redundant distribution channels (Telegram bot, Google Drive) for binaries when GitHub itself is blocked in the target region.
+section: Issue body (opening description)
+extracted_by: claude-sonnet-4-6

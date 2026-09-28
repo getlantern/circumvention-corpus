@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-gusgustavo-iran-using-champa
+kind: defense
+summary: Champa routes connections by specifying an AMP cache URL (https://cdn.ampproject.org/) with google.com as the front domain, then uses the SOCKS5 proxy interface locally. The server's public key is hardcoded in the connection string, providing a fixed authentication token that prevents trivial impersonation of the proxy by a censor injecting a fake server response during active probing.
+techniques:
+    - active-probing
+    - dpi
+defenses:
+    - amp-cache
+    - domain-fronting
+censors:
+    - ir
+defense_implications:
+    - Bind server authentication to a long-lived public key embedded in the client configuration string — this defeats simple active-probe impersonation by a censor that intercepts the AMP relay path without also compromising the server's private key.
+    - Rotate server public keys and AMP cache endpoints periodically (or when blocking occurs) to recover from server-IP enumeration; the January 2026 update to the issue demonstrates the maintainers already follow this practice.
+section: Setup section (§2)
+extracted_by: claude-sonnet-4-6

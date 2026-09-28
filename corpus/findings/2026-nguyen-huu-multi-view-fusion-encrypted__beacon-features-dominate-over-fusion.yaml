@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-nguyen-huu-multi-view-fusion-encrypted
+kind: evaluation
+summary: Adding nine beacon descriptors (inter-arrival-time moments, FFT peak period and power, flow count per endpoint triple, idle ratio) to the flow-statistics view improves Random Forest F1 from 0.747 to 0.856 (+0.109) — one order of magnitude larger than any multi-view fusion gain (+0.022). However, the top-weighted feature beacon_n_flows correlates with capture length (Spearman ρ = 0.718) and its single-feature ROC-AUC varies from 0.173 to 0.977 across folds, indicating it partly reflects a collection artifact rather than real beacon periodicity.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Periodic callback timing regularity (beacon interval, FFT periodicity) is the single highest-value ML detection signal for encrypted C2 — circumvention transports using any form of periodic heartbeat or polling must randomize callback timing with substantial jitter to defeat this feature class.
+    - Limiting the number of flows per server address or multiplexing within a single long-lived connection reduces the flow-count-per-destination signal that functions as a strong detection artifact in grouped traffic analysis.
+section: §V-C
+extracted_by: claude-sonnet-4-6

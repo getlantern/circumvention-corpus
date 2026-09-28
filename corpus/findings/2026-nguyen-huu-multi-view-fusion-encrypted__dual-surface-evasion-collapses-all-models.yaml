@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-nguyen-huu-multi-view-fusion-encrypted
+kind: detection
+summary: Under simultaneous adversarial forgery of both the TLS handshake fingerprint surface and the flow-behavior surface, all multi-view fusion configurations collapse to approximately 0.07 F1 — well below the trivial always-positive baseline of 0.711 (Δ = 0.590, cluster-bootstrap p < 0.001 over 2,000 resamples of 62 captures). Clean-condition model ranking does not predict adversarial ranking.
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Simultaneously forging TLS fingerprints (JA3/JA3S, certificate, ALPN) and flow behavior (sleep/jitter, padding, cover traffic) is sufficient to defeat multi-view ML classifiers below trivial baselines — circumvention transports should treat dual-surface evasion as the minimum viable threat model, not an advanced scenario.
+    - Evaluating a circumvention transport against only a single detection surface dramatically underestimates attacker cost; evasion benchmarks must attack all simultaneously-observed feature surfaces to be meaningful.
+section: §V-E
+extracted_by: claude-sonnet-4-6
