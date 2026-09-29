@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-dejaeghere-sociotechnical-aspects-tor
+kind: evaluation
+summary: Monte Carlo simulations across four EoL exclusion rounds (2021–2023) show that natural relay churn is the dominant driver of Tor client anonymity loss, with EoL exclusions giving AS and IXP adversaries an advantage equivalent to only ~4 days (AS adversary) or ~9 days (relay adversary) of the network running without exclusion. In the 2021 exclusion event, up to ~1% of additional clients were compromised; by 2023 this figure dropped to ~0.30%, attributed to improved operator update discipline and Tor Project communications.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Prioritize reducing guard-relay churn (e.g., bandwidth-bar hysteresis for guard-flag assignment) over minimizing version-exclusion events — churn is the dominant anonymity threat, not version enforcement.
+    - Relay-based circumvention networks should invest in guard-selection stability mechanisms to limit repeated path reassignment, which is what actually exposes clients to persistent adversarial ASes.
+section: §5.1–5.3, Figure 5–7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-gpt-6-astra
+kind: deployment
+summary: sing-box 1.14 deprecates several DNS configuration fields — including old address-filter fields, the old `strategy` action, and `rule_set_ip_cidr_accept_empty` — with removal planned for version 1.16. Configurations using these fields will continue running until 1.16 but accumulate silent technical debt.
+defenses:
+    - pluggable-transport
+defense_implications:
+    - Circumvention operators using sing-box as a routing core should audit all DNS rules against the 1.14 deprecation list immediately; waiting until 1.16 means debugging version changes, parsing failures, and network interference simultaneously.
+    - Downstream tools that generate or distribute sing-box configs (subscription converters, managed-config services) must update templates before the 1.16 removal window to avoid silently broken user configurations.
+section: §sing-box 1.14
+extracted_by: claude-sonnet-4-6

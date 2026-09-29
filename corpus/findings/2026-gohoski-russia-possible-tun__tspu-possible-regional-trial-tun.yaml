@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-gohoski-russia-possible-tun
+kind: evaluation
+summary: The reporter notes the phenomenon began several months prior to the September 2026 report and has only one corroborating data point (a Telegram message describing similar Beeline behavior), suggesting the TSPU capability is narrowly deployed — possibly in a single region or in a trial phase — rather than nationally rolled out. The reporter explicitly flags uncertainty about whether this is a TSPU experiment or a misconfiguration in their VPN client.
+techniques:
+    - dpi
+    - traffic-shape
+censors:
+    - ru
+defense_implications:
+    - Novel Russian DPI capabilities may be trialed on small ISPs or specific regions before national rollout; circumvention developers should monitor net4people/bbs and similar forums for early-signal anomalies on smaller carriers like Beeline mobile.
+    - A single reproducible report on a single ISP is sufficient reason to audit TUN-mode traffic signatures — waiting for broad confirmation risks missing a detection rollout before it reaches national scale.
+section: Issue body
+extracted_by: claude-sonnet-4-6

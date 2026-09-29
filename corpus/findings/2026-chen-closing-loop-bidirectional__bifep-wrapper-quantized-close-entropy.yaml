@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-chen-closing-loop-bidirectional
+kind: defense
+summary: The BiFEP datastream construction uses a 'wrapper' layer with authenticated DATA, DUMMY, and FIN frames over an independently keyed inner FEP per direction, revealing only a public sending schedule ΓX(t) and quantized closing epoch from the set Ecl — the exact private half-close time is hidden behind continued cover traffic. Empirical passive diagnostics on the Rust implementation show byte entropy of 7.999279–7.999749 bits/byte, maximum absolute byte correlation of 0.004668, and a random-forest ROC-AUC of 0.485 (95% CI [0.428, 0.542]) distinguishing DATA from ChaCha20 — not significantly better than chance.
+techniques:
+    - fully-encrypted-detect
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Use authenticated typed frames (DATA/DUMMY/FIN) inside an inner FEP rather than relying on length-only shaping — this prevents cross-direction semantic leakage while keeping wire bytes indistinguishable from uniform random.
+    - Separate the private close-readiness event from the public close time by continuing full scheduled output through the next permitted close bucket (quantized close), so connection teardown carries no timing signal.
+section: §IV; §VIII-D, Table IV
+extracted_by: claude-sonnet-4-6

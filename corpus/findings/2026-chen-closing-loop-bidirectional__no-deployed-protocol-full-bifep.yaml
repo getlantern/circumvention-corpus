@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-chen-closing-loop-bidirectional
+kind: evaluation
+summary: None of the six surveyed deployed protocols — TLS 1.3, QUIC v1, WireGuard, Shadowsocks 2022, obfs4, and Tor — provides the full set of BiFEP security properties (exact shaping, delivery, protocol-state integrity, private half-close, and cross-direction isolation) at the specification level.
+techniques:
+    - fully-encrypted-detect
+    - traffic-shape
+    - tls-fingerprint
+defenses:
+    - shadowsocks
+    - obfs4
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Current production obfuscation tools (obfs4, Shadowsocks 2022) lack at least one BiFEP property — most likely cross-direction isolation or private half-close — creating detectable side channels that should be closed before deploying in high-risk censor environments.
+    - Adopt the BiFEP wrapper-layer design (authenticated DATA/DUMMY/FIN framing over an inner FEP) to cover gaps that none of the surveyed protocols currently address.
+section: §I (abstract contribution bullet); §VIII-G (referenced protocol comparison)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-arash1343-v2ray-v2ray-configuration
+kind: deployment
+summary: V2Ray NG and comparable clients require a third-party remote server to operate; user-side configuration alone is insufficient, establishing distributed server infrastructure as a necessary dependency for Iran-targeted circumvention as of 2024.
+defenses:
+    - vmess
+    - vless
+censors:
+    - ir
+defense_implications:
+    - Circumvention operators must provide and maintain server-side relay infrastructure for Iranian users, not merely distribute client software.
+    - Projects that integrate both client and subscription-based server discovery (as MahsaNG and Oblivion do) lower the access barrier significantly for non-technical users.
+section: Abstract / thread summary
+extracted_by: claude-sonnet-4-6

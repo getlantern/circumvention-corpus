@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 
+id: 2026-gohoski-russia-possible-tun
+title: '[Russia] Possible TUN detection on DPI level?'
+authors:
+    - '@gohoski'
+    - '@sh4run'
+    - '@its0ka'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/663
+abstract: A user reports that enabling TUN mode with VLESS+REALITY proxy configuration on Russian mobile ISP Beeline (AS16345) causes systemic connection degradation after 5–15 minutes, restricting access to only the government MAX messenger service. The phenomenon occurs system-wide across devices, is specific to Windows TUN mode (not occurring on Android or with system proxy), and is consistently reproducible. Commenters hypothesize DNS anomalies or connection-pattern detection as the DPI-level vector.
+censors:
+    - ru
+techniques:
+    - dpi
+    - throttling
+defenses_discussed:
+    - vless
+    - reality
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Documents a novel Russian DPI detection capability targeting TUN mode traffic; relevant for Lantern's defense strategy against connection-state analysis.
+visibility: public
+date_added: "2026-09-14"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/663

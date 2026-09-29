@@ -1,0 +1,70 @@
+id: 2026-chen-snowflake-enumeration
+title: "Evaluating Practical Enumeration and Blocking Attacks on the Snowflake Circumvention System"
+authors:
+  - Linden Chen
+  - Ryan Sangha
+  - Cecylia Bocovich
+  - Ram Sundara Raman
+venue: "ACM CCS"
+year: 2026
+arxiv_id: "2609.12242"
+url: "https://arxiv.org/abs/2609.12242"
+abstract: |
+  Proxy-based Internet censorship circumvention tools like Snowflake rely
+  on large, dynamic pools of third-party proxies to resist IP-based
+  blocking. We focus on two assumptions underpinning the security of
+  Snowflake: that adversaries cannot easily enumerate proxy IPs, and that
+  blocking those proxies would incur unacceptable collateral damage. In
+  this paper, we test these assumptions by studying practical enumeration
+  and blocking attacks against Snowflake conducted by malicious clients.
+
+  We combine bounded, ethical real-world measurements with large-scale
+  simulation to evaluate both present-day enumeration and blocking risk
+  and broader attacker capabilities. Over 48 days of real-world
+  measurements from May-June 2025, our attack enumerated over 21,000
+  unique proxy IP addresses belonging to almost 1,000 autonomous systems.
+  Despite this high number, we find that proxy churn limits the overall
+  effectiveness of enumeration over time, and reduces the impact on
+  clients of individual proxy addresses being blocked. However, at the
+  network level, blocking the top 1% of observed autonomous systems
+  blocks more than 30% of observed Snowflakes while affecting 0% of
+  Tranco Top 100 domains and ~2.5% of Top 1M domains. We discover that
+  the broker's load-aware matching reveals stable, high-capacity proxies
+  to attackers early, especially during periods of elevated demand such
+  as the censorship event in Iran of June 2025, subsequently exposing the
+  networks that contribute disproportionately to system connectivity. In
+  simulation, increasing attacker scale sharply improves both enumeration
+  and blocking success, while higher proxy churn significantly reduces
+  blocking effectiveness. We conclude by discussing and evaluating
+  practical mitigations, some of which have been integrated into
+  Snowflake.
+
+censors: [generic, ir]
+techniques: [ip-blocking, asn-blackholing]
+defenses_discussed: [webrtc-pluggable, bridges]
+defenses_evaluated_against: [webrtc-pluggable]
+evaluation_methods: [measurement-study, simulation]
+
+core: true
+visibility: public
+
+date_added: "2026-09-23"
+added_by: afisk
+sources: ["arxiv:2609.12242"]
+references: [2024-bocovich-snowflake]
+
+notes: |
+  Direct empirical attack on Snowflake's two core security assumptions
+  (proxy IPs can't be enumerated cheaply; blocking proxy ASNs is too
+  costly for the censor). A malicious-client attacker enumerated 21k+
+  proxy IPs over 48 days and found that blocking just the top 1% of
+  observed ASNs would knock out 30%+ of observed Snowflakes for ~0%
+  collateral damage on the Tranco Top 100. Also shows the broker's
+  load-aware proxy matching leaks which proxies are high-capacity/stable
+  early, worst during high-demand events like the Iran June 2025
+  shutdown — an adaptive-attacker side-channel worth understanding for
+  any Lantern bridge-distribution or matching design that shares this
+  "match clients to the best available proxy" shape. Authors say some
+  mitigations are already integrated into Snowflake; worth checking
+  which, and whether lantern-box's own proxy-distribution/matching logic
+  has the analogous exposure.

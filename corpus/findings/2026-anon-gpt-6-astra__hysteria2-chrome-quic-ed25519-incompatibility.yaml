@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-gpt-6-astra
+kind: defense
+summary: sing-box 1.14 enables Chrome QUIC fingerprint simulation for Hysteria2 by default, but the release notes explicitly warn that servers using Ed25519 certificates will experience handshake failure when this option is active, requiring operators to disable the fingerprint option or switch certificate algorithms.
+techniques:
+    - tls-fingerprint
+    - http3-quic-block
+defenses:
+    - hysteria2
+defense_implications:
+    - Operators deploying Hysteria2 with Ed25519 certificates must disable Chrome QUIC fingerprint simulation in sing-box 1.14+ or regenerate server certificates with a compatible algorithm before upgrading clients.
+    - When a circumvention tunnel stops working after a client upgrade, check certificate algorithm compatibility and fingerprint settings before attributing the failure to active censor blocking.
+section: §sing-box 1.14
+extracted_by: claude-sonnet-4-6

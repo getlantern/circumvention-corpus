@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-dejaeghere-sociotechnical-aspects-tor
+kind: deployment
+summary: Default OS package repositories (Debian, Ubuntu LTS, FreeBSD quarterly) routinely ship Tor versions that lag behind the Tor Project's minimum accepted version, causing relays installed from default repos to be excluded immediately or within months of deployment. Debian LTS typically ships a Tor version that becomes excluded toward the end of the OS lifetime; Ubuntu LTS does not generally ship an LTS Tor version at all.
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that ship relay or bridge software through standard OS package channels must maintain project-official repositories and make them the default installation path — relying on distro repos silently produces immediately-excluded nodes.
+    - Operator onboarding documentation should include a compatibility matrix of OS versions vs. supported relay versions to prevent new contributors from being rejected at first run, which is a significant diversity and recruitment barrier.
+section: §3.3.2, Figure 3
+extracted_by: claude-sonnet-4-6

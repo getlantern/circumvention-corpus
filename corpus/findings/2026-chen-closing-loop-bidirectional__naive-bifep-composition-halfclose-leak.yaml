@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-chen-closing-loop-bidirectional
+kind: detection
+summary: 'Naïve composition of two unidirectional FEPs leaks private half-close events: when A half-closes after epoch 2 while B''s response continues through epoch 6, the zero output in the A→B direction exposes A''s private state even though all transmitted bytes appear uniformly random. This attack was confirmed empirically — naive composition leaked in 3/3 close-witness trials versus 0/3 for BiFEP.'
+techniques:
+    - fully-encrypted-detect
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Do not compose two independent unidirectional obfuscated channels as a bidirectional protocol — the directional silence after half-close is detectable; use a single bidirectional object with a shared close schedule.
+    - Cover traffic must continue at the full scheduled volume in both directions through the closing epoch, not just until the application half-closes.
+section: §III-D, Proposition 1; Table II (Close-leak witness row)
+extracted_by: claude-sonnet-4-6

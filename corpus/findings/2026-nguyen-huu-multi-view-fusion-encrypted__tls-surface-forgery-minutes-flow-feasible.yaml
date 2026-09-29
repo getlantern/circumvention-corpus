@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-nguyen-huu-multi-view-fusion-encrypted
+kind: defense
+summary: Forging the TLS handshake surface (JA3/JA3S fingerprint, certificate, ALPN, HTTP/2 negotiation) requires only minutes via malleable profile configuration, while forging flow-behavior features (inter-arrival timing, packet-size distribution, volume statistics) requires sleep/jitter tuning and cover traffic but remains feasible. The paper explicitly rejects the common assumption that flow behavior cannot be forged.
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Circumvention transports should implement both TLS fingerprint normalization (low cost: cipher suite ordering, ALPN, certificate selection) and flow-behavior shaping (higher cost: timing jitter, packet padding, cover traffic) as complementary layers; TLS surface normalization is the rational first priority given its negligible overhead.'
+    - Protocol designers should explicitly cost-model each evasion surface and document which attack surfaces remain unaddressed, so operators can make informed deployment decisions.
+section: §III
+extracted_by: claude-sonnet-4-6

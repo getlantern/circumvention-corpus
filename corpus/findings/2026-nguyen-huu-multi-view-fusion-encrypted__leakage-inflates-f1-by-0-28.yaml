@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-nguyen-huu-multi-view-fusion-encrypted
+kind: evaluation
+summary: Computing frequency encoding of JA3, JA3S, and SNI across the entire dataset rather than within each cross-validation fold inflates the TLS-view F1 score by 0.28 — approximately ten times larger than any real detection effect measured in the study. When leakage is controlled, the largest genuine multi-view fusion gain over the best single view is only 0.022 F1.
+techniques:
+    - tls-fingerprint
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Treat published ML classifier accuracy claims for encrypted-traffic detection with extreme skepticism unless the evaluation protocol explicitly controls for cross-fold feature leakage; real gains are ~10× smaller than leaked scores suggest.
+    - When benchmarking circumvention transports against ML detectors, require grouped cross-validation by capture or campaign — not random flow splits — to obtain realistic evasion estimates.
+section: §V-A, Abstract
+extracted_by: claude-sonnet-4-6

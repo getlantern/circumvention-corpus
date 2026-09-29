@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-gusgustavo-iran-using-champa
+kind: evaluation
+summary: Champa's AMP-cache tunnel delivers at most ~15 KB/s throughput before AMP rate-limiting activates. Sessions last approximately 15 minutes before the rate limit triggers; after that, users must stop the client and wait several hours before resuming.
+techniques:
+    - throttling
+defenses:
+    - amp-cache
+censors:
+    - ir
+defense_implications:
+    - AMP-cache tunneling is viable only for low-bandwidth, latency-tolerant tasks (text, small file transfers); do not route video or large downloads through it, and document the throughput ceiling prominently so users self-select appropriate workloads.
+    - 'Design client UX around the rate-limit cycle: detect the rate-limit state automatically (request rate falling below 1/s), notify the user, and enforce the multi-hour backoff rather than letting users exhaust their quota further.'
+section: Issue body (rate-limit description)
+extracted_by: claude-sonnet-4-6

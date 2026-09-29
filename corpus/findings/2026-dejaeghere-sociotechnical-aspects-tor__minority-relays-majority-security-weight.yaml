@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-dejaeghere-sociotechnical-aspects-tor
+kind: evaluation
+summary: Across four analyzed exclusion rounds, a minority of rejected relays consistently accounted for over 50% of the security contribution (measured by individual path-compromise protection against AS, IXP, and relay adversaries) provided by all excluded relays combined, enabling selective prioritization of relay update outreach.
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - When relay exclusions are unavoidable, focus operator outreach on the highest-security-contributing relay subset first — contacting this minority captures the majority of the security benefit at lower communication cost.
+    - Circumvention networks should implement per-relay security-contribution metrics to rank which relays to prioritize retaining during infrastructure transitions or forced version upgrades.
+section: §6, Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-cloud206-myanmar-severe-internet
+kind: evaluation
+summary: Community technical analysis of the November 2025 Myanmar disruption concluded the observed symptom cluster — unidirectional throttling, rapid VPN IP blocking, and selective service allowlisting — is inconsistent with submarine cable faults and instead indicates deployment of new national-level traffic filtering infrastructure, consistent with GFW-derived Geedge filtering technology previously documented in Myanmar.
+techniques:
+    - throttling
+    - ip-blocking
+    - dpi
+censors:
+    - mm
+defense_implications:
+    - Myanmar should be treated as a high-capability censorship environment requiring the same evasion sophistication as China, including active-probing resistance and IP rotation.
+    - Circumvention deployments in Myanmar should anticipate rapid IP-level blocking (hours, not days) and require either CDN fronting, decoy routing, or frequent endpoint rotation to maintain connectivity.
+section: Issue body
+extracted_by: claude-sonnet-4-6

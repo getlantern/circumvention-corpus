@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-dejaeghere-sociotechnical-aspects-tor
+kind: evaluation
+summary: The Tor EoL enforcement policy reduced the excluded relays' consensus-weight share from 13.25% in the first 2019 exclusion to roughly 7% of advertised bandwidth in the 2023 exclusion, demonstrating that iterative enforcement combined with improved operator communication (email, mailing list, social media) steadily reduces version fragmentation in a volunteer relay network over a 4-year horizon.
+defenses:
+    - tor
+    - protocol-versioning
+censors:
+    - generic
+defense_implications:
+    - Enforced end-of-life policies with staged operator outreach are effective at driving down version fragmentation in volunteer networks — circumvention protocol stacks should adopt similar versioned lifecycle enforcement rather than maintaining indefinite backward compatibility.
+    - Track consensus-weight share of outdated or excluded nodes as a longitudinal health metric; a declining share across successive enforcement cycles validates continued investment in operator communications.
+section: §5.1, §2.2
+extracted_by: claude-sonnet-4-6

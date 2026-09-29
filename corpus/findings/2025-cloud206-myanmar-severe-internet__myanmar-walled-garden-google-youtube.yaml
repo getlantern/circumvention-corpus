@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-cloud206-myanmar-severe-internet
+kind: deployment
+summary: During peak disruption periods in Myanmar (post November 1st, 2025), users observed a 'walled garden' effect where the entire internet dropped except for Google and YouTube, which remained selectively accessible — consistent with allowlist-based national firewall policy rather than infrastructure failure.
+techniques:
+    - ip-blocking
+censors:
+    - mm
+defense_implications:
+    - Domain-fronting via Google or YouTube infrastructure may remain viable in Myanmar during shutdown events, as these CDNs appear on an allowlist.
+    - Circumvention tools should detect walled-garden conditions (only a few domains reachable) and automatically attempt CDN-fronted or allowlisted-host tunneling as a fallback mode.
+section: Issue body
+extracted_by: claude-sonnet-4-6

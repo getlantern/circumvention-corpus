@@ -1,0 +1,28 @@
+id: 2019-shapira-flowpic
+title: "FlowPic: Encrypted Internet Traffic Classification is as Easy as Image Recognition"
+year: 2019
+venue: IEEE INFOCOM Workshops (Network Intelligence)
+doi: "10.1109/INFCOMW.2019.8845315"
+url: "https://talshapira.github.io/publication/flowpic_ni19"
+authors:
+  - Tal Shapira
+  - Yuval Shavitt
+visibility: public
+censors: [generic]
+techniques: [traffic-shape, ml-classifier]
+evaluation_methods: [ml-evaluation]
+core: false
+date_added: 2026-09-16
+abstract: |
+  Classifies encrypted traffic by encoding packet sizes and arrival times as
+  images for a convolutional neural network. Evaluates traffic categories and
+  application identification using labeled datasets, including VPN and Tor.
+notes: |
+  Associated talk: https://www.youtube.com/watch?v=sZm7y91v2co
+  Expanded journal version: 2021-shapira-flowpic.
+  Dataset classification results do not demonstrate deployment by a censor
+  or evaluate resistance of REALITY or XTLS Vision.
+sources:
+  - "doi:10.1109/INFCOMW.2019.8845315"
+  - "https://talshapira.github.io/publication/flowpic_ni19"
+  - "https://www.youtube.com/watch?v=sZm7y91v2co"

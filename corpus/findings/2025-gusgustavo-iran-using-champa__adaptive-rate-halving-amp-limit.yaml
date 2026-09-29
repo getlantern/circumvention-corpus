@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-gusgustavo-iran-using-champa
+kind: defense
+summary: 'Champa implements adaptive request-rate control: when the AMP cache returns an unexpected response (e.g., HTTP 302), the client halves its polling rate. Once the polling interval exceeds one second the client is considered fully rate-limited and must restart after a multi-hour cooldown. This mechanism keeps the client from burning through its allowance when cache responses degrade.'
+techniques:
+    - throttling
+defenses:
+    - amp-cache
+    - meta-resistance
+censors:
+    - ir
+defense_implications:
+    - Embed automatic rate-limit detection and exponential backoff into any AMP-cache-based transport; a client that blindly retries after a 302 will exhaust its allowance faster and extend the cooldown period.
+    - Surface rate-limit state clearly in the client UI or logs so users understand the session lifecycle and do not mistake a rate-limited session for a network outage.
+section: Troubleshooting section
+extracted_by: claude-sonnet-4-6
