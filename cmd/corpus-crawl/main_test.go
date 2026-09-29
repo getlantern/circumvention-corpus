@@ -180,3 +180,50 @@ func TestSanitizeDropsNonTaxonomyTags(t *testing.T) {
 		t.Errorf("valid defense was dropped: %v", got.DefensesDiscussed)
 	}
 }
+
+func TestUSENIXFinalProgramCoverage(t *testing.T) {
+	const base = "https://www.usenix.org/conference/usenixsecurity26/"
+	urls := usenixSecurityURLs(2026)
+	found := false
+	for _, url := range urls {
+		if url == base+"technical-sessions" {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatal("missing final program: cycle 2 can be unavailable")
+	}
+	const program = `## [Breaking the Boundaries: Analyzing QUIC Frame-Packet Interactions With QUIC-Attacker](/conference/usenixsecurity26/presentation/erinola)
+
+Nurullah Erinola, Marcel Maehren, Marcus Brinkmann, and Jörg Schwenk, *Ruhr University Bochum*
+
+We develop probes to explore how different QUIC server implementations handle the coalescence and fragmentation of payloads, covering both valid and invalid combinations of datagrams, packets, and frames.
+
+## [Technical Analysis of the Geedge Networks Firewall Source Code Leak](/conference/usenixsecurity26/presentation/ablove)
+
+Anna Ablove, *University of Michigan;* Johnnie Walker, *GFW Report*
+
+In this paper, we analyze the source code from this leak, focusing on Geedge Networks' flagship product, the Tiangou Secure Gateway (TSG) firewall.
+`
+	papers, err := parseUSENIXSecurity(program, base+"technical-sessions", 2026)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(papers) != 2 {
+		t.Fatalf("parsed %d papers, want 2", len(papers))
+	}
+	for i, slug := range []string{"erinola", "ablove"} {
+		p := papers[i]
+		if p.URL != base+"presentation/"+slug || p.Year != 2026 || len(p.Authors) == 0 || p.Abstract == "" {
+			t.Errorf("incomplete record: %+v", p)
+		}
+		if !matchesKeywordsInText(p.Title) {
+			t.Errorf("title gate drops %q", p.Title)
+		}
+	}
+	existing := &existingCorpus{byID: map[string]bool{}, byTitle: map[string]bool{}, byURL: map[string]bool{}, byArxiv: map[string]bool{}}
+	existing.remember(papers[0])
+	if !existing.contains(papers[0]) {
+		t.Fatal("same paper on a cycle page must deduplicate")
+	}
+}

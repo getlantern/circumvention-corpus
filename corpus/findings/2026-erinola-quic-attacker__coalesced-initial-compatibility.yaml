@@ -1,0 +1,16 @@
+paper: 2026-erinola-quic-attacker
+kind: evaluation
+summary: In the tested versions, seven of 15 QUIC server libraries fail to process a ClientHello
+  split across two Initial packets coalesced into one UDP datagram. All seven correctly process the
+  corresponding case with the packets in separate datagrams, locating the compatibility difference
+  at datagram composition rather than fragmentation alone.
+techniques:
+- packet-injection
+- http3-quic-block
+censors:
+- generic
+defense_implications:
+- Test generated QUIC fragmentation candidates across multiple endpoint implementations and datagram
+  compositions before field evaluation. Endpoint rejection must be distinguished from censor blocking.
+section: §7.1, Table 3 (P2 and P3)
+extracted_by: codex

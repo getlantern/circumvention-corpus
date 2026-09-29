@@ -1,0 +1,17 @@
+paper: 2026-erinola-quic-attacker
+kind: evaluation
+summary: The evaluated XQUIC and Kwik versions accept forbidden frame-packet combinations. XQUIC
+  can buffer application STREAM frames from Initial or Handshake packets and process them after the
+  handshake; the authors demonstrate application-data injection and stream-control truncation effects.
+  The paper notes that Kwik developers independently implemented frame-placement validation.
+techniques:
+- packet-injection
+- http3-quic-block
+censors:
+- generic
+defense_implications:
+- Reject protocol candidates that weaken frame-placement validation or accept application data at
+  inappropriate encryption levels. Reproduce the tests against the exact library version selected
+  for deployment.
+section: §7.2.1–§7.2.2, Table 4
+extracted_by: codex
