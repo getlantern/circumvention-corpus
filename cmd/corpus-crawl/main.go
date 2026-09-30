@@ -2411,6 +2411,7 @@ type existingCorpus struct {
 	byTitle map[string]bool
 	byURL   map[string]bool
 	byArxiv map[string]bool
+	byDOI   map[string]bool
 }
 
 func (e *existingCorpus) contains(c candidate) bool {
@@ -2422,6 +2423,11 @@ func (e *existingCorpus) contains(c candidate) bool {
 	}
 	if a := canonicalArxivID(c.ArxivID, c.URL); a != "" && e.byArxiv[a] {
 		return true
+	}
+	for _, d := range c.dois() {
+		if e.byDOI[d] {
+			return true
+		}
 	}
 	for _, u := range c.identityURLs() {
 		if e.byURL[u] {
@@ -2440,6 +2446,9 @@ func (e *existingCorpus) remember(c candidate) {
 	}
 	if a := canonicalArxivID(c.ArxivID, c.URL); a != "" {
 		e.byArxiv[a] = true
+	}
+	for _, d := range c.dois() {
+		e.byDOI[d] = true
 	}
 	// Only the candidate's own URL — a ref may be a shared listing page,
 	// which would collapse unrelated papers from the same source.
@@ -2475,6 +2484,7 @@ func loadExisting(root string) (*existingCorpus, error) {
 		byTitle: map[string]bool{},
 		byURL:   map[string]bool{},
 		byArxiv: map[string]bool{},
+		byDOI:   map[string]bool{},
 	}
 	// A source URL is only a usable identity if exactly one paper claims it.
 	// jonsnowwhite.de/publications is listed as a source by three distinct
@@ -2493,6 +2503,7 @@ func loadExisting(root string) (*existingCorpus, error) {
 			Title   string   `yaml:"title"`
 			URL     string   `yaml:"url"`
 			ArxivID string   `yaml:"arxiv_id"`
+			DOI     string   `yaml:"doi"`
 			Sources []string `yaml:"sources"`
 		}
 		if err := yaml.Unmarshal(raw, &p); err != nil {
@@ -2510,11 +2521,24 @@ func loadExisting(root string) (*existingCorpus, error) {
 		if a := canonicalArxivID(p.ArxivID, p.URL); a != "" {
 			out.byArxiv[a] = true
 		}
+		// The schema carries a top-level doi, and 12 records already use it
+		// while linking to the publisher rather than doi.org — so without
+		// this a Crossref candidate for one of them matches on title alone.
+		if d := canonicalDOI(p.DOI); d != "" {
+			out.byDOI[d] = true
+		}
+		if d := canonicalDOI(p.URL); d != "" {
+			out.byDOI[d] = true
+		}
 		for _, s := range p.Sources {
 			if strings.HasPrefix(s, "arxiv:") {
 				if a := canonicalArxivID(strings.TrimPrefix(s, "arxiv:"), ""); a != "" {
 					out.byArxiv[a] = true
 				}
+				continue
+			}
+			if d := canonicalDOI(s); d != "" {
+				out.byDOI[d] = true
 				continue
 			}
 			if u := canonicalURL(strings.TrimPrefix(s, "url:")); u != "" {
@@ -2543,6 +2567,49 @@ func canonicalURL(u string) string {
 	return strings.TrimSuffix(u, "/")
 }
 
+var doiURLRE = regexp.MustCompile(`(?i)^(?:https?://)?(?:dx\.)?doi\.org/`)
+
+// canonicalDOI reduces the forms a DOI arrives in — "doi:10.1109/x", a
+// https://doi.org/ URL, or a bare "10.1109/x" — to one comparable key. A DOI
+// is globally unique, so unlike a source URL it identifies a paper on its own
+// and needs no single-owner check.
+func canonicalDOI(s string) string {
+	s = strings.ToLower(strings.TrimSpace(s))
+	s = strings.TrimPrefix(s, "doi:")
+	s = doiURLRE.ReplaceAllString(s, "")
+	s = strings.TrimSuffix(strings.TrimSpace(s), "/")
+	if !strings.HasPrefix(s, "10.") {
+		return ""
+	}
+	return s
+}
+
+// dois is every DOI that identifies this candidate — its own URL when it is a
+// doi.org link, plus any doi: refs.
+func (c candidate) dois() []string {
+	var out []string
+	if d := canonicalDOI(c.URL); d != "" {
+		out = append(out, d)
+	}
+	for _, r := range c.Refs {
+		d := canonicalDOI(r)
+		if d == "" {
+			continue
+		}
+		dup := false
+		for _, have := range out {
+			if have == d {
+				dup = true
+				break
+			}
+		}
+		if !dup {
+			out = append(out, d)
+		}
+	}
+	return out
+}
+
 var arxivInURLRE = regexp.MustCompile(`(?i)arxiv\.org/(?:abs|pdf)/([0-9.]+)`)
 
 func canonicalArxivID(id, url string) string {
@@ -2564,6 +2631,7 @@ type paperYAML struct {
 	Venue             string   `yaml:"venue,omitempty"`
 	Year              int      `yaml:"year"`
 	ArxivID           string   `yaml:"arxiv_id,omitempty"`
+	DOI               string   `yaml:"doi,omitempty"`
 	URL               string   `yaml:"url,omitempty"`
 	Abstract          string   `yaml:"abstract,omitempty"`
 	Censors           []string `yaml:"censors"`
@@ -2588,7 +2656,10 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 			continue
 		}
 		venue := a.c.Venue
-		if venue == "" {
+		// Only an arXiv candidate is an arXiv preprint. A Crossref record
+		// with no container-title has an unknown venue, and labelling it
+		// "arXiv preprint" puts a false publication fact in the corpus.
+		if venue == "" && a.c.Source == "arxiv" {
 			venue = "arXiv preprint"
 		}
 		sources := []string{}
@@ -2603,6 +2674,7 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 			Venue:    venue,
 			Year:     a.c.Year,
 			ArxivID:  a.c.ArxivID,
+			DOI:      firstOrEmpty(a.c.dois()),
 			URL:      a.c.URL,
 			Abstract: a.c.Abstract,
 			// Censors defaults to ["generic"] when not specific — that's
@@ -2630,7 +2702,7 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 		if err != nil {
 			return written, err
 		}
-		header := []byte(fmt.Sprintf("# Auto-ingested by corpus-crawl. Review and tighten the tags +\n# notes before merging. Source: arXiv %s\n", a.c.ArxivID))
+		header := []byte(fmt.Sprintf("# Auto-ingested by corpus-crawl. Review and tighten the tags +\n# notes before merging. Source: %s\n", sourceLabel(a.c)))
 		full := append(header, buf...)
 		if err := os.WriteFile(path, full, 0o644); err != nil {
 			return written, err
@@ -2677,8 +2749,8 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 	if err := run("git", args...); err != nil {
 		return "", err
 	}
-	commitMsg := fmt.Sprintf("Auto-ingest: %d new paper%s from arXiv cs.CR\n\nProposed by corpus-crawl. Review tags + notes before merging.",
-		numPapers, pluralS(numPapers))
+	commitMsg := fmt.Sprintf("Auto-ingest: %d new paper%s from %s\n\nProposed by corpus-crawl. Review tags + notes before merging.",
+		numPapers, pluralS(numPapers), sourceSummary(items))
 	if err := run("git", "commit", "-m", commitMsg); err != nil {
 		return "", err
 	}
@@ -2734,9 +2806,92 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 	return url, nil
 }
 
+func firstOrEmpty(ss []string) string {
+	if len(ss) == 0 {
+		return ""
+	}
+	return ss[0]
+}
+
+// sourceNames are how each crawler source is written for humans, in the
+// commit message and PR body.
+var sourceNames = map[string]string{
+	"arxiv":          "arXiv cs.CR + cs.NI",
+	"crossref":       "Crossref",
+	"net4people":     "net4people/bbs",
+	"ntc-party":      "ntc.party",
+	"gfw-report":     "gfw.report",
+	"popets":         "PoPETs",
+	"foci":           "FOCI",
+	"usenix-sec":     "USENIX Security",
+	"ermao":          "ermao",
+	"paderborn":      "Paderborn",
+	"paderborn-blog": "Paderborn blog",
+}
+
+// sourceSummary names the sources a batch actually came from. Hard-coding
+// "arXiv cs.CR" here mislabelled every non-arXiv ingest; with Crossref in the
+// mix a batch is routinely mixed-source.
+func sourceSummary(items []accepted) string {
+	var names []string
+	for _, it := range items {
+		n, ok := sourceNames[it.c.Source]
+		if !ok {
+			n = it.c.Source
+		}
+		if n != "" && !containsString(names, n) {
+			names = append(names, n)
+		}
+	}
+	if len(names) == 0 {
+		return "the crawler sources"
+	}
+	sort.Strings(names)
+	return strings.Join(names, " + ")
+}
+
+// sourceLabel identifies one candidate inside its source, for the YAML header.
+func sourceLabel(c candidate) string {
+	switch {
+	case c.ArxivID != "":
+		return "arXiv " + c.ArxivID
+	case firstOrEmpty(c.dois()) != "":
+		return c.Source + " doi:" + firstOrEmpty(c.dois())
+	case c.URL != "":
+		return c.Source + " " + c.URL
+	default:
+		return c.Source
+	}
+}
+
+// identityLine is the PR-body link for a candidate, by whichever identifier
+// that source actually has. Printing an empty arXiv id for a DOI-only paper
+// made the review list unusable.
+func identityLine(c candidate) string {
+	if c.ArxivID != "" {
+		return fmt.Sprintf("- **arXiv**: [%s](%s)\n", c.ArxivID, c.URL)
+	}
+	if d := firstOrEmpty(c.dois()); d != "" {
+		return fmt.Sprintf("- **DOI**: [%s](https://doi.org/%s)\n", d, d)
+	}
+	if c.URL != "" {
+		return fmt.Sprintf("- **Source** (%s): %s\n", c.Source, c.URL)
+	}
+	return fmt.Sprintf("- **Source**: %s\n", c.Source)
+}
+
+func containsString(ss []string, want string) bool {
+	for _, s := range ss {
+		if s == want {
+			return true
+		}
+	}
+	return false
+}
+
 func buildPRBody(items []accepted, fetchErrs []string) string {
 	var b strings.Builder
-	b.WriteString("# Auto-ingest from arXiv cs.CR\n\n")
+	fmt.Fprintf(&b, "# Auto-ingest from %s\n\n", sourceSummary(items))
 	fmt.Fprintf(&b, "Ingested %d candidate paper%s. Each is a stub committed to `corpus/papers/`. Please:\n\n", len(items), pluralS(len(items)))
 	b.WriteString("- [ ] Read each abstract and confirm circumvention-relevance\n")
 	b.WriteString("- [ ] Tighten tags (the LLM tends to over-tag — drop tags that don't really apply)\n")
@@ -2760,7 +2915,7 @@ func buildPRBody(items []accepted, fetchErrs []string) string {
 
 	for _, it := range items {
 		fmt.Fprintf(&b, "## %s\n\n", it.c.Title)
-		fmt.Fprintf(&b, "- **arXiv**: [%s](%s)\n", it.c.ArxivID, it.c.URL)
+		b.WriteString(identityLine(it.c))
 		fmt.Fprintf(&b, "- **Authors**: %s\n", strings.Join(it.c.Authors, ", "))
 		fmt.Fprintf(&b, "- **Proposed id**: `%s`\n", proposeID(it.c))
 		fmt.Fprintf(&b, "- **Tags**: censors=`%s` techniques=`%s`",

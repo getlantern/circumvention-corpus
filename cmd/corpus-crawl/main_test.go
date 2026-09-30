@@ -1,6 +1,11 @@
 package main
 
-import "testing"
+import (
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+)
 
 // foci636Titles is the paper list from net4people/bbs#636 ("FOCI and PETS
 // 2026 papers"). When that issue was posted the crawler had already ingested
@@ -178,5 +183,120 @@ func TestSanitizeDropsNonTaxonomyTags(t *testing.T) {
 	}
 	if len(got.DefensesDiscussed) != 1 {
 		t.Errorf("valid defense was dropped: %v", got.DefensesDiscussed)
+	}
+}
+
+func TestCanonicalDOI(t *testing.T) {
+	for _, in := range []string{
+		"10.1109/INFCOMW.2019.8845315",
+		"doi:10.1109/infcomw.2019.8845315",
+		"https://doi.org/10.1109/INFCOMW.2019.8845315",
+		"http://dx.doi.org/10.1109/infcomw.2019.8845315/",
+	} {
+		if got := canonicalDOI(in); got != "10.1109/infcomw.2019.8845315" {
+			t.Errorf("canonicalDOI(%q) = %q", in, got)
+		}
+	}
+	for _, in := range []string{"", "arxiv:2609.12242", "https://github.com/net4people/bbs/issues/628", "not a doi"} {
+		if got := canonicalDOI(in); got != "" {
+			t.Errorf("canonicalDOI(%q) = %q, want empty", in, got)
+		}
+	}
+}
+
+// A record can carry the schema's top-level doi while linking to the
+// publisher, so its url never matches the doi.org URL a Crossref candidate
+// arrives with. Without DOI indexing the only thing left is the title, and a
+// title that differs by a subtitle or casing re-ingests the same paper.
+func TestContainsMatchesTopLevelDOI(t *testing.T) {
+	root := t.TempDir()
+	papers := filepath.Join(root, "corpus", "papers")
+	if err := os.MkdirAll(papers, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	yaml := "id: 2019-shapira-flowpic\n" +
+		"title: 'FlowPic: Encrypted Internet Traffic Classification is as Easy as Image Recognition'\n" +
+		"year: 2019\ndoi: 10.1109/INFCOMW.2019.8845315\n" +
+		"url: https://ieeexplore.ieee.org/document/8845315\n" +
+		"censors: [generic]\ntechniques: [ml-classifier]\nvisibility: public\n"
+	if err := os.WriteFile(filepath.Join(papers, "2019-shapira-flowpic.yaml"), []byte(yaml), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	e, err := loadExisting(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c := candidate{
+		Source: "crossref",
+		Title:  "FlowPic: Encrypted Internet Traffic Classification",
+		URL:    "https://doi.org/10.1109/infcomw.2019.8845315",
+		Refs:   []string{"doi:10.1109/infcomw.2019.8845315"},
+	}
+	if !e.contains(c) {
+		t.Error("Crossref candidate matching an existing record's top-level doi was treated as novel")
+	}
+	other := candidate{Source: "crossref", Title: "Something else entirely", URL: "https://doi.org/10.1109/other"}
+	if e.contains(other) {
+		t.Error("unrelated DOI matched")
+	}
+}
+
+func TestWriteYAMLsUsesCandidateSource(t *testing.T) {
+	root := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(root, "corpus", "papers"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	items := []accepted{{
+		c: candidate{
+			Source: "crossref",
+			Title:  "Encrypted Traffic Classification Without a Venue",
+			Year:   2026,
+			URL:    "https://doi.org/10.1109/tnsm.2021.3071441",
+			Refs:   []string{"doi:10.1109/tnsm.2021.3071441"},
+		},
+		k: classification{IsRelevant: true, Censors: []string{"generic"}, Techniques: []string{"ml-classifier"}},
+	}}
+	written, err := writeYAMLs(root, items, false)
+	if err != nil || len(written) != 1 {
+		t.Fatalf("err=%v written=%v", err, written)
+	}
+	raw, err := os.ReadFile(written[0])
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := string(raw)
+	if strings.Contains(got, "arXiv preprint") {
+		t.Error("a Crossref paper with no venue was labelled an arXiv preprint")
+	}
+	if !strings.Contains(got, "doi: 10.1109/tnsm.2021.3071441") {
+		t.Error("top-level doi not emitted")
+	}
+	if !strings.Contains(got, "Source: crossref doi:10.1109/tnsm.2021.3071441") {
+		t.Errorf("header does not name the real source:\n%s", got[:200])
+	}
+	if strings.Contains(got, "Source: arXiv") {
+		t.Error("header claims arXiv provenance")
+	}
+}
+
+func TestPRBodyIdentityAndSourceSummary(t *testing.T) {
+	arxiv := candidate{Source: "arxiv", ArxivID: "2609.12242", URL: "https://arxiv.org/abs/2609.12242"}
+	cross := candidate{Source: "crossref", URL: "https://doi.org/10.1109/x", Refs: []string{"doi:10.1109/x"}}
+	bare := candidate{Source: "foci", URL: "https://example.org/paper"}
+	if got := identityLine(arxiv); !strings.Contains(got, "**arXiv**: [2609.12242]") {
+		t.Errorf("arxiv line: %q", got)
+	}
+	if got := identityLine(cross); !strings.Contains(got, "**DOI**: [10.1109/x](https://doi.org/10.1109/x)") {
+		t.Errorf("crossref line: %q", got)
+	}
+	if got := identityLine(bare); !strings.Contains(got, "https://example.org/paper") {
+		t.Errorf("fallback line: %q", got)
+	}
+	items := []accepted{{c: arxiv}, {c: cross}, {c: arxiv}}
+	if got := sourceSummary(items); got != "Crossref + arXiv cs.CR + cs.NI" {
+		t.Errorf("sourceSummary = %q", got)
+	}
+	if got := sourceSummary(nil); got != "the crawler sources" {
+		t.Errorf("empty sourceSummary = %q", got)
 	}
 }
