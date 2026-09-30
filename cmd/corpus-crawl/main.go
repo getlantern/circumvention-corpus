@@ -2194,6 +2194,12 @@ For ntc-party candidates: the input "Abstract" is the first post (OP) of a Disco
 	if c.ArxivID != "" {
 		fmt.Fprintf(&b, "ArXiv: %s\n", c.ArxivID)
 	}
+	if c.Venue != "" {
+		// Load-bearing for metadata-only candidates: the instructions above
+		// tell the model to judge those from title, venue and URL, so the
+		// venue has to actually be here.
+		fmt.Fprintf(&b, "Venue hint: %s\n", c.Venue)
+	}
 	if c.URL != "" {
 		fmt.Fprintf(&b, "URL: %s\n", c.URL)
 	}

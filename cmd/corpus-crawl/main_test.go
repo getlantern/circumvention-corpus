@@ -300,3 +300,17 @@ func TestPRBodyIdentityAndSourceSummary(t *testing.T) {
 		t.Errorf("empty sourceSummary = %q", got)
 	}
 }
+
+func TestClassifyPromptIncludesVenue(t *testing.T) {
+	c := candidate{Source: "crossref", Title: "Encrypted Traffic Classification", Venue: "IEEE INFOCOM Workshops"}
+	got := buildClassifyPrompt(c, "taxonomy:")
+	if !strings.Contains(got, "Venue hint: IEEE INFOCOM Workshops") {
+		t.Error("venue missing from the prompt the instructions tell the model to use")
+	}
+	if !strings.Contains(got, "(none — this source provided title-level metadata only)") {
+		t.Error("empty abstract not marked explicitly")
+	}
+	if strings.Contains(buildClassifyPrompt(candidate{Title: "x"}, ""), "Venue hint:") {
+		t.Error("empty venue should be omitted")
+	}
+}

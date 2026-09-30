@@ -217,3 +217,60 @@ func TestCapClassifyBudgetProtectsCuratedSources(t *testing.T) {
 		t.Fatalf("got %+v", got)
 	}
 }
+
+// A large Retry-After must be honored, not shrunk: retrying sooner than the
+// server asked is what gets a client blocked outright. Beyond crossrefMaxWait
+// the query is reported as failed instead.
+func TestCrossrefHonorsLargeRetryAfter(t *testing.T) {
+	waits := noCrossrefSleep(t)
+	calls := 0
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		calls++
+		if calls == 1 {
+			w.Header().Set("Retry-After", "60")
+			w.WriteHeader(http.StatusTooManyRequests)
+			return
+		}
+		json.NewEncoder(w).Encode(map[string]any{"message": map[string]any{"total-results": 1, "items": []map[string]any{
+			{"DOI": "10.1/x", "title": []string{"TLS traffic analysis"}},
+		}}})
+	}))
+	defer server.Close()
+	out, err := fetchCrossrefFrom(context.Background(), server.Client(), server.URL, time.Now(), []string{"one"})
+	if err != nil || len(out) != 1 {
+		t.Fatalf("err=%v candidates=%d", err, len(out))
+	}
+	for _, d := range *waits {
+		if d != crossrefDelay && d != 60*time.Second {
+			t.Errorf("waited %s, want the requested 60s", d)
+		}
+	}
+}
+
+// Past crossrefMaxWait we stop rather than retry early, and the other queries
+// still run.
+func TestCrossrefGivesUpBeyondMaxWait(t *testing.T) {
+	noCrossrefSleep(t)
+	queries := map[string]int{}
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		query := r.URL.Query().Get("query.title")
+		queries[query]++
+		if query == "one" {
+			w.Header().Set("Retry-After", "3600")
+			w.WriteHeader(http.StatusTooManyRequests)
+			return
+		}
+		json.NewEncoder(w).Encode(map[string]any{"message": map[string]any{"total-results": 0, "items": []map[string]any{}}})
+	}))
+	defer server.Close()
+	_, err := fetchCrossrefFrom(context.Background(), server.Client(), server.URL, time.Now(), []string{"one", "two"})
+	if err == nil || !strings.Contains(err.Error(), "Retry-After") {
+		t.Fatalf("err=%v, want a Retry-After failure", err)
+	}
+	if queries["one"] != 1 {
+		t.Errorf("retried %d times despite a delay past the cap", queries["one"]-1)
+	}
+	if queries["two"] != 1 {
+		t.Error("remaining query did not run")
+	}
+}

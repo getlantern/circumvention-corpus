@@ -37,8 +37,15 @@ const (
 	crossrefDelay = time.Second
 	// crossrefRetries is how many times a single throttled page is
 	// retried before we give up on that query and move to the next one.
-	crossrefRetries    = 3
+	crossrefRetries = 3
+	// crossrefMaxBackoff caps the exponential backoff used when Crossref
+	// throttles us without a usable Retry-After.
 	crossrefMaxBackoff = 30 * time.Second
+	// crossrefMaxWait is the longest Retry-After we will actually sit out.
+	// Beyond it the query fails and is reported rather than retried early:
+	// retrying before the server-requested delay is what gets a client
+	// blocked, and the caller already continues with the other queries.
+	crossrefMaxWait = 2 * time.Minute
 )
 
 // bulkSources are high-volume metadata feeds that must never crowd
@@ -171,9 +178,13 @@ func crossrefGet(ctx context.Context, client *http.Client, endpoint string, q ur
 		if wait < 0 || attempt >= crossrefRetries {
 			return body, err
 		}
-		if wait == 0 || wait > crossrefMaxBackoff {
-			// No usable Retry-After: exponential backoff instead.
+		switch {
+		case wait == 0:
+			// No usable Retry-After: back off exponentially instead.
 			wait = min(time.Duration(1<<attempt)*time.Second, crossrefMaxBackoff)
+		case wait > crossrefMaxWait:
+			// Honor the delay or give up — never retry sooner than asked.
+			return body, fmt.Errorf("%w (Retry-After %s exceeds %s)", err, wait, crossrefMaxWait)
 		}
 		log.Printf("crossref: rate limited on %q, retrying in %s", q.Get("query.title"), wait)
 		if err := crossrefSleep(ctx, wait); err != nil {
