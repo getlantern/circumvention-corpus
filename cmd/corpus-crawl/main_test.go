@@ -314,3 +314,26 @@ func TestClassifyPromptIncludesVenue(t *testing.T) {
 		t.Error("empty venue should be omitted")
 	}
 }
+
+// The intra-run dedup corpus in runWith is built fresh each crawl and
+// remember() writes to every index, so a constructor that misses one panics
+// on the first candidate carrying that identity — which, once DOIs were
+// indexed, meant every Crossref candidate, before classification and even
+// under --dry-run.
+func TestNewExistingCorpusInitializesEveryIndex(t *testing.T) {
+	e := newExistingCorpus()
+	c := candidate{
+		Source:  "crossref",
+		Title:   "Encrypted Traffic Classification",
+		URL:     "https://doi.org/10.1109/x",
+		Refs:    []string{"doi:10.1109/x"},
+		ArxivID: "2609.12242",
+	}
+	e.remember(c) // must not panic on any nil map
+	if !e.contains(c) {
+		t.Error("remembered candidate not recognized")
+	}
+	if !e.byDOI["10.1109/x"] {
+		t.Error("DOI index not populated")
+	}
+}

@@ -280,7 +280,13 @@ func interleaveSources(in []candidate) []candidate {
 // Curated candidates therefore fill the budget first, bulk sources take
 // what is left, and interleaved order is preserved within each tier.
 func capClassifyBudget(in []candidate, budget int) []candidate {
-	if budget <= 0 || len(in) <= budget {
+	if budget <= 0 {
+		// --max-classify is a safety bound, so an explicit zero means
+		// classify nothing. Returning the input here would turn the bound
+		// into "unlimited" and hand the whole Crossref result set to the LLM.
+		return nil
+	}
+	if len(in) <= budget {
 		return in
 	}
 	out := make([]candidate, 0, budget)

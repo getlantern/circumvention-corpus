@@ -208,8 +208,16 @@ func TestCapClassifyBudgetProtectsCuratedSources(t *testing.T) {
 			t.Fatalf("got %+v, want %v", got, want)
 		}
 	}
-	if len(capClassifyBudget(in, 0)) != len(in) || len(capClassifyBudget(in, 99)) != len(in) {
-		t.Fatal("budget at or above input size must not trim")
+	if len(capClassifyBudget(in, 99)) != len(in) {
+		t.Fatal("budget above input size must not trim")
+	}
+	// --max-classify is a safety bound: zero means classify nothing, not
+	// "unlimited". Returning the input here would hand the whole Crossref
+	// result set to the LLM.
+	for _, budget := range []int{0, -1} {
+		if got := capClassifyBudget(in, budget); len(got) != 0 {
+			t.Fatalf("budget %d returned %d candidates, want 0", budget, len(got))
+		}
 	}
 	// Curated candidates alone can exceed the budget.
 	curated := []candidate{{Source: "foci", Title: "f1"}, {Source: "foci", Title: "f2"}, {Source: "crossref", Title: "c1"}}

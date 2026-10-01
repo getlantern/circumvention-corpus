@@ -436,12 +436,7 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 	// Censorship" twice, once from the FOCI proceedings and once from the
 	// authors' own blog, because each candidate was only ever compared to
 	// the corpus on disk and never to its siblings.
-	seen := &existingCorpus{
-		byID:    map[string]bool{},
-		byTitle: map[string]bool{},
-		byURL:   map[string]bool{},
-		byArxiv: map[string]bool{},
-	}
+	seen := newExistingCorpus()
 	novel := make([]candidate, 0, len(kept))
 	skippedRejected, skippedIntraRun := 0, 0
 	for _, c := range kept {
@@ -2420,6 +2415,19 @@ type existingCorpus struct {
 	byDOI   map[string]bool
 }
 
+// newExistingCorpus is the only way to build one: remember() writes to every
+// index, so a literal that forgets one panics on a nil map at the first
+// candidate carrying that identity.
+func newExistingCorpus() *existingCorpus {
+	return &existingCorpus{
+		byID:    map[string]bool{},
+		byTitle: map[string]bool{},
+		byURL:   map[string]bool{},
+		byArxiv: map[string]bool{},
+		byDOI:   map[string]bool{},
+	}
+}
+
 func (e *existingCorpus) contains(c candidate) bool {
 	if e.byID[proposeID(c)] {
 		return true
@@ -2485,13 +2493,7 @@ func loadExisting(root string) (*existingCorpus, error) {
 	if err != nil {
 		return nil, err
 	}
-	out := &existingCorpus{
-		byID:    map[string]bool{},
-		byTitle: map[string]bool{},
-		byURL:   map[string]bool{},
-		byArxiv: map[string]bool{},
-		byDOI:   map[string]bool{},
-	}
+	out := newExistingCorpus()
 	// A source URL is only a usable identity if exactly one paper claims it.
 	// jonsnowwhite.de/publications is listed as a source by three distinct
 	// papers; treating it as an identity would collapse them into one.
