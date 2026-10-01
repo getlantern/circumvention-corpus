@@ -48,14 +48,9 @@ import (
 
 const (
 	arxivAPI = "https://export.arxiv.org/api/query"
-	// arxivLimit is arxiv's per-page page-size cap; arxivMaxBackfill is
-	// the upper bound on total results returned by fetchArxiv across
-	// pages. The default weekly cron uses window-days=10 so a few
-	// hundred is plenty; bumping for a one-shot backfill is what
-	// arxivMaxBackfill is for. cs.CR averages ~50 papers/day in 2026
-	// so 5000 results ≈ 100 days of submissions.
+	// The result cap bounds backfills; reaching it is logged as incomplete coverage.
 	arxivMaxBackfill = 5000
-	arxivCat         = "cs.CR"
+	arxivCategories  = "(cat:cs.CR+OR+cat:cs.NI)"
 	arxivLimit       = 200
 	gfwReportFeed    = "https://gfw.report/index.xml"
 	classModel       = "claude-haiku-4-5"
@@ -82,7 +77,7 @@ var keywords = []string{
 	"venezuela", "syria", "uzbek", "tajik", "azerbaijan", "afghanistan",
 	"active probing", "fingerprint", "clienthello", "trust store",
 	"sni-based", "sni filter", "dns injection", "dns poison", "rst injection",
-	"middlebox", "traffic analysis", "website fingerprint", "flow correlat",
+	"middlebox", "traffic analysis", "encrypted traffic", "encrypted internet traffic", "encrypted network traffic", "website fingerprint", "flow correlat",
 	"tls fingerprint", "fully encrypted", "fully-encrypted", "entropy detect",
 	"onion router", "onion routing", "onion service", "anonymity network",
 	"snowflake", "obfs4", "scramblesuit",
@@ -151,7 +146,7 @@ func runOnce(args []string) {
 	fs := flag.NewFlagSet("run", flag.ExitOnError)
 	opts := runOptions{}
 	fs.StringVar(&opts.corpus, "corpus", ".", "path to circumvention-corpus repo root")
-	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, ntc-party, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, or all")
+	fs.StringVar(&opts.source, "source", "all", "source: arxiv, net4people, ntc-party, gfw-report, popets, foci, usenix-sec, ermao, paderborn, paderborn-blog, crossref, or all")
 	fs.IntVar(&opts.maxN, "max", 12, "max ACCEPTED papers per PR (cap applied after classification)")
 	fs.IntVar(&opts.maxClassify, "max-classify", 80, "safety bound on classifier calls per run")
 	fs.IntVar(&opts.windowDays, "window-days", 30, "look back this many days")
@@ -257,7 +252,7 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 			log.Printf("fetch arxiv: %v (continuing)", err)
 			recordFetchErr("arxiv", err)
 		} else {
-			log.Printf("fetched %d from arXiv cs.CR (%d-day window)", len(ax), opts.windowDays)
+			log.Printf("fetched %d from arXiv cs.CR + cs.NI (%d-day window)", len(ax), opts.windowDays)
 			cands = append(cands, ax...)
 		}
 	}
@@ -377,6 +372,15 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 			}
 		}
 	}
+	if source == "crossref" || source == "all" {
+		items, err := fetchCrossref(ctx, since)
+		if err != nil {
+			log.Printf("fetch crossref: %v (continuing with %d candidates)", err, len(items))
+			recordFetchErr("crossref", err)
+		}
+		log.Printf("fetched %d from Crossref", len(items))
+		cands = append(cands, items...)
+	}
 	res = &runResult{Considered: len(cands), FetchErrors: fetchErrs}
 
 	// Curation tier:
@@ -400,7 +404,9 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 	curatedSources := map[string]bool{"net4people": true, "ntc-party": true, "gfw-report": true, "ermao": true, "paderborn": true, "paderborn-blog": true, "foci": true}
 	titleOnlySources := map[string]bool{"popets": true, "usenix-sec": true}
 	kept := make([]candidate, 0, len(cands))
+	sourceCounts := map[string][2]int{}
 	for _, c := range cands {
+		before := len(kept)
 		switch {
 		case curatedSources[c.Source]:
 			kept = append(kept, c)
@@ -413,6 +419,13 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 				kept = append(kept, c)
 			}
 		}
+		counts := sourceCounts[c.Source]
+		counts[0]++
+		counts[1] += len(kept) - before
+		sourceCounts[c.Source] = counts
+	}
+	for source, counts := range sourceCounts {
+		log.Printf("source %s: fetched=%d keyword_kept=%d keyword_dropped=%d", source, counts[0], counts[1], counts[0]-counts[1])
 	}
 	res.Filtered = len(kept)
 	log.Printf("%d passed keyword filter", len(kept))
@@ -423,12 +436,7 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 	// Censorship" twice, once from the FOCI proceedings and once from the
 	// authors' own blog, because each candidate was only ever compared to
 	// the corpus on disk and never to its siblings.
-	seen := &existingCorpus{
-		byID:    map[string]bool{},
-		byTitle: map[string]bool{},
-		byURL:   map[string]bool{},
-		byArxiv: map[string]bool{},
-	}
+	seen := newExistingCorpus()
 	novel := make([]candidate, 0, len(kept))
 	skippedRejected, skippedIntraRun := 0, 0
 	for _, c := range kept {
@@ -461,9 +469,17 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 	// run away on a future high-volume source. Note: this is NOT --max;
 	// --max caps the *accepted* set after classification so we don't
 	// undercount because the classifier rejected most of the first N.
+	novel = interleaveSources(novel)
 	if len(novel) > opts.maxClassify {
 		log.Printf("capping classifier input at --max-classify=%d (was %d)", opts.maxClassify, len(novel))
-		novel = novel[:opts.maxClassify]
+		novel = capClassifyBudget(novel, opts.maxClassify)
+		bulk := 0
+		for _, c := range novel {
+			if bulkSources[c.Source] {
+				bulk++
+			}
+		}
+		log.Printf("classifier budget: %d curated/feed candidates, %d from bulk metadata sources", len(novel)-bulk, bulk)
 	}
 	if len(novel) == 0 {
 		log.Println("nothing to ingest")
@@ -519,6 +535,14 @@ func runWith(ctx context.Context, opts runOptions) (res *runResult, err error) {
 			}
 		}
 		k = tax.sanitize(k, ident)
+		if len(k.Techniques) == 0 {
+			// Deliberately still ingested: writeYAMLs does not default
+			// techniques, so the integrity test fails in PR review and a
+			// human picks the right tag. Flag it here too — on title-only
+			// metadata this is the likely failure and the log is the only
+			// place it shows up before CI.
+			log.Printf("warning: %s classified relevant with no techniques; ingest PR will fail the integrity test until a reviewer tags it", ident)
+		}
 		log.Printf("✓ %s — censors=%v techniques=%v", ident, k.Censors, k.Techniques)
 		out = append(out, accepted{c: c, k: k})
 		// Stop classifying once we have maxN accepted — saves API calls
@@ -836,7 +860,7 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 	dateRange := fmt.Sprintf("submittedDate:[%s+TO+%s]",
 		since.UTC().Format("200601021504"),
 		until.Format("200601021504"))
-	searchQuery := fmt.Sprintf("cat:%s+AND+%s", arxivCat, dateRange)
+	searchQuery := fmt.Sprintf("%s+AND+%s", arxivCategories, dateRange)
 
 	var cands []candidate
 	start := 0
@@ -905,6 +929,23 @@ func fetchArxiv(ctx context.Context, since time.Time) ([]candidate, error) {
 		// arXiv API guidelines: sleep ≥3s between pages. We use 4 to
 		// be a good citizen + leave headroom for retries.
 		time.Sleep(4 * time.Second)
+	}
+	if start >= arxivMaxBackfill {
+		// Results come back newest-first, so the cap drops the OLDEST
+		// submissions in the window — narrowing --window-days would drop
+		// those same papers, not recover them. Report where coverage
+		// actually stops so the gap is reviewable.
+		oldest := time.Time{}
+		for _, c := range cands {
+			if !c.Updated.IsZero() && (oldest.IsZero() || c.Updated.Before(oldest)) {
+				oldest = c.Updated
+			}
+		}
+		boundary := "unknown"
+		if !oldest.IsZero() {
+			boundary = oldest.UTC().Format("2006-01-02")
+		}
+		log.Printf("arxiv: reached %d-result safety cap; coverage stops at %s and older submissions in the window were NOT fetched. Raise arxivMaxBackfill for a one-shot backfill — narrowing --window-days drops the same papers.", arxivMaxBackfill, boundary)
 	}
 	return cands, nil
 }
@@ -2079,7 +2120,7 @@ RELEVANCE — be GENEROUS. A paper is relevant if it studies any of:
   (b) censor capabilities or detection techniques (DPI, fingerprinting, ML classifiers, active probing, traffic analysis)
   (c) circumvention protocol design or evaluation
   (d) anonymity systems / Tor / VPN ecosystem studies
-  (e) traffic-analysis attacks or defenses on encrypted tunnels
+  (e) traffic-analysis attacks or defenses on encrypted tunnels, including encrypted network traffic classification and application identification without an explicit censorship framing
   (f) NGO / advocacy / journalism reports on censorship infrastructure or policy
   (g) primary-source measurements of internet shutdowns, blocking events, or surveillance regimes
   (h) MSc / PhD theses, mailing-list crossposts, blog write-ups that materially advance the field
@@ -2111,6 +2152,8 @@ Output STRICT JSON. No prose, no markdown, no code fences. Schema:
 CRITICAL formatting rules:
   - "title" must be ONLY the paper's actual title. Do not append "(FOCI 2026)", "(Journal of X 2026)", "(USENIX Security 2025)", or any venue/year suffix. The venue goes in its own "venue" field; the year in "year". Many net4people issue titles have these suffixes — strip them.
   - "techniques" must contain at least one taxonomy ID for any relevant paper. If no specific detection technique fits, use the broadest applicable tag (e.g., "ip-blocking" for IP/geo-based blocking like sanctions, "measurement-platform" for measurement studies that don't study a specific technique, "keyword-filtering" for content-based blocking). Do NOT default to "dpi" unless the paper actually studies DPI.
+
+METADATA-ONLY candidates: some feeds deposit no abstract — Crossref has none for roughly 86% of works — so "--- Abstract / body ---" may read "(none …)". Judge those from the title, venue, and URL alone, and do NOT invent findings, methods, or datasets that the title does not state. If the title alone does not support at least one taxonomy technique ID, answer is_relevant=false with reason "title-only metadata: insufficient to tag". A relevant paper with no technique tag fails corpus CI on the ingest PR, so skipping here is better than guessing; re-run with --reclassify once the record has an abstract.
 
 For arXiv candidates: title/authors/year/abstract are already correct in the input — you can skip those fields in your response (we keep what we have). Just give relevance + tags + notes.
 
@@ -2146,6 +2189,12 @@ For ntc-party candidates: the input "Abstract" is the first post (OP) of a Disco
 	if c.ArxivID != "" {
 		fmt.Fprintf(&b, "ArXiv: %s\n", c.ArxivID)
 	}
+	if c.Venue != "" {
+		// Load-bearing for metadata-only candidates: the instructions above
+		// tell the model to judge those from title, venue and URL, so the
+		// venue has to actually be here.
+		fmt.Fprintf(&b, "Venue hint: %s\n", c.Venue)
+	}
 	if c.URL != "" {
 		fmt.Fprintf(&b, "URL: %s\n", c.URL)
 	}
@@ -2153,7 +2202,13 @@ For ntc-party candidates: the input "Abstract" is the first post (OP) of a Disco
 		fmt.Fprintf(&b, "Year hint: %d\n", c.Year)
 	}
 	b.WriteString("\n--- Abstract / body ---\n")
-	b.WriteString(c.Abstract)
+	if strings.TrimSpace(c.Abstract) == "" {
+		// Say so explicitly. An empty section reads as a truncated prompt
+		// and invites the model to fill the gap from the title.
+		b.WriteString("(none — this source provided title-level metadata only)")
+	} else {
+		b.WriteString(c.Abstract)
+	}
 	b.WriteString("\n")
 	return b.String()
 }
@@ -2357,6 +2412,20 @@ type existingCorpus struct {
 	byTitle map[string]bool
 	byURL   map[string]bool
 	byArxiv map[string]bool
+	byDOI   map[string]bool
+}
+
+// newExistingCorpus is the only way to build one: remember() writes to every
+// index, so a literal that forgets one panics on a nil map at the first
+// candidate carrying that identity.
+func newExistingCorpus() *existingCorpus {
+	return &existingCorpus{
+		byID:    map[string]bool{},
+		byTitle: map[string]bool{},
+		byURL:   map[string]bool{},
+		byArxiv: map[string]bool{},
+		byDOI:   map[string]bool{},
+	}
 }
 
 func (e *existingCorpus) contains(c candidate) bool {
@@ -2368,6 +2437,11 @@ func (e *existingCorpus) contains(c candidate) bool {
 	}
 	if a := canonicalArxivID(c.ArxivID, c.URL); a != "" && e.byArxiv[a] {
 		return true
+	}
+	for _, d := range c.dois() {
+		if e.byDOI[d] {
+			return true
+		}
 	}
 	for _, u := range c.identityURLs() {
 		if e.byURL[u] {
@@ -2386,6 +2460,9 @@ func (e *existingCorpus) remember(c candidate) {
 	}
 	if a := canonicalArxivID(c.ArxivID, c.URL); a != "" {
 		e.byArxiv[a] = true
+	}
+	for _, d := range c.dois() {
+		e.byDOI[d] = true
 	}
 	// Only the candidate's own URL — a ref may be a shared listing page,
 	// which would collapse unrelated papers from the same source.
@@ -2416,12 +2493,7 @@ func loadExisting(root string) (*existingCorpus, error) {
 	if err != nil {
 		return nil, err
 	}
-	out := &existingCorpus{
-		byID:    map[string]bool{},
-		byTitle: map[string]bool{},
-		byURL:   map[string]bool{},
-		byArxiv: map[string]bool{},
-	}
+	out := newExistingCorpus()
 	// A source URL is only a usable identity if exactly one paper claims it.
 	// jonsnowwhite.de/publications is listed as a source by three distinct
 	// papers; treating it as an identity would collapse them into one.
@@ -2439,6 +2511,7 @@ func loadExisting(root string) (*existingCorpus, error) {
 			Title   string   `yaml:"title"`
 			URL     string   `yaml:"url"`
 			ArxivID string   `yaml:"arxiv_id"`
+			DOI     string   `yaml:"doi"`
 			Sources []string `yaml:"sources"`
 		}
 		if err := yaml.Unmarshal(raw, &p); err != nil {
@@ -2456,11 +2529,24 @@ func loadExisting(root string) (*existingCorpus, error) {
 		if a := canonicalArxivID(p.ArxivID, p.URL); a != "" {
 			out.byArxiv[a] = true
 		}
+		// The schema carries a top-level doi, and 12 records already use it
+		// while linking to the publisher rather than doi.org — so without
+		// this a Crossref candidate for one of them matches on title alone.
+		if d := canonicalDOI(p.DOI); d != "" {
+			out.byDOI[d] = true
+		}
+		if d := canonicalDOI(p.URL); d != "" {
+			out.byDOI[d] = true
+		}
 		for _, s := range p.Sources {
 			if strings.HasPrefix(s, "arxiv:") {
 				if a := canonicalArxivID(strings.TrimPrefix(s, "arxiv:"), ""); a != "" {
 					out.byArxiv[a] = true
 				}
+				continue
+			}
+			if d := canonicalDOI(s); d != "" {
+				out.byDOI[d] = true
 				continue
 			}
 			if u := canonicalURL(strings.TrimPrefix(s, "url:")); u != "" {
@@ -2489,6 +2575,49 @@ func canonicalURL(u string) string {
 	return strings.TrimSuffix(u, "/")
 }
 
+var doiURLRE = regexp.MustCompile(`(?i)^(?:https?://)?(?:dx\.)?doi\.org/`)
+
+// canonicalDOI reduces the forms a DOI arrives in — "doi:10.1109/x", a
+// https://doi.org/ URL, or a bare "10.1109/x" — to one comparable key. A DOI
+// is globally unique, so unlike a source URL it identifies a paper on its own
+// and needs no single-owner check.
+func canonicalDOI(s string) string {
+	s = strings.ToLower(strings.TrimSpace(s))
+	s = strings.TrimPrefix(s, "doi:")
+	s = doiURLRE.ReplaceAllString(s, "")
+	s = strings.TrimSuffix(strings.TrimSpace(s), "/")
+	if !strings.HasPrefix(s, "10.") {
+		return ""
+	}
+	return s
+}
+
+// dois is every DOI that identifies this candidate — its own URL when it is a
+// doi.org link, plus any doi: refs.
+func (c candidate) dois() []string {
+	var out []string
+	if d := canonicalDOI(c.URL); d != "" {
+		out = append(out, d)
+	}
+	for _, r := range c.Refs {
+		d := canonicalDOI(r)
+		if d == "" {
+			continue
+		}
+		dup := false
+		for _, have := range out {
+			if have == d {
+				dup = true
+				break
+			}
+		}
+		if !dup {
+			out = append(out, d)
+		}
+	}
+	return out
+}
+
 var arxivInURLRE = regexp.MustCompile(`(?i)arxiv\.org/(?:abs|pdf)/([0-9.]+)`)
 
 func canonicalArxivID(id, url string) string {
@@ -2510,6 +2639,7 @@ type paperYAML struct {
 	Venue             string   `yaml:"venue,omitempty"`
 	Year              int      `yaml:"year"`
 	ArxivID           string   `yaml:"arxiv_id,omitempty"`
+	DOI               string   `yaml:"doi,omitempty"`
 	URL               string   `yaml:"url,omitempty"`
 	Abstract          string   `yaml:"abstract,omitempty"`
 	Censors           []string `yaml:"censors"`
@@ -2534,7 +2664,10 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 			continue
 		}
 		venue := a.c.Venue
-		if venue == "" {
+		// Only an arXiv candidate is an arXiv preprint. A Crossref record
+		// with no container-title has an unknown venue, and labelling it
+		// "arXiv preprint" puts a false publication fact in the corpus.
+		if venue == "" && a.c.Source == "arxiv" {
 			venue = "arXiv preprint"
 		}
 		sources := []string{}
@@ -2549,6 +2682,7 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 			Venue:    venue,
 			Year:     a.c.Year,
 			ArxivID:  a.c.ArxivID,
+			DOI:      firstOrEmpty(a.c.dois()),
 			URL:      a.c.URL,
 			Abstract: a.c.Abstract,
 			// Censors defaults to ["generic"] when not specific — that's
@@ -2576,7 +2710,7 @@ func writeYAMLs(root string, items []accepted, dryRun bool) ([]string, error) {
 		if err != nil {
 			return written, err
 		}
-		header := []byte(fmt.Sprintf("# Auto-ingested by corpus-crawl. Review and tighten the tags +\n# notes before merging. Source: arXiv %s\n", a.c.ArxivID))
+		header := []byte(fmt.Sprintf("# Auto-ingested by corpus-crawl. Review and tighten the tags +\n# notes before merging. Source: %s\n", sourceLabel(a.c)))
 		full := append(header, buf...)
 		if err := os.WriteFile(path, full, 0o644); err != nil {
 			return written, err
@@ -2623,8 +2757,8 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 	if err := run("git", args...); err != nil {
 		return "", err
 	}
-	commitMsg := fmt.Sprintf("Auto-ingest: %d new paper%s from arXiv cs.CR\n\nProposed by corpus-crawl. Review tags + notes before merging.",
-		numPapers, pluralS(numPapers))
+	commitMsg := fmt.Sprintf("Auto-ingest: %d new paper%s from %s\n\nProposed by corpus-crawl. Review tags + notes before merging.",
+		numPapers, pluralS(numPapers), sourceSummary(items))
 	if err := run("git", "commit", "-m", commitMsg); err != nil {
 		return "", err
 	}
@@ -2680,9 +2814,92 @@ func openPR(ctx context.Context, root string, items []accepted, prFiles []string
 	return url, nil
 }
 
+func firstOrEmpty(ss []string) string {
+	if len(ss) == 0 {
+		return ""
+	}
+	return ss[0]
+}
+
+// sourceNames are how each crawler source is written for humans, in the
+// commit message and PR body.
+var sourceNames = map[string]string{
+	"arxiv":          "arXiv cs.CR + cs.NI",
+	"crossref":       "Crossref",
+	"net4people":     "net4people/bbs",
+	"ntc-party":      "ntc.party",
+	"gfw-report":     "gfw.report",
+	"popets":         "PoPETs",
+	"foci":           "FOCI",
+	"usenix-sec":     "USENIX Security",
+	"ermao":          "ermao",
+	"paderborn":      "Paderborn",
+	"paderborn-blog": "Paderborn blog",
+}
+
+// sourceSummary names the sources a batch actually came from. Hard-coding
+// "arXiv cs.CR" here mislabelled every non-arXiv ingest; with Crossref in the
+// mix a batch is routinely mixed-source.
+func sourceSummary(items []accepted) string {
+	var names []string
+	for _, it := range items {
+		n, ok := sourceNames[it.c.Source]
+		if !ok {
+			n = it.c.Source
+		}
+		if n != "" && !containsString(names, n) {
+			names = append(names, n)
+		}
+	}
+	if len(names) == 0 {
+		return "the crawler sources"
+	}
+	sort.Strings(names)
+	return strings.Join(names, " + ")
+}
+
+// sourceLabel identifies one candidate inside its source, for the YAML header.
+func sourceLabel(c candidate) string {
+	switch {
+	case c.ArxivID != "":
+		return "arXiv " + c.ArxivID
+	case firstOrEmpty(c.dois()) != "":
+		return c.Source + " doi:" + firstOrEmpty(c.dois())
+	case c.URL != "":
+		return c.Source + " " + c.URL
+	default:
+		return c.Source
+	}
+}
+
+// identityLine is the PR-body link for a candidate, by whichever identifier
+// that source actually has. Printing an empty arXiv id for a DOI-only paper
+// made the review list unusable.
+func identityLine(c candidate) string {
+	if c.ArxivID != "" {
+		return fmt.Sprintf("- **arXiv**: [%s](%s)\n", c.ArxivID, c.URL)
+	}
+	if d := firstOrEmpty(c.dois()); d != "" {
+		return fmt.Sprintf("- **DOI**: [%s](https://doi.org/%s)\n", d, d)
+	}
+	if c.URL != "" {
+		return fmt.Sprintf("- **Source** (%s): %s\n", c.Source, c.URL)
+	}
+	return fmt.Sprintf("- **Source**: %s\n", c.Source)
+}
+
+func containsString(ss []string, want string) bool {
+	for _, s := range ss {
+		if s == want {
+			return true
+		}
+	}
+	return false
+}
+
 func buildPRBody(items []accepted, fetchErrs []string) string {
 	var b strings.Builder
-	b.WriteString("# Auto-ingest from arXiv cs.CR\n\n")
+	fmt.Fprintf(&b, "# Auto-ingest from %s\n\n", sourceSummary(items))
 	fmt.Fprintf(&b, "Ingested %d candidate paper%s. Each is a stub committed to `corpus/papers/`. Please:\n\n", len(items), pluralS(len(items)))
 	b.WriteString("- [ ] Read each abstract and confirm circumvention-relevance\n")
 	b.WriteString("- [ ] Tighten tags (the LLM tends to over-tag — drop tags that don't really apply)\n")
@@ -2706,7 +2923,7 @@ func buildPRBody(items []accepted, fetchErrs []string) string {
 
 	for _, it := range items {
 		fmt.Fprintf(&b, "## %s\n\n", it.c.Title)
-		fmt.Fprintf(&b, "- **arXiv**: [%s](%s)\n", it.c.ArxivID, it.c.URL)
+		b.WriteString(identityLine(it.c))
 		fmt.Fprintf(&b, "- **Authors**: %s\n", strings.Join(it.c.Authors, ", "))
 		fmt.Fprintf(&b, "- **Proposed id**: `%s`\n", proposeID(it.c))
 		fmt.Fprintf(&b, "- **Tags**: censors=`%s` techniques=`%s`",
