@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-yanai-realtime-classification-encrypted
+kind: detection
+summary: Classical port-based and payload-based traffic classification approaches have documented shortcomings that motivated statistical learning-based methods. By 2010, statistical classifiers operating on packet-size and timing features had become the dominant replacement, applicable even when the transport is fully encrypted.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Bypassing DPI by encrypting payloads is insufficient; circumvention transports must also defeat statistical fingerprinting of flow-level features (packet sizes, inter-arrival times, burst patterns).
+    - Port randomization alone does not defeat statistical classifiers — the feature set used has no port component.
+section: Abstract / §1 Introduction (inferred from motivation framing)
+extracted_by: claude-sonnet-4-6

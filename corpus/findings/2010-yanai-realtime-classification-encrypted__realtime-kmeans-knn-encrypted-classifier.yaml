@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-yanai-realtime-classification-encrypted
+kind: detection
+summary: A hybrid k-means / k-NN geometric classifier achieves real-time classification of encrypted network traffic by application type. The classifier is described as 'extremely robust to encryption' based on feasibility tests, including integration into a real-time embedded environment.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Statistical flow features (packet size distributions, inter-arrival times) survive encryption and enable classification even when payload is opaque — circumvention tools must shape these features, not just encrypt the payload.
+    - Real-time deployment at line rate in embedded hardware (2010) means censors can run such classifiers inline; defense designers should not assume high classifier latency as a practical barrier.
+section: Abstract
+extracted_by: claude-sonnet-4-6

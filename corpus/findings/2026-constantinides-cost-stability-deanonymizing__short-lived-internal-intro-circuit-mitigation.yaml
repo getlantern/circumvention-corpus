@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-constantinides-cost-stability-deanonymizing
+kind: defense
+summary: Periodically rebuilding only the internal service-side path of the introduction circuit (entry guard → vanguard → middle relay) approximately every 10 minutes — while keeping the publicly advertised Introduction Point fixed — limits evidence accumulation to one rebuild interval without requiring a descriptor update. Under this mitigation the effective circuit lifetime visible to an intersection attacker drops from 18–24h to ~10 min, matching ordinary Tor circuit lifetimes.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Onion services used as circumvention infrastructure should apply (or advocate for upstream adoption of) the short-lived internal introduction circuit mechanism described in §5 — the fix requires no change to the public descriptor and is backward-compatible with existing clients.
+    - 'The mitigation''s strength is bounded by rendezvous circuit anonymity: if rendezvous circuits (~10 min) are themselves vulnerable to intersection attacks, reducing introduction circuit lifetime provides only marginal benefit, so circumvention tools should evaluate both circuit types.'
+section: §5
+extracted_by: claude-sonnet-4-6

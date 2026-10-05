@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-curv-tail-lightweight-long-tailed
+kind: evaluation
+summary: Curv-Tail achieves Tail-F1 scores of 85.70% and 46.30% on NUDT-Mobile (300 mobile-app classes) and DataCon-Website (100 encrypted proxy/VPN website classes) under natural long-tailed class frequencies, with only 0.84M parameters and 46.07M MACs per flow—using 98.48% fewer parameters and achieving 10.2× the batch inference throughput of MM4Flow at FP32 precision on an RTX 4090, with an amortized per-flow latency of 0.1359 ms at batch size 256.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Sub-millisecond per-flow inference at state-of-the-art accuracy with under 1M parameters makes deployment of this classifier feasible at line rate for resource-constrained network operators; circumvention tool designers cannot rely on ML infeasibility as protection.
+    - Circumvention defenses must be validated against lightweight end-to-end classifiers trained directly on target data—not only large pre-trained transformer models that require separate pretraining stages and far greater compute.
+section: §3.2, §3.4, Table 1, Fig. 4(a)
+extracted_by: claude-sonnet-4-6

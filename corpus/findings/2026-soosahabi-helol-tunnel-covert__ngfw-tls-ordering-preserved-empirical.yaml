@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-soosahabi-helol-tunnel-covert
+kind: evaluation
+summary: Empirical testing of 3 enterprise NGFWs (2020–2024 software) found that 2 out of 3 complied with anti-ossification measures and preserved TLS CHLO parameter ordering, making them fully vulnerable to permutation-encoded covert channels; all 3 preserved parameter values within NIST-allowed sets, leaving all vulnerable to the lower-throughput bitmap (selection) encoding. None of the 3 products raised warnings about simulated malware sending repetitive TLS CHLO packets.
+techniques:
+    - tls-fingerprint
+    - dpi
+    - middlebox-interference
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Anti-ossification compliance (RFC 8701 GREASE) in deployed middleboxes means TLS CHLO parameter ordering is preserved end-to-end by a majority of enterprise firewalls — circumvention tools can safely encode state or signals in cipher-suite / extension ordering without NGFW normalization breaking it.
+    - Even ossifying NGFWs that reorder parameters still preserve which values are present; circumvention protocols can fall back to selection-based signaling (which values appear in TLS CHLO) as a lower-throughput but universally preserved channel.
+section: Appendix B / Table 2
+extracted_by: claude-sonnet-4-6

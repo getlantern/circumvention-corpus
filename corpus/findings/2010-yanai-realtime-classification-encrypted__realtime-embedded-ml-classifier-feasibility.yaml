@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2010-yanai-realtime-classification-encrypted
+kind: evaluation
+summary: The hybrid k-means / k-NN classifier was implemented and integrated into a real-time embedded network environment, demonstrating that ML-based encrypted traffic classification is feasible as inline line-rate infrastructure, not just an offline research technique.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool designers should treat real-time statistical classifiers as deployed infrastructure, not theoretical threat models — countermeasures must work against online classifiers with low per-packet budgets.
+    - Traffic shaping defenses must be computationally cheap enough that the classifier advantage (fast inference) does not allow censors to classify before the defense has time to take effect.
+section: Abstract
+extracted_by: claude-sonnet-4-6

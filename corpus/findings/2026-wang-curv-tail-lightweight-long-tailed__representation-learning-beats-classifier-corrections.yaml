@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-curv-tail-lightweight-long-tailed
+kind: evaluation
+summary: Classifier-level long-tail corrections applied to a fine-tuned and frozen ET-BERT encoder on NUDT-Mobile—including logit adjustment, effective-number reweighting, class-balanced retraining (cRT), and feature mixup—improve Tail-F1 by at most 0.08 percentage points over the base ET-BERT (82.79%); Curv-Tail's end-to-end joint representation learning outperforms the best correction by 2.83 points in Tail-F1 and 3.05 points in Macro-F1.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - The bottleneck for ML traffic classification lies in feature extraction (packet lengths, inter-arrival times, byte patterns), not the classifier head; circumvention defenses must corrupt these low-level observable features rather than exploiting weaknesses in classifier post-processing pipelines.
+    - End-to-end jointly trained classifiers are the correct threat model—frozen pre-trained encoders with corrected classifiers are far weaker, so defenses validated only against pre-trained models underestimate real adversary capability.
+section: §3.2, Table 2
+extracted_by: claude-sonnet-4-6

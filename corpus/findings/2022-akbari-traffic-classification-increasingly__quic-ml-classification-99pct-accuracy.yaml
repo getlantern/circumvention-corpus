@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-akbari-traffic-classification-increasingly
+kind: detection
+summary: The proposed model achieves 99% overall accuracy on a public QUIC dataset with fine-grained application-level labeling, demonstrating that QUIC-based encrypted traffic is highly susceptible to ML classification despite its encryption.
+techniques:
+    - ml-classifier
+    - http3-quic-block
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - QUIC-based circumvention protocols (Hysteria2, MASQUE-based transports) cannot assume encryption alone provides traffic-classification resistance — flow-level feature shaping is required on top of QUIC.
+    - Circumvention tools using QUIC should implement deliberate padding and timing jitter to break the application-level fingerprints that enable 99% classification accuracy.
+section: Abstract
+extracted_by: claude-sonnet-4-6

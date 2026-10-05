@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-soosahabi-helol-tunnel-covert
+kind: defense
+summary: Helol tunnel supports a 'passive (IP-less)' variant in which an insider agent with tap access to layer-3 traffic encodes messages in the ordering of TLS CHLO parameters belonging to incumbent connections traversing the wire, without originating any new IP flows. This bypasses NGFW explicit-proxy and CGNAT defenses that prevent direct socket connections from internal hosts to the Internet.
+techniques:
+    - dpi
+    - tls-fingerprint
+    - middlebox-interference
+defenses:
+    - mimicry
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - For censorship contexts where the censor enforces explicit proxy (no direct TCP connections outbound), a transport that modifies TLS CHLO parameters of passing connections rather than originating new flows is immune to connection-origination controls — this informs designs for pluggable transports operating on shared or institutional networks.
+    - Circumvention tools embedding signals in CHLO parameters of passively observed flows (e.g., via kernel hooks or eBPF) can achieve plausible-deniability covert channels with no attributable IP origin, a meaningful property in high-surveillance environments.
+section: Appendix C
+extracted_by: claude-sonnet-4-6

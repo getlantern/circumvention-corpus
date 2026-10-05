@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-constantinides-cost-stability-deanonymizing
+kind: detection
+summary: An adaptive intersection attack exploiting the 18–24h fixed lifetime of Tor onion-service introduction circuits reconstructed the complete four-hop introduction circuit in all nine live-network experiments. The median reconstruction required 260 iterations with an estimated median wall-clock time of 2.24h (12% of the 18h circuit lifetime) when per-relay visibility cost v=0; the slowest run completed in 6.63h (37% of 18h).
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Designs routing sensitive traffic through Tor onion services cannot assume introduction-circuit anonymity lasts the full 18–24h advertised lifetime — a partial observer with ISP-level access to one relay at a time can deanonymize the service host in ~2h median.
+    - Any circumvention tool that piggybacks on Tor's introduction-point mechanism should treat the service's network location as potentially exposed within hours of circuit establishment, not days.
+section: §4.2, Table 1
+extracted_by: claude-sonnet-4-6

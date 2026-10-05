@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-akbari-traffic-classification-increasingly
+kind: detection
+summary: Existing deep learning traffic classifiers, despite having millions of parameters, implement relatively simple logic based on TLS handshake header fields, which limits their robustness when encrypted protocols evolve to new versions. The paper identifies this as a fundamental limitation of the current state of encrypted traffic classification.
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Protocol designers should anticipate that TLS-header-based classifiers will fail when ECH or future handshake changes obscure the fields they rely on — deliberately adopting new TLS extensions or randomizing extension ordering can exploit this brittleness.
+    - Circumvention tools should rotate or randomize TLS handshake fields (cipher suites, extensions, GREASE) to break classifier assumptions trained on static header distributions.
+section: Abstract
+extracted_by: claude-sonnet-4-6

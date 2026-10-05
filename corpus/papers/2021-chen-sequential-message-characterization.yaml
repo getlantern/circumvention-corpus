@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1109/tvt.2021.3063738
+id: 2021-chen-sequential-message-characterization
+title: Sequential Message Characterization for Early Classification of Encrypted Internet Traffic
+authors:
+    - Wenxiong Chen
+    - Feng Lyu
+    - Fan Wu
+    - Peng Yang
+    - Guangtao Xue
+    - Minglu Li
+venue: IEEE Transactions on Vehicular Technology
+year: 2021
+doi: 10.1109/tvt.2021.3063738
+url: https://doi.org/10.1109/tvt.2021.3063738
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Represents traffic-analysis detection techniques that Lantern's traffic-shape obfuscation defenses must counter.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1109/tvt.2021.3063738

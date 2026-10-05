@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1145/3559439
+id: 2022-akbari-traffic-classification-increasingly
+title: Traffic classification in an increasingly encrypted web
+authors:
+    - Iman Akbari
+    - Mohammad A. Salahuddin
+    - Leni Aniva
+    - Noura Limam
+    - Raouf Boutaba
+    - Bertrand Mathieu
+    - Stephanie Moteau
+    - Stephane Tuffin
+venue: Communications of the ACM
+year: 2022
+doi: 10.1145/3559439
+url: https://doi.org/10.1145/3559439
+abstract: Traffic classification is essential in network management for a wide range of operations. Recently, it has become increasingly challenging with the widespread adoption of encryption in the Internet, for example, as a de facto in HTTP/2 and QUIC protocols. In the current state of encrypted traffic classification using deep learning (DL), we identify fundamental issues in the way it is typically approached. For instance, although complex DL models with millions of parameters are being used, these models implement a relatively simple logic based on certain header fields of the TLS handshake, limiting model robustness to future versions of encrypted protocols. Furthermore, encrypted traffic is often treated as any other raw input for DL, while crucial domain-specific considerations are commonly ignored. In this paper, we design a novel feature engineering approach used for encrypted Web protocols, and develop a neural network architecture based on stacked long short-term memory layers and convolutional neural networks. We evaluate our approach on a real-world Web traffic dataset from a major Internet service provider and mobile network operator. We achieve an accuracy of 95% in service classification with less raw traffic and a smaller number of parameters, outperforming a state-of-the-art method by nearly 50% fewer false classifications. We show that our DL model generalizes for different classification objectives and encrypted Web protocols. We also evaluate our approach on a public QUIC dataset with finer application-level granularity in labeling, achieving an overall accuracy of 99%.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. ML-based encrypted traffic classification is directly relevant to understanding censor capabilities for identifying and blocking circumvention applications.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1145/3559439

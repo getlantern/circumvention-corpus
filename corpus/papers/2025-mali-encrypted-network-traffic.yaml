@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.7759/s44389-024-02701-2
+id: 2025-mali-encrypted-network-traffic
+title: Encrypted Network Traffic Classification Using Intelligent Techniques
+authors:
+    - Shudhamati Mali
+    - Mansi Gujral
+    - Aswani Kumar Cherukuri
+venue: Cureus Journal of Computer Science
+year: 2025
+doi: 10.7759/s44389-024-02701-2
+url: https://doi.org/10.7759/s44389-024-02701-2
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to Lantern's circumvention research; understanding ML-based traffic classifiers informs protocol design and evasion strategies.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.7759/s44389-024-02701-2
