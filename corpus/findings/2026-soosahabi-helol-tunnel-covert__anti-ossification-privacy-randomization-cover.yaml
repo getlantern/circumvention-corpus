@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-soosahabi-helol-tunnel-covert
+kind: defense
+summary: RFC 8701 GREASE anti-ossification measures require compliant NGFWs and middleboxes to preserve TLS CHLO parameter orderings unmodified; simultaneously, popular browsers and applications randomize their JA3 fingerprints by shuffling cipher suites and extension order as a privacy measure. These two trends together make traffic with varied TLS CHLO orderings indistinguishable from legitimate application traffic at static inspection, eliminating a reliable detection signal for censors.
+techniques:
+    - tls-fingerprint
+    - middlebox-interference
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that randomize or deliberately vary TLS CHLO parameter orderings gain plausible cover from the broad population of privacy-conscious browsers (Chrome, Firefox, Safari all shuffle JA3); this defense costs nothing beyond generating a compliant but non-static CHLO.
+    - Adopt JA4-compatible fingerprints (sort-before-hash over cipher suites / extensions) for the stable outer appearance while encoding data in the raw ordering — the static JA4 hash matches a legitimate application while the ordering carries covert state.
+section: §3 / Remark 1
+extracted_by: claude-sonnet-4-6

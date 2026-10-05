@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-soosahabi-helol-tunnel-covert
+kind: defense
+summary: The Helol tunnel encodes data in the permutation of TLS CHLO list-type parameters (cipher suites, extensions, elliptic curves, signature hashing algorithms), achieving a median throughput of roughly 8–12 bytes/packet from cipher-suite permutation alone, significantly outperforming SNICat across median and upper quartiles. The per-packet payload from full factorial encoding is ⌊log₂ N!⌋ bits for a list of N elements, yielding ~17–22 bytes/packet at median cipher-suite list lengths observed in local captures.
+techniques:
+    - tls-fingerprint
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols can leverage TLS CHLO parameter ordering as a high-bandwidth, low-detectability side-channel for key exchange or bridge distribution — cipher-suite order alone carries ~17 bytes/packet at typical list lengths, requiring no payload modification.
+    - 'Prioritize cipher-suite ordering over extension or elliptic-curve ordering for any TLS-embedded signaling: cipher suites have the highest median list length (19–22 elements) and contribute the most bits per CHLO packet.'
+section: §6.1 / Figure 4–5
+extracted_by: claude-sonnet-4-6

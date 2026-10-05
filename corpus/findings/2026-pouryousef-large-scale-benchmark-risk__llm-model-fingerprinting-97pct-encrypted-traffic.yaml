@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pouryousef-large-scale-benchmark-risk
+kind: detection
+summary: Using only encrypted packet metadata — packet sizes, directions, timing, and burst structure — a passive on-path observer achieves 97.7% balanced accuracy fingerprinting 10 LLMs, dropping only to 92.2% when the candidate set scales to 20 models. Two post-trained variants sharing the same Qwen3-14B backbone remain separable at 100% and 96.7% recall, showing that post-training-induced behavior changes the traffic fingerprint independently of architecture.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Withholding model details or using a generic API gateway does not prevent passive identification of specific serving variants — post-training and fine-tuning produce independently fingerprintable traffic signatures.
+    - Fingerprint-resistant serving requires altering response streaming and chunk packetization behavior, not just network-layer obfuscation.
+section: §V.A.2, Figure 9(b)
+extracted_by: claude-sonnet-4-6

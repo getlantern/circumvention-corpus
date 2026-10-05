@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-constantinides-cost-stability-deanonymizing
+kind: detection
+summary: Across all 36 stages in the nine end-to-end experiments, the median iteration at which the running intersection shrank to ≤10 candidates was 3, and 64% of stages reached this threshold within 5 iterations. Per-stage candidate sets shrank by 72–87% after the first intersection and by 85–96% by the third iteration, driven by the short (~0.5–1.8s) observation windows that prevent unrelated circuits from injecting persistent false candidates.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - 'Short handshake windows are a double-edged sword: they limit false-positive injection, making intersection attacks converge faster — circumvention protocols that use longer, noisier handshakes (e.g., intentional padding) would widen anonymity sets and slow convergence.'
+    - Introducing deliberate jitter or decoy traffic during the introduction handshake interval could prevent the true successor address from being the sole persistent element in the intersection.
+section: §4.2
+extracted_by: claude-sonnet-4-6

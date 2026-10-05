@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-akbari-traffic-classification-increasingly
+kind: detection
+summary: A novel LSTM + CNN architecture achieves 95% service classification accuracy on a real-world ISP and mobile operator dataset using less raw traffic and fewer parameters than prior approaches, outperforming the state-of-the-art by nearly 50% fewer false classifications.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Even with reduced traffic volume, ML classifiers can achieve near-SOTA accuracy — circumvention tools cannot rely on limiting the number of observable packets as a defense; flow-level shaping must address statistical distributions, not just packet count.
+    - The 50% false-classification reduction means ISP-deployed classifiers are becoming precise enough to avoid false positives that would block legitimate traffic, lowering the political cost of deploying them.
+section: Abstract
+extracted_by: claude-sonnet-4-6

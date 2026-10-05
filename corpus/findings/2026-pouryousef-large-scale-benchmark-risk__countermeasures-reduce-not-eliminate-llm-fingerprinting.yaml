@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pouryousef-large-scale-benchmark-risk
+kind: evaluation
+summary: Prompt reformulation (wrapping prompts with semantics-preserving instructions) reduces model-fingerprinting accuracy from 93.2% to 69.5% (−23.7 pp), and temperature randomization reduces it by up to 18.2 pp, but accuracy remains far above the 10% random baseline in all tested conditions. Because the attacks exploit correlated signals across packet sizes, timing, burst rates, and response progression simultaneously, the paper concludes that defenses must reshape the entire traffic profile rather than mask any single feature family.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Single-feature countermeasures (padding packet sizes, adding timing jitter, or varying temperature alone) are insufficient against multi-family correlated fingerprinting — a circumvention transport must apply coordinated shaping across burst structure, chunk timing, and response volume simultaneously.
+    - Semantics-preserving prompt reformulation is a promising application-layer defense but reduces rather than eliminates risk; combining it with network-layer traffic shaping is necessary for strong privacy guarantees.
+section: §V.C, §VI.A, Figure 9(a)
+extracted_by: claude-sonnet-4-6

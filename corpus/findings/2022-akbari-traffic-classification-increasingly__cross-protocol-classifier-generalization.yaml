@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-akbari-traffic-classification-increasingly
+kind: detection
+summary: The classification model generalizes across different encrypted web protocols including HTTP/2 and QUIC, achieving high accuracy for both service-level and application-level classification objectives from a single trained model.
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+    - http3-quic-block
+censors:
+    - generic
+defense_implications:
+    - Cross-protocol classifiers mean that switching a circumvention tool's underlying transport (e.g., HTTP/2 to QUIC) does not automatically evade detection if the same flow-level statistical signatures persist — the evasion must address the behavioral fingerprint, not just the wire format.
+    - Circumvention tools should consider protocol-agnostic randomization layers (e.g., WATER/WASM-based pluggable transports) that can be updated independently of the underlying transport when new classifiers are deployed.
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2609.33831
+id: 2026-constantinides-cost-stability-deanonymizing
+title: 'The Cost of Stability: Deanonymizing Onion Services Long-Lived Introduction Circuits'
+authors:
+    - Nicolas Constantinides
+    - Mahdi Rahimi
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2609.33831"
+url: https://arxiv.org/abs/2609.33831v1
+abstract: 'Tor is a widely used anonymity network that provides network privacy by routing client communications through a sequence of relays to their destinations. An adversary observing a single Tor relay cannot readily link clients to their destinations, as doing so requires identifying the other relays along the client circuit. Identifying these relays from traffic observed at the monitored relay alone is challenging: each relay carries traffic for many circuits simultaneously, and client circuits typically last only about 10 min, limiting observations of a given circuit. In contrast, Tor onion services use introduction circuits that remain fixed for 18 to 24 h. We develop an intersection attack that exploits this design, allowing an adaptive adversary observing one Tor relay at a time to identify the network location of an onion service. We evaluate the attack on the live Tor network against a self-operated onion service carrying genuine third-party traffic. Across nine end-to-end experiments, the attack reconstructs the complete Tor circuit in every run, with an estimated median time of 2.2 h. To mitigate this attack, we propose a mechanism that periodically rebuilds internal introduction circuits to limit evidence accumulation without changing publicly advertised information.'
+censors:
+    - generic
+techniques:
+    - flow-correlation
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - measurement-study
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Deanonymization attacks on Tor directly threaten circumvention platforms relying on Tor; understanding these vulnerabilities is critical for improving Tor's resilience against adversaries.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2609.33831

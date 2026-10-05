@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pouryousef-large-scale-benchmark-risk
+kind: detection
+summary: Using only LLM-to-user response packets (22 features), a classifier identifies the semantic category of a user's prompt — among six classes including code generation, mathematical reasoning, and adversarial requests — with 67.37% mean accuracy versus a 16.67% random baseline. Response-only accuracy exceeds full-traffic accuracy (65.10%), and packet-size and timing features contribute the most unique information (8.34 pp and 7.26 pp drop when each is removed); the leakage originates from generation behavior, not prompt length.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Censors or adversaries observing only server-to-client traffic can infer the nature of a user's query (e.g., distinguishing code generation from adversarial prompts) — circumvention tools must also shape outbound streaming response traffic, not just the request.
+    - Because leakage comes from decoding behavior rather than content, application-layer padding that normalizes chunk sizes and inter-chunk intervals is necessary to suppress prompt-category inference.
+section: §V.A.3, Table II–III
+extracted_by: claude-sonnet-4-6

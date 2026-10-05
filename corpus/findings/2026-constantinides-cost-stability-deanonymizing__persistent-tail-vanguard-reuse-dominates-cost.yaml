@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-constantinides-cost-stability-deanonymizing
+kind: detection
+summary: 'A persistent ''tail'' of recurring candidates — not the early phase — dominates convergence cost and introduces high variance: three Vanguard stages at identical consensus weight 1200 converged at iterations 12, 142, and 251. In 13 of 36 stages, the intersection held ≥3 candidates at the penultimate iteration and collapsed to a singleton in one step, suggesting the tail is caused by persistent third-party guard/vanguard traffic rather than random noise.'
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Persistent guard and vanguard reuse — Tor's own path-stability mechanisms — inadvertently create recurring traffic patterns that act as fixed beacons, enabling sequential deanonymization; circumvention designs that rotate relay assignments more frequently would disrupt this.
+    - Adding cover traffic between observation windows (e.g., sending application-layer pings through unrelated circuits) would force false candidates to persist across more iterations, increasing attacker effort proportionally.
+section: §4.2, Table 2
+extracted_by: claude-sonnet-4-6

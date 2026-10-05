@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-curv-tail-lightweight-long-tailed
+kind: detection
+summary: Website fingerprinting over encrypted proxy/VPN tunnels on DataCon-Website reaches only 46.30% Tail-F1 for infrequent destination classes even with the best evaluated method—substantially below the 85.70% Tail-F1 achieved on mobile applications (NUDT-Mobile)—reflecting that rare encrypted website traffic classes remain significantly harder for ML classifiers regardless of model architecture improvements.
+techniques:
+    - ml-classifier
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Novel circumvention protocols deployed in small user populations naturally occupy tail-class positions where classifier accuracy is lowest; maintaining novelty through regular protocol or routing updates provides a measurable structural evasion advantage rather than requiring active obfuscation.
+    - Routing circumvention traffic through VPN/proxy tunnels to a diverse set of destinations exploits the long-tail accuracy gap—the classifier's per-class F1 degrades sharply for infrequent destinations, making high-diversity exit traffic harder to classify even with specialized architectures.
+section: §3.2, Table 1
+extracted_by: claude-sonnet-4-6

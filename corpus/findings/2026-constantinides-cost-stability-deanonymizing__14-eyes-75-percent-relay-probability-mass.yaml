@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-constantinides-cost-stability-deanonymizing
+kind: evaluation
+summary: In the 30 November 2025 Onionoo snapshot, approximately 75% of both guard and middle relay selection-probability mass lies within Fourteen-Eyes jurisdictions, with Germany, the United States, and the Netherlands hosting the largest shares. Because path selection is bandwidth-weighted, a state-level adversary from one of these jurisdictions is statistically likely to have ISP-level visibility at most relays a target introduction circuit passes through.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools relying on public Tor relays for onion-service infrastructure face a baseline adversary advantage of ~75% geographic overlap with cooperative intelligence jurisdictions — distributing server infrastructure outside Fourteen-Eyes hosting (or using bridges) measurably reduces this exposure.
+    - 'The entry guard is the structural bottleneck: it is reused for months and shared across all three introduction circuits of the same service, so all three reconstructions converge on one host; tools should consider guard diversity or multi-homed service architectures.'
+section: Appendix D, Fig. 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.01009
+id: 2026-soosahabi-helol-tunnel-covert
+title: 'Helol Tunnel: Covert Channel Exploitation of TLS Extensibility & Privacy Features'
+authors:
+    - Reza Soosahabi
+    - Rakesh Seal
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.01009"
+url: https://arxiv.org/abs/2610.01009v1
+abstract: Covert channels exploiting network protocols for data exfiltration and command-and-control (C2) are integral parts of modern cyberattacks. In search of a significant covert channel within the fabric of the Internet, we targeted the combinatorial properties of the Client Hello (CHLO) packets in the ubiquitous Transport Layer Security (TLS) protocol. The proposed Helol tunnel is a novel covert approach to embedding information in TLS Client Hello packets, which involves the strategic rearrangement of their cryptographic information elements. To sustain TLS protocol extensibility, the recent anti-ossification TLS compliance measures encourage the interactive middleboxes and next-generation firewalls (NGFWs) to preserve the parameter configuration in the Client Hello packets. Furthermore, to improve user privacy, popular Internet applications are varying their TLS CHLO parameter configurations to resist TLS fingerprinting by third-party network entities. We demonstrate the strength of the Helol tunnel to exploit these recent developments to evade NGFWs with interactive proxy and comprehensive threat protection. We also numerically show the efficacy of Helol tunneling over state-of-the-art covert channels that exploit TLS through the use of real traffic captures and public TLS fingerprinting data.
+censors:
+    - generic
+techniques:
+    - tls-fingerprint
+defenses_discussed:
+    - tunneling
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Exploits TLS parameter variation to evade NGFW detection; relevant for understanding encrypted tunnel resilience against inspection.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.01009

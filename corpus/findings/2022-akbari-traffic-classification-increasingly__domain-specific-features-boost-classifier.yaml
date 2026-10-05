@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-akbari-traffic-classification-increasingly
+kind: detection
+summary: The paper demonstrates that domain-specific considerations for encrypted web protocols are routinely ignored in DL-based classifiers, and that a feature engineering approach combining protocol-aware features with neural networks outperforms raw byte ingestion approaches substantially.
+techniques:
+    - ml-classifier
+    - dpi
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocol designers should study what domain-specific features (TLS session length, packet interarrivals, connection multiplexing patterns) their protocol exposes that differ from baseline HTTPS — these are the attack surface for next-generation classifiers.
+    - Mimicking the exact flow-level statistics of a high-volume, well-understood protocol (e.g., a specific CDN's HTTP/2 profile) is more evasion-effective than mimicking the protocol format alone.
+section: Abstract
+extracted_by: claude-sonnet-4-6

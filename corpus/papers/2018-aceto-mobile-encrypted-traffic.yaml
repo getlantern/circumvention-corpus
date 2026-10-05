@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.23919/tma.2018.8506558
+id: 2018-aceto-mobile-encrypted-traffic
+title: Mobile Encrypted Traffic Classification Using Deep Learning
+authors:
+    - Giuseppe Aceto
+    - Domenico Ciuonzo
+    - Antonio Montieri
+    - Antonio Pescape
+venue: 2018 Network Traffic Measurement and Analysis Conference (TMA)
+year: 2018
+doi: 10.23919/tma.2018.8506558
+url: https://doi.org/10.23919/tma.2018.8506558
+censors:
+    - generic
+techniques:
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates ML-based encrypted traffic classification techniques relevant to understanding potential censor detection mechanisms against circumvention protocols.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.23919/tma.2018.8506558

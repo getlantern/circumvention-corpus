@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-soosahabi-helol-tunnel-covert
+kind: detection
+summary: Static NGFW inspection cannot distinguish Helol tunnel TLS CHLO packets from legitimate privacy-motivated parameter randomization; only advanced statistical or ML monitoring of 'incumbent TLS CHLO trends' could potentially surface anomalies (§5). Local captures across 9 devices over 4 days yielded 96,825 TLS CHLO packets with only 137 distinct parameter-combination fingerprints, illustrating that real traffic is sparse enough for ML baselines to be practical but that the cover population is large.
+techniques:
+    - tls-fingerprint
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - A censor deploying ML-based TLS CHLO trend analysis (as flagged by the paper as the most promising countermeasure) would look for statistical deviation from per-host parameter-combination baselines — circumvention tools should match observed local application fingerprints rather than generating uniform random orderings that fall outside the empirical distribution.
+    - Pace TLS CHLO emissions near observed real-device rates (~0.48 packets/second per active device from Android telemetry, 0.42/second in lab captures) to avoid rate-anomaly triggers that ML-based NGFWs use as a signal.
+section: §5 / §6.2
+extracted_by: claude-sonnet-4-6

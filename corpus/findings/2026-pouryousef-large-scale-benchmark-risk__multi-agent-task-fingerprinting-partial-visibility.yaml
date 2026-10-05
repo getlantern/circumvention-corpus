@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pouryousef-large-scale-benchmark-risk
+kind: detection
+summary: Multi-agent task fingerprinting achieves up to 90.7% balanced accuracy using all 247 features; observing encrypted traffic from a single agent yields 66.5% accuracy under graph topology and 78.0% under star topology, rising to 84.3% and 85.9% with up to four agents visible. Cross-topology accuracy drops from 83% to 52% but remains well above the 10% chance level, indicating that topology changes reduce but do not eliminate task leakage.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - For circumvention tools that use multi-agent or relay architectures, a passive observer monitoring even a single agent–server channel can infer the overall workflow being performed — per-hop traffic shaping is necessary, not just end-to-end encryption.
+    - Changing coordination topology (e.g., from star to mesh) provides partial but incomplete protection; genuine privacy requires traffic-profile normalization independent of topology.
+section: §V.B, Figure 8
+extracted_by: claude-sonnet-4-6

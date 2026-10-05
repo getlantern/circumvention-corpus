@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.neucom.2022.06.055
+id: 2022-rasteh-encrypted-internet-traffic
+title: Encrypted internet traffic classification using a supervised spiking neural network
+authors:
+    - Ali Rasteh
+    - Florian Delpech
+    - Carlos Aguilar-Melchor
+    - Romain Zimmer
+    - Saeed Bagheri Shouraki
+    - Timothée Masquelier
+venue: Neurocomputing
+year: 2022
+doi: 10.1016/j.neucom.2022.06.055
+url: https://doi.org/10.1016/j.neucom.2022.06.055
+censors:
+    - generic
+techniques:
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. ML-based traffic classification is relevant to understanding censor detection capabilities for circumvention protocols.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.neucom.2022.06.055

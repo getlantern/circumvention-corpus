@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2609.32242
+id: 2026-wang-curv-tail-lightweight-long-tailed
+title: 'Curv-Tail: Lightweight Long-Tailed Encrypted Traffic Classification with Discrete Packet-Length Encoding and Lorentz Prototypes'
+authors:
+    - Yankun Wang
+    - Jun-Jie Huang
+    - Lin Liu
+    - Xiaodong Lei
+    - Yi Chen
+    - Yeqing Yan
+    - Lin Liu
+    - Jiangyong Shi
+    - Yongjun Wang
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2609.32242"
+url: https://arxiv.org/abs/2609.32242v1
+abstract: Long-tailed encrypted traffic classification requires accurate recognition of infrequent classes under limited computational budgets. We propose Curv-Tail, a lightweight, end-to-end packet--byte framework trained without a separate pretraining stage. Mixed-resolution tokenization preserves exact packet-length identities within a bounded range and coarsens larger values to limit the vocabulary. An auxiliary objective predicts observed length tokens from contextual packet features before pooling, encouraging length-token retention beyond flow-level supervision. Compact temporal encoders process packet sequences and directional byte patches, and Lorentz prototypes with a shared learnable curvature magnitude classify their fused representation. On NUDT-Mobile and DataCon-Website under natural class frequencies, Curv-Tail achieves three-seed mean Tail-F1 scores of 85.70% and 46.30%, exceeding the strongest evaluated baselines by 2.91 and 1.89 percentage points, respectively. In 300-class profiling on an RTX 4090 with FP32 and batch size 256, Curv-Tail uses 98.48% fewer parameters and achieves 10.2 times the batch inference throughput of MM4Flow.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Machine-learning classifier for encrypted traffic classification using packet-length and timing features; informs both censor detection capabilities and circumvention defenses like traffic randomization.
+visibility: public
+date_added: "2026-10-05"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2609.32242

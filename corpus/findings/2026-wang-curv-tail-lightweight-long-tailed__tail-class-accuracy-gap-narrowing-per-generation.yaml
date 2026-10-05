@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-curv-tail-lightweight-long-tailed
+kind: detection
+summary: On NUDT-Mobile, Curv-Tail achieves group-wise Macro-F1 of 96.98% on head classes (top 50% by training frequency), 92.84% on body classes, and 85.70% on tail classes, with per-group gains over the strongest baseline (MM4Flow) of 0.65, 1.12, and 4.97 percentage points respectively—demonstrating that architectural improvements disproportionately benefit rare-class detection and that tail-class accuracy is approaching head-class accuracy.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - The accuracy gap between rare and common traffic classes is narrowing with each generation of classifier (4.97 pp tail gain vs. 0.65 pp head gain over MM4Flow); circumvention protocols that relied on obscurity through rarity are facing rapidly diminishing evasion margins.
+    - A circumvention tool's evasion half-life from novel-protocol obscurity is shortening as tail-class accuracy approaches head-class accuracy; active traffic shaping rather than novelty alone must be the primary defense mechanism.
+section: §3.2, Fig. 3
+extracted_by: claude-sonnet-4-6

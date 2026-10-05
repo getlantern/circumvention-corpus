@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wang-curv-tail-lightweight-long-tailed
+kind: detection
+summary: 'Discrete packet-length tokenization is the single most influential component in Curv-Tail: replacing it with continuous length encoding reduces Tail-F1 by 11.04 percentage points on DataCon-Website (47.23% → 36.19%), a larger ablation gap than removing Lorentz geometry (−2.12 pp) or the length-retention auxiliary objective (−1.02 pp) combined.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - 'Traffic randomization must specifically target packet-length distributions: length-based discrete features dominate classifier accuracy more than timing jitter, payload byte patterns, or inter-arrival time, so padding/fragmenting to disguise characteristic length fingerprints yields the largest per-effort evasion gain.'
+    - Uniform-random length padding is insufficient; the classifier uses exact identity tokens for lengths ≤B and coarse bins above, so circumvention tools need to target both regimes—randomizing short packets (which retain exact tokens) matters as much as blurring large-packet histograms.
+section: §3.3, Table 3
+extracted_by: claude-sonnet-4-6

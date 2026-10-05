@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-pouryousef-large-scale-benchmark-risk
+kind: detection
+summary: Burst features alone achieve 94.17% model-fingerprinting accuracy versus 95.67% for all 168 features; removing burst features drops accuracy by 9.33 percentage points, while removing packet-size or timing alone causes near-zero degradation. Information-theoretic analysis confirms burst-byte features leak 3.02 of the maximum 3.32 bits of model identity, versus only ~0.23 bits from aggregate volume/direction.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Defenses that pad only packet sizes or add timing noise leave the dominant burst-structure side-channel fully open; effective defense must alter how the serving stack groups and streams response chunks.
+    - Token-chunk batching at the model-serving layer (grouping multiple tokens per SSE frame) is the highest-leverage single countermeasure because it directly disrupts burst-byte statistics.
+section: §V.A.2, Table I
+extracted_by: claude-sonnet-4-6
