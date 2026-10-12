@@ -1,0 +1,31 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.07776
+id: 2026-deng-scsm-traffic-native-foundation
+title: 'SCSM: A Traffic-Native Foundation Model for Transferable Website Fingerprinting'
+authors:
+    - Xianwen Deng
+    - Ruijie Zhao
+    - Mingwei Zhan
+    - Yijun Wang
+    - Zhi Xue
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.07776"
+url: https://arxiv.org/abs/2610.07776v1
+abstract: Website fingerprinting infers the websites visited by users from encrypted traffic metadata. However, models trained under fixed collection conditions often degrade as website sets, collection times, network paths, browsers, or defenses change. Existing transferable attacks either rely on handcrafted perturbations of individual traces or adapt language-oriented architectures to traffic, limiting their ability to capture traffic-native semantics. To address these limitations, we propose SCSM, a traffic-native foundation model for transferable website fingerprinting. Specifically, SCSM constructs pairs of pretraining views from the same group of unlabeled traces through Segmentation, Combination, Scaling, and Masking. These operations produce diverse observable patterns while preserving the underlying packet events and local traffic dynamics of real trace fragments. The corresponding windowed traffic counting matrices serve as inputs for contrastive pretraining of a state-space encoder without website annotations. The pretrained encoder is then fine-tuned on a small labeled support set, and predictions are aggregated across temporal scales at inference. Experimental results demonstrate that SCSM surpasses the strongest baselines by 16.4\% in average top-3 accuracy over six temporal-drift tasks on GTT23 and by 13.8\% in average macro-F1 over four cross-domain datasets. The code and datasets will be made available at https://github.com/SJTU-dxw/WF-SCSM.
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Website fingerprinting is a primary threat model for VPNs and encrypted tunnels; transferable attacks that adapt to defenses and network changes are particularly relevant to circumvention-tool robustness.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.07776

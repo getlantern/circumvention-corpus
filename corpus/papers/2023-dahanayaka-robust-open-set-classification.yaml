@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.comnet.2023.109991
+id: 2023-dahanayaka-robust-open-set-classification
+title: Robust open-set classification for encrypted traffic fingerprinting
+authors:
+    - Thilini Dahanayaka
+    - Yasod Ginige
+    - Yi Huang
+    - Guillaume Jourjon
+    - Suranga Seneviratne
+venue: Computer Networks
+year: 2023
+doi: 10.1016/j.comnet.2023.109991
+url: https://doi.org/10.1016/j.comnet.2023.109991
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Understanding traffic fingerprinting is critical for circumvention protocol designers to evade detection by censors using statistical traffic analysis.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.comnet.2023.109991

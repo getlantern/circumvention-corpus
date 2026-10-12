@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.12764
+id: 2026-syverson-onions-atmosphere-decentralizing
+title: 'Onions in the ATmosphere: Decentralizing Trust in Identity'
+authors:
+    - Paul Syverson
+    - Nick Gerakines
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.12764"
+url: https://arxiv.org/abs/2610.12764v1
+abstract: 'Multiple approaches have been implemented for identities that associate meaningful identifiers, such as domain names, with self-authenticating identifiers, such as onion addresses. While these approaches offer various advantages both from identifier meaningfulness and from identifier self-authentication, identifier association itself is subject to blocking, hijack, fingerprinting, and other forms of surveillance and manipulation. So too are the resources associated with an identity comprising a meaningful identifier and a self-authenticating identifier. This paper describes ongoing work on two such approaches to self-authenticating meaningful identity (SAMI): associating a registered domain name with an onion address (onion association) and associating an atproto handle with a decentralized identifier (DID association). We present both the application of already implemented and published means of secure onion association to DID association and the combination of both in a single identity. Finally, we describe grounding identity association and integrity in contextual trust, wherein trusting attestations of identity relies on contextual relevance of an attestor to the identity rather than relying only on structural authority, for example as embodied in the traditional centralized infrastructure.'
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+defenses_discussed:
+    - tor
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern's onion-domain association infrastructure and privacy guarantees; addresses core threat model for Tor-based identity binding.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.12764

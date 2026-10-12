@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.knosys.2026.116027
+id: 2026-he-hierarchical-traffic-fingerprint-assisted
+title: Hierarchical traffic fingerprint-assisted Graph Neural Networks for encrypted traffic classification in Internet of Vehicles
+authors:
+    - Yaru He
+    - Jiaqi Gao
+    - Daoqi Han
+    - Yueming Lu
+    - Yaojun Qiao
+venue: Knowledge-Based Systems
+year: 2026
+doi: 10.1016/j.knosys.2026.116027
+url: https://doi.org/10.1016/j.knosys.2026.116027
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. While focused on IoT contexts, encrypted traffic classification and fingerprinting techniques are directly applicable to understanding censor detection capabilities and circumvention defenses.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.knosys.2026.116027

@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.cose.2024.104283
+id: 2025-xu-unveiling-traffic-paths
+title: 'Unveiling traffic paths: Explainable path signature feature-based encrypted traffic classification'
+authors:
+    - Shi-Jie Xu
+    - Kai-Chuan Kong
+    - Xiao-Bo Jin
+    - Guang-Gang Geng
+venue: Computers & Security
+year: 2025
+doi: 10.1016/j.cose.2024.104283
+url: https://doi.org/10.1016/j.cose.2024.104283
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Generic encrypted traffic classification; application to circumvention detection depends on transferability of path-signature features to Tor/proxy traffic.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.cose.2024.104283
