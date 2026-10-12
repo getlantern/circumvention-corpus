@@ -1,0 +1,90 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: ermao https://www.ermao.net/en/blog/shadowrocket-rules-config/
+id: 2026-anon-configure-shadowrocket-rules
+title: Configure Shadowrocket Rules for Split Routing and Domain Blocking (2026) | Ermao
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/en/blog/shadowrocket-rules-config/
+abstract: |-
+    Configure Shadowrocket Rules for Split Routing and Domain Blocking (2026) | Ermao
+
+    [Skip to content](#VPContent)
+
+    # Configure Shadowrocket Rules for Split Routing and Domain Blocking (2026)
+
+    About 1469 wordsAbout 5 min
+
+    [Shadowrocket](/en/blog/tags/?tag=Shadowrocket)[iOS proxy](</en/blog/tags/?tag=iOS proxy>)[censorship circumvention](</en/blog/tags/?tag=censorship circumvention>)[routing rules](</en/blog/tags/?tag=routing rules>)
+
+    ...—
+
+    2026-02-28
+
+    Shadowrocket uses its selected routing mode and configuration to determine which requests are proxied, direct, or rejected. This guide imports `lazy_group.conf` for split routing and policy groups. The checked file does not enable advertising-blocking rules; separate upstream variants provide that feature.
+
+    Rules can reduce unnecessary detours and inconsistent exit locations. They do **not** guarantee that a social-media account will never be restricted, that every ad will disappear, or that a streaming platform will accept the chosen IP.
+
+    Prerequisites
+
+    First install and configure at least one working node with the [Shadowrocket beginner guide](/en/article/z747kgjd/).
+
+    The [shared U.S. Apple ID page](/en/blog/freeappleid/) and [Asspp guide](/en/blog/asspp-download-guide/) explain two ways to access apps in another App Store region, with their security limitations.
+
+    ## [What split-routing rules do](#what-split-routing-rules-do)
+
+    In **Config** routing mode, the active configuration assigns requests to policies. **Proxy** mode uses the selected node for supported traffic, while **Direct** mode does not use a proxy node. Not importing an additional file alone does not establish a traffic leak or explain an account restriction.
+
+    A rule configuration can assign:
+
+    *   **matched local traffic** → direct connection;
+    *   **matched external services** → a proxy or policy group;
+    *   **matched blocking rules** → rejection, only when such rules are actually included.
+
+    Direct routing may reduce detours and proxy data use. Results depend on the network and matched policy, and routing rules do not guarantee account safety.
+
+    ![How Shadowrocket split-routing rules direct traffic](https://image.ermao.net/images/blog/shadowrocket-rules-config/20260228_135641-134ec6.png)
+
+    ## [Matching behavior](#matching-behavior)
+
+    Rule order and type affect the result: specific rules select a policy, and `FINAL` handles requests that match no earlier rule. Modules and domain/IP rules have additional precedence rules; inspect the matched-rule log when troubleshooting.
+
+    The checked lazy profile includes common service lists and `GEOIP,CN,DIRECT`, then ends with **`FINAL,PROXY`**. Unmatched requests therefore default to the proxy, not the direct-by-default blacklist behavior. Policy-group selections also affect the actual route.
+
+    On **2026-10-09**, we reviewed the [upstream configuration snapshot](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever/blob/e2200b2369531a648eaf2b2db99cf9dd13ba4bbd/lazy_group.conf) and all **34 enabled remote rule sets**. None contained advertising-blocking rejection rules. This was a source review, not an iPhone performance, ad-blocking, or account-risk test. Remote files can change after publication.
+
+    ## [Rule source used in this guide](#rule-source-used-in-this-guide)
+
+    **Shadowrocket-ADBlock-Rules-Forever**, maintained by Johnshall, publishes several profiles with different purposes. Features of one file do not apply to every variant.
+
+    | Feature                             | Description                                                                                            |
+    | ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
+    | **Several profiles**                | Separate blacklist, whitelist, ad-blocking, and lazy configurations                                    |
+    | **Regular builds**                  | The README describes daily publication at 8 a.m. Beijing time; verify successful updates               |
+    | **Lazy profile with policy groups** | Routes common services and defaults unmatched requests to the proxy                                    |
+    | **Separate ad-blocking variants**   | The checked `lazy_group.conf` does not enable ad blocking; use an explicitly labeled variant if needed |
+
+    Repository: [https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever)
+
+    The [reviewed README](https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever/blob/e2200b2369531a648eaf2b2db99cf9dd13ba4bbd/readme.md) also warns that filtering cannot remove every ad, particularly video ads.
+
+    ## [Import the rules in three steps](#import-the-rules-in-three-steps)
+
+    Before importing
+
+    Confirm that Shadowrocket is installed and at least one node works. Use the [Shadowrocket guide](/en/article/z747kgjd/) or the [proxy-service guide](/en/posts/vpn/) if needed.
+
+    ### [Step 1: copy the configuration URL](#st
+censors:
+    - generic
+techniques:
+    - keyword-filtering
+defenses_discussed:
+    - tunneling
+    - pluggable-transport
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Provides end-user perspective on practical proxy configuration; useful for understanding how practitioners deploy circumvention tools, though primarily a how-to guide rather than empirical research or technical evaluation.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/en/blog/shadowrocket-rules-config/

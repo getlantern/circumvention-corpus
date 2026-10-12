@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: net4people https://github.com/net4people/bbs/issues/671
+id: 2026-its0ka-russia-recent-mass
+title: '[Russia] recent mass ip bans'
+authors:
+    - '@its0ka'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/671
+abstract: On August 4 and September 21, 2026, Russia conducted mass blocking of IP addresses associated with popular VPN/proxy hosting providers including AmneziaHost, FirstByte, Fornex, Play2Go, and Veesp, targeting hundreds to thousands of IPs per provider ASN. The blocking notably affected REALITY proxy servers and AmneziaWG-only infrastructure, suggesting IP-list rather than protocol-detection-based enforcement. A follow-up observation documented selective TCP blocking while UDP/ICMP remained functional to a single VPS across all of Russia, despite minimal traffic volume.
+censors:
+    - ru
+techniques:
+    - ip-blocking
+defenses_discussed:
+    - amnezia-wg
+    - reality
+    - vless
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant for Lantern infrastructure resilience; documents Russian IP-blocking campaign targeting common hosting providers used by proxy operators.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/671

@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.07386
+id: 2026-fu-netagent-multi-task-agentic
+title: 'NetAgent: Multi-Task Agentic Network Traffic Analysis Made Practical'
+authors:
+    - Hao Fu
+    - Dawn Song
+    - Peng Gao
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.07386"
+url: https://arxiv.org/abs/2610.07386v1
+abstract: 'Network traffic analysis is central to network security, spanning tasks from intrusion detection to encrypted traffic classification. Existing approaches either train task-specific models that generalize poorly or rely on costly traffic foundation models that still struggle under distribution shift. We present NetAgent, the first agentic framework for multi-task traffic analysis. Through a carefully designed agent loop, NetAgent supports complex task understanding, on-the-fly decomposition and orchestration, dynamic replanning, and long-horizon analysis, without task-specific training. It introduces five key designs: (1) knowledge-augmented workflow planning that maps attack knowledge to traffic features to bridge the semantic gap; (2) a comprehensive tool action space with 150+ verified tools extracted from 50+ published systems; (3) a unified code execution space for flexible action composition; (4) a three-tier memory for long-term knowledge consolidation; and (5) sandboxing and runtime repair for reliable execution. Across 9 major benchmarks, NetAgent outperforms all baselines (23 single-task and 5 multi-task) on nearly all tasks and generalizes substantially better to unseen traffic distribution (90.04% F1 vs. 2.74% and 3.04% for the best single-task and multi-task baselines) and under realistic background shift (4.85-point F1 drop vs. 74.88-point and 74.80-point drop for the best single-task and multi-task baselines). These results reveal that existing methods owe much of their reported success to overfitting dataset-specific patterns and degrade sharply in realistic network environments, while NetAgent''s agentic design remains accurate, generalizable, and robust.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Encrypted traffic classification methods are directly applicable to understanding censor DPI and traffic-analysis attack capabilities.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.07386

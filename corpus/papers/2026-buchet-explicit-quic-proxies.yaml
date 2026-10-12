@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.06179
+id: 2026-buchet-explicit-quic-proxies
+title: Explicit QUIC Proxies for Server-Side Geo-blocking Bypass
+authors:
+    - Aurélien Buchet
+    - Soyong Kim
+    - Tom Barbette
+    - Cristel Pelsser
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.06179"
+url: https://arxiv.org/abs/2610.06179v1
+abstract: Geo-restricted content is increasingly common on the Internet, forcing users to rely on circumvention techniques, such as VPNs, to access the web from a seemingly different location. However, these often come with a financial cost and can degrade performance. The rise in popularity of the QUIC protocol, which allows connections to migrate between paths, opens opportunities to circumvent such restrictions. We scan web servers and find that a large portion of geo- blocked content is enforced on the server, at the application layer, rather than on-path. This check is performed once, when the request arrives, and is not repeated as the connection continues. This allows a client to issue its request from a whitelisted IP address and, once the server has accepted it, migrate the connection to an otherwise unauthorized address for the rest of the transfer (post-header migration). It bypasses the block while maximizing direct traffic, thereby reducing eventual circumvention-related costs. Building on this insight, we introduce Stork, an HTTP/2-to-HTTP/3 web proxy that bypasses geo-blocking while introducing negligible additional latency. We demonstrate that our solution is compatible with popular clients and servers. In controlled experiments with 2 MB requests, our proxy migrates 99% of the transferred data onto the unauthorized path. Across real-world targets that support QUIC migration, it migrates at least 75% of the data for more than 52% of them. On real geo-blocked content, post-header migration bypasses the block for 90% of domains, whereas post-handshake migration, as used by prior work, succeeds for only 60%.
+censors:
+    - generic
+techniques:
+    - ip-blocking
+defenses_discussed:
+    - tunneling
+evaluation_methods:
+    - measurement-study
+    - controlled-deployment
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. While focused on commercial geo-blocking, the QUIC connection migration technique could inform defenses against state-level application-layer IP-based censorship.
+visibility: public
+date_added: "2026-10-12"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.06179
