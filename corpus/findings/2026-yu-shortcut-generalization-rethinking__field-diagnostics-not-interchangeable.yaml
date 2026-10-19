@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yu-shortcut-generalization-rethinking
+kind: evaluation
+summary: Feature importance stability, retrained removal effect, and field-only split sensitivity measure different properties and can yield contradictory conclusions about the same traffic field. On ISCXVPN, tcp.dstport shows 48.0 points field-only split sensitivity but only 0.1 points retrained removal effect—indicating a strong partition-dependent association without a meaningful marginal contribution to a full-field classifier. On CSTNET-TLS 1.3, ip.src has both high stability (91.7%) and a 22.4-point removal effect, while ip.dst has high stability (66.7%) but effectively zero removal effect.
+techniques:
+    - ml-classifier
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Obfuscating a field with high split sensitivity (e.g., tcp.dstport) may produce misleadingly large test-set accuracy drops without actually degrading a retrained censor classifier—circumvention designers should use retrained-removal experiments to identify which fields are genuinely load-bearing.
+    - Field masking evaluations that apply transformations only at test time overestimate how much obfuscating that field actually helps; matched train-test masking is required to assess true resilience against an adaptive censor.
+section: §IV-C, Table II
+extracted_by: claude-sonnet-4-6

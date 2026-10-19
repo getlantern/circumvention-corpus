@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-clash
+kind: deployment
+summary: The Loyalsoldier rule set uses an 86400-second (24-hour) refresh interval via jsDelivr CDN URLs, with 11 rule set files spanning domain behavior (reject, iCloud, Apple, Google, proxy, direct, private), IP CIDR behavior (Telegram CIDRs, China CN CIDRs, LAN CIDRs), and classical/application-level behavior (P2P applications). Rule set download success is contingent on client ability to reach the CDN URL — the interval setting is not proof of successful update.
+techniques:
+    - ip-blocking
+defenses:
+    - shadowsocks
+    - vless
+    - vmess
+    - trojan
+    - hysteria2
+censors:
+    - cn
+defense_implications:
+    - CDN-hosted rule distribution (jsDelivr) creates a dependency on CDN reachability from within China; circumvention clients should cache rule sets locally and fall back gracefully when the CDN is unreachable.
+    - Surface rule set last-updated timestamps and download health in the client UI — users cannot distinguish 'rule set applied' from 'rule set downloaded successfully' without explicit status reporting.
+section: 第 3 步：应用并验证
+extracted_by: claude-sonnet-4-6

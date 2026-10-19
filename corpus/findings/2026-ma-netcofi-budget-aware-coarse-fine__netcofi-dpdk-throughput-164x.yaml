@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ma-netcofi-budget-aware-coarse-fine
+kind: evaluation
+summary: In a DPDK-GPU traffic processing pipeline that includes flow aggregation and feature construction (not model inference alone), NetCoFi achieves mean batch throughput of 43.42 Mb/s versus 26.42 Mb/s for NetMamba, a 1.64× improvement, while operating on flows of only 5 packets.
+techniques:
+    - ml-classifier
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - ML traffic classifiers can operate at near-line-rate in hardware-accelerated pipelines over very short flows (5 packets); circumvention transports should not rely on classification latency providing a connection-setup window.
+    - Low-packet-count protocol designs remain classifiable; even first-packet or first-5-packet representations are sufficient for state-of-the-art classification at deployment throughputs.
+section: §IV-H, Figure 8
+extracted_by: claude-sonnet-4-6

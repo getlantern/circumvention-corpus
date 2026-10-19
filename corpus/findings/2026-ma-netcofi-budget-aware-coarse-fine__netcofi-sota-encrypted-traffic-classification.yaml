@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ma-netcofi-budget-aware-coarse-fine
+kind: evaluation
+summary: NetCoFi achieves the highest Macro-F1 on all six public benchmark datasets without pretraining, outperforming NetMamba by 4.15 percentage points in Accuracy and 1.97 in Macro-F1 on CSTNET-TLS1.3, and by 2.04 and 1.68 points on CTU-13, spanning TLS application identification and botnet traffic classification.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - State-of-the-art classifiers now reliably distinguish encrypted traffic classes using only observable metadata and byte sequences; circumvention transports cannot assume classifier error as a safety margin.
+    - Traffic obfuscation must address both local byte-level patterns and global flow statistics, since classifiers exploit both simultaneously via dual-branch architectures.
+section: §IV-B, Table II
+extracted_by: claude-sonnet-4-6

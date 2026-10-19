@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-clash
+kind: deployment
+summary: The Loyalsoldier/clash-rules repository (~30k GitHub stars as of early 2026) functions as the de facto standard domain-routing rule set for Clash clients operating in China, integrating V2Ray community domain and IP lists with automated daily rebuilds via GitHub Actions at 6:30 AM. It provides per-service granularity for Apple, Google, Telegram, and Chinese IP ranges across 11 distinct rule set files.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - shadowsocks
+    - vless
+    - vmess
+    - trojan
+censors:
+    - cn
+defense_implications:
+    - Maintain daily-refreshed domain/IP blocklists as a first-class circumvention client feature; static bundled lists become stale within days as the GFW blocklist evolves.
+    - Distribute rule sets via CDN (jsDelivr pattern) rather than bundling them in the client binary to allow independent update cadence without app-store releases.
+section: 推荐规则库：Loyalsoldier/clash-rules
+extracted_by: claude-sonnet-4-6

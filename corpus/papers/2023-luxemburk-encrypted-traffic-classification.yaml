@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.23919/tma58422.2023.10199052
+id: 2023-luxemburk-encrypted-traffic-classification
+title: 'Encrypted traffic classification: the QUIC case'
+authors:
+    - Jan Luxemburk
+    - Karel Hynek
+    - Tomáš Čejka
+venue: 2023 7th Network Traffic Measurement and Analysis Conference (TMA)
+year: 2023
+doi: 10.23919/tma58422.2023.10199052
+url: https://doi.org/10.23919/tma58422.2023.10199052
+censors:
+    - generic
+techniques:
+    - traffic-shape
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. QUIC is deployed in circumvention transports (Hysteria 2); this measurement work helps understand censor fingerprinting capabilities against encrypted tunnels.
+visibility: public
+date_added: "2026-10-19"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.23919/tma58422.2023.10199052

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yu-shortcut-generalization-rethinking
+kind: evaluation
+summary: On CSTNET-TLS 1.3, applying Source-IP grouping (keeping all packets from the same source host on one side of the split) reduces Macro-F1 from high baseline performance to 37.58% at L0, after which additional field masking (L1–L3) changes performance only marginally. On ISCXVPN, Parent-flow grouping reduces accuracy from 68.42% to 60.08% between L0 and L3. These dataset-specific interactions show that the effect of identifier masking is inseparable from the cross-partition sharing induced by the grouping rule.
+techniques:
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - The effectiveness of identifier masking as an evasion strategy is dataset- and split-dependent; circumvention tool designers should not assume that masking IP or port fields neutralizes classification without also controlling for host-level sharing in evaluation.
+    - Published ETC accuracy numbers without reported grouping objects and cross-partition overlap statistics are unreliable for adversarial threat modeling—treat them as upper bounds rather than operational estimates.
+section: §IV-B, Figure 2
+extracted_by: claude-sonnet-4-6

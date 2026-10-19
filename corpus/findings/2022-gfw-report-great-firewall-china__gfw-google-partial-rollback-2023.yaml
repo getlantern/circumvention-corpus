@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: deployment
+summary: 'By February 1, 2023, the *.google.com wildcard rule was removed from GFW blocking rules. Of the original 1,147 affected domains, only 47 remained censored, including high-value services: docs.google.com, drive.google.com, play.google.com, accounts.google.com, and sites.google.com.'
+techniques:
+    - sni-blocking
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - GFW blocking rules are mutable and regularly revised; circumvention infrastructure that works around a broad wildcard block should be designed to handle selective re-blocking of specific subdomains without requiring full redeploy.
+    - Monitor domain-level reachability continuously — a rollback of a wildcard rule can silently re-expose previously-blocked domains as usable cover traffic or fronting targets.
+section: Comment (gfw-report, Feb 1 2024)
+extracted_by: claude-sonnet-4-6

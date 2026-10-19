@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ma-netcofi-budget-aware-coarse-fine
+kind: evaluation
+summary: 'Under low-budget adaptive routing (ρ=0.3, using ~30% of tokens), NetCoFi outperforms a same-depth static 120-byte input baseline by an average of 7.86 Macro-F1 percentage points across three datasets: 3.89 pp on ISCXVPN2016, 5.26 pp on CTU-13, and 14.42 pp on CSTNET-TLS1.3.'
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Strategies that truncate or limit traffic samples seen by classifiers (e.g., sampling only N bytes) are less effective than assumed; adaptive classifiers intelligently select the most discriminative byte regions rather than using a fixed prefix.
+    - Circumvention protocol designers must ensure that the most informative regions of their traffic (handshake, first payload burst) are as indistinguishable as the rest of the stream.
+section: §IV-D, Table IV
+extracted_by: claude-sonnet-4-6

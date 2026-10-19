@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lee-effectiveness-netflow-based-deanonymization
+kind: evaluation
+summary: BGP simulation using the CAIDA AS-relationship dataset shows a single tier-1 ISP can observe 73,774 out of 77,787 onion services (95%); the top 600 tier-2 ISPs each observe an average of 89% (≈69,469 services). A candidate IP is classified as observable if packets in at least one direction between the IP and a guard relay transit the adversary's AS, and partial visibility (one direction only) has negligible impact on attack effectiveness.
+techniques:
+    - flow-correlation
+defenses:
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - The breadth of ISP-level observability means that private (unlisted) bridge relays do not protect onion-service operators if the operator's guard traffic transits a tier-1 or large tier-2 ISP; geographic diversity of guard relays alone is insufficient.
+    - Circumvention infrastructure using Tor onion services as backend entry points should evaluate whether a single national ISP can observe both the service IP and its guard connections, and consider multi-hop or non-Tor overlay designs for operator anonymity.
+section: §3.2, Figure 1
+extracted_by: claude-sonnet-4-6

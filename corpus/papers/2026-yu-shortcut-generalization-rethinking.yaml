@@ -1,0 +1,32 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.17961
+id: 2026-yu-shortcut-generalization-rethinking
+title: 'Shortcut in Generalization: Rethinking Evaluation Protocol for Encrypted Traffic Classification'
+authors:
+    - Qiming Yu
+    - Chungang Lin
+    - Zhengyi Ma
+    - Zijia Song
+    - Yuliang Lu
+    - Guozheng Yang
+    - Dongzhen Qi
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.17961"
+url: https://arxiv.org/abs/2610.17961v1
+abstract: Encrypted traffic classification is commonly evaluated under a range of experimental protocols, with classification performance reported as the primary measure. However, the reported performance may be influenced by shortcuts left uncontrolled in the evaluation protocol, such as shortcut features and cross-partition sharing, rather than reflect generalizable traffic patterns. And test-only feature transformations may further introduce train-test mismatch. In this paper, we study how current evaluation protocols are affected by shortcut-related factors, including field-level shortcuts, cross-partition sharing, and train-test processing. We compare feature importance, retrained feature removal, and field-only split sensitivity. We also vary Source-IP overlap and packets per flow, compare test-only IP transformations with matched train-test transformations. Experiments on three public datasets show that the performance of existing methods are affected by both cross-partition sharing and the consistency of train-test transformations. Specifically, increasing Source-IP overlap from 0% to 100% raises accuracy by about 32-33 points before identifier masking, compared with only about 8 points after masking. For two state-of-the-art pretrained models (i.e., YaTC and NetMamba), the 11-13 points loss caused by test-only IP zeroing is almost fully recovered when the same transformation is applied during both training and testing.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to threat modeling—censors use traffic classification to detect circumvention proxies and tunnels; protocol evaluation shortcuts may mislead security analysis.
+visibility: public
+date_added: "2026-10-19"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.17961

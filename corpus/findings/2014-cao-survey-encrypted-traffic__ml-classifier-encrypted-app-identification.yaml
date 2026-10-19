@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: detection
+summary: Supervised and unsupervised machine-learning classifiers (flow-feature vectors, Markov chain fingerprinting) can identify encrypted application traffic — including SSH, Skype, P2P, and VoIP — without access to plaintext payload, achieving practical real-time operation.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Flow-level ML classifiers are a credible threat even against fully encrypted transports; defense requires shaping the packet-size and timing distribution to match a benign cover protocol, not just encrypting content.
+    - Markov chain fingerprinting (Korczynski & Duda, INFOCOM 2014) can expose stateful protocol patterns even in encrypted streams — transports should inject deliberate noise into state-transition sequences.
+section: References §3–4 (Nguyen 2008, Korczynski 2014, Alshammari 2009)
+extracted_by: claude-sonnet-4-6

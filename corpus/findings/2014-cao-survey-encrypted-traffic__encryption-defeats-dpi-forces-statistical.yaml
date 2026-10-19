@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: detection
+summary: Encryption renders port-based and DPI payload-inspection methods ineffective for traffic classification, forcing classifiers to rely on statistical flow features (packet sizes, inter-arrival times, flow duration) and behavioral host-profiling rather than payload content.
+techniques:
+    - dpi
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention transports must also defeat flow-level statistical fingerprinting, not just payload inspection — randomizing packet sizes and inter-arrival times is necessary even when payload is encrypted.
+    - Host behavioral profiling (connection graph, port fan-out patterns) can expose proxy usage independent of payload; transport design should consider connection multiplexing to reduce host-level signatures.
+section: Abstract / §1
+extracted_by: claude-sonnet-4-6

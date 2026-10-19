@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: defense
+summary: Protocol mimicry defenses (SkypeMorph, StegoTorus, obfsproxy, FTE) were the dominant circumvention strategy as of 2014, but the 'Parrot is Dead' analysis (Houmansadr et al., IEEE S&P 2013) and 'Peek-a-boo' (Dyer et al., IEEE S&P 2012) showed that naive mimicry fails because classifiers can distinguish imperfect imitations at flow level.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - mimicry
+    - pluggable-transport
+    - format-transform
+censors:
+    - generic
+defense_implications:
+    - Surface-level mimicry of a protocol (copying header fields, rough packet-size distribution) is insufficient; cryptographically enforced format-transformation (FTE) or tunneling inside a real implementation of the cover protocol is required.
+    - 'Designers should treat flow-level distinguishability as a first-class threat model: run a trained ML classifier against their own transport traffic and measure false-negative rate before deployment.'
+section: References (Houmansadr 2013 ref 42, Dyer 2012 ref 41, Mohajeri 2012 ref 18, Dyer 2013 ref 19)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-clash
+kind: defense
+summary: The canonical three-policy routing model for China-facing circumvention clients categorizes flows as DIRECT (domestic sites/IPs, private ranges, P2P applications), PROXY (Google, Twitter, Telegram, Netflix, and other blocked services), and REJECT (ad/tracker domains), evaluated top-to-bottom with first-match-wins semantics. The fallback policy is subscription-defined and must be explicitly preserved.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - shadowsocks
+    - vmess
+    - vless
+    - trojan
+    - hysteria2
+censors:
+    - cn
+defense_implications:
+    - Implement split-tunneling by default rather than routing all traffic through the proxy; domestic traffic on DIRECT avoids latency penalty and reduces proxy bandwidth costs.
+    - Ensure the client exposes a 'Rule' mode distinct from 'Global' (all-proxy) and 'Direct' (all-bypass) modes — users frequently misconfigure global mode and wonder why circumvention is slow.
+section: 什么是 Clash 规则？为什么一定要配？
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.asej.2023.102361
+id: 2024-elmaghraby-encrypted-network-traffic
+title: Encrypted network traffic classification based on machine learning
+authors:
+    - Reham T. Elmaghraby
+    - Nada M. Abdel Aziem
+    - Mohammed A. Sobh
+    - Ayman M. Bahaa-Eldin
+venue: Ain Shams Engineering Journal
+year: 2024
+doi: 10.1016/j.asej.2023.102361
+url: https://doi.org/10.1016/j.asej.2023.102361
+censors:
+    - generic
+techniques:
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to understanding ML-based detection methods censors might use to identify circumvention protocols through encrypted traffic analysis.
+visibility: public
+date_added: "2026-10-19"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.asej.2023.102361

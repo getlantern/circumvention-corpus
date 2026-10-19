@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.15198
+id: 2026-lee-effectiveness-netflow-based-deanonymization
+title: On the Effectiveness of NetFlow-Based Deanonymization of Tor Onion Services (Extended Version)
+authors:
+    - Jinseo Lee
+    - Jongkook Han
+    - Yixin Sun
+    - Min Suk Kang
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.15198"
+url: https://arxiv.org/abs/2610.15198v1
+abstract: 'In the context of Tor, deanonymization attacks via traffic correlation have long been studied for both clients and onion services. Complementing prior investigations that utilize fine-grained flow metadata such as packet sizes and timings, we study a relatively less explored yet easier-to-obtain adversarial capability: deanonymization using only coarse NetFlow-style telemetry, such as one-minute, 1-out-of-1,000 sampled packet counts. We first revisit active NetFlow-based traffic analysis attacks against Tor onion services and show, through large-scale experiments with live Tor data, that coarse telemetry is sufficient to deanonymize a targeted onion service when the adversary can induce discernible traffic patterns through controlled downloads. We then introduce a stronger active attack based on controlled introduction requests, which removes application-specific assumptions and gives adversaries more flexibility while achieving comparable success rates. Finally, we present a passive deanonymization attack that sends zero traffic to target onion services. The attack exploits Tor''s puzzle-based DoS defense as a side channel: public puzzle difficulty reveals service-load changes that can be semantically matched against NetFlow traces. Our findings show that coarse network telemetry poses a practical deanonymization threat to onion services today and call for proactive mitigations and a redesign of the globally visible defense signals that may leak service-load information.'
+censors:
+    - generic
+techniques:
+    - flow-correlation
+    - traffic-shape
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates practical deanonymization of Tor services using coarse-grained telemetry; informs defenses for Tor-based circumvention tools.
+visibility: public
+date_added: "2026-10-19"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.15198
