@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lee-effectiveness-netflow-based-deanonymization
+kind: detection
+summary: The introduction-inducing attack—sending batches of Tor introduction requests at 15 requests/min without downloading any content—achieves 100% isolated and 98% large-scale deanonymization success, removing the application-specific assumption that the target onion service supports reliable file downloads. High-rate introduction flooding (1,383 req/min) degrades to 13.5–24% success because it activates Tor's puzzle-based DoS defense, which suppresses the induced traffic signal.
+techniques:
+    - flow-correlation
+    - active-probing
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools that expose a standard Tor onion-service address as their relay endpoint are vulnerable to introduction-inducing deanonymization regardless of the application layer; consider non-standard rendezvous mechanisms or private introduction points not listed in the public directory.
+    - Tor's puzzle-based DoS defense inadvertently provides partial protection against high-rate introduction flooding; onion services used for circumvention should enable puzzle defenses as a secondary benefit.
+section: §5.2, Table 6
+extracted_by: claude-sonnet-4-6

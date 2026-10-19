@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yu-shortcut-generalization-rethinking
+kind: detection
+summary: For state-of-the-art pretrained models YaTC and NetMamba, test-only IP zeroing causes an 11–13 Macro-F1 point loss, but applying the same zeroing transformation during both training and testing (matched preprocessing) recovers performance to approximately the original level (residual gap ≈0). ET-BERT retains a 47.1-point residual gap after matched zeroing on CSTNET-TLS 1.3, indicating genuine information loss beyond representation mismatch.
+techniques:
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - A censor that retrains its classifier with IP fields zeroed or randomized can largely recover accuracy lost to IP obfuscation—IP rotation is not a durable evasion strategy against an adaptive adversary that updates its training pipeline.
+    - ET-BERT's larger residual (47.1pp after matched training) suggests that pretrained transformer representations are more sensitive to IP field removal; circumvention tools may achieve stronger evasion against classifiers built on pretrained packet-byte models than against flow-feature or fine-tuned models.
+section: §IV-F, Table IV
+extracted_by: claude-sonnet-4-6

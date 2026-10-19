@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-clash
+kind: evaluation
+summary: Proxy routing rules are explicitly documented as unable to change exit node IP reputation (datacenter vs. residential), unable to guarantee streaming service geo-unlock, and unable to prevent account risk-control actions triggered by the service provider. Routing correctness and IP quality are orthogonal concerns.
+techniques:
+    - ip-blocking
+defenses:
+    - shadowsocks
+    - vmess
+    - vless
+    - trojan
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool designers must distinguish between blocking circumvention (censor-side, addressed by obfuscation) and service-side geo/fraud detection (addressed by residential IP sourcing) — the same node cannot solve both problems via rule configuration alone.
+    - Document residential vs. datacenter IP characteristics prominently; users conflate 'unblocked access' with 'full service access' and blame the proxy when streaming libraries are geo-restricted.
+section: 规则不会改变节点 IP 的信誉
+extracted_by: claude-sonnet-4-6

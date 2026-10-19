@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-clash
+kind: deployment
+summary: Clash Verge Rev v2.5.8's merge engine does not recognize `prepend-rule-providers` or `prepend-rules` as valid injection directives; writing a top-level `rules` key in extension YAML replaces the entire rule table rather than prepending to it. The correct extension path requires either the visual rule editor's prepend area or a JavaScript extension script that explicitly splices new entries before `config.rules`.
+defenses:
+    - shadowsocks
+    - vless
+    - vmess
+    - trojan
+censors:
+    - cn
+defense_implications:
+    - When designing subscription update mechanisms, ensure the update format supports incremental rule injection rather than full replacement — full replacement breaks user customizations on every subscription refresh.
+    - Provide a JavaScript scripting API (analogous to Clash Verge's Script mechanism) so power users can programmatically prepend rules without risking clobber from subscription updates.
+section: 第 1 步：为当前订阅添加规则集
+extracted_by: claude-sonnet-4-6

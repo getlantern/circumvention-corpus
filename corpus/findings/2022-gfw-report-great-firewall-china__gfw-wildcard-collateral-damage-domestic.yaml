@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: deployment
+summary: 'Blocking *.google.com via a wildcard rule produced significant collateral damage: ns1.google.com — the authoritative name server for google.cn and 265.com (domestic Chinese services operated by Beijing Gu Xiang/Google China) — was also blocked, potentially disrupting domestic Chinese internet services that depend on Google''s nameserver infrastructure. This effect lasted approximately 24 hours before partial rollback.'
+techniques:
+    - dns-poisoning
+    - sni-blocking
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that rely on wildcard-exempted domains (e.g., domestic services sharing infrastructure with a foreign target) should treat that exemption as fragile — broad censor rule changes can inadvertently block them as collateral damage.
+    - Monitoring collateral-damage signals (domestic service outages coinciding with censorship events) can help correlate censor infrastructure changes faster than direct probe data alone.
+section: Comment (UjuiUjuMandan, Jun 2 2025)
+extracted_by: claude-sonnet-4-6

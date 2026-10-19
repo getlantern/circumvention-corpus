@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lee-effectiveness-netflow-based-deanonymization
+kind: detection
+summary: The download-inducing attack achieves 100% deanonymization success rate against Tor onion services using only coarse NetFlow telemetry (1-out-of-1,000 sampled packet counts, 1-minute aggregation), correctly identifying the target OoI among 12,041 candidate IP addresses. Pearson correlation coefficients between the adversary-induced and observed target traffic traces range from 0.72–0.98, while non-matching candidates top out at 0.68. A 1-hour attack at 1× background traffic intensity suffices for 100% success in simulation.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Onion service operators cannot rely on Tor alone for IP anonymity against regional ISP-level adversaries; temporal traffic shaping (e.g., constant-rate cover traffic) is the only structural countermeasure against correlation-based deanonymization.
+    - Since partial traffic visibility (ingress-only or egress-only) achieves the same 100% success rate, guards alone do not prevent NetFlow-based deanonymization—mitigations must act on the traffic pattern itself, not on relay selection.
+section: §5.1, Table 4
+extracted_by: claude-sonnet-4-6

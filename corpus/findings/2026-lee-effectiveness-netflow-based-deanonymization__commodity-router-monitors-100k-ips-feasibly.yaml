@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lee-effectiveness-netflow-based-deanonymization
+kind: evaluation
+summary: A Juniper MX204 router ($40,350, released 2017) can monitor 100,000 active IP addresses simultaneously with J-Flow (Juniper's NetFlow/IPFIX implementation) at 1:1,000 sampling during 636,000-pps realistic traffic, with zero packet drops, zero monitoring errors, a maximum relative error of 0.05%, and CPU/memory utilization indistinguishable from baseline. Storing the resulting telemetry requires only ≈516 MB/day (15.6 GB/month), well within commodity ISP capacity.
+techniques:
+    - flow-correlation
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - The low hardware cost and operational overhead of NetFlow-based deanonymization mean the threat is not limited to intelligence agencies; any well-resourced ISP operator is a realistic adversary, so circumvention tool threat models should include regional and commercial ISPs, not only nation-state signals-intelligence units.
+    - Because the data-collection infrastructure is already deployed in most ISP networks (standard NetFlow for traffic engineering), no additional attacker-side deployment is needed; circumvention tools cannot detect or disrupt the monitoring itself.
+section: §3.2, Table 2
+extracted_by: claude-sonnet-4-6

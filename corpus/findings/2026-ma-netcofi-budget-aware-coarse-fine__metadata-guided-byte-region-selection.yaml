@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ma-netcofi-budget-aware-coarse-fine
+kind: detection
+summary: NetCoFi's importance scoring uses 20 token-aligned side features derived entirely from observable packet metadata—including inter-packet gap (log(1+Δt)), TCP flags, direction, normalized length, and positional features—without any payload decryption; these features guide fine-grained byte region selection and contribute materially to classification accuracy, with removing them (No SideFeature) causing Macro-F1 drops of 8.38 pp on CSTNET-TLS1.3 and 8.20 pp on CTU-13.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - TCP flags, inter-packet timing, packet length, and flow direction are sufficient to identify discriminative encrypted traffic regions; circumvention tools must obfuscate connection metadata patterns—not just payload bytes.
+    - Timing normalization and padding strategies must address both global flow statistics and local inter-packet intervals, as classifiers exploit positional and temporal metadata at the token level.
+section: §III-B, Table I; §IV-E, Table V
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: detection
+summary: The GFW examines TLS ClientHello SNI values and, when a match is found against the blacklist, immediately injects forged TCP RST packets to tear down the connection. SNI-based censorship of google.com and *.google.com began on September 22, 2022 (between 6:23 AM–7:33 PM Beijing Time), blocking all 1,147 tested *.google.com domains without exception.
+techniques:
+    - sni-blocking
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Encrypt the SNI field using Encrypted ClientHello (ECH) to prevent the GFW from matching against its SNI blacklist — the absence of a readable SNI defeats this class of detection entirely.
+    - When fronting traffic through a CDN or TLS-mimicking proxy, verify that the outer SNI used is not itself on the GFW blocklist, since even a pass-through SNI triggers RST injection.
+section: Issue body
+extracted_by: claude-sonnet-4-6

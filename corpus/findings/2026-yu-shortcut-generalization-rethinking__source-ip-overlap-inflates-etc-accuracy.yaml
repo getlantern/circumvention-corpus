@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yu-shortcut-generalization-rethinking
+kind: detection
+summary: Increasing Source-IP overlap from 0% to 100% in train-test partitions raises encrypted traffic classification accuracy by approximately 32–33 percentage points before identifier masking (L0 condition), but only about 8 points after masking MAC addresses, IP addresses, and transport ports (L3 condition). This demonstrates that cross-partition identity sharing—not learned traffic patterns—is a primary driver of reported benchmark performance for classifiers like LinearSVC and ET-BERT.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - IP rotation and ephemeral source addresses will substantially degrade censor-side ML classifiers that were trained with source-IP leakage; classifiers relying on identity shortcuts lose ~24pp more accuracy than those trained on masked identifiers.
+    - When evaluating evasion of a traffic classifier, control Source-IP overlap to 0% in the test partition—otherwise reported evasion success may be inflated by shared-identity shortcuts rather than genuine generalization.
+section: §IV-D, Figure 3
+extracted_by: claude-sonnet-4-6

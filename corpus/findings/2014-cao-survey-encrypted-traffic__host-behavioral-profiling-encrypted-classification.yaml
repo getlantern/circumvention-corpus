@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: detection
+summary: Behavioral and host-profiling classifiers (BLINC, SubFlow, host-behavior analysis) enable multi-level traffic classification by correlating port usage, connection graphs, and communication patterns across hosts — achieving fine-grained identification without payload or even per-packet inspection.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Connection-graph and port fan-out signatures can identify proxy behavior at the network/host level; circumvention tools should tunnel all traffic through a single persistent connection to minimize the host-level behavioral footprint.
+    - Hierarchical classifiers can escalate from coarse (is this encrypted?) to fine-grained (which application?) — defense must defeat each layer, not just the payload-inspection layer.
+section: References (Karagiannis 2005 ref 31, Jaber 2012 ref 24, Xie 2012 ref 26)
+extracted_by: claude-sonnet-4-6

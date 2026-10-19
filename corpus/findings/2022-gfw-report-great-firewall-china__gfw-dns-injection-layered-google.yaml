@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: detection
+summary: 'DNS injection for google.com and *.google.com began on September 30, 2022 — eight days after SNI-based blocking — with the GFW injecting forged DNS responses containing incorrect IP addresses. The GFW''s three DNS injectors behave differently: google.com is censored by all three injectors, while *.google.com is censored only by injectors 2 and 3. The injected fake addresses include real IPs belonging to other companies (e.g., 69.63.184.14 belonging to Facebook).'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Use DNS-over-HTTPS or DNS-over-TLS resolved entirely outside China to bypass GFW DNS injection; plaintext UDP/53 queries traversing the Chinese border are subject to forged responses regardless of the resolver specified.
+    - Account for per-injector heterogeneity when building detection or monitoring tools — inconsistent blocking across GFW injectors means a single measurement point may give a false-negative.
+section: Issue body
+extracted_by: claude-sonnet-4-6

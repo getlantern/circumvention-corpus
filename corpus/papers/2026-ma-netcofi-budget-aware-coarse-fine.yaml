@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.17978
+id: 2026-ma-netcofi-budget-aware-coarse-fine
+title: 'NetCoFi: A Budget-Aware Coarse-Fine Dual-Branch Model for Encrypted Traffic Classification'
+authors:
+    - Zhengyi Ma
+    - Qiming Yu
+    - Chungang Lin
+    - Wentao Cui
+    - Zijia Song
+    - Guozheng Yang
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.17978"
+url: https://arxiv.org/abs/2610.17978v1
+abstract: Encrypted traffic classification is critical for network management and security, but practical deployment must balance classification accuracy and inference cost. Existing models typically process fixed flow windows with limited control over computation after training, which can limit the accuracy-efficiency trade-off under constrained resources. To address this problem, we present NetCoFi, a budget-aware classifier that allocates computation at coarse and fine granularities. Using byte representations and observable packet metadata, NetCoFi selects token neighborhoods for fine-grained encoding while compressing the full window into complementary coarse context. Multi-budget training enables the same model to operate at different routing budgets without retraining. Evaluation on six public datasets shows that NetCoFi achieves state-of-the-art classification performance when trained from scratch. Under low-budget settings, NetCoFi improves average Macro-F1 by 7.86 percentage points across three datasets, compared with a same-depth static baseline. In a DPDK-GPU traffic processing pipeline, it increases mean batch throughput from 26.42 to 43.42 Mb/s, a 1.64x improvement over NetMamba.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant for understanding ML-based encrypted traffic classification methods that censors likely employ to detect circumvention protocols.
+visibility: public
+date_added: "2026-10-19"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.17978

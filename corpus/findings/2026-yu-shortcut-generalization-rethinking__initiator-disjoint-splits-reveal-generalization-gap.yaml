@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yu-shortcut-generalization-rethinking
+kind: evaluation
+summary: Initiator-disjoint evaluation—where flows sharing the same initiating host are kept entirely on one side of the train-test split—reduces Macro-F1 by 31.4–55.1 points on ISCXVPN and by 23–24 points on USTC-TFC relative to Flow-Random splits across LinearSVC, YaTC, and NetMamba. The gap is larger on ISCXVPN because that dataset has stronger per-host label associations.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Censor-deployed classifiers trained on non-entity-disjoint splits likely generalize far worse to novel client IPs than published benchmarks suggest—operational evasion may be easier than lab numbers imply, especially against datasets with strong per-host associations.
+    - Circumvention evaluation studies should use initiator-disjoint splits to avoid overstating how well classifiers can identify proxy traffic from previously unseen clients.
+section: §IV-E, Table III
+extracted_by: claude-sonnet-4-6

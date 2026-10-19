@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-lee-effectiveness-netflow-based-deanonymization
+kind: detection
+summary: 'Tor''s puzzle-based DoS defense exposes a globally visible side channel: public puzzle difficulty values correlate with onion service load changes, enabling a fully passive deanonymization attack that sends zero traffic to the target. An adversary with access to large-scale NetFlow telemetry can semantically match puzzle-difficulty traces against traffic-volume traces from candidate IPs to locate the onion service''s hosting IP without any active interaction, making the attack applicable to multiple Onions of Interest simultaneously over long observation windows (months to years).'
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Any globally observable Tor defense signal that correlates with service load (puzzle difficulty, circuit counts, HSDir activity) becomes a passive deanonymization oracle when cross-referenced with ISP-level NetFlow; Tor protocol designers must ensure defense signals are either hidden or decoupled from per-service load.
+    - Circumvention services using Tor hidden-service infrastructure should monitor the Tor Project's roadmap for eliminating or privatizing puzzle-difficulty signals, and consider supplementing with application-level load obfuscation (e.g., constant-rate synthetic traffic) to break the correlation.
+section: §6, Abstract
+extracted_by: claude-sonnet-4-6

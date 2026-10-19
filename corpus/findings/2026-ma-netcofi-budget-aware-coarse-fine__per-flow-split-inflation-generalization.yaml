@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-ma-netcofi-budget-aware-coarse-fine
+kind: evaluation
+summary: Under strict per-flow data splits—where all packets from a flow appear exclusively in one subset—NetCoFi outperforms NetMamba by 3.3 Macro-F1 points on packet-level and 4.6 points on flow-level classification on both VPN-app and TLS-120 benchmarks; the paper explicitly notes that packet-level splits allow shared session fields to leak between training and test sets, inflating baseline accuracy estimates.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Published accuracy numbers from packet-level evaluation splits likely overstate real-world censor classifier performance on unseen connections; circumvention researchers should require per-flow splits when benchmarking transport resistance.
+    - Real-world classifier generalization to never-before-seen flows remains high (74–94% F1 range across tasks), so circumvention transports cannot rely on distributional shift from new deployments to evade detection for long.
+section: §IV-F, Table VI
+extracted_by: claude-sonnet-4-6

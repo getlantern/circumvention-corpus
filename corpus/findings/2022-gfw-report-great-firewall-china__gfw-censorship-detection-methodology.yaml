@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: evaluation
+summary: 'Two empirically-validated methods for independently detecting GFW censorship are documented: (1) Send a DNS query to a non-DNS server outside China — any DNS response received is necessarily forged by the GFW; (2) Send a TLS ClientHello with the target SNI to an open port of a server outside China — a TCP RST (openssl errno=104) indicates likely SNI censorship. Both methods require a control domain (e.g., baidu.com) to rule out false positives.'
+techniques:
+    - sni-blocking
+    - dns-poisoning
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - These lightweight probes (a single dig or openssl command) can be incorporated into circumvention client health checks to detect whether specific proxy domain names or SNI values have been added to the GFW blocklist.
+    - The non-DNS-server DNS probe technique is particularly useful for continuous monitoring because it requires no in-country infrastructure beyond a client — any server outside China on a non-DNS port can serve as a canary.
+section: Issue body (Q&A section)
+extracted_by: claude-sonnet-4-6
