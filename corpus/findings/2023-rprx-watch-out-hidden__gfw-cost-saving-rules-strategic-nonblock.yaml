@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-rprx-watch-out-hidden
+kind: detection
+summary: GFW's 'cost-saving rules' (documented in the USENIX Security 2023 paper on fully-encrypted protocol detection) are already capable of precisely blocking fully-randomized protocols without expensive machine learning. The deliberate non-use of this detection capability in Quanzhou/Fuzhou SNI-whitelist regions indicates the non-blocking is a strategic choice, not a technical limitation — making 'detection cost' arguments unreliable for protocol designers.
+techniques:
+    - fully-encrypted-detect
+    - ml-classifier
+censors:
+    - cn
+defense_implications:
+    - Do not rely on detection-cost arguments when choosing between protocol designs — a censor may choose not to block a detectable protocol for strategic rather than technical reasons
+    - Assume any fully-randomized protocol that is detectable in principle will be selectively blocked or allowed based on censor strategy, not detection capability
+section: RPRX comment, May 25 2023
+extracted_by: claude-sonnet-4-6

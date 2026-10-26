@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: net4people https://github.com/net4people/bbs/issues/676
+id: 2026-johnwatsoon-iran-since-oct
+title: '[Iran] Since Oct 2026: only ICMP echo passes Iran→abroad on some routes; ~50k pps cap, volume-triggered reroute, one-way ping blocks'
+authors:
+    - '@JohnWatsoon'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/676
+abstract: Since early October 2026, Iranian ISPs have begun blocking TCP, UDP, GRE, IPIP, SCTP, and ESP traffic from Iran to international destinations, allowing only ICMP to pass. Measurements from Iran-to-Europe server pairs show a hard ~50k packets/second rate limit (approximately 33 MB/s at 640 B payloads), automatic rerouting to domestic routing when sustained ICMP traffic exceeds ~30 MB/s for several seconds, and asymmetric one-way ICMP echo-request blocks on some Iran IPs that vary day-to-day. Encrypted ClientHello (ECH) defeats SNI-based blocking of Cloudflare connections, achieving 44–82 MB/s throughput.
+censors:
+    - ir
+techniques:
+    - sni-blocking
+    - throttling
+    - dpi
+defenses_discussed:
+    - ech-esni
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to ICMP tunneling via WatTunnel; provides recent baseline for Iran's internet restriction techniques and capacity constraints as of Q4 2026.
+visibility: public
+date_added: "2026-10-26"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/676

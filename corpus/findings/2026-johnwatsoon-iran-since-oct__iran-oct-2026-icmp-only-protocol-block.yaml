@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-johnwatsoon-iran-since-oct
+kind: deployment
+summary: Since early October 2026, Iranian ISPs have blocked TCP, UDP, GRE, IPIP, SCTP, and ESP from Iran to international destinations, with only ICMP echo reliably passing. Base RTT to Europe is ~40 ms with 0.2–2% random loss independent of load, indicating this is a deliberate protocol-level block rather than congestion.
+techniques:
+    - dpi
+    - port-blocking
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools targeting Iran must tunnel over ICMP for transport; TCP/UDP-based transports (WireGuard, OpenVPN, standard QUIC/H3, obfs4, Shadowsocks) are unusable on affected routes without an ICMP carrier.
+    - Probes should dynamically test transport availability and fall back to ICMP-based channels when TCP/UDP fail, since the blocking may vary by route or AS.
+section: What gets through
+extracted_by: claude-sonnet-4-6

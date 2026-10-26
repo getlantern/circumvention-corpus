@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-netguise-adversarial-traffic
+kind: evaluation
+summary: Under the history-only causal interface, NetGuise achieves 3.02% bandwidth overhead and 1.16 ms/flow generation latency, versus the next-best query-free baseline (BAP) at 19.80% bandwidth overhead and 37.42 ms/flow — a 6.6× reduction in padding and a 32.3× speedup. This is achieved without runtime classifier queries by amortizing morphing into a reusable offline-trained Transformer model that executes as a single forward pass.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Offline-trained target-conditioned morphers (optimize once, deploy many times) are viable for production pluggable transports — sub-2 ms per-flow overhead is compatible with real-time proxy use and does not require classifier access at the censor's endpoint.
+    - Traffic-shaping overhead below 5% bandwidth expansion makes adaptive morphing deployable without triggering bandwidth-usage anomalies; designs that exceed 20% padding are detectable on their overhead signature alone.
+section: §6.2, Table 3
+extracted_by: claude-sonnet-4-6

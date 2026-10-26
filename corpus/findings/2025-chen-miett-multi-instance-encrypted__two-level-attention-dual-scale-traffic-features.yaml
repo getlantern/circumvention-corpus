@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: The MIETT Two-Level Attention (TLA) architecture captures both intra-packet byte-level features and inter-packet flow-level dynamics simultaneously; this dual-scale representation is what allows the model to outperform prior approaches that treated traffic as a flat byte sequence.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Single-scale obfuscation — randomizing only packet payloads (obfs4 style) or only packet sizes (WFP defenses) — will not defeat a TLA-style classifier; effective resistance requires simultaneously disguising both byte content and the sequence structure of the flow
+    - Pluggable transports should randomize inter-packet timing and packet count distributions, not just per-packet payload bytes
+section: Abstract / Model Architecture
+extracted_by: claude-sonnet-4-6

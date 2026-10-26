@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: evaluation
+summary: 'The report documents a reproducible methodology for detecting GFW SNI blocking and DNS injection: SNI blocking is confirmed by sending a TLS ClientHello with the target SNI to an open port of an external server and observing TCP RST (errno=104); DNS injection is confirmed by sending a DNS query to a non-DNS IP outside China and receiving any response, since a non-DNS server cannot legitimately reply.'
+techniques:
+    - sni-blocking
+    - dns-poisoning
+    - rst-injection
+    - measurement-platform
+censors:
+    - cn
+defense_implications:
+    - Circumvention tool health checks can use the same technique (ClientHello with known-blocked SNI to a probe server) to confirm that a user is behind GFW SNI filtering before attempting a bypass.
+    - Sending DNS queries to non-DNS IPs is a lightweight, side-channel-safe method to probe for GFW DNS injection without relying on known-bad IP lists that may become stale.
+section: Detection methodology section (Oct 1 2022)
+extracted_by: claude-sonnet-4-6

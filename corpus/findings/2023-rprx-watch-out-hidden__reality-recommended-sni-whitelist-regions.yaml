@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-rprx-watch-out-hidden
+kind: defense
+summary: RPRX reports that REALITY remains usable in SNI-whitelist regions as of May 2023, and addresses the CA trust risk inherent in conventional TLS-based circumvention. The recommended configuration is REALITY or REALITY-over-SS for users in SNI-whitelist areas, as it provides forward secrecy without relying on CA infrastructure that is potentially compromised.
+techniques:
+    - sni-blocking
+defenses:
+    - reality
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - Deploy REALITY-based transports as the primary recommendation for SNI-whitelist regions — it survives SNI-whitelist filtering while providing forward secrecy without a trusted CA dependency
+    - Eliminate CA infrastructure dependency from circumvention protocols to remove a surveillance attack surface that does not exist in REALITY's TLS handshake-forwarding design
+section: Issue body / original post
+extracted_by: claude-sonnet-4-6

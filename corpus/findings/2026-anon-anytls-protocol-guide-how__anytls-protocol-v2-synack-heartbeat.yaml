@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-protocol-guide-how
+kind: defense
+summary: AnyTLS Protocol v2, introduced in the reference implementation (anytls/anytls-go) in April 2025, added cmdSYNACK so the server can report stream-open success or failure before the client's OS TCP timeout fires, along with heartbeat request/response commands and server-settings/version-negotiation frames. Version 0.0.10 clarified cmdFIN behavior; URI support arrived in 0.0.12. sing-box added inbound and outbound support in its 1.12 line.
+defenses:
+    - anytls
+    - protocol-versioning
+censors:
+    - generic
+defense_implications:
+    - Implement explicit stream-open acknowledgment (analogous to cmdSYNACK) in new proxy protocols so clients detect blocked or stuck destination connections in milliseconds rather than waiting for OS-level TCP timeouts, reducing the censored-path detection window.
+    - Version-negotiate session features at handshake time so padding scheme updates can be pushed from server to client without client-side upgrades breaking existing sessions.
+section: §1.2, §2.2
+extracted_by: claude-sonnet-4-6

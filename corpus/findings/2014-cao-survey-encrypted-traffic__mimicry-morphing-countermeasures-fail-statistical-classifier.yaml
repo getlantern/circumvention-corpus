@@ -1,0 +1,22 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: defense
+summary: 'The survey catalogs the major circumvention countermeasures extant as of 2014: obfsproxy/obfs3 (randomized handshake), StegoTorus (steganographic camouflage), traffic morphing (Wright et al.), SkypeMorph (Tor bridge mimicking Skype), and Format-Transforming Encryption (FTE). It also cites ''Peek-a-boo, I still see you'' (Dyer et al. 2012) and ''The Parrot is Dead'' (Houmansadr et al. 2013) as demonstrating that naive traffic-analysis countermeasures and protocol mimicry approaches fail against statistical classifiers.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - obfs4
+    - pluggable-transport
+    - mimicry
+    - format-transform
+    - randomization
+    - steganography
+censors:
+    - generic
+defense_implications:
+    - Protocol mimicry ('be the parrot') approaches that imperfectly replicate the target protocol's statistical properties are detectable; countermeasures must achieve statistically indistinguishable distributions, not just superficial format similarity.
+    - FTE and traffic-morphing techniques that reshape only packet sizes while leaving inter-arrival timing unchanged remain vulnerable — effective defenses must jointly normalize all observable flow features.
+section: §4 (countermeasures) / References 17–19, 38–42
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: deployment
+summary: Three distinct GFW DNS injector fingerprints were identified; google.com was censored by all three injectors, while *.google.com was only censored by DNS Injectors 2 and 3 (not Injector 1). This differential coverage reveals that GFW's DNS injection infrastructure is not monolithic and rule deployment is not uniform across injector clusters.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - When probing for censorship, testing from a single vantage point may give incomplete results; multiple geographic/carrier vantage points are needed to confirm uniform blocking.
+    - Non-uniform DNS censorship means some users inside China may resolve the same domain differently depending on which injector cluster their ISP routes through.
+section: 'Q: What else have you observed about the blocking? (Oct 1 2022)'
+extracted_by: claude-sonnet-4-6

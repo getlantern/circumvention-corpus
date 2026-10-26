@@ -1,0 +1,105 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: ermao https://www.ermao.net/en/article/anytls-guide/
+id: 2026-anon-anytls-protocol-guide-how
+title: AnyTLS Protocol Guide—How It Works and sing-box Configuration | Ermao
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/en/article/anytls-guide/
+abstract: |-
+    AnyTLS Protocol Guide—How It Works and sing-box Configuration | Ermao
+
+    [Skip to content](#VPContent)
+
+    # AnyTLS Protocol Guide—How It Works and sing-box Configuration
+
+    About 4813 wordsAbout 16 min
+
+    [AnyTLS](/en/blog/tags/?tag=AnyTLS)[sing-box](/en/blog/tags/?tag=sing-box)[proxy protocol](</en/blog/tags/?tag=proxy protocol>)[TLS](/en/blog/tags/?tag=TLS)
+
+    ...—
+
+    2026-05-08
+
+    AnyTLS is a TLS-based proxy protocol designed to mitigate the recognizable **TLS-in-TLS** pattern created when applications send TLS traffic through another TLS tunnel. It combines configurable packet splitting and padding with multiplexed streams over reusable TLS sessions.
+
+    This English edition corrects several claims and obsolete fields in the Chinese source:
+
+    *   the reference implementation is [`anytls/anytls-go`](https://github.com/anytls/anytls-go), not a protocol maintained solely by the sing-box team;
+    *   sing-box supports AnyTLS inbound and outbound starting with version 1.12.0;
+    *   authentication uses a password hash after the TLS handshake; a sing-box user `name` is a label, not a second credential;
+    *   padding changes early TLS plaintext record sizes but does not guarantee indistinguishability or resistance to blocking;
+    *   the old `inet4_address` TUN field is deprecated; current configurations use `address`;
+    *   AnyTLS has a documented URI format, although client and subscription support still varies.
+
+    The examples use placeholders. Replace the domain and password, validate with the exact installed sing-box release, and follow the laws and network policies that apply to you.
+
+    ## [1\. Protocol overview](#_1-protocol-overview)
+
+    ### [1.1 What AnyTLS is](#_1-1-what-anytls-is)
+
+    AnyTLS places its authentication and multiplexed stream protocol inside a normal TLS connection:
+
+    Its main pieces are:
+
+    *   standard TLS for transport security and server authentication;
+    *   a password-derived authentication request;
+    *   logical streams multiplexed over reusable sessions;
+    *   a configurable padding scheme for early writes;
+    *   TCP proxying and UDP through sing-box's UDP-over-TCP protocol.
+
+    AnyTLS is not “any TLS protocol,” a VPN, or a guarantee that traffic looks exactly like a browser. The security of a deployment still depends on certificate validation, password secrecy, client integrity, server security, DNS and routing, and the threat model.
+
+    ### [1.2 Development state](#_1-2-development-state)
+
+    The reference protocol has evolved through two protocol versions. Protocol v2 was introduced in the reference implementation in April 2025 to improve stuck-tunnel detection and timeout behavior. It added:
+
+    *   `cmdSYNACK` so a server can report stream-open success or failure;
+    *   heartbeat request and response commands;
+    *   server settings and version negotiation.
+
+    Version 0.0.10 later clarified `cmdFIN` behavior, and the reference command-line client added URI support by version 0.0.12. sing-box separately added AnyTLS inbound and outbound in its 1.12 line.
+
+    Do not infer implementation compatibility only from the word “AnyTLS.” Check protocol-v2 support, URI parsing, UDP behavior, and the exact client/core release.
+
+    ### [1.3 Design properties](#_1-3-design-properties)
+
+    | Property                | What it means                                               | What it does not prove                                     |
+    | ----------------------- | ----------------------------------------------------------- | ---------------------------------------------------------- |
+    | TLS transport           | Standard certificate-based encrypted transport can be used  | Browser-identical traffic or immunity to active probing    |
+    | Padding scheme          | Early writes can be split or padded to configured sizes     | Undetectability or zero overhead                           |
+    | Session reuse           | New logical streams can reuse a recent TLS session          | Unlimited concurrency or better performance on every path  |
+    | Password authentication | The server verifies a password-derived value                | User anonymity, strong identity, or brute-force protection |
+    | Multi-user config       | sing-box can associate several password entries with labels | Role-based access control or traffic quotas                |
+    | UDP support             | Implementations can carry UDP via UDP-over-TCP              | Native-UDP latency or good performance under TCP loss      |
+
+    ### [1.4 Appropriate use](#_1-4-appropriate-use)
+
+    AnyTLS can be useful for:
+
+    *   studying TLS-in-TLS fingerprint mitigation;
+    *   testing a TLS-based proxy with adjustable early-packet shapes;
+    *   a deployment already standardized on a compatible sing-box release;
+    *   a network where session reuse provides a measurable benefit.
+
+    It may be a poor fit when:
+
+    *   broad legacy-client support is required;
+    *   native UDP behavior matters;
+    *   the operator cannot maintain certificates and server security;
+    *   an experimental or smaller ecosystem is unacceptable;
+    *   the only justification i
+censors:
+    - generic
+techniques:
+    - traffic-shape
+defenses_discussed:
+    - anytls
+    - mimicry
+    - randomization
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to Lantern: practical technical resource on AnyTLS protocol design and sing-box configuration for defending against traffic pattern-based detection of encrypted tunnels.'
+visibility: public
+date_added: "2026-10-26"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/en/article/anytls-guide/

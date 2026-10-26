@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: MIETT demonstrates that token-level relationships (hex-digit sequences within individual packets) are insufficient for encrypted traffic classification; the discriminating signal lies in packet-level interaction patterns within a flow — the ordering and relative positions of packets, not their internal byte structure.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must disrupt not just per-packet entropy and byte distributions but also the statistical patterns of packet sequencing and inter-packet relationships across an entire flow
+    - Constant-rate or burst-covert channel padding strategies that address only per-packet size distributions will not defeat classifiers operating at the packet-interaction level
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-johnwatsoon-iran-since-oct
+kind: evaluation
+summary: Sustaining >~30 MB/s of ICMP traffic for a few seconds triggers automatic domestic rerouting 5–30 s later, raising base RTT from 40 ms to 76 ms and collapsing bulk throughput to ~2 MB/s with 50–90% packet loss for several minutes. Runs held at or below ~27 MB/s never triggered the reroute, pointing to a volume-based reaction rather than a protocol classifier.
+techniques:
+    - traffic-shape
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - ICMP tunnels must cap per-path throughput below ~27 MB/s; multi-path or multi-server load balancing can aggregate higher bandwidth while keeping each path below the trigger threshold.
+    - Build reroute detection into the tunnel (sudden RTT doubling combined with loss spike) and immediately pause or switch exit paths — the degraded domestic route is unusable for circumvention.
+section: Volume-triggered reroute
+extracted_by: claude-sonnet-4-6

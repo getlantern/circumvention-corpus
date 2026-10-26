@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-protocol-guide-how
+kind: defense
+summary: 'AnyTLS multiplexes logical streams over reusable TLS sessions: before opening a new TLS session the client checks an idle-session pool, reuses the entry with the highest sequence number, and returns healthy sessions to the pool after each stream. Default sing-box parameters are idle_session_check_interval=30s, idle_session_timeout=30s, and min_idle_session=0. The paper notes that keeping 5–10 idle sessions ''is not a universal best practice'' because it increases open connections and server resources without guaranteed latency benefit.'
+techniques:
+    - tls-fingerprint
+defenses:
+    - anytls
+censors:
+    - generic
+defense_implications:
+    - Measure cold-start latency and burst concurrency on the target path before tuning idle-session counts; the default of zero pre-warmed sessions is the safe baseline and avoids conspicuous persistent connection counts.
+    - Implement idle-session eviction with a monotonically increasing sequence preference so stale long-lived TLS sessions (which may be fingerprinted by session age) are retired before fresh ones.
+section: §2.4
+extracted_by: claude-sonnet-4-6

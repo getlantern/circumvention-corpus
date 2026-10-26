@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: detection
+summary: Standard DPI and port-based classification methods fail against encrypted traffic because payload bytes are opaque and applications increasingly use non-standard or randomized ports. The survey identifies statistical and behavioral flow-level analysis as the primary viable approaches for classifying encrypted traffic, as they operate on metadata observable without decryption.
+techniques:
+    - dpi
+    - port-blocking
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must defeat not only DPI payload inspection but also flow-level statistical fingerprinting — packet sizes and inter-arrival times remain observable even under encryption.
+    - Protocol designers should randomize or normalize observable flow statistics (packet size distributions, inter-arrival times, flow duration) to resist ML classifiers that don't require payload access.
+section: Abstract / §2
+extracted_by: claude-sonnet-4-6

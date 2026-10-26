@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-access-tool-guide
+kind: defense
+summary: Rule-based routing—where domestic and local-service traffic connects directly and only selected foreign destinations route through the proxy—is documented as the recommended standard configuration for Chinese circumvention users in 2026, with Global Mode reserved for temporary troubleshooting only. The guide warns that Global Mode degrades performance on local services and causes AI and streaming platforms to flag the session based on distant exit IPs.
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients should default to rule-based split-tunnel mode and make Global Mode a deliberate, non-default opt-in; shipping Global Mode as default increases user-visible failure rates and causes unnecessary IP reputation damage on high-value services.
+    - Rule-set maintenance (keeping domestic IP/domain lists current) is a meaningful ongoing cost; providers and client developers should automate rule-set refresh alongside subscription updates.
+section: 'Step 4: prefer Rule Mode for regular use'
+extracted_by: claude-sonnet-4-6

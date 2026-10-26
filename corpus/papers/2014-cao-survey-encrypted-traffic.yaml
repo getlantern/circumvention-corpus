@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1007/978-3-662-45670-5_8
+id: 2014-cao-survey-encrypted-traffic
+title: A Survey on Encrypted Traffic Classification
+authors:
+    - Zigang Cao
+    - Gang Xiong
+    - Yong Zhao
+    - Zhenzhen Li
+    - Li Guo
+venue: Communications in Computer and Information Science
+year: 2014
+doi: 10.1007/978-3-662-45670-5_8
+url: https://doi.org/10.1007/978-3-662-45670-5_8
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Core reference for traffic-analysis methods used in censorship detection; covers statistical and ML approaches censors employ to fingerprint encrypted circumvention protocols.
+visibility: public
+date_added: "2026-10-26"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1007/978-3-662-45670-5_8

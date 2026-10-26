@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-rprx-watch-out-hidden
+kind: detection
+summary: In SNI-whitelist pilot regions of China (documented in Quanzhou and Fuzhou, Fujian since at least May 2022 across home broadband, 5G, and 4G), IPv4 TCP blocks TLS connections via SNI whitelist but does NOT block fully-randomized bare protocols such as Shadowsocks and VMess. GFW in other regions readily identifies and blocks these same fully-randomized protocols, making the non-blocking anomalous.
+techniques:
+    - sni-blocking
+    - fully-encrypted-detect
+censors:
+    - cn
+defense_implications:
+    - Do not treat 'not currently blocked' as a safety signal — an anomalous non-block may indicate deliberate surveillance tolerance rather than inability to detect
+    - Treat differential regional blocking behavior as evidence of active censor strategy and design for the worst-case region, not the current observed region
+section: Issue body / original post; RPRX September 2023 addendum
+extracted_by: claude-sonnet-4-6

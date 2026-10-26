@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-netguise-adversarial-traffic
+kind: detection
+summary: A censor classifier restricted to packet-direction sequences only (invariant to both padding and delay injected by a two-ended tunnel) reduces NetGuise's targeted evasion from 82.4% to 2.74%, but at the cost of clean Macro-F1 falling from 97.2% to 41.5%. A padding-invariant classifier (direction + inter-arrival time) yields 42.3% evasion with 62.1% clean accuracy, exposing a fundamental accuracy/robustness trade-off for censors.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools implementing tunnel-layer padding and delay shaping are vulnerable to censors that classify on packet-direction sequences alone; matching the direction sequence of allowed traffic (not just packet sizes and timings) should be a first-class design requirement.
+    - The 41.5% clean-accuracy cost of direction-only classification may deter censors from deploying it at scale, but designers should assume adversarial censors will eventually accept this trade-off for high-value targets — build direction-sequence mimicry into protocols now.
+section: §6.3.2, Table 4
+extracted_by: claude-sonnet-4-6

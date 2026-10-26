@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: evaluation
+summary: 'By February 1, 2023, the GFW had rolled back the wildcard *.google.com DNS censorship to a selective list: only 47 of the original 1,147 blocked domains remained censored, including high-sensitivity services (docs.google.com, drive.google.com, accounts.google.com, play.google.com) while lower-sensitivity domains (e.g., translate.google.com) were unblocked. The GFW''s injected DNS responses for google.com use real IP addresses belonging to other tech companies (e.g., 69.63.184.14 belonging to Facebook).'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - GFW censorship of a domain is not permanent; circumvention tools should maintain live reachability checks rather than static blocked-domain lists, as enforcement scope can shrink or expand.
+    - GFW DNS injection with real third-party IPs (rather than known bogon addresses) means naive detection based on RFC1918 or known-bogon checks will miss injected responses; detectors must validate that returned IPs actually serve the expected TLS certificate.
+section: gfw-report comment, Feb 1 2024
+extracted_by: claude-sonnet-4-6

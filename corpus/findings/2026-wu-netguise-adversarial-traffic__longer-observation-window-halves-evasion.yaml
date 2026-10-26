@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-netguise-adversarial-traffic
+kind: detection
+summary: Extending a censor's observation window from 30 to 50 packets reduces NetGuise's targeted evasion success from 82.4% to 43.6%, and a 100-packet window reduces it further to 26.1%, while clean Macro-F1 remains high (97.2%–98.8%). Packets beyond the morphed prefix retain source-specific features that are invisible to the morpher, providing an effective and low-cost defense upgrade for censors willing to tolerate slightly delayed classification.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Traffic-shaping defenses that morph only the initial handshake or early-window packets are significantly vulnerable to censors that buffer longer flows; extend morphing to cover at least 50–100 packets, or use padding that preserves statistical consistency across the full flow.
+    - Prioritize shaping strategies where the morphed traffic distribution is consistent throughout the entire connection, not just the TLS handshake or first-N-packet window.
+section: §6.3.2, Table 4
+extracted_by: claude-sonnet-4-6

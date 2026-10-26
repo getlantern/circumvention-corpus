@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: detection
+summary: Behavioral and host-profiling approaches (BLINC, host-based P2P detection) enable fine-grained classification of encrypted traffic at the service level — distinguishing not just application type but specific traffic classes within an application — by correlating network communication patterns across hosts and time rather than inspecting individual flows.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - 'Single-flow obfuscation is insufficient: censors can correlate a client''s entire communication pattern across connections and time, so circumvention tools should avoid persistent behavioral patterns such as fixed polling intervals or predictable connection establishment sequences.'
+    - Use of CDN or shared infrastructure distributes traffic among many legitimate users, making host-level behavioral fingerprinting harder by blending circumvention flows with benign traffic.
+section: §3 (behavioral classification)
+extracted_by: claude-sonnet-4-6

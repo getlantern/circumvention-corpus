@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-access-tool-guide
+kind: evaluation
+summary: Access to AI services (ChatGPT, Claude) frequently fails even when general circumvention is functional, documented as an exit-region, IP-reputation, or platform risk-control issue rather than a network-level protocol failure. Providers are advised to offer dedicated nodes labeled 'OpenAI', 'AI', 'native IP', or 'residential', but the guide warns users to verify actual access rather than trusting label claims.
+techniques:
+    - ip-blocking
+defenses:
+    - shadowsocks
+    - vless
+    - trojan
+censors:
+    - cn
+defense_implications:
+    - Residential or native-IP egress nodes are now a distinct product requirement for AI-service access; circumvention architectures should expose egress IP quality as a routing dimension, not just geographic region.
+    - Automated access testing for specific services (ChatGPT, streaming) at the node level should be exposed to users before they commit to a node, since conventional 'Google opens' tests no longer predict AI service reachability.
+section: Google opens, but ChatGPT does not
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-access-tool-guide
+kind: deployment
+summary: Shadowrocket and Clash Mi are not searchable in mainland China's App Store, requiring a non-mainland Apple ID to download them; the guide documents that users must sign into the App Store (not the device's main Settings or iCloud) with a foreign Apple ID to avoid account conflicts. This represents an App Store-level distribution block on circumvention clients that is independent of network-layer censorship.
+techniques:
+    - ip-blocking
+censors:
+    - cn
+defense_implications:
+    - iOS circumvention client distribution cannot rely solely on App Store availability in China; sideloading paths, TestFlight, or progressive web app fallbacks should be considered for resilience against App Store delisting.
+    - Free, open-source iOS clients (Clash Mi) with no paid barrier lower the distribution friction compared to paid apps (Shadowrocket), but both face the same App Store visibility block and require the same foreign Apple ID workaround.
+section: Shadowrocket or Clash Mi does not appear in the App Store
+extracted_by: claude-sonnet-4-6

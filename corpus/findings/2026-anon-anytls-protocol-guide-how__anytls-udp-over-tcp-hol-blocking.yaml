@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-protocol-guide-how
+kind: defense
+summary: AnyTLS carries UDP via sing-box's UDP-over-TCP v2, identified by a synthetic destination address sp.v2.udp-over-tcp.arpa. The paper warns that 'TCP-based UDP transport can suffer head-of-line blocking under loss' and explicitly calls out DNS, real-time media, and games as use cases requiring separate testing. UDP-native protocols such as Hysteria 2 (QUIC) and TUIC are listed as alternatives for loss-sensitive workloads.
+defenses:
+    - anytls
+    - hysteria2
+censors:
+    - generic
+defense_implications:
+    - For latency-sensitive UDP traffic (DNS, gaming, VoIP) prefer a QUIC-based transport layer (Hysteria 2, TUIC) over UDP-over-TCP wrappers; benchmark real-world loss conditions before choosing a transport.
+    - When a TCP-only proxy must carry UDP, isolate DNS resolution from the TCP tunnel path to prevent head-of-line blocking from degrading all browsing; test with packet-loss emulation at ≥1% to surface failure modes.
+section: §2.5, §8
+extracted_by: claude-sonnet-4-6
