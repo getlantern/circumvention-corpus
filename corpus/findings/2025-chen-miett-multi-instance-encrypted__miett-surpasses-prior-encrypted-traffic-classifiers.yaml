@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: evaluation
+summary: The paper benchmarks MIETT against prior encrypted-traffic classifiers across five datasets, spanning multiple application types and network conditions, and reports state-of-the-art results — establishing that multi-instance transformer models have surpassed earlier DPI and convolutional approaches for fine-grained encrypted-traffic classification.
+techniques:
+    - ml-classifier
+    - dpi
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - The gap between transformer-based classifiers and traditional DPI is closing; circumvention tools that assumed ML-based classifiers were impractical at line rate should revisit that assumption as foundation-model inference is increasingly feasible on dedicated hardware
+    - Academic SOTA on public benchmarks underestimates censor capability — nation-state censors with proprietary labeled datasets and hardware may already have deployed equivalent or superior classifiers
+section: Abstract / Experiments
+extracted_by: claude-sonnet-4-6

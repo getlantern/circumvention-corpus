@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1109/icc42927.2021.9500619
+id: 2021-chen-incremental-learning-mobile
+title: Incremental Learning for Mobile Encrypted Traffic Classification
+authors:
+    - Yige Chen
+    - Tianning Zang
+    - Yongzheng Zhang
+    - Yuan Zhou
+    - Linshu Ouyang
+    - Peng Yang
+venue: ICC 2021 - IEEE International Conference on Communications
+year: 2021
+doi: 10.1109/icc42927.2021.9500619
+url: https://doi.org/10.1109/icc42927.2021.9500619
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Incremental learning could help censors adapt traffic classifiers to detect new circumvention protocols in real-time.
+visibility: public
+date_added: "2026-10-26"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1109/icc42927.2021.9500619

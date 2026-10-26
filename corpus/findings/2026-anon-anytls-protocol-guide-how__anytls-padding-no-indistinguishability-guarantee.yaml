@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-protocol-guide-how
+kind: defense
+summary: The AnyTLS paper explicitly documents that its padding scheme 'changes early TLS plaintext record sizes but does not guarantee indistinguishability or resistance to blocking,' and that standard TLS transport does not guarantee 'browser-identical traffic or immunity to active probing.' These limitations are stated in the protocol's own design-properties table and introduction, making AnyTLS unsuitable as a sole censorship-resistance mechanism without additional traffic shaping or active-probing countermeasures.
+techniques:
+    - tls-fingerprint
+    - active-probing
+defenses:
+    - anytls
+censors:
+    - generic
+defense_implications:
+    - Do not rely on AnyTLS padding alone as a censorship-resistance guarantee; pair it with SNI selection on a domain whitelisted by the censor (REALITY-style) or front it through a CDN to address active probing.
+    - Treat configurable padding as a fingerprint-diversity tool, not a provable indistinguishability mechanism; formal analysis or empirical measurement is needed to claim resistance.
+section: §1.3
+extracted_by: claude-sonnet-4-6

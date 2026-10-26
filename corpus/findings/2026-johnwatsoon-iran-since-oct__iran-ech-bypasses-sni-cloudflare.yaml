@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-johnwatsoon-iran-since-oct
+kind: evaluation
+summary: Iran→Cloudflare WebSocket connections without ECH failed for all tested variants immediately after the TLS handshake, consistent with SNI-based filtering. With ECH enabled, connections succeeded at 44–48 MB/s down and up to 82 MB/s up across 4 sessions (RTT 109–116 ms vs. CDN base 86 ms), demonstrating ECH as a high-throughput bypass for SNI-blocking on Cloudflare.
+techniques:
+    - sni-blocking
+defenses:
+    - ech-esni
+    - tunneling
+censors:
+    - ir
+defense_implications:
+    - ECH must be the default (not opt-in) for any tool using Cloudflare as a transport — the block fires at the TLS handshake, so a non-ECH legacy path will remain blocked regardless of other obfuscation.
+    - Cloudflare is a viable high-throughput circumvention carrier for Iran when ECH is in use; tool operators should provision Cloudflare paths with ECH enabled as a primary or fallback option.
+section: CDN
+extracted_by: claude-sonnet-4-6

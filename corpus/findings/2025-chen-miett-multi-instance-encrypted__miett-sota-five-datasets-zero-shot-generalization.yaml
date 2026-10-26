@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: MIETT achieves state-of-the-art performance across five encrypted-traffic classification datasets using a transformer foundation model pre-trained with unlabeled traffic, indicating that modern ML classifiers can generalize to previously unseen encrypted protocols without labeled training data for those protocols.
+techniques:
+    - ml-classifier
+    - fully-encrypted-detect
+censors:
+    - generic
+defense_implications:
+    - Zero-shot generalization means new circumvention protocols cannot rely on novelty alone to evade ML classifiers trained on unrelated traffic; protocol designers must target specific measurable feature distributions
+    - Consider explicitly shaping flows to match the statistical fingerprint of a high-volume allowed application (e.g., video streaming) that was included in the classifier's unlabeled pre-training corpus
+section: Abstract
+extracted_by: claude-sonnet-4-6

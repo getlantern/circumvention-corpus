@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-johnwatsoon-iran-since-oct
+kind: evaluation
+summary: The Iran→abroad ICMP path enforces a hard ~50–55k packets/second rate cap shared across all ICMP types, equating to ~33 MB/s at 640 B payloads. Past ~45k pps, p99 one-way delay rises by +300 ms and loss increases; at 1400 B payloads the same path yielded 27.5 MB/s down and 26 MB/s up with 0.3–0.8% retransmit, confirming the limiter is per-packet not per-byte.
+techniques:
+    - throttling
+censors:
+    - ir
+defense_implications:
+    - ICMP tunnel implementations must pace below ~45k pps to avoid queuing-induced latency spikes; because the cap is per-packet, MTU-sized payloads (~1400 B) are far more efficient than small ones (~640 B).
+    - Congestion controllers in ICMP tunnels must be designed around a hard pps ceiling rather than bandwidth-based signals — standard TCP Reno/CUBIC will misread queuing delay as network congestion and react incorrectly.
+section: Packet-rate cap
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.27456
+id: 2026-wu-netguise-adversarial-traffic
+title: 'NetGuise: Adversarial Traffic Generation for Early-Stage Classifier Evasion'
+authors:
+    - Binghui Wu
+    - Dinil Mon Divakaran
+    - Mohan Gurusamy
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.27456"
+url: https://arxiv.org/abs/2610.27456v1
+abstract: Early-stage encrypted traffic classifiers make decisions from only the first few packets of a connection, enabling low-latency classification but raising robustness concerns under realistic traffic morphing. Existing adversarial traffic generation methods often assume complete flows, feature-level perturbations, or iterative runtime feedback, which do not match the constraints of early-stage execution. We present NetGuise, a target-conditioned traffic morphing framework that generates packet-level padding and non-negative delay actions while preserving packet direction, ordering, and packet count and respecting MTU, bandwidth, and latency constraints. We evaluate NetGuise for censorship evasion under two observation interfaces, i) a history-only causal interface for online packet-by-packet execution, ii) and a full-window oracle interface that provides an upper-bound characterization of early-stage morphability. On VANT, NetGuise achieves 33.2% mean targeted evasion under the causal interface versus 82.0% under the oracle interface; on UTMobileNet, the corresponding results are 5.6% and 81.8%. NetGuise outperforms the strongest causal baseline, BAP, on both datasets and, on VANT, reduces bandwidth overhead from 19.80% to 3.02% and generation latency from 37.42 ms/flow to 1.16 ms/flow. Under the oracle interface, it achieves up to 85.7% targeted evasion, retains 43.5% after four rounds of adaptive censor retraining, and maintains 48% under zero-shot cross-environment transfer. Our results show that early-stage classifiers can remain morphable despite high clean accuracy and that robustness evaluation should account for targeted morphability, observation constraints, defender adaptation, and operational network conditions.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - randomization
+evaluation_methods:
+    - ml-evaluation
+    - simulation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly addresses circumvention-tool defenses against ML-based classifier detection deployed by censors in encrypted-traffic filtering.
+visibility: public
+date_added: "2026-10-26"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.27456

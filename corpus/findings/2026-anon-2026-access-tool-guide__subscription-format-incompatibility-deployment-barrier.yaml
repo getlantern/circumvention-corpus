@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-access-tool-guide
+kind: deployment
+summary: 'Subscription format incompatibility is documented as a primary user-facing failure mode: Clash, sing-box, V2Ray, and Shadowrocket subscription URLs are not interchangeable, and a sing-box profile will not import directly into Clash Verge Rev and vice versa. When import fails, users are directed to request a format-specific URL from the provider rather than expecting client-side conversion.'
+defenses:
+    - vless
+    - vmess
+    - shadowsocks
+    - anytls
+censors:
+    - cn
+defense_implications:
+    - Proxy services and circumvention tools should publish multi-format subscription endpoints (Clash, sing-box, Shadowrocket, V2Ray) from a single account to reduce drop-off when users switch clients.
+    - New protocol adoption (e.g., AnyTLS) is gated on whether it is included in the installed client version, not just server-side deployment; version-check guidance should be part of any protocol rollout.
+section: Configure a client from scratch / Troubleshooting
+extracted_by: claude-sonnet-4-6

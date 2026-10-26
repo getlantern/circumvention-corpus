@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-netguise-adversarial-traffic
+kind: evaluation
+summary: 'In a four-round iterative arms-race evaluation where the censor retrains on observed morphed traffic after each round, NetGuise retains 43.5% targeted evasion after round 4 (down from 82.0%), versus 17.8% for the strongest baseline (Amoeba). The censor''s marginal gain per round diminishes: it recovers 19.6 percentage points in round 1 but only 3.3 in round 4, indicating coverage of distributional tails becomes increasingly expensive for the censor.'
+techniques:
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Target-conditioned morphing (aligning blocked traffic to the packet-size and timing distribution of a specific allowed class) is significantly more resilient to censor retraining than generic noise injection; circumvention tools should morph toward a concrete permitted-traffic archetype rather than just disrupting classification.
+    - Diminishing censor returns in adaptive arms races suggest that high-diversity morphing strategies force the censor to over-tighten decision boundaries, increasing false positives on legitimate traffic — a collateral-damage lever that benefits circumvention tool designers.
+section: §6.3, Figure 5
+extracted_by: claude-sonnet-4-6

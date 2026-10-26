@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: detection
+summary: Machine-learning classifiers applied to flow-level features (packet sizes, inter-arrival times, byte counts, flow duration) can identify encrypted application protocols including SSH and Skype without inspecting payload content. Supervised and unsupervised approaches reported in the survey demonstrate that encrypted traffic classification is practically feasible using only transport-layer metadata.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Traffic shaping that only pads packet sizes is insufficient — inter-arrival timing, flow duration, and byte-count distributions must also be normalized to defeat ML classifiers.
+    - Circumvention tools should evaluate their flows against published ML classifiers (BLINC, flow-based SSH detectors) before deployment to verify statistical indistinguishability.
+section: §3 (ML classification)
+extracted_by: claude-sonnet-4-6

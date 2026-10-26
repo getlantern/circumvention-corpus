@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: MIETT introduces Packet Relative Position Prediction (PRPP) as a self-supervised pre-training task that teaches the model the temporal ordering of packets in a flow; this enables classification based on temporal flow dynamics even when individual packets are individually indistinguishable from benign traffic.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Temporal ordering of packets is a learnable censor-side signal independent of content; circumvention transports should consider deliberately inserting out-of-order or jitter-delayed packets to disrupt relative-position predictability
+    - Flow Contrastive Learning (FCL) pre-training means even subtle consistent differences between flows of different application types are amplified — protocols with highly reproducible flow structures are more vulnerable
+section: Abstract / Pre-training Tasks
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-anytls-protocol-guide-how
+kind: defense
+summary: AnyTLS mitigates the recognizable TLS-in-TLS fingerprint by applying configurable packet splitting and padding to early TLS plaintext writes. The default padding scheme covers write indices 0–7 (stop=8), fragmenting authentication and early application writes into size ranges such as 400–500 bytes followed by up to four 500–1000-byte segments for write index 2. Sizes describe TLS plaintext before record encryption overhead, and cmdWaste frames carry filler when application data ends before a planned segment.
+techniques:
+    - tls-fingerprint
+    - traffic-shape
+defenses:
+    - anytls
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Adopt per-write-index padding schedules rather than uniform padding; the authentication write (index 0) and first application writes have the highest fingerprint value and deserve the most deliberate sizing.
+    - Test custom padding schemes for overhead and interoperability before deployment; novelty in record sizes is not evidence of improved concealment.
+section: §2.3
+extracted_by: claude-sonnet-4-6

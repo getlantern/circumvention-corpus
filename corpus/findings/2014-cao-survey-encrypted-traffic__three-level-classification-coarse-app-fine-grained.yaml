@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2014-cao-survey-encrypted-traffic
+kind: evaluation
+summary: 'The survey frames encrypted traffic classification as a three-level problem: coarse (encrypted vs. unencrypted), application-level (which app/protocol), and fine-grained (which service within an app, e.g., Skype voice vs. video). Fine-grained classification of encrypted traffic remains an open challenge as of 2014, with host-profiling and flow-correlation methods achieving the best results but requiring sustained observation windows rather than per-packet or per-flow decisions.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - flow-correlation
+censors:
+    - generic
+defense_implications:
+    - Fine-grained traffic classification requires sustained observation; circumvention transports that limit session duration or use many short connections reduce the censor's observation window and degrade classifier accuracy.
+    - Traffic multiplexing (combining multiple logical streams over one encrypted tunnel) makes fine-grained service-level classification harder by mixing signal from different traffic classes.
+section: §2–§3 (classification taxonomy)
+extracted_by: claude-sonnet-4-6

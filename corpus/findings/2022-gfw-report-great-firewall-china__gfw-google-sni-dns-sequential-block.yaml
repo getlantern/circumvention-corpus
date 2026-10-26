@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: deployment
+summary: The GFW deployed SNI-based blocking on google.com and all *.google.com on September 22, 2022 (between 6:23 AM and 7:33 PM Beijing Time), then added DNS-based blocking eight days later on September 30, 2022 (between 1:56 PM and 2:35 PM Beijing Time). All 1,147 tested *.google.com domains were blocked without exception under the wildcard rule.
+techniques:
+    - sni-blocking
+    - dns-poisoning
+    - rst-injection
+censors:
+    - cn
+defense_implications:
+    - Protocols that rely on the TLS SNI field for routing or identity must assume SNI is inspected and acted upon by the GFW; any circumvention transport must either encrypt or omit the SNI.
+    - DNS resolution of proxy server hostnames cannot be trusted inside China; circumvention tools should distribute server IPs out-of-band or use DoH/DoT over trusted channels rather than relying on the system resolver.
+section: Issue body (gfw-report, Oct 1 2022)
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,79 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: ermao https://www.ermao.net/en/article/fanqiang-tools/
+id: 2026-anon-2026-access-tool-guide
+title: '2026 Access-Tool Guide: Clash, Shadowrocket, V2RayNG, and sing-box | Ermao'
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/en/article/fanqiang-tools/
+abstract: |-
+    2026 Access-Tool Guide: Clash, Shadowrocket, V2RayNG, and sing-box | Ermao
+
+    [Skip to content](#VPContent)
+
+    # 2026 Access-Tool Guide: Clash, Shadowrocket, V2RayNG, and sing-box
+
+    About 2867 wordsAbout 10 min
+
+    [access tools](</en/blog/tags/?tag=access tools>)[censorship circumvention](</en/blog/tags/?tag=censorship circumvention>)[VPN clients](</en/blog/tags/?tag=VPN clients>)[Clash](/en/blog/tags/?tag=Clash)
+
+    ...—
+
+    2026-06-29
+
+    Names such as Clash, Shadowrocket, V2RayNG, v2rayN, sing-box, Hiddify, subscription, and node can be confusing at first.
+
+    The relationship is simple: **the access tool is the client, the provider subscription supplies the routes, and a node is an individual server or route**. Install a client appropriate for the device, import a compatible subscription URL, select a node, and enable the proxy.
+
+    Before use
+
+    This guide covers ordinary activities such as research, remote work, cross-border information access, open-source development, and personal streaming accounts. VPN and proxy rules differ by jurisdiction. Understand and follow the laws and service terms that apply to you.
+
+    ![Overview of proxy and censorship-circumvention tools](https://image.ermao.net/images/posts/vpn/20260315_110648-5171d6.png)
+
+    ## [Quick recommendation by device](#quick-recommendation-by-device)
+
+    On small screens, scroll the table sideways. Keyboard users can focus the table and use the left and right arrow keys.
+
+    | Device                | First choice           | Alternatives                      | Typical use                          | Guide                                                     |
+    | --------------------- | ---------------------- | --------------------------------- | ------------------------------------ | --------------------------------------------------------- |
+    | Windows               | Clash Verge Rev        | v2rayN, Hiddify                   | Beginners, work, ChatGPT, YouTube    | [Install Clash Verge](/en/article/0gematwc/)              |
+    | macOS                 | Clash Verge Rev        | Clash Mi, Surge                   | Mac users and rule-based routing     | [Clash Verge Rev for macOS](/en/article/6vxkmmuh/)        |
+    | Linux                 | Clash Verge Rev        | sing-box, Hiddify                 | Developers and desktop systems       | [Computer access guide](/en/blog/how-to-vpn-on-computer/) |
+    | Android               | Clash Meta for Android | V2RayNG, Hiddify                  | Phones, tablets, and backup devices  | [Clash for Android](/en/article/eh8f4n86/)                |
+    | iPhone and iPad       | Clash Mi               | Shadowrocket, Stash, Quantumult X | iOS and iPadOS users                 | [Clash Mi for iOS](/en/blog/clashmi/)                     |
+    | Paid iOS client       | Shadowrocket           | Stash, Surge                      | Users who already own Shadowrocket   | [Shadowrocket beginner guide](/en/article/z747kgjd/)      |
+    | Router and whole home | OpenClash              | PassWall, sing-box                | TVs, consoles, and household devices | [Whole-home router guide](/en/blog/softrouter/)           |
+
+    If you do not have a provider subscription, consult the [2026 proxy-service selection and review guide](/en/posts/vpn/). If the relationship among provider, subscription, node, and client is still unclear, start with the [proxy-subscription beginner guide](/en/article/jichang-subscription-guide/).
+
+    [2026 Proxy-Service Selection and Review Guide](/en/posts/vpn/)
+
+    Plan comparisons, IEPL and IPLC routes, standard subscriptions, streaming and AI-access checks, testing methods, and shutdown-risk records.
+
+    ## [Client, subscription, node, and VPN: what is the difference?](#client-subscription-node-and-vpn-what-is-the-difference)
+
+    | Term                  | Plain-language meaning                               | Examples                                       |
+    | --------------------- | ---------------------------------------------------- | ---------------------------------------------- |
+    | Access tool or client | Software installed on a computer or phone            | Clash Verge Rev, Shadowrocket, V2RayNG         |
+    | Provider subscription | A URL supplied by a service provider                 | Clash, V2Ray, or standard subscription         |
+    | Node                  | A specific server or route                           | Hong Kong, Japan, Singapore, or U.S. node      |
+    | VPN app               | An integrated app bundled with its own routes        | One-click commercial VPN                       |
+    | Rule-based routing    | Decides which traffic is proxied and which is direct | Local sites direct; Google and YouTube proxied |
+
+    A useful model is:
+
+    **Connection quality = stable provider routes + a compatible client + correct routing rules + the quality of the local network**
+
+    The client itself is often free. Speed and stability usually depend more on the provider's routes, node capacity, protocol compatibility, and peak-hour load.
+
+    ## [Mainstream clients in 2026](#mainstream-
+censors:
+    - generic
+techniques: []
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Ecosystem documentation from known Chinese circumvention researcher; provides current-year practical guidance on tools and protocols in active use in censored regions.
+visibility: public
+date_added: "2026-10-26"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/en/article/fanqiang-tools/

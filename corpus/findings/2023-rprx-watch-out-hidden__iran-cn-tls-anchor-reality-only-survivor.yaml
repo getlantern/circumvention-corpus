@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-rprx-watch-out-hidden
+kind: evaluation
+summary: 'Iran''s censorship strategy (cross-referenced in net4people/bbs issue #253, concurrent with this discussion) mirrors the SNI-whitelist pattern: UDP is interfered with broadly, and on TCP only common protocols resembling legitimate TLS survive an SNI whitelist, leaving REALITY-type protocols as the only reliable circumvention option. This convergence between China''s pilot regions and Iran''s nationwide blocking strengthens the case that TLS-anchored protocols outperform bare randomized protocols under aggressive censorship.'
+techniques:
+    - sni-blocking
+    - http3-quic-block
+    - fully-encrypted-detect
+defenses:
+    - reality
+censors:
+    - cn
+    - ir
+defense_implications:
+    - Design circumvention protocols to survive simultaneous UDP interference and SNI-whitelist TCP filtering — QUIC-based and bare-random transports are non-starters in the most restrictive environments
+    - TLS-anchored protocols (REALITY, Trojan) should be the default recommendation for users in high-restriction environments, not bare randomized protocols that appear to 'work' under selective non-enforcement
+section: RPRX comment, May 25 2023
+extracted_by: claude-sonnet-4-6

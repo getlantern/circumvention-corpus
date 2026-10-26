@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-johnwatsoon-iran-since-oct
+kind: evaluation
+summary: On some Iranian IP addresses, ICMP echo requests originating from Iran to abroad are dropped (100% loss) while pings from abroad to the same Iranian IP succeed, producing an asymmetric one-way block that varies day-to-day. Reversing direction — having the outside server send echo-requests and the Iran-side client reply — consistently bypasses the block; non-echo ICMP types (timestamp 13/14, info 15/16, mask 17/18) were not blocked on tested routes.
+techniques:
+    - ip-blocking
+censors:
+    - ir
+defense_implications:
+    - ICMP tunnel protocols should support server-initiated ping (outside server sends echo-request, Iran-side client replies) rather than assuming the censored client can initiate — this is the ICMP analogue of reverse-TLS.
+    - Non-echo ICMP types that currently pass (timestamp, info, mask) can serve as out-of-band keepalive or control-plane channels, reducing dependence on echo-request/reply for signaling.
+section: One-way ICMP blocks
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-netguise-adversarial-traffic
+kind: evaluation
+summary: 'Under a realistic history-only causal interface (commit-once, no future packets visible), NetGuise achieves only 33.2% mean targeted evasion success rate on VANT and 5.6% on UTMobileNet, versus 82.0% and 81.8% respectively under the full-window oracle interface. This 49-point gap quantifies the fundamental difficulty that online packet-by-packet execution imposes on traffic morphing: decisions about early packets must be made before later packets in the same flow are known.'
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Traffic-shaping pluggable transports that can buffer the first 30+ packets before committing padding/delay actions will achieve dramatically higher evasion rates than those forced to act packet-by-packet; design the client-side proxy to collect a short window before releasing the morphed flow.
+    - Benchmark any new shaping-based defense under both causal and oracle conditions — a system that looks strong on offline datasets may collapse to near-random under realistic online execution constraints.
+section: §6.1–6.2, Table 3
+extracted_by: claude-sonnet-4-6

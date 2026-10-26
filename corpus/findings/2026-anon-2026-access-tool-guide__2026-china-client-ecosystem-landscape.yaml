@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-2026-access-tool-guide
+kind: deployment
+summary: As of mid-2026, the dominant circumvention client ecosystem in China consists of Clash Verge Rev (Mihomo/Meta core) as the cross-platform desktop default, Clash Meta for Android on mobile, and Clash Mi or Shadowrocket on iOS, with sing-box and Hiddify serving as the reference clients for newer protocols (AnyTLS, Hysteria2, TUIC, VLESS Reality). The original Clash for Windows project is documented as abandoned and no longer recommended.
+defenses:
+    - vless
+    - vmess
+    - trojan
+    - shadowsocks
+    - anytls
+    - hysteria2
+    - reality
+censors:
+    - cn
+defense_implications:
+    - Protocol support in the client layer (not just the proxy core) is a deployment bottleneck; circumvention protocols must be adopted by Mihomo/Meta and sing-box cores to reach the majority of Chinese users.
+    - Prioritize compatibility with Clash subscription format and sing-box profile format, as these are the two dominant import paths; V2Ray-only configurations now reach a narrower audience.
+section: Mainstream clients in 2026
+extracted_by: claude-sonnet-4-6

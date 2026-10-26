@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2022-gfw-report-great-firewall-china
+kind: deployment
+summary: The SNI and DNS censorship events both started during Chinese business hours, consistent with deliberate operator-initiated rule changes rather than automated triggers. The blocking of stun.l.google.com (a STUN server used by WebRTC/ICE) was later selectively lifted by early 2024 (confirmed via OONI stunreachability measurements), while core services like docs, drive, and accounts remained blocked.
+techniques:
+    - sni-blocking
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - WebRTC-based pluggable transports (e.g., Snowflake) that use Google STUN servers should verify STUN reachability per-region, as GFW blocking of STUN infrastructure can be selectively toggled.
+    - Censorship rule changes occur on human timescales during working hours; circumvention infrastructure should detect and adapt to sudden blocking events rather than assuming static censor behavior.
+section: Issue body and wkrp comment Jan 31 2024
+extracted_by: claude-sonnet-4-6

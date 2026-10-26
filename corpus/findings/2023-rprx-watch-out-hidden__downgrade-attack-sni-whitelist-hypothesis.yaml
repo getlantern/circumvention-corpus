@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2023-rprx-watch-out-hidden
+kind: policy
+summary: 'RPRX argues the combination of SNI-whitelist plus non-blocking of fully-randomized protocols constitutes an intentional ''downgrade attack'': coercing users from TLS (which has forward secrecy) toward bare random protocols that lack forward secrecy, meaning a single key compromise enables retroactive decryption of all past and future traffic. The hypothesis is that surveillance rather than blocking is the goal in these pilot regions.'
+techniques:
+    - sni-blocking
+    - fully-encrypted-detect
+defenses:
+    - shadowsocks
+    - reality
+censors:
+    - cn
+defense_implications:
+    - Prefer protocols with TLS 1.3 forward secrecy over bare encrypted protocols even when bare protocols appear to work unblocked — the absence of blocking may be intentional surveillance tolerance
+    - Treat forward secrecy as a non-negotiable property for any circumvention protocol, not merely a performance tradeoff
+section: Issue body / original post
+extracted_by: claude-sonnet-4-6
