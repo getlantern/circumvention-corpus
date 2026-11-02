@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.3390/s24113509
+id: 2024-alwhbi-encrypted-network-traffic
+title: Encrypted Network Traffic Analysis and Classification Utilizing Machine Learning
+authors:
+    - Ibrahim A. Alwhbi
+    - Cliff C. Zou
+    - Reem N. Alharbi
+venue: Sensors
+year: 2024
+doi: 10.3390/s24113509
+url: https://doi.org/10.3390/s24113509
+abstract: 'Encryption is a fundamental security measure to safeguard data during transmission to ensure confidentiality while at the same time posing a great challenge for traditional packet and traffic inspection. In response to the proliferation of diverse network traffic patterns from Internet-of-Things devices, websites, and mobile applications, understanding and classifying encrypted traffic are crucial for network administrators, cybersecurity professionals, and policy enforcement entities. This paper presents a comprehensive survey of recent advancements in machine-learning-driven encrypted traffic analysis and classification. The primary goals of our survey are two-fold: First, we present the overall procedure and provide a detailed explanation of utilizing machine learning in analyzing and classifying encrypted network traffic. Second, we review state-of-the-art techniques and methodologies in traffic analysis. Our aim is to provide insights into current practices and future directions in encrypted traffic analysis and classification, especially machine-learning-based analysis.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Foundational survey on ML-based encrypted traffic classification, a core censor detection technique for circumvention traffic; relevant to both attack evaluation and obfuscation defense design.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.3390/s24113509

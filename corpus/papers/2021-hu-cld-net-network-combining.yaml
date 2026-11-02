@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1155/2021/5518460
+id: 2021-hu-cld-net-network-combining
+title: 'CLD-Net: A Network Combining CNN and LSTM for Internet Encrypted Traffic Classification'
+authors:
+    - Xinyi Hu
+    - Chunxiang Gu
+    - Fushan Wei
+venue: Security and Communication Networks
+year: 2021
+doi: 10.1155/2021/5518460
+url: https://doi.org/10.1155/2021/5518460
+abstract: The development of the Internet has led to the complexity of network encrypted traffic. Identifying the specific classes of network encryption traffic is an important part of maintaining information security. The traditional traffic classification based on machine learning largely requires expert experience. As an end-to-end model, deep neural networks can minimize human intervention. This paper proposes the CLD-Net model, which can effectively distinguish network encrypted traffic. By segmenting and recombining the packet payload of the raw flow, it can automatically extract the features related to the packet payload, and by changing the expression of the packet interval, it integrates the packet interval information into the model. We use the ability of Convolutional Neural Network (CNN) to distinguish image classes, learn and classify the grayscale images that the raw flow has been preprocessed into, and then use the effectiveness of Long Short-Term Memory (LSTM) network on time series data to further enhance the model’s ability to classify. Finally, through feature reduction, the high-dimensional features learned by the neural network are converted into 8 dimensions to distinguish 8 different classes of network encrypted traffic. In order to verify the effectiveness of the CLD-Net model, we use the ISCX public dataset to conduct experiments. The results show that our proposed model can distinguish whether the unknown network traffic uses Virtual Private Network (VPN) with an accuracy of 98% and can accurately identify the specific traffic (chats, audio, or file) of Facebook and Skype applications with an accuracy of 92.89%.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+evaluation_methods:
+    - ml-evaluation
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates ML-based detection of encrypted tunnels and VPNs; relevant to understanding censor capabilities for identifying circumvention proxies.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1155/2021/5518460

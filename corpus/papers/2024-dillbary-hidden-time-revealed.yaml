@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1109/ccnc51664.2024.10454807
+id: 2024-dillbary-hidden-time-revealed
+title: 'Hidden in Time, Revealed in Frequency: Spectral Features and Multiresolution Analysis for Encrypted Internet Traffic Classification'
+authors:
+    - Nathan Dillbary
+    - Roi Yozevitch
+    - Amit Dvir
+    - Ran Dubin
+    - Chen Hajaj
+venue: 2024 IEEE 21st Consumer Communications & Networking Conference (CCNC)
+year: 2024
+doi: 10.1109/ccnc51664.2024.10454807
+url: https://doi.org/10.1109/ccnc51664.2024.10454807
+censors:
+    - generic
+techniques:
+    - traffic-shape
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Traffic-shape fingerprinting is a key censor capability; understanding these classification methods informs circumvention-tool defenses against timing/size analysis.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1109/ccnc51664.2024.10454807

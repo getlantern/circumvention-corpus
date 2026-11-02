@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.18522/2311-3103-2020-3-89-98
+id: 2020-boldyrikhin-classification-features-encrypted
+title: CLASSIFICATION FEATURES OF ENCRYPTED NETWORK TRAFFIC
+authors:
+    - N. V. Boldyrikhin
+    - D. A. Korochentsev
+    - F.A. Altunin
+venue: IZVESTIYA SFedU. ENGINEERING SCIENCES
+year: 2020
+doi: 10.18522/2311-3103-2020-3-89-98
+url: https://doi.org/10.18522/2311-3103-2020-3-89-98
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to understanding encrypted-traffic fingerprinting; applicable to both censor detection techniques and proxy-evasion strategy design.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.18522/2311-3103-2020-3-89-98

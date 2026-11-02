@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hu-cld-net-network-combining
+kind: detection
+summary: CLD-Net classifies specific traffic types (chat, audio, file transfer) within Facebook and Skype encrypted flows with 92.89% accuracy, demonstrating that application-level behavioral patterns survive encryption.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Even within a single encrypted tunnel, the behavioral pattern of the carried application (chat vs. file vs. audio) is detectable at >92%; circumvention traffic that carries web browsing or VoIP may be distinguishable from decoy cover traffic by the same means.
+    - Traffic shaping or padding should mimic the specific byte-rate and timing profile of the chosen cover protocol's dominant use case, not just its superficial packet distribution.
+section: Abstract
+extracted_by: claude-sonnet-4-6
