@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-muntaka-garlic-box-i2p
+kind: evaluation
+summary: Across five independent trials, injecting speedBonus and capacityBonus values of 9999 into I2P peer profiles deterministically promoted adversary nodes into the victim's eligible selection set (Fv) with perfect consistency (σ = 0), and the adversary was chosen for 1.38× more tunnel build requests than matched controls (10.76 ± 0.20 vs 7.80 ± 1.84 lifetime agreed-to tunnels).
+techniques:
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Anonymity-network routers should validate stored bonus fields against the statistical distribution of their own measured performance for that peer, and discard values that are orders-of-magnitude outliers before incorporating them into tier selection.
+    - I2P-based circumvention relay architectures should audit the ProfileOrganizer bonus fields (speedBonus, capacityBonus) for anomalous injected values as a low-cost indicator of reputation manipulation by an in-network adversary.
+section: §5.3, Table 3
+extracted_by: claude-sonnet-4-6

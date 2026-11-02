@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-muntaka-garlic-box-i2p
+kind: evaluation
+summary: 'Selection stage success does not imply delivery stage success: adversary nodes selected 1.38× more often were also rejected 3.45× more often than controls (265.8 ± 21.2 vs 77.0 ± 16.5 lifetime rejections), demonstrating that compromising the selection criterion is a necessary but not sufficient condition for traffic interception.'
+techniques:
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Two-layer defenses for I2P-style relay selection should address both eligibility (bonus-field validation) and acceptance-rate anomalies separately, since an attacker maximizing selection while minimizing acceptance triggers a detectable rejection spike.
+    - Traffic-interception monitoring should watch for peers with disproportionately high build-request rejection rates relative to their advertised performance tier, as this pattern distinguishes injection attackers from legitimate high-capacity peers.
+section: §5.3, Fig. 10, Fig. 12
+extracted_by: claude-sonnet-4-6

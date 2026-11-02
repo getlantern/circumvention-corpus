@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: MIETT demonstrates that token-level approaches — treating raw hexadecimal byte sequences as tokens — fail to capture flow-level patterns arising from interactions between packets within a flow. The model's Two-Level Attention (TLA) architecture explicitly captures both within-packet byte patterns and cross-packet relationships, and this dual granularity is identified as the critical missing component in prior encrypted traffic classifiers.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Randomizing individual packet payloads (byte-level obfuscation) is insufficient against MIETT-class classifiers; circumvention protocols must also disguise cross-packet interaction patterns including packet count, size sequences, and ordering within a flow.
+    - Treat the entire flow — not just individual packets — as the adversarial unit when evaluating detectability of a circumvention protocol.
+section: Abstract
+extracted_by: claude-sonnet-4-6

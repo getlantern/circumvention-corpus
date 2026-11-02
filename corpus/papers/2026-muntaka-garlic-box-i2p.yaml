@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2610.34004
+id: 2026-muntaka-garlic-box-i2p
+title: 'Garlic in a Box: I2P Network Emulator'
+authors:
+    - Siddique Abubakr Muntaka
+    - Faiza Hussein
+    - Boutros Farah
+    - Anthony Kashi
+    - Jacques Bou Abdo
+    - Jacques Demerjian
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2610.34004"
+url: https://arxiv.org/abs/2610.34004v1
+abstract: The Invisible Internet Project (I2P) is a peer-to-peer anonymity network whose routing and peer-selection mechanics underlie a growing family of state-sponsored covert relay architectures. Studying these mechanics demands a controlled, reproducible environment. We present Garlic-in-a-Box, an installable emulator that deploys a fully isolated network of unmodified I2P Java routers on a single host or cluster of hosts. Each router runs in its own Linux network namespace. A filesystem bootstrap removes the dependency on signed reseed servers, and synthetic geographic diversity activates the same location-aware peer-selection code paths present on the live network. A fifty-router deployment across five geographic locations stabilises in about twenty-five minutes and uses roughly 21 GB of memory. To demonstrate the platform's value, we model I2P peer selection as a two-stage process and conduct a reputation attack. Across five independent trials, the attack promotes the adversary into the victim's eligible selection set with perfect consistency, and the adversary is chosen for 1.38x more tunnels than matched controls. The platform and its measurement pipeline are released to support reproducible I2P security research and hands-on cyber-defence training.
+censors:
+    - generic
+techniques:
+    - measurement-platform
+evaluation_methods:
+    - measurement-study
+    - simulation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. I2P is a peer-to-peer anonymity network widely used for circumvention in censored regions; this paper's evaluation of peer-selection reputation attacks advances understanding of anonymity-network security.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2610.34004

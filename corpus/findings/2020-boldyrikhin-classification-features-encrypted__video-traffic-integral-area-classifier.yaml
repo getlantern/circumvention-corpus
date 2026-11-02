@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-boldyrikhin-classification-features-encrypted
+kind: detection
+summary: A correlation-based algorithm achieves sufficient accuracy for classifying encrypted audio and data traffic, but performs poorly on video traffic; an alternative algorithm based on differences in integral areas under traffic intensity curves is required for reliable video classification. This suggests video traffic exhibits distinct non-stationary statistical signatures not captured by simple correlation.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention traffic carrying video streams is particularly identifiable; stream-based protocols (e.g., video conferencing tunneled over a proxy) need active rate shaping or pacing to suppress the bursty intensity curve characteristic of video.
+    - A single obfuscation strategy is unlikely to neutralize both correlation-based and integral-area-based classifiers simultaneously; designers should evaluate both classifier families when testing evasion.
+section: Abstract
+extracted_by: claude-sonnet-4-6

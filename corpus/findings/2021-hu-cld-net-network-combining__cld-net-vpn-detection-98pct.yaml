@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hu-cld-net-network-combining
+kind: detection
+summary: CLD-Net achieves 98% accuracy distinguishing VPN from non-VPN encrypted traffic on the ISCX public dataset, using an end-to-end CNN+LSTM model that requires no hand-crafted expert features.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+defenses:
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - VPN protocols are distinguishable from non-VPN traffic with near-certainty by commodity ML pipelines; circumvention tools should not rely on the encrypted-tunnel label alone to evade detection.
+    - End-to-end classifiers that learn from raw payloads remove the feature-engineering bottleneck, meaning novel protocols are not automatically safe — any new transport should be evaluated against CNN-style spatial classifiers, not just signature-based tools.
+section: Abstract
+extracted_by: claude-sonnet-4-6

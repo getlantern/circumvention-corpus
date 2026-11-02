@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1109/igarss53475.2024.10641799
+id: 2024-li-encrypted-traffic-classification
+title: Encrypted Traffic Classification Framework Based on Albert
+authors:
+    - Haoran Li
+    - Yasheng Zhang
+    - Mansu Gu
+    - Jing Bai
+    - Zhu Xiao
+    - Yiran Wang
+venue: IGARSS 2024 - 2024 IEEE International Geoscience and Remote Sensing Symposium
+year: 2024
+doi: 10.1109/igarss53475.2024.10641799
+url: https://doi.org/10.1109/igarss53475.2024.10641799
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Venue (IGARSS geoscience symposium) is unusual for network security; metadata accuracy should be verified.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1109/igarss53475.2024.10641799

@@ -1,0 +1,28 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1109/tmc.2016.2516020
+id: 2016-fu-service-usage-classification
+title: Service Usage Classification with Encrypted Internet Traffic in Mobile Messaging Apps
+authors:
+    - Yanjie Fu
+    - Hui Xiong
+    - Xinjiang Lu
+    - Jin Yang
+    - Can Chen
+venue: IEEE Transactions on Mobile Computing
+year: 2016
+doi: 10.1109/tmc.2016.2516020
+url: https://doi.org/10.1109/tmc.2016.2516020
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates techniques for identifying specific encrypted messaging apps from traffic metadata; relevant to understanding traffic-fingerprinting attacks censors could deploy to detect banned services.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1109/tmc.2016.2516020

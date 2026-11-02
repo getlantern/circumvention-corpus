@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.comnet.2023.109965
+id: 2023-xu-fasttraffic-lightweight-method
+title: 'FastTraffic: A lightweight method for encrypted traffic fast classification'
+authors:
+    - Yuwei Xu
+    - Jie Cao
+    - Kehui Song
+    - Qiao Xiang
+    - Guang Cheng
+venue: Computer Networks
+year: 2023
+doi: 10.1016/j.comnet.2023.109965
+url: https://doi.org/10.1016/j.comnet.2023.109965
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to understanding how encrypted protocols can be classified and fingerprinted, a key concern for circumvention protocol design resilience.
+visibility: public
+date_added: "2026-11-02"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.comnet.2023.109965

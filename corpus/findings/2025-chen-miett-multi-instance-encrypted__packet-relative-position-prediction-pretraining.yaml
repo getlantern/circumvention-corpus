@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: The Packet Relative Position Prediction (PRPP) pre-training task trains MIETT to predict the relative temporal ordering of packets within a flow, demonstrating that packet sequencing and positional structure are distinctive, learnable features in encrypted traffic even without payload content. This is a self-supervised signal requiring no labeled data.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols should avoid predictable packet-position patterns within flows; inserting dummy packets or deliberately disrupting packet ordering can break temporal sequence signatures that PRPP-class pre-training learns.
+    - Protocol designs that generate flows with structurally regular packet counts (e.g., fixed handshake sequences) are particularly exposed to position-prediction classifiers.
+section: Abstract
+extracted_by: claude-sonnet-4-6

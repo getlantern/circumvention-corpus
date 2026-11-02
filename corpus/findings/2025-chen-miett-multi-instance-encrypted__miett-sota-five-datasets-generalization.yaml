@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: evaluation
+summary: MIETT achieves state-of-the-art performance across five encrypted traffic classification datasets, outperforming prior foundation model approaches that focused on token-level relationships. The multi-dataset generalization demonstrates that packet-level interaction modeling captures structural features that are consistent across diverse traffic types rather than being dataset-specific artifacts.
+techniques:
+    - ml-classifier
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols should be evaluated against multiple classifier families — a protocol that evades token-level classifiers may still be detected by flow-structural approaches like MIETT.
+    - Evading generalized flow-level classifiers requires fundamental protocol redesign (packet-size shaping, timing normalization, dummy-packet injection) rather than payload-only obfuscation.
+section: Abstract
+extracted_by: claude-sonnet-4-6

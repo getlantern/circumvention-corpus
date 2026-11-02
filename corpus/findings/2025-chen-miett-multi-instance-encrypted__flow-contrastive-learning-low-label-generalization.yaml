@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-chen-miett-multi-instance-encrypted
+kind: detection
+summary: Flow Contrastive Learning (FCL) enables MIETT to learn discriminative flow-level representations through self-supervision on unlabeled traffic, achieving state-of-the-art results across five classification datasets. The contrastive objective demonstrates strong generalization to unseen traffic types, reducing the labeled-data requirement for deploying an accurate encrypted traffic classifier.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols cannot rely on being underrepresented in a censor's labeled training set; contrastive pre-training means a small number of observed flows may be sufficient to build a high-accuracy classifier after fine-tuning.
+    - Mimicking legitimate traffic at the flow-aggregate level (packet count distributions, size histograms, timing profiles) is increasingly necessary as self-supervised approaches reduce censors' labeled-data requirements.
+section: Abstract
+extracted_by: claude-sonnet-4-6

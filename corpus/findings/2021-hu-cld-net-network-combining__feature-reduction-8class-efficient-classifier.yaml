@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hu-cld-net-network-combining
+kind: detection
+summary: The CLD-Net model uses a feature-reduction step that compresses high-dimensional CNN+LSTM representations to 8 dimensions corresponding to 8 traffic classes, enabling efficient multi-class classification without class-specific hand-tuning.
+techniques:
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Compact latent-space classifiers generalize across traffic classes from a single training run; adding a new circumvention protocol does not require censors to rebuild the entire pipeline — only to retrain with new labeled samples.
+    - Circumvention tool designers should assume that a censor with an existing ML pipeline can add detection of a new protocol quickly once labeled traffic samples are available.
+section: Abstract
+extracted_by: claude-sonnet-4-6

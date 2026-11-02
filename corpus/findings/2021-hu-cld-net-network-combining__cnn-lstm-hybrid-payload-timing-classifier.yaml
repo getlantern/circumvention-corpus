@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2021-hu-cld-net-network-combining
+kind: detection
+summary: CLD-Net converts raw packet payloads into grayscale images and feeds them to a CNN for spatial feature extraction, then passes the output through an LSTM to capture inter-packet timing sequences, integrating both payload content and temporal flow structure into a single classifier.
+techniques:
+    - ml-classifier
+    - dpi
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must simultaneously defeat both spatial (per-packet byte patterns) and temporal (inter-packet timing) classifiers; obfuscating only one dimension is insufficient against CNN+LSTM hybrids.
+    - Payload randomization that produces uniform grayscale images may neutralize the CNN branch, but the LSTM branch will still exploit timing correlations — active traffic shaping with controlled inter-packet delays is also required.
+section: Abstract / Introduction
+extracted_by: claude-sonnet-4-6

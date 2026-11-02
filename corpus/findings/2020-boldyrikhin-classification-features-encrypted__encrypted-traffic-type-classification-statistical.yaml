@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-boldyrikhin-classification-features-encrypted
+kind: detection
+summary: Encrypted traffic can be classified into audio, video, and data categories using only statistical features (traffic intensity curves, correlation patterns) without inspecting payload content. The paper demonstrates that indirect signs derived from packet-level statistics are sufficient to distinguish application types even when the payload is fully encrypted.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention proxies should shape traffic intensity curves to match a target cover-traffic profile (e.g., flatten the characteristic burst patterns of video or audio), not merely encrypt payload bytes.
+    - Traffic obfuscation must address flow-level statistical signatures (packet-rate distributions, inter-arrival variance) that survive encryption, not just byte-level content.
+section: Abstract
+extracted_by: claude-sonnet-4-6

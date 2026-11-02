@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-muntaka-garlic-box-i2p
+kind: evaluation
+summary: A 50-router I2P deployment spanning five geographic locations stabilizes in approximately 25 minutes and consumes roughly 21 GB RAM (417 MB per router, measured via live systemd cgroups), with a single-host ceiling of approximately 90 routers and a static-profiling estimate (257 MB) that was 62% lower than the live measurement.
+techniques:
+    - measurement-platform
+censors:
+    - generic
+defense_implications:
+    - Reproducible I2P security research and circumvention relay testing is achievable on a single 48 GB host; researchers and tool developers can deploy realistic multi-geography I2P networks for protocol experimentation without live-network ethical concerns.
+    - Resource planning for emulated anonymity-network testbeds should rely on live cgroup measurements rather than static profiling, since memory estimates based on partial readings can undercount by more than 60%.
+section: §3, §4, Table 2, §7
+extracted_by: claude-sonnet-4-6

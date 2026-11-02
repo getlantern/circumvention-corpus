@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-muntaka-garlic-box-i2p
+kind: defense
+summary: 'The paper identifies a statistical anomaly defense against I2P reputation injection: an injected bonus value (e.g., 9999) sits orders of magnitude above any legitimate measured value for the same peer, so a router comparing stored bonus fields against the distribution of its own observed measurements for that peer could flag and discard outlier values while leaving legitimately earned reputations intact.'
+techniques:
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - I2P router implementations (and any circumvention transport borrowing I2P-style reputation selection) should add a statistical sanity check on speedBonus and capacityBonus before incorporating them into tier sorting — flagging values that deviate beyond, e.g., 3σ of the peer's own measured performance history.
+    - The defense point is the selection layer (cheaper to enforce) rather than the delivery layer, since blocking eligibility of manipulated peers prevents the attack prerequisite shared by the broad class of tunnel-interception attempts.
+section: §8
+extracted_by: claude-sonnet-4-6

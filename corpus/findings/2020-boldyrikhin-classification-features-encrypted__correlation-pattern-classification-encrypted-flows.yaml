@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-boldyrikhin-classification-features-encrypted
+kind: detection
+summary: The paper establishes that traffic classification relying on correlation with known patterns (rather than payload inspection) is viable for encrypted network traffic, motivating classifier designs that exploit the pulsating, random-process nature of traffic flows rather than decrypted content.
+techniques:
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Protocol designers should treat traffic intensity time-series as an observable side-channel and introduce deliberate timing noise or fixed-rate padding to break correlation with known application patterns.
+    - Evasion testing should include correlation-based classifiers trained on legitimate application traffic, not only entropy or payload-based detectors.
+section: Abstract
+extracted_by: claude-sonnet-4-6
