@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-understanding-self-supervised-representation
+kind: evaluation
+summary: 'Packet-level classification without flow context is significantly harder for self-supervised models: on CSTNET packet-level evaluation, shallow learning achieves 63.73% Macro-F1 while AlignTraffic reaches only 24.97%, because individual encrypted-payload packets carry minimal application-identifying information once the initial handshake is excluded.'
+techniques:
+    - ml-classifier
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Censors benefit primarily from capturing and analyzing the initial handshake packets; circumvention protocols that delay or suppress application-identifying plaintext until after connection establishment reduce the early-decision window available to flow classifiers.
+    - Per-packet classification without handshake context is unreliable for ML models (~25% Macro-F1) but explicit protocol feature extractors remain effective (~64%); protocols must eliminate both handshake plaintext and observable TLS record-header structure to defeat both classifier families.
+section: §VI.B, Table XI
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-maoist2009-better-method-find
+kind: defense
+summary: Residual GFW censorship can be sidestepped during TTL probing by redirecting probe traffic to a different random IP in the same /24 (IPv4) or /64 (IPv6) subnet, or by using plain UDP DNS queries as injection triggers because UDP is stateless and carries no residual censorship. A SYN followed by a PSH+ACK carrying a censored Host header—without completing the full TCP handshake—is sufficient to trigger GFW injection responses.
+techniques:
+    - rst-injection
+    - dpi
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Use sibling IPs in the same prefix for probing to avoid 180-second residual censorship windows that would stall calibration.
+    - Use UDP DNS with a blocked hostname as a low-cost, stateless trigger for GFW injection during TTL calibration, avoiding TCP state machine overhead.
+section: UjuiUjuMandan comment, Jul 2 2025
+extracted_by: claude-sonnet-4-6

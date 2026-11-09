@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-proxies-clash-vpns-a
+kind: deployment
+summary: Subscription endpoints, node lists, and client configurations require ongoing updates to remain functional against evolving blocking, but accepting automatic configuration updates introduces supply-chain risk. Open-source code makes inspection possible but does not prove the binary matches the source, that an audit was performed, or that the server follows its stated policy.
+defenses:
+    - shadowsocks
+    - vless
+    - vmess
+    - trojan
+censors:
+    - cn
+defense_implications:
+    - Sign subscription updates and client binaries with a pinned key distributed out-of-band at install time; verify the signature before applying any update
+    - Provide reproducible builds or a published SHA-256 hash per release so users can verify binary provenance independently of the distribution channel
+section: §3.2, §4.6
+extracted_by: claude-sonnet-4-6

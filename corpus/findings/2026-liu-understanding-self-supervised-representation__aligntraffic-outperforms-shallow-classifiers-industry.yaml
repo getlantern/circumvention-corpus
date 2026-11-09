@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-understanding-self-supervised-representation
+kind: evaluation
+summary: AlignTraffic, a cross-view contrastive self-supervised model, outperforms shallow classifiers by 5.97 to 30.70 Macro-F1 percentage points across four public encrypted-traffic classification tasks after fine-tuning, and achieves 94.54% accuracy and 51.26% Macro-F1 on an industrial dataset of 165 applications comprising ~4.2 million samples collected March 2025–March 2026, with geographic transfer to held-out regions (Beijing, Xi'an) showing 4.74 pp improvement over the industrial baseline without retraining.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Self-supervised classifiers now reliably outperform feature-engineered baselines on direct TLS traffic by large margins, meaning 'look like ordinary HTTPS' obfuscation is increasingly insufficient against ML-equipped adversaries with training data.
+    - Industrial evaluation on 165 real-world applications confirms operational deployability beyond academic benchmarks; circumvention tool operators should model adversaries as having access to these techniques, not just DPI signature matching.
+section: §V.B, Tables IV–V, §V.E, Tables VII–VIII
+extracted_by: claude-sonnet-4-6

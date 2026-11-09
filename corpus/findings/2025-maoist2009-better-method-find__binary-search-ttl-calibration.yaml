@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-maoist2009-better-method-find
+kind: evaluation
+summary: Binary search over TTL values is the current practical approach to calibrating TTL-based desync, but it is slow and must be repeated when routes change. China's GFW has at most approximately five international egress points, suggesting that IP-to-egress classification could reduce per-destination probing load, though participants considered this approach impractical to implement reliably.
+techniques:
+    - dpi
+censors:
+    - cn
+defense_implications:
+    - Egress-based IP clustering (grouping destinations that share a GFW egress) could amortize TTL probing cost; build an IP-to-egress mapping using traceroute data.
+    - Cache TTL calibration results per egress cluster rather than per IP to reduce the number of probes required when connecting to new destinations.
+section: maoist2009 comment, Jul 2 2025
+extracted_by: claude-sonnet-4-6

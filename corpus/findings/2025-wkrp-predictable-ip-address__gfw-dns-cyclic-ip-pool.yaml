@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-predictable-ip-address
+kind: deployment
+summary: 'One type of GFW DNS injector (identified by response flags 0x8400 when query RD=0) uses ordered, cyclic IP address pools. By probing at approximately 100–500 queries per second with a fixed UDP 4-tuple, the complete ordered pool can be recovered: for torproject.org this yields 592 IPv4 addresses and 30 IPv6 addresses. The same pool is documented in Appendix A of the Wallbleed (NDSS 2025) paper for the domain 4.tt.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools resolving blocked domains can maintain a local copy of the known GFW fake-IP pool and discard any DNS response whose answer address is in that pool, reducing false resolutions to near zero.
+    - The fixed, enumerable pool structure means pool membership tests are cheap; a Bloom filter or sorted list suffices for real-time response validation.
+section: §Collect DNS responses / §Infer the IP address ordering
+extracted_by: claude-sonnet-4-6

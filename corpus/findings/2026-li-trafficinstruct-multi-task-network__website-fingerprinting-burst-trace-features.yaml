@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-li-trafficinstruct-multi-task-network
+kind: detection
+summary: The website fingerprinting task identifies 50 monitored HTTPS websites from Chromium visit Traces using inter-packet intervals and direction-encoded IP-packet lengths (up to 512 packet events and 128 bursts per trace), distinguishing monitored sites from visits to 100 unknown domains. Summary statistics over the complete trace supplement the truncated event sequence.
+techniques:
+    - website-fingerprint
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - tor
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Burst-level features (runs of same-direction packets) are explicitly included in modern WF datasets — circumvention transports must fragment or pad at burst boundaries, not only at the packet level.
+    - The 100-site 'unknown' class evaluation tests open-world WF; circumvention designs that rely on being classified as 'unknown' face structured evaluation pressure from benchmarks with this exact configuration.
+section: §III-A (task 9), §IV-A
+extracted_by: claude-sonnet-4-6

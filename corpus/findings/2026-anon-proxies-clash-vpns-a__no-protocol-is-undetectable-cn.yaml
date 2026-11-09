@@ -1,0 +1,24 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-proxies-clash-vpns-a
+kind: detection
+summary: Traditional VPN and proxy protocols can both be detected, blocked, rate-limited, or disrupted by mainland network controls. Newer transport or obfuscation layers do not guarantee resistance; no client category is inherently undetectable, faster, lighter, or safer.
+techniques:
+    - dpi
+    - traffic-shape
+    - fully-encrypted-detect
+    - throttling
+defenses:
+    - shadowsocks
+    - trojan
+    - vmess
+    - vless
+    - hysteria2
+    - reality
+censors:
+    - cn
+defense_implications:
+    - Do not advertise any protocol as 'undetectable' — ship multiple transport options (e.g., XTLS-Reality, Hysteria2, obfs4) so users can rotate when one is blocked
+    - Treat throttling as a first-class blocking signal in the client UX; fall back to alternative nodes automatically rather than waiting for a full connection failure
+section: §4.4
+extracted_by: claude-sonnet-4-6

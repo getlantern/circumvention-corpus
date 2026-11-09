@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-maoist2009-better-method-find
+kind: defense
+summary: ICMP TTL-exceeded responses provide a faster alternative to binary search for TTL calibration on Linux (without root via gvisorplayground); on Windows, IcmpSendEcho2 or getsockopt(SO_ERROR) can substitute. After the TCP handshake completes, the client can suppress further ICMP error reception to avoid adding latency, as demonstrated in the celzero/firestack split-and-desync implementation.
+techniques:
+    - dpi
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Implement ICMP TTL-exceeded listener during the probe phase to detect hop counts without round-trip binary search; switch to suppressing ICMP after the handshake to keep latency at baseline.
+    - On non-root or non-Linux platforms use IcmpSendEcho2 (Windows) or equivalent to avoid privilege requirements for raw socket ICMP access.
+section: Lanius-collaris comment Aug 6 2025, maoist2009 comment Jul 2 2025
+extracted_by: claude-sonnet-4-6

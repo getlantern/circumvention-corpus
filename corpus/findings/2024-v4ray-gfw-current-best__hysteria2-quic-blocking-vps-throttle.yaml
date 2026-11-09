@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-v4ray-gfw-current-best
+kind: evaluation
+summary: Hysteria 2 (QUIC-based proxy) suffered past large-scale GFW blocking events but was broadly functional as of late 2024. Aggressive packet sending causes VPS providers and ISPs—not the GFW itself—to apply rate limits, adding a second failure mode beyond censor detection.
+techniques:
+    - http3-quic-block
+    - ip-blocking
+    - throttling
+defenses:
+    - hysteria2
+censors:
+    - cn
+defense_implications:
+    - Design QUIC-based transports with configurable send-rate caps to avoid triggering VPS/ISP traffic policies independently of censor activity
+    - Treat aggressive congestion behavior as a deployment risk; offer a 'polite mode' that sacrifices throughput for longevity
+section: Comment by @RPRX, Nov 18 2024
+extracted_by: claude-sonnet-4-6

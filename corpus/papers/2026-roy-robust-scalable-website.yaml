@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.09422
+id: 2026-roy-robust-scalable-website
+title: Robust & Scalable Website Fingerprinting via Minimal DRAM Traffic
+authors:
+    - Shubham Roy
+    - Samar Parwez
+    - Biswabandan Panda
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.09422"
+url: https://arxiv.org/abs/2611.09422v1
+abstract: Website fingerprinting attacks infer websites visited by users and threaten their privacy. These attacks are classified as on-path, which monitor network traffic, and co-located, which exploit shared system resources. Existing co-located attacks, such as sweep-counting and loop-counting, achieve over 90% accuracy but suffer significant performance degradation on many-core systems. Loop-counting accuracy drops from 93% on 8 cores to 50% on 24 cores, while sweep-counting accuracy decreases from 84% to 45% across multiple Core Complex Dies (CCDs). To address these limitations, we propose memory-chasing, a scalable website fingerprinting attack that exploits DRAM traffic interference through pointer-chasing traversals with minimal interference. By counting DRAM accesses over fixed intervals, the attack generates distinctive traces for website classification. Evaluated on the top 50 websites, memory-chasing achieves 96% accuracy on a 24-core system, 86% across multiple CCDs, 80% across multiple sockets, and 97% in an open-world setting. Extensive evaluation across hardware configurations, browsers, operating systems, isolation mechanisms, system noise, and countermeasures demonstrates its robustness and scalability.
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Website fingerprinting attack demonstrating privacy risks to VPN/proxy users through hardware side-channels; multi-core scalability relevant to circumvention tool threat modeling.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.09422

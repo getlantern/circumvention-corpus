@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-understanding-self-supervised-representation
+kind: evaluation
+summary: 'Tor''s nested encrypted relay encapsulation effectively defeats byte-level self-supervised classifiers: AlignTraffic achieves only 25.78% Macro-F1 on Tor-tunneled traffic (ISCX-Tor), compared to 83.92% on direct TLS traffic (ISCX-Direct), because Tor''s encrypted cells conceal inner application protocol structure from an observer of the outer connection.'
+techniques:
+    - ml-classifier
+    - dpi
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Wrapping traffic in a protocol layer that fully conceals application-level byte patterns — as Tor relay cells do — degrades ML classifier Macro-F1 from ~84% to ~26%; full nested encapsulation is a high-value architectural defense against self-supervised classifiers.
+    - Circumvention tools that expose visible TLS handshake metadata should consider whether that metadata is application-identifiable; Tor-style full encapsulation with no plaintext application fields is significantly more classifier-resistant than direct TLS tunneling.
+section: §VI.A, Table X
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-li-trafficinstruct-multi-task-network
+kind: detection
+summary: TrafficInstruct's encrypted VPN and Tor behavior detection tasks use flow-level features (packet lengths, directions, relative times, header fields) while explicitly omitting SNI, domain names, endpoint identifiers, and raw payloads. This demonstrates that VPN and Tor traffic can be classified into 18 and 12 activity categories respectively using statistical features alone, without application-layer identifiers.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Statistical flow features (inter-packet timing, packet-length distributions, directional ratios) are sufficient for VPN/Tor detection even after stripping SNI and endpoints — circumvention protocols must randomize these features, not just hide application-layer identifiers.
+    - Active padding and timing obfuscation at the flow level are necessary complements to protocol-level obfuscation; SNI concealment alone (e.g., ECH) does not defeat this class of classifier.
+section: §IV-A, §IV-D
+extracted_by: claude-sonnet-4-6

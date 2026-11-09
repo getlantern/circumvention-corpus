@@ -1,0 +1,35 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: net4people https://github.com/net4people/bbs/issues/425
+id: 2024-v4ray-gfw-current-best
+title: 目前绕过中国GFW代理的最佳实践是什么？/ What is the current best practice of creating a proxy to bypass GFW China?
+authors:
+    - '@v4ray'
+    - '@RPRX'
+    - '@terada46'
+    - '@iopq'
+    - '@zhen55468-jpg'
+venue: net4people/bbs
+year: 2024
+url: https://github.com/net4people/bbs/issues/425
+abstract: Community discussion of circumvention protocol stability against the Chinese GFW. Contributors report on blocking patterns for V2Ray, Xray, Hysteria 2, and XTLS Vision; describe operational techniques including REALITY (certificate spoofing), QUIC-based proxies, CDN tunneling, and UDP-based solutions (UDP2Raw + WireGuard); and discuss evolving GFW detection capabilities including DPI, IP blocking, RST injection, and AI-driven time-series analysis.
+censors:
+    - cn
+techniques:
+    - dpi
+    - ip-blocking
+    - active-probing
+    - ml-classifier
+    - rst-injection
+    - middlebox-interference
+defenses_discussed:
+    - reality
+    - trojan
+    - hysteria2
+    - tunneling
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Real-time intelligence from circumvention tool developers and in-country users on GFW blocking escalation and protocol resilience; Xray-core developer (@RPRX) participation provides insider perspective on practical circumvention techniques and detection countermeasures.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/425

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-maoist2009-better-method-find
+kind: detection
+summary: The GFW intermittently drops DNS-resolvable IPs for certain sites at packet-loss rates ranging from 2/10 to 8/10 (measured via tcping), independently of the 180-second residual-censorship window. Some CDN Asia segments are also affected. This behavior varies by province.
+techniques:
+    - ip-blocking
+    - throttling
+censors:
+    - cn
+defense_implications:
+    - Do not rely on DNS resolution success alone to confirm reachability; verify with active probing (tcping or similar) before selecting a circumvention endpoint.
+    - TTL probing procedures must distinguish between residual censorship drops and ongoing intermittent blocking to avoid false TTL calibration.
+section: maoist2009 comment, Jul 2 2025
+extracted_by: claude-sonnet-4-6

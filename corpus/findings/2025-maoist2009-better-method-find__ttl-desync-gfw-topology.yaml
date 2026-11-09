@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-maoist2009-better-method-find
+kind: defense
+summary: 'TTL-based TCP desynchronization is an effective technique for bypassing the GFW: a fake packet (SYN or data) is crafted with a TTL value small enough to expire before reaching the target server but large enough to pass through all GFW inspection points. The optimal TTL is destination-IP-specific because routes vary by province and ISP—traffic from Shanghai to US exits via the Shanghai GFW, while Hong Kong-bound traffic transits the Guangdong GFW.'
+techniques:
+    - dpi
+    - rst-injection
+defenses:
+    - geneva
+censors:
+    - cn
+defense_implications:
+    - Per-destination TTL probing is required rather than a single global value; cache TTL per destination prefix rather than per individual IP to reduce probe overhead.
+    - 'Circumvention tools targeting the GFW must account for multi-layer topology: the crafted packet must expire *after* the final (international gateway) GFW layer, not just the provincial layer.'
+section: Issue body and comments
+extracted_by: claude-sonnet-4-6

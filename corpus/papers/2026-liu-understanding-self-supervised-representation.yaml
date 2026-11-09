@@ -1,0 +1,30 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.07452
+id: 2026-liu-understanding-self-supervised-representation
+title: Understanding Self-Supervised Representation Learning for Encrypted Traffic
+authors:
+    - Zongxi Liu
+    - Shuai Mao
+    - Jie Chuai
+    - Hongyang Du
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.07452"
+url: https://arxiv.org/abs/2611.07452v1
+abstract: SSL has been adopted for encrypted traffic classification to learn representations from unlabeled traces and reduce reliance on manual feature engineering. However, recent studies show that data leakage can inflate reported performance and that pretrained models can underperform shallow classifiers once leakage is controlled. These findings raise questions about what information SSL can learn from encrypted traffic and how different pretraining mechanisms exploit this information. In this paper, we systematically investigate these questions by examining the sources of learnable information, the effectiveness of contextual pretraining, alternative self-supervision mechanisms, and the limits of representation learning. We first find that visible protocol fields retain contextual dependencies that are strongest between adjacent bytes, while payload interventions establish the classification value of retained plaintext structure. Guided by these insights, we investigate byte-level contextual learning through ByteBERT and TrafficDCNet, showing that aligning prediction granularity with local dependencies produces more discriminative representations. We further examine cross-view contrastive learning through AlignTraffic and find that complementary supervision improves representation quality beyond contextual prediction alone. Across four public classification tasks, AlignTraffic outperforms shallow learning by 5.97% to 30.70%, with additional evaluations on industrial traffic demonstrating its effectiveness in broader settings. Finally, evaluations on Tor traffic and individual packets reveal limitations when application information is concealed or unevenly distributed. These findings provide a systematic understanding of how observable information and self-supervision mechanisms shape the effectiveness and scope of representation learning for encrypted traffic.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - website-fingerprint
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant: demonstrates ML techniques for classifying encrypted traffic and explicitly evaluates on Tor traffic, revealing detection capability and its circumvention-relevant limitations.'
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.07452

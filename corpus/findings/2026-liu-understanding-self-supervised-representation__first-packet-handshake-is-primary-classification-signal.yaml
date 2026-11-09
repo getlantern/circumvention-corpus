@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-understanding-self-supervised-representation
+kind: detection
+summary: Classification-relevant information in TLS traffic is concentrated in the first retained packet's visible protocol fields (TLS ServerHello and handshake metadata), not ciphertext. Shuffling only the first packet's payload reduces AlignTraffic accuracy on CSTNET from 90.35% to 61.14% — near the random-payload baseline of 60.63% — while shuffling only the subsequent four packets' payloads yields 89.04%, close to baseline.
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Encrypting or structurally obfuscating the TLS ServerHello and initial handshake packets (e.g., via REALITY or ECH) removes the primary discriminating signal SSL classifiers exploit, since ciphertext bytes carry near-zero byte-level mutual information.
+    - Protocol designs that move all application-identifying fields into the encrypted portion of the initial exchange — or eliminate them entirely — are substantially more resistant to byte-level ML classification than protocols that expose handshake metadata.
+section: §III.B, Table II
+extracted_by: claude-sonnet-4-6

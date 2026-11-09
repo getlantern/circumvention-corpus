@@ -1,0 +1,110 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: ermao https://www.ermao.net/en/article/fanqiang2/
+id: 2026-anon-proxies-clash-vpns-a
+title: Proxies, Clash, and VPNs—A Practical 2026 Guide | Ermao
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/en/article/fanqiang2/
+abstract: |-
+    Proxies, Clash, and VPNs—A Practical 2026 Guide | Ermao
+
+    [Skip to content](#VPContent)
+
+    # Proxies, Clash, and VPNs—A Practical 2026 Guide
+
+    About 2010 wordsAbout 7 min
+
+    [proxies](/en/blog/tags/?tag=proxies)[Clash](/en/blog/tags/?tag=Clash)[VPN](/en/blog/tags/?tag=VPN)[network security](</en/blog/tags/?tag=network security>)
+
+    ...—
+
+    2025-09-26
+
+    This guide explains proxy clients such as Clash-family applications, how they differ from VPNs and Tor, where encryption begins and ends, and how to evaluate a provider without treating marketing claims as security evidence.
+
+    Internet access can be limited by geography, copyright licensing, employer policy, local law, network filtering, or a platform's own account controls. Public Wi-Fi and untrusted networks also create security concerns, although modern HTTPS already encrypts most website content in transit.
+
+    A proxy or VPN can change the path traffic takes and the public IP address seen by a destination. It does **not** automatically provide anonymity, make an account safe, legalize prohibited activity, or encrypt every application in every configuration.
+
+    ## [1\. What a proxy client does](#_1-what-a-proxy-client-does)
+
+    ### [1.1 Proxy clients and Clash](#_1-1-proxy-clients-and-clash)
+
+    ![Clash-family client interface](https://image.ermao.net/images/article/fanqiang2/image.png)
+
+    A proxy client accepts traffic from applications or a virtual network interface and forwards selected connections through a remote server. The destination normally sees the server's public IP rather than the user's access-network IP.
+
+    Encryption depends on the protocol and path:
+
+    *   a Shadowsocks, Trojan, VMess, or other encrypted proxy protects traffic between the client and proxy server according to its implementation;
+    *   HTTPS separately protects application data between the application and destination;
+    *   traffic from the proxy server to a non-HTTPS destination may be readable on that onward path;
+    *   applications not covered by system-proxy, TUN, or routing rules may connect directly.
+
+    Clash became a widely used rule-based proxy-client family. The original projects and several forks have changed or ceased maintenance, so “Clash” now often refers to compatible maintained clients and cores rather than one official application. Compatibility, provenance, and update status matter.
+
+    ### [1.2 Common uses](#_1-2-common-uses)
+
+    ![International application icons](https://image.ermao.net/images/article/fanqiang2/image-2.png)
+
+    **Regional access**
+
+    A server in another location can sometimes reach services unavailable on the local network or catalog. Platforms may still enforce account region, payment-country, GPS, DNS, or anti-abuse controls.
+
+    **Transport protection**
+
+    An encrypted proxy or VPN can prevent the local access network from directly reading plaintext tunnel contents. It does not replace HTTPS, endpoint security, certificate validation, strong authentication, or software updates.
+
+    **Reducing direct IP exposure**
+
+    A destination usually sees the exit server's IP. It can still identify a user through login, cookies, browser fingerprinting, device identifiers, payment data, or behavior. This is pseudonymity at best, not guaranteed anonymity.
+
+    **Remote work**
+
+    Organizations commonly use authenticated VPNs or zero-trust access to reach internal applications. A consumer proxy-service subscription is not a substitute for an employer-approved enterprise security system.
+
+    **P2P and BitTorrent**
+
+    A tunnel may change which IP peers and an ISP observe, but providers may prohibit P2P, retain metadata, or receive abuse notices. It cannot guarantee higher speed or prevent legal notices. Follow copyright law and the service terms.
+
+    ### [1.3 Proxy, Tor, and Clash-family clients](#_1-3-proxy-tor-and-clash-family-clients)
+
+    *   **Traditional HTTP or SOCKS proxy:** forwards application traffic and may provide no encryption on its own.
+    *   **Tor:** routes supported traffic through multiple relays for a different anonymity model. It is usually slower and is not intended for high-bandwidth streaming or ordinary BitTorrent.
+    *   **Clash-family client:** manages several proxy protocols, nodes, and rule-based routing. Its security is determined by the specific build, configuration, protocol, server, and threat model.
+
+    ## [2\. Free and paid services](#_2-free-and-paid-services)
+
+    ### [2.1 Free services](#_2-1-free-services)
+
+    Potential advantages:
+
+    *   no direct subscription fee;
+    *   useful for a low-risk, short test when the operator and application are trustworthy.
+
+    Risks and limitations:
+
+    *   strict speed, data, region, or time limits;
+    *   congestion and frequent disconnection;
+    *   advertising or aggressive analytics;
+    *   unknown operator identity and funding model;
+    *   malicious applications, certificate installation, traffic logging, or credential theft;
+    *   little support or continuity.
+
+    “Free” does not mean simple or safe. Review the application's developer identity, signatures, permissions, privacy
+censors:
+    - generic
+techniques:
+    - ip-blocking
+defenses_discussed:
+    - shadowsocks
+    - vmess
+    - trojan
+    - tor
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Operational resource reflecting deployed circumvention tool ecosystem and user decision-making; Ermao is an established Chinese-language circumvention blog.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/en/article/fanqiang2/

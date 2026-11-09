@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-predictable-ip-address
+kind: evaluation
+summary: 'Analysis of a June 2025 dataset using DBSCAN clustering confirmed a heterogeneous injector deployment: individual source ports are routed to processes that are either ~100% cyclic or ~100% random-order, with an estimated ratio of approximately 6 cyclic processes to 1 non-linear process. Despite the difference in IP-selection logic, the cyclic and non-linear injectors show virtually identical DNS answer TTL distributions, indicating shared codebase with diverged IP-selection modules rather than entirely separate systems.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - The shared TTL distribution means TTL-based heuristics cannot distinguish cyclic from non-linear injectors; pool membership tests remain the more reliable detection signal.
+    - The 1-in-7 non-linear fraction means that any circumvention tool relying on cyclic predictability to detect injection will miss approximately 14% of injected responses routed to non-linear processes.
+section: mcrmck comment 2025-06-21
+extracted_by: claude-sonnet-4-6
