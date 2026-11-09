@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-predictable-ip-address
+kind: deployment
+summary: The GFW DNS injector runs as multiple parallel processes that share the same IP address pool but each maintain an independent incrementing counter. Load balancing to these processes is 4-tuple hash-based (src IP, dst IP, src port, dst port), so a fixed source port is routed deterministically to one process. Probing with variable source ports revealed 3 distinct linear sequences in March 2025, growing to 5 or more by June 2025.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools should not assume a single injector process; detection logic based on sequence prediction must account for multiple independent counters accessed via hash-routed load balancing.
+    - The 4-tuple hash routing means that rotating source ports causes responses to arrive from different injector process instances, complicating any state-tracking evasion strategy.]
+section: §Visualization (variable source ports) / wkrp comment 2025-06-03
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.03319
+id: 2026-li-trafficinstruct-multi-task-network
+title: 'TrafficInstruct: A Multi-Task Network Traffic Dataset and Benchmark for Instruction Tuning'
+authors:
+    - Zhengdao Li
+    - Hui Wen
+    - Zixuan Wan
+    - Weifeng Zhang
+    - Yan Wu
+    - Benlong Wu
+    - Nenghai Yu
+    - Weiming Zhang
+    - Kejiang Chen
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.03319"
+url: https://arxiv.org/abs/2611.03319v1
+abstract: 'Instruction tuning for multi-task network traffic analysis requires data with clearly defined sources, supervision targets, and evaluation conditions. We introduce TrafficInstruct, a newly collected dataset comprising raw packet captures and 55,000 structured supervised fine-tuning records across ten tasks: malware traffic detection, botnet detection, malicious DNS-over-HTTPS detection, Web attack detection, advanced persistent threat detection, encrypted VPN detection, Tor behavior detection, encrypted application/service classification, website fingerprinting, and application classification under concept drift. An automated workflow captures traffic from controlled software executions, attack experiments, and application activities. Labels are supported by task-specific collection evidence, including process or socket attribution, activity records, and execution outcomes. Filtering, sanitization, and task-specific transformations produce instructions, traffic observations, and structured answers. We verify sample sources and partition the dataset by complete collection sessions, keeping all samples from the same session within one partition. The benchmark defines allowed inputs, deterministic label mappings, fixed training/validation/test partitions, and task-wise scoring rules. We evaluate majority-class, random-forest, and ET-BERT baselines, an unadapted 27B language model, and independently trained task-specific LoRA adapters on a shared frozen base. Adapters are selected using validation data and evaluated on the corresponding test sets. Task-specific adaptation improves classification performance, supporting instruction tuning across diverse traffic-analysis tasks.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - website-fingerprint
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Tor and VPN detection tasks directly relevant to censor detection capabilities; website fingerprinting task relevant to traffic-analysis attacks on encrypted tunnels.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.03319

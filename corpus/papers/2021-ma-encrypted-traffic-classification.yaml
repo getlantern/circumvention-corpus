@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1109/icaibd51990.2021.9459072
+id: 2021-ma-encrypted-traffic-classification
+title: Encrypted Traffic Classification Based on Traffic Reconstruction
+authors:
+    - Qianli Ma
+    - Wei Huang
+    - Yanliang Jin
+    - Jianhua Mao
+venue: 2021 4th International Conference on Artificial Intelligence and Big Data (ICAIBD)
+year: 2021
+doi: 10.1109/icaibd51990.2021.9459072
+url: https://doi.org/10.1109/icaibd51990.2021.9459072
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Encrypted traffic classification is core to both censor detection of circumvention tools and research on traffic-analysis defenses.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1109/icaibd51990.2021.9459072

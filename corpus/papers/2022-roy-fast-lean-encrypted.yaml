@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1016/j.comcom.2022.02.003
+id: 2022-roy-fast-lean-encrypted
+title: Fast and lean encrypted Internet traffic classification
+authors:
+    - Sangita Roy
+    - Tal Shapira
+    - Yuval Shavitt
+venue: Computer Communications
+year: 2022
+doi: 10.1016/j.comcom.2022.02.003
+url: https://doi.org/10.1016/j.comcom.2022.02.003
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant for understanding encrypted traffic classification techniques that may be used in censorship detection or that circumvention tools need to defend against.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1016/j.comcom.2022.02.003

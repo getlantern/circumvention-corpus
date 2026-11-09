@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-proxies-clash-vpns-a
+kind: defense
+summary: 'Clash-family proxy clients carry specific leak vectors distinct from VPNs: DNS leaks, IPv6 leaks, TUN-mode misconfiguration, rule-set bypass, and application-layer exclusions. Subscription URLs are equivalent to credentials and must be kept private; rotating a URL without evidence of a leak does not mitigate operator-level risk.'
+techniques:
+    - dpi
+defenses:
+    - shadowsocks
+    - trojan
+    - vmess
+    - vless
+censors:
+    - cn
+defense_implications:
+    - Run DNS over the proxy tunnel by default and enforce IPv6-either-off-or-tunneled to close the two most common unintentional leak paths
+    - Warn users that subscription URL rotation is not a substitute for operator trust evaluation; display operator identity and jurisdiction in the client alongside node selection
+section: §4.2, §5.3, §5.5
+extracted_by: claude-sonnet-4-6

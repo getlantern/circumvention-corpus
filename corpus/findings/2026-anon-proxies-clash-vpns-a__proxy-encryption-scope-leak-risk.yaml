@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-proxies-clash-vpns-a
+kind: defense
+summary: An encrypted proxy (Shadowsocks, Trojan, VMess) protects only the client-to-server segment; traffic from the proxy server to a non-HTTPS destination may be readable on the onward path. Applications not covered by system-proxy, TUN, or routing rules connect directly, bypassing the tunnel entirely.
+techniques:
+    - dpi
+defenses:
+    - shadowsocks
+    - trojan
+    - vmess
+    - vless
+censors:
+    - cn
+defense_implications:
+    - Default all application traffic through TUN mode rather than system-proxy to eliminate routing-rule bypass leaks; audit which apps are excluded and document the exposure explicitly in client UI
+    - Document encryption scope clearly — proxy ≠ full-device encryption — so users do not assume end-to-end protection for non-HTTPS destinations
+section: §1.1
+extracted_by: claude-sonnet-4-6

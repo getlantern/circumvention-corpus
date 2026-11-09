@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-predictable-ip-address
+kind: evaluation
+summary: Between March 26 and June 3, 2025, the GFW cyclic injector's IPv4 pool for torproject.org shrank from 592 to 591 addresses (the IP 162.125.82.7 was removed), and the observable number of load-balanced process sequences increased from 3 to 5. These changes occurred without altering the fundamental cyclic structure or pool membership of the remaining addresses, demonstrating that the injector infrastructure undergoes incremental updates while preserving its core mechanism.
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Any circumvention tool that caches a full enumerated fake-IP pool must treat the cache as perishable and re-enumerate periodically, since pool membership changes incrementally over time scales of weeks to months.
+    - Infrastructure-level changes (process count, pool size) provide a signal for detecting GFW operational updates that could be monitored to track censor evolution.
+section: wkrp comment 2025-06-03 (pool diff and process count)
+extracted_by: claude-sonnet-4-6

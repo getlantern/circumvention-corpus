@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-understanding-self-supervised-representation
+kind: detection
+summary: 'Network 5-tuple identifiers (IP addresses, ports) dramatically inflate encrypted traffic classifier accuracy when not masked: retaining these identifiers raises ET-BERT''s Macro-F1 on CSTNET from 60.04% to 85.23% and YaTC''s from 74.42% to 92.92%, because many 5-tuples are application-exclusive and bypass the need to learn protocol semantics.'
+techniques:
+    - ml-classifier
+    - ip-blocking
+censors:
+    - generic
+defense_implications:
+    - Censors correlating 5-tuple metadata with traffic patterns can achieve near-90% classifier accuracy without any deep learning; circumvention tools cannot rely on protocol obfuscation alone and must also obscure the IP/port identity of proxy endpoints.
+    - Routing through shared CDN or domain-fronting infrastructure where 5-tuples are not application-exclusive is a necessary complement to payload-level obfuscation, since identifier leakage alone enables high-confidence classification.
+section: §II.B, Figure 2
+extracted_by: claude-sonnet-4-6

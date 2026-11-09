@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-v4ray-gfw-current-best
+kind: evaluation
+summary: XTLS Vision has never triggered large-scale GFW blocking; one user reports 2.5+ years of uninterrupted use. Developers acknowledge that Vision without Seed produces fixed, distinguishable traffic characteristics and are developing 'Vision Seed' to introduce per-session randomization.
+techniques:
+    - traffic-shape
+    - dpi
+defenses:
+    - vless
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Any TLS-mimicking protocol that exposes deterministic flow-level features (packet sizes, timing, padding patterns) will eventually accumulate a detectable fingerprint; build per-session entropy into padding from day one
+    - Track Vision Seed development as a reference implementation of post-hoc fingerprint mitigation in a widely-deployed tool
+section: Comments by @RPRX and @terada46, Nov 18–20 2024
+extracted_by: claude-sonnet-4-6

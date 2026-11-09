@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2025-wkrp-predictable-ip-address
+kind: detection
+summary: 'Two distinct GFW DNS injector types respond to blocked domains simultaneously, returning duplicate responses per query. They are distinguishable by DNS response flags: the cyclic-ordering injector sets flags 0x8400 (AA bit) when query RD=0, while the second injector sets 0x8180. They also differ in DNS parser behavior: the 0x8180 injector responds to queries using an embedded literal dot (0x2e label separator), while the cyclic injector does not—reversing a behavior documented in the Wallbleed paper.'
+techniques:
+    - dns-poisoning
+    - packet-injection
+censors:
+    - cn
+defense_implications:
+    - Setting the RD bit in DNS queries (as standard resolvers do) causes both injectors to respond with flags 0x8180, making them indistinguishable by flags alone; circumvention tools probing GFW behavior should use RD=0 to discriminate injector types.
+    - The embedded-dot parsing difference provides a secondary oracle to fingerprint injector type without relying on flags.
+section: §Filter DNS responses / wkrp comment on two injector types
+extracted_by: claude-sonnet-4-6

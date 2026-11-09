@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-li-trafficinstruct-multi-task-network
+kind: evaluation
+summary: TrafficInstruct evaluates majority-class, random-forest, ET-BERT, an unadapted 27B language model (Qwen3.8-27B), and task-specific LoRA adapters (trained 10 epochs, batch 32, lr 2×10⁻⁵, max 512 tokens) on a shared frozen base across ten traffic classification tasks including VPN detection, Tor behavior detection, and website fingerprinting; task-specific adaptation improves Macro-F1 over the unadapted 27B baseline on all tasks.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - website-fingerprint
+defenses:
+    - tor
+    - tunneling
+    - webrtc-pluggable
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - LLM-based classifiers with parameter-efficient fine-tuning (LoRA) achieve competitive performance on encrypted circumvention traffic detection without requiring custom feature engineering — the barrier to deploying sophisticated classifiers is now primarily data collection, not model development.
+    - The 55,000-record benchmark with fixed session-disjoint splits provides a reproducible evaluation framework; circumvention protocol designers should test against this benchmark to quantify detectability before deployment.
+section: §V-A, Abstract
+extracted_by: claude-sonnet-4-6

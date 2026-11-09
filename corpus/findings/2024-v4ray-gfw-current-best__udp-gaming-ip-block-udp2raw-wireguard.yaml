@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-v4ray-gfw-current-best
+kind: deployment
+summary: Raw UDP P2P gaming traffic was detected and blocked within 1–2 hours. Hysteria 2 port-hopping delayed blocking but the entire server IP was eventually blacklisted once enough ports were consumed. The reporter identified udp2raw + WireGuard (with udpspeeder for packet loss compensation) as the most stable high-performance solution.
+techniques:
+    - dpi
+    - ip-blocking
+    - port-blocking
+defenses:
+    - amnezia-wg
+    - randomization
+censors:
+    - cn
+defense_implications:
+    - Port-hopping alone is insufficient when the censor tracks and aggregates ports to an IP; pair port rotation with IP rotation or traffic camouflage to prevent whole-IP blacklisting
+    - udp2raw (TCP-camouflaged UDP tunnel) provides meaningful longevity over raw UDP for latency-sensitive use cases; consider integrating a similar shim layer
+section: Comment by @iopq, Dec 1 2024
+extracted_by: claude-sonnet-4-6

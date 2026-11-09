@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-li-trafficinstruct-multi-task-network
+kind: detection
+summary: The Tor behavior detection collection configured all Tor clients to use Snowflake bridges, meaning the dataset's 'Tor' label class captures Snowflake-tunneled Tor traffic. A classifier trained on these flows would associate the Snowflake WebRTC signaling and DTLS/SRTP profile with the Tor-Normal classification boundary.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - webrtc-pluggable
+    - tor
+    - bridges
+censors:
+    - generic
+defense_implications:
+    - Public datasets training Tor/VPN detectors now include Snowflake-bridged traffic by default; Snowflake's WebRTC cover cannot be assumed to evade classifiers trained on modern benchmarks.
+    - Snowflake bridge designers should evaluate whether DTLS/SRTP statistical profiles remain distinguishable from real WebRTC video calls under classifier evaluation on datasets like TrafficInstruct.
+section: §III-A (task 7)
+extracted_by: claude-sonnet-4-6

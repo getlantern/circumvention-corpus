@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-li-trafficinstruct-multi-task-network
+kind: detection
+summary: The malicious DNS-over-HTTPS detection task classifies iodine, dns2tcp, and dnscat2 tunnel traffic across 12 scripted behaviors (heartbeats, polling, staged uploads, bidirectional sessions, large transfers) using 166 statistical features per bidirectional flow extracted by a fixed feature extractor without a configured packet-count threshold (13 packets is a reported observed minimum, not an admission gate).
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - dns-tunneling
+censors:
+    - generic
+defense_implications:
+    - DNS tunnel detection datasets now cover diverse behavioral profiles (low-rate heartbeats to burst uploads) across three major tool implementations — timing and volume shaping alone is insufficient; tunnels must also mimic legitimate DoH query distributions.
+    - Tools like iodine and dnscat2 are explicitly labeled in the benchmark, making trained classifiers directly deployable against known DNS circumvention tools; operators should evaluate novel DNS tunnel implementations against this benchmark before deployment.
+section: §III-A (task 3)
+extracted_by: claude-sonnet-4-6

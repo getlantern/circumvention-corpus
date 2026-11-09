@@ -1,0 +1,26 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: net4people https://github.com/net4people/bbs/issues/492
+id: 2025-maoist2009-better-method-find
+title: Better method to find ttl to bypass gfw automatically?
+authors:
+    - '@maoist2009'
+    - '@UjuiUjuMandan'
+    - '@ghost'
+    - '@Lanius-collaris'
+venue: net4people/bbs
+year: 2025
+url: https://github.com/net4people/bbs/issues/492
+abstract: Community thread discussing TTL-based TCP desynchronization techniques for bypassing the Chinese GFW's multi-layered filtering. Participants exchange practical methods for discovering effective TTL values, including binary search, traceroute analysis, and ICMP-based approaches, while addressing challenges like variable routing paths across provinces and international egress points.
+censors:
+    - cn
+techniques:
+    - packet-injection
+defenses_discussed:
+    - geneva
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Practical circumvention engineering; direct application to Lantern's protocol research.
+visibility: public
+date_added: "2026-11-09"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/492

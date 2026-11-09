@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-v4ray-gfw-current-best
+kind: evaluation
+summary: CDN-based proxy protocols avoid permanent IP-level GFW blocking but suffer from instability. IPLC ('no wall crossing') leased lines are stable and fast but expensive and subject to periodic administrative disconnection by the Chinese communications regulator.
+techniques:
+    - ip-blocking
+    - dpi
+defenses:
+    - tunneling
+    - domain-fronting
+censors:
+    - cn
+defense_implications:
+    - CDN fronting is viable as a fallback or last-resort path rather than a primary relay because of reliability variance; design multi-path clients that can demote CDN routes under congestion
+    - For high-value users requiring uninterrupted access, CDN + a stable IP-layer transport (REALITY or XTLS Vision) as complementary paths provides coverage across both blocking modalities
+section: Comment by @RPRX, Nov 18 2024
+extracted_by: claude-sonnet-4-6

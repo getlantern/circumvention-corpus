@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-v4ray-gfw-current-best
+kind: evaluation
+summary: REALITY ('certificate stealing') had produced no large-scale GFW blocking reports as of November 2024, per Xray-core developer @RPRX. Its operational downside is lower throughput compared to aggressive packet-dispatch protocols like Hysteria 2.
+techniques:
+    - active-probing
+    - tls-fingerprint
+    - dpi
+defenses:
+    - reality
+censors:
+    - cn
+defense_implications:
+    - Prefer REALITY for stability-critical deployments where throughput requirements are modest; treat absence of mass-blocking reports as a durable signal, not a guarantee
+    - Monitor for GFW experiments specifically targeting spoofed-certificate handshakes as the protocol's popularity grows
+section: Comment by @RPRX, Nov 18 2024
+extracted_by: claude-sonnet-4-6

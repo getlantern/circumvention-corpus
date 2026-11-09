@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-proxies-clash-vpns-a
+kind: deployment
+summary: 'Provider identity mismatches are a documented risk: one reviewed provider (SSONE) displays the domain hello-ssone.com but its registration links to flybit6202.com. Resolving such domain-identity mismatches before entering credentials or paying is flagged as a required evaluation step.'
+censors:
+    - cn
+defense_implications:
+    - Publish provider identity (legal entity, billing domain, registrar) in a canonically signed document and cross-link it in the client so users can detect impersonation or rebrand before subscribing
+    - Never accept subscription URLs from unofficial mirrors; treat subscription URLs as credentials and require explicit user action before they are stored or transmitted
+section: §5.2
+extracted_by: claude-sonnet-4-6
