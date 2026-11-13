@@ -52,13 +52,13 @@ func (s *site) faq() []faqItem {
 				`An MCP server lets any AI assistant query it. It is a research index, not a paper-hosting site.`)},
 		{Q: "What's in the corpus?", A: template.HTML(fmt.Sprintf(
 			`%d papers and %d findings extracted from them, tagged against a taxonomy of %d censors, %d detection techniques and %d defenses. `+
-				`Each paper record has the title, authors, venue, year, DOI or arXiv ID where there is one, a link to the canonical source, and the abstract. `+
+				`Each paper record has a title and year, and, where available, authors, venue, DOI or arXiv ID, a link to the canonical source and the abstract. `+
 				`This site and the hosted MCP server include only papers marked public.`,
 			len(s.papers), len(s.findings), len(s.tax.Censors), len(s.tax.Techniques), len(s.tax.Defenses)))},
 		{Q: "How is it different from CensorBib?", A: template.HTML(fmt.Sprintf(
 			`<a href="https://censorbib.nymity.ch/">CensorBib</a> is a maintained bibliography of censorship research. `+
 				`The corpus builds on it (%d of its papers came from an import of CensorBib's BibTeX file) and adds what a bibliography doesn't have: `+
-				`consistent controlled-vocabulary tags, findings extracted from each paper, and an MCP server so an AI assistant can query it.`, censorbib))},
+				`consistent controlled-vocabulary tags, extracted findings where available, and an MCP server so an AI assistant can query it.`, censorbib))},
 		{Q: "How does it relate to net4people/bbs and gfw.report?", A: template.HTML(
 			`<a href="https://github.com/net4people/bbs">net4people/bbs</a> is the circumvention community's discussion forum, and <a href="https://gfw.report">gfw.report</a> publishes original research. ` +
 				`The corpus complements them rather than replacing them: it indexes the field's research under one metadata schema, and its crawler watches both for new work.`)},
@@ -77,7 +77,8 @@ func (s *site) faq() []faqItem {
 			`The <a href="/ask/">Ask</a> page retrieves the relevant extracted findings, the same retrieval the MCP <code>synthesize</code> tool uses, and Claude writes an answer that cites them inline as <code>(paper_id, §section)</code>. ` +
 				`Treat the answer as a starting point and verify each citation against the source paper.`)},
 		{Q: "How are new papers added?", A: template.HTML(
-			`A crawler polls sources including arXiv, net4people/bbs, gfw.report, PoPETs, FOCI and USENIX Security, asks Claude to propose taxonomy tags and extract findings, and opens a pull request labeled <code>auto-ingest</code> for human review. ` +
+			`A crawler polls sources including arXiv, net4people/bbs, gfw.report, PoPETs, FOCI and USENIX Security, asks Claude to propose taxonomy tags and extract findings, and opens a pull request labeled <code>auto-ingest</code>. ` +
+				`The pull request merges automatically once CI validates it, and a batch that fails CI waits for a human. ` +
 				`Anyone can also add a paper by opening a pull request with a YAML record; see <a href="/contribute/">how to contribute</a>.`)},
 		{Q: "Is the corpus comprehensive?", A: template.HTML(
 			`No, by design. Curation beats volume: the bar for inclusion is roughly whether a Lantern protocol designer would be slowed down by not having read the paper. Comprehensive coverage of the field is a non-goal.`)},
