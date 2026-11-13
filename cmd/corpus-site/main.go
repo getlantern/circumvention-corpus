@@ -273,7 +273,8 @@ type site struct {
 	findingsByPaper map[string][]*Finding
 	tax             *taxonomy
 	template        pageTemplates
-	assetVersion    string // appended as ?v=... to /style.css and /search.js
+	assetVersion    string   // appended as ?v=... to /style.css and /search.js
+	pages           []string // site-relative paths of every page written, for sitemap.xml
 }
 
 func (s *site) render() error {
@@ -326,6 +327,15 @@ func (s *site) render() error {
 		return err
 	}
 	if err := s.renderContribute(); err != nil {
+		return err
+	}
+	if err := s.renderNotFound(); err != nil {
+		return err
+	}
+	if err := s.renderRobots(); err != nil {
+		return err
+	}
+	if err := s.renderSitemap(); err != nil {
 		return err
 	}
 	return s.renderSearchIndex()
@@ -403,7 +413,26 @@ func (s *site) renderUse() error {
 // reload — which has bitten us once already (z-index fix on the search
 // dropdown didn't take effect for users with cached style.css).
 func (s *site) writeFile(rel string, name string, data any) error {
+	path := "/"
+	if rel != "." {
+		path = "/" + filepath.ToSlash(rel) + "/"
+	}
 	if m, ok := data.(map[string]any); ok {
+		m["Canonical"] = siteOrigin + path
+	}
+	s.pages = append(s.pages, path)
+	dir := filepath.Join(s.out, rel)
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		return err
+	}
+	return s.writeTo(filepath.Join(dir, "index.html"), name, data)
+}
+
+func (s *site) writeTo(file string, name string, data any) error {
+	if m, ok := data.(map[string]any); ok {
+		if _, present := m["Description"]; !present {
+			m["Description"] = defaultDesc
+		}
 		if _, present := m["AssetVersion"]; !present {
 			m["AssetVersion"] = s.assetVersion
 		}
@@ -414,11 +443,7 @@ func (s *site) writeFile(rel string, name string, data any) error {
 			m["FindingsCount"] = len(s.findings)
 		}
 	}
-	dir := filepath.Join(s.out, rel)
-	if err := os.MkdirAll(dir, 0o755); err != nil {
-		return err
-	}
-	f, err := os.Create(filepath.Join(dir, "index.html"))
+	f, err := os.Create(file)
 	if err != nil {
 		return err
 	}
@@ -443,8 +468,12 @@ func (s *site) renderIndex() error {
 	if len(recent) > 10 {
 		recent = recent[:10]
 	}
+	faq := s.faq()
 	return s.writeFile(".", "index", map[string]any{
-		"Title":            "circumvention-corpus",
+		"Title":            indexTitle,
+		"Description":      indexDescription,
+		"FAQ":              faq,
+		"JSONLD":           s.jsonLD(faq),
 		"Core":             core,
 		"Recent":           recent,
 		"ExampleQuestions": s.exampleQuestions(),
@@ -530,12 +559,13 @@ func (s *site) renderPaper(p *Paper) error {
 		}
 	}
 	return s.writeFile(filepath.Join("papers", p.ID), "paper", map[string]any{
-		"Title":      p.Title + " — circumvention-corpus",
-		"Paper":      p,
-		"Tax":        s.tax,
-		"Related":    related,
-		"References": refResolved,
-		"Findings":   s.findingsByPaper[p.ID],
+		"Title":       p.Title + " — circumvention-corpus",
+		"Description": pageDescription(p.Abstract),
+		"Paper":       p,
+		"Tax":         s.tax,
+		"Related":     related,
+		"References":  refResolved,
+		"Findings":    s.findingsByPaper[p.ID],
 	})
 }
 
@@ -631,12 +661,13 @@ func (s *site) renderFinding(f *Finding) error {
 		}
 	}
 	return s.writeFile(filepath.Join("findings", f.ID), "finding", map[string]any{
-		"Title":    truncate(f.Summary, 80) + " — circumvention-corpus",
-		"Finding":  f,
-		"Paper":    p,
-		"Tax":      s.tax,
-		"Siblings": siblings,
-		"Related":  related,
+		"Title":       truncate(f.Summary, 80) + " — circumvention-corpus",
+		"Description": pageDescription(f.Summary),
+		"Finding":     f,
+		"Paper":       p,
+		"Tax":         s.tax,
+		"Siblings":    siblings,
+		"Related":     related,
 	})
 }
 
@@ -689,6 +720,16 @@ func (s *site) findingRows(in []*Finding) []findingRow {
 type findingRow struct {
 	Finding *Finding
 	Paper   *Paper
+}
+
+// pageDescription is a meta description from free text: whitespace
+// collapsed, cut at a word boundary, falling back to the site default.
+func pageDescription(text string) string {
+	text = strings.Join(strings.Fields(text), " ")
+	if text == "" {
+		return defaultDesc
+	}
+	return truncate(text, 155)
 }
 
 func truncate(s string, n int) string {
@@ -822,6 +863,9 @@ func (s *site) copyStatic() error {
 		return err
 	}
 	if err := os.WriteFile(filepath.Join(s.out, "search.js"), []byte(searchJS), 0o644); err != nil {
+		return err
+	}
+	if err := os.WriteFile(filepath.Join(s.out, "og.png"), ogPNG, 0o644); err != nil {
 		return err
 	}
 	return os.WriteFile(filepath.Join(s.out, "favicon.svg"), []byte(faviconSVG), 0o644)
