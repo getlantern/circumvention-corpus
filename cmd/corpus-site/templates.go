@@ -582,6 +582,7 @@ var pages = map[string]string{
 	"findings_index":  findingsIndexBody,
 	"finding":         findingBody,
 	"ask":             askBody,
+	"notfound":        notFoundBody,
 }
 
 // pageTemplates is a map[pageName]*template.Template, each one a clone
@@ -605,9 +606,29 @@ const layoutTmpl = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f5f1e6">
+<meta name="theme-color" content="#f5f0e2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
 <title>{{.Title}}</title>
-<script>
+<meta name="description" content="{{.Description}}">
+{{if .NoIndex}}<meta name="robots" content="noindex">
+{{else}}<link rel="canonical" href="{{.Canonical}}">
+<meta property="og:url" content="{{.Canonical}}">
+{{end}}<meta property="og:type" content="website">
+<meta property="og:site_name" content="Circumvention Corpus">
+<meta property="og:title" content="{{.Title}}">
+<meta property="og:description" content="{{.Description}}">
+<meta property="og:image" content="https://corpus.lantern.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Circumvention Corpus: a structured, LLM-callable index of censorship-circumvention research, from Lantern">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{.Title}}">
+<meta name="twitter:description" content="{{.Description}}">
+<meta name="twitter:image" content="https://corpus.lantern.io/og.png">
+{{with .JSONLD}}<script type="application/ld+json">
+{{.}}
+</script>
+{{end}}<script>
 (function(){
   var d = document.documentElement;
   var t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -666,6 +687,7 @@ const layoutTmpl = `<!doctype html>
       <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true" width="22" height="22"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2" width="24" height="24"/><line x1="2" y1="9" x2="26" y2="9"/><line x1="2" y1="15" x2="26" y2="15"/><line x1="2" y1="21" x2="26" y2="21"/><line x1="9" y1="2" x2="9" y2="26"/><line x1="15" y1="2" x2="15" y2="26"/><line x1="21" y1="2" x2="21" y2="26"/></g></svg>
       <span class="brand-name">circumvention<span class="brand-dot">·</span>corpus</span>
     </a>
+    <a class="brand-by" href="https://lantern.io" title="Lantern: free VPN and censorship-circumvention app">from <span>Lantern</span></a>
     <div class="search-wrap">
       <input id="search" type="search" placeholder="search {{.PaperCount}} papers…" autocomplete="off" spellcheck="false">
       <kbd class="search-kbd">/</kbd>
@@ -693,7 +715,8 @@ const layoutTmpl = `<!doctype html>
     <div class="foot-grid">
       <div>
         <div class="foot-title">circumvention-corpus</div>
-        <p>A controlled-vocabulary, LLM-callable index of censorship-circumvention research.</p>
+        <p>A controlled-vocabulary, LLM-callable index of censorship-circumvention research, from <a class="inline" href="https://lantern.io">Lantern</a>.</p>
+        <p><a class="get-lantern" href="https://lantern.io/download">Get Lantern →</a></p>
       </div>
       <div>
         <div class="foot-title">Browse</div>
@@ -723,6 +746,20 @@ const layoutTmpl = `<!doctype html>
         </ul>
       </div>
     </div>
+    <div class="more-lantern">
+      <div class="foot-title">More from <a href="https://lantern.io">Lantern</a></div>
+      <ul>
+        <li><a href="https://lantern.io">Lantern</a> <span>free VPN and censorship-circumvention app</span></li>
+        <li><a href="https://samizdat.lantern.io">Samizdat</a> <span>censorship-circumvention protocol shaped like real TLS</span></li>
+        <li><a href="https://soar.lantern.io">Soar</a> <span>DNS tunnel for networks that censor everything but DNS</span></li>
+        <li><a href="https://kindling.lantern.io">Kindling</a> <span>gets an app's first requests through censoring firewalls</span></li>
+        <li><a href="https://twiddle.lantern.io">twiddle</a> <span>a TLS ClientHello, byte by byte</span></li>
+        <li><a href="https://lamplighter.lantern.io">Lamplighter</a> <span>run a Lantern node</span></li>
+        <li><a href="https://geedge.lantern.io">Geedge leak index</a> <span>what the Geedge/MESA leak reveals about censor capabilities</span></li>
+        <li><a href="https://ietf.lantern.io">IETF corpus</a> <span>LLM-callable corpus of IETF RFCs and drafts</span></li>
+        <li><a href="https://unbounded-wp.lantern.io">Lantern Action Mode for WordPress</a> <span>live demo</span></li>
+      </ul>
+    </div>
     <p class="legal">Schema, taxonomy, and metadata: CC0 / public domain. Paper PDFs are not redistributed; each entry links to its canonical source. Maintained by the <a href="https://lantern.io" rel="external">Lantern</a> team and the broader circumvention community.</p>
   </div>
 </footer>
@@ -732,7 +769,7 @@ const layoutTmpl = `<!doctype html>
 const indexBody = `
 <section class="hero">
   <div class="hero-text">
-    <p class="eyebrow">circumvention research · structured · LLM-callable</p>
+    <p class="eyebrow">circumvention research · structured · LLM-callable · from <a href="https://lantern.io">Lantern</a></p>
     <h1 class="display">A structured corpus of how to keep the internet <em>free</em>.</h1>
     <p class="lede">Every paper tagged against a shared taxonomy of <a href="/censors/">censors</a>, <a href="/techniques/">detection techniques</a>, and <a href="/defenses/">defenses</a> &mdash; including work from <span class="researchers"><a href="https://ensa.fi/" rel="external">Roya Ensafi</a>, <a href="https://people.cs.umass.edu/~amir/" rel="external">Amir Houmansadr</a>, <a href="https://ericw.us/" rel="external">Eric Wustrow</a>, <a href="https://www.cs.umd.edu/~dml/" rel="external">Dave Levin</a>, <a href="https://people.cs.uchicago.edu/~feamster/" rel="external">Nick Feamster</a>, <a href="https://nphoang.com/" rel="external">Nguyen Phong Hoang</a>, <a href="https://www.bamsoftware.com/david/" rel="external">David Fifield</a>, <a href="https://jhalderm.com/" rel="external">J. Alex Halderman</a>, <a href="https://www.jonsnowwhite.de/" rel="external">Niklas Niere</a></span>, and many others. An MCP server exposes the whole thing to any AI assistant &mdash; or ask the corpus directly.</p>
   </div>
@@ -871,7 +908,7 @@ const indexBody = `
 <section class="recent">
   <p class="section-mark"><span class="sec-num">§ 03</span> <span class="sec-rule"></span> <span class="sec-title">self-updating</span></p>
   <h2 class="display-sm">The corpus keeps crawling without us.</h2>
-  <p class="lede">A pipeline polls <a href="https://arxiv.org" rel="external">arXiv</a>, <a href="https://github.com/net4people/bbs" rel="external">net4people/bbs</a>, <a href="https://gfw.report" rel="external">gfw.report</a>, <a href="https://petsymposium.org" rel="external">PoPETs</a>, <a href="https://www.usenix.org/conferences/byname/108" rel="external">FOCI</a>, <a href="https://www.usenix.org/conferences/byname/115" rel="external">USENIX Security</a>, <a href="https://www.ermao.net/" rel="external">ermao.net</a>, and the <a href="https://www.jonsnowwhite.de/publications/" rel="external">Paderborn upb-syssec</a> group's <a href="https://upb-syssec.github.io/blog/" rel="external">publications and blog</a> for new circumvention research, fetches each candidate via <a href="https://getwick.dev/" rel="external">wick</a> (browser-grade, residential-IP web access), then asks Claude to propose taxonomy tags and extract findings against the schema. Every new entry lands as an <code>auto-ingest</code> PR labeled for human review. Below: the most recent additions.</p>
+  <p class="lede">A pipeline polls <a href="https://arxiv.org" rel="external">arXiv</a>, <a href="https://github.com/net4people/bbs" rel="external">net4people/bbs</a>, <a href="https://gfw.report" rel="external">gfw.report</a>, <a href="https://petsymposium.org" rel="external">PoPETs</a>, <a href="https://www.usenix.org/conferences/byname/108" rel="external">FOCI</a>, <a href="https://www.usenix.org/conferences/byname/115" rel="external">USENIX Security</a>, <a href="https://www.ermao.net/" rel="external">ermao.net</a>, and the <a href="https://www.jonsnowwhite.de/publications/" rel="external">Paderborn upb-syssec</a> group's <a href="https://upb-syssec.github.io/blog/" rel="external">publications and blog</a> for new circumvention research, fetches each candidate via <a href="https://getwick.dev/" rel="external">wick</a> (browser-grade, residential-IP web access), then asks Claude to propose taxonomy tags and extract findings against the schema. Every new batch lands as an <code>auto-ingest</code> PR that merges once CI validates it; a batch that fails CI waits for a human. Below: the most recent additions.</p>
   <ul class="paper-list">
     {{range .Recent}}
     <li>
@@ -885,15 +922,42 @@ const indexBody = `
   </ul>
 </section>
 
+<section class="faq" id="faq">
+  <p class="section-mark"><span class="sec-num">§ 04</span> <span class="sec-rule"></span> <span class="sec-title">questions</span></p>
+  <h2 class="display-sm">Frequently asked.</h2>
+  <ol class="faq-list">
+    {{range $i, $f := .FAQ}}
+    <li class="qa" id="{{$f.Slug}}">
+      <h3><a href="#{{$f.Slug}}">{{$f.Q}}</a></h3>
+      <p>{{$f.A}}</p>
+    </li>
+    {{end}}
+  </ol>
+</section>
+
 <section class="cta-bottom">
   <div class="cta-grid">
     <div>
-      <p class="section-mark"><span class="sec-num">§ 04</span> <span class="sec-rule"></span> <span class="sec-title">connect</span></p>
+      <p class="section-mark"><span class="sec-num">§ 05</span> <span class="sec-rule"></span> <span class="sec-title">connect</span></p>
       <h2 class="display-sm">Plug it into your assistant.</h2>
       <p class="lede">One line. Your AI gains <code>search_papers</code>, <code>get_paper</code>, <code>list_taxonomy</code>, and <code>find_related</code> over the corpus.</p>
       <a class="btn primary" href="/use/">How to install</a>
     </div>
   </div>
+</section>
+`
+
+const notFoundBody = `
+<section class="notfound">
+  <p class="section-mark"><span class="sec-num">§ 404</span> <span class="sec-rule"></span> <span class="sec-title">not in the corpus</span></p>
+  <h1 class="display-sm">No page at this address.</h1>
+  <p class="lede">The link may be old, or the paper or finding may have been renamed. Try the search box above, or start from one of these:</p>
+  <ul class="notfound-links">
+    <li><a href="/">The Circumvention Corpus home page</a></li>
+    <li><a href="/papers/">All papers</a></li>
+    <li><a href="/findings/">All extracted findings</a></li>
+    <li><a href="/ask/">Ask the corpus a question</a></li>
+  </ul>
 </section>
 `
 
@@ -2753,6 +2817,56 @@ article.paper .notes {
 }
 .legal a { color: var(--ink-2); border: none; }
 .legal a:hover { color: var(--accent); }
+
+/* Lantern attribution: header byline, footer link, More-from-Lantern list */
+.brand-by {
+  font-family: "JetBrains Mono", monospace; font-size: 0.78rem;
+  color: var(--ink-mute); border: none; margin-right: auto; margin-left: -0.4rem;
+  padding: 0.15rem 0.5rem; border-left: 1px solid var(--rule);
+}
+.brand-by span { color: var(--accent); }
+.brand-by:hover { color: var(--accent); border-bottom: none; }
+.foot-grid a.inline { color: var(--accent); }
+.get-lantern { font-family: "JetBrains Mono", monospace; font-size: 0.82rem; }
+.foot-grid a.get-lantern { color: var(--accent); }
+.more-lantern { padding: 1.5rem 0 1.75rem; border-top: 1px solid var(--rule); }
+.more-lantern .foot-title a { color: inherit; border: none; }
+.more-lantern ul {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.55rem 2.5rem;
+}
+.more-lantern li { line-height: 1.4; }
+.more-lantern a { color: var(--ink); border: none; font-weight: 700; }
+.more-lantern a:hover { color: var(--accent); }
+.more-lantern span { display: block; color: var(--ink-mute); font-size: 0.82rem; }
+
+/* FAQ on the home page */
+.faq-list { list-style: none; padding: 0; margin: 1.5rem 0 0; counter-reset: q; max-width: 50rem; }
+.faq-list .qa { counter-increment: q; border-top: 1px solid var(--rule); padding: 1.1rem 0 0.4rem 3.2rem; position: relative; }
+.faq-list .qa:last-child { border-bottom: 1px solid var(--rule); }
+.faq-list .qa::before {
+  content: "q." counter(q, decimal-leading-zero);
+  position: absolute; left: 0; top: 1.35rem;
+  font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.faq-list h3 { font-size: 1.2rem; margin: 0 0 0.45rem; font-weight: 500; }
+.faq-list h3 a { color: var(--ink); border: none; }
+.faq-list h3 a:hover { color: var(--accent); }
+.faq-list p { margin: 0 0 0.6rem; color: var(--ink-2); line-height: 1.6; }
+.faq-list code { overflow-wrap: anywhere; }
+.faq-list .qa:target h3 a { color: var(--accent); }
+
+/* 404 */
+.notfound { padding: 1rem 0 3rem; max-width: 44rem; }
+.notfound .section-mark { margin-top: 1rem; }
+.notfound-links { padding-left: 1.2rem; line-height: 1.9; }
+
+@media (max-width: 35rem) {
+  .brand-by { position: absolute; top: 0.95rem; right: 1rem; margin: 0; padding: 0; border-left: none; font-size: 0.74rem; z-index: 1; }
+  .faq-list .qa { padding-left: 0; padding-top: 2.3rem; }
+  .faq-list .qa::before { top: 1rem; }
+}
 
 /* Use page sections */
 dl.tax dt code { font-family: inherit; background: none; border: none; padding: 0; color: inherit; }
