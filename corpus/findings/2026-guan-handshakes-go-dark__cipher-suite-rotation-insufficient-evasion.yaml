@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-guan-handshakes-go-dark
+kind: detection
+summary: Masking individual TCP/IP header fields (IP ID, SEQ, ACK, TCP Window) each reduces FLARE's accuracy by at most 1.58 percentage points on CSTNET-TLS 1.3 and 1.36 pp on CipherSpectrum-mix, while FLARE accuracy varies by at most 1.53 percentage points across TLS 1.3 AEAD cipher suites (AES-128-GCM-SHA256, AES-256-GCM-SHA384, ChaCha20-Poly1305).
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Rotating cipher suites or spoofing individual TCP/IP header fields provides negligible evasion — the classifier distributes its reliance across many protocol fields simultaneously, so there is no single field to target.
+    - Effective evasion requires holistic behavioral randomization rather than targeted manipulation of individual observable header fields.
+section: §4.3, Table 7
+extracted_by: claude-sonnet-4-6

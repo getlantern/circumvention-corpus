@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-diagnose-github-dns
+kind: deployment
+summary: GitHub connectivity failures in censored networks manifest at multiple distinct layers — DNS interference, IP-level blocking, TLS inspection by managed proxies, and SSH port-22 blocking — producing identical user-visible symptoms ('page cannot be reached' or timeout). The document establishes that the symptom alone cannot identify the failing layer and that each layer requires independent testing.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+    - port-blocking
+    - middlebox-interference
+censors:
+    - cn
+defense_implications:
+    - Circumvention clients should perform layered self-diagnostics (DNS → TCP → TLS → application) and surface which specific layer failed rather than a generic 'connection failed' error, so users know whether a protocol-level or DNS-level remedy applies.
+    - Design connection probers that test each blocking layer independently and report discrete failure codes, not a single boolean reachability flag.
+section: §Symptoms and ordered checks 1–6
+extracted_by: claude-sonnet-4-6

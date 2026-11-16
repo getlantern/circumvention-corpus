@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ma-encrypted-traffic-classification
+kind: detection
+summary: Encrypted traffic can be classified by passive observers despite payload encryption; the chapter demonstrates that ML-based classifiers operating on flow-level features (packet sizes, inter-arrival times, session statistics) can identify application-type and protocol identity without decrypting traffic, making encryption alone insufficient to protect user privacy.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools cannot rely on encryption alone to prevent protocol identification; traffic shaping at the flow-feature level (packet size normalization, timing perturbation) is required as a complementary defense.
+    - Designers should assume that any consistent statistical signature in packet size distributions or inter-arrival times is classifiable by a commodity ML pipeline and engineer those signatures out explicitly.
+section: Abstract
+extracted_by: claude-sonnet-4-6

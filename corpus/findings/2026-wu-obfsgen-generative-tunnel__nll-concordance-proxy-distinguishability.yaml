@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-obfsgen-generative-tunnel
+kind: evaluation
+summary: 'Flow-level negative log-likelihood under the trained sequence model correlates with censor distinguishability with Harrell''s concordance C=0.955, outperforming token-pair statistical distances (TVD, JSD, HD: C=0.820–0.851) and single-token distances (C=0.644–0.692), demonstrating that cross-record dependencies spanning a whole flow carry most of the information that makes a flow distinguishable from normal traffic.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Use whole-flow sequence model likelihood rather than marginal or low-order Markov statistics when optimizing or evaluating tunnel obfuscation; short-range statistics miss the long-range dependencies that censors can exploit.
+    - Classifier evaluations of obfuscation quality should include models that condition on the full flow history, not just per-record or per-burst statistics.
+section: §5.6, Fig. 7
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-diagnose-github-dns
+kind: evaluation
+summary: 'DNS answer mismatches between the system resolver and an alternate resolver (e.g., 1.1.1.1) are not by themselves evidence of DNS poisoning: large services use distributed CDN infrastructure and legitimately return different valid addresses. The document cautions against labelling a mismatch as interference without corroborating evidence such as connection failure to the returned address.'
+techniques:
+    - dns-poisoning
+censors:
+    - cn
+defense_implications:
+    - Automated censorship-detection tools that flag DNS mismatches as poisoning will generate false positives against CDN-distributed services; corroborate with a reachability probe to the returned address before concluding interference.
+    - Circumvention apps reporting DNS status to users should distinguish 'returned unexpected address that also fails to connect' from 'returned different-but-valid CDN address' to avoid alarming users unnecessarily.
+section: §1 Compare DNS Answers
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-obfsgen-generative-tunnel
+kind: detection
+summary: 'In 2022, China''s Great Firewall began blocking TLS-based tunnels (Trojan, VLESS, NaiveProxy) not by their packet bytes—which are indistinguishable from browser TLS—but by traffic shape: the size of the first post-handshake bursts and the apparent round-trip delay induced by an extra tunnel hop are highly discriminative fingerprints separating tunneling TLS from normal TLS.'
+techniques:
+    - traffic-shape
+    - tls-fingerprint
+    - dpi
+defenses:
+    - trojan
+    - vless
+    - mimicry
+censors:
+    - cn
+defense_implications:
+    - Padding and delay added after application writes cannot reduce first-burst size or tunnel-induced RTT overhead; only a schedule-driven obfuscator that acts before the application writes can close these distributional gaps.
+    - Any TLS-mimicking transport must match not only cipher suites and handshake bytes but also the full burst-size and inter-record timing distributions of the reference traffic class.
+section: §1, Fig. 2
+extracted_by: claude-sonnet-4-6

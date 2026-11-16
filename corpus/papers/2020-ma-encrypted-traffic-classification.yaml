@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1007/978-981-15-6575-5_3
+id: 2020-ma-encrypted-traffic-classification
+title: Encrypted Traffic Classification
+authors:
+    - Yuxiang Ma
+    - Yulei Wu
+    - Jingguo Ge
+venue: Accountability and Privacy in Network Security
+year: 2020
+doi: 10.1007/978-981-15-6575-5_3
+url: https://doi.org/10.1007/978-981-15-6575-5_3
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant to understanding traffic classification and analysis capabilities that inform circumvention protocol design decisions.
+visibility: public
+date_added: "2026-11-16"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1007/978-981-15-6575-5_3

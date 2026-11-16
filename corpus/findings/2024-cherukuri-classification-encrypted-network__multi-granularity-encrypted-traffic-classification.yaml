@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: 'The chapter establishes that encrypted traffic can be classified at multiple granularities: by encryption type, by encapsulation protocol (VPN, HTTPS), by specific application (e.g., Skype), and by application category (chat, video streaming). Each granularity level corresponds to a distinct classifier design and feature set, meaning circumvention tools face a layered detection surface rather than a single classification boundary.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - tls-fingerprint
+censors:
+    - generic
+defense_implications:
+    - A circumvention tool that defeats protocol-level classification (e.g., 'looks like HTTPS') may still be detected at the application-category level (e.g., traffic volume patterns inconsistent with browsing); defense must address all classification granularities.
+    - Application-specific behavioral signatures (e.g., Skype-like session patterns) are a distinct attack surface from protocol-level fingerprinting and require separate countermeasures such as traffic shaping to mimic expected category-level patterns.
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-cao-progress-study-encrypted
+kind: detection
+summary: Entropy-based detection of encrypted traffic (Dornger 2010, referenced as the survey's first citation) was an established real-time technique by 2012, enabling censors to flag high-entropy byte streams without any payload parsing. The technique serves as a lightweight first-pass filter before more expensive ML classification stages.
+techniques:
+    - random-payload-detect
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Any circumvention protocol whose wire format is indistinguishable from uniform random bytes will trigger entropy-based detectors; mimicking a known low-entropy protocol (TLS, HTTP) or adding structured framing that reduces measured entropy is necessary.
+    - Entropy detection is fast and cheap—assume it runs at line rate on censor infrastructure; defenses that only defeat slower ML classifiers while remaining high-entropy will still be caught.
+section: References [1]
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-obfsgen-generative-tunnel
+kind: defense
+summary: Application-driven obfuscators (obfs4 and all surveyed deployed transports) can only increase burst size and add delay; they cannot act while the application is idle to reduce tunnel-induced round-trip overhead. Xue et al. found that obfs4's timing obfuscation made the RTT fingerprint worse, not better, confirming that application-driven obfuscation is structurally unable to close distributional gaps where tunneling traffic is already larger or slower than the normal reference.
+techniques:
+    - traffic-shape
+defenses:
+    - obfs4
+    - randomization
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Adopt a schedule-driven architecture where the obfuscator drives its own send schedule independently of the application, enabling it to send before or between application writes to shrink apparent burst sizes and tunnel RTT to match normal traffic.
+    - Do not add timing jitter to an application-driven obfuscator expecting it to defeat RTT-based fingerprinting; it increases apparent latency and widens the distributional gap.
+section: §3
+extracted_by: claude-sonnet-4-6

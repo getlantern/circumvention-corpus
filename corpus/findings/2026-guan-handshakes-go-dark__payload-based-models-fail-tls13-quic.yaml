@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-guan-handshakes-go-dark
+kind: detection
+summary: Payload-byte-based pre-trained models (ET-BERT) collapse to an average of 45.83% accuracy on CipherSpectrum (TLS 1.3, SNI removed) and 56.25% on VisQUIC, while sequence-based models (FS-Net) maintain 86.40% and 77.87% respectively — confirming that packet length and direction are the dominant discriminative signal once strong payload encryption is applied.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Encrypting payload bytes is not sufficient to defeat traffic classifiers; circumvention transports must also obfuscate packet-length sequences and direction patterns through padding, splitting, or merging.
+    - The classifier attack surface has shifted entirely to behavioral metadata — assumptions that 'encryption defeats DPI' no longer hold against modern ML-based classification.
+section: §4.3, Table 6
+extracted_by: claude-sonnet-4-6

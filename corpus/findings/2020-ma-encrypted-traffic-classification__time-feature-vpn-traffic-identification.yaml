@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ma-encrypted-traffic-classification
+kind: detection
+summary: Time-related flow features (session duration, inter-packet gaps, burst statistics) characterize encrypted and VPN traffic with sufficient accuracy for application identification (Draper-Gil et al. 2016), confirming that temporal behavioral signatures leak protocol identity even when all payload bytes are encrypted.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - VPN and tunneling protocols have characteristic burst patterns and session-length distributions that persist across encryption; circumvention transports should inject cover traffic or introduce artificial delays to disrupt the natural inter-packet timing that belongs to the underlying application.
+    - Implementations that faithfully mirror a cover protocol's timing (not just its byte distribution) are significantly harder to distinguish; mimicry must extend to the temporal domain.
+section: References [17]
+extracted_by: claude-sonnet-4-6

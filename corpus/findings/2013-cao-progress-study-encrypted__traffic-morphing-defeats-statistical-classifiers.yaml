@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-cao-progress-study-encrypted
+kind: defense
+summary: Protocol obfuscation was identified by 2012 as the primary countermeasure against traffic classification, with both offensive (Hjelmvik & John 2010, 'Breaking and Improving Protocol Obfuscation') and defensive work (SkypeMorph, Wright et al. 'Traffic Morphing') cited. Traffic morphing—reshaping a flow's packet-size distribution to match a benign target protocol—was specifically cited as 'an efficient defense against statistical traffic analysis' (Wright et al., NDSS 2009).
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - mimicry
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Traffic morphing (reshaping packet-size CDF to match a benign protocol) directly defeats statistical flow classifiers; implement as a shaping layer that pads or fragments packets to match a chosen target distribution.
+    - Protocol obfuscation designs must account for active adversarial analysis (Hjelmvik & John show obfuscation can be broken); combine morphing with handshake randomization rather than relying on either alone.
+section: References [7, 15, 16]
+extracted_by: claude-sonnet-4-6
