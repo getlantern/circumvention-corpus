@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: Flow-level and packet-size features derived from transport-layer statistics — without any payload content — are the operative signal in both the KL-divergence and Euclidean-distance classifiers proposed, confirming that fully encrypted byte streams remain classifiable via their structural traffic shape.
+techniques:
+    - traffic-shape
+    - fully-encrypted-detect
+censors:
+    - generic
+defense_implications:
+    - Full encryption of payload is insufficient for evasion; circumvention designs must also target inter-packet timing, flow duration, and packet-length distributions as first-class obfuscation requirements.
+    - Pluggable transports that pad packets to fixed sizes or inject cover traffic (e.g., obfs4-style shaping) directly attack the feature set these classifiers depend on and represent a necessary layer of defense.
+section: Abstract
+extracted_by: claude-sonnet-4-6

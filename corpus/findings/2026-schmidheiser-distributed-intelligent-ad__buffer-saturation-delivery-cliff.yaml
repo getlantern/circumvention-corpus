@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schmidheiser-distributed-intelligent-ad
+kind: evaluation
+summary: All tested routing protocols — IDCR, dynamic clique routing, and Epidemic — exhibit a sharp delivery rate drop-off correlated with node buffers reaching maximum capacity, and buffer occupancy increases at similar rates across all three protocols regardless of message hop count. With 0.05 MB node buffers, neither IDCR nor dynamic clique routing achieved 100% delivery in the blockade 2 and several other protest mobility patterns.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Congestion-aware routing alone cannot prevent buffer saturation; ad-hoc circumvention protocols operating in memory-constrained environments must implement replica-count ceilings (e.g., Spray-and-Wait style) to keep buffers below capacity.
+    - Device buffer size is a first-order constraint on message delivery — protocol designers should profile minimum effective buffer sizes for target device populations before deployment.
+section: §VI-A, §VII-A, Fig. 3
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ma-encrypted-traffic-classification
+kind: detection
+summary: The chapter's primary cited result (Zou et al. 2018 HPCC) employs a Convolutional Long Short-Term Memory (CLSTM) neural network for encrypted traffic classification, combining spatial feature extraction via CNN with temporal sequence modeling via LSTM, representing the state of the art in deep-learning-based encrypted-traffic identification as of 2020.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - CLSTM classifiers exploit both per-packet byte patterns and cross-packet temporal structure simultaneously; defenses must address both dimensions, not just one, to be robust against this classifier family.
+    - A transport that randomizes payload bytes but preserves a consistent temporal rhythm (e.g., fixed heartbeat interval) will still be fingerprinted by the LSTM component of such classifiers.
+section: References [1]
+extracted_by: claude-sonnet-4-6

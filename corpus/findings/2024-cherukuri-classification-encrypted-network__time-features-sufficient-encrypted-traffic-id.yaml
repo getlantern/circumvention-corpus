@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: Time-based attributes are reviewed as a primary feature family for encrypted traffic classification, complementing packet header features. The chapter explicitly cites the Draper-Gil et al. (2016) work showing that time-related features characterize encrypted and VPN traffic, and the Alshammari & Zincir-Heywood (2011) result demonstrating that encrypted traffic can be identified without port numbers, IP addresses, or payload inspection using only flow statistics.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Inter-packet timing distributions are a stable and independently-sufficient classification signal; circumvention tools must actively reshape timing (e.g., adding jitter, fixed inter-packet delays) to defeat time-feature classifiers.
+    - Eliminating payload distinguishability (e.g., via full encryption) is insufficient if flow-timing and volume metadata are preserved; traffic shaping must target the temporal domain explicitly.
+section: Abstract (citing refs 37, 41–42)
+extracted_by: claude-sonnet-4-6

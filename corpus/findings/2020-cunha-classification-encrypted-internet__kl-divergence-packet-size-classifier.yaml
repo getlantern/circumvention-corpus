@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: Two statistical classifiers based on Kullback-Leibler (KL) divergence and Euclidean distance over flow and packet-size distributions successfully classify encrypted Internet traffic using 'few features,' and their performance is evaluated against a Support Vector Machine (SVM) baseline, demonstrating that lightweight statistical signatures from packet-length distributions alone are sufficient to identify protocol identity.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must randomize or pad packet-size distributions to defeat KL-divergence-based protocol fingerprints — a protocol with a characteristic packet-size histogram remains detectable even without payload access.
+    - Mimicking the packet-size distribution of a known benign protocol (e.g., HTTPS) is a concrete countermeasure; matching the reference distribution minimizes KL divergence to the cover traffic signature.
+section: Abstract
+extracted_by: claude-sonnet-4-6

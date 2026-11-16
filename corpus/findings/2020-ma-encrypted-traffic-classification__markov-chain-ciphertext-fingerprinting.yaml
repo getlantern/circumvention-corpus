@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-ma-encrypted-traffic-classification
+kind: detection
+summary: Markov-chain fingerprinting of byte-level transitions within encrypted payloads (Korczyński & Duda 2014, INFOCOM) is cited as an effective technique that does not require port numbers or IP addresses, demonstrating that censor-side classifiers can operate on the statistical structure of the ciphertext itself rather than metadata alone.
+techniques:
+    - ml-classifier
+    - random-payload-detect
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Ciphertext that exposes non-uniform byte-transition probabilities (e.g., due to a weak cipher, protocol framing, or header fields) can be fingerprinted even when payload semantics are hidden; designers should ensure the cipher output is indistinguishable from uniform random bytes at the byte-bigram level.
+    - Using a stream cipher in CTR/GCM mode over a well-padded plaintext minimizes Markov-chain leakage; avoid block cipher modes that produce structured padding artifacts.
+section: References [5]
+extracted_by: claude-sonnet-4-6

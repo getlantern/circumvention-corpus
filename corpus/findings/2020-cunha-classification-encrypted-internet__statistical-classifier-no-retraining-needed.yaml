@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: Statistical traffic classifiers operating on transport-layer features can run in real time and do not require retraining when a new traffic type appears, unlike supervised ML classifiers, making them operationally lower-cost for a censor to maintain and deploy at line rate.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - The retraining burden of ML classifiers gives circumvention tools a window to evade detection after each protocol change; statistical classifiers close this window, so protocol rotation strategies must account for detection methods that adapt instantly.
+    - Designing circumvention traffic to resemble a stable, well-characterized benign protocol (rather than relying on novelty to evade classifiers) is more durable against methods that need no retraining.
+section: Abstract
+extracted_by: claude-sonnet-4-6

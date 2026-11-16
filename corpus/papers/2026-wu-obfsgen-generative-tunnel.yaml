@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.15019
+id: 2026-wu-obfsgen-generative-tunnel
+title: 'obfsgen: Generative Tunnel Obfuscation'
+authors:
+    - Kaidong Wu
+    - Wentao Du
+    - Shinan Liu
+    - Diwen Xue
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.15019"
+url: https://arxiv.org/abs/2611.15019v1
+abstract: Encrypted tunnels are widely used to circumvent censorship, which has drawn censors' efforts to detect and block them. As the circumvention tunnels in widest use have largely converged on TLS, detection has shifted from the content of their traffic to its shape, where recent research and real-world blocking events have revealed exploitable fingerprints of tunneling. Existing traffic-shaping obfuscators such as obfs4, however, are fundamentally limited in hiding these fingerprints, as their application-driven design can only add to the shape that the application creates. A schedule-driven obfuscator, which decides when and how much to send independently of the application, can give tunnels any shape but raises new challenges, first and foremost what a good shape is. This paper presents obfsgen, a schedule-driven obfuscator for tunneling traffic. obfsgen samples its schedule from a generative sequence model of normal traffic, which predicts the future shape of a flow from its whole history, to capture the long-range dependencies that make a flow's shape normal. Built around this model, obfsgen addresses system problems that such an obfuscator faces in practice, such as synchronization across a noisy network. We evaluate the (in)distinguishability that obfsgen offers, the performance overhead that it adds and the computational resources that it requires. We see the schedule-driven architecture as the next generation of tunnel obfuscators, and we hope that obfsgen and the rationale behind its design help make such obfuscators practical and deployable.
+censors:
+    - generic
+techniques:
+    - traffic-shape
+defenses_discussed:
+    - randomization
+evaluation_methods:
+    - simulation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly applicable to Lantern's tunnel obfuscation; addresses real-world threat of traffic-shape censorship detection.
+visibility: public
+date_added: "2026-11-16"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.15019

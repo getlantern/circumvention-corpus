@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schmidheiser-distributed-intelligent-ad
+kind: evaluation
+summary: Epidemic routing achieves higher delivery rates than IDCR but at a cost of up to 62× more message hops in protest-specific mobility patterns and up to two orders of magnitude more message-related packets (e.g., 27.8 million packets vs. 571,114 for IDCR in the gather pattern with 0.05 MB buffers). Both prior works and this evaluation confirm that Epidemic-class flooding is impractical for resource-constrained devices in real protest deployments.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Flooding-based fallback transports for internet-shutdown scenarios must be rejected in favor of topology-aware protocols — the energy and bandwidth overhead will exhaust devices and collapse the mesh before communication goals are met.
+    - Protocol design should target delivery rate parity with Epidemic at a fraction of the resource cost; IDCR demonstrates this is achievable in dense topologies.
+section: §VI-B, Table II, Table IV, §VII-A
+extracted_by: claude-sonnet-4-6

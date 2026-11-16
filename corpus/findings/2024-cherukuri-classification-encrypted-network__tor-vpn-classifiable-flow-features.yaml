@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: Tor traffic is explicitly identified alongside SSH, VPN, and AMI as a classifiable target using packet header attributes, time-based attributes, and single/multiple-flow attributes, with the chapter claiming 'high accuracy and performance' for such classifiers. The survey synthesizes ML-based approaches (including LSTM and CNN architectures from referenced works) capable of identifying these protocols without payload inspection.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - dpi
+defenses:
+    - tor
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Tor and Tor-based pluggable transports remain fingerprintable via flow-level statistical features even without payload inspection; randomizing inter-packet timing and packet size distributions is necessary.
+    - Pluggable transports must target flow-graph and multi-flow behavioral features (host behavior patterns across connections), not just per-packet entropy.
+section: Abstract
+extracted_by: claude-sonnet-4-6

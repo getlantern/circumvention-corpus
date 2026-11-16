@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schmidheiser-distributed-intelligent-ad
+kind: defense
+summary: 'Interest-based routing in IDCR requires clique leaders to exchange universally-known member identifiers, creating a deanonymization risk in adversarial protest environments: a censor with demographic knowledge of a target could probe routing metadata to identify where content of interest to that demographic is concentrated and infer the target''s location. The paper acknowledges this vulnerability and proposes rotating pseudonymous identifiers as a mitigation, but notes that identifier rotation progressively invalidates contact history.'
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Any mesh routing protocol that uses persistent identifiers or demographic/interest labels for routing optimization exposes users to metadata-based location attacks — rotate identifiers at least every clique cycle and avoid content-aware caching heuristics in threat-model scenarios.
+    - Prefer minimal-identifying routing signals (betweenness centrality, buffer state) over interest/content signals; this bounds adversarial inference even if routing metadata is observed.
+section: §II-A, §IV-B, §VII-B
+extracted_by: claude-sonnet-4-6

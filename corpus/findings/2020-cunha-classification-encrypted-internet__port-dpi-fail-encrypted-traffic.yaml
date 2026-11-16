@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: Port-based classification and deep packet inspection (DPI/payload inspection) fail to classify encrypted or obfuscated Internet traffic, motivating statistical and ML-based approaches that operate on transport-layer flow features instead of payload content.
+techniques:
+    - port-blocking
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Encrypting or obfuscating traffic payload is necessary but not sufficient — circumvention protocols must also disguise transport-layer flow statistics (packet sizes, inter-arrival times) to evade statistical classifiers.
+    - Port randomization alone does not defeat classification once an adversary has shifted to flow-feature-based methods.
+section: Abstract
+extracted_by: claude-sonnet-4-6

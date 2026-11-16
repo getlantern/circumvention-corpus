@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schmidheiser-distributed-intelligent-ad
+kind: evaluation
+summary: Intelligent dynamic clique routing (IDCR) achieves comparable or higher delivery rates than dynamic clique routing while transmitting through up to 25% fewer intermediate hops in protest-like mobility models. In the march mobility pattern with 0.05 MB buffers, IDCR delivered approximately 8% more messages to at least one recipient, 6.5% more to 90% of recipients, and 6.3% more to all recipients compared to dynamic clique routing.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Social- and congestion-aware heuristics can improve delivery efficiency in shutdown-scenario mesh networks without additional bandwidth cost — adopt them as a baseline over naive flooding.
+    - Routing through fewer intermediate carriers reduces man-in-the-middle attack surface (black hole attacks, Harvest Now Decrypt Later), which is critical when carrying sensitive protest communications.
+section: §VI-A, Table I
+extracted_by: claude-sonnet-4-6

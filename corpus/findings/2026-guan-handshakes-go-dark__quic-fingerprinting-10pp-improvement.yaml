@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-guan-handshakes-go-dark
+kind: detection
+summary: FLARE achieves 83.54% accuracy on QUIC-based website fingerprinting (VisQUIC), outperforming the strongest pre-trained baseline by 10.92 percentage points and the strongest deep-learning baseline by 3.92 percentage points, even after QUIC header protection conceals packet numbers and most transport-control information.
+techniques:
+    - ml-classifier
+    - website-fingerprint
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - QUIC-based transports (Hysteria2, etc.) are more fingerprintable than previously assumed — packet-length and inter-packet timing patterns survive QUIC header protection and remain highly discriminative to ML classifiers.
+    - Circumvention protocols must randomize packet-length and direction sequences, not just encrypt payload bytes, to resist behavioral-metadata classifiers.
+section: §4.3, Table 6
+extracted_by: claude-sonnet-4-6

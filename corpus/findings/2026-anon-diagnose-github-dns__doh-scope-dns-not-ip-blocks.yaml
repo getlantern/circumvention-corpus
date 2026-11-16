@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-diagnose-github-dns
+kind: evaluation
+summary: Encrypted DNS (DoH/DoT) reduces the opportunity for in-path DNS query alteration but explicitly cannot remediate IP-level blocks, failed routing, or application-layer restrictions. The document identifies this scope boundary as a common user misconception leading to incomplete diagnosis.
+techniques:
+    - dns-poisoning
+    - ip-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention tools that enable DoH as a first-line defense should inform users that DoH resolves DNS-layer interference only; a separate transport-level bypass is still required when the returned IP address is itself blocked.
+    - Do not present encrypted-DNS enablement as a complete circumvention solution in user-facing UI; explicitly label it as a DNS-layer mitigation distinct from IP/transport bypass.
+section: §4 Use Encrypted DNS Where Appropriate
+extracted_by: claude-sonnet-4-6

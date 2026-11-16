@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: Encrypted traffic classification based solely on port numbers is insufficient for modern encrypted protocols; the chapter reviews three feature families—port-based, flow-based, and packet-based—establishing that only flow- and packet-based features remain operative once encryption is applied. This applies across SSH, VPN, Tor, and AMI traffic, all of which are explicitly reviewed as classifiable targets.
+techniques:
+    - port-blocking
+    - traffic-shape
+    - dpi
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Do not rely on non-standard ports as a primary distinguishing characteristic; classifiers operating on flow statistics and packet payload structure can still identify protocols regardless of port assignment.
+    - Circumvention protocols must address flow-level and packet-level feature exposure independently of port selection.
+section: Abstract
+extracted_by: claude-sonnet-4-6

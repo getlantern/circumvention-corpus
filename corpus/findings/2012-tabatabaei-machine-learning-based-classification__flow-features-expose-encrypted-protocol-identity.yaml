@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-tabatabaei-machine-learning-based-classification
+kind: detection
+summary: Flow-based feature classification using SVM can identify application-layer protocols (specifically BitTorrent) with high accuracy even when the underlying payload is fully encrypted, confirming that application signatures are embedded in traffic patterns rather than payloads.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Protocol designers must assume censors have access to per-flow statistical features; defenses should target the feature space (packet-size histograms, flow byte counts, burst patterns) not just payload bytes.
+    - Pluggable transports using traffic shaping (randomization, padding, timing normalization) are directly motivated by this class of classifier — raw tunneling protocols without shaping remain fingerprintable.
+section: Abstract
+extracted_by: claude-sonnet-4-6

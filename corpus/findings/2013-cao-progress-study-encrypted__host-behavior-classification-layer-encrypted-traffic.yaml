@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-cao-progress-study-encrypted
+kind: detection
+summary: Host-behavior analysis (social-graph and connection-pattern signals, as in BLINC by Karagiannis et al. 2005) was recognized by 2012 as a complementary classification layer that operates independently of payload content, allowing protocol identification without inspecting any packet bytes. The survey lists 'host behavior' as a first-class keyword alongside flow statistical properties and machine learning.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Circumvention tools should not expose a characteristic connection fan-out pattern (e.g., always contacting a small set of IPs on a fixed schedule); blending into normal user browsing behavior at the host level reduces host-behavior classifier accuracy.
+    - Avoid persistent keep-alive connections or highly regular reconnection intervals that give a distinctive temporal signature visible at the host level.
+section: Abstract / Keywords
+extracted_by: claude-sonnet-4-6

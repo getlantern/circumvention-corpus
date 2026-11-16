@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-anon-diagnose-github-dns
+kind: deployment
+summary: 'When SSH port 22 is blocked, GitHub''s official SSH-over-HTTPS endpoint (host: ssh.github.com, port 443) provides an alternative that reuses the already-unblocked HTTPS path. This documents a real-world port-based blocking bypass that relies on the censor''s decision not to disrupt port-443 traffic.'
+techniques:
+    - port-blocking
+defenses:
+    - tunneling
+censors:
+    - cn
+defense_implications:
+    - Circumvention transports that must expose a control channel should default to port 443 (HTTPS) over 22 (SSH) or other non-standard ports, since censors consistently whitelist 443 to avoid collateral damage to web traffic.
+    - For developer-facing tools that tunnel git/SSH operations, automatically fall back from port 22 to port 443 on connection timeout rather than surfacing a raw error.
+section: §6 Handle Blocked SSH
+extracted_by: claude-sonnet-4-6

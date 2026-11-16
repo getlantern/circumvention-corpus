@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.10708
+id: 2026-schmidheiser-distributed-intelligent-ad
+title: Distributed Intelligent Ad Hoc Routing Agents for Communication at Protests During Internet Shutdowns
+authors:
+    - Matthew Schmidheiser
+    - Milena Radenkovic
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.10708"
+url: https://arxiv.org/abs/2611.10708v1
+abstract: Governments around the world are increasingly using internet shutdowns to block digital communication. Internet shutdowns are particularly dangerous during political protests, as they inhibit protesters' ability to organize and communicate critical, potentially life-saving information and may be used to prevent awareness of state-based violence. Recent prior works have explored secure, private messaging systems for use during political protests and internet shutdowns but have encountered long delivery delays or low delivery rates under challenging conditions. In this work, we explore the use of distributed, adaptive, social- and congestion-aware heuristics and efficient communication patterns to create an intelligent ad hoc routing protocol in which network agents learn and leverage the network social environment and monitor and respond to dynamic network congestion behaviour to route messages in a time- and resource-efficient manner. Through this exploration, we contribute an intelligent algorithm and protocol which overall achieves comparable or higher delivery rates relative to the leading dynamic clique routing protocol which it extends while also transmitting messages through notably fewer carriers and, when network devices have larger amounts of buffer storage, transmitting fewer message-related packets. We additionally contribute a further understanding of routing limitations and challenges and conceptualizations of extensions of intelligent dynamic clique routing to overcome them.
+censors:
+    - generic
+techniques: []
+evaluation_methods:
+    - simulation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Explores alternative circumvention modality using mesh routing for complete network shutdowns.
+visibility: public
+date_added: "2026-11-16"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.10708

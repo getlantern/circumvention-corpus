@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-schmidheiser-distributed-intelligent-ad
+kind: evaluation
+summary: In low-density protest formations where nodes are often 10 metres apart or more (blockade 2 mobility model), no tested protocol achieved 100% message delivery, and buffer occupancy plateaued well before maximum capacity — indicating that the delivery ceiling is determined by spatial connectivity, not routing sophistication or buffer size. Dynamic clique routing required an average of 727 hops to reach 90% of recipients in this pattern, 33% more than IDCR's 547.
+defenses:
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - For sparse protest formations or geographically dispersed activist networks, mesh routing protocols hit a hard connectivity floor independent of algorithm quality — supplementary strategies (longer communication range, multi-channel radio, store-and-forward with longer TTL) are required.
+    - Strongly socially-connected relay nodes (high betweenness centrality) are disproportionately valuable in sparse topologies; protocol design should weight their selection more heavily when spatial density is detected to be low.
+section: §VI-A, §VI-B, §VII-A, Table I, Table II
+extracted_by: claude-sonnet-4-6

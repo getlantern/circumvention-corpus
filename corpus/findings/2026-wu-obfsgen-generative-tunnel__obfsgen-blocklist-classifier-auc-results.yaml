@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-wu-obfsgen-generative-tunnel
+kind: evaluation
+summary: Against a blocklisting censor with labeled tunnel traffic, obfsgen's async and sync modes reduce the best-classifier AUC from 0.989–1.000 on plain TLS-tunneling traffic to 0.472–0.581 (async) and 0.453–0.561 (sync), near random chance (0.5), across six classifiers including NB-LL, RF-kFP, Markov chains, CNN-DF, GRU-FSNet, and Transformer-ARES at R=100ms.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - mimicry
+censors:
+    - generic
+defense_implications:
+    - Schedule-driven obfuscation trained on a local reference corpus provides strong resistance to known-tunnel classifiers; deploying obfsgen-style transports would significantly raise the censor's false-negative rate.
+    - Evaluate circumvention tools at operationally realistic false-positive rates (e.g., 0.6% as used in this paper), not just AUC, since nation-state censors face high collateral-damage costs for false positives.
+section: §7.1, Table 1
+extracted_by: claude-sonnet-4-6

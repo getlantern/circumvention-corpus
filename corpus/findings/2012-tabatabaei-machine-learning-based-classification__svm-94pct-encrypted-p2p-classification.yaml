@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-tabatabaei-machine-learning-based-classification
+kind: detection
+summary: An SVM classifier trained on flow-based statistical features (packet-size distributions, inter-arrival times, flow duration) achieved 94.5% accuracy identifying encrypted BitTorrent traffic without payload inspection, demonstrating that encryption alone does not defeat traffic classification.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Encryption of payload is insufficient; circumvention protocols must also normalize flow-level statistics (packet sizes, IAT distributions, flow duration) to match allowed traffic.
+    - Feature selection via mutual information can identify the most discriminating flow features — circumvention designers should audit which statistical features of their protocol are most anomalous relative to cover traffic.
+section: Abstract
+extracted_by: claude-sonnet-4-6

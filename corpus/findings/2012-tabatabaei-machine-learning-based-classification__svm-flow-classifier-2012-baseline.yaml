@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2012-tabatabaei-machine-learning-based-classification
+kind: evaluation
+summary: The 2012 Tabatabaei et al. study established that mutual information-based feature selection combined with SVM achieves 94.5% classification accuracy on encrypted P2P flows, providing an early benchmark for the difficulty of defeating flow-level classifiers through encryption alone.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - As a 2012 baseline, modern censors likely deploy substantially more accurate classifiers; tool designers should assume the detection bar has risen significantly since this result.
+    - 'Circumvention protocols evaluated only against payload-based detection miss the more durable threat: flow-statistical classifiers that operate without decrypting traffic.'
+section: Abstract / §1 Introduction
+extracted_by: claude-sonnet-4-6

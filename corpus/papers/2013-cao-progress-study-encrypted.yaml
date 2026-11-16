@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1007/978-3-642-35795-4_10
+id: 2013-cao-progress-study-encrypted
+title: Progress in Study of Encrypted Traffic Classification
+authors:
+    - Zigang Cao
+    - Shoufeng Cao
+    - Gang Xiong
+    - Li Guo
+venue: Communications in Computer and Information Science
+year: 2013
+doi: 10.1007/978-3-642-35795-4_10
+url: https://doi.org/10.1007/978-3-642-35795-4_10
+censors:
+    - generic
+techniques:
+    - traffic-shape
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Classification methods are core to censor detection of circumvention protocols.
+visibility: public
+date_added: "2026-11-16"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1007/978-3-642-35795-4_10

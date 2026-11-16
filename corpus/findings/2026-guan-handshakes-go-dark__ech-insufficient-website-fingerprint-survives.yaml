@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-guan-handshakes-go-dark
+kind: detection
+summary: 'Website fingerprinting remains effective after SNI removal: FLARE achieves 99.37% accuracy on CipherSpectrum-mix (TLS 1.3, SNI field stripped) and 94.56% on CSTNET-TLS 1.3 (ClientHello packet discarded), demonstrating that Encrypted Client Hello alone does not prevent website identification from packet-length and direction sequences.'
+techniques:
+    - ml-classifier
+    - website-fingerprint
+    - esni-eh-blocking
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - ECH hides the SNI but does not hide the website's traffic fingerprint — tools relying solely on ECH for identity protection remain vulnerable to website fingerprinting via packet-size patterns.
+    - Effective website fingerprint resistance requires active traffic shaping (padding, dummy packets, rate pacing) of the entire flow envelope, not just metadata encryption.
+section: §4.3, Table 6
+extracted_by: claude-sonnet-4-6

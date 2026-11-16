@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2013-cao-progress-study-encrypted
+kind: detection
+summary: By 2012–2013, ML classifiers applied to flow-level statistical features—packet size distributions, inter-arrival times, and byte-count statistics—had become the dominant approach to encrypted traffic classification, superseding port-based and DPI methods. The survey cites over a dozen ML studies covering supervised (SVM, maximum-likelihood) and unsupervised (genetic optimization, hierarchical clustering) methods applied to SSH, Skype, VoIP-over-IPSec, and P2P traffic.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+    - port-blocking
+censors:
+    - generic
+defense_implications:
+    - Flow-level statistical features (packet sizes, IATs) leak protocol identity even when payload is fully encrypted; circumvention protocols must actively shape or pad traffic to defeat this class of classifier.
+    - Avoid any packet-size or timing signature that is consistent across connections—ML classifiers exploit stable per-protocol distributions, so randomization or mimicry of a known benign protocol is necessary.
+section: Abstract / References
+extracted_by: claude-sonnet-4-6

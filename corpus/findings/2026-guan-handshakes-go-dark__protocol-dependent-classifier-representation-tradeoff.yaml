@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-guan-handshakes-go-dark
+kind: evaluation
+summary: On weakly encrypted malware traffic (USTC-TFC, 98.9% unencrypted), byte-based DeepPacket outperforms sequence-based FS-Net by 7.02% in accuracy; but on strongly encrypted website traffic (CSTNET-TLS 1.3), sequence-based FS-Net outperforms byte-based DeepPacket by 17.71%, confirming that optimal traffic classification strategy is protocol-dependent and no single representation generalizes across both encrypted and unencrypted traffic.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Traffic classifiers are increasingly multi-modal and adaptive — circumvention protocol designers should assume adversaries can select between byte-pattern and behavioral-metadata classifiers depending on the observed protocol.
+    - Protocols that mix strongly encrypted flows with weakly encrypted cover traffic expose themselves to byte-pattern analysis on the plaintext component.
+section: §4.2, Tables 4–5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.12442
+id: 2026-guan-handshakes-go-dark
+title: 'When Handshakes Go Dark: An Adaptive Semantic-Sequential Fusion Framework for Encrypted Traffic Classification'
+authors:
+    - Tong Guan
+    - Yunchun Li
+    - Minyuan Xiao
+    - Mingyuan Xia
+    - Yuchen Zhao
+    - Wei Li
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.12442"
+url: https://arxiv.org/abs/2611.12442v1
+abstract: Encrypted traffic classification is essential for network security monitoring and traffic management. Self-supervised pre-training can learn reusable representations from large-scale unlabeled traffic, but TLS 1.3, QUIC, and privacy mechanisms such as Encrypted Client Hello (ECH) increasingly conceal application, handshake, and service-identifying information. Observable upper-layer bytes are therefore dominated by ciphertext, weakening the link between raw-byte patterns and application semantics and limiting model generalization. Moreover, the availability and discriminative value of observable information vary across protocols, protection profiles, and tasks, complicating classification across diverse scenarios. To address these challenges, we propose FLARE, a Field-aware Learning and Adaptive Representation Fusion framework for encrypted traffic classification. FLARE pre-trains a BERT-based packet encoder through Masked Field Prediction, which reconstructs masked tokens from field-structured context. During downstream fine-tuning, the parameters of the pre-trained packet encoder remain frozen, and a packet-level gated module adaptively combines protocol-semantic representations with directional packet-length representations. A flow-level encoder then models inter-packet dependencies for classification. We evaluate FLARE on eight datasets spanning diverse encrypted-traffic tasks, including CipherSpectrum and VisQUIC for strongly encrypted scenarios. FLARE achieves superior performance over baselines across the eight datasets, exceeding the strongest pre-trained baseline by 10.92 percentage points on QUIC website fingerprinting. These results demonstrate the effectiveness of field-aware pre-training and adaptive semantic-sequential fusion under constrained observability.
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - website-fingerprint
+    - traffic-shape
+defenses_discussed:
+    - ech-esni
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant: advances ML-based encrypted traffic classification methods that censors and network monitors use to identify circumvention protocols and applications.'
+visibility: public
+date_added: "2026-11-16"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.12442
