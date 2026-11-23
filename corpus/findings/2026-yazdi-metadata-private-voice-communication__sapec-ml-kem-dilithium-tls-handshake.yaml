@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yazdi-metadata-private-voice-communication
+kind: defense
+summary: SAPEC augments the standard TLS handshake with a custom protocol layer that performs ML-KEM-1024 post-quantum key establishment and derives AES-256 symmetric session keys, then performs mutual CRYSTALS-Dilithium identity verification before any audio is transmitted. TLS is explicitly treated as an untrusted intermediate step because its asymmetric primitives are not quantum-resistant; the ML-KEM layer operates above TLS to protect against harvest-now, decrypt-later attacks by a quantum-capable adversary.
+techniques:
+    - tls-fingerprint
+    - dpi
+defenses:
+    - tor
+    - tunneling
+censors:
+    - generic
+defense_implications:
+    - Post-quantum key encapsulation (ML-KEM-1024) can be layered above TLS as an application-protocol extension without replacing the TLS stack, enabling quantum resistance on platforms where the TLS library cannot be patched — a practical upgrade path for circumvention tools already built on TLS.
+    - Separating bulk encryption (AES-256) from identity verification (Dilithium challenge-response) allows the two concerns to be upgraded independently as NIST PQC standards evolve, reducing protocol lock-in.
+section: §IV-C
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yazdi-metadata-private-voice-communication
+kind: evaluation
+summary: The minimum observed one-way audio delay of 204 ms across SAPEC's 45-run evaluation represents a structural floor imposed by Tor network architecture; the authors assess no further reduction is achievable without departing from onion routing. Excluding 3 outlier circuits, median OWD was 355 ms, exceeding the ITU-T G.114 recommended 300 ms interactive telephony threshold, yet informal user testing found quality acceptable when privacy is prioritized. At 32 kbps Opus, call quality is described as subjectively equivalent to conventional VoIP under normal Tor circuit conditions.
+techniques:
+    - flow-correlation
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Tor-routed voice will structurally exceed the ITU-T G.114 300 ms latency recommendation for most circuits; designers should set user expectations accordingly and use codecs (Opus at 32 kbps recommended) that maintain acceptable quality at these delays rather than optimizing the cryptographic overhead.
+    - The 204 ms OWD floor suggests that relay selection quality dominates latency far more than protocol-level overhead; circuit quality monitoring with proactive rebuild-on-high-latency logic will yield larger user-experience improvements than any cryptographic or signaling optimization.
+section: §VI-C, §VII-A, Table I
+extracted_by: claude-sonnet-4-6

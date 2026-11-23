@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.27909
+id: 2026-yazdi-metadata-private-voice-communication
+title: Metadata-Private Voice Communication over Tor using Post-Quantum Key Encapsulation
+authors:
+    - Noah Zeinali Yazdi
+    - Samuel Zeinali Yazdi
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.27909"
+url: https://arxiv.org/abs/2611.27909v1
+abstract: 'Encrypted voice communication systems commonly protect call content but expose significant metadata, including the network identities of both parties, call timing, and traffic patterns. Simultaneously, advances in quantum computing threaten the asymmetric primitives underlying conventional key exchange, creating a harvest-now, decrypt-later risk for long-lived sensitive communications. Existing systems address at most one of these concerns: secure VoIP applications such as Signal and Wire rely on centralized infrastructure and classical cryptography, while anonymous communication tools built on the Tor network support only text messaging and lack post-quantum key encapsulation. This paper presents SAPEC (Secure Anonymous Peer Exchange Communicator), a peer-to-peer voice communication system that simultaneously addresses anonymity, decentralization, and quantum resistance. SAPEC routes all traffic exclusively through Tor hidden services, concealing the IP addresses of both parties, and augments the standard TLS handshake with a custom protocol layer that performs ML-KEM-1024 key establishment, a settle on AES-256 symmetrical keys and mutual Dilithium identity verification before any audio is transmitted. All audio is subsequently encrypted under AES-256. A removable Crypto Ignition Key prevents identity key material from being stored on the device. Empirical evaluation across 45 independently circuit-rebuilt test runs yielded a median one-way audio delay of 355 milliseconds and a median connection setup time of 7.61 seconds on same-region Tor circuits, demonstrating that interactive voice communication over onion routing is practically achievable.'
+censors:
+    - generic
+techniques:
+    - fully-encrypted-detect
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - controlled-deployment
+core: false
+notes: 'Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Directly relevant to Lantern: Tor-based circumvention protocol addressing metadata privacy, decentralization, and quantum resistance in anonymous voice communication.'
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.27909

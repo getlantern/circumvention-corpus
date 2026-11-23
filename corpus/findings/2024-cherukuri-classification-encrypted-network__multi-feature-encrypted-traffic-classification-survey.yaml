@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: The chapter establishes that encrypted traffic classifiers operate across three feature families — port-based, flow-based, and packet-based — and that combining time-based attributes with single-flow and multiple-flow statistics enables high-accuracy characterization of SSH, VPN, Tor, and AMI traffic without payload decryption.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - dpi
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols must defeat not just payload inspection but also flow-level statistical signatures; packet-count distributions, inter-arrival times, and flow duration are all exploitable features.
+    - Single-protocol transports (e.g., pure Shadowsocks, obfs4) present stable per-flow feature vectors; multi-flow or session-multiplexed designs that blur these signatures are harder to classify.
+section: Abstract
+extracted_by: claude-sonnet-4-6

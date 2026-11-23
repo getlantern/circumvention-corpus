@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kanagarathinam-higai-net-hierarchical-encrypted
+kind: defense
+summary: The HiGAI-Net L1 classifier is described as the most portable component because DL/UL byte-ratio asymmetry and token-cadence inter-burst gaps appear common across current GenAI services; a new service would likely be classified as AI without retraining. IAT jitter injected experimentally hurts L3 (mode) accuracy more than L1, suggesting temporal regularity is a weaker signal than directional byte-ratio asymmetry for coarse AI/Non-AI separation.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Circumvention protocols carrying AI-generated token streams should prioritize masking DL/UL byte-ratio asymmetry (the L1 signal) over IAT jitter alone, since jitter primarily degrades the harder mode-classification task and not the coarse AI-detection gate.
+    - Protocol designers should consider symmetric dummy traffic (uplink padding proportional to downlink) to neutralize the directional asymmetry that is the primary L1 discriminating feature.
+section: §VII (Portability, L3 ceiling discussion)
+extracted_by: claude-sonnet-4-6

@@ -1,5 +1,229 @@
 [
   {
+    "key": "arxiv:2611.19435",
+    "title": "Security Authentication as Protective Friction: Understanding the Dual Effects of Authentication Measures in e-Government Platform",
+    "source": "arxiv",
+    "reason": "Paper studies e-government authentication UX and security perception; no connection to censorship, circumvention, surveillance, or internet control.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.19764",
+    "title": "Compositional Exploits in Autonomous Coding Agents: Attack Mechanics and Ephemeral Defense",
+    "source": "arxiv",
+    "reason": "Paper studies security vulnerabilities in autonomous AI coding agents through tool composition and OS-level defenses, not censorship measurement, circumvention techniques, or related circumvention-corpus topics.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.19915",
+    "title": "CHERI under Fault Injection: An Emulation-Based Security Evaluation of Capability Hardware Enhanced RISC Instructions",
+    "source": "arxiv",
+    "reason": "Hardware security paper on CHERI memory-safety architecture and fault injection attacks; no connection to censorship, circumvention, network detection, or internet freedom research.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.20782",
+    "title": "Baryonic Keys and the Inheritance of Crypto-Assets: Revisiting the Tales From the Crypt Protocol",
+    "source": "arxiv",
+    "reason": "Cryptography / blockchain-focused work on crypto-asset inheritance; no censorship measurement, circumvention protocol design, or censor detection component.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.20810",
+    "title": "Prediction-Driven Contract Matching with Controlled Overbooking for Cloud-Edge DDoS Scrubbing Markets",
+    "source": "arxiv",
+    "reason": "Paper studies DDoS mitigation market contracting mechanisms and capacity planning; unrelated to censorship, circumvention, or anonymity systems.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.21088",
+    "title": "AudioTrace: File-Level Membership Detection for Audio Large Language Models",
+    "source": "arxiv",
+    "reason": "Membership inference attacks on audio LLMs are unrelated to censorship, circumvention, anonymity systems, or internet blocking.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.21214",
+    "title": "Taking Time Out of TOCTOU: From Race Reproduction to Security Discovery",
+    "source": "arxiv",
+    "reason": "Generic software security paper on TOCTOU race conditions in kernel and container runtimes; no connection to censorship, circumvention, anonymity, or surveillance.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.21248",
+    "title": "Adaptive Wake-on-Radio Communication for Batteryless IoT Systems",
+    "source": "arxiv",
+    "reason": "IoT energy-harvesting systems paper with no censorship, circumvention, anonymity, or traffic-analysis component.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.21488",
+    "title": "Detection-Efficient Watermarking for Vision--Language Agents via Risk-Constrained Strength Allocation",
+    "source": "arxiv",
+    "reason": "Paper concerns watermarking for AI-generated content authenticity and provenance verification, unrelated to censorship measurement, circumvention protocols, detection techniques, or blocking mechanisms.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.21936",
+    "title": "CNN Architecture Comparison for Malware Classification with Limited Training Data",
+    "source": "arxiv",
+    "reason": "Generic malware classification via deep learning; no censorship, circumvention, anonymity, or traffic-analysis angle.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.22575",
+    "title": "Do LLMs Understand Network Traces? A Comparative Study of Reasoning over Raw and Filtered Traffic Data",
+    "source": "arxiv",
+    "reason": "Generic network traffic analysis paper evaluating LLMs on traffic interpretation; no censorship, detection, circumvention, or blocking-related angle or evaluation.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.23022",
+    "title": "Dissecting the GPU Load/Store Unit and Exposing Its Security Risks",
+    "source": "arxiv",
+    "reason": "GPU microarchitecture side-channel attack paper with no connection to internet censorship, circumvention protocols, anonymity systems, or censor detection techniques.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.23507",
+    "title": "ACaM: Automated Capability Modeling for Agentic AI Security",
+    "source": "arxiv",
+    "reason": "AI agent security paper with no connection to censorship, circumvention, or internet blocking; falls outside scope of corpus.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.23660",
+    "title": "Protecting Web Applications using a Multimodal AI-based System for Classifying Web Injection Attacks",
+    "source": "arxiv",
+    "reason": "Paper addresses web application security (SQL injection, XSS detection) via ML classifiers on application logs and NetFlow metadata; no connection to censorship measurement, circumvention, or traffic analysis in a censorship/evasion context.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.23666",
+    "title": "Rented Oscillations: Multi-Tenant Data Center Workload Synchronization Attacks and Mitigation",
+    "source": "arxiv",
+    "reason": "Infrastructure security paper about power grid oscillation attacks via data center workload manipulation; no connection to censorship detection, circumvention protocols, anonymity systems, or internet blocking.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.24185",
+    "title": "Guarding the Kingdom of Skill-Based Agents in the AI Dynasty of Computation: Control-Flow Integrity for Agent Skills",
+    "source": "arxiv",
+    "reason": "Machine-learning systems security paper on control-flow integrity for LLM agents; no connection to censorship measurement, circumvention protocols, anonymity systems, or traffic analysis.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.24231",
+    "title": "What Survives the Shift from Text to Pixels? Conditional Protection against Prompt Injection in Image-Rendered Documents",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness paper (prompt injection attacks on LLMs) with no censorship or circumvention angle; rendering-to-pixels obfuscation targets AI safety, not censor evasion.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.24586",
+    "title": "Playing the SMR Game with Existential Honesty",
+    "source": "arxiv",
+    "reason": "Blockchain transaction-censorship protocol; not network-level censorship, circumvention, or traffic analysis.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.25226",
+    "title": "Reject and Report: Forgery-Evident Undetectable Watermarks for Generative Image Models",
+    "source": "arxiv",
+    "reason": "Paper studies watermarking and forgery detection for generative image models; no connection to internet censorship, circumvention protocols, anonymity systems, or network-level detection techniques.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.25231",
+    "title": "Release-Bound Withdrawal Authorization for Bitcoin Custody",
+    "source": "arxiv",
+    "reason": "Paper addresses Bitcoin custody security via withdrawal authorization; unrelated to censorship measurement, circumvention protocols, or network-level blocking techniques.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.25555",
+    "title": "UniReFP: Robust Unified Fingerprinting for Vision Models against Cross-Task Repurposing Attacks",
+    "source": "arxiv",
+    "reason": "ML model fingerprinting and ownership verification; no censorship or circumvention connection.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.25608",
+    "title": "MetaScanner: An Empirical Study and Proactive Defense against Deceptive UI Attacks in Social VR",
+    "source": "arxiv",
+    "reason": "VR platform security study focused on deceptive UI attacks in social VR; no censorship, circumvention, anonymity, or traffic-analysis angle.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.25736",
+    "title": "An LLM-Driven Traffic-Control xApp for Dynamic 5G RAN Intents",
+    "source": "arxiv",
+    "reason": "5G RAN traffic control using LLMs; no censorship, blocking detection, circumvention, or anonymity angle.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.26564",
+    "title": "GEOHunter: Mapping a Generative Engine Optimization Network in the Wild",
+    "source": "arxiv",
+    "reason": "Studies spam/promotional content networks in generative engines and UGC platforms; not about censorship, blocking, circumvention, or content restriction.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.26987",
+    "title": "GeoCloak: Defending Against Geolocation Reasoning in Multimodal Language Models via Perceptual Image Editing",
+    "source": "arxiv",
+    "reason": "Paper studies privacy-preserving image editing against ML geolocation inference; unrelated to censorship measurement, circumvention protocols, censor detection techniques, or anonymity systems.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.27095",
+    "title": "Epistemic Guard: Out-of-Process MCP Receipt Proxying, Post-Turn Prose Supervision, and Provenance-Gated Memory for Tool-Using Autonomous Agents",
+    "source": "arxiv",
+    "reason": "Paper addresses LLM tool-call verification and hallucination detection; unrelated to censorship, circumvention, or network security.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.27250",
+    "title": "PCC: Proof-Carrying Credentials for Enhanced Anonymity and Post-Quantum Delegation",
+    "source": "arxiv",
+    "reason": "Generic cryptographic construction for DeFi anonymous credentials; no nexus to censorship measurement, circumvention protocols, surveillance, or network-level blocking.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.27425",
+    "title": "TrojanMaxxing: One-shotting VLM Backdoors with Weight-Space Programming",
+    "source": "arxiv",
+    "reason": "ML adversarial robustness paper about backdooring vision-language models; no censorship, circumvention, or traffic-analysis angle.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "arxiv:2611.27964",
+    "title": "Your Camera Can Hear You: Side-Channel Acoustic Eavesdropping via Android Camera2 Metadata",
+    "source": "arxiv",
+    "reason": "Device-level side-channel attack on Android sensor APIs; no connection to censorship, circumvention, anonymity, or traffic analysis of encrypted tunnels.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "url:https://doi.org/10.1007/978-981-15-6575-5_3",
+    "title": "Encrypted Traffic Classification",
+    "source": "crossref",
+    "reason": "Title-only metadata: insufficient to tag with specific technique.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "url:https://www.ermao.net/article/7asq3quy/",
+    "title": "⚠️【机场跑路】2025年2月11日SFCloud与FCCloud机场跑路 | 二毛",
+    "source": "ermao",
+    "reason": "Operational consumer advisory about proxy service provider scams; no research on censorship techniques, protocols, or blocking events.",
+    "rejected_at": "2026-11-23"
+  },
+  {
+    "key": "url:https://www.ermao.net/blog/how-to-vpn-on-mobile/",
+    "title": "手机如何翻墙？2026年最新Android与iOS科学上网保姆级教程 | 二毛",
+    "source": "ermao",
+    "reason": "Beginner's tutorial guide for end-users on using existing mobile circumvention tools; does not advance research in censorship measurement, censor capabilities, protocol design, or evaluation.",
+    "rejected_at": "2026-11-23"
+  },
+  {
     "key": "arxiv:2611.00332",
     "title": "Dataset and Experimental Testbed for Deep Learning-Based Bluetooth Device Fingerprinting",
     "source": "arxiv",

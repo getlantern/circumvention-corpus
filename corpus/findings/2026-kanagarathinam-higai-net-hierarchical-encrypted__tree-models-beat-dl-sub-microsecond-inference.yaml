@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kanagarathinam-higai-net-hierarchical-encrypted
+kind: evaluation
+summary: Gradient-boosted tree models (LightGBM, XGBoost, Random Forest) outperform all deep-learning variants—including FlowTransformer and LSTM—by 4–7 pp at L2 and L3 on a 44,492-flow dataset. HDP attention weights show 83% and 74% concentrated on the engineered-statistics branch at L2 and L3 respectively, confirming that DL/UL byte ratios and IAT variance carry the discriminative signal and transformer layers add cost without proportional accuracy return. With a per-flow hash-table cache, amortized inference drops below 1 µs per packet.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Defenders cannot assume that adversarial classifiers require expensive deep-learning infrastructure; lightweight gradient-boosted trees running below 1 µs/packet are sufficient for inline per-flow GenAI identification at network speed.
+    - The dominance of hand-crafted DL/UL ratio features over raw-sequence models means that obfuscating statistical byte-ratio summaries—not just raw packet sequences—is necessary to evade this class of classifier.
+section: §VI-B, Table I, Table II, §VII
+extracted_by: claude-sonnet-4-6

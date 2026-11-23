@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-routerweave-unified-observation
+kind: evaluation
+summary: RouterWeave reconstructs 600 Screen Time activity timelines averaging 19 minutes across Android (91.48%), iOS (88.64%), and Windows (96.55%) from encrypted traffic, achieving 92.15% overall time-weighted accuracy with a 24.84-second mean active-time error (~2.2%). Even under frequent activity switching (10–30-second segments), accuracy remains at 86.10% with 75.29% temporal intersection over union, demonstrating that cross-platform application usage is classifiable from a single router-level vantage point regardless of OS diversity.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Multi-platform circumvention deployments (mobile + desktop clients) cannot assume that OS or platform diversity obscures usage patterns—traffic fingerprints generalize across Android, iOS, and Windows in ways that require active countermeasures on each platform independently
+    - A single ISP-side observation point is sufficient for cross-platform application classification; circumvention designs should not rely on distributing traffic across multiple devices to confuse per-device fingerprinting models
+section: §5.1.3, Table 7
+extracted_by: claude-sonnet-4-6

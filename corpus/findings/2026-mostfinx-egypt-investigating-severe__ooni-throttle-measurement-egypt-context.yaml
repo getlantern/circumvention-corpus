@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mostfinx-egypt-investigating-severe
+kind: evaluation
+summary: OONI Probe has a documented throttling measurement methodology and has been used to characterize throttling events in Kazakhstan (2022 election) and Turkey (2025 social media protests), providing validated tooling for distinguishing bandwidth shaping from protocol-specific blocking in similar account-quota throttling scenarios.
+techniques:
+    - throttling
+    - measurement-platform
+defense_implications:
+    - Instrument Egypt-based users with OONI Probe's throttling module to produce baseline measurements that can distinguish account-level from protocol-level throttling, using the Kazakhstan and Turkey reports as methodological templates.
+    - Reference the existing OONI throttling design doc (probe-cli/docs/design/dd-007-throttling.md) when designing speed-tier detection in circumvention tools to avoid re-inventing validated methodology.
+section: wkrp comment, Nov 16 2026
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-xu-local-order-matters
+kind: evaluation
+summary: 'FRONT padding causes catastrophic accuracy degradation for direction-only feature-based WF attacks: k-FP-style RF falls from 92.3% to 38.5% (−53.8 pp), Wang-kNN-style from 88.8% to 30.7% (−58.1 pp), and CUMUL-RF from 89.6% to 25.0% (−64.6 pp). The CNN drops only from 94.1% to 54.2% (−39.9 pp), demonstrating that count- and volume-based features are far more vulnerable to dummy-cell injection than sequence-aware learned representations.'
+techniques:
+    - website-fingerprint
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - FRONT provides >50 pp degradation against classical handcrafted-feature classifiers, so it retains meaningful value against unsophisticated adversaries; circumvention tools need layered defenses that also address sequential/ordering signals to defeat CNN-class attackers.
+    - Defense design should jointly target both the count/volume feature space (where FRONT excels) and the temporal ordering signal (where FRONT fails), e.g., by combining dummy injection with real-cell reordering or traffic shaping.
+section: §IV-C
+extracted_by: claude-sonnet-4-6

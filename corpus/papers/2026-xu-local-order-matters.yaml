@@ -1,0 +1,33 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.19864
+id: 2026-xu-local-order-matters
+title: 'Local Order Matters: A Lightweight CPU-Trainable CNN for Website Fingerprinting on Defended Tor Traffic'
+authors:
+    - Puyang Xu
+    - Zhizhao Wen
+    - Yifan Jiang
+    - Chao Wang
+    - Yusi Gong
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.19864"
+url: https://arxiv.org/abs/2611.19864v1
+abstract: 'Website fingerprinting (WF) attacks let a passive adversary infer which site a Tor user visits from the encrypted cell sequence. On undefended traffic, hand-crafted-feature attacks are already near-ceiling, so deep learning offers only a marginal advantage there. We show that the decisive regime is defended traffic: against the FRONT padding defense, which injects dummy cells that corrupt the volume and count features feature attacks rely on, a compact 95,103-parameter 1-D convolutional network trained on the raw cell-direction sequence, on CPU only, stays robust while three implemented direction-only feature baselines degrade. On the closed-world WFlib FRONT set (95 sites), our model reaches 54.2% top-1 accuracy versus 38.5% for the strongest implemented feature baseline (k-FP-style RF), a gain of 15.7 percentage points (3 seeds; seed-0 paired-bootstrap 95% CI [+14.5, +17.0] pp on per-trace correctness, excluding zero). On undefended traffic the CNN reaches 94.1% versus 92.3% for k-FP-style RF. A controlled order-ablation permutes only nonzero traffic cells within each trace, preserving direction counts, retained length, and trailing zero-padding positions while destroying traffic order. This collapses the CNN below every feature baseline (from 54.2% to 7.6%, a 46.6 pp drop), showing that the model depends strongly on order-derived information under FRONT.'
+censors:
+    - generic
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - tor
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Demonstrates the effectiveness of CNN-based website fingerprinting against FRONT padding; relevant to understanding passive traffic-analysis threats to Tor users and informing defenses for circumvention tools.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.19864

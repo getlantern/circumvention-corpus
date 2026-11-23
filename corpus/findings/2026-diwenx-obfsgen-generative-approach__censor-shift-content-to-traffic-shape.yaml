@@ -1,0 +1,21 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-diwenx-obfsgen-generative-approach
+kind: detection
+summary: Recent research and real-world blocking events have demonstrated exploitable fingerprints in tunneling traffic at the shape level, prompting censor detection to shift from payload content to traffic shape. Existing widely deployed circumvention tunnels have largely converged on TLS, making TLS handshake fingerprinting and traffic-shape analysis the primary active detection vectors.
+techniques:
+    - traffic-shape
+    - tls-fingerprint
+    - website-fingerprint
+    - fully-encrypted-detect
+defenses:
+    - mimicry
+    - randomization
+censors:
+    - cn
+    - generic
+defense_implications:
+    - Protocol mimicry of TLS content alone is insufficient — a censor that has shifted to shape-level detection will catch even perfect TLS-mimicking proxies; invest in traffic-shape normalization alongside handshake mimicry.
+    - 'Avoid protocol monoculture: when the circumvention community converges on a single cover protocol (TLS), censors can specialize their shape classifiers against it; support heterogeneous cover profiles.'
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maminrezaie-udp-obfuscation-sxt-lite
+kind: deployment
+summary: An operator in Iran reports that the country's DPI infrastructure actively detects and blocks UDP traffic, requiring explicit obfuscation to pass. The report documents real-world operational constraints on SXT-Lite Mikrotik hardware with limited CPU and memory resources, confirming that Iran's DPI is not limited to TCP/TLS flows.
+techniques:
+    - dpi
+censors:
+    - ir
+defense_implications:
+    - Circumvention tools targeting Iran must handle UDP-layer inspection, not only TLS/TCP-level fingerprinting — QUIC-based transports need explicit obfuscation on top of QUIC's native encryption.
+    - Any UDP obfuscation layer must be lightweight enough to run on sub-100MHz MIPS routers (Mikrotik SXT-Lite class hardware) — stateless XOR/ChaCha20-based approaches are more viable than computational-heavy transforms.
+section: Issue body
+extracted_by: claude-sonnet-4-6

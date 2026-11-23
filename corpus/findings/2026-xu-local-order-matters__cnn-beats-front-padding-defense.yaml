@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-xu-local-order-matters
+kind: detection
+summary: A 95,103-parameter 1-D CNN trained on the raw Tor cell-direction sequence (CPU only) reaches 54.2% closed-world top-1 accuracy on FRONT-defended traffic (95 sites), beating the strongest direction-only feature baseline (k-FP-style RF at 38.5%) by +15.7 percentage points (seed-0 paired-bootstrap 95% CI [+14.5, +17.0] pp, excluding zero). On undefended traffic the advantage shrinks to only +1.8 pp (CNN 94.1% vs k-FP-style RF 92.3%), showing the decisive regime is defended traffic.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - FRONT-style padding alone is insufficient against sequence-aware CNN classifiers; a WF-resistant transport must also destroy the local ordering of cells, not merely inflate direction counts and volumes.
+    - Even lightweight, CPU-only adversaries can break FRONT — a circumvention tool relying on Tor should not treat FRONT as a sufficient WF countermeasure.
+section: §IV-C, Table I
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yazdi-metadata-private-voice-communication
+kind: evaluation
+summary: No prior system combines post-quantum key encapsulation, anonymous overlay routing, and real-time voice on consumer embedded hardware. Signal and Wire rely on centralized infrastructure and classical cryptography, exposing call metadata and IP addresses to the service provider; Briar and Cwtch route exclusively over Tor hidden services but support only text messaging and lack post-quantum key encapsulation; PQXDH and related academic post-quantum messaging work targets asynchronous text, not real-time audio.
+techniques:
+    - flow-correlation
+    - dpi
+defenses:
+    - tor
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Tor hidden services are the only deployed transport that conceals both parties' IP addresses from each other and from intermediaries; circumvention voice tools targeting high-risk users (journalists, activists) should route signaling and media exclusively through hidden services rather than through centralized signaling infrastructure.
+    - Integrating ML-KEM into the application handshake above TLS is a deployable path to quantum resistance today that does not require waiting for TLS libraries to natively adopt FIPS 203.
+section: §III
+extracted_by: claude-sonnet-4-6

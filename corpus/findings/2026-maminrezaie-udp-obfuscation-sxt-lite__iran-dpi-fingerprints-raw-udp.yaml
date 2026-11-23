@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maminrezaie-udp-obfuscation-sxt-lite
+kind: detection
+summary: Iran's DPI system fingerprints UDP flows specifically enough that raw (unobfuscated) UDP — including tunneled protocols — is detected and blocked. The user frames this as a known operational fact rather than a hypothesis, indicating the detection is consistent and reliable rather than probabilistic.
+techniques:
+    - dpi
+    - traffic-shape
+censors:
+    - ir
+defense_implications:
+    - UDP-based transports (WireGuard, raw VLESS+UDP, Hysteria 2) require a distinct obfuscation wrapper for the Iranian network context — transport-level encryption alone is insufficient.
+    - Designers should test obfuscated UDP variants specifically against Iranian ISPs rather than relying on censorship evasion validated only against the GFW.
+section: Issue body
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,24 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: net4people https://github.com/net4people/bbs/issues/682
+id: 2026-mostfinx-egypt-investigating-severe
+title: 'Egypt: Investigating severe broadband throttling after monthly data caps'
+authors:
+    - '@mostfinx'
+    - '@wkrp'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/682
+abstract: A user in Egypt reports severe throttling by Telecom Egypt (WE) residential plans to approximately 256 Kbps after monthly data allowance exhaustion. The ISP offers zero-rated access to certain government and educational websites. The thread discusses technical methods to distinguish account-level bandwidth limits from traffic-specific throttling and considers potential workarounds involving non-TCP protocols or network optimizations.
+censors:
+    - generic
+techniques:
+    - throttling
+evaluation_methods:
+    - measurement-study
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Direct observation of ISP throttling in Egypt (not yet in taxonomy) with implications for Lantern's circumvention strategies in traffic-shaping environments.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/682

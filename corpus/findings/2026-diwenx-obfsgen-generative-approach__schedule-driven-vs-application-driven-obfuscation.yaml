@@ -1,0 +1,20 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-diwenx-obfsgen-generative-approach
+kind: defense
+summary: 'obfsgen introduces a schedule-driven obfuscator architecture that decides when and how much to send independently of the application, in contrast to application-driven obfuscators like obfs4 that can only add to the shape the application creates. This distinction is fundamental: application-driven designs cannot eliminate the underlying tunneling fingerprint, only augment it.'
+techniques:
+    - traffic-shape
+    - tls-fingerprint
+    - website-fingerprint
+defenses:
+    - randomization
+    - obfs4
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Migrate obfuscation logic from an application-driven layer (which inherits the application's packet rhythm) to a schedule-driven layer that fully controls timing and size independently — only then can tunneling fingerprints be fully overwritten rather than merely padded.
+    - Treat the application as a data source that fills a schedule buffer, not as the entity that drives sends; the obfuscator emits packets on its own clock regardless of whether application data is ready.
+section: Abstract
+extracted_by: claude-sonnet-4-6

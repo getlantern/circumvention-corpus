@@ -1,0 +1,23 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: net4people https://github.com/net4people/bbs/issues/685
+id: 2026-maminrezaie-udp-obfuscation-sxt-lite
+title: udp obfuscation on SXT-Lite Mikrotic to pass iran dpi
+authors:
+    - '@maminrezaie'
+venue: net4people/bbs
+year: 2026
+url: https://github.com/net4people/bbs/issues/685
+abstract: A user in Iran requests technical advice on obfuscating UDP traffic to evade Iran's DPI detection while operating on limited-resource hardware (SXT-Lite Mikrotik router).
+censors:
+    - ir
+techniques:
+    - dpi
+defenses_discussed:
+    - randomization
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Real-time operational report documenting Iran's UDP-level DPI detection and user attempts to evade it on constrained devices.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://github.com/net4people/bbs/issues/685

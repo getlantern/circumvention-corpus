@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: The authors propose two statistical classifiers — one based on Kullback-Leibler divergence, one on Euclidean distance — computed over flow and packet size distributions obtained from protocol-level application traffic, demonstrating effective classification of encrypted Internet traffic using 'few features without compromising performance.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Packet size distribution and flow-level statistics are sufficient classification signals even without payload access; circumvention protocols that do not randomize inter-packet sizes and flow lengths remain detectable by low-complexity statistical methods.
+    - KL divergence over packet length histograms is a low-cost, real-deployable detection primitive — tool designers should treat it as a baseline adversary model when evaluating traffic shaping defenses.
+section: Abstract
+extracted_by: claude-sonnet-4-6

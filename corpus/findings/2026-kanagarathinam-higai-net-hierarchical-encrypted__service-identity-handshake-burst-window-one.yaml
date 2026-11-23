@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kanagarathinam-higai-net-hierarchical-encrypted
+kind: detection
+summary: Per-service identification (ChatGPT vs. Copilot vs. Gemini) peaks at window size 1 packet with 86.4% weighted F1, and accuracy degrades as window size grows—meaning the service fingerprint is concentrated in the initial handshake burst rather than session-level patterns. The 11% Gemini-to-Copilot confusion persists across all window sizes because both use HTTP/2 server push for text, making their opening packet statistics nearly identical.
+techniques:
+    - ml-classifier
+    - tls-fingerprint
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Protocol designers should randomize or pad the initial handshake burst—the first 1–5 packets—as this is the highest-information window for per-service fingerprinting.
+    - Mimicking HTTP/2 push patterns in the opening burst can induce the observed 11% classifier confusion between services, suggesting that emulating a common cover protocol's first-burst shape is an effective evasion vector.
+section: §V-C, Fig. 5, §VI-D
+extracted_by: claude-sonnet-4-6

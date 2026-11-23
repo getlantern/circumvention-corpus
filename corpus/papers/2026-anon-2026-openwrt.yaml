@@ -1,0 +1,116 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: ermao https://www.ermao.net/blog/softrouter/
+id: 2026-anon-2026-openwrt
+title: 2026年软路由全屋翻墙指南：OpenWrt安装配置与旁路由教程 | 二毛
+venue: ermao.net (Chinese-language circumvention blog)
+year: 2026
+url: https://www.ermao.net/blog/softrouter/
+abstract: !!binary |
+    MjAyNuW5tOi9r+i3r+eUseWFqOWxi+e/u+WimeaMh+WNl++8mk9wZW5XcnTlronoo4XphY
+    3nva7kuI7ml4Hot6/nlLHmlZnnqIsgfCDkuozmr5sKCltTa2lwIHRvIGNvbnRlbnRdKCNW
+    UENvbnRlbnQpCgojIDIwMjblubTova/ot6/nlLHlhajlsYvnv7vlopnmjIfljZfvvJpPcG
+    VuV3J05a6J6KOF6YWN572u5LiO5peB6Lev55Sx5pWZ56iLCgrnuqYgMjY3MiDlrZflpKfn
+    uqYgOSDliIbpkp8KClvnv7vlopldKC9ibG9nL3RhZ3MvP3RhZz3nv7vlopkpW+enkeWtpu
+    S4iue9kV0oL2Jsb2cvdGFncy8/dGFnPeenkeWtpuS4iue9kSlb6L2v6Lev55SxXSgvYmxv
+    Zy90YWdzLz90YWc96L2v6Lev55SxKVtPcGVuV3J0XSgvYmxvZy90YWdzLz90YWc9T3Blbl
+    dydCkKCi4uLuKAlAoKMjAyNi0wMi0xOQoK5aaC5p6c5oOz6KaB5Zyo5a625Lit5omA5pyJ
+    6K6+5aSH77yI5omL5py644CB55S16ISR44CB5pm66IO955S16KeG44CB5ri45oiP5py677
+    yJ6YO96IO96Ieq5Yqo57+75aKZ77yM5pyA55yB5b+D55qE5pa55byP5pivKirotK3kubDk
+    uIDlj7Dova/ot6/nlLEqKu+8jOeEtuWQjuWcqOi9r+i3r+eUseS4iumFjee9rue/u+Wime
+    acjeWKoeOAgui/meagt++8jOaXoOiuuuiuvuWkh+i/nuaOpeeahOaYr+aciee6v+e9kee7
+    nOi/mOaYryBXaUZp77yM6YO96IO95a6e546w5YWo5bGL57+75aKZ77yM5b275bqV5ZGK5Y
+    ir5Zyo5q+P5Y+w6K6+5aSH5LiK6YO96KaB5byA6L2v5Lu255qE6bq754Om44CCCgrov5nn
+    r4cqKui3r+eUseWZqOe/u+WimeaVmeeoiyoq6YeN54K56Kej5Yaz5LiJ5Liq6Zeu6aKY77
+    ya5aaC5L2V6YCJ5oup6L2v6Lev55Sx56Gs5Lu244CB5aaC5L2V5oqKIE9wZW5XcnQg6YWN
+    5oiQ5peB6Lev55Sx77yM5Lul5Y+K5aaC5L2V6K6p5omL5py644CB55S16KeG5ZKM5ri45o
+    iP5py66YCa6L+HIFBhc3NXYWxsIOaIliBPcGVuQ2xhc2gg5LiK572R44CCCgp8IOS9oOea
+    hOmcgOaxgiAgICAgICB8IOW7uuiuruaooeW8jyAgICAgICAgICAgfCDnibnngrkgICAgIC
+    AgICAgICAgICB8CnwgLS0tLS0tLS0tLSB8IC0tLS0tLS0tLS0tLS0tIHwgLS0tLS0tLS0t
+    LS0tLS0tLSB8Cnwg5Y+q6K6p6YOo5YiG6K6+5aSH6LWw6L2v6Lev55SxIHwg5peB6Lev55
+    SxICsg5omL5Yqo572R5YWzICAgICB8IOWvueeOsOacieWutuW6ree9kee7nOW9seWTjeWw
+    jyAgICAgICB8Cnwg5YWo5a626K6+5aSH6Ieq5Yqo5L2/55SoICAgfCDml4Hot6/nlLEgKy
+    DkuLvot6/nlLEgREhDUCB8IOmFjee9rumbhuS4re+8jOi9r+i3r+eUseaVhemanOaXtumc
+    gOaBouWkjee9keWFsyB8Cnwg6L2v6Lev55Sx55u05o6l5ouo5Y+3ICAgIHwg5Li76Lev55
+    Sx5qih5byPICAgICAgICAgIHwg5o6n5Yi25a6M5pW077yM5L2G5pS56YCg5ZKM5o6S6Zqc
+    5oiQ5pys5pu06auYICB8CgojIyBb5YmN6KiAXSgj5YmN6KiAKQoKIVvliY3oqIBdKGh0dH
+    BzOi8vaW1hZ2UuZXJtYW8ubmV0L2ltYWdlcy9ibG9nL3NvZnRyb3V0ZXIvaW1hZ2UucG5n
+    KQoK5LiK6Z2i5a+56K+d5piv5LiA5ZCN6K+76ICF57uZ5oiR5Y+R55qE6YKu5Lu277yM6K
+    +i6ZeuIEFwcGxlIFRWIOe/u+WimeeahOebuOWFs+mXrumimOOAguWFtuWunuS4jeWPquaY
+    ryBBVFbvvIzlrrbph4znmoQgUFM144CBU3dpdGNo44CB5pm66IO955S16KeG562J5peg5r
+    OV5a6J6KOFIFZQTiDova/ku7bnmoTorr7lpIfvvIzmnIDlroznvo7nmoTop6PlhrPmlrnm
+    oYjlsLHmmK8qKui9r+i3r+eUsSoq44CCCgojIyBb5LuA5LmI5piv6L2v6Lev55Sx77yfXS
+    gj5LuA5LmI5piv6L2v6Lev55SxKQoK6L2v6Lev55Sx77yIU29mdHdhcmUgUm91dGVy77yJ
+    5piv5oyH5Zyo6YCa55So56Gs5Lu277yI5aaCIHg4NiDnlLXohJHjgIHmoJHojpPmtL7nrY
+    nvvInkuIrlronoo4XkuJPpl6jnmoTot6/nlLHmk43kvZzns7vnu5/vvIjlpoIgKipPcGVu
+    V3J0KirjgIFpS3VhaeOAgVJvdXRlck9T77yJ5p2l5a6e546w6Lev55Sx5Yqf6IO955qE6K
+    6+5aSH44CCCgrnroDljZXmnaXor7TvvIzlroPlsLHlg4/kuIDlj7AqKuaAp+iDvei2heW8
+    uueahOWwj+eUteiEkSoq77yM5LiT6Zeo55So5p2l5aSE55CG572R57uc5pWw5o2u44CC55
+    u45q+U5pmu6YCa55qE5a6255So6Lev55Sx5Zmo77yI56Gs6Lev55Sx77yJ77yM6L2v6Lev
+    55Sx55qE5oCn6IO95by65Yeg5Y2B5YCN77yM5Y+v5Lul6L275p2+6L+Q6KGM5ZCE56eN5a
+    SN5p2C55qE5o+S5Lu277yM5q+U5aaC5Y675bm/5ZGK44CBRG9ja2Vy44CB5Lul5Y+K5oiR
+    5Lus5pyA6ZyA6KaB55qEKirnp5HlrabkuIrnvZHmj5Lku7bvvIhPcGVuQ2xhc2jjgIFQYX
+    NzV2FsbCDnrYnvvIkqKuOAggoKIVtyNHNdKGh0dHBzOi8vaW1hZ2UuZXJtYW8ubmV0L2lt
+    YWdlcy9ibG9nL3NvZnRyb3V0ZXIvaW1hZ2UtMS5wbmcpCgojIyBb6L2v6Lev55Sx55qE5L
+    yY5Yq/XSgj6L2v6Lev55Sx55qE5LyY5Yq/KQoKMS4gICoq5YWo5bGL57+75aKZKirvvJrk
+    uIDmrKHphY3nva7vvIzlhajlrrblj5fnm4rjgILmiYvmnLrjgIHnlLXohJHjgIHnlLXop4
+    bov57kuIogV2ktRmkg5bCx6IO955u05o6l55yLIFlvdVR1YmXjgIFOZXRmbGl444CCCjIu
+    ICAqKuaAp+iDveW8uuWkpyoq77ya6LeR5ruh5Y2D5YWG56eR5a2m5LiK572R5bim5a695q
+    +r5peg5Y6L5Yqb77yM6KeC55yLIDRLLzhLIOinhumikeS4jeWNoemhv+OAggozLiAgKirl
+    ip/og73kuLDlr4wqKu+8mumZpOS6hue/u+Wime+8jOi/mOiDveWunueOsOWOu+W5v+WRiu
+    OAgemAmui/h+e9keebmOaMgui9veWunueOsOeugOaYkyBOQVPjgIHoh6rliqjnrb7liLDn
+    rYnlip/og73jgIIKNC4gICoq6K6+5aSH5YW85a65KirvvJrlroznvo7op6PlhrMgQXBwbG
+    UgVFbjgIFQUzXjgIFTd2l0Y2jjgIFPY3VsdXMgVlIg562J5peg5rOV5a6J6KOF57+75aKZ
+    6L2v5Lu255qE6K6+5aSH5LiK572R6Zeu6aKY44CCCgoqICogKgoKIyMgW+esrOS4gOatpe
+    +8muehrOS7tuWHhuWkh+S4juezu+e7n+WuieijhV0oI+esrOS4gOatpS3noazku7blh4bl
+    pIfkuI7ns7vnu5/lronoo4UpCgojIyMgWzFcLiDnoazku7bpgInmi6ldKCNfMS3noazku7
+    bpgInmi6kpCgrlr7nkuo7mlrDmiYvvvIzlu7rorq7nm7TmjqXotK3kubDmiJDlk4Hova/o
+    t6/nlLHvvIzku7fmoLzlnKggMzAwLTEwMDAg5YWD5LiN562J44CCCgoqICAgKirlhaXpl6
+    jnuqcqKu+8mlIyU+OAgVI0U++8iEFSTSDmnrbmnoTvvIzkvZPnp6/lsI/vvIzmgKfog73l
+    pJ/nlKjvvIkKKiAgICoq6L+b6Zi257qnKirvvJpKNDEyNeOAgU41MTA144CBTjEwMCDlsI
+    /kuLvmnLrvvIh4ODYg5p625p6E77yM5oCn6IO95by677yM5Y+v546p5oCn6auY77yM5by6
+    54OI5o6o6I2Q77yJCgojIyMgWzJcLiDns7vnu5/liLfmnLpdKCNfMi3ns7vnu5/liLfmnL
+    opCgrotK3kubDml7bpgJrluLjlj6/ku6XorqnljZblrrbluK7lv5nliLflpb0gKipPcGVu
+    V3J0Kiog57O757uf77yI5bu66K6u6KaB5rGC5Yi35YWl5bimIFBhc3NXYWxsIOaIliBPcG
+    VuQ2xhc2gg5o+S5Lu255qE54mI5pys77yJ44CCIOWmguaenOS9oOaDs+iHquW3seWIt+ac
+    uu+8jOaIluiAheezu+e7n+Wdj+S6humcgOimgemHjeijhe+8jOivt+WPguiAg+acrOerme
+    aVmeeoi++8miDwn5GJICoqW+i9r+i3r+eUseWuieijhSBPcGVuV3J0IOivpue7huaVmeeo
+    i10oL2FydGljbGUvOXprdGRoeXgvKSoqCgoqICogKgoKIyMgW+esrOS6jOatpe+8mue9ke
+    e7nOaLk+aJke+8iOi/nuaOpeaWueW8j++8iV0oI+esrOS6jOatpS3nvZHnu5zmi5PmiZEt
+    6L+e5o6l5pa55byPKQoK6L2v6Lev55Sx6YCa5bi45pyJ5Lik56eN5o6l5rOV77yaKirkuL
+    vot6/nlLHmqKHlvI8qKuWSjCoq5peB6Lev55Sx5qih5byPKirjgIIKCiogICAqKuS4u+i3
+    r+eUseaooeW8jyoq77ya5YWJ54yrIC0+IOi9r+i3r+eUsSAtPiDml6Dnur/ot6/nlLHlma
+    jvvIhBUOaooeW8j++8ieOAgui9r+i3r+eUsSBXQU4g55qE5Y2P6K6u5Y+W5Yaz5LqO5LiK
+    5ri477ya5YWJ54yr5bey5Zyo6Lev55Sx5qih5byP5LiU5o+Q5L6bIERIQ1Ag5pe277yM6Y
+    Ca5bi46YCJ6Ieq5Yqo6I635Y+W5Zyw5Z2A77yIREhDUO+8ie+8jOi9r+i3r+eUsSBMQU4g
+    5L2/55So5LiN5ZCM5LqO5LiK5ri455qE5a2Q572R77yb5Lik5Y+w6YO95YGaIElQdjQgTk
+    FUIOaXtuWPr+iDveW9ouaIkOWPjOmHjSBOQVTjgILlhYnnjKvmoaXmjqXml7bvvIzmjIno
+    v5DokKXllYbopoHmsYLpgIkgUFBQb0Ug5oiWIERIQ1AvSVBvRSDnrYnvvIzotKblj7fjgI
+    Hlr4bnoIHlkowgVkxBTiDku4XlnKjopoHmsYLml7bloavlhpnvvIzkuI3lv4XkuLrkuobm
+    nKzmlZnnqIvmm7TmlLnlhYnnjKvmqKHlvI/jgIIKKiAgICoq5peB6Lev55Sx5qih5byP77
+    yI5o6o6I2Q5paw5omL77yJKirvvJrlhYnnjKsgLT4g5Li76Lev55SxIC0+IOi9r+i3r+eU
+    seOAgui9r+i3r+eUseWPquS9nOS4uuS4gOS4quaZrumAmueahOiuvuWkh+aOpeWcqOS4u+
+    i3r+eUseS4i++8jOWPr+S7peS/neeVmeWOn+aciee9kee7nOOAgioq5Y+q5pyJ5LuN5Lul
+    5Y6f5Li76Lev55Sx5Li6572R5YWz44CB5LiUIEROUyDkuI3kvp3otZbml4Hot6/nlLHnmo
+    Torr7lpIfvvIzmiY3lj6/og73lnKjml4Hot6/nlLHmlYXpmpzml7bnu6fnu63kuIrnvZEq
+    Ku+8m+e9keWFs+aIliBETlMg5L6d6LWW5peB6Lev55Sx55qE6K6+5aSH5Y+v6IO95aSx5Y
+    676K6/6Zeu6IO95Yqb77yM6ZyA5oGi5aSN5Y6f6K6+572u44CCCgoqKuacrOaWh+mHjeeC
+    ueS7i+e7jeacgOmAguWQiOaWsOaJi+eahOOAkOaXgei3r+eUseaooeW8j+OAkeOAgioqCg
+    ojIyMgW+aOpee6v+aWueazlV0oI+aOpee6v+aWueazlSkKCjEuICDnlKjkuIDmoLnnvZHn
+    ur/vvIzkuIDlpLTmj5LlnKjova/ot6/nlLHnmoQgYExBTmAg5Y+j77yI5oiW6ICF5pivIG
+    BFVEgwYCDlj6PvvInjgIIKMi4gIOWPpuS4gOWktOaPkuWcqOS9oOWutumHjOeOsOacieS4
+    u+i3r+eUseWZqOeahCBgTEFOYCDlj6PjgIIKMy4gIOaOpemAmui9r+i3r+eUseeUtea6kO
+    OAggoKKiAqICoKCiMjIFvnrKzkuInmraXvvJpPcGVuV3J0IOWQjuWPsOmFjee9rl0oI+es
+    rOS4ieatpS1vcGVud3J0LeWQjuWPsOmFjee9rikKCui/memHjOWBh+iuvuS9oOW3sue7j+
+    aKiui9r+i3r+eUseY=
+censors:
+    - generic
+techniques: []
+defenses_discussed:
+    - tunneling
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Practical deployment guide documenting mainstream circumvention tools; relevant for understanding how end-users implement household-scale circumvention systems.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - url:https://www.ermao.net/blog/softrouter/
