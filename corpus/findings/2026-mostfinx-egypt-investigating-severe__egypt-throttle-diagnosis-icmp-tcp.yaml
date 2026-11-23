@@ -1,0 +1,13 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mostfinx-egypt-investigating-severe
+kind: evaluation
+summary: The key diagnostic question for Egypt's throttling is whether the speed cap is implemented as an account-wide bandwidth limit or as protocol/traffic-specific shaping. A high-rate ICMP echo (ping) test during throttling can distinguish between packet-loss-based throttling (suggesting TCP congestion manipulation) and pure bandwidth shaping, since TCP congestion-based throttling would not affect ICMP the same way.
+techniques:
+    - throttling
+    - traffic-shape
+defense_implications:
+    - Run OONI Probe's throttling measurement module and compare ICMP vs TCP round-trip times under throttled conditions to determine if the mechanism is loss-based or rate-based; the answer determines whether a QUIC or UDP transport could escape the cap.
+    - If throttling uses TCP congestion signals, switching circumvention traffic to non-TCP protocols (QUIC, UDP-based) may partially or fully bypass the shaping mechanism.
+section: wkrp comment, Nov 16 2026
+extracted_by: claude-sonnet-4-6

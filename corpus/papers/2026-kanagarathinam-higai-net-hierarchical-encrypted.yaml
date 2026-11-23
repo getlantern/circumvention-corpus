@@ -1,0 +1,31 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.22373
+id: 2026-kanagarathinam-higai-net-hierarchical-encrypted
+title: 'HiGAI-Net: Hierarchical Encrypted Traffic Classification for Generative AI Services'
+authors:
+    - Madhan Raj Kanagarathinam
+    - Jaheon Gu
+    - Krishna M. Sivalingam
+    - Kapal Dev
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.22373"
+url: https://arxiv.org/abs/2611.22373v1
+abstract: 'The Radio Access Network (RAN) today does not have a reliable way to identify GenAI traffic (ChatGPT, Microsoft Copilot, or Google Gemini traffic) at the bearer level. TLS~1.3 moves SNI into the encrypted handshake record, and Encrypted ClientHello (ECH) removes it entirely from passive inspection; Gemini has partly shifted to QUIC where SNI visibility also depends on whether ECH is deployed. Without per-flow application identity, differentiated QoS for GenAI services is not possible. HiGAI-Net tackles this using only packet-header metadata, stacking three independently trained classifiers: a binary AI/Non-AI gate (98.5 % weighted F1), a per-service resolver across ChatGPT, Copilot, and Gemini (86.4 %), and a text-vs-voice/video mode classifier (61.0 %). The core innovation is a suite of sliding-window temporal features that track how DL/UL byte-ratios evolve within a session -- the per-quarter and per-half ratio trends, a trend differential $ΔR$, and a streaming regularity index. Tested on 44,492 labeled flows, gradient-boosted tree models consistently outperformed all deep-learning variants; a per-flow label cache brings amortised inference below 1~$μ$s per packet.'
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses_discussed:
+    - ech-esni
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Reveals censor capabilities for identifying GenAI services through encrypted traffic analysis despite TLS 1.3 and ECH protections.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.22373

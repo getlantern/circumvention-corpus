@@ -1,0 +1,19 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-diwenx-obfsgen-generative-approach
+kind: defense
+summary: obfsgen claims to defeat traffic-shape, TLS handshake fingerprinting, and website fingerprinting attacks simultaneously through its schedule-driven architecture. The system sends data proactively and suppresses it on-demand, decoupling the observable traffic shape from both the application's send pattern and the destination website's fingerprint.
+techniques:
+    - traffic-shape
+    - tls-fingerprint
+    - website-fingerprint
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - An obfuscation layer that proactively sends cover traffic (even when the application has nothing to send) and suppresses application traffic (holding it in a buffer) is necessary to defeat whole-flow and cross-flow fingerprinting — passive shaping alone cannot achieve this.
+    - Evaluate obfuscation designs against all three detection axes simultaneously (traffic shape, TLS handshake, website fingerprinting) rather than optimizing for one; a design that defeats two while leaving the third exploitable still fails in deployment.
+section: Abstract
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: The chapter surveys deep-learning classifiers — including Deep Packet (Soft Computing 24(3), 2020), FlowPic (INFOCOM 2019), and attention-based LSTM on the first N bytes (IEEE Transactions on Big Data 8(1), 2019) — as state-of-the-art for per-application encrypted traffic classification without payload access, treating network flows as image or sequence data.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Deep-learning classifiers exploit the first few bytes of a flow's payload representation alongside packet-size sequences; padding the initial burst to a fixed size disrupts early-flow classification signals.
+    - Image-based flow classifiers (FlowPic) treat the 2-D packet-size/time bitmap as a fingerprint; variable-length padding and synthetic inter-packet delays both degrade this signal.
+section: References [22, 34, 35]
+extracted_by: claude-sonnet-4-6

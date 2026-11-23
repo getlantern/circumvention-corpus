@@ -1,0 +1,27 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1007/978-3-030-44041-1_77
+id: 2020-cunha-classification-encrypted-internet
+title: Classification of Encrypted Internet Traffic Using Kullback-Leibler Divergence and Euclidean Distance
+authors:
+    - Vanice Canuto Cunha
+    - Arturo A. Z. Zavala
+    - Pedro R. M. Inácio
+    - Damien Magoni
+    - Mario M. Freire
+venue: Advances in Intelligent Systems and Computing
+year: 2020
+doi: 10.1007/978-3-030-44041-1_77
+url: https://doi.org/10.1007/978-3-030-44041-1_77
+censors:
+    - generic
+techniques:
+    - ml-classifier
+evaluation_methods:
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Traffic classification technique; relevant to censor detection capabilities and circumvention tool fingerprinting via statistical analysis of encrypted flows.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1007/978-3-030-44041-1_77

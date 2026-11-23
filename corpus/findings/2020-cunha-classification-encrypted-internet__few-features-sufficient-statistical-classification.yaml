@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: evaluation
+summary: The KL-divergence and Euclidean-distance classifiers were evaluated against a Support Vector Machine (SVM) baseline using the same flow and packet size features; the paper reports that effective classification was achieved using 'few features,' suggesting that high-dimensional feature extraction is not a prerequisite for statistical traffic identification.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Minimal feature sets (packet size, flow length) are sufficient for classification — circumvention tools cannot defeat statistical detection merely by increasing protocol complexity without also explicitly shaping the size distribution of packets and flows.
+    - Circumvention evaluations should include low-overhead statistical baselines (KL divergence over packet size histograms) alongside neural/ML classifiers to assess robustness across the full detection threat model.
+section: Abstract / Experiments
+extracted_by: claude-sonnet-4-6

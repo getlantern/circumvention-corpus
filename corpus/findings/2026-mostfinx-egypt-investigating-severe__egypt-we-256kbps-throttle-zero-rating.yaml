@@ -1,0 +1,12 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mostfinx-egypt-investigating-severe
+kind: deployment
+summary: Telecom Egypt (WE) residential broadband plans throttle to approximately 256 Kbps after monthly data allowance exhaustion. The ISP simultaneously offers zero-rated or exempted access to specific Egyptian government and educational websites (digital.gov.eg, mcit.gov.eg, ekb.eg, maharatech.gov.eg) whose bandwidth behavior after quota exhaustion may differ from general traffic.
+techniques:
+    - throttling
+defense_implications:
+    - Circumvention tools operating in Egypt after quota exhaustion must function within a 256 Kbps constraint; evaluate minimum-viable throughput and latency tolerance against this ceiling.
+    - The selective zero-rating of government domains suggests application-layer traffic classification at the ISP; a tool that mimics or tunnels through zero-rated domains could bypass the cap, though this introduces reliability and fingerprinting risks.
+section: Issue body
+extracted_by: claude-sonnet-4-6

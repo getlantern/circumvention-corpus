@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kanagarathinam-higai-net-hierarchical-encrypted
+kind: detection
+summary: HiGAI-Net classifies encrypted GenAI traffic (ChatGPT, Copilot, Gemini) using only packet-header metadata—no payload, no SNI—achieving 98.5% weighted F1 for AI/Non-AI detection (LightGBM, window=20) and 86.4% per-service identification despite TLS 1.3 and ECH. Of 44,492 labeled flows, 38% of Gemini sessions used QUIC with no SNI available, confirming that ECH removes the last passive plaintext signal but header statistics remain.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - esni-eh-blocking
+defenses:
+    - ech-esni
+censors:
+    - generic
+defense_implications:
+    - ECH alone is insufficient to defeat traffic classification; circumvention tools must also mask DL/UL byte-ratio asymmetry and inter-arrival timing characteristic of their protocol.
+    - Circumvention tools should engineer cover traffic or pacing to avoid the characteristic long-lived, downlink-dominant flow signature that enables 98.5% AI/Non-AI separation.
+section: §I, §III, Table I
+extracted_by: claude-sonnet-4-6

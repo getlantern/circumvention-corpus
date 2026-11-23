@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yazdi-metadata-private-voice-communication
+kind: evaluation
+summary: Empirical evaluation of SAPEC across 45 independently circuit-rebuilt Tor runs yielded a median one-way audio delay (OWD) of 355 ms and median RTT of 710 ms (excluding 3 outlier runs). Connection setup time had a mean of 7.43 s and median of 7.61 s, ranging from 3.84 s to 13.48 s. The 3 outlier runs (C9, C24, C30) exhibited OWD means of 1193 ms, 1535 ms, and 2369 ms respectively, attributable to Tor relay selection spanning geographically distant or bandwidth-limited nodes.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Real-time voice over Tor hidden services is feasible with median OWD of 355 ms, but non-deterministic circuit selection produces outliers 2–6× worse; production deployments should implement selective circuit management — measure per-circuit latency and rebuild if above a threshold — rather than accepting Tor's default automatic selection.
+    - Connection setup times of 7–8 seconds are acceptable for high-security telephony but would frustrate general users; preemptively building circuits during idle periods can reduce perceived connection latency without compromising anonymity.
+section: §VI, Table I
+extracted_by: claude-sonnet-4-6

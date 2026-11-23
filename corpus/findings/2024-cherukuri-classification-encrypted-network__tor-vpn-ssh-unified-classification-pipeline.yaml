@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: The chapter includes Tor within its encrypted traffic classification review alongside VPN and SSH, confirming that Tor bridge traffic is addressable by the same multi-feature ML pipeline (packet header + timing + flow statistics) applied to other encrypted protocols, with no special evasion property assumed.
+techniques:
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Tor without pluggable transports is classified by the same feature sets that identify VPN and SSH; obfs4 or Snowflake is required to escape flow-statistical fingerprinting.
+    - Pluggable transports must target all three feature families (packet-level, flow-level, host-behavioral) simultaneously to avoid being re-identified as a residual unknown-encrypted class.
+section: Abstract
+extracted_by: claude-sonnet-4-6

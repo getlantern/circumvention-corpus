@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-routerweave-unified-observation
+kind: detection
+summary: RouterWeave achieves 94.41% macro-F1 for application activity recognition (browsing, streaming, music, video across Android, iOS, Windows) and 97.46% macro-F1 for IoT operations from encrypted network traffic alone, running natively on a commodity home router (GL-MT3000) with under 7 MB of memory per task and P95 application prediction latency of 41.08 ms. This establishes that ML-based traffic analysis can identify application-layer activities without payload decryption at network-edge hardware constraints, outperforming baselines by up to 20.99 percentage points.
+techniques:
+    - traffic-shape
+    - ml-classifier
+    - website-fingerprint
+censors:
+    - generic
+defense_implications:
+    - Circumvention transports cannot rely solely on payload encryption; traffic pattern obfuscation (packet sizing, inter-arrival timing, flow multiplicity) is a first-order requirement even on consumer-grade router hardware
+    - Any proxy or tunnel that runs on a user's home network is observable at the gateway level—protocol designers should assume adversarial traffic classification capability at ISP or home-router granularity, not just at backbone DPI boxes
+section: §4.1.2, Table 4
+extracted_by: claude-sonnet-4-6

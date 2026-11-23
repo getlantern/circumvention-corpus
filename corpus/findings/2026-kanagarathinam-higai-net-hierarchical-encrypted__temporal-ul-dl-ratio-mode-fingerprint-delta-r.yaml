@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-kanagarathinam-higai-net-hierarchical-encrypted
+kind: detection
+summary: Sliding-window temporal features—specifically the DL/UL trend differential ΔR and streaming regularity index S—produce an 8.9 pp F1 gain in mode classification (text vs. voice/video), larger than any model architecture effect in the study. Ablating this 12-feature temporal group from the L3 Random Forest drops weighted F1 from 0.610 to 0.521. Mode classification hits a ceiling of 61.0% because text and voice sessions share the same HTTP/2 connection and per-window feature distributions overlap heavily.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Constant-rate or isochronous transmission that suppresses the rising DL fraction as streaming begins would defeat the ΔR-based mode classifier and reduce per-session information leakage.
+    - Adding synthetic downlink bursts to request-response (text) sessions to mimic streaming DL/UL ratios would collapse the separating signal the classifier relies on.
+section: §IV-B, §V-D, §VI-E
+extracted_by: claude-sonnet-4-6

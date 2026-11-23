@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: Alshammari and Zincir-Heywood (Computer Networks 55(6), 2011, pp. 1326–1350) demonstrated that encrypted traffic — including SSH — can be identified without port numbers, IP addresses, or payload inspection using only flow-level statistical features, establishing the theoretical floor for traffic classification without DPI.
+techniques:
+    - ml-classifier
+    - traffic-shape
+censors:
+    - generic
+defense_implications:
+    - Port-randomization and IP rotation provide no meaningful protection against flow-statistical classifiers; circumvention tools must actively shape packet-size and inter-arrival-time distributions.
+    - Even zero-payload features (flow duration, packet count, byte count per direction) suffice for classification; defenses must target these macro-flow attributes explicitly.
+section: References [37]
+extracted_by: claude-sonnet-4-6

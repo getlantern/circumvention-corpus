@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-diwenx-obfsgen-generative-approach
+kind: evaluation
+summary: 'obfsgen evaluates three axes: indistinguishability of the shaped traffic, performance overhead introduced by schedule-driven shaping, and computational resources required to run the generative model. The authors identify synchronization across a noisy network as the primary practical system challenge for schedule-driven obfuscators.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - pluggable-transport
+censors:
+    - generic
+defense_implications:
+    - Account for synchronization robustness under packet loss and jitter when designing schedule-driven obfuscators — the schedule must remain coherent at both endpoints even when the network reorders or drops packets, or the cover-traffic illusion breaks.
+    - Profile the generative model's inference latency and memory footprint on target deployment hardware before committing to this architecture; autoregressive models predicting from full flow history may be too costly for mobile or embedded endpoints.
+section: Abstract
+extracted_by: claude-sonnet-4-6

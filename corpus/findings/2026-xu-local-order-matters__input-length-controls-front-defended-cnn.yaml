@@ -1,0 +1,17 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-xu-local-order-matters
+kind: evaluation
+summary: On FRONT-defended traffic, truncating the CNN input from 5000 to 2000 cells drops accuracy from 54.6% to 41.7%; at L=1000 it falls to 27.6%, below the k-FP-style RF baseline of 38.5%. The defended-traffic win depends on the model observing enough of the trace to recover surviving local ordering, so defenses that limit observable trace length can significantly degrade CNN-based WF accuracy.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - Defenses that limit the attacker's observable trace length to ~1000 real cells or fewer (e.g., by injecting heavy early padding that forces truncation before real traffic is visible) can push CNN accuracy below classical feature-baseline levels.
+    - Transport designs with short circuit lifetimes or frequent rekeying that truncate observable flows may provide incidental WF resistance against sequence-sensitive classifiers, even without explicit padding.
+section: §IV-D, Table II
+extracted_by: claude-sonnet-4-6

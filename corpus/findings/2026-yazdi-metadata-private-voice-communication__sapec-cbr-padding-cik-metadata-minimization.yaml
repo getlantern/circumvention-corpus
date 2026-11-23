@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-yazdi-metadata-private-voice-communication
+kind: defense
+summary: SAPEC transmits audio packets at fixed 20-millisecond intervals regardless of voice activity, padding silence periods to standard packet size with random bytes, preventing a traffic analyst from determining which party is speaking, when speech begins or ends, or the rhythm of a conversation from packet timing or size alone. Combined with Tor hidden services that hide both parties' IP addresses and a removable Crypto Ignition Key (CIK) that keeps long-term key material off internal storage, the design addresses network-level traffic analysis and physical device-seizure metadata vectors simultaneously.
+techniques:
+    - traffic-shape
+    - flow-correlation
+defenses:
+    - tor
+    - randomization
+censors:
+    - generic
+defense_implications:
+    - Fixed-interval constant-bitrate audio with silence padding (CBR + padding) eliminates the most accessible traffic-analysis attack on VoIP over anonymizing networks; circumvention voice tools should adopt CBR at a fixed packet interval rather than voice-activity-gated variable-rate transmission.
+    - Physical device seizure is a realistic threat for high-risk users; storing all long-term key material on a removable hardware token (CIK pattern) rather than internal disk significantly reduces key compromise risk from confiscation, and CipherLink's design shows this is achievable with minimal software complexity.
+section: §IV-D
+extracted_by: claude-sonnet-4-6

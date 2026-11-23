@@ -1,0 +1,29 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: arXiv 2611.26134
+id: 2026-liu-routerweave-unified-observation
+title: 'RouterWeave: A Unified Observation Layer for Cross-Platform Activity Analysis via Home Routers'
+authors:
+    - Chengeng Liu
+    - Ronghua Li
+    - Yan Long
+    - Shinan Liu
+venue: arXiv preprint
+year: 2026
+arxiv_id: "2611.26134"
+url: https://arxiv.org/abs/2611.26134v1
+abstract: 'Smart homes bring together devices from different operating systems and vendor ecosystems, but each platform reports activity only for the devices and features it supports, leaving gaps in household-wide activity monitoring. Interoperability standards such as Matter and software integrations connect and control supported devices, yet vendor restrictions and licensing barriers limit access to their data, while hardware constraints hinder integration. Our key insight is that encrypted network traffic provides complementary evidence of activity across platform boundaries. Accordingly, we present RouterWeave, a router-side observation framework that combines cross-platform traffic collection, task-adaptive processing, and unified activity records. These records preserve activity meaning, temporal extent, and source-device attribution while distinguishing discrete operations from sustained activity intervals. We evaluate RouterWeave across four datasets, native execution on a commodity home router, and two novel case studies: cross-platform Screen Time monitoring and appliance energy estimation. RouterWeave achieves 94.41% macro-F1 on application activities and 97.46% on IoT operations, outperforming baselines by up to 20.99 percentage points, while using under 7 MB of router memory per task and supporting 54 concurrent devices within a 5-second update window. In end-to-end case studies, RouterWeave reconstructs 600 Screen Time timelines across Android, iOS, and Windows with 92.15% accuracy (24.84-second mean active-time error over 19-minute averages) and recovers 49 of 55 appliance operations over four days, tracking ON/OFF states with 92.84% agreement and estimating electricity use within a 4.28% error. Together, these results establish the commodity home router as practical infrastructure for whole-home activity sensing. The code is open sourced at https://github.com/naisslab/routerweave.'
+censors:
+    - generic
+techniques:
+    - traffic-shape
+    - ml-classifier
+evaluation_methods:
+    - measurement-study
+    - ml-evaluation
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Relevant as a network-layer traffic analysis attack; demonstrates application identification without decryption—a capability circumvention defenses must anticipate and counter.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - arxiv:2611.26134

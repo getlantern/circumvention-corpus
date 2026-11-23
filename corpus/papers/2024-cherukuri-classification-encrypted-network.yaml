@@ -1,0 +1,25 @@
+# Auto-ingested by corpus-crawl. Review and tighten the tags +
+# notes before merging. Source: crossref doi:10.1007/978-3-031-62909-9_3
+id: 2024-cherukuri-classification-encrypted-network
+title: Classification of Encrypted Network Traffic
+authors:
+    - Aswani Kumar Cherukuri
+    - Sumaiya Thaseen Ikram
+    - Gang Li
+    - Xiao Liu
+venue: SpringerBriefs in Computer Science
+year: 2024
+doi: 10.1007/978-3-031-62909-9_3
+url: https://doi.org/10.1007/978-3-031-62909-9_3
+censors:
+    - generic
+techniques:
+    - ml-classifier
+    - traffic-shape
+core: false
+notes: Auto-ingested via corpus-crawl. Tags proposed by Claude Haiku 4.5; review and tighten before relying. Direct relevance to censor capabilities; traffic classification attacks are deployed by GFW, IR, RU, and other operators against circumvention ecosystems.
+visibility: public
+date_added: "2026-11-23"
+added_by: corpus-crawl-bot
+sources:
+    - doi:10.1007/978-3-031-62909-9_3

@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: Traditional classification methods based on port number and payload inspection fail to classify encrypted or obfuscated Internet traffic, motivating statistical approaches that operate on Transport Layer features such as flow and packet size distributions without inspecting payload content.
+techniques:
+    - dpi
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Payload randomization alone is insufficient if packet-size and flow-length distributions remain protocol-characteristic — circumvention tools must also shape these Transport Layer features.
+    - Port-based blocking is a weak baseline; encrypted transports must assume adversaries have moved beyond port matching to statistical flow analysis.
+section: Abstract
+extracted_by: claude-sonnet-4-6

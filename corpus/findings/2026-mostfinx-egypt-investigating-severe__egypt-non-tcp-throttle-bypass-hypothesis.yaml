@@ -1,0 +1,14 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-mostfinx-egypt-investigating-severe
+kind: defense
+summary: If Egypt's post-quota throttling relies on TCP congestion behavior under induced packet loss, non-TCP protocols may retain higher effective throughput. QUIC-based or raw UDP transports could circumvent TCP-targeted shaping, though an account-wide hard rate cap would affect all protocols equally.
+techniques:
+    - throttling
+defenses:
+    - hysteria2
+defense_implications:
+    - Deploy QUIC-based circumvention (Hysteria 2 or similar) as the preferred transport for Egypt users who have exhausted monthly quotas, to test whether the throttle is TCP-specific.
+    - Collect per-protocol speed measurements from throttled users to build empirical evidence on whether non-TCP protocols escape the cap; this data would directly inform transport selection logic.
+section: wkrp comment, Nov 16 2026
+extracted_by: claude-sonnet-4-6

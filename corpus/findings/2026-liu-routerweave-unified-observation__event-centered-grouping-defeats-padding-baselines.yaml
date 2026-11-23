@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-routerweave-unified-observation
+kind: detection
+summary: RouterWeave's task-adaptive event-centered observation units achieve 94.20% event F1 for intermittent IoT-style operations, compared with 65.74–72.92% for fixed sliding windows and 72.56–74.54% for traffic-triggered gap-based grouping—a gain of 19.66 percentage points over the best conventional baseline. The improvement comes from a packet-membership neural network that isolates operation-related bursts from background traffic, allowing temporally separated exchanges belonging to the same event to contribute to a single observation even when unrelated packets arrive between them.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Blending circumvention traffic with realistic background traffic (heartbeats, telemetry, CDN polling) degrades event-centered classifiers more than adding bulk padding, because operation-onset detectors rely on burst isolation—injecting synthetic background-like packets around sensitive exchanges makes membership assignment harder
+    - Fixed inter-packet timing jitter is insufficient; circumvention transports need variable-burst injection strategies that make event boundaries indistinguishable from ambient home-network noise
+section: §4.2.1, Figure 5
+extracted_by: claude-sonnet-4-6

@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-liu-routerweave-unified-observation
+kind: evaluation
+summary: A commodity home router (GL-MT3000, 512 MB RAM) running RouterWeave can support 54 concurrent monitored devices within a 5-second update window using at most 150 MB total process memory and 4.8 s P95 processing time, more than twice the average US household size of 21 connected devices. RouterWeave maintains per-device model footprints of 1.68–2.50 MB and peak RSS of 5.41–6.99 MB per task, establishing that adversarial encrypted-traffic classification is deployable at the network edge without server-class infrastructure or cloud offload.
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Circumvention tool designers should model the adversary as having router-edge ML classification capability at ISP CPE or home-gateway hardware—not only datacenter DPI—which removes cost and latency as barriers to per-flow inference
+    - The 5-second update granularity of router-side inference sets a practical minimum for how quickly a circumvention transport must shift its traffic signature to evade online classifiers; adaptive polymorphic schedules should change profile faster than this window
+section: §4.1.3, Table 5
+extracted_by: claude-sonnet-4-6

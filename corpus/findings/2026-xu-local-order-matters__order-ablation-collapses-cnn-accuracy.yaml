@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-xu-local-order-matters
+kind: detection
+summary: A controlled order-ablation that permutes only each trace's nonzero traffic prefix while preserving direction counts, retained length, and padding positions collapses WF-CNN accuracy from 54.2% to 7.6% (a 46.6 pp drop), placing it below every implemented feature baseline (k-FP-style RF 38.5%, Wang-kNN-style 30.7%, CUMUL-RF 25.0%). The result shows that the CNN's FRONT advantage depends strongly on order-derived information rather than direction counts or trace length alone.
+techniques:
+    - website-fingerprint
+    - ml-classifier
+    - traffic-shape
+defenses:
+    - tor
+censors:
+    - generic
+defense_implications:
+    - An effective WF defense must randomize the temporal ordering of real Tor cells — not just inject dummy cells — to defeat convolutional classifiers; FRONT-style front-padding leaves the real-cell ordering largely intact and exploitable.
+    - Cover-traffic designs should aim to make the joint distribution of cell directions and their relative positions indistinguishable across sites, since position-invariant count features alone are insufficient for a CNN-class attacker.
+section: §IV-D, Table II
+extracted_by: claude-sonnet-4-6

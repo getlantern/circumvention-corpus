@@ -1,0 +1,15 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2020-cunha-classification-encrypted-internet
+kind: detection
+summary: 'Statistical classifiers based on distributional divergence (KL divergence, Euclidean distance) offer a practical advantage over ML classifiers such as SVM: they can operate in real time and do not require retraining when a new type of traffic appears, making them more operationally deployable by censors.'
+techniques:
+    - traffic-shape
+    - ml-classifier
+censors:
+    - generic
+defense_implications:
+    - Unlike supervised ML classifiers that require labeled retraining to handle new protocols, distribution-matching detectors generalize to novel encrypted transports by measuring deviation from known-benign baselines — circumvention designers cannot rely on novelty alone to evade detection.
+    - Lightweight statistical detectors are plausible for commodity DPI hardware; tool designers should assume packet-size distribution analysis is always running, even at high-bandwidth ISP deployments.
+section: Abstract
+extracted_by: claude-sonnet-4-6

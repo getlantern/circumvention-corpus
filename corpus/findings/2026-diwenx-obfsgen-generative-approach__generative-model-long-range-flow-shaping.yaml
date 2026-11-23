@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-diwenx-obfsgen-generative-approach
+kind: defense
+summary: obfsgen samples its packet-send schedule from a generative sequence model trained on normal traffic that predicts the future shape of a flow from its entire history, capturing the long-range dependencies that characterize legitimate traffic. This allows it to produce tunneled flows statistically indistinguishable from the cover traffic distribution.
+techniques:
+    - traffic-shape
+    - ml-classifier
+defenses:
+    - randomization
+    - meta-resistance
+censors:
+    - generic
+defense_implications:
+    - Train a generative sequence model (e.g., autoregressive or transformer-based) on a representative corpus of the cover protocol's flows; use the model's predicted next-step distribution to schedule real sends, so the resulting flow history matches the cover's learned long-range patterns.
+    - Prioritize covering long-range temporal dependencies — not just per-packet size/IAT distributions — since censors using sliding-window or whole-flow features will exploit these correlations even when short-window statistics match.
+section: Abstract
+extracted_by: claude-sonnet-4-6

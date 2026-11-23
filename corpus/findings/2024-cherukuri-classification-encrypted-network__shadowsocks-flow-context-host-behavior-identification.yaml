@@ -1,0 +1,18 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2024-cherukuri-classification-encrypted-network
+kind: detection
+summary: Zeng et al. (IEEE Access 7, 2019, pp. 41017–41032) achieve Shadowsocks traffic identification by combining flow-context features with host behavioral signals, demonstrating that application-layer proxy protocols are fingerprintable even when their byte payloads are fully encrypted.
+techniques:
+    - ml-classifier
+    - traffic-shape
+    - fully-encrypted-detect
+defenses:
+    - shadowsocks
+censors:
+    - cn
+defense_implications:
+    - Shadowsocks variants must randomize not only payload bytes but also host-level behavioral patterns (connection timing, destination diversity, flow-count bursts) that leak proxy usage.
+    - Flow-context features (e.g., consistent connection to a single remote IP on a non-standard port) are as dangerous as packet-level features; server-IP rotation or domain-fronting layers reduce this signal.
+section: References [20]
+extracted_by: claude-sonnet-4-6

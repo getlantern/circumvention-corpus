@@ -1,0 +1,16 @@
+# Auto-extracted by corpus-findings from full paper text.
+# Review summary + tags before relying.
+paper: 2026-maminrezaie-udp-obfuscation-sxt-lite
+kind: evaluation
+summary: The issue documents a deployment scenario where circumvention must operate on a consumer Mikrotik SXT-Lite router, a device with severely constrained CPU and RAM, forcing the operator to seek obfuscation solutions compatible with router-grade hardware rather than a full VPN client on a PC.
+techniques:
+    - dpi
+defenses:
+    - randomization
+censors:
+    - ir
+defense_implications:
+    - Pluggable transports and obfuscation layers should publish CPU/memory budgets per-packet to help operators assess fitness for embedded-router deployment.
+    - Provide a router-compatible build path (OpenWrt package or static ARM/MIPS binary) for obfuscation tools so that last-mile censorship evasion does not require a separate full-featured client device.
+section: Issue body
+extracted_by: claude-sonnet-4-6
